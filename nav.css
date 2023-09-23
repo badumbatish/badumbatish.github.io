@@ -1,0 +1,43 @@
+.navbar-parent {
+    position: sticky;
+
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+    align-items: center;
+}
+
+.nav-links {
+    overflow: hidden;
+    border-radius: 3px;
+    display: flex;
+    list-style: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.nav-item {
+    background-color: hsl(210, 57%, 78%);
+    padding: 10px 15px;
+}
+
+.nav-item:hover {
+    background-color: rgb(21, 172, 195);
+}
+
+.menu_redirection_button:hover {
+    background-color: aqua;
+}
+
+.blend {
+    background: linear-gradient(45deg, #172e7a, #ffb3c6, #DAF0F7);
+
+}
+
+.active {}

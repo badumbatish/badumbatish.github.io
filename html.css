@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: black;
+    font-family: Roboto-Light;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Roboto-Regular;
+}
+
+.head {
+    display: block;
+    padding: 5px;
+    margin-top: 10px;
+    background: linear-gradient(45deg, #172e7a, #ffb3c6, #DAF0F7);
+
+}
+
+.head-title {
+    text-align: center;
+}
+
+.head-animation {
+    transition: all 3s;
+}
+
+.picture-profile {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transition: transform 1s;
+    -webkit-transition: transform 1s;
+    -moz-transition: transform 1s;
+    -ms-transition: transform 1s;
+    -o-transition: transform 1s;
+}
+
+.picture-profile:hover {
+    transform: scale(2);
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+}
+
+.totality {
+    padding-top: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.mid {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mid-border {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.mid-left {
+    display: flex;
+    flex-direction: column;
+
+    background-image: linear-gradient(45deg, #ffc8cd, #bde0fe);
+    gap: 20px;
+    align-items: center;
+    flex: 1;
+    margin-right: 5%;
+    padding: 2.5%;
+    flex-shrink: 0;
+}
+
+.mid-right {
+    display: flex;
+    flex: 2.5;
+    margin-left: 5%;
+    padding: 5%;
+    background-image: linear-gradient(45deg, #bde0fe, #cdedce);
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.about-me-card {
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+}
+
+.subcard-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.subcard-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.experience-parent {
+    padding-top: 5%;
+}
+
+.experience-parent>h1 {
+    text-align: center;
+}
+
+.input-thoughts {
+    line-height: 2em;
+}
