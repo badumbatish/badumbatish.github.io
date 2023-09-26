@@ -6,17 +6,6 @@ body {
     font-family: Roboto-Light;
 }
 
-
-html,
-body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-::-webkit-scrollbar {
-    display: none;
-}
-
 h1,
 h2,
 h3,
@@ -30,18 +19,13 @@ h6 {
     display: block;
     padding: 5px;
     margin-top: 10px;
-    background: linear-gradient(45deg, #e192a6, #56ade3, #DAF0F7);
-}
+    background: linear-gradient(45deg, #172e7a, #ffb3c6, #DAF0F7);
 
+}
 
 .head-title {
     text-align: center;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
 }
-
-
 
 .head-animation {
     transition: all 3s;
@@ -139,9 +123,4 @@ h6 {
 
 .input-thoughts {
     line-height: 2em;
-}
-
-
-.footer {
-    margin: 10%;
 }
