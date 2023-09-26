@@ -59,7 +59,22 @@ h6 {
 
 .mid {
     display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
+
+    width: 100vw;
+}
+
+@media only screen and (max-width: 450px) {
+    .mid {
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .mid-left .mid-right {
+        margin: 0%;
+    }
+
 }
 
 .mid-border {
@@ -73,9 +88,8 @@ h6 {
 .mid-left {
     display: flex;
     flex-direction: column;
-
     background-image: linear-gradient(45deg, #ffc8cd, #bde0fe);
-    gap: 20px;
+    gap: 2.5%;
     align-items: center;
     flex: 1;
     margin-right: 5%;
@@ -86,7 +100,6 @@ h6 {
 .mid-right {
     display: flex;
     flex: 2.5;
-    margin-left: 5%;
     padding: 5%;
     background-image: linear-gradient(45deg, #bde0fe, #cdedce);
     flex-direction: column;

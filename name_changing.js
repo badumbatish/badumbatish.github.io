@@ -14,8 +14,6 @@ fetch('./names_with_styles.json')
 
             setTimeout(function () {
                 nameData = jsonValues[counter];
-                console.log(nameData['name']);
-                console.log(nameData['color']);
                 spanElement.textContent = nameData["name"];
                 spanElement.style.color = nameData["color"];
                 counter = (counter + 1) % jsonValues.length;
