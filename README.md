@@ -3,7 +3,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 Check the structure of ./src/_posts/ for details.
 
 General idea:
-Each post needs a title, date and recap, then the content follows
+Each post needs a title, date and recap, then the content follows.
 ## Dev
 
 First, run the development server:
@@ -18,5 +18,5 @@ Pages are in app/
 ```bash
 npm run deploy
 ```
-
+after adding and committing everything, npm will build and deploy to gh-pages, while pushing the content to main
 
