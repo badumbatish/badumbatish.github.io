@@ -4,6 +4,13 @@ Check the structure of ./src/_posts/ for details.
 
 General idea:
 Each post needs a title, date and recap, then the content follows.
+
+### Image
+Embed like normal, then you can add the following code for desciption
+```
+|:--:|
+|*description*|
+```
 ## Dev
 
 First, run the development server:

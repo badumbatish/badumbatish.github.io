@@ -26,3 +26,43 @@ and then off we go to build a website. The instructor Sebi would walk us through
 and then he would go on these little demos, show-casing these knowledge into 
 
 ## But
+
+It was fun. For the first time doing web-dev, it was actually enjoyable (hahaha).
+
+I still remembered the first time I started writing my first personal website. It was crazy
+how fun it is. I was staying up soo late just to get the colorscheme right and the flex property right.
+
+![building_and_destroying.png](..%2Fblogs%2Fbuilding_and_destroying.png)
+|:--:|
+|*My first baby step*|
+
+## Then
+
+It was great, everyday I was looking forward to building my website again. 
+
+But it was hard. Code wasn't actually maintainable. CSS is not the way to go and
+pure JSS is too much.
+
+I turned to NextJS and TailwindCSS for comfort :'( 
+
+Then it was fun again, I started rebuilding my website with NextJS and TailwindCSS, 
+eventually deploying it on top of my old personal website. The React-based framework
+combined with the ultility-based CSS framework meant that I was writing code faster and 
+easier than ever before, tripling or quadruple my development speed compared to when I 
+was developing the old website.
+
+Then it suddenly hit me. I was feeling a little down. Seeing my old website being replaced
+by a new, more modern website left a bad taste in my mouth. 
+
+It was weird; I had been associating the old website with something 
+that would be with me forever. I was bragging it to everyone. To Erica, to Emi,
+to Aeriel, to Don, to everyone. I knew then when I was writing the old website that 
+I would need to turn to a newer tool but it still hurt so much having to say
+goodbye to my first little child. 
+
+It was sad, I was very sad. But just like in life, saying "goodbye" and let go
+might be the wiser choice...
+
+![building_and_destroying_2.png](..%2Fblogs%2Fbuilding_and_destroying_2.png)
+|:--:|
+|*New beginning, sad but also proud*|
