@@ -21,9 +21,14 @@ export default async function Post({
 }) {
     const { html, title, date } = await getPostById(id);
     return (
-        <article>
-            <h1>{title}</h1>
-            <h4>{date}</h4>
+        <article className="p-8">
+            <div className="flex justify-center text-4xl font-bold">
+                <h1>{title}</h1>
+            </div>
+            <div className="flex justify-start text-xl font-bold underline">
+                <h4>{date}</h4>
+            </div>
+
             <div dangerouslySetInnerHTML={{ __html: html }} />
         </article>
     );

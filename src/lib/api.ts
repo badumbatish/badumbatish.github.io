@@ -66,6 +66,7 @@ export async function getPostById(id: string) {
         ...data,
         title: data.title,
         id: realId,
+        recap : data.recap,
         date: `${isoString.slice(0, 10)}`,
         html: html.value.toString(),
     }
