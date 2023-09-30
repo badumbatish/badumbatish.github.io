@@ -9,7 +9,7 @@ export default async function Page() {
             <h1 className="text-4xl">My blog</h1>
 
             <h2>All posts:</h2>
-            <ul>
+            <ul className="flex flex-col gap-6">
                 {posts.map(post => {
                     const { id, date, title, recap, html} = post
                     return (

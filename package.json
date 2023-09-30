@@ -15,6 +15,7 @@
     "@leafac/rehype-shiki": "^2.2.1",
     "gh-pages": "^6.0.0",
     "gray-matter": "^4.0.3",
+    "html-react-parser": "^4.2.2",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
@@ -28,6 +29,7 @@
     "unified": "^11.0.3"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
