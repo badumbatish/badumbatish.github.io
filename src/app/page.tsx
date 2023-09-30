@@ -40,7 +40,8 @@ function AboutMeElement({ title, lst }: { title: string; lst: string[] }) {
 export default function Home() {
     return (
         <main>
-            <div className="h-screen w-screen">
+            <div className="flex flex-col flex-wrap gap-4">
+            <div className="h-full w-full">
                 <div className="flex justify-center items-center py-4">
                     <h1 className="text-4xl text-blue-400 font-bold">Jasmine Tang</h1>
                 </div>
@@ -104,10 +105,12 @@ export default function Home() {
 
             </div>
 
-            <div className="h-screen w-screen">
+            <div className="h-full w-full">
                 <div className="flex justify-center items-center py-4">
                     <h1 className="text-3xl text-orange-400 font-bold">My Experience</h1>
                 </div>
+            </div>
+
             </div>
         </main>
     )
