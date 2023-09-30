@@ -117,7 +117,7 @@ export default function Home() {
             </div>
 
             <footer className="flex flex-col justify-center gap-4">
-                <p>Author: Jasmine "jjasmine" Tang</p>
+                <p>Author: Jasmine &quot;jjasmine&quot; Tang</p>
                 <p>Built with NextJS, TailwindCSS, and a tonnn of loveee :)</p>
             </footer>
         </main>
