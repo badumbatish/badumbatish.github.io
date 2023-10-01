@@ -138,20 +138,20 @@ export default function Home() {
                         <div className="flex flex-col">
                             <div className="mb-0 flex flex-row items-center gap-4">
                                 <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                                <div>Hi there</div>
+                                <div>Title</div>
                             </div>
                             <div className="flex flex-row gap-4">
                                 <div className="m-0 ml-1 p-0 border-l-4 border-blue-500 h-auto"></div>
-                                <div>Hi there</div>
+                                <div>Description</div>
                             </div>
 
                             <div className="mb-0 flex flex-row items-center gap-4">
                                 <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                                <div>Hi there</div>
+                                <div>Title</div>
                             </div>
                             <div className="flex flex-row gap-4">
                                 <div className="m-0 ml-1 p-0 border-l-4 border-blue-500 h-auto"></div>
-                                <div>Hi there</div>
+                                <div>Description</div>
                             </div>
 
 
