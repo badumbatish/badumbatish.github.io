@@ -45,6 +45,13 @@ function AboutMeElement({title, lst}: { title: string; lst: string[] }) {
     )
 }
 
+function TimeLine() {
+    return (
+        <ol>
+            <li>In construction</li>
+        </ol>
+    )
+}
 
 export default function Home() {
     let aboutMeColor = "blue"
@@ -120,9 +127,14 @@ export default function Home() {
                 </div>
 
 
-                <div className="h-full w-full">
+                <div className="h-full w-full flex flex-col">
                     <div className="flex justify-center items-center py-4">
-                        <h1 className="text-3xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-orange-400 to-purple-300">My Experience</h1>
+                        <h1 className="text-3xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-orange-400 to-purple-300">
+                            My Experience in Software Development</h1>
+                    </div>
+
+                    <div className="flex justify-center">
+                        <TimeLine></TimeLine>
                     </div>
                 </div>
 
