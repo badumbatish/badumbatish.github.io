@@ -47,9 +47,7 @@ function AboutMeElement({title, lst}: { title: string; lst: string[] }) {
 
 function TimeLine() {
     return (
-        <ol>
-            <li>In construction</li>
-        </ol>
+        <></>
     )
 }
 
@@ -88,6 +86,7 @@ export default function Home() {
                                                 linkName={"GitHub"}></LinkButton>
                                     <LinkButton link={"/blog"} linkName={"Blog"}></LinkButton>
                                     <LinkButton link={""} linkName={"resume.pdf"}></LinkButton>
+                                    <LinkButton link={"https://leetcode.com/thisisjjasmine/"} linkName={"Leetcode"}></LinkButton>
                                 </div>
 
                             </div>
@@ -129,12 +128,34 @@ export default function Home() {
 
                 <div className="h-full w-full flex flex-col">
                     <div className="flex justify-center items-center py-4">
-                        <h1 className="text-3xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-orange-400 to-purple-300">
+                        <h1 className="text-3xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-purple-400 to-purple-300">
                             My Experience in Software Development</h1>
                     </div>
 
                     <div className="flex justify-center">
                         <TimeLine></TimeLine>
+
+                        <div className="flex flex-col">
+                            <div className="mb-0 flex flex-row items-center gap-4">
+                                <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                                <div>Hi there</div>
+                            </div>
+                            <div className="flex flex-row gap-4">
+                                <div className="m-0 ml-1 p-0 border-l-4 border-blue-500 h-auto"></div>
+                                <div>Hi there</div>
+                            </div>
+
+                            <div className="mb-0 flex flex-row items-center gap-4">
+                                <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                                <div>Hi there</div>
+                            </div>
+                            <div className="flex flex-row gap-4">
+                                <div className="m-0 ml-1 p-0 border-l-4 border-blue-500 h-auto"></div>
+                                <div>Hi there</div>
+                            </div>
+
+
+                        </div>
                     </div>
                 </div>
 
