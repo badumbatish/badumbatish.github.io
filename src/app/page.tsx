@@ -78,7 +78,7 @@ export default function Home() {
                             </div>
                             <div className="basis-4/5">
 
-                                <h2 className="text-xl font-bold">Hi there, it&rsquo;s Jasmine :) <br/>I hope you'll
+                                <h2 className="text-xl font-bold">Hi there, it&rsquo;s Jasmine :) <br/>I hope you&apos;ll
                                     enjoy your stay :)
                                 </h2>
                                 <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-1 text-sm lg:text-base">
