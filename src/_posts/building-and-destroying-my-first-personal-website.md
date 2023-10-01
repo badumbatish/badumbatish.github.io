@@ -32,7 +32,7 @@ It was fun. For the first time doing web-dev, it was actually enjoyable (hahaha)
 I still remembered the first time I started writing my first personal website. It was crazy
 how fun it is. I was staying up soo late just to get the colorscheme right and the flex property right.
 
-![building_and_destroying.png](..%2Fblogs%2Fbuilding_and_destroying.png)
+![building_and_destroying.png](/blogs/building_and_destroying.png)
 |:--:|
 |*My first baby step*|
 
@@ -62,7 +62,6 @@ goodbye to my first little child.
 
 It was sad, I was very sad. But just like in life, saying "goodbye" and let go
 might be the wiser choice...
-
-![building_and_destroying_2.png](..%2Fblogs%2Fbuilding_and_destroying_2.png)
+![building_and_destroying_2.png](/blogs/building_and_destroying_2.png)
 |:--:|
 |*New beginning, sad but also proud*|
