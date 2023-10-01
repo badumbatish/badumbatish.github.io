@@ -2,23 +2,31 @@ import Image from 'next/image'
 import Link from 'next/link';
 import pictureProfile from "public/pfp2.jpg";
 
+let aboutMeCardClass = ""
+
 function LinkButton({link, linkName}: { link: string, linkName: string }) {
 
     const iconNav: string = link.startsWith("/") ? "↙" : "↗";
+    let buttonClass = `flex justify-center border-black border-2 rounded text-blue-800 hover:bg-blue-200
+                        hover:font-bold`;
 
     let content;
     if (link.startsWith("/")) {
-        content = <Link target="_blank"
-                        rel="noopener noreferrer" href={link}>{linkName}{iconNav}</Link>
+        content = <Link className={buttonClass} target="_blank"
+                        rel="noopener noreferrer" href={link}>
+            <button>{linkName}{iconNav}
+            </button>
+        </Link>
     } else {
-        content = <a target="_blank"
-                     rel="noopener noreferrer" href={link}>{linkName}{iconNav}</a>
+        content = <a className={buttonClass} target="_blank"
+                     rel="noopener noreferrer" href={link}>
+            <button>{linkName}{iconNav}
+            </button>
+        </a>
     }
     return (
         <>
-            <button className="border-black border-2 rounded text-blue-800 hover:bg-blue-400">
-                {content}
-            </button>
+            {content}
         </>
     )
 
@@ -39,12 +47,14 @@ function AboutMeElement({title, lst}: { title: string; lst: string[] }) {
 
 
 export default function Home() {
+    let aboutMeColor = "blue"
     return (
         <main>
             <div className="flex flex-col flex-wrap gap-4">
-                <div className="h-full w-full">
+                <div className="h-full w-full flex flex-col">
                     <div className="flex justify-center items-center py-4">
-                        <h1 className="text-4xl text-blue-400 font-bold">Jasmine Tang</h1>
+
+                        <h1 className="text-4xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-blue-400 to-green-400  ">Jasmine Tang</h1>
                     </div>
 
 
@@ -52,7 +62,7 @@ export default function Home() {
 
 
                         <div className="font-mono flex flex-col items-center basis-2/6
-                                rounded-lg overflow-hidden shadow-lg p-4 border-2 border-black gap-2"
+                                rounded-lg overflow-hidden shadow-lg p-4 border-2 border-blue-300 gap-2"
                         >
                             <div className="basis-1/5">
                                 <Image className="mx-auto rounded-3xl overflow-hidden" src={pictureProfile}
@@ -60,7 +70,9 @@ export default function Home() {
 
                             </div>
                             <div className="basis-4/5">
-                                <h2 className="text-xl font-bold">Hi there, it&rsquo;s Jasmine :) <br/>I hope you'll enjoy your stay :)
+
+                                <h2 className="text-xl font-bold">Hi there, it&rsquo;s Jasmine :) <br/>I hope you'll
+                                    enjoy your stay :)
                                 </h2>
                                 <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-1 text-sm lg:text-base">
                                     <LinkButton link={"https://www.linkedin.com/in/jjasmine-t/"}
@@ -76,7 +88,7 @@ export default function Home() {
 
                         <div className="font-mono basis-4/6
                                             rounded-lg overflow-hidden shadow-lg
-                        p-10 border-2 border-black">
+                        p-10 border-2 border-blue-300">
                             <ul className="flex flex-col gap-8">
                                 <li>
                                     <AboutMeElement title="Research Intern @ Fermilab, Spring & Summer 2023."
@@ -98,19 +110,19 @@ export default function Home() {
                                     <AboutMeElement title="About me: My journey from Viet Nam to the US" lst={[
                                         `2001-2019: Born & raised in Viet Nam`,
                                         `2019-2023: Moved to the US, worked and studied at Santiago Canyon College, Orange, CA`,
-                                        `2023: Accepted and transfered to UC Berkeley, chase new, wonderful opportunities`
+                                        `2023: Accepted and transfered to UC Berkeley, chasing new, wonderful opportunities`
                                     ]
                                     }></AboutMeElement>
                                 </li>
                             </ul>
                         </div>
                     </div>
-
                 </div>
+
 
                 <div className="h-full w-full">
                     <div className="flex justify-center items-center py-4">
-                        <h1 className="text-3xl text-orange-400 font-bold">My Experience</h1>
+                        <h1 className="text-3xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-orange-400 to-purple-300">My Experience</h1>
                     </div>
                 </div>
 
