@@ -46,8 +46,47 @@ function AboutMeElement({title, lst}: { title: string; lst: string[] }) {
 }
 
 function TimeLine() {
+    function TimeLineOrchestrator({props} : {props : JSX.Element[]}) {
+        return (<div>
+            {props.map((value, index) => {
+                return <div key={index}>{value}</div>;
+            })}
+        </div>)
+    }
+    function TimePiece({date, title, experience} : { date: string, title : string, experience : string}) {
+        return (
+            <>
+                <div className="pb-4">
+                    <div className="mb-0 flex flex-row items-center gap-4">
+                        <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                        <div className={"font-bold text-xl"}>{title}</div>
+                    </div>
+
+                    <div className="flex flex-row gap-4">
+                        <div className="m-0 -mt-1 ml-1 p-0 border-l-4 border-blue-500 h-auto"></div>
+                        <div className={"italic font-light"}>{date}</div>
+                    </div>
+
+                    <div className="flex flex-row gap-4">
+                        <div className="m-0 -mt-2 ml-1 p-0 border-l-4 border-blue-500 h-auto"></div>
+                        <div>{experience}</div>
+                    </div>
+                </div>
+            </>
+    )
+    }
+    let timePieces = [];
+
+    let timePiece =  <TimePiece date={"June-2023 -> Aug 2023"} title={"Research Intern @ Fermilab"} experience={"TBD"}></TimePiece>;
+    timePieces.push(timePiece);
+
+    timePiece = <TimePiece date={"Jan-2023 -> March 2023"} title={"Research Intern @ Fermilab"} experience={"TBD"}></TimePiece>;
+    timePieces.push(timePiece);
+
     return (
-        <></>
+        <>
+            <TimeLineOrchestrator props={timePieces}></TimeLineOrchestrator>
+        </>
     )
 }
 
@@ -127,7 +166,7 @@ export default function Home() {
 
 
                 <div className="h-full w-full flex flex-col">
-                    <div className="flex justify-center items-center py-4">
+                    <div className="flex justify-center items-center px-4 py-4">
                         <h1 className="text-3xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-purple-400 to-purple-300">
                             My Experience in Software Development</h1>
                     </div>
@@ -135,27 +174,7 @@ export default function Home() {
                     <div className="flex justify-center">
                         <TimeLine></TimeLine>
 
-                        <div className="flex flex-col">
-                            <div className="mb-0 flex flex-row items-center gap-4">
-                                <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                                <div>Title</div>
-                            </div>
-                            <div className="flex flex-row gap-4">
-                                <div className="m-0 ml-1 p-0 border-l-4 border-blue-500 h-auto"></div>
-                                <div>Description</div>
-                            </div>
 
-                            <div className="mb-0 flex flex-row items-center gap-4">
-                                <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                                <div>Title</div>
-                            </div>
-                            <div className="flex flex-row gap-4">
-                                <div className="m-0 ml-1 p-0 border-l-4 border-blue-500 h-auto"></div>
-                                <div>Description</div>
-                            </div>
-
-
-                        </div>
                     </div>
                 </div>
 
