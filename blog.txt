@@ -1,6 +1,6 @@
 1:HL["/_next/static/media/c9a5bc6a7c948fb0-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 2:HL["/_next/static/css/3b4c6feada633b9a.css","style"]
-0:["Bi6jOrg80n6f5rrA5BMcG",[[["",{"children":["blog",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L3",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b4c6feada633b9a.css","precedence":"next"}]],"$L4"]]]]
+0:["8F_IJLEPEAW0N_H5lMloP",[[["",{"children":["blog",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L3",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b4c6feada633b9a.css","precedence":"next"}]],"$L4"]]]]
 5:I{"id":1443,"chunks":["272:static/chunks/webpack-d6a49a6fa553a03c.js","971:static/chunks/fd9d1056-2703617740f52551.js","864:static/chunks/864-c3e1a9418e45fd01.js"],"name":"","async":false}
 6:I{"id":8639,"chunks":["272:static/chunks/webpack-d6a49a6fa553a03c.js","971:static/chunks/fd9d1056-2703617740f52551.js","864:static/chunks/864-c3e1a9418e45fd01.js"],"name":"","async":false}
 4:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"jjasmine"}],["$","meta","2",{"name":"description","content":"Built with NextJS, TailwindCSS, and a tonnn of loveee :)"}],["$","meta","3",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link","4",{"rel":"icon","href":"/_next/static/media/favico.b254a640.ico"}],["$","meta","5",{"name":"next-size-adjust"}]]
