@@ -48,7 +48,7 @@ function LinkButton({link, linkName}: { link: string, linkName: string }) {
             <button>{linkName}{iconNav}
             </button>
         </Link>
-
+        link = "badumbatish.github.io" + link;
     } else if (link.startsWith("mailto:")) {
         // Handles mail link
         content = <Link className={buttonClass} target="_blank"
@@ -90,51 +90,49 @@ function AboutMeElement({title, lst}: { title: string; lst: string[] }) {
     )
 }
 
-function TimeLine() {
-    function TimeLineOrchestrator({props}: { props: JSX.Element[] }) {
-        return (<div>
+function TimePiece({date, title, experience}: { date: string, title: string, experience: string[] }) {
+    return (
+        <>
+            <div className="mx-4 pb-4 flex">
+                <div>
+                <div className="mb-0 flex flex-row items-center gap-4">
+                    <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                    <div className={"font-bold text-xl"}>{title}</div>
+                </div>
+
+                <div className="flex flex-row gap-4">
+                    <div className="m-0 -mt-1 ml-1 p-0 border-l-4 border-blue-500 h-auto"></div>
+                    <div className={"italic font-light"}>{date}</div>
+                </div>
+
+                <div className="flex flex-row gap-8 ">
+                    <div className="m-0 -mt-2 ml-1 p-0 border-l-4 border-blue-500 h-auto"></div>
+                    <ul className={"list-disc"}>
+                        {experience.map((exp, id)=> {
+                            return (
+                                <li key={id}>{exp}</li>
+                            )
+                        })}
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+function TimeLine({children} : { children : JSX.Element[]}) {
+    function TimeLineOrchestrator({props} : { props: JSX.Element[] }) {
+        return (<div className={"flex flex-col item-start md:items-center"}>
             {props.map((value, index) => {
-                return <div key={index}>{value}</div>;
+                return <div className={"w:10/12 md:w-1/2"} key={index}>{value}</div>;
             })}
         </div>)
     }
 
-    function TimePiece({date, title, experience}: { date: string, title: string, experience: string }) {
-        return (
-            <>
-                <div className="pb-4">
-                    <div className="mb-0 flex flex-row items-center gap-4">
-                        <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                        <div className={"font-bold text-xl"}>{title}</div>
-                    </div>
-
-                    <div className="flex flex-row gap-4">
-                        <div className="m-0 -mt-1 ml-1 p-0 border-l-4 border-blue-500 h-auto"></div>
-                        <div className={"italic font-light"}>{date}</div>
-                    </div>
-
-                    <div className="flex flex-row gap-4">
-                        <div className="m-0 -mt-2 ml-1 p-0 border-l-4 border-blue-500 h-auto"></div>
-                        <div>{experience}</div>
-                    </div>
-                </div>
-            </>
-        )
-    }
-
-    let timePieces = [];
-
-    let timePiece = <TimePiece date={"June-2023 -> Aug 2023"} title={"Research Intern @ Fermilab"}
-                               experience={"TBD"}></TimePiece>;
-    timePieces.push(timePiece);
-
-    timePiece =
-        <TimePiece date={"Jan-2023 -> March 2023"} title={"Research Intern @ Fermilab"} experience={"TBD"}></TimePiece>;
-    timePieces.push(timePiece);
-
     return (
         <>
-            <TimeLineOrchestrator props={timePieces}></TimeLineOrchestrator>
+            <TimeLineOrchestrator props={children}></TimeLineOrchestrator>
         </>
     )
 }
@@ -214,7 +212,7 @@ export default function Home() {
                                         `Interested in Compilers, Operating Systems, Algorithms.`]}
                                     ></AboutMeElement>
                                 </li>
-                                <li>
+                                <li className={"collapse h-0 md:visible md:h-auto"}>
                                     <AboutMeElement title="About me: My journey from Viet Nam to the US" lst={[
                                         `2001-2019: Born & raised in Viet Nam`,
                                         `2019-2023: Moved to the US, worked and studied at Santiago Canyon College, Orange, CA`,
@@ -235,8 +233,13 @@ export default function Home() {
                     </div>
 
                     <div className="flex justify-center">
-                        <TimeLine></TimeLine>
-
+                        <TimeLine>
+                            <TimePiece date={"Jun -> Aug 2023"} title={"Software Intern @ Fermilab"} experience={[
+                                "Wrote a custom TOML-like parser in Python for the physics simulation program to aid in brute-forcing the optimization search space.",
+                                "Automated documentation for continuation of the current project and future papers.",
+                                "Configured and built multi-core physics simulation program G4beamline with CMake"]}/>
+                            <></>
+                        </TimeLine>
 
                     </div>
                 </div>

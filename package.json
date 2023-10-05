@@ -13,10 +13,11 @@
   },
   "dependencies": {
     "@leafac/rehype-shiki": "^2.2.1",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "gh-pages": "^6.0.0",
     "gray-matter": "^4.0.3",
     "html-react-parser": "^4.2.2",
-    "next": "latest",
+    "next": "^13.5.4",
     "react": "latest",
     "react-dom": "latest",
     "rehype-autolink-headings": "^7.0.0",
