@@ -14,21 +14,24 @@ function LinkButton({link, linkName}: { link: string, linkName: string }) {
                         hover:font-bold`;
 
     function CopyIcon({link}: { link: string }) {
-        const [copyBtn, setCopyBtn] = useState(<Image src={"copy-icon.svg"} alt={"copy button"} width={"15"}
-                                                      height={"15"}></Image>);
+        const defaultCopyBtn = <Image src={"copy-icon.svg"} alt={"copy button"} width={"15"}
+                                      height={"15"}></Image>
+        const CopyBtnSize21 = <Image src={"copy-icon.svg"} alt={"copy button"} width={"21"} height={"21"}></Image>
+        const CopyBtnSize17 = <Image src={"copy-icon.svg"} alt={"copy button"} width={"17"} height={"17"}></Image>
+        const [copyBtn, setCopyBtn] = useState(defaultCopyBtn);
 
         function clickCopyBtn() {
             navigator.clipboard.writeText(link);
-            setCopyBtn(<Image src={"copy-icon.svg"} alt={"copy button"} width={"21"} height={"21"}></Image>);
+            setCopyBtn(CopyBtnSize21);
             setTimeout(() => {
-                setCopyBtn(<Image src={"copy-icon.svg"} alt={"copy button"} width={"15"} height={"15"}></Image>);
+                setCopyBtn(defaultCopyBtn);
             }, 100);
         }
         function hoverOnCopyBtn() {
-            setCopyBtn(<Image src={"copy-icon.svg"} alt={"copy button"} width={"17"} height={"17"}></Image>);
+            setCopyBtn(CopyBtnSize17);
         }
         function hoverOffCopyBtn() {
-            setCopyBtn(<Image src={"copy-icon.svg"} alt={"copy button"} width={"15"} height={"15"}></Image>);
+            setCopyBtn(defaultCopyBtn);
         }
         return <button className="inline-block hover:background" onClick={clickCopyBtn} onMouseEnter={hoverOnCopyBtn}
             onMouseLeave={hoverOffCopyBtn}
@@ -176,7 +179,7 @@ export default function Home() {
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="text-xl">Catch me at:</div>
+                                    <div className="text-xl">Catch me at/on:</div>
                                     <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-1 text-sm lg:text-base">
 
                                         <LinkButton link={"https://github.com/badumbatish/"}
