@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link';
 import pictureProfile from "public/pfp2.jpg";
+import Head from "next/head";
 
 let aboutMeCardClass = ""
 
