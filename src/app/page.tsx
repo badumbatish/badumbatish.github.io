@@ -185,7 +185,7 @@ export default function Home() {
                                         <LinkButton link={"https://github.com/badumbatish/"}
                                                     linkName={"GitHub"}></LinkButton>
                                         <LinkButton link={"/blog"} linkName={"Blog"}></LinkButton>
-                                        <LinkButton link={""} linkName={"resume.pdf"}></LinkButton>
+                                        <LinkButton link={"https://www.overleaf.com/read/bzvddqdhfdqp"} linkName={"resume.pdf"}></LinkButton>
                                         <LinkButton link={"https://leetcode.com/thisisjjasmine/"}
                                                     linkName={"Leetcode"}></LinkButton>
                                     </div>
