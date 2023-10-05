@@ -1,34 +1,69 @@
+'use client';
+
 import Image from 'next/image'
 import Link from 'next/link';
 import pictureProfile from "public/pfp2.jpg";
-import Head from "next/head";
+import {useState} from "react";
 
 let aboutMeCardClass = ""
 
 function LinkButton({link, linkName}: { link: string, linkName: string }) {
 
     const iconNav: string = link.startsWith("/") ? "↙" : "↗";
-    let buttonClass = `flex justify-center border-black border-2 rounded text-blue-800 hover:bg-blue-200
+    let buttonClass = `flex justify-center text-blue-800
                         hover:font-bold`;
+
+    function CopyIcon({link}: { link: string }) {
+        const [copyBtn, setCopyBtn] = useState(<Image src={"copy-icon.svg"} alt={"copy button"} width={"15"}
+                                                      height={"15"}></Image>);
+
+        function clickCopyBtn() {
+            navigator.clipboard.writeText(link);
+            setCopyBtn(<Image src={"copy-icon.svg"} alt={"copy button"} width={"20"} height={"20"}></Image>);
+            console.log("Hi");
+            setTimeout(() => {
+                setCopyBtn(<Image src={"copy-icon.svg"} alt={"copy button"} width={"15"} height={"15"}></Image>);
+            }, 100);
+        }
+
+        return <button className="inline-block hover:background" onClick={clickCopyBtn}>
+            {copyBtn}
+        </button>
+    }
 
     let content;
     if (link.startsWith("/")) {
+        // handles inward link
         content = <Link className={buttonClass} target="_blank"
                         rel="noopener noreferrer" href={link}>
             <button>{linkName}{iconNav}
             </button>
         </Link>
-    } else {
-        content = <a className={buttonClass} target="_blank"
-                     rel="noopener noreferrer" href={link}>
+
+    } else if (link.startsWith("mailto:")) {
+        // Handles mail link
+        content = <Link className={buttonClass} target="_blank"
+                        rel="noopener noreferrer" href={link}>
             <button>{linkName}{iconNav}
             </button>
-        </a>
+        </Link>
+        link = link.substring("mailto:".length);
     }
+
+    else {
+        // Handle outward link
+        content =
+            <a className={buttonClass} target="_blank"
+               rel="noopener noreferrer" href={link}>
+                <button>{linkName}{iconNav}</button>
+            </a>
+    }
+
     return (
-        <>
+        <div className="flex justify-center flex-row border-black border-2 rounded text-blue-800 gap-2">
+            <CopyIcon link={link}></CopyIcon>
             {content}
-        </>
+        </div>
     )
 
 }
@@ -47,14 +82,15 @@ function AboutMeElement({title, lst}: { title: string; lst: string[] }) {
 }
 
 function TimeLine() {
-    function TimeLineOrchestrator({props} : {props : JSX.Element[]}) {
+    function TimeLineOrchestrator({props}: { props: JSX.Element[] }) {
         return (<div>
             {props.map((value, index) => {
                 return <div key={index}>{value}</div>;
             })}
         </div>)
     }
-    function TimePiece({date, title, experience} : { date: string, title : string, experience : string}) {
+
+    function TimePiece({date, title, experience}: { date: string, title: string, experience: string }) {
         return (
             <>
                 <div className="pb-4">
@@ -74,14 +110,17 @@ function TimeLine() {
                     </div>
                 </div>
             </>
-    )
+        )
     }
+
     let timePieces = [];
 
-    let timePiece =  <TimePiece date={"June-2023 -> Aug 2023"} title={"Research Intern @ Fermilab"} experience={"TBD"}></TimePiece>;
+    let timePiece = <TimePiece date={"June-2023 -> Aug 2023"} title={"Research Intern @ Fermilab"}
+                               experience={"TBD"}></TimePiece>;
     timePieces.push(timePiece);
 
-    timePiece = <TimePiece date={"Jan-2023 -> March 2023"} title={"Research Intern @ Fermilab"} experience={"TBD"}></TimePiece>;
+    timePiece =
+        <TimePiece date={"Jan-2023 -> March 2023"} title={"Research Intern @ Fermilab"} experience={"TBD"}></TimePiece>;
     timePieces.push(timePiece);
 
     return (
@@ -99,7 +138,8 @@ export default function Home() {
                 <div className="h-full w-full flex flex-col">
                     <div className="flex justify-center items-center py-4">
 
-                        <h1 className="text-4xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-blue-400 to-green-400  ">Jasmine Tang</h1>
+                        <h1 className="text-4xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-blue-400 to-green-400  ">Jasmine
+                            Tang</h1>
                     </div>
 
 
@@ -114,19 +154,32 @@ export default function Home() {
                                        alt="picture profile" width={150} height={200}></Image>
 
                             </div>
-                            <div className="basis-4/5">
+                            <div className="basis-4/5 flex flex-col gap-2">
 
-                                <h2 className="text-xl font-bold">Hi there, it&rsquo;s Jasmine :) <br/>I hope you&apos;ll
+                                <h2 className="text-xl font-bold">Hi there, it&rsquo;s Jasmine :) <br/>I hope
+                                    you&apos;ll
                                     enjoy your stay :)
                                 </h2>
-                                <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-1 text-sm lg:text-base">
-                                    <LinkButton link={"https://www.linkedin.com/in/jjasmine-t/"}
-                                                linkName={"LinkedIn"}></LinkButton>
-                                    <LinkButton link={"https://github.com/badumbatish/"}
-                                                linkName={"GitHub"}></LinkButton>
-                                    <LinkButton link={"/blog"} linkName={"Blog"}></LinkButton>
-                                    <LinkButton link={""} linkName={"resume.pdf"}></LinkButton>
-                                    <LinkButton link={"https://leetcode.com/thisisjjasmine/"} linkName={"Leetcode"}></LinkButton>
+                                <div>
+                                    <div className="text-xl">Contact:</div>
+                                    <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-1 text-sm lg:text-base">
+                                        <LinkButton link={"mailto:jjasmine@berkeley.edu"}
+                                                    linkName={"Email"}></LinkButton>
+                                        <LinkButton link={"https://www.linkedin.com/in/jjasmine-t/"}
+                                                    linkName={"LinkedIn"}></LinkButton>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="text-xl">Catch me at:</div>
+                                    <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-1 text-sm lg:text-base">
+
+                                        <LinkButton link={"https://github.com/badumbatish/"}
+                                                    linkName={"GitHub"}></LinkButton>
+                                        <LinkButton link={"/blog"} linkName={"Blog"}></LinkButton>
+                                        <LinkButton link={""} linkName={"resume.pdf"}></LinkButton>
+                                        <LinkButton link={"https://leetcode.com/thisisjjasmine/"}
+                                                    linkName={"Leetcode"}></LinkButton>
+                                    </div>
                                 </div>
 
                             </div>
