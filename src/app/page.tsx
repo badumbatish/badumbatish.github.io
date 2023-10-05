@@ -19,14 +19,20 @@ function LinkButton({link, linkName}: { link: string, linkName: string }) {
 
         function clickCopyBtn() {
             navigator.clipboard.writeText(link);
-            setCopyBtn(<Image src={"copy-icon.svg"} alt={"copy button"} width={"20"} height={"20"}></Image>);
-            console.log("Hi");
+            setCopyBtn(<Image src={"copy-icon.svg"} alt={"copy button"} width={"21"} height={"21"}></Image>);
             setTimeout(() => {
                 setCopyBtn(<Image src={"copy-icon.svg"} alt={"copy button"} width={"15"} height={"15"}></Image>);
             }, 100);
         }
-
-        return <button className="inline-block hover:background" onClick={clickCopyBtn}>
+        function hoverOnCopyBtn() {
+            setCopyBtn(<Image src={"copy-icon.svg"} alt={"copy button"} width={"17"} height={"17"}></Image>);
+        }
+        function hoverOffCopyBtn() {
+            setCopyBtn(<Image src={"copy-icon.svg"} alt={"copy button"} width={"15"} height={"15"}></Image>);
+        }
+        return <button className="inline-block hover:background" onClick={clickCopyBtn} onMouseEnter={hoverOnCopyBtn}
+            onMouseLeave={hoverOffCopyBtn}
+        >
             {copyBtn}
         </button>
     }
