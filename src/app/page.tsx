@@ -235,8 +235,9 @@ export default function Home() {
                     <div className="flex justify-center">
                         <TimeLine>
                             <TimePiece date={"Jun -> Aug 2023"} title={"Software Intern @ Fermilab"} experience={[
+                                "Implemented efficient data processing for roughly 19,000 HDF5 files with Python’s multiprocessing, and Big O" +
+                                "complexity, reducing processing time from 80 hours to just 10 hours.",
                                 "Wrote a custom TOML-like parser in Python for the physics simulation program to aid in brute-forcing the optimization search space.",
-                                "Automated documentation for continuation of the current project and future papers.",
                                 "Configured and built multi-core physics simulation program G4beamline with CMake"]}/>
                             <></>
                         </TimeLine>
