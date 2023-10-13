@@ -137,6 +137,9 @@ function TimeLine({children} : { children : JSX.Element[]}) {
     )
 }
 
+function projectPiece({title, skills,  experience}: { title: string, skills: string[], experience: string[] }) {
+
+}
 export default function Home() {
     let aboutMeColor = "blue"
     return (
@@ -245,9 +248,19 @@ export default function Home() {
                     </div>
                 </div>
 
+                <div className="h-full w-full flex flex-col">
+                    <div className="flex justify-center items-center px-4 py-4">
+                        <h1 className="text-3xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-500 via-green-400 to-orange-300">
+                            Projects</h1>
+                    </div>
+
+                    <div className="flex justify-center">
+                        <p className={"bold"}>On going work</p>
+                    </div>
+                </div>
             </div>
 
-            <footer className="flex flex-col justify-center gap-4">
+            <footer className="flex flex-col justify-center gap-2 pt-4 items-center italic">
                 <p>Author: Jasmine &quot;jjasmine&quot; Tang</p>
                 <p>Built with NextJS, TailwindCSS, and a tonnn of loveee :)</p>
             </footer>
