@@ -5,7 +5,7 @@ export default async function Page() {
     const posts = await getAllPosts()
 
     return (
-        <div className="px-4 py-12 flex flex-col items-start gap-4">
+        <div className="px-4 py-12 flex flex-col items-start  gap-4">
             <h1 className="text-4xl">My blog</h1>
 
             <h2>All posts:</h2>
