@@ -1,0 +1,55 @@
+1:HL["/_next/static/media/c9a5bc6a7c948fb0-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+2:HL["/_next/static/css/22cad1fb66b67d50.css","style",{"crossOrigin":""}]
+0:["MyC1B8seJouSBkcfk8wod",[[["",{"children":["posts",{"children":[["id","transfer_sem_exp","d"],{"children":["__PAGE__?{\"id\":\"transfer_sem_exp\"}",{}]}]}]},"$undefined","$undefined",true],"$L3",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/22cad1fb66b67d50.css","precedence":"next","crossOrigin":""}]],"$L4"]]]]
+5:I{"id":1443,"chunks":["272:static/chunks/webpack-e1061d48321bf4f5.js","971:static/chunks/fd9d1056-d9a18e37b76d597b.js","864:static/chunks/864-b9e8988d69d5d1ed.js"],"name":"","async":false}
+6:I{"id":8639,"chunks":["272:static/chunks/webpack-e1061d48321bf4f5.js","971:static/chunks/fd9d1056-d9a18e37b76d597b.js","864:static/chunks/864-b9e8988d69d5d1ed.js"],"name":"","async":false}
+3:[null,["$","html",null,{"lang":"en","children":["$","body",null,{"className":"__className_e66fe9","children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"loading":"$undefined","loadingStyles":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[],"childProp":{"current":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children"],"loading":"$undefined","loadingStyles":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined","childProp":{"current":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children",["id","transfer_sem_exp","d"],"children"],"loading":"$undefined","loadingStyles":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined","childProp":{"current":["$L7","$L8",null],"segment":"__PAGE__?{\"id\":\"transfer_sem_exp\"}"},"styles":[]}],"segment":["id","transfer_sem_exp","d"]},"styles":[]}],"segment":"posts"},"styles":[]}]}]}],null]
+4:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"My first semester at Berkeley, a transfer experience"}],["$","meta","2",{"name":"description","content":"Built with NextJS, TailwindCSS, and a tonnn of loveee :)"}],["$","meta","3",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link","4",{"rel":"icon","href":"/_next/static/media/favico.b254a640.ico"}],["$","meta","5",{"name":"next-size-adjust"}]]
+9:T13d6,<h2 id="speed"><a aria-hidden="true" tabindex="-1" href="#speed"><a href="#speed" style="margin-right: 10px">#</a></a>Speed?</h2>
+<p>It was too fast, I think.</p>
+<p>I don't actually remember what day I got to Berkeley. I just had a few days off from my summer internship at Fermilab
+and was just spending time with my family. I spent a few days visiting my grandparents, talking to my aunts,
+reconnecting with my friends and spending time with my family.</p>
+<p>My family helped me move up to Berkeley, and then I had to say bye to them :') My mom was crying and my dad, for the first time,
+got out of car and hugged me. I think they were (and still are) very proud of me :') My older sister also got me a box of presents,
+celebrating my getting into Berkeley, which I think is very sweet :)</p>
+<p>It was crazy fast. I blinked for 1 second, and suddenly I went from talking to my friends about how crazy I got into Berkeley
+and that "I can't believe we're actually here." to running around to discussions, labs and libraries to study for my midterm.</p>
+<p>Here I am, 2 months later, drowning in 3 technicals, 2 DeCals, and some side projects. I think I really moved too fast. I wish
+I had slowed myself down a bit.</p>
+<h2 id="how-was-it-to-your-cc"><a aria-hidden="true" tabindex="-1" href="#how-was-it-to-your-cc"><a href="#how-was-it-to-your-cc" style="margin-right: 10px">#</a></a>How was it to your CC?</h2>
+<p>I think there's a certain limit that the education at CC can give you. I think I was a bit bitter on why none of my
+CS classes at my CC can transfer to Berkeley, but I think I get it now.</p>
+<p>The contents at Berkeley (or any top CS school) really move very fast. I came into Berkeley expecting to understand
+every lecture and always be on top of homework. But I think things work a bit different at Berkeley.</p>
+<p>There's discussions, labs and homeworks. There is also assigned readings (that you should absolutely read before class)
+for each day of lecture.</p>
+<p>Some classes like CS61C will just have too much content to be covered that you kinda just get
+the general idea and philosophy of the knowledge from the professor. You are then expected to follow up by going to
+labs, discussions and then doing homework.</p>
+<h2 id="mindset"><a aria-hidden="true" tabindex="-1" href="#mindset"><a href="#mindset" style="margin-right: 10px">#</a></a>Mindset</h2>
+<p>I think there is something to said about a transfer going through a class at Berkeley for their first time.</p>
+<p>For me, the mindset change was very real. I went from being passive to being proactive in my education. Coming from Vietnam
+and from my local CC, the homework and questions were simplistically configured in a way that is self-contained
+from the lecture where you can just solve for them right away from the hint that they give you.</p>
+<p>But at Cal, I was caught off-guard a bit by their new homework style. Things are not that simple, and the homework
+are always created to push you forward a bit. They will always require some components that you'd have to come up on
+your own to solve it. The instructions will not always be clear; they'll sometimes be a fuzzy, and it's up to you to
+experiment and figure it out.</p>
+<p>I was struggling figuring out the labs and the homework, just trying to code for all the tests hit green.
+Otherwise, it's back to reading the specs and watching lectures.</p>
+<p>And somehow, the mindset enabled me to do things, and build things, and to just get out of my own comfort zone.
+In CC, I was always trying to apply myself but there just seems to be a mental obstacle between me and my goals. I was sometimes
+overthinking things and then ending up either not doing it or totally forgetting about it. Often time, I also gave up...</p>
+<p>Now, with the mindset change, I am actually doing things. I am building things, reading the docs, watching tutorials,
+and experimenting with things. I am very grateful for these classes that I get to experience.</p>
+<p>Need proofs? This website/blog you are reading right now is the product of it :)</p>
+<h2 id="what-would-you-do-differently"><a aria-hidden="true" tabindex="-1" href="#what-would-you-do-differently"><a href="#what-would-you-do-differently" style="margin-right: 10px">#</a></a>"What would you do differently?"</h2>
+<p>I think I would slow down a bit, and relax. It was my first semester and I think if I had stopped for a bit to
+ponder and contemplate of my goals and what Berkeley has to offer, I think I would have a much better time taking
+my classes and doing my projects.</p>
+<h2 id="prologue-just-like-how-cs61c-do-it-haha"><a aria-hidden="true" tabindex="-1" href="#prologue-just-like-how-cs61c-do-it-haha"><a href="#prologue-just-like-how-cs61c-do-it-haha" style="margin-right: 10px">#</a></a>Prologue (just like how CS61C do it haha)</h2>
+<p>I am writing this to provide an experience for prospective EECS/CS transfers to Berkeley and for myself, to look back
+and see how far I will have come :)</p>
+<p>Have fun reading this blog; I'll see you around. And enjoy your stay :)</p>8:["$","article",null,{"className":"p-8 prose prose-sky","children":[["$","div",null,{"className":"flex justify-center text-2xl font-bold ","children":["$","h1",null,{"children":"My first semester at Berkeley, a transfer experience"}]}],["$","div",null,{"className":"flex justify-start text-xl font-bold underline","children":["$","h4",null,{"children":"2023-10-12"}]}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$9"}}]]}]
+7:null
