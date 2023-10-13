@@ -250,8 +250,8 @@ export default function Home() {
 
                 <div className="h-full w-full flex flex-col">
                     <div className="flex justify-center items-center px-4 py-4">
-                        <h1 className="text-3xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-500 via-green-400 to-orange-300">
-                            Projects</h1>
+                        <h1 className="text-3xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-green-400 to-indigo-400">
+                            Personal Projects</h1>
                     </div>
 
                     <div className="flex justify-center">
