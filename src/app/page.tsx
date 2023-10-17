@@ -125,7 +125,7 @@ function TimeLine({children} : { children : JSX.Element[]}) {
     function TimeLineOrchestrator({props} : { props: JSX.Element[] }) {
         return (<div className={"flex flex-col item-start md:items-center"}>
             {props.map((value, index) => {
-                return <div className={"w:10/12 md:w-1/2"} key={index}>{value}</div>;
+                return <div className={"w:10/12 md:w-1/2 text-base"} key={index}>{value}</div>;
             })}
         </div>)
     }
@@ -229,7 +229,7 @@ export default function Home() {
                 </div>
 
 
-                <div className="h-full w-full flex flex-col">
+                <div className="h-full w-full flex flex-col font-mono">
                     <div className="flex justify-center items-center px-4 py-4">
                         <h1 className="text-3xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-purple-400 to-purple-300">
                             Professional Experience</h1>
@@ -248,7 +248,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="h-full w-full flex flex-col">
+                <div className="h-full w-full flex flex-col font-mono">
                     <div className="flex justify-center items-center px-4 py-4">
                         <h1 className="text-3xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-green-400 to-indigo-400">
                             Personal Projects</h1>
