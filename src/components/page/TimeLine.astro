@@ -2,7 +2,7 @@
 const { time, check = false, left = false } = Astro.props;
 ---
 
-<div class={(!left && "timeline-start") || (left && "timeline-end")}>{time}</div>
+<div class:list={["font-bold italic", (!left && "timeline-start") || (left && "timeline-end")]}>{time}</div>
 <div class="timeline-middle">
   <svg
     xmlns="http://www.w3.org/2000/svg"

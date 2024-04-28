@@ -13,18 +13,19 @@ html {
 }
 
 @font-face {
-	font-family: 'Cascadia';
-	src: url('/fonts/CascadiaCode.woff2') format('woff2');
-	font-weight: 700;
+	font-family: 'ui-monospace';
+	/* src: url('/fonts/ui-monospaceCode.woff2') format('woff2'); */
+	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
 
 body {
-	font-family: sans-serif;
+	font-family: ui-monospace, sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
+	color : black;
 	background-size: 100% 600px;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
@@ -94,11 +95,11 @@ ul {
 }
 
 li::marker {
-	color: oklch(var(--a));
+	color: black;
 }
 
 thead {
-	color: oklch(var(--s));
+	color: black;
 }
 
 textarea {
@@ -117,7 +118,7 @@ table {
 
 table tr {
 	height: 2.5em;
-	border-bottom: 1px solid oklch(var(--nc));
+	border-bottom: 1px solid black;
 }
 
 img {
@@ -125,14 +126,14 @@ img {
 }
 
 code {
-	font-family: 'Cascadia';
+	font-family: 'ui-monospace';
 	font-size: 0.875em;
 	padding: 2px 5px;
 	border-radius: 2px;
 }
 
 pre {
-	font-family: 'Cascadia';
+	font-family: 'ui-monospace';
 	font-size: 0.875em;
 	padding: 1.5em;
 	border-radius: 8px;
@@ -154,7 +155,7 @@ pre>code {
 
 hr {
 	border: 0;
-	color: oklch(var(--bc));
+	color: black;
 	background: linear-gradient(currentColor, currentColor) no-repeat center;
 	background-size: calc(100% - 1.5em - 6px) 1px;
 	display: flex;
