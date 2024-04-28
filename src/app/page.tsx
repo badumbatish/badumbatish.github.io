@@ -82,7 +82,7 @@ export default function Home() {
                 <div className="h-full w-full flex flex-col font-mono">
                     <div className="flex justify-center items-center px-4 py-4">
                         <h1 className="text-3xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-purple-400 to-purple-300">
-                            Professional Experience</h1>
+                            Experience</h1>
                     </div>
 
                     <div className="flex justify-center">
@@ -101,7 +101,7 @@ export default function Home() {
                 <div className="h-full w-full flex flex-col font-mono">
                     <div className="flex justify-center items-center px-4 py-4">
                         <h1 className="text-3xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-green-400 to-indigo-400">
-                            Personal Projects</h1>
+                            Projects</h1>
                     </div>
 
                     <div className="flex justify-center">
