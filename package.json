@@ -17,7 +17,7 @@
     "gh-pages": "^6.0.0",
     "gray-matter": "^4.0.3",
     "html-react-parser": "^4.2.2",
-    "next": "^13.5.4",
+    "next": "^13.5.6",
     "react": "latest",
     "react-dom": "latest",
     "rehype-autolink-headings": "^7.0.0",
