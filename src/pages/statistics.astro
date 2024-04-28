@@ -1,12 +1,17 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BaseCard from "../components/BaseCard.astro";
+import { Markdown } from '@astropub/md'
+
 ---
 <BaseLayout PageID="Statistics">
     <BaseCard>
-        <h1>On-going work</h1>
         <p>This page presents live statistics from different sources about my activity.</p>
-
+        <hr/>
+        <h2>Leetcode</h2>
+        <Markdown of={`![](https://leetcard.jacoblin.cool/thisisjjasmine?ext=heatmap)`}></Markdown>
+        <hr/>
+        <h2>GitHub</h2>
+        <Markdown of={`![jjasmine's GitHub stats](https://github-readme-stats.vercel.app/api?username=badumbatish&theme=default&show_icons=true)`}
     </BaseCard>
-
 </BaseLayout>
