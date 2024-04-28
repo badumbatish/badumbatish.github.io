@@ -1,7 +1,7 @@
 ---
 const { PageID } = Astro.props;
 const activeClass = "on"; // For primary color replace with `active` class
-const supportingLinkClass : string  = "border-black border-2 rounded text-blue-800 gap-2";
+const supportingLinkClass : string  = "border-black border-2 rounded text-blue-500 gap-2";
 ---
 <li class="menu-item p-2 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-blue-400 to-green-400">
   Jasmine Tang
@@ -12,7 +12,8 @@ const supportingLinkClass : string  = "border-black border-2 rounded text-blue-8
   <li><a class:list={["menu-item p-4",  supportingLinkClass]}  id="home" href="/">Home</a></li>
   <li><a class:list={["menu-item p-4",  supportingLinkClass]} id="about" href="/about">About</a></li>
   <li><a class:list={["menu-item p-4",  supportingLinkClass]} id="blog" href="/blog">Blogs</a></li>
-  <li><a class:list={["menu-item p-4",  supportingLinkClass]} id="project" href="/project">Projects</a></li>
+  <li><a class:list={["menu-item p-4",  supportingLinkClass]} id="project" href="/project">Projects/Experiences</a></li>
+  <li><a class:list={["menu-item p-4",  supportingLinkClass]} id="statistics" href="/statistics">Statistics</a></li>
   <li><a class:list={["menu-item p-4",  supportingLinkClass]} id="outward" href="/outward">Outward bounds</a></li>
   <li><a class:list={["menu-item p-4",  supportingLinkClass]}
       href="mailto:jjasmine@berkeley.edu"
