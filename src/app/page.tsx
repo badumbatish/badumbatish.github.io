@@ -15,24 +15,26 @@ import Header from '@/components/Header';
 
 
 
-function TimePiece({date, title, experience}: { date: string, title: string, experience: string[] }) {
+function TimePiece({date, title, experience, placement}
+                       : { date: string, title: string, experience: string[], placement: string }) {
+    let bottom_extend= (placement == "top" || placement == "center") ? 4 : 0;
     return (
         <>
-            <div className="mx-4 pb-4 flex">
+            <div className={`mx-4 pb-2 flex`}>
                 <div>
-                <div className="mb-0 flex flex-row grow content-center gap-2 flex-1">
+                <div className="mb-0 flex flex-row grow content-center justify-between gap-2 flex-1">
                     <div className="flex flex-row items-center">
                         <div className="w-3 h-3 rounded-full bg-blue-500 "></div>
                         <h1 className={"mx-2  font-bold text-xl"}>{title}</h1>
                     </div>
-                    <h1 className={"italic font-light  items-center m-auto"}>{date}</h1>
+                    <h1 className={"italic font-light  items-center mx-auto"}>{date}</h1>
 
                 </div>
 
 
 
                 <div className="flex flex-row gap-8 ">
-                    <div className="m-0 -mt-2 ml-1 p-0 border-l-4 border-blue-500 h-auto"></div>
+                    <div className={`m-0 -mt-2 -mb-${bottom_extend} ml-1 p-0 border-l-4 border-blue-500 h-auto`}></div>
                     <ul className={"list-disc"}>
                         {experience.map((exp, id)=> {
                             return (
@@ -88,11 +90,17 @@ export default function Home() {
 
                     <div className="flex justify-center">
                         <TimeLine>
+                            <TimePiece date={"May -> Aug 2024"} title={"Google Summer Of Code Participant with GCC"} experience={[
+                                `Work work work. Jasmine's working on gccrs (the GNU Compiler for Rust) :), providing inline assembly support
+                                for it. The project focuses on adding implementation for two built-in Rust macros: asm!(), and global_asm!(). `,
+                            `gccrs will be able to detect parse the assembly code within asm!, and global_asm! macro, converting them to gcc assembly format to eventually generate code.`]}
+                            placement={"top"}/>
                             <TimePiece date={"Jun -> Aug 2023"} title={"Software Intern @ Fermilab"} experience={[
                                 "Implemented efficient data processing for roughly 19,000 HDF5 files with Python’s multiprocessing, and Big O" +
                                 "complexity, reducing processing time from 80 hours to just 10 hours.",
                                 "Wrote a custom TOML-like parser in Python for the physics simulation program to aid in brute-forcing the optimization search space.",
-                                "Configured and built multi-core physics simulation program G4beamline with CMake"]}/>
+                                "Configured and built multi-core physics simulation program G4beamline with CMake"]}
+                                       placement={""}/>
                             <></>
                         </TimeLine>
 
