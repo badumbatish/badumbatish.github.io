@@ -20,15 +20,16 @@ function TimePiece({date, title, experience}: { date: string, title: string, exp
         <>
             <div className="mx-4 pb-4 flex">
                 <div>
-                <div className="mb-0 flex flex-row items-center gap-4">
-                    <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                    <div className={"font-bold text-xl"}>{title}</div>
+                <div className="mb-0 flex flex-row grow content-center gap-2 flex-1">
+                    <div className="flex flex-row items-center">
+                        <div className="w-3 h-3 rounded-full bg-blue-500 "></div>
+                        <h1 className={"mx-2  font-bold text-xl"}>{title}</h1>
+                    </div>
+                    <h1 className={"italic font-light  items-center m-auto"}>{date}</h1>
+
                 </div>
 
-                <div className="flex flex-row gap-4">
-                    <div className="m-0 -mt-1 ml-1 p-0 border-l-4 border-blue-500 h-auto"></div>
-                    <div className={"italic font-light"}>{date}</div>
-                </div>
+
 
                 <div className="flex flex-row gap-8 ">
                     <div className="m-0 -mt-2 ml-1 p-0 border-l-4 border-blue-500 h-auto"></div>
