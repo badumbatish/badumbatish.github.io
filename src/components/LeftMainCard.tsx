@@ -56,9 +56,9 @@ const LeftMainCard = () => {
         </div>
         <div className="basis-4/5 flex flex-col gap-2">
 
-            <h2 className="text-xl font-bold h-5">Hi there, it&rsquo;s <NickNameButton></NickNameButton>
-
+            <h2 className="text-xl font-bold h-2">Hi there, it&rsquo;s <NickNameButton></NickNameButton>
             </h2>
+            <br/>
             <h2 className="text-xl font-bold">I hope
                 you&apos;ll
                 enjoy your stay :)
