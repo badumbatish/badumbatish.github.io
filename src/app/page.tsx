@@ -20,12 +20,11 @@ function TimePiece({date, title, experience, placement}
     let bottom_extend= (placement == "top" || placement == "center") ? 4 : 0;
     return (
         <>
-            <div className={`mx-4 pb-2 flex`}>
+            <div className={`mx-4 pb-2 flex content-start`}>
                 <div>
                 <div className="mb-0 flex flex-row grow content-center justify-between gap-2 flex-1">
                     <div className="flex flex-row items-center">
-                        <div className="w-3 h-3 rounded-full bg-blue-500 "></div>
-                        <h1 className={"mx-2  font-bold text-xl"}>{title}</h1>
+                        <h1 className={"mx-3  font-bold text-xl"}>{title}</h1>
                     </div>
                     <h1 className={"italic font-light  items-center"}>{date}</h1>
 
@@ -34,7 +33,7 @@ function TimePiece({date, title, experience, placement}
 
 
                 <div className="flex flex-row gap-8 ">
-                    <div className={`m-0 -mt-2 -mb-${bottom_extend} ml-1 p-0 border-l-4 border-blue-500 h-auto`}></div>
+                    <div className={`border-l-2 border-black `}></div>
                     <ul className={"list-disc"}>
                         {experience.map((exp, id)=> {
                             return (
