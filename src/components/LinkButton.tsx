@@ -39,7 +39,7 @@ const  LinkButton = ({link, linkName}: { link: string, linkName: string }) => {
     let content;
     if (link.startsWith("/")) {
         // handles inward link
-        content = <Link className={buttonClass} target="_blank"
+        content = <Link className={buttonClass} target="_self"
                         rel="noopener noreferrer" href={link}>
             <button>{linkName}{iconNav}
             </button>

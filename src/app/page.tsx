@@ -68,9 +68,6 @@ export default function Home() {
         <main>
             <div className="flex flex-col flex-wrap gap-4">
                 <div className="h-full w-full flex flex-col">
-                    <Header>
-                        <Name></Name>
-                    </Header>
 
                     <IntroCards>
                         <LeftMainCard></LeftMainCard>

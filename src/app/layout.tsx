@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 
 import { Inter } from 'next/font/google'
 import Favicon from '/public/favico.ico';
+import Name from "@/components/Name";
+import Header from "@/components/Header";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,7 +25,11 @@ export default function RootLayout({
     <html lang="en">
 
 
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+      <Header>
+        <Name></Name>
+      </Header>
+      {children}</body>
     </html>
   )
 }
