@@ -5,14 +5,16 @@ import Link from "next/link";
 import React, {useState} from "react";
 
 const NickNameButton = () => {
-    let NickNameArray : String[]= ["Jasmine", "jsmn", "Lễ", "Jazz", "Thảo", "jjasmine", "jjsm"];
+    let NickNameArray : String[]= [ "Jasmine","jsmn", "Lễ", "Jazz", "Thảo", "jjasmine", "jjsm", ];
     let clickMe = <Image className={"inline"} src={"clickme.png"} alt={"click me button"} width={8} height={8}></Image>
     const [NickName, setNickName] = useState<String>("Jasmine");
     const [Counter, setCounter] = useState(0);
     const [TextSize, setTextSize] = useState("text-xl");
     const myClick = () => {
+
+        setNickName(NickNameArray[(Counter + 1) % NickNameArray.length]);
         setCounter((Counter + 1) % NickNameArray.length);
-        setNickName(NickNameArray[Counter]);
+
         setTextSize("text-2xl");
         setTimeout(() => {
             setTextSize("text-xl");
