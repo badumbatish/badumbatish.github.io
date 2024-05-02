@@ -53,7 +53,7 @@ function TimeLine({children} : { children : JSX.Element[]}) {
     function TimeLineOrchestrator({props} : { props: JSX.Element[] }) {
         return (<div className={"flex flex-col item-start md:items-center"}>
             {props.map((value, index) => {
-                return <div className={"w:10/12 md:w-1/2 text-base"} key={index}>{value}</div>;
+                return <div className={" sm:w-1/2 md:w-4/6 text-base"} key={index}>{value}</div>;
             })}
         </div>)
     }
@@ -99,7 +99,7 @@ export default function Home() {
                             <TimePiece date={"Jun -> Aug 2023"} title={"Software Intern @ Fermilab"} experience={[
                                 "Implemented efficient data processing for roughly 19,000 HDF5 files with Python’s multiprocessing, and Big O" +
                                 "complexity, reducing processing time from 80 hours to just 10 hours.",
-                                "Wrote a custom TOML-like parser in Python for the physics simulation program to aid in brute-forcing the optimization search space.",
+                                "Wrote a custom TOML-like interpreter in Python for the physics simulation program to aid in brute-forcing the optimization search space.",
                                 "Configured and built multi-core physics simulation program G4beamline with CMake"]}
                                        placement={""}/>
                             <></>
