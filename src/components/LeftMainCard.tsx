@@ -2,7 +2,47 @@ import Image from "next/image";
 import pictureProfile from "public/pfp2.jpg";
 import LinkButton from "@/components/LinkButton";
 import Link from "next/link";
+import React, {useState} from "react";
 
+const NickNameButton = () => {
+    let NickNameArray : String[]= ["Jasmine", "jsmn", "Lễ", "Jazz", "jjasmine", "jjsm"];
+    let clickMe = <Image className={"inline"} src={"clickme.png"} alt={"click me button"} width={8} height={8}></Image>
+    const [NickName, setNickName] = useState<String>("Jasmine");
+    const [Counter, setCounter] = useState(0);
+    const [TextSize, setTextSize] = useState("text-xl");
+    const myClick = () => {
+        setCounter((Counter + 1) % NickNameArray.length);
+        setNickName(NickNameArray[Counter]);
+        setTextSize("text-2xl");
+        setTimeout(() => {
+            setTextSize("text-xl");
+        }, 100);
+
+
+    }
+
+    function hoverOnBtn() {
+        setTextSize("text-2xl");
+    }
+    function hoverOffBtn() {
+        setTextSize("text-xl");
+    }
+
+    return <span>
+        <span
+        >
+            <button className={`inline content-start items-start justify-start flex-row text-blue-400 underline-offset-1 ${TextSize}`}
+                             onClick={myClick}
+                             onMouseEnter={hoverOnBtn}
+                             onMouseLeave={hoverOffBtn}>
+
+                <span>{NickName}</span>
+                <span className={"justify-self-start"}>{clickMe}</span>
+                </button>
+        </span>
+        <span> :)</span>
+    </span>
+}
 const LeftMainCard = () => {
     return (
     <div className="font-mono flex flex-col items-center basis-2/6
@@ -14,7 +54,7 @@ const LeftMainCard = () => {
         </div>
         <div className="basis-4/5 flex flex-col gap-2">
 
-            <h2 className="text-xl font-bold">Hi there, it&rsquo;s Jasmine :) <br/>I hope
+            <h2 className="text-xl font-bold">Hi there, it&rsquo;s <NickNameButton></NickNameButton> <br/>I hope
                 you&apos;ll
                 enjoy your stay :)
             </h2>
@@ -34,7 +74,7 @@ const LeftMainCard = () => {
                     <LinkButton link={"https://github.com/badumbatish/"}
                                 linkName={"GitHub"}></LinkButton>
                     <LinkButton link={"/blog"} linkName={"Blog"}></LinkButton>
-                    <LinkButton link={"https://www.overleaf.com/read/bzvddqdhfdqp"} linkName={"resume.pdf"}></LinkButton>
+                    <LinkButton link={"https://www.overleaf.com/read/bzvddqdhfdqp#fb6509"} linkName={"resume.pdf"}></LinkButton>
                     <LinkButton link={"https://leetcode.com/thisisjjasmine/"}
                                 linkName={"Leetcode"}></LinkButton>
                     <LinkButton link={"https://developers.google.com/profile/u/jjasmine"} linkName={"google.dev"}></LinkButton>
