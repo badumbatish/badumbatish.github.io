@@ -27,7 +27,7 @@ function TimePiece({date, title, experience, placement}
                         <div className="w-3 h-3 rounded-full bg-blue-500 "></div>
                         <h1 className={"mx-2  font-bold text-xl"}>{title}</h1>
                     </div>
-                    <h1 className={"italic font-light  items-center mx-auto"}>{date}</h1>
+                    <h1 className={"italic font-light  items-center"}>{date}</h1>
 
                 </div>
 
