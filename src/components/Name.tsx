@@ -4,7 +4,7 @@ import React from 'react';
 
 const Name: React.FC = () => {
     return (
-        <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-blue-400 to-green-400">
+        <h1 className="text-4xl font-bold">
             Jasmine Tang
         </h1>
     );

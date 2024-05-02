@@ -23,7 +23,7 @@ export default async function Post({
     return (
         <article className="p-8 prose prose-sky">
             <div className="flex justify-center text-2xl font-bold ">
-                <h1>{title}</h1>
+                <h2>{title}</h2>
             </div>
             <div className="flex justify-start text-xl font-bold underline">
                 <h4>{date}</h4>
