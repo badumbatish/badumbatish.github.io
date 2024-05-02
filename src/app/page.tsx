@@ -10,6 +10,8 @@ import LeftMainCard from "@/components/LeftMainCard";
 import RightMainCard from "@/components/RightMainCard";
 import IntroCards from "@/components/IntroCards";
 import Header from '@/components/Header';
+import {Metadata} from "next";
+import Favicon from "*.ico";
 
 
 
@@ -114,10 +116,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <footer className="flex flex-col justify-center gap-2 pt-4 items-center italic">
-                <p>Author: Jasmine &quot;jjasmine&quot; Tang</p>
-                <p>Built with NextJS, TailwindCSS, and a tonnn of loveee :)</p>
-            </footer>
+
         </main>
     )
 }
