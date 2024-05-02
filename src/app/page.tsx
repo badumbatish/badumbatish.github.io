@@ -95,6 +95,7 @@ export default function Home() {
                                 for it. The project focuses on adding implementation for two built-in Rust macros: asm!(), and global_asm!(). `,
                             `gccrs will be able to detect parse the assembly code within asm!, and global_asm! macro, converting them to gcc assembly format to eventually generate code.`]}
                             placement={"top"}/>
+
                             <TimePiece date={"Jun -> Aug 2023"} title={"Software Intern @ Fermilab"} experience={[
                                 "Implemented efficient data processing for roughly 19,000 HDF5 files with Python’s multiprocessing, and Big O" +
                                 "complexity, reducing processing time from 80 hours to just 10 hours.",
