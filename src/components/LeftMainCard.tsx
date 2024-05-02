@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, {useState} from "react";
 
 const NickNameButton = () => {
-    let NickNameArray : String[]= ["Jasmine", "jsmn", "Lễ", "Jazz", "jjasmine", "jjsm"];
+    let NickNameArray : String[]= ["Jasmine", "jsmn", "Lễ", "Jazz", "Thảo", "jjasmine", "jjsm"];
     let clickMe = <Image className={"inline"} src={"clickme.png"} alt={"click me button"} width={8} height={8}></Image>
     const [NickName, setNickName] = useState<String>("Jasmine");
     const [Counter, setCounter] = useState(0);
