@@ -1,6 +1,7 @@
 import Image from "next/image";
 import pictureProfile from "public/pfp2.jpg";
 import LinkButton from "@/components/LinkButton";
+import Link from "next/link";
 
 const LeftMainCard = () => {
     return (
@@ -36,6 +37,7 @@ const LeftMainCard = () => {
                     <LinkButton link={"https://www.overleaf.com/read/bzvddqdhfdqp"} linkName={"resume.pdf"}></LinkButton>
                     <LinkButton link={"https://leetcode.com/thisisjjasmine/"}
                                 linkName={"Leetcode"}></LinkButton>
+                    <LinkButton link={"https://developers.google.com/profile/u/jjasmine"} linkName={"google.dev"}></LinkButton>
                 </div>
             </div>
 
