@@ -53,8 +53,8 @@ function getParser() {
 }
 
 export async function getPostById(id: string) {
-    const realId = id.replace(/\.md$/, '')
-    const fullPath = join('src/_posts', `${realId}.md`)
+    const realId = id.replace(/\.mdx$/, '')
+    const fullPath = join('src/_posts', `${realId}.mdx`)
     const { data, content } = matter(await fs.promises.readFile(fullPath, 'utf8'))
 
     const parser = await getParser()

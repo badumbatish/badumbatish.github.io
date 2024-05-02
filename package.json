@@ -13,7 +13,10 @@
   },
   "dependencies": {
     "@leafac/rehype-shiki": "^2.2.1",
+    "@mdx-js/loader": "^3.0.1",
+    "@next/mdx": "^14.2.3",
     "@tailwindcss/line-clamp": "^0.4.4",
+    "@types/mdx": "^2.0.13",
     "gh-pages": "^6.0.0",
     "gray-matter": "^4.0.3",
     "html-react-parser": "^4.2.2",
