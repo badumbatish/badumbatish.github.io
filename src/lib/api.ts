@@ -10,8 +10,10 @@ import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
 import rehypeShiki from '@leafac/rehype-shiki'
+import rehypeToc from '@jsdevtools/rehype-toc'
 import * as shiki from 'shiki'
 
+import getIndexHeadings from './counter'
 // memoize/cache the creation of the markdown parser, this sped up the
 // building of the blog from ~60s->~10s
 let p: ReturnType<typeof getParserPre> | undefined
@@ -19,7 +21,8 @@ let p: ReturnType<typeof getParserPre> | undefined
 async function getParserPre() {
     // @ts-ignore
     // @ts-ignore
-    return unified()
+    let i = 0;
+    let result =  unified()
         .use(remarkParse)
         .use(remarkRehype)
         .use(remarkGfm)
@@ -30,6 +33,7 @@ async function getParserPre() {
         .use(rehypeStringify)
         .use(rehypeSlug)
         .use(rehypeAutolinkHeadings, {
+            behavior : 'wrap',
             content: arg => ({
                 type: 'element',
                 tagName: 'a',
@@ -37,9 +41,13 @@ async function getParserPre() {
                     href: '#' + arg.properties?.id,
                     style: 'margin-right: 10px',
                 },
-                children: [{ type: 'text', value: '#' }],
+                children: [{ type: 'text', value: `` }],
             }),
         })
+        .use(rehypeToc)
+
+    i = 0;
+    return result;
 }
 
 function getParser() {
