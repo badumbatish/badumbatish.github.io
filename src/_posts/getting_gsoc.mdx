@@ -1,0 +1,108 @@
+---
+title: '"Getting into GSoc how?"'
+date: 2024-05-4
+recap: "Jasmine writes about the overview of getting into GCC's Google Summer Of Code 2024, from a request of a friend."
+---
+
+
+> For Mel, I hope you get better :)
+
+I recently got into Google Summer Of Code (GSoc) for the GNU Compiler Collection
+(GCC) and my good friend Mel had asked me to share my journey and
+experience with her.
+I figured maybe I should write a blog and share it with everyone.
+
+This blog is just an overview of my journey.
+## GSoc?
+From my trustee friend Chad Gippity with the prompt:
+> give me an overview of the google summer of code progrma
+
+
+Google Summer of Code (GSoC) is an annual program sponsored by Google that encourages university students to contribute to open-source projects. It has been running since 2005 and has become a significant event in the open-source community. Here's an overview of the program:
+
+1. **Duration**: The program typically runs during the Northern Hemisphere summer, from May to August, with exact dates varying from year to year.
+
+2. **Participants**: GSoC is open to university students who are at least 18 years old at the start of the program. Students from all over the world can participate.
+
+3. **Organizations**: Google selects a wide range of open-source organizations to participate as mentors. These organizations can be non-profits, foundations, educational institutions, or other groups that maintain open-source projects.
+
+4. **Projects**: Each participating organization proposes a set of projects that they would like students to work on. These projects span various domains such as software development, machine learning, data science, web development, etc.
+
+5. **Student Applications**: Students interested in participating in GSoC can browse the list of projects and apply to work on one that interests them. They submit proposals outlining how they would contribute to the project and what they hope to achieve during the program.
+
+6. **Selection Process**: The organizations review the applications and select the students they want to work with. Google then allocates slots to each organization based on their size and past participation.
+
+7. **Coding Period**: Once selected, students work on their projects over a period of about three months. They are expected to spend around 175-350 hours on their projects over this period.
+
+8. **Mentorship**: Each student is assigned one or more mentors from the organization to guide them through the project. Mentors provide support, feedback, and help students overcome challenges.
+
+9. **Community Bonding**: Before the coding period officially begins, there is a community bonding period where students get to know their mentors and familiarize themselves with the project's codebase and community practices.
+
+10. **Midterm and Final Evaluations**: There are two formal evaluations during the program: midterm and final. Students must meet certain criteria and demonstrate progress on their projects to pass these evaluations.
+
+11. **Stipends**: Google provides stipends to participating students as a reward for their contributions. The amount of the stipend varies based on the student's location.
+
+12. **Open Source Contributions**: One of the main goals of GSoC is to encourage students to contribute to open-source software. By the end of the program, students should have made significant contributions to their project and ideally continue their involvement beyond GSoC.
+
+Overall, Google Summer of Code is a fantastic opportunity for students to gain real-world experience, contribute to meaningful projects, and engage with the vibrant open-source community. It's a win-win for students, organizations, and the broader open-source ecosystem.
+## Timeline
+
+I first heard about GSoc around near the middle of February from my friend Ish. I spent a few days browsing different projects
+from different organizations.
+
+Scouting different projects, I then landed on GCC's gccrs's Inline Assembly Support. The project is basically having the compiler
+gccrs being able to detect inline assembly and compile that inline assembly from rust to that assembly in code generation.
+
+A code example from [the rust docs](https://doc.rust-lang.org/reference/inline-assembly.html)
+```rust
+use std::arch::asm;
+
+// Multiply x by 6 using shifts and adds
+let mut x: u64 = 4;
+unsafe {
+    asm!(
+        "mov {tmp}, {x}",
+        "shl {tmp}, 1",
+        "shl {x}, 2",
+        "add {x}, {tmp}",
+        x = inout(reg) x,
+        tmp = out(reg) _,
+    );
+}
+assert_eq!(x, 4 * 6);
+```
+
+The gccrs group uses [Zulip](https://en.wikipedia.org/wiki/Zulip) for their communication.
+
+One of the main things about doing open source work is that I need to join and participate,
+start to familiarize myself with the codebase. Being able to ask questions, help others, and contribute to the
+codebase in any manners is a really big plus and a good step in this direction. Some GSoc organizations refused to
+consider any applicant's proposal that hasn't opened any pull requests on their GitHub.
+
+On Feb 23rd, I sent in the first message and got some feedback on what to do.
+![pic](/blogs/getting_gsoc_1.png)
+
+Arthur Cohen (one of my soon-to-be mentors (if I can predict the future in Feb hahaahah)) suggests that I try to compile
+the [repository](https://github.com/Rust-GCC/gccrs), run the test cases, and then pick out some good first issues to try
+and tackle them.
+
+## Progress and Contribution.
+
+From Feb 27 to the submission deadline of the [GSoc timeline](https://summerofcode.withgoogle.com/programs/2024),
+I contributed [5](https://github.com/Rust-GCC/gccrs/pulls?q=author%3Abadumbatish+created%3A%3C2024-04-10) pull requests.
+
+Most contributions are easy to medium difficulties. I think the thing to focus on is that you are able to show
+your potential mentors and GSoc application readers that you are willing to learn and are able to contribute.
+
+## Asking questions.
+
+I also asked a lot of questions during this time period relating to my projects.
+I also ask a lot of follow-up questions after my mentors' answers and also add comments into reviews into different
+pull requests from my mentors related to my project.
+
+I also had my notifications on Zulip turned on as well as notifications of Zulip through my gmail so I basically
+camped my mentor and whenever he replied to my message I just hopped on my PC and started coding and replied to him again
+in one quick succession 💀.
+
+
+
