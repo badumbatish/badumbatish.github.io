@@ -179,7 +179,7 @@ With the parser called `p`, I can call the methods in `gcc/rust/parse/rust-parse
 
 ## rust asm-ast, HIR, and visitor
 
-```C++
+```cpp
 // Namespace HIR
 // In rust-hir-exp.h
 InlineAsm : ExprWithoutBlock {
@@ -198,7 +198,7 @@ The visitor for HIR::InlineAsm is HIRExpressionVisitor.
 ## asm-handlers
 I need to add two entries which are the handler functions to the `gcc/rust/expand/rust-macro-builtins.cc`'s `MacroBuiltin::builtin_transcribers` and remove the `llvm_asm` key from the map.
 
-```C++
+```cpp
 {"asm", MacroBuiltin::asm_handler},
 {"llvm_asm", MacroBuiltin::sorry}, // Remove this.
 {"global_asm", MacroBuiltin::global_asm_handler},
@@ -240,7 +240,7 @@ For example, from line 1381 to 1385
 #define ASM_OUTPUTS(NODE)       TREE_OPERAND (ASM_EXPR_CHECK (NODE), 1)
 #define ASM_INPUTS(NODE)        TREE_OPERAND (ASM_EXPR_CHECK (NODE), 2)
 #define ASM_CLOBBERS(NODE)      TREE_OPERAND (ASM_EXPR_CHECK (NODE), 3)
-#define ASM_LABELS(NODE)	 TREE_OPERAND (ASM_EXPR_CHECK (NODE), 4)
+#define ASM_LABELS(NODE)	    TREE_OPERAND (ASM_EXPR_CHECK (NODE), 4)
 ```
 
 Another point worth mentioning that since these ASM accessors are nothing but STRING_CST, it would be helpful to be able to determine how to build a STRING_CST. The detailed documentation in `gcc/tree.cc` is:
