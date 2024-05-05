@@ -13,7 +13,6 @@ import rehypeShiki from '@leafac/rehype-shiki'
 import rehypeToc from '@jsdevtools/rehype-toc'
 import * as shiki from 'shiki'
 
-import getIndexHeadings from './counter'
 // memoize/cache the creation of the markdown parser, this sped up the
 // building of the blog from ~60s->~10s
 let p: ReturnType<typeof getParserPre> | undefined
