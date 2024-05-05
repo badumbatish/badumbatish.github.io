@@ -1,0 +1,299 @@
+---
+title: jjasmine’s Gsoc GCCRS proposal
+date: 2024-5-4
+recap: "Jasmine's self-hosted 2024 GSoc proposal for 'Getting into GSoc how?'"
+---
+
+# jjasmine’s Gsoc GCCRS proposal
+# Gsoc Proposal: Inline assembly Support
+# Project
+
+From the gccrs github, "gccrs is a full alternative implementation of the Rust language ontop of GCC with the goal to become fully upstream with the GNU toolchain."
+
+One of the steps to reach its implementation counterpart's parity (rustc) is the support of inline assembly. Enabling this feature allows programmers to work on low level situation where some extra performance is always needed.
+
+An example is where you would want to handle the case of moving 16-bit data when the data is not exactly 64-bit.
+```rust
+// https://github.com/rust-lang/rust/blob/
+// b3df0d7e5ef5f7dbeeca3fb289c65680ad013f87/library/std/src/sys/pal/sgx/abi/
+// usercalls/alloc.rs#L330
+unsafe fn copy_quadwords(src: *const u8, dst: *mut u8, len: usize) {
+    unsafe {
+        asm!(
+            "rep movsq (%rsi), (%rdi)",
+            inout("rcx") len / 8 => _,
+            inout("rdi") dst => _,
+            inout("rsi") src => _,
+            options(att_syntax, nostack, preserves_flags)
+        );
+    }
+}
+```
+
+The project focuses on adding implementation for two built-in Rust macros: `asm!()`, and `global_asm!()`.
+
+The gcc compiler will be able to detect parse the assembly code within asm!, and global_asm! macro, converting them to gcc assembly format to eventually generate code.
+
+# Goals
+
+This work will require modifications to multiple parts of our compiler, with the creation of built-in macro expanders, AST nodes, HIR nodes, as well as the development of a Rust inline-assembly parser to then convert it to the GCC inline assembly format:
+- Develop a Rust inline assembly parser.
+- Improve AST inline assembly node.
+- Construct HIR inline assembly node.
+- Construct HIR node visitor for the Lowering process.
+- Implement the HIR -> Generic IL process for inline assembly HIR nodes.
+- End to test testing of the new gccrs compiler for parity with rustc
+
+
+# Expected timeline & responsibitilies
+
+The project (coding aspect) is classified as 175 hours (medium) spanning from May 27 to August 26 (3 months or 12 weeks). This equates to 175/12 = 14.58 hours per week, or 2 hours per day.
+
+The first subsection serves as a mini design doc where I explain my timeline and expand to my implementation goals.
+
+The second subsection goes over my schedule and other responsibilities I have over summer and how I plan to counteract that.
+
+
+## Expected timeline
+
+
+### WEEK 1-3 (May 27 - June 17): Implement and test the parser to convert rust asm format to gcc asm format.
+
+Since Rust follows a different convention in calling its assembly than C/C++, I need to parse and capture the information so that in later stages, I can use the information as arguments into one of gcc’s available function call regarding inline assembly.
+The parser will be a recursive-descent parser, adhering to the ABNF syntax described at https://doc.rust-lang.org/reference/inline-assembly.html
+
+The programmer (me in this case) will need to learn about gccrs’ token stream API, error emitting api (rust_error?), in order to input tokens and process them.
+
+
+The tests would consist of different scenarios of token streams from valid rust files and the parser should be able to capture all the necessary information from the token streams. For testing, the programmer should consult https://www.gnu.org/software/dejagnu/manual/index.html and look at relevant test suites
+
+
+One inspiration for this part would be [rustc_codegen_gcc/asm.rs](https://github.com/rust-lang/rust/blob/master/compiler/rustc_codegen_gcc/src/asm.rs) to see how the project translates rust inline assembly to gcc inline assembly IR (IR here represents the result after the parser has finished parsing it and the semantics have been transformed (per the [asm.rs](https://github.com/rust-lang/rust/blob/master/compiler/rustc_codegen_gcc/src/asm.rs) file's comment) and later can be used solely to generate code).
+
+Another one is since rust asm uses formatting with {arg}, it will be helpful to consider  https://github.com/rust-lang/rust/blob/master/compiler/rustc_parse_format/src/lib.rs and see how they work with the formatting logic.
+
+### WEEK 4 (June 17 - June 24): Improve (if possible) asm-AST in rust-macro-builtins, implement asm-HIR and visitor
+
+From [Rust-GCC/gccrs#1566](https://github.com/Rust-GCC/gccrs/issues/1566), asm-AST has already been implemented, I am to implement asm-HIR and its visitor instead.
+
+The AST (Abstract syntax tree) is the result of the Rust Inline Assembly Parser. This AST will be transformed to a HIR (High Level Intermediate Representation) through a process called `Lowering.` This IR helps us perform multiple syntax desugaring, as well as type-checking or borrow checking through the uses of its visitors.
+
+This subpart is done after parsing so that we know what our asm-HIR needs from the parser.
+
+Testing-wise, I’m not sure there is any testing to be done for this part.
+
+
+
+
+### WEEK 5 (June 24 - July 1): Implement handlers for asm, creating AST asm from a stream of tokens.
+
+From the available parser, I can use it in conjunction with asm-nodes and asm-AST in rust-macro-builtsin, outputing the asm-AST that I have declared and defined.
+
+
+No testing on this part.
+
+
+### WEEK 6-7 (July 1 - July 15): Work with ASTLowering, lowering the asm-AST to HIR (high level IR).
+
+The main classes to deal with are ASTLowering* in the gcc/rust/hir folder. I would create a new class inheriting from ASTLoweringBase and a constructor from asm-AST to deal with lowering the asm-AST.
+
+
+### WEEK 7-8 (July 15 - July 29): Work with GENERIC IL in Compile*, converting HIR to GENERIC intermediate language.
+
+The calls to express and create GENERIC tree will be provided via gcc/tree.def. For this part, some helpful definitions are present in gcc/c/c-typeck.cc
+
+
+
+### WEEK 9 (July 29 - Aug 5): End-to-end testing.
+
+Introduce end-to-end testing and fix all relevant bugs.
+
+The required testing involves testing existing inline assembly invocations taken directly from the Rust standard library, as well as testcases from rustc.
+
+### WEEK 11-12 (Aug 5 - 19): Spare time allocation for different parts of projects.
+2 week of free time will be allocated to different aspect of the project.
+### WEEK 10 (Aug 19 - Aug 26): Report and Documentation
+I will finish up my report and documentation before submission of my project.
+
+## Responsibitiles and my schedule.
+
+### University
+My university spring semester ends on Friday, May 10, 2024 with my final exam on May 9.
+
+My university fall semester usually begins on August 23.
+
+My fall semester coursework will (likely) be:
+- CS 265. Compiler Optimization and Code Generation (3 Units) (Grad)
+- CS 189: Introduction to Machine Learning (4 Units) (Ugrad)
+- CS 170: Efficient Algorithms and Intractable Problems (4 Units) (Ugrad)
+
+
+### Internship
+
+I have an offer where the starting date will be end of May - early June and the ending date will be on the second week of August.
+
+I will be working on the project over the course of May to August 26.
+
+If I am unable to complete the project's goals, I will make sure to discuss an extension with my mentors at the earliest possible.
+
+Such detailed timeline coupled with comprehensive design document is to ensure my progress is consistent throughout.
+
+# Design doc
+
+The design doc is to help me plan out ahead my implementation and discuss them with my mentor.
+
+## Lexer & Parser implementation
+
+
+### Grammar
+The BNF grammar for the inline assembly is
+
+```
+format_string := STRING_LITERAL / RAW_STRING_LITERAL
+dir_spec := "in" / "out" / "lateout" / "inout" / "inlateout"
+reg_spec := <register class> / "\"" <explicit register> "\""
+operand_expr := expr / "_" / expr "=>" expr / expr "=>" "_"
+reg_operand := [ident "="] dir_spec "(" reg_spec ")" operand_expr
+clobber_abi := "clobber_abi(" <abi> *("," <abi>) [","] ")"
+option := "pure" / "nomem" / "readonly" / "preserves_flags" /
+        "noreturn" / "nostack" / "att_syntax" / "raw"
+options := "options(" option *("," option) [","] ")"
+operand := reg_operand / clobber_abi / options
+asm := "asm!(" format_string *("," format_string)
+    *("," operand) [","] ")"
+global_asm := "global_asm!(" format_string
+    *("," format_string) *("," operand) [","] ")"
+
+end := asm | global_asm
+```
+
+where the end result will be an `end`.
+### Implementation
+
+The lexer I'll be using on this part will be the `MacroInvocLexer` via `MacroInvocLexer lex (invoc.get_delim_tok_tree ().to_token_stream ());`. It serves as a parameter for my parser like
+`Parser<MacroInvocLexer> parser (lex);`
+
+
+With the parser called `p`, I can call the methods in `gcc/rust/parse/rust-parse.h` on the parser to perform some recursive descent logic.
+
+
+## rust asm-ast, HIR, and visitor
+
+```C++
+// Namespace HIR
+// In rust-hir-exp.h
+InlineAsm : ExprWithoutBlock {
+    ...
+}
+
+// in rust-hir.cc
+void InlineAsm::accept(HIRExpressionVisitor &vis) {
+    vis.visit (*this);
+}
+```
+
+The visitor for HIR::InlineAsm is HIRExpressionVisitor.
+
+
+## asm-handlers
+I need to add two entries which are the handler functions to the `gcc/rust/expand/rust-macro-builtins.cc`'s `MacroBuiltin::builtin_transcribers` and remove the `llvm_asm` key from the map.
+
+```C++
+{"asm", MacroBuiltin::asm_handler},
+{"llvm_asm", MacroBuiltin::sorry}, // Remove this.
+{"global_asm", MacroBuiltin::global_asm_handler},
+```
+
+
+I also need to define the two handlers in `gcc/rust/expand/rust-macro-builtins.h`. They both will
+- Call the parser I implement in the previous part, get the AST::asm from it.
+- Transform the `AST::asm` node to an `AST::Fragment`
+- Return the `AST::Fragment`.
+
+An `AST::Fragment` is an AST that can be incorporated back to the AST produced by the general parser. The main reasoning for not returning the `AST::asm` but instead opting for `AST::Fragment` is because of the process described by https://github.com/rust-lang/rustc-dev-guide/blob/master/src/macro-expansion.md
+
+## ASTLowering
+
+
+
+## Converting HIR to GENERIC intermediate language
+
+Document for GENERIC asm is at [GENERIC](https://gcc.gnu.org/onlinedocs/gccint/Basic-Statements.html).
+
+In gcc/c/c-typeck.cc, there is the provided build_asm_expr which I can use to generate GENERIC
+
+```c
+tree
+build_asm_expr (location_t loc, tree string, tree outputs, tree inputs,
+		tree clobbers, tree labels, bool simple, bool is_inline);
+```
+
+There are also some macro definitions in `gcc/tree.h` that are helpful in manipulating tree expr.
+
+For example, from line 1381 to 1385
+```c
+/* ASM_EXPR accessors. ASM_STRING returns a STRING_CST for the
+   instruction (e.g., "mov x, y"). ASM_OUTPUTS, ASM_INPUTS, and
+   ASM_CLOBBERS represent the outputs, inputs, and clobbers for the
+   statement.  */
+#define ASM_STRING(NODE)        TREE_OPERAND (ASM_EXPR_CHECK (NODE), 0)
+#define ASM_OUTPUTS(NODE)       TREE_OPERAND (ASM_EXPR_CHECK (NODE), 1)
+#define ASM_INPUTS(NODE)        TREE_OPERAND (ASM_EXPR_CHECK (NODE), 2)
+#define ASM_CLOBBERS(NODE)      TREE_OPERAND (ASM_EXPR_CHECK (NODE), 3)
+#define ASM_LABELS(NODE)	 TREE_OPERAND (ASM_EXPR_CHECK (NODE), 4)
+```
+
+Another point worth mentioning that since these ASM accessors are nothing but STRING_CST, it would be helpful to be able to determine how to build a STRING_CST. The detailed documentation in `gcc/tree.cc` is:
+
+```c
+/* Return a newly constructed STRING_CST node whose value is the LEN
+   characters at STR when STR is nonnull, or all zeros otherwise.
+   Note that for a C string literal, LEN should include the trailing NUL.
+   The TREE_TYPE is not initialized.  */
+
+tree
+build_string (unsigned len, const char *str /*= NULL */) {...}
+```
+# Introduce myself, my skills and accomplishments
+
+## Information
+Name: Jasmine Tang
+
+Email (personal): tanghocle456@gmail.com
+
+Email (personal): thisisjjasmine@gmail.com
+
+Email (University): jjasmine@berkeley.edu
+
+GitHub: [badumbatish](https://github.com/badumbatish)
+
+Resume (continually updated): https://www.overleaf.com/read/bzvddqdhfdqp#fb6509
+
+University: University of California Berkeley
+
+## About myself
+Hi everyone, I’m Jasmine. I’m currently a junior undergraduate at UC Berkeley majoring in EECS. This semester, I am taking an undergraduate compiler and will be taking a grad class about code optimization this upcoming Fall.
+
+I’ve been programming in C, C++, Python, Java, Rust, mainly C/C++ and have done projects in relation to C++ and compilers
+
+Regarding compilers,  one of my projects include building a Scheme (Lisp dialect) Interpreter with recursive descent parsing in Python. As a semester-long class project, I am also building a ChocoPy compiler (a statically-typed subset of Python) with Java’s lexer and Java’s LALR(1) parser generator, writing passes for semantic checking and type-checking, as well as generating RISC-V assembly code. I just recently finished the LLVM’s Kaleidoscope tutorial and am trying to refactor the LLVM-based compiler as my own hobby project; currently I have gotten lexing and parsing refactored and am working on rewriting the JIT compiler.
+
+I’ve also done a number of projects related to C/C++. Some includes reimplementing std::vector with the standard allocator. As another semester-long class project, I’m working on PintOS, an educational operating system, adding support for syscalls, multiprocessing and multithreading and file systems.
+## My contribution to gccrs
+
+I want to preface this by saying all of this contribution would not be possible if not for my potential mentor Arthur.
+
+I joined gccrs' Zulip channel in late febuary / early March and since have put in some pull requests for the repository as well as contributed an ARM-based Ubuntu Docker image tailored to development of gccrs with persistent storage settings and different hotswappable versions of the image via docker compose at https://github.com/badumbatish/gccrs-workspace.
+
+My first contribution was adding tl::optional typing to MacroBuiltin map, a data structure I need to familiar with for this project.
+
+The second contribution was to refactor all macro handlers into different themes to ease navigation and development.
+
+For the third and fourth one, I fixed a error emitting bug when late-resolving an id expression and fixed visibility storage from parsing ExternalTypeItem until HIR construction.
+
+Please feel free to see a list of my pull requests to gccrs at https://github.com/Rust-GCC/gccrs/pulls?q=is%3Apr+author%3Abadumbatish+
+
+or by putting `is:pr author:badumbatish` in the pull request search bar.
+
+or by selecting `badumbatish` as author in mobile.
+
