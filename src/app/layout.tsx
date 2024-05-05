@@ -3,7 +3,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 
 import { Inter } from 'next/font/google'
-import Favicon from '/public/icon.ico';
+import rounded_pfp from '/public/pfp2-rounded.ico';
 import Name from "@/components/Name";
 import Header from "@/components/Header";
 import Image from "next/image";
@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
     title: 'jjasmine',
     description: 'Built with NextJS, TailwindCSS, and a tonnn of loveee :)',
-    icons: [{ rel: 'icon', url: Favicon.src  }],
+    icons: [{ rel: 'icon', url: rounded_pfp.src  }],
 
 }
 
