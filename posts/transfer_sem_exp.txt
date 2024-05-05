@@ -1,6 +1,6 @@
 1:HL["/_next/static/media/c9a5bc6a7c948fb0-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 2:HL["/_next/static/css/74ab248c6cf6d4b3.css","style",{"crossOrigin":""}]
-0:["LNnxQZXM0-7hxnAmRmb66",[[["",{"children":["posts",{"children":[["id","transfer_sem_exp","d"],{"children":["__PAGE__?{\"id\":\"transfer_sem_exp\"}",{}]}]}]},"$undefined","$undefined",true],"$L3",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/74ab248c6cf6d4b3.css","precedence":"next","crossOrigin":""}]],"$L4"]]]]
+0:["IfjfKoYh1Ke10r-P8c_or",[[["",{"children":["posts",{"children":[["id","transfer_sem_exp","d"],{"children":["__PAGE__?{\"id\":\"transfer_sem_exp\"}",{}]}]}]},"$undefined","$undefined",true],"$L3",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/74ab248c6cf6d4b3.css","precedence":"next","crossOrigin":""}]],"$L4"]]]]
 5:I[6954,[],""]
 6:I[7264,[],""]
 9:I[8187,["986","static/chunks/986-77351ce039fbbc1a.js","185","static/chunks/app/layout-371ee37ee289bede.js"],""]
