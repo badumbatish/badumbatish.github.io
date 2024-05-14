@@ -22,7 +22,7 @@ export default async function Post({
 }) {
     const { html, title, date } = await getPostById(id);
     return (
-        <article className="p-8 prose  max-w-none w-3/5 prose-sky mx-auto">
+        <article className="p-8 prose  max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto">
             <div className="flex justify-center text-2xl font-bold ">
                 <h2>{title}</h2>
             </div>
