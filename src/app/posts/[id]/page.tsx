@@ -1,5 +1,6 @@
 import { getPostById, getAllPosts } from "@/lib/api";
 
+
 // Set the title of the page to be the post title, note that we no longer use
 // e.g. next/head in app dir
 export async function generateMetadata({
@@ -21,7 +22,7 @@ export default async function Post({
 }) {
     const { html, title, date } = await getPostById(id);
     return (
-        <article className="p-8 prose prose-sky  mx-auto">
+        <article className="p-8 prose  max-w-none w-3/5 prose-sky mx-auto">
             <div className="flex justify-center text-2xl font-bold ">
                 <h2>{title}</h2>
             </div>

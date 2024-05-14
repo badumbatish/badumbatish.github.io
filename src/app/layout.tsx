@@ -2,14 +2,13 @@
 import './globals.css'
 import type { Metadata } from 'next'
 
-import { Roboto } from 'next/font/google'
 import rounded_pfp from '/public/pfp2-rounded.ico';
 import Name from "@/components/Name";
 import Header from "@/components/Header";
 import Image from "next/image";
 import UpToTopButton from "@/components/UpToTopButton";
-
-//const inter = Roboto({subsets : ['latin'], weight : "400"})
+import localFont from 'next/font/local'
+const inter = localFont({src : './Inter-VariableFont_slnt,wght.ttf'})
 
 export const metadata: Metadata = {
     title: 'jjasmine',
@@ -28,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
 
 
-      <body className={`flex flex-col min-h-screen`}>
+      <body className={`${inter.className} flex flex-col min-h-screen`}>
       <Header>
         <Name></Name>
       </Header>
