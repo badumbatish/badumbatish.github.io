@@ -12,6 +12,7 @@ import IntroCards from "@/components/IntroCards";
 import Header from '@/components/Header';
 import {Metadata} from "next";
 import Favicon from "*.ico";
+import ProjectCard from "@/components/ProjectCard";
 
 
 
@@ -68,14 +69,15 @@ export default function Home() {
     let aboutMeColor = "blue"
     return (
         <main>
-            <div className="flex flex-col flex-wrap gap-4">
-                <div className="h-full w-full flex flex-col">
 
-                    <IntroCards>
-                        <LeftMainCard></LeftMainCard>
-                        <RightMainCard></RightMainCard>
-                    </IntroCards>
-                </div>
+            <div className="flex flex-col flex-wrap gap-4">
+
+
+                <IntroCards>
+                    <LeftMainCard></LeftMainCard>
+                    <RightMainCard></RightMainCard>
+                </IntroCards>
+
 
 
                 <div className="h-full w-full flex flex-col font-mono">
