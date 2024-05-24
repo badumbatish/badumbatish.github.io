@@ -24,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
 
-    <html lang="en">
+    <html lang="en" className={"px-4 py-4"}>
 
 
       <body className={`${inter.className} flex flex-col min-h-screen`}>

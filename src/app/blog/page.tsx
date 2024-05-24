@@ -5,11 +5,9 @@ export default async function Page() {
     const posts = await getAllPosts()
 
     return (
-        <div className="px-4 py-12 flex flex-col items-start  gap-4">
+        <div className="py-12 flex flex-col items-center  justify-items-start mx-auto ">
             <h1 className="text-4xl">My blog</h1>
-
-            <h2>All posts:</h2>
-            <ul className="flex flex-col gap-6">
+            <ul className="flex flex-col gap-6 ">
                 {posts.map(post => {
                     const { id, date, title, recap, html} = post
                     return (
