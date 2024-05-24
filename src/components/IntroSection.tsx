@@ -1,6 +1,6 @@
 import React, {ReactNode, useState} from "react";
 import Image from "next/image";
-import pictureProfile from "public/pfp2.jpg";
+import pictureProfile from "public/pfp3.png";
 import LinkButton from "@/components/LinkButton";
 import AboutMeElement from "@/components/AboutMeElement";
 import {hover_border} from "@/components/tailwind_const";
@@ -52,7 +52,8 @@ const NickNameButton = () => {
                         <span
                             className={"justify-self-start"}>{clickMe}
                         </span>
-                    </span> :)
+                    </span>
+                    :)
                 </h2>
                 </button>
         </span>
