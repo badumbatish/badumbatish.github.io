@@ -14,7 +14,7 @@ const IntroSection: React.FC<{children: ReactNode, className? : string}> = ({ ch
 };
 
 const NickNameButton = () => {
-    let NickNameArray : String[]= [ "Jasmine","jsmn", "Lễ", "Jazz", "Thảo", "jjasmine", "jjsm", ];
+    let NickNameArray : String[]= [ "Jasmine", "badumbatish", "jsmn", "Lễ", "Jazz", "Thảo", "jjasmine", "jjsm", ];
     let clickMe = <Image className={"inline"} src={"clickme.png"} alt={"click me button"} width={8} height={8}></Image>
     const [NickName, setNickName] = useState<String>("Jasmine");
     const [Counter, setCounter] = useState(0);
@@ -42,16 +42,20 @@ const NickNameButton = () => {
     return <span>
         <span
         >
-            <button className={`inline content-start items-start justify-start flex-row text-blue-400 underline-offset-1 ${TextSize}`}
+            <button className={`inline content-start items-start justify-start flex-row hover:underline underline-offset-1`}
                     onClick={myClick}
                     onMouseEnter={hoverOnBtn}
                     onMouseLeave={hoverOffBtn}>
 
-                <span>{NickName}</span>
-                <span className={"justify-self-start"}>{clickMe}</span>
+                <h2 className="text-xl font-bold h-3">Hi there, it&rsquo;s
+                    <span className={`text-blue-400 `}> {NickName}
+                        <span
+                            className={"justify-self-start"}>{clickMe}
+                        </span>
+                    </span> :)
+                </h2>
                 </button>
         </span>
-        <span> :)</span>
     </span>
 }
 const LeftMainCard = () => {
@@ -66,8 +70,8 @@ const LeftMainCard = () => {
             </div>
             <div className="basis-4/5 flex flex-col gap-2">
 
-                <h2 className="text-xl font-bold h-3">Hi there, it&rsquo;s <NickNameButton></NickNameButton>
-                </h2>
+                <NickNameButton></NickNameButton>
+
                 <br/>
                 <h2 className="text-xl font-bold">I hope
                     you&apos;ll
