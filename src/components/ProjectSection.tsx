@@ -6,8 +6,8 @@ import {hover_border} from "@/components/tailwind_const";
 
 const ProjectSection: React.FC<{children: ReactNode, className? : string}> = ({ children, className}) => {
     return (
-        <div className={className}>
-            <div className="flex justify-center items-center px-4 py-4">
+        <div className={`${className}`}>
+            <div className="flex justify-center items-center px-4 py-4 w-full">
                 <h1 className="text-3xl  font-bold ">
                     Projects</h1>
             </div>
@@ -25,13 +25,15 @@ const ProjectCard: React.FC<ExperienceInfo> = ({title, experience, img_name ="cu
 
     return (
         <div className={`font-mono flex flex-col
-                                rounded-lg overflow-hidden p-4 border-2 border-blue-300 gap-2 w-4/6 mx-auto ${hover_border}`}>
+                                rounded-lg overflow-hidden p-4 border-2 border-blue-300 gap-2 w-10/12 
+                                sm:w-4/6 md:w-4/6
+                                mx-auto ${hover_border}`}>
             <div className={"flex flex-col md:flex-row justify-start content-s px-4 py-4 mx-auto"}>
                 <Link href={img_link} rel="noopener noreferrer" target="_blank">
                     <img className={"mx-auto rounded-3xl border-blue-400 border-2 hover:border-4 bg-blue-50"} src={img_name} alt={"image"} width={"120"}
                            height={"100"}></img>
                 </Link>
-                <div className="mx-3 lg:my-auto font-bold text-xl ">
+                <div className="mx-3 py-3 lg:my-auto font-bold text-xl ">
                     {title}
                 </div>
             </div>

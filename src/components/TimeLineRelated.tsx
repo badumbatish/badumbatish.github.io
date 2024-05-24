@@ -33,7 +33,7 @@ const TimeLine : React.FC<{children :  ReactElement[]}> = ({ children }) => {
 
         return (<div className={"flex flex-col item-start items-center"}>
             {props.map((value, index) => {
-                return <div className={" sm:w-1/2 md:w-4/6 text-base"} key={index}>{value}</div>;
+                return <div className={"md:w-4/6 text-base"} key={index}>{value}</div>;
             })}
         </div>)
     }
