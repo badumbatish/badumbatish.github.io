@@ -3,6 +3,7 @@ import Image from "next/image";
 import pictureProfile from "public/pfp2.jpg";
 import LinkButton from "@/components/LinkButton";
 import AboutMeElement from "@/components/AboutMeElement";
+import {hover_border} from "@/components/tailwind_const";
 
 const IntroSection: React.FC<{children: ReactNode, className? : string}> = ({ children , className}) => {
     return (
@@ -55,9 +56,10 @@ const NickNameButton = () => {
 }
 const LeftMainCard = () => {
     return (
-        <div className="font-mono flex flex-col items-center basis-2/6
-                                rounded-lg overflow-hidden shadow-lg p-4 border-2 border-blue-300 gap-2">
-            <div className="basis-1/5">
+        <div className={`font-mono flex flex-col items-center basis-2/6
+                                rounded-lg overflow-hidden p-4 
+                                border-2 border-blue-300 gap-2 hover:border-indigo-400 ${hover_border}`}>
+            <div className="basis-1/5`}">
                 <Image className="mx-auto rounded-3xl overflow-hidden" src={pictureProfile}
                        alt="picture profile" width={150} height={200}></Image>
 
@@ -103,9 +105,9 @@ const LeftMainCard = () => {
 
 const RightMainCard = () => {
     return (
-        <div className="font-mono basis-4/6
-                                            rounded-lg overflow-hidden shadow-lg
-                        p-10 border-2 border-blue-300">
+        <div className={`font - mono basis-4/6
+            rounded-lg overflow-hidden
+            p-10 border-2 border-blue-300 ${hover_border}`}>
             <ul className="flex flex-col gap-8">
                 <li>
                     <AboutMeElement title="About Me"
