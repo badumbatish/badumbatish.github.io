@@ -6,7 +6,7 @@ import {ProjectSection, ProjectCard} from "@/components/ProjectSection";
 import {TimePiece, TimeLine} from "@/components/TimeLineRelated";
 
 export default function Home() {
-    let sectionClassName = "h-full w-full flex flex-col font-mono";
+    let sectionClassName = "h-full w-full flex flex-col font-mono gap-10";
 
     return (
         <main className="flex flex-col flex-wrap gap-4">

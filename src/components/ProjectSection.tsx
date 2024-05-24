@@ -6,13 +6,13 @@ import {hover_border} from "@/components/tailwind_const";
 
 const ProjectSection: React.FC<{children: ReactNode, className? : string}> = ({ children, className}) => {
     return (
-        <div className={`${className}`}>
+        <div className={`h-full w-full`}>
             <div className="flex justify-center items-center px-4 py-4 w-full">
                 <h1 className="text-3xl  font-bold ">
                     Projects</h1>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 justify-evenly content-evenly gap-4">
+            <div className={`flex flex-col md:flex-row justify-center  p-6 gap-10 ${className}`}>
                 {children}
             </div>
 
@@ -24,9 +24,8 @@ const ProjectSection: React.FC<{children: ReactNode, className? : string}> = ({ 
 const ProjectCard: React.FC<ExperienceInfo> = ({title, experience, img_name ="cute_flower.png", img_link=""}) => {
 
     return (
-        <div className={`font-mono flex flex-col
-                                rounded-lg overflow-hidden p-4 border-2 border-blue-300 gap-2 w-10/12 
-                                sm:w-4/6 md:w-4/6
+        <div className={`font-mono flex flex-col basis-1/2
+                                rounded-lg overflow-hidden p-4 border-2 border-blue-300 gap-2
                                 mx-auto ${hover_border}`}>
             <div className={"flex flex-col md:flex-row justify-start content-s px-4 py-4 mx-auto"}>
                 <Link href={img_link} rel="noopener noreferrer" target="_blank">

@@ -7,7 +7,7 @@ import {hover_border} from "@/components/tailwind_const";
 
 const IntroSection: React.FC<{children: ReactNode, className? : string}> = ({ children , className}) => {
     return (
-        <div className={`flex flex-col md:flex-row justify-center gap-10 p-6 h-full w-full ${className}`}>
+        <div className={`flex flex-col md:flex-row justify-center  p-6  ${className}`}>
             {children}
         </div>
     );
