@@ -23,7 +23,7 @@ const ProjectCard: React.FC<ExperienceInfo> = ({title, experience, img_name ="cu
 
     return (
         <div className="flex flex-col px-4 py-10">
-            <div className={"mx-auto flex flex-col md:flex-row justify-start content-center px-4"}>
+            <div className={"mx-auto flex flex-col md:flex-row justify-start content-center px-4 h-28"}>
                 <img className={"mx-auto rounded-3xl "} src={img_name} alt={"image"} width={"120"}
                        height={"100"}></img>
                 <div className="mx-3 my-auto font-bold text-xl">
