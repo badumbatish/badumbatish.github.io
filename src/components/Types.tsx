@@ -5,4 +5,5 @@ export interface ExperienceInfo {
     date? : string;
     experience : string[];
     img_name? : string;
+    img_link? : string;
 }

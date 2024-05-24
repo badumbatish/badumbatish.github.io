@@ -33,11 +33,18 @@ export default function Home() {
 
 
             <ProjectSection className={sectionClassName}>
-                <ProjectCard title={"Chocopy Compiler"} img_name={"projects/chocopy.png"} experience={[`Develop a statically typed subset of Python compiler with JFlex and CUP’s parser generator combined with
+                <ProjectCard title={"Chocopy: A statically-typed-subset-of-Python Compiler"} img_name={"projects/chocopy.png"}
+                             img_link={"https://chocopy.org/"}
+                             experience={[`Develop a statically typed subset of Python compiler with JFlex and CUP’s parser generator combined with
 semantic analysis and code generation via RISC-V architecture.`,
                 `Deploy a multi-core test harness in Python that handles file input and hanging tests for a more robust develop-
 ment cycle. Enable code-size and run-time metrics to benchmark.`]}></ProjectCard>
-                <ProjectCard title={"PintOS"} img_name={"projects/pintos.png"} experience={[`Collaborated with team members to extend a bare-bone OS with ELF executable
+
+
+                <ProjectCard title={"PintOS: An educational operating system for the x86 architecture"}
+                             img_name={"projects/pintos.png"}
+                             img_link={"https://cs162.org/static/proj/pintos-docs/"}
+                             experience={[`Collaborated with team members to extend a bare-bone OS with ELF executable
 loading, a small syscall interface for both process control and file system methods`, `Implemented a strict priority scheduler with
 priority donation for deadlock avoidance and multi-threading capabilities, alongside a conditional variable based
 buffer cache for speeding up I/O and an extensible file system with sub-directories constructed with inodes.`]}></ProjectCard>
