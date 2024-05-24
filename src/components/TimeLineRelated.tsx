@@ -1,6 +1,7 @@
+import {ReactElement} from "react";
+
 function TimePiece({date, title, experience, placement}
                        : { date: string, title: string, experience: string[], placement: string }) {
-    let bottom_extend= (placement == "top" || placement == "center") ? 4 : 0;
     return (
         <>
             <div className={`mx-4 pb-2 flex content-start`}>
@@ -11,10 +12,8 @@ function TimePiece({date, title, experience, placement}
 
                     </div>
 
-
-
                     <div className="flex flex-row gap-8 ">
-                        <div className={`border-l-2 border-black `}></div>
+                        <div className={`border-l-2 border-blue-400 `}></div>
                         <ul className={"list-disc"}>
                             {experience.map((exp, id)=> {
                                 return (
@@ -29,8 +28,9 @@ function TimePiece({date, title, experience, placement}
     )
 }
 
-function TimeLine({children} : { children : JSX.Element[]}) {
-    function TimeLineOrchestrator({props} : { props: JSX.Element[] }) {
+const TimeLine : React.FC<{children :  ReactElement[]}> = ({ children }) => {
+    const TimeLineOrchestrator:React.FC<{props : ReactElement[]}> = ({ props  }) => {
+
         return (<div className={"flex flex-col item-start items-center"}>
             {props.map((value, index) => {
                 return <div className={" sm:w-1/2 md:w-4/6 text-base"} key={index}>{value}</div>;
@@ -38,11 +38,10 @@ function TimeLine({children} : { children : JSX.Element[]}) {
         </div>)
     }
 
-    return (
-        <>
-            <TimeLineOrchestrator props={children}></TimeLineOrchestrator>
-        </>
-    )
+    return <><>
+        <TimeLineOrchestrator props={children}></TimeLineOrchestrator>
+    </>
+    </>;
 }
 
 export {TimePiece, TimeLine};
