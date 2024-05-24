@@ -7,6 +7,7 @@ import Name from "@/components/Name";
 import Header from "@/components/Header";
 import UpToTopButton from "@/components/UpToTopButton";
 import localFont from 'next/font/local'
+import { Analytics } from "@vercel/analytics/react"
 const inter = localFont({src : './Inter-VariableFont_slnt,wght.ttf'})
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default function RootLayout({
         <Name></Name>
       </Header>
       <div className={"flex-1"}>{children}</div>
+      <Analytics />
         <UpToTopButton></UpToTopButton>
 
       <footer className="footer self-center justify-center gap-2 pt-4 items-center italic ">
