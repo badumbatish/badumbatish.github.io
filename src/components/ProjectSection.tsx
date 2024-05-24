@@ -1,3 +1,22 @@
+import React, {ReactNode} from "react";
+
+const ProjectSection: React.FC<{children: ReactNode, className? : string}> = ({ children, className}) => {
+    return (
+        <div className={className}>
+            <div className="flex justify-center items-center px-4 py-4">
+                <h1 className="text-3xl  font-bold ">
+                    Projects</h1>
+            </div>
+
+            <div className="flex justify-center">
+                {children}
+            </div>
+
+
+        </div>
+    );
+};
+
 const ProjectCard: React.FC = () => {
     return (
         <div className="flex flex-col md:flex-row">
@@ -12,5 +31,4 @@ const ProjectCard: React.FC = () => {
         </div>
     );
 };
-
-export default ProjectCard;
+export {ProjectSection, ProjectCard} ;

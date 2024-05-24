@@ -5,7 +5,6 @@ import type { Metadata } from 'next'
 import rounded_pfp from '/public/pfp2-rounded.ico';
 import Name from "@/components/Name";
 import Header from "@/components/Header";
-import Image from "next/image";
 import UpToTopButton from "@/components/UpToTopButton";
 import localFont from 'next/font/local'
 const inter = localFont({src : './Inter-VariableFont_slnt,wght.ttf'})
