@@ -1,4 +1,6 @@
 import React, {ReactNode} from "react";
+import {ExperienceInfo} from "@/components/Types";
+import Image from "next/image";
 
 const ProjectSection: React.FC<{children: ReactNode, className? : string}> = ({ children, className}) => {
     return (
@@ -8,7 +10,7 @@ const ProjectSection: React.FC<{children: ReactNode, className? : string}> = ({ 
                     Projects</h1>
             </div>
 
-            <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 justify-evenly content-evenly">
                 {children}
             </div>
 
@@ -17,17 +19,26 @@ const ProjectSection: React.FC<{children: ReactNode, className? : string}> = ({ 
     );
 };
 
-const ProjectCard: React.FC = () => {
+const ProjectCard: React.FC<ExperienceInfo> = ({title, experience, img_name ="cute_flower.png"}) => {
+
     return (
-        <div className="flex flex-col md:flex-row">
-            <div className="flex-1 bg-gray-100 p-4">
-                <h2 className="text-lg font-semibold mb-2">Column 1</h2>
-                <p>This is the content for the first column.</p>
+        <div className="flex flex-col px-4 py-10">
+            <div className={"mx-auto flex flex-col md:flex-row justify-start content-center px-4"}>
+                <img className={"mx-auto rounded-3xl "} src={img_name} alt={"image"} width={"120"}
+                       height={"100"}></img>
+                <div className="mx-3 my-auto font-bold text-xl">
+                    {title}
+                </div>
             </div>
-            <div className="flex-1 bg-gray-200 p-4">
-                <h2 className="text-lg font-semibold mb-2">Column 2</h2>
-                <p>This is the content for the second column.</p>
+
+
+
+            <div className="list-disc my-4 mx-auto sm:w-1/2 md:w-4/6 text-base">
+                {experience.map((value, index) => {
+                    return <li key={index}>{value}</li>;
+                })}
             </div>
+
         </div>
     );
 };

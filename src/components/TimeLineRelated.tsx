@@ -1,7 +1,7 @@
 import {ReactElement} from "react";
+import {ExperienceInfo} from "@/components/Types";
 
-function TimePiece({date, title, experience, placement}
-                       : { date: string, title: string, experience: string[], placement: string }) {
+const TimePiece : React.FC<ExperienceInfo> =  ({ date,  title, experience}) => {
     return (
         <>
             <div className={`mx-4 pb-2 flex content-start`}>
