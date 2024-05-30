@@ -9,7 +9,10 @@ export default async function Page() {
             <h1 className="text-4xl">My blog</h1>
             <ul className="flex flex-col gap-6 ">
                 {posts.map(post => {
-                    const { id, date, title, recap, html} = post
+                    const { id, date, title, hidden, recap, html} = post
+                    if (hidden == true ) {
+                        return
+                    }
                     return (
                         <li className="" key={id}>
                             <div className="flex flex-col ">
