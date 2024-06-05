@@ -32,7 +32,6 @@ export default function RootLayout({
         <Name></Name>
       </Header>
       <div className={"flex-1"}>{children}</div>
-      <Analytics />
         <UpToTopButton></UpToTopButton>
 
       <footer className="footer self-center justify-center gap-2 pt-4 items-center italic ">
