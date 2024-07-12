@@ -9,12 +9,15 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
-import rehypeShiki from '@leafac/rehype-shiki'
+import rehypeShiki from '@shikijs/rehype'
 import rehypeToc from '@jsdevtools/rehype-toc'
 import * as shiki from 'shiki'
 import remarkMdx from "remark-mdx";
-import rehypePrettyCode from 'rehype-pretty-code';
-
+import {
+    transformerNotationHighlight,
+  transformerNotationDiff,
+  // ...
+} from '@shikijs/transformers'
 // memoize/cache the creation of the markdown parser, this sped up the
 // building of the blog from ~60s->~10s
 let p: ReturnType<typeof getParserPre> | undefined
@@ -30,10 +33,14 @@ async function getParserPre() {
         .use(remarkGfm)
         // @ts-ignore
         .use(rehypeShiki, {
-            highlighter: await shiki.getHighlighter({ theme: 'poimandres' }),
+            theme :'poimandres',
+            transformers: [
+    transformerNotationDiff(), 
+    transformerNotationHighlight(),
+
+    // ...
+  ],
         })
-        // @ts-ignore
-        .use(rehypePrettyCode, {})
         .use(rehypeStringify)
         .use(rehypeSlug)
         .use(rehypeAutolinkHeadings, {

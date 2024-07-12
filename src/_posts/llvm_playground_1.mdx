@@ -11,10 +11,10 @@ Inspired by mcyoung's llvm ir blog and sha4dy's learning llvm blog, I think it'd
 
 In this blog post, let's try to get a minimal running example of LLVM running/
 
-We'll get started by installing LLVM, write a CMakeLists.txt, and create a main.cpp to generate
+We'll get started by installing LLVM, write a CMakeLists.txt to build our code, and create a main.cpp to generate
 a `main` function that returns 0
 
-# Installing llvm
+## Installing llvm
 
 LLVM is a very well-known compiler framework so chances are you wouldn't have to build it from source and just install it from your favorite package manager.
 
@@ -70,5 +70,56 @@ install-on-request: 34,994 (30 days), 109,493 (90 days), 314,945 (365 days)
 build-error: 727 (30 days)
 ```
 
+## Configuring CMake
+Make sure you have your CMake installed :)
+Open up your terminal and run
+```
+touch CMakeLists.txt
+```
+to create a CMakeLists.txt file
+Now, by running the following code, CMake will be able to detect your llvm installation (on MacOS) 
+```
+echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc \
+&&  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib" \
+&&  export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+```
 
+It's not the cleanest way to handle these things, but when you're hacking around, it should be good enough.
+
+Now for your CMakeLists.txt
+```cmake
+cmake_minimum_required(VERSION 3.22)
+project(llvm_playground) 
+find_package(LLVM REQUIRED CONFIG)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+include(AddLLVM)
+
+SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+```
+Now run 
+```bash
+cmake -S . -B build && cmake --build build
+```
+to use cmake to build using the CMakelists.txt script we have create in the current folder and build all the artifacts in the `build` folder
+
+
+
+before adding these two lines that will help us build our `main.cpp`
+```
+add_llvm_executable(main main.cpp)
+target_include_directories(main ${LLVM_INCLUDE_DIRS})
+```
+
+and for your main.cpp, we'll try to use llvm to create a function `main()` that returns an int of 0 to generate LLVM IR and then use LLVM's llc to compile it into an object file and use clang to compile that object file to an executable :)
+
+It will be fun :)
+
+First create your `main.cpp`,
+
+we'll first include our necessary header
+```cpp
+
+```
 
