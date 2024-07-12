@@ -12,6 +12,7 @@ import rehypeStringify from 'rehype-stringify'
 import rehypeShiki from '@leafac/rehype-shiki'
 import rehypeToc from '@jsdevtools/rehype-toc'
 import * as shiki from 'shiki'
+import remarkMdx from "remark-mdx";
 
 // memoize/cache the creation of the markdown parser, this sped up the
 // building of the blog from ~60s->~10s
@@ -22,6 +23,7 @@ async function getParserPre() {
     // @ts-ignore
     let i = 0;
     let result =  unified()
+        .use(remarkMdx)
         .use(remarkParse)
         .use(remarkRehype)
         .use(remarkGfm)
@@ -45,7 +47,6 @@ async function getParserPre() {
         })
         .use(rehypeToc)
 
-    i = 0;
     return result;
 }
 
