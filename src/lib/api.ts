@@ -13,6 +13,7 @@ import rehypeShiki from '@leafac/rehype-shiki'
 import rehypeToc from '@jsdevtools/rehype-toc'
 import * as shiki from 'shiki'
 import remarkMdx from "remark-mdx";
+import rehypePrettyCode from 'rehype-pretty-code';
 
 // memoize/cache the creation of the markdown parser, this sped up the
 // building of the blog from ~60s->~10s
@@ -31,6 +32,8 @@ async function getParserPre() {
         .use(rehypeShiki, {
             highlighter: await shiki.getHighlighter({ theme: 'poimandres' }),
         })
+        .use(rehypePrettyCode, {
+            })
         .use(rehypeStringify)
         .use(rehypeSlug)
         .use(rehypeAutolinkHeadings, {
