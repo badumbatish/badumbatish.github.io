@@ -1,0 +1,56 @@
+1:HL["/_next/static/media/7385e8d9d3c5518f-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+2:HL["/_next/static/css/8d2a8dc44e2b7a2e.css","style",{"crossOrigin":""}]
+0:["MIN8QUeoXc64C5Ll1WmZs",[[["",{"children":["posts",{"children":[["id","llvm_playground_1","d"],{"children":["__PAGE__?{\"id\":\"llvm_playground_1\"}",{}]}]}]},"$undefined","$undefined",true],"$L3",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/8d2a8dc44e2b7a2e.css","precedence":"next","crossOrigin":""}]],"$L4"]]]]
+5:I[6954,[],""]
+6:I[7264,[],""]
+9:I[8187,["986","static/chunks/986-77351ce039fbbc1a.js","185","static/chunks/app/layout-87d2b172080349b5.js"],""]
+3:[null,["$","html",null,{"lang":"en","className":"px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","a",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"loading":"$undefined","loadingStyles":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[],"childProp":{"current":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children"],"loading":"$undefined","loadingStyles":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined","childProp":{"current":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children",["id","llvm_playground_1","d"],"children"],"loading":"$undefined","loadingStyles":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined","childProp":{"current":["$L7","$L8",null],"segment":"__PAGE__?{\"id\":\"llvm_playground_1\"}"},"styles":[]}],"segment":["id","llvm_playground_1","d"]},"styles":[]}],"segment":"posts"},"styles":[]}]}],["$","$L9",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]}]]}]}],null]
+a:T176e,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#installing-llvm">Installing llvm</a></li></ol></nav><p>Hi everyone, it's Jasmine here, or <code>badumbatish</code>.</p>
+<p>Inspired by mcyoung's llvm ir blog and sha4dy's learning llvm blog, I think it'd be great to write some kind of similar blog posts, albeit I'm still learning :)</p>
+<p>In this blog post, let's try to get a minimal running example of LLVM running/</p>
+<p>We'll get started by installing LLVM, write a CMakeLists.txt, and create a main.cpp to generate
+a <code>main</code> function that returns 0</p>
+<h1 id="installing-llvm"><a href="#installing-llvm">Installing llvm</a></h1>
+<p>LLVM is a very well-known compiler framework so chances are you wouldn't have to build it from source and just install it from your favorite package manager.</p>
+<p>On my MacOS, I'll use homebrew to install llvm</p>
+<pre class="shiki" style="background-color: #1b1e28"><code><span class="line"><span style="color: #A6ACCD">brew install llvm</span></span></code></pre>
+<p>On MacOS, for some reason CMake fails to recognize and find LLVm via <code>find_package()</code> so
+you would have to configure it with some extra steps</p>
+<p>Then when you run</p>
+<pre class="shiki" style="background-color: #1b1e28"><code><span class="line"><span style="color: #A6ACCD">brew info llvm</span></span></code></pre>
+<p>It'll spit out some extra information about linking flags for you</p>
+<pre class="shiki" style="background-color: #1b1e28"><code><span class="line"><span style="color: #A6ACCD">➜  badumbatish.github.io git:(main) ✗ brew info llvm</span></span>
+<span class="line"><span style="color: #A6ACCD">==</span><span style="color: #91B4D5">></span><span style="color: #A6ACCD"> llvm: stable 18.1.8 (bottled), HEAD [keg-only]</span></span>
+<span class="line"><span style="color: #A6ACCD">Next-gen compiler infrastructure</span></span>
+<span class="line"><span style="color: #A6ACCD">https://llvm.org/</span></span>
+<span class="line"><span style="color: #A6ACCD">Installed</span></span>
+<span class="line"><span style="color: #A6ACCD">/opt/homebrew/Cellar/llvm/18.1.8 (7,722 files, 1.8GB)</span></span>
+<span class="line"><span style="color: #A6ACCD">  Poured from bottle using the formulae.brew.sh API on 2024-07-01 at 16:36:01</span></span>
+<span class="line"><span style="color: #A6ACCD">From: https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/l/llvm.rb</span></span>
+<span class="line"><span style="color: #A6ACCD">License: Apache-2.0 with LLVM-exception</span></span>
+<span class="line"><span style="color: #A6ACCD">==</span><span style="color: #91B4D5">></span><span style="color: #A6ACCD"> Dependencies</span></span>
+<span class="line"><span style="color: #A6ACCD">Build: cmake ✘, ninja ✔, swig ✘</span></span>
+<span class="line"><span style="color: #A6ACCD">Required: python@3.12 ✔, xz ✔, z3 ✔, zstd ✔</span></span>
+<span class="line"><span style="color: #A6ACCD">==</span><span style="color: #91B4D5">></span><span style="color: #A6ACCD"> Options</span></span>
+<span class="line"><span style="color: #A6ACCD">--HEAD</span></span>
+<span class="line"><span style="color: #A6ACCD">        Install HEAD version</span></span>
+<span class="line"><span style="color: #A6ACCD">==</span><span style="color: #91B4D5">></span><span style="color: #A6ACCD"> Caveats</span></span>
+<span class="line"><span style="color: #A6ACCD">To use the bundled libc++ please add the following LDFLAGS:</span></span>
+<span class="line"><span style="color: #A6ACCD">  LDFLAGS=</span><span style="color: #A6ACCD">"</span><span style="color: #5DE4C7">-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++</span><span style="color: #A6ACCD">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #A6ACCD">llvm is keg-only, which means it was not symlinked into /opt/homebrew,</span></span>
+<span class="line"><span style="color: #A6ACCD">because macOS already provides this software and installing another version in</span></span>
+<span class="line"><span style="color: #A6ACCD">parallel can cause all kinds of trouble.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #A6ACCD">If you need to have llvm first in your PATH, run:</span></span>
+<span class="line"><span style="color: #A6ACCD">  echo </span><span style="color: #A6ACCD">'</span><span style="color: #5DE4C7">export PATH="/opt/homebrew/opt/llvm/bin:$PATH"</span><span style="color: #A6ACCD">'</span><span style="color: #A6ACCD"> </span><span style="color: #91B4D5">>></span><span style="color: #A6ACCD"> </span><span style="color: #91B4D5">~</span><span style="color: #A6ACCD">/.zshrc</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #A6ACCD">For compilers to find llvm you may need to set:</span></span>
+<span class="line"><span style="color: #A6ACCD">  </span><span style="color: #5DE4C7">export</span><span style="color: #A6ACCD"> LDFLAGS=</span><span style="color: #A6ACCD">"</span><span style="color: #5DE4C7">-L/opt/homebrew/opt/llvm/lib</span><span style="color: #A6ACCD">"</span></span>
+<span class="line"><span style="color: #A6ACCD">  </span><span style="color: #5DE4C7">export</span><span style="color: #A6ACCD"> CPPFLAGS=</span><span style="color: #A6ACCD">"</span><span style="color: #5DE4C7">-I/opt/homebrew/opt/llvm/include</span><span style="color: #A6ACCD">"</span></span>
+<span class="line"><span style="color: #A6ACCD">==</span><span style="color: #91B4D5">></span><span style="color: #A6ACCD"> Analytics</span></span>
+<span class="line"><span style="color: #A6ACCD">install: 74,089 (30 days), 216,506 (90 days), 602,102 (365 days)</span></span>
+<span class="line"><span style="color: #A6ACCD">install-on-request: 34,994 (30 days), 109,493 (90 days), 314,945 (365 days)</span></span>
+<span class="line"><span style="color: #A6ACCD">build-error: 727 (30 days)</span></span></code></pre>8:["$","article",null,{"className":"p-8 prose  max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto","children":[["$","div",null,{"className":"flex justify-center text-2xl font-bold ","children":["$","h2",null,{"children":"Jasmine's llvm playground - 1"}]}],["$","div",null,{"className":"flex justify-start text-xl font-bold underline","children":["$","h4",null,{"children":"2024-07-13"}]}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$a"}}]]}]
+4:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"Jasmine's llvm playground - 1"}],["$","meta","2",{"name":"description","content":"Built with NextJS, TailwindCSS, and a tonnn of loveee :)"}],["$","meta","3",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link","4",{"rel":"icon","href":"/_next/static/media/pfp3.5cd65164.png"}],["$","meta","5",{"name":"next-size-adjust"}]]
+7:null
