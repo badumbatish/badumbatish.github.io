@@ -1,0 +1,73 @@
+---
+title: Jasmine's llvm playground - 1 
+date: 2024-07-13
+hidden : false
+recap: "Jasmine starts learning LLVM (again)" 
+---
+
+Hi everyone, it's Jasmine here, or `badumbatish`.
+
+Inspired by mcyoung's llvm ir blog and sha4dy's learning llvm blog, I think it'd be great to write some kind of similar blog posts, albeit I'm still learning :)
+
+In this blog post, let's try to get a minimal running example of LLVM running/
+
+We'll get started by installing LLVM, write a CMakeLists.txt, and create a main.cpp to generate
+a `main` function that returns 0
+
+# Installing llvm
+
+LLVM is a very well-known compiler framework so chances are you wouldn't have to build it from source and just install it from your favorite package manager.
+
+On my MacOS, I'll use homebrew to install llvm
+
+```bash
+brew install llvm
+```
+
+On MacOS, for some reason CMake fails to recognize and find LLVm via `find_package()` so 
+you would have to configure it with some extra steps
+
+Then when you run
+```bash
+brew info llvm
+```
+
+It'll spit out some extra information about linking flags for you
+```bash
+➜  badumbatish.github.io git:(main) ✗ brew info llvm
+==> llvm: stable 18.1.8 (bottled), HEAD [keg-only]
+Next-gen compiler infrastructure
+https://llvm.org/
+Installed
+/opt/homebrew/Cellar/llvm/18.1.8 (7,722 files, 1.8GB)
+  Poured from bottle using the formulae.brew.sh API on 2024-07-01 at 16:36:01
+From: https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/l/llvm.rb
+License: Apache-2.0 with LLVM-exception
+==> Dependencies
+Build: cmake ✘, ninja ✔, swig ✘
+Required: python@3.12 ✔, xz ✔, z3 ✔, zstd ✔
+==> Options
+--HEAD
+        Install HEAD version
+==> Caveats
+To use the bundled libc++ please add the following LDFLAGS:
+  LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+
+llvm is keg-only, which means it was not symlinked into /opt/homebrew,
+because macOS already provides this software and installing another version in
+parallel can cause all kinds of trouble.
+
+If you need to have llvm first in your PATH, run:
+  echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
+
+For compilers to find llvm you may need to set:
+  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+==> Analytics
+install: 74,089 (30 days), 216,506 (90 days), 602,102 (365 days)
+install-on-request: 34,994 (30 days), 109,493 (90 days), 314,945 (365 days)
+build-error: 727 (30 days)
+```
+
+
+
