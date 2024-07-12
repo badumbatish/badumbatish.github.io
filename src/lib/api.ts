@@ -32,8 +32,8 @@ async function getParserPre() {
         .use(rehypeShiki, {
             highlighter: await shiki.getHighlighter({ theme: 'poimandres' }),
         })
-        .use(rehypePrettyCode, {
-            })
+        // @ts-ignore
+        .use(rehypePrettyCode, {})
         .use(rehypeStringify)
         .use(rehypeSlug)
         .use(rehypeAutolinkHeadings, {
