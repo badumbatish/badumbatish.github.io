@@ -1,13 +1,13 @@
 1:HL["/_next/static/media/7385e8d9d3c5518f-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
-2:HL["/_next/static/css/8d2a8dc44e2b7a2e.css","style",{"crossOrigin":""}]
-0:["hwQUiY9TH7Ld7WaQ6wcqo",[[["",{"children":["posts",{"children":[["id","llvm_playground_1","d"],{"children":["__PAGE__?{\"id\":\"llvm_playground_1\"}",{}]}]}]},"$undefined","$undefined",true],"$L3",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/8d2a8dc44e2b7a2e.css","precedence":"next","crossOrigin":""}]],"$L4"]]]]
+2:HL["/_next/static/css/8af0b8e8fa4b56d5.css","style",{"crossOrigin":""}]
+0:["YnSxsLZFfTPVRpe_ZnEkS",[[["",{"children":["posts",{"children":[["id","llvm_playground_1","d"],{"children":["__PAGE__?{\"id\":\"llvm_playground_1\"}",{}]}]}]},"$undefined","$undefined",true],"$L3",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/8af0b8e8fa4b56d5.css","precedence":"next","crossOrigin":""}]],"$L4"]]]]
 5:I[6954,[],""]
 6:I[7264,[],""]
-9:I[8187,["986","static/chunks/986-77351ce039fbbc1a.js","185","static/chunks/app/layout-87d2b172080349b5.js"],""]
+9:I[8187,["986","static/chunks/986-77351ce039fbbc1a.js","185","static/chunks/app/layout-983322a10cdcef71.js"],""]
 3:[null,["$","html",null,{"lang":"en","className":"px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","a",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"loading":"$undefined","loadingStyles":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[],"childProp":{"current":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children"],"loading":"$undefined","loadingStyles":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined","childProp":{"current":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children",["id","llvm_playground_1","d"],"children"],"loading":"$undefined","loadingStyles":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined","childProp":{"current":["$L7","$L8",null],"segment":"__PAGE__?{\"id\":\"llvm_playground_1\"}"},"styles":[]}],"segment":["id","llvm_playground_1","d"]},"styles":[]}],"segment":"posts"},"styles":[]}]}],["$","$L9",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]}]]}]}],null]
-a:T3590,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#installing-llvm">Installing llvm</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#configuring-cmake">Configuring CMake</a></li></ol></nav><p>Hi everyone, it's Jasmine here, or <code>badumbatish</code>.</p>
-<p>Inspired by mcyoung's llvm ir blog and sha4dy's learning llvm blog, I think it'd be great to write some kind of similar blog posts, albeit I'm still learning :)</p>
-<p>In this blog post, let's try to get a minimal running example of LLVM running/</p>
+a:T7856,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#installing-llvm">Installing llvm</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#build-systems">Build system(s)</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#verify-your-cmake-script-is-good">Verify your cmake script is good</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#cpp">cpp</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#include-headers">Include headers</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#using-helper-functions">Using helper functions</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#running-and-reading-llvm-ir">Running and Reading LLVM IR</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#conclusion">Conclusion</a></li></ol></nav><p>Hi everyone, it's Jasmine here, or <code>badumbatish</code>.</p>
+<p>Inspired by mcyoung's <a href="https://mcyoung.xyz/2023/08/01/llvm-ir/">llvm ir</a> blog and sha4dy's <a href="https://sh4dy.com/2024/06/29/learning_llvm_01/">learning llvm</a> blog, I think it'd be great to write some kind of similar blog posts, albeit I'm still learning :)</p>
+<p>In this blog post, let's try to get a minimal example of LLVM running/</p>
 <p>We'll get started by installing LLVM, write a CMakeLists.txt to build our code, and create a main.cpp to generate
 a <code>main</code> function that returns 0</p>
 <h2 id="installing-llvm"><a href="#installing-llvm">Installing llvm</a></h2>
@@ -17,7 +17,7 @@ a <code>main</code> function that returns 0</p>
 <span class="line"></span></code></pre>
 <p>On MacOS, for some reason CMake fails to recognize and find LLVm via <code>find_package()</code> so
 you would have to configure it with some extra steps</p>
-<p>Then when you run</p>
+<p>Run</p>
 <pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#91B4D5">brew</span><span style="color:#ADD7FF"> info</span><span style="color:#ADD7FF"> llvm</span></span>
 <span class="line"></span></code></pre>
 <p>It'll spit out some extra information about linking flags for you</p>
@@ -55,13 +55,10 @@ you would have to configure it with some extra steps</p>
 <span class="line"><span style="color:#91B4D5">install-on-request:</span><span style="color:#ADD7FF"> 34,994</span><span style="color:#A6ACCD"> (30 </span><span style="color:#ADD7FF">days</span><span style="color:#A6ACCD">), 109,493 (</span><span style="color:#91B4D5">90</span><span style="color:#ADD7FF"> days</span><span style="color:#A6ACCD">), 314,945 (</span><span style="color:#91B4D5">365</span><span style="color:#ADD7FF"> days</span><span style="color:#A6ACCD">)</span></span>
 <span class="line"><span style="color:#91B4D5">build-error:</span><span style="color:#5DE4C7"> 727</span><span style="color:#A6ACCD"> (30 </span><span style="color:#ADD7FF">days</span><span style="color:#A6ACCD">)</span></span>
 <span class="line"></span></code></pre>
-<h2 id="configuring-cmake"><a href="#configuring-cmake">Configuring CMake</a></h2>
-<p>Make sure you have your CMake installed :)
-Open up your terminal and run</p>
-<pre><code>touch CMakeLists.txt
-</code></pre>
-<p>to create a CMakeLists.txt file
-Now, by running the following code, CMake will be able to detect your llvm installation (on MacOS)</p>
+<h2 id="build-systems"><a href="#build-systems">Build system(s)</a></h2>
+<p>The official build system language used by LLVM is CMake, and thus that is what the playground introduces.</p>
+<p>Make sure you have your <a href="https://cmake.org/">CMake</a> installed and create a CMakeLists.txt file.</p>
+<p>Now, by running the following code, CMake will be able to detect your llvm installation (on MacOS) (this is from before)</p>
 <pre><code>echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc \
 &#x26;&#x26;  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib" \
 &#x26;&#x26;  export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
@@ -78,18 +75,130 @@ Now, by running the following code, CMake will be able to detect your llvm insta
 <span class="line"></span>
 <span class="line"><span style="color:#A6ACCD">SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)</span></span>
 <span class="line"></span></code></pre>
-<p>Now run</p>
+<h3 id="verify-your-cmake-script-is-good"><a href="#verify-your-cmake-script-is-good">Verify your cmake script is good</a></h3>
+<p>It helps to verify small steps by small steps that everything works.
+Run</p>
 <pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#91B4D5">cmake</span><span style="color:#ADD7FF"> -S</span><span style="color:#ADD7FF"> .</span><span style="color:#ADD7FF"> -B</span><span style="color:#ADD7FF"> build</span><span style="color:#A6ACCD"> &#x26;&#x26; </span><span style="color:#91B4D5">cmake</span><span style="color:#ADD7FF"> --build</span><span style="color:#ADD7FF"> build</span></span>
 <span class="line"></span></code></pre>
-<p>to use cmake to build using the CMakelists.txt script we have create in the current folder and build all the artifacts in the <code>build</code> folder</p>
+<p>to use cmake to build using the CMakelists.txt script we have create in the current folder and store build artifacts in the <code>build</code> folder</p>
 <p>before adding these two lines that will help us build our <code>main.cpp</code></p>
 <pre><code>add_llvm_executable(main main.cpp)
 target_include_directories(main ${LLVM_INCLUDE_DIRS})
 </code></pre>
 <p>and for your main.cpp, we'll try to use llvm to create a function <code>main()</code> that returns an int of 0 to generate LLVM IR and then use LLVM's llc to compile it into an object file and use clang to compile that object file to an executable :)</p>
 <p>It will be fun :)</p>
+<h2 id="cpp"><a href="#cpp">cpp</a></h2>
 <p>First create your <code>main.cpp</code>,</p>
-<p>we'll first include our necessary header</p>
-<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"></span></code></pre>8:["$","article",null,{"className":"p-8 prose  max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto","children":[["$","div",null,{"className":"flex justify-center text-2xl font-bold ","children":["$","h2",null,{"children":"Jasmine's llvm playground - 1"}]}],["$","div",null,{"className":"flex justify-start text-xl font-bold underline","children":["$","h4",null,{"children":"2024-07-13"}]}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$a"}}]]}]
+<h2 id="include-headers"><a href="#include-headers">Include headers</a></h2>
+<p>we'll first include our necessary header in order to use our helper functions</p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#A6ACCD">#include </span><span style="color:#A6ACCD">&#x3C;</span><span style="color:#5DE4C7">llvm/IR/LLVMContext.h</span><span style="color:#A6ACCD">></span></span>
+<span class="line"><span style="color:#A6ACCD">#include </span><span style="color:#A6ACCD">&#x3C;</span><span style="color:#5DE4C7">llvm/IR/IRBuilder.h</span><span style="color:#A6ACCD">></span></span>
+<span class="line"><span style="color:#A6ACCD">#include </span><span style="color:#A6ACCD">&#x3C;</span><span style="color:#5DE4C7">llvm/IR/Module.h</span><span style="color:#A6ACCD">></span></span>
+<span class="line"><span style="color:#A6ACCD">#include </span><span style="color:#A6ACCD">&#x3C;</span><span style="color:#5DE4C7">llvm/IR/Verifier.h</span><span style="color:#A6ACCD">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#5DE4C7">using</span><span style="color:#91B4D5"> namespace</span><span style="color:#91B4D5"> llvm</span><span style="color:#A6ACCD">;</span></span>
+<span class="line"></span></code></pre>
+<p>The first header, with the class LLVMContext, is</p>
+<blockquote>
+<p>... an important class for using LLVM in a threaded context. It (opaquely) owns and manages the core "global" data of LLVM's core infrastructure, including the type and constant uniquing tables.</p>
+</blockquote>
+<p>The second one, IRBuilder (Intermediate Representation Builder) is an important class in LLVM</p>
+<blockquote>
+<p>This provides a uniform API for creating instructions and inserting them into a basic block: either at the end of a BasicBlock, or at a specific iterator location in a block.</p>
+</blockquote>
+<p>This brings us into one of the most important building (basic) blocks (haha see what i did there)</p>
+<p>I really think sh4dy's explanation of Modules, BasicBlock is much more succint and helpful than mine, please check out their blog <a href="https://sh4dy.com/2024/07/06/learning_llvm_02/#Introduction"> here </a></p>
+<blockquote>
+<p>A basic block is a straight-line sequence of instructions with no branches, meaning that execution starts at a single entry point and proceeds sequentially to a single exit point, where it then continues to the next basic block. Basic blocks belong to functions and cannot have jumps into their middle, ensuring that once execution starts, it will proceed through all instructions in the block. The first instruction of a basic block is known as the leader.</p>
+</blockquote>
+<p>What we'll do is we'll create a basic block in our <code>main</code> function, and then wrap that basic block around this IRBuilder to more easily do stuff.</p>
+<p>Necesary function includes the construction of IRBuilder</p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#91B4D5">template</span><span style="color:#A6ACCD">&#x3C;</span><span style="color:#91B4D5">typename</span><span style="color:#A6ACCDC0"> FolderTy</span><span style="color:#91B4D5"> =</span><span style="color:#A6ACCD"> ConstantFolder, </span></span>
+<span class="line"><span style="color:#91B4D5">         typename</span><span style="color:#A6ACCDC0"> InserterTy</span><span style="color:#91B4D5"> =</span><span style="color:#A6ACCD"> IRBuilderDefaultInserter></span></span>
+<span class="line"><span style="color:#91B4D5">llvm</span><span style="color:#A6ACCD">::</span><span style="color:#91B4D5">IRBuilder</span><span style="color:#A6ACCD">&#x3C;</span><span style="color:#A6ACCDC0">FolderTy</span><span style="color:#A6ACCD">, </span><span style="color:#A6ACCDC0">InserterTy</span><span style="color:#A6ACCD">>::</span><span style="color:#ADD7FF">IRBuilder</span><span style="color:#A6ACCD">(</span></span>
+<span class="line"><span style="color:#A6ACCD">        BasicBlock </span><span style="color:#91B4D5">*</span><span style="color:#A6ACCD">TheBB,</span></span>
+<span class="line"><span style="color:#A6ACCD">        FolderTy Folder,</span></span>
+<span class="line"><span style="color:#A6ACCD">        MDNode </span><span style="color:#91B4D5">*</span><span style="color:#A6ACCD">FPMathTag </span><span style="color:#91B4D5">=</span><span style="color:#5DE4C7"> nullptr</span><span style="color:#A6ACCD">,</span></span>
+<span class="line"><span style="color:#A6ACCD">        ArrayRef</span><span style="color:#91B4D5">&#x3C;</span><span style="color:#A6ACCD">OperandBundleDef</span><span style="color:#91B4D5">></span><span style="color:#A6ACCD">  OpBundles </span><span style="color:#91B4D5">=</span><span style="color:#91B4D5"> std</span><span style="color:#A6ACCD">::nullopt )</span></span>
+<span class="line"></span></code></pre>
+<p>and the construction of BasicBlock</p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#5DE4C7">static</span><span style="color:#A6ACCDC0"> BasicBlock</span><span style="color:#5DE4C7"> *</span><span style="color:#91B4D5"> llvm</span><span style="color:#A6ACCD">::</span><span style="color:#91B4D5">BasicBlock</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">Create</span><span style="color:#A6ACCD"> (</span></span>
+<span class="line"><span style="color:#A6ACCDC0">        LLVMContext</span><span style="color:#5DE4C7"> &#x26;</span><span style="color:#E4F0FB">Context</span><span style="color:#A6ACCD">,</span></span>
+<span class="line"><span style="color:#5DE4C7">        const</span><span style="color:#A6ACCDC0"> Twine</span><span style="color:#5DE4C7"> &#x26;</span><span style="color:#E4F0FB">Name</span><span style="color:#91B4D5"> =</span><span style="color:#A6ACCD"> ""</span><span style="color:#A6ACCD">,</span></span>
+<span class="line"><span style="color:#A6ACCDC0">        Function</span><span style="color:#5DE4C7"> *</span><span style="color:#E4F0FB">Parent</span><span style="color:#91B4D5"> =</span><span style="color:#5DE4C7"> nullptr</span><span style="color:#A6ACCD">,</span></span>
+<span class="line"><span style="color:#A6ACCDC0">        BasicBlock</span><span style="color:#5DE4C7"> *</span><span style="color:#E4F0FB">InsertBefore</span><span style="color:#91B4D5"> =</span><span style="color:#5DE4C7"> nullptr</span><span style="color:#A6ACCD">)	</span></span>
+<span class="line"></span></code></pre>
+<p>The third one, Module.h, represents either a translation unit or a collection of translation unit, think of it as a representation of a .cpp source file</p>
+<p>The last one, Verifier, we'll use after setting up everything to make sure our code is correct.</p>
+<p>Lastly, we then do</p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#5DE4C7">using</span><span style="color:#91B4D5"> namespace</span><span style="color:#91B4D5"> llvm</span></span>
+<span class="line"></span></code></pre>
+<p>to ease our namespace typing.</p>
+<h2 id="using-helper-functions"><a href="#using-helper-functions">Using helper functions</a></h2>
+<p>First we create a Module pointer to operate on, the Module class constructor takes in a Contextas well as a string reference <a href="https://llvm.org/doxygen/classllvm_1_1StringRef.html"> StringRef </a> called Module ID.</p>
+<p>When you create a compiler and compile your language's source file <code>x</code>, you can name your source file <code>x</code> in your Module, here, we name it <code>top</code>, signaling this is the top level module</p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#91B4D5">int</span><span style="color:#ADD7FF"> main</span><span style="color:#A6ACCD">() {</span></span>
+<span class="line"><span style="color:#A6ACCD">    LLVMContext Context;</span></span>
+<span class="line"><span style="color:#91B4D5">    auto</span><span style="color:#A6ACCD"> M </span><span style="color:#91B4D5">=</span><span style="color:#91B4D5"> std</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">unique_ptr</span><span style="color:#A6ACCD">&#x3C;</span><span style="color:#A6ACCDC0">Module</span><span style="color:#A6ACCD">>(</span><span style="color:#5DE4C7">new</span><span style="color:#ADD7FF"> Module</span><span style="color:#A6ACCD">(</span><span style="color:#A6ACCD">"</span><span style="color:#5DE4C7">top</span><span style="color:#A6ACCD">"</span><span style="color:#A6ACCD">, Context));</span></span>
+<span class="line"><span style="color:#A6ACCD">}</span></span>
+<span class="line"></span></code></pre>
+<p>After we got our module, we can put create our function <code>main</code> inside a basic block and put it inside Module.</p>
+<p>Our first playground are fairly simple, we will name our basic block <code>MainEntry</code> and our function <code>Main</code></p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#91B4D5">auto</span><span style="color:#91B4D5"> *</span><span style="color:#A6ACCD">FT </span><span style="color:#91B4D5">=</span><span style="color:#91B4D5"> FunctionType</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">get</span><span style="color:#A6ACCD">(</span><span style="color:#91B4D5">Type</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">getInt32Ty</span><span style="color:#A6ACCD">(</span><span style="color:#E4F0FB">M</span><span style="color:#A6ACCD">-></span><span style="color:#ADD7FF">getContext</span><span style="color:#A6ACCD">()), </span><span style="color:#5DE4C7">false</span><span style="color:#A6ACCD">);</span></span>
+<span class="line"><span style="color:#91B4D5">auto</span><span style="color:#91B4D5"> *</span><span style="color:#A6ACCD">F </span><span style="color:#91B4D5">=</span><span style="color:#91B4D5"> Function</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">Create</span><span style="color:#A6ACCD">(FT, </span><span style="color:#91B4D5">Function</span><span style="color:#A6ACCD">::ExternalLinkage, </span><span style="color:#A6ACCD">"</span><span style="color:#5DE4C7">Main</span><span style="color:#A6ACCD">"</span><span style="color:#A6ACCD">, </span><span style="color:#E4F0FB">M</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get</span><span style="color:#A6ACCD">());</span></span>
+<span class="line"><span style="color:#91B4D5">auto</span><span style="color:#91B4D5"> *</span><span style="color:#A6ACCD">block </span><span style="color:#91B4D5">=</span><span style="color:#91B4D5"> BasicBlock</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">Create</span><span style="color:#A6ACCD">(Context, </span><span style="color:#A6ACCD">"</span><span style="color:#5DE4C7">MainEntry</span><span style="color:#A6ACCD">"</span><span style="color:#A6ACCD">, F);</span></span>
+<span class="line"></span></code></pre>
+<p>We create our function with external linkage, this means that the function is externally visible. Note that in LLVM IR, if
+the function has no linkage keyword, it is implicitly meant that it has external linkage. Implementation-wise, I think it makes sense that
+we create the main function with this linkage, it would be crazy there is multiple main function in each source file that can all be run :) But of course,
+what <a href="https://github.com/overmighty/i-use-arch-btw"> joy </a> do we have if we limit ourselves.</p>
+<p>Now that we got our basic block, we can use the IRBuilder that we talked about from before to create an instruction that returns 0.
+Wrapping the basic block with the builder, we can call methods on it to create instructions.</p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#A6ACCDC0">IRBuilder</span><span style="color:#A6ACCD">&#x3C;> </span><span style="color:#ADD7FF">Builder</span><span style="color:#A6ACCD">(</span><span style="color:#A6ACCDC0">block</span><span style="color:#A6ACCD">);</span></span>
+<span class="line"><span style="color:#E4F0FB">Builder</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">CreateRet</span><span style="color:#A6ACCD">(</span><span style="color:#E4F0FB">Builder</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">getInt32</span><span style="color:#A6ACCD">(</span><span style="color:#5DE4C7">0</span><span style="color:#A6ACCD">));</span></span>
+<span class="line"></span></code></pre>
+<p>We then verify our module for error, and then print out the llvm ir for us</p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#ADD7FF">verifyModule</span><span style="color:#A6ACCD">(</span><span style="color:#91B4D5">*</span><span style="color:#A6ACCD">M, </span><span style="color:#91B4D5">&#x26;</span><span style="color:#ADD7FF">errs</span><span style="color:#A6ACCD">());</span></span>
+<span class="line"><span style="color:#E4F0FB">M</span><span style="color:#A6ACCD">-></span><span style="color:#ADD7FF">print</span><span style="color:#A6ACCD">(</span><span style="color:#ADD7FF">outs</span><span style="color:#A6ACCD">(), </span><span style="color:#5DE4C7">nullptr</span><span style="color:#A6ACCD">);</span></span>
+<span class="line"></span></code></pre>
+<h2 id="running-and-reading-llvm-ir"><a href="#running-and-reading-llvm-ir">Running and Reading LLVM IR</a></h2>
+<p>With our CMake and our main.cpp ready, we can start cooking.</p>
+<pre><code>cmake -S . -B build # Use the CMakeLists.txt in current folder to build and store in build/
+cmake --build build # Build the executable from material in build/
+./build/main # Run the main executable
+</code></pre>
+<p>When you run this, the LLVM IR will be outputted since we asked the Module to print out the IR in <code>main.cpp</code></p>
+<pre><code>; ModuleID = 'top'
+source_filename = "top"
+
+define i32 @Main() {
+MainEntry:
+  ret i32 0
+}
+</code></pre>
+<p>It is hard to read LLVM IR since my website hasn't supported LLVM IR yet :( But I'll try to guide you through it.
+<code>;</code> stands for the beginning of a comment in LLVM IR
+The next line indicates the source file name in LLVM IR, which is also <code>top</code>, indicated by the comment on the first line.</p>
+<p>You can see how this correspond to how we create a Module from before.</p>
+<p>The next line starts with a function definition keyword <code>define</code> followed by the return type as well as the function name.
+Note that the name of a function is followed after the <code>@</code>. It is also used for global.</p>
+<p>Then the word MainEntry stands for the entrance of the basic block we just create, having the ret 0 instruction inside it, as reflected
+by our use of LLVM API as well.</p>
+<p>It would be a sad state of affair if we can't run this beautiful LLVM IR code that we just generated.</p>
+<p>We can instead put our LLVM IR inside an <code>.ll</code> file and run it through llc, the LLVM static compiler.</p>
+<p>This will give us a <code>.o</code> file, which we can put it through a compiler such as clang or gcc</p>
+<pre><code> cmake -S . -B build &#x26;&#x26; cmake --build build \
+&#x26;&#x26; ./build/main > temp.ll \
+&#x26;&#x26; llc -filetype=obj temp.ll &#x26;&#x26; clang temp.o -o temp &#x26;&#x26; ./temp
+</code></pre>
+<h2 id="conclusion"><a href="#conclusion">Conclusion</a></h2>
+<p>This blog post helps the reader to run and create a bare minimum example with llvm: a main function that returns 0</p>
+<p>While it is small, readers can now create a (useless) compiler that when inputted something like</p>
+<pre><code>fn main() {
+    ret 0;
+}
+</code></pre>
+<p>, spits out an actual running executable :)</p>
+<p>The next blog post will focus on structs, enums and how to return a custom type. Stay tune!</p>8:["$","article",null,{"className":"p-8 prose  max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto","children":[["$","div",null,{"className":"flex justify-center text-2xl font-bold ","children":["$","h2",null,{"children":"Jasmine's llvm playground - 1"}]}],["$","div",null,{"className":"flex justify-start text-xl font-bold underline","children":["$","h4",null,{"children":"2024-07-13"}]}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$a"}}]]}]
 4:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"Jasmine's llvm playground - 1"}],["$","meta","2",{"name":"description","content":"Built with NextJS, TailwindCSS, and a tonnn of loveee :)"}],["$","meta","3",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link","4",{"rel":"icon","href":"/_next/static/media/pfp3.5cd65164.png"}],["$","meta","5",{"name":"next-size-adjust"}]]
 7:null
