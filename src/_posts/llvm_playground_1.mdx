@@ -269,6 +269,8 @@ This will give us a `.o` file, which we can put it through a compiler such as cl
 && llc -filetype=obj temp.ll && clang temp.o -o temp && ./temp
 ```
 
+It is interesting to note that LLVM also provides a way to output object code via its API. Readers can refer to [this article](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/LangImpl08.html)
+when implementing their compiler.
 
 ## Conclusion
 
@@ -281,6 +283,8 @@ fn main() -> int32 {
 }
 ```
 , correctly spits out an actual running executable :)
+
+All they need is a small lexer and parser to support the small example :)
 
 The next blog post will focus on structs, enums and how to return a custom type. Stay tune!
 
