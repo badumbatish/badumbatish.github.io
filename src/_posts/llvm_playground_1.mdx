@@ -251,6 +251,7 @@ M->print(outs(), nullptr);
 ```
 
 ## Running and Reading LLVM IR
+
 With our CMake and our main.cpp ready, we can start cooking.
 ```
 cmake -S . -B build # Use the CMakeLists.txt in current folder to build and store in build/
@@ -270,9 +271,11 @@ MainEntry:
 ```
 
 It is hard to read LLVM IR since my website hasn't supported LLVM IR yet :( But I'll try to guide you through it.
-`;` stands for the beginning of a comment in LLVM IR
-The next line indicates the source file name in LLVM IR, which is also `top`, indicated by the comment on the first line.
+mcyoung's [gentle introduction to LLVM IR](https://mcyoung.xyz/2023/08/01/llvm-ir/) should be much more in depth than mine. Mine guiding is just to point out the
+correspondence between the LLVM API call and the LLVM IR itself.
 
+`;` stands for the beginning of a comment in LLVM IR.
+The next line indicates the source file name in LLVM IR, which is also `top`, indicated by the comment on the first line.
 You can see how this correspond to how we create a Module from before.
 
 The next line starts with a function definition keyword `define` followed by the return type as well as the function name.
@@ -287,7 +290,7 @@ It would be a sad state of affair if we can't run this beautiful LLVM IR code th
 
 We can instead put our LLVM IR inside an `.ll` file and run it through llc, the LLVM static compiler.
 
-This will give us a `.o` file, which we can put it through a compiler such as clang or gcc
+This will give us a `.o` file, which we can put it through a compiler such as clang or gcc.
 
 ```
  cmake -S . -B build && cmake --build build \
