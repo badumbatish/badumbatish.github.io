@@ -7,9 +7,9 @@ recap: "Jasmine starts learning LLVM (again)"
 
 Hi everyone, it's Jasmine here, or `badumbatish`.
 
-Inspired by mcyoung's llvm ir blog and sha4dy's learning llvm blog, I think it'd be great to write some kind of similar blog posts, albeit I'm still learning :)
+Inspired by mcyoung's [llvm ir](https://mcyoung.xyz/2023/08/01/llvm-ir/) blog and sha4dy's [learning llvm](https://sh4dy.com/2024/06/29/learning_llvm_01/) blog, I think it'd be great to write some kind of similar blog posts, albeit I'm still learning :)
 
-In this blog post, let's try to get a minimal running example of LLVM running/
+In this blog post, let's try to get a minimal example of LLVM running/
 
 We'll get started by installing LLVM, write a CMakeLists.txt to build our code, and create a main.cpp to generate
 a `main` function that returns 0
@@ -27,7 +27,7 @@ brew install llvm
 On MacOS, for some reason CMake fails to recognize and find LLVm via `find_package()` so 
 you would have to configure it with some extra steps
 
-Then when you run
+Run
 ```bash
 brew info llvm
 ```
@@ -70,14 +70,13 @@ install-on-request: 34,994 (30 days), 109,493 (90 days), 314,945 (365 days)
 build-error: 727 (30 days)
 ```
 
-## Configuring CMake
-Make sure you have your CMake installed :)
-Open up your terminal and run
-```
-touch CMakeLists.txt
-```
-to create a CMakeLists.txt file
-Now, by running the following code, CMake will be able to detect your llvm installation (on MacOS) 
+## Build system(s)
+
+The official build system language used by LLVM is CMake, and thus that is what the playground introduces.
+
+Make sure you have your [CMake](https://cmake.org/) installed and create a CMakeLists.txt file.
+
+Now, by running the following code, CMake will be able to detect your llvm installation (on MacOS) (this is from before)
 ```
 echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc \
 &&  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib" \
@@ -98,13 +97,14 @@ include(AddLLVM)
 
 SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 ```
-Now run 
+
+### Verify your cmake script is good
+It helps to verify small steps by small steps that everything works.
+Run
 ```bash
 cmake -S . -B build && cmake --build build
 ```
-to use cmake to build using the CMakelists.txt script we have create in the current folder and build all the artifacts in the `build` folder
-
-
+to use cmake to build using the CMakelists.txt script we have create in the current folder and store build artifacts in the `build` folder
 
 before adding these two lines that will help us build our `main.cpp`
 ```
@@ -116,10 +116,164 @@ and for your main.cpp, we'll try to use llvm to create a function `main()` that 
 
 It will be fun :)
 
+## cpp
 First create your `main.cpp`,
 
-we'll first include our necessary header
+## Include headers
+we'll first include our necessary header in order to use our helper functions
 ```cpp
+#include <llvm/IR/LLVMContext.h>
+#include <llvm/IR/IRBuilder.h>
+#include <llvm/IR/Module.h>
+#include <llvm/IR/Verifier.h>
+
+using namespace llvm;
+```
+
+The first header, with the class LLVMContext, is 
+> ... an important class for using LLVM in a threaded context. It (opaquely) owns and manages the core "global" data of LLVM's core infrastructure, including the type and constant uniquing tables.
+
+The second one, IRBuilder (Intermediate Representation Builder) is an important class in LLVM
+> This provides a uniform API for creating instructions and inserting them into a basic block: either at the end of a BasicBlock, or at a specific iterator location in a block.
+
+This brings us into one of the most important building (basic) blocks (haha see what i did there)
+
+I really think sh4dy's explanation of Modules, BasicBlock is much more succint and helpful than mine, please check out their blog [ here ](https://sh4dy.com/2024/07/06/learning_llvm_02/#Introduction)
+
+
+> A basic block is a straight-line sequence of instructions with no branches, meaning that execution starts at a single entry point and proceeds sequentially to a single exit point, where it then continues to the next basic block. Basic blocks belong to functions and cannot have jumps into their middle, ensuring that once execution starts, it will proceed through all instructions in the block. The first instruction of a basic block is known as the leader. 
+
+What we'll do is we'll create a basic block in our `main` function, and then wrap that basic block around this IRBuilder to more easily do stuff.
+
+Necesary function includes the construction of IRBuilder
+```cpp
+template<typename FolderTy = ConstantFolder, 
+         typename InserterTy = IRBuilderDefaultInserter>
+llvm::IRBuilder<FolderTy, InserterTy>::IRBuilder(
+        BasicBlock *TheBB,
+        FolderTy Folder,
+        MDNode *FPMathTag = nullptr,
+        ArrayRef<OperandBundleDef>  OpBundles = std::nullopt )
+```
+
+and the construction of BasicBlock
+```cpp
+static BasicBlock * llvm::BasicBlock::Create (
+        LLVMContext &Context,
+        const Twine &Name = "",
+        Function *Parent = nullptr,
+        BasicBlock *InsertBefore = nullptr)	
+```
+
+
+The third one, Module.h, represents either a translation unit or a collection of translation unit, think of it as a representation of a .cpp source file
+
+The last one, Verifier, we'll use after setting up everything to make sure our code is correct.
+ 
+
+Lastly, we then do
+```cpp
+using namespace llvm
+```
+
+to ease our namespace typing.
+
+## Using helper functions
+First we create a Module pointer to operate on, the Module class constructor takes in a Contextas well as a string reference [ StringRef ](https://llvm.org/doxygen/classllvm_1_1StringRef.html) called Module ID.
+
+When you create a compiler and compile your language's source file `x`, you can name your source file `x` in your Module, here, we name it `top`, signaling this is the top level module
+```cpp
+int main() {
+    LLVMContext Context;
+    auto M = std::unique_ptr<Module>(new Module("top", Context));
+}
+```
+
+
+After we got our module, we can put create our function `main` inside a basic block and put it inside Module.
+
+Our first playground are fairly simple, we will name our basic block `MainEntry` and our function `Main`
+
+```cpp
+auto *FT = FunctionType::get(Type::getInt32Ty(M->getContext()), false);
+auto *F = Function::Create(FT, Function::ExternalLinkage, "Main", M.get());
+auto *block = BasicBlock::Create(Context, "MainEntry", F);
+```
+
+We create our function with external linkage, this means that the function is externally visible. Note that in LLVM IR, if 
+the function has no linkage keyword, it is implicitly meant that it has external linkage. Implementation-wise, I think it makes sense that
+we create the main function with this linkage, it would be crazy there is multiple main function in each source file that can all be run :) But of course,
+what [ joy ](https://github.com/overmighty/i-use-arch-btw) do we have if we limit ourselves.
+
+Now that we got our basic block, we can use the IRBuilder that we talked about from before to create an instruction that returns 0.
+Wrapping the basic block with the builder, we can call methods on it to create instructions.
+```cpp
+IRBuilder<> Builder(block);
+Builder.CreateRet(Builder.getInt32(0));
+ ```
+
+ We then verify our module for error, and then print out the llvm ir for us
+```cpp
+verifyModule(*M, &errs());
+M->print(outs(), nullptr);
+```
+
+## Running and Reading LLVM IR
+With our CMake and our main.cpp ready, we can start cooking.
+```
+cmake -S . -B build # Use the CMakeLists.txt in current folder to build and store in build/
+cmake --build build # Build the executable from material in build/
+./build/main # Run the main executable
+```
+
+When you run this, the LLVM IR will be outputted since we asked the Module to print out the IR in `main.cpp`
+```
+; ModuleID = 'top'
+source_filename = "top"
+
+define i32 @Main() {
+MainEntry:
+  ret i32 0
+}
+```
+
+It is hard to read LLVM IR since my website hasn't supported LLVM IR yet :( But I'll try to guide you through it.
+`;` stands for the beginning of a comment in LLVM IR
+The next line indicates the source file name in LLVM IR, which is also `top`, indicated by the comment on the first line.
+
+You can see how this correspond to how we create a Module from before.
+
+The next line starts with a function definition keyword `define` followed by the return type as well as the function name.
+Note that the name of a function is followed after the `@`. It is also used for global.
+
+Then the word MainEntry stands for the entrance of the basic block we just create, having the ret 0 instruction inside it, as reflected
+by our use of LLVM API as well.
+
+It would be a sad state of affair if we can't run this beautiful LLVM IR code that we just generated.
+
+We can instead put our LLVM IR inside an `.ll` file and run it through llc, the LLVM static compiler.
+
+This will give us a `.o` file, which we can put it through a compiler such as clang or gcc
 
 ```
+ cmake -S . -B build && cmake --build build \
+&& ./build/main > temp.ll \
+&& llc -filetype=obj temp.ll && clang temp.o -o temp && ./temp
+```
+
+
+## Conclusion
+
+This blog post helps the reader to run and create a bare minimum example with llvm: a main function that returns 0
+
+While it is small, readers can now create a (useless) compiler that when inputted something like
+```
+fn main() {
+    ret 0;
+}
+```
+, spits out an actual running executable :)
+
+The next blog post will focus on structs, enums and how to return a custom type. Stay tune!
+
 
