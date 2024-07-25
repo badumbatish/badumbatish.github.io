@@ -9,10 +9,10 @@ Hi everyone, it's Jasmine here, or `badumbatish`.
 
 Inspired by mcyoung's [llvm ir](https://mcyoung.xyz/2023/08/01/llvm-ir/) blog and sha4dy's [learning llvm](https://sh4dy.com/2024/06/29/learning_llvm_01/) blog, I think it'd be great to write some kind of similar blog posts, albeit I'm still learning :)
 
-In this blog post, let's try to get a minimal example of LLVM running/
+In this blog post, let's try to get a minimal example of LLVM running.
 
-We'll get started by installing LLVM, write a CMakeLists.txt to build our code, and create a main.cpp to generate
-a `main` function that returns 0
+We'll get started by installing LLVM, write a CMakeLists.txt to build our code, and create a main.cpp that uses LLVM API to generate
+a `main` function that returns 0.
 
 ## Installing llvm
 
@@ -145,16 +145,14 @@ I really think sh4dy's explanation of Modules, BasicBlock is much more succint a
 
 What we'll do is we'll create a basic block in our `main` function, and then wrap that basic block around this IRBuilder to more easily do stuff.
 
-Necesary function includes the construction of IRBuilder
+Necesary function includes the 4th constructor of IRBuilder
 ```cpp
-template<typename FolderTy = ConstantFolder, 
-         typename InserterTy = IRBuilderDefaultInserter>
-llvm::IRBuilder<FolderTy, InserterTy>::IRBuilder(
+llvm::IRBuilder< FolderTy, InserterTy >::IRBuilder  (
         BasicBlock *TheBB,
-        FolderTy Folder,
-        MDNode *FPMathTag = nullptr,
-        ArrayRef<OperandBundleDef>  OpBundles = std::nullopt )
+        MDNode * FPMathTag = nullptr,
+        ArrayRef< OperandBundleDef >OpBundles = std::nullopt )		
 ```
+Without going into much detail (because I also don't know anything), MDNode stands for a metadata node and the OpBundles stands for ... something.
 
 and the construction of BasicBlock
 ```cpp
@@ -164,7 +162,13 @@ static BasicBlock * llvm::BasicBlock::Create (
         Function *Parent = nullptr,
         BasicBlock *InsertBefore = nullptr)	
 ```
+Let's walk through what each of these things mean besides LLVMContext.
 
+Twine is "A lightweight data structure for efficiently representing the concatenation of temporary values as strings." In our use, we name our basic block through this parameter.
+
+The last two parameters is related to each other through the insertion position of the newly created basic block.
+LLVM documentation mandates:
+> If the Parent parameter is specified, the basic block is automatically inserted at either the end of the function (if InsertBefore is 0), or before the specified basic block.
 
 The third one, Module.h, represents either a translation unit or a collection of translation unit, think of it as a representation of a .cpp source file
 
@@ -179,7 +183,9 @@ using namespace llvm
 to ease our namespace typing.
 
 ## Using helper functions
-First we create a Module pointer to operate on, the Module class constructor takes in a Contextas well as a string reference [ StringRef ](https://llvm.org/doxygen/classllvm_1_1StringRef.html) called Module ID.
+First we create a Module pointer to operate on, the Module class constructor takes in a Contexts well as a string reference [StringRef](https://llvm.org/doxygen/classllvm_1_1StringRef.html) called Module ID.
+
+It should help to know that StringRef has a constructor from various string-like types, thus hiding away its explicit constructor with "top" in the following code, in the Module's first argument in its constructor.
 
 When you create a compiler and compile your language's source file `x`, you can name your source file `x` in your Module, here, we name it `top`, signaling this is the top level module
 ```cpp
@@ -197,7 +203,7 @@ Our first playground are fairly simple, we will name our basic block `MainEntry`
 ```cpp
 auto *FT = FunctionType::get(Type::getInt32Ty(M->getContext()), false);
 auto *F = Function::Create(FT, Function::ExternalLinkage, "Main", M.get());
-auto *block = BasicBlock::Create(Context, "MainEntry", F);
+auto *block = BasicBlock::Create(M->getContext(), "MainEntry", F);
 ```
 
 We create our function with external linkage, this means that the function is externally visible. Note that in LLVM IR, if 
@@ -246,9 +252,11 @@ You can see how this correspond to how we create a Module from before.
 The next line starts with a function definition keyword `define` followed by the return type as well as the function name.
 Note that the name of a function is followed after the `@`. It is also used for global.
 
-Then the word MainEntry stands for the entrance of the basic block we just create, having the ret 0 instruction inside it, as reflected
-by our use of LLVM API as well.
+Then the word MainEntry stands for the entrance of the basic block we just create, having the ret 0 instruction inside it.
+Since we created our basic block with the Parent being Main (with LLVM API from before), we can see that the basic block is
+indeed inserted at the end of the function.
 
+### Compiling LLVM IR
 It would be a sad state of affair if we can't run this beautiful LLVM IR code that we just generated.
 
 We can instead put our LLVM IR inside an `.ll` file and run it through llc, the LLVM static compiler.
@@ -266,13 +274,13 @@ This will give us a `.o` file, which we can put it through a compiler such as cl
 
 This blog post helps the reader to run and create a bare minimum example with llvm: a main function that returns 0
 
-While it is small, readers can now create a (useless) compiler that when inputted something like
+While it is small, readers can now create a compiler albeit useless that when inputted something like
 ```
-fn main() {
+fn main() -> int32 {
     ret 0;
 }
 ```
-, spits out an actual running executable :)
+, correctly spits out an actual running executable :)
 
 The next blog post will focus on structs, enums and how to return a custom type. Stay tune!
 
