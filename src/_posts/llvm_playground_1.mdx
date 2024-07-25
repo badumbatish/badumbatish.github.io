@@ -108,8 +108,8 @@ Run
 cmake -S . -B build && cmake --build build
 ```
 to use cmake to build using the CMakelists.txt script we have create in the current folder and store build artifacts in the `build` folder
-
 before adding these two lines that will help us build our `main.cpp`
+
 ```
 add_llvm_executable(main main.cpp)
 target_include_directories(main ${LLVM_INCLUDE_DIRS})
@@ -123,7 +123,7 @@ It will be fun :)
 First create your `main.cpp`,
 
 ### Include headers
-we'll first include our necessary header in order to use our helper functions
+We'll first include our necessary header in order to use our helper functions
 ```cpp
 #include <llvm/IR/LLVMContext.h>
 #include <llvm/IR/IRBuilder.h>
@@ -167,7 +167,11 @@ static BasicBlock * llvm::BasicBlock::Create (
 ```
 Let's walk through what each of these things mean besides LLVMContext.
 
-Twine is "A lightweight data structure for efficiently representing the concatenation of temporary values as strings." In our use, we name our basic block through this parameter.
+Twine is "A lightweight data structure for efficiently representing the concatenation of temporary values as strings." 
+It would entertain readers (for me at least) that this meaning carries over from the dictionary:
+> twine (noun) (u) : strong string made by twisting together two or more lengths of string
+
+In our use, we name our basic block through this parameter.
 Twine also has very nice string-based constructors that allow us to pass a `const char*` or a `std::string` in its place.
 
 The last two parameters is related to each other through the insertion position of the newly created basic block.
