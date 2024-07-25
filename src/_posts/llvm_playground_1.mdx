@@ -100,6 +100,11 @@ include(AddLLVM)
 
 SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 ```
+Here we define the minimum cmake version and the project name with the first two line.
+
+The third line asks CMake to find LLVM and crash if it can't be found.
+
+We'll use C++17. The [include](https://cmake.org/cmake/help/latest/command/include.html) command loads the [ AddLLVM.cmake ](https://github.com/llvm/llvm-project/blob/main/llvm/cmake/modules/AddLLVM.cmake) file so we can later use some of its utility function for our executable. 
 
 ### Verify your cmake script is good
 It helps to verify small steps by small steps that everything works.
@@ -111,11 +116,15 @@ to use cmake to build using the CMakelists.txt script we have create in the curr
 before adding these two lines that will help us build our `main.cpp`
 
 ```
-add_llvm_executable(main main.cpp)
+add_llvm_executable(main main.cpp) # This is from AddLLVM
 target_include_directories(main ${LLVM_INCLUDE_DIRS})
 ```
 
-and for your main.cpp, we'll try to use llvm to create a function `main()` that returns an int of 0 to generate LLVM IR and then use LLVM's llc to compile it into an object file and use clang to compile that object file to an executable :)
+`add_llvm_executable` is from AddLLVM and LLVM_INCLUDE_DIRS is a list of include paths to directories containing LLVM headers (more details at [llvm cmake](https://llvm.org/docs/CMake.html))
+
+We include that variable to our target so that main.cpp can include all the necessary header for usage later.
+
+For your main.cpp, we'll try to use llvm to create a function `main()` that returns an int of 0 to generate LLVM IR and then use LLVM's llc to compile it into an object file and use clang to compile that object file to an executable :)
 
 It will be fun :)
 
