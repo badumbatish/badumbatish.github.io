@@ -122,7 +122,7 @@ It will be fun :)
 ## cpp
 First create your `main.cpp`,
 
-## Include headers
+### Include headers
 we'll first include our necessary header in order to use our helper functions
 ```cpp
 #include <llvm/IR/LLVMContext.h>
@@ -168,6 +168,7 @@ static BasicBlock * llvm::BasicBlock::Create (
 Let's walk through what each of these things mean besides LLVMContext.
 
 Twine is "A lightweight data structure for efficiently representing the concatenation of temporary values as strings." In our use, we name our basic block through this parameter.
+Twine also has very nice string-based constructors that allow us to pass a `const char*` or a `std::string` in its place.
 
 The last two parameters is related to each other through the insertion position of the newly created basic block.
 LLVM documentation mandates:
@@ -185,8 +186,8 @@ using namespace llvm
 
 to ease our namespace typing.
 
-## Using helper functions
-First we create a Module pointer to operate on, the Module class constructor takes in a Contexts well as a string reference [StringRef](https://llvm.org/doxygen/classllvm_1_1StringRef.html) called Module ID.
+### Using LLVM functions
+First we create a Module pointer to operate on, the Module class constructor takes in a Context as well as a string reference [StringRef](https://llvm.org/doxygen/classllvm_1_1StringRef.html) called Module ID.
 
 It should help to know that StringRef has a constructor from various string-like types, thus hiding away its explicit constructor with "top" in the following code, in the Module's first argument in its constructor.
 
@@ -237,9 +238,13 @@ Wrapping the basic block with the builder, we can call methods on it to create i
 ```cpp
 IRBuilder<> Builder(block);
 Builder.CreateRet(Builder.getInt32(0));
- ```
+```
 
- We then verify our module for error, and then print out the llvm ir for us
+Since IRBuilder inherits from IRBuilderBase, you can see the avaiable helper methods to create instructions via IRBuilderBase's [public member functions](https://llvm.org/doxygen/classllvm_1_1IRBuilderBase.html)
+
+As an exercise, see if you can modify so that our main function returns void instead of Int32(0) :)
+
+We then verify our module for error, and then print out the llvm ir for us
 ```cpp
 verifyModule(*M, &errs());
 M->print(outs(), nullptr);
@@ -316,3 +321,57 @@ to just start create their own little compiler :)
 The next blog post will focus on structs, enums and how to return a custom type. Stay tune!
 
 Readers for more inquiries can contribute with a PR @ my website [ repo ](https://github.com/badumbatish/badumbatish.github.io) or email me via the website's contact.
+
+The rest of the blog post details the code listing for copy-and-paste-and-hacking enjoyers
+## Source code
+
+### CMake
+```
+cmake_minimum_required(VERSION 3.22)
+project(llvm_playground) 
+find_package(LLVM REQUIRED CONFIG)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+include(AddLLVM)
+
+SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+add_llvm_executable(main main.cpp)
+target_include_directories(main ${LLVM_INCLUDE_DIRS})
+```
+
+
+### main.cpp
+```cpp
+#include <llvm/IR/LLVMContext.h>
+#include <llvm/IR/IRBuilder.h>
+#include <llvm/IR/Module.h>
+#include <llvm/IR/Verifier.h>
+
+using namespace llvm;
+
+int main() {
+    LLVMContext Context;
+    auto M = std::unique_ptr<Module>(new Module("top", Context));
+
+    auto *FT = FunctionType::get(Type::getInt32Ty(M->getContext()), false);
+    auto *F = Function::Create(FT, Function::ExternalLinkage, "Main", M.get());
+    auto *block = BasicBlock::Create(M->getContext(), "MainEntry", F);
+
+    IRBuilder<> Builder(block);
+    Builder.CreateRet(Builder.getInt32(0));
+
+    verifyModule(*M, &errs());
+    M->print(outs(), nullptr);
+
+    return 0;
+}
+```
+
+### Full build instructions
+```bash
+ cmake -S . -B build && cmake --build build \
+&& ./build/main > temp.ll \
+&& llc -filetype=obj temp.ll && clang temp.o -o temp && ./temp
+```
