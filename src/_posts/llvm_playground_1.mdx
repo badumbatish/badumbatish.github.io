@@ -145,14 +145,14 @@ I really think sh4dy's explanation of Modules, BasicBlock is much more succint a
 
 What we'll do is we'll create a basic block in our `main` function, and then wrap that basic block around this IRBuilder to more easily do stuff.
 
-Necesary function includes the 4th constructor of IRBuilder
+Necesary functions includes the 4th constructor of IRBuilder
 ```cpp
 llvm::IRBuilder< FolderTy, InserterTy >::IRBuilder  (
         BasicBlock *TheBB,
         MDNode * FPMathTag = nullptr,
         ArrayRef< OperandBundleDef >OpBundles = std::nullopt )		
 ```
-Without going into much detail (because I also don't know anything), MDNode stands for a metadata node and the OpBundles stands for ... something.
+We choose this constructor since it only requires 1 input of BasicBlock*; without going into much detail (because I also don't know anything), MDNode stands for a metadata node and the OpBundles stands for ... something.
 
 and the construction of BasicBlock
 ```cpp
@@ -206,10 +206,28 @@ auto *F = Function::Create(FT, Function::ExternalLinkage, "Main", M.get());
 auto *block = BasicBlock::Create(M->getContext(), "MainEntry", F);
 ```
 
-We create our function with external linkage, this means that the function is externally visible. Note that in LLVM IR, if 
+First we create a type for our function with FunctionType::get(). We'll use the 2nd overloaded static constructor, creating "a FunctionType taking no parameters."
+```cpp
+FunctionType * FunctionType::get ( 
+        Type *Result,
+        bool isVarArg )
+```
+
+Second, we create our function with Function::Create(). 
+```cpp
+static Function * llvm::Function::Create (
+        FunctionType * 	Ty,
+        LinkageTypes 	Linkage,
+        const Twine & 	N = "",
+        Module * 	M = nullptr )
+```
+The first argument we get from *FT .We create our function with external linkage, this means that the function is externally visible. Note that in LLVM IR, if 
 the function has no linkage keyword, it is implicitly meant that it has external linkage. Implementation-wise, I think it makes sense that
 we create the main function with this linkage, it would be crazy there is multiple main function in each source file that can all be run :) But of course,
 what [ joy ](https://github.com/overmighty/i-use-arch-btw) do we have if we limit ourselves.
+
+We have already introduced the last two parameters in this Create() function before. We will name our function with "Main" and this will be associated to the Module "top."
+This, like all things, should be reflected when we output our LLVM IR.
 
 Now that we got our basic block, we can use the IRBuilder that we talked about from before to create an instruction that returns 0.
 Wrapping the basic block with the builder, we can call methods on it to create instructions.
