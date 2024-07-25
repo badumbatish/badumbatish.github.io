@@ -11,8 +11,11 @@ Inspired by mcyoung's [llvm ir](https://mcyoung.xyz/2023/08/01/llvm-ir/) blog an
 
 In this blog post, let's try to get a minimal example of LLVM running.
 
+Throughout the blog post, I'll try to help explain what each piece of functions do, as well as connect the dots between the LLVM API calls and the resulting LLVM IR.
+
 We'll get started by installing LLVM, write a CMakeLists.txt to build our code, and create a main.cpp that uses LLVM API to generate
 a `main` function that returns 0.
+
 
 ## Installing llvm
 
@@ -24,7 +27,7 @@ On my MacOS, I'll use homebrew to install llvm
 brew install llvm
 ```
 
-On MacOS, for some reason CMake fails to recognize and find LLVm via `find_package()` so 
+On MacOS, for some reason CMake fails to recognize and find LLVM via `find_package()` so 
 you would have to configure it with some extra steps
 
 Run
@@ -304,6 +307,12 @@ fn main() -> int32 {
 
 All they need is a small lexer and parser to support the small example :)
 
+Heck, they can even do something like
+```cpp
+if (str.startsWith("fn main()")) { .... }
+```
+to just start create their own little compiler :)
+
 The next blog post will focus on structs, enums and how to return a custom type. Stay tune!
 
-
+Readers for more inquiries can contribute with a PR @ my website [ repo ](https://github.com/badumbatish/badumbatish.github.io) or email me via the website's contact.
