@@ -1,0 +1,318 @@
+1:HL["/_next/static/media/7385e8d9d3c5518f-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+2:HL["/_next/static/css/8af0b8e8fa4b56d5.css","style",{"crossOrigin":""}]
+0:["X3XygLfX3vsykKS7iMmlM",[[["",{"children":["posts",{"children":[["id","what_I_did_for_gsoc_2024","d"],{"children":["__PAGE__?{\"id\":\"what_I_did_for_gsoc_2024\"}",{}]}]}]},"$undefined","$undefined",true],"$L3",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/8af0b8e8fa4b56d5.css","precedence":"next","crossOrigin":""}]],"$L4"]]]]
+5:I[6954,[],""]
+6:I[7264,[],""]
+9:I[8187,["986","static/chunks/986-77351ce039fbbc1a.js","185","static/chunks/app/layout-983322a10cdcef71.js"],""]
+3:[null,["$","html",null,{"lang":"en","className":"px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","a",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"loading":"$undefined","loadingStyles":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[],"childProp":{"current":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children"],"loading":"$undefined","loadingStyles":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined","childProp":{"current":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children",["id","what_I_did_for_gsoc_2024","d"],"children"],"loading":"$undefined","loadingStyles":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined","childProp":{"current":["$L7","$L8",null],"segment":"__PAGE__?{\"id\":\"what_I_did_for_gsoc_2024\"}"},"styles":[]}],"segment":["id","what_I_did_for_gsoc_2024","d"]},"styles":[]}],"segment":"posts"},"styles":[]}]}],["$","$L9",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]}]]}]}],null]
+a:T2cb3,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#main-contribution-aspects">Main contribution aspects</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#issues-and-prs">Issues and PRs</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#issues">Issues</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#prs">PRs</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#end-words">End words</a></li></ol></nav><p>Hi everyone, this article is a requirement for my GSoc Final Submission, linking directly to the submission.</p>
+<p>This article will include the summary of my contribution, where you can find all my filed issues and PRs.</p>
+<h2 id="main-contribution-aspects"><a href="#main-contribution-aspects">Main contribution aspects</a></h2>
+<p>Overall, I contributed in 3 main aspects:</p>
+<ul>
+<li>
+<p><strong>My main project</strong> - Inline Assembly in rust: I coded up the parser, set up the code infrastructure for TREE IR generation in the backend, along with AST, HIR lowering and typechecking.</p>
+</li>
+<li>
+<p><strong>CI/CD</strong>: I helped maintain and improve CI/CD pipeline. This includes resolving dependency issues in Github actions, adding support for 32 bit CI and glibc compliance CI.
+I also created a docker-compose dev environment for MacOS-based contributors, with all libraries and dependency installed; this helps them (and myself) bypasses MacOS's annoying build and link issues.</p>
+</li>
+<li>
+<p><strong>Code maintainance/Bug Fixes/Code Review</strong>: I maintained the code base via issues filed by my mentor and other contributors. I also helped fix some minor bugs in IR lowering and typechecking. I also help review some new, simple PRs for contributors.</p>
+</li>
+</ul>
+<h2 id="issues-and-prs"><a href="#issues-and-prs">Issues and PRs</a></h2>
+<p>Below is all the issues, PRs and commits I've made to the <a href="https://github.com/Rust-GCC/gccrs">gccrs</a> repository, up to Aug 22 2024, after producing this I ended up closing some resolved issues that has been silently addressed in some PRs.</p>
+<p>The tables are produced via <code>gh</code> cli tool and some <code>I use nvim btw</code> love :)</p>
+<h3 id="issues"><a href="#issues">Issues</a></h3>
+<p>Here's a formatted version of all my issues, up to Aug 22 2024, procured via <code>gh issue list -A badumbatish --state all</code>:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Status</th>
+<th>Title</th>
+<th>Labels</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/issues/3102">3102</a></td>
+<td>OPEN</td>
+<td>Set up the rest of HIR pipeline in InlineAsm</td>
+<td></td>
+<td>2024-07-27T03:20:50Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/issues/3099">3099</a></td>
+<td>OPEN</td>
+<td>parse_expr not stopping on =></td>
+<td></td>
+<td>2024-07-25T19:41:07Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/issues/3072">3072</a></td>
+<td>OPEN</td>
+<td>asm parser lacking <code>label</code> parse functionality</td>
+<td></td>
+<td>2024-07-01T08:54:12Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/issues/3069">3069</a></td>
+<td>OPEN</td>
+<td>Make asm parser stores parse result</td>
+<td></td>
+<td>2024-06-25T16:12:44Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/issues/3062">3062</a></td>
+<td>CLOSED</td>
+<td>Add ExprType::InlineAsm variant to ExprType enum</td>
+<td></td>
+<td>2024-06-24T13:23:55Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/issues/3061">3061</a></td>
+<td>OPEN</td>
+<td>Typechecking of asm! failed in <code>let _</code></td>
+<td>bug</td>
+<td>2024-06-24T13:24:07Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/issues/3057">3057</a></td>
+<td>OPEN</td>
+<td>asm! macro failed to exhaustively parse all of options(), clobber_abis(), and register operands</td>
+<td>bug, expansion</td>
+<td>2024-06-18T13:32:24Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/issues/3052">3052</a></td>
+<td>OPEN</td>
+<td>Fully incorporate tl::expected into InlineAsm parsing</td>
+<td></td>
+<td>2024-06-14T09:54:17Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/issues/3051">3051</a></td>
+<td>CLOSED</td>
+<td>Remove unnecessary #include from rust-expr.h</td>
+<td>good-first-pr, cleanup</td>
+<td>2024-07-11T09:23:53Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/issues/3050">3050</a></td>
+<td>CLOSED</td>
+<td>Safe guard InlineAsm-related structs</td>
+<td></td>
+<td>2024-07-03T09:58:52Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/issues/3048">3048</a></td>
+<td>OPEN</td>
+<td>Handle outer attributes properly for inline assembly</td>
+<td></td>
+<td>2024-06-14T09:55:37Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/issues/2937">2937</a></td>
+<td>CLOSED</td>
+<td>Docker image and container for Mac</td>
+<td></td>
+<td>2024-05-10T14:53:25Z</td>
+</tr>
+</tbody>
+</table>
+<h3 id="prs"><a href="#prs">PRs</a></h3>
+<p>Here's a formatted version of all my pull requests, up to Aug 22 2024, procured via <code>gh pr list -A badumbatish --state all</code>:</p>
+<table>
+<thead>
+<tr>
+<th>PR Number</th>
+<th>Title</th>
+<th>Branch/Author</th>
+<th>Status</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3133">3133</a></td>
+<td>Fix the disorder struct and class in inline asm</td>
+<td>badumbatish:inline_asm_class_struct</td>
+<td>MERGED</td>
+<td>2024-08-20T07:41:34Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3119">3119</a></td>
+<td>Add running cicd 32bit</td>
+<td>badumbatish:ccpp32</td>
+<td>OPEN</td>
+<td>2024-08-04T19:47:37Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3109">3109</a></td>
+<td>Inline asm resolve expr</td>
+<td>badumbatish:inline_asm_name_res_typeck</td>
+<td>MERGED</td>
+<td>2024-07-31T03:41:32Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3103">3103</a></td>
+<td>Inline asm hir pipeline</td>
+<td>badumbatish:inline_asm_hir_pipeline</td>
+<td>MERGED</td>
+<td>2024-07-27T08:22:57Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3098">3098</a></td>
+<td>Fix the parser's operand and flags storage</td>
+<td>badumbatish:asm_parser_fix_operand</td>
+<td>MERGED</td>
+<td>2024-07-25T16:38:11Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3093">3093</a></td>
+<td>Change assertion of asm operand constructor</td>
+<td>badumbatish:asm_reassert_operand</td>
+<td>MERGED</td>
+<td>2024-07-21T22:46:28Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3090">3090</a></td>
+<td>Added options for ParseMode</td>
+<td>badumbatish:parse_format_asm</td>
+<td>MERGED</td>
+<td>2024-07-20T07:48:51Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3081">3081</a></td>
+<td>Pin node16 by allowing old version</td>
+<td>badumbatish:libgc_226_fix</td>
+<td>MERGED</td>
+<td>2024-07-10T02:32:08Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3074">3074</a></td>
+<td>Safe-guard InlineAsm structs</td>
+<td>badumbatish:safeguard_inline_asm_struct</td>
+<td>MERGED</td>
+<td>2024-07-01T00:43:59Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3073">3073</a></td>
+<td>Store parse result of parse_format_string(s)</td>
+<td>badumbatish:asm_parse_store_result</td>
+<td>MERGED</td>
+<td>2024-07-01T00:24:42Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3063">3063</a></td>
+<td>Added ExprType::InlineAsm</td>
+<td>badumbatish:expr_type_inline_asm</td>
+<td>MERGED</td>
+<td>2024-06-23T18:06:02Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3060">3060</a></td>
+<td>Asm generic il codegen</td>
+<td>badumbatish:asm_generic_il</td>
+<td>DRAFT</td>
+<td>2024-06-23T14:11:44Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3059">3059</a></td>
+<td>Add test case for using asm! outside of unsafe </td>
+<td>badumbatish:unsafe_asm</td>
+<td>MERGED</td>
+<td>2024-06-22T06:40:27Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3053">3053</a></td>
+<td>Incorporate tl::expected into InlineAsm parsing</td>
+<td>badumbatish:inline_asm_expected</td>
+<td>MERGED</td>
+<td>2024-06-14T06:08:01Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3011">3011</a></td>
+<td>Remove cstddef header from rust-fmt</td>
+<td>badumbatish:remove_cstddef</td>
+<td>MERGED</td>
+<td>2024-05-19T03:03:05Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/3002">3002</a></td>
+<td>Make gccrs recognize negative_impls</td>
+<td>badumbatish:gating_neg_impl</td>
+<td>MERGED</td>
+<td>2024-05-15T22:06:45Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/2982">2982</a></td>
+<td>Inline asm</td>
+<td>badumbatish:inline_asm</td>
+<td>MERGED</td>
+<td>2024-05-08T19:41:27Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/2981">2981</a></td>
+<td>Cleanup macro invoc</td>
+<td>badumbatish:cleanup_macro_invoc</td>
+<td>OPEN</td>
+<td>2024-05-08T17:47:46Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/2980">2980</a></td>
+<td>Fix all tests in execute to be \r\n</td>
+<td>badumbatish:line_ending_in_execute</td>
+<td>MERGED</td>
+<td>2024-05-08T06:47:12Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/2941">2941</a></td>
+<td>Add an alternative solution on MacOS</td>
+<td>badumbatish:update_readme_macos_build</td>
+<td>MERGED</td>
+<td>2024-04-05T03:10:57Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/2911">2911</a></td>
+<td>Store visibility properly in ExternalTypeItem: Fixes #2897</td>
+<td>badumbatish:visibility_mod_extern_types</td>
+<td>MERGED</td>
+<td>2024-03-09T22:46:59Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/2895">2895</a></td>
+<td>Add error emitting when we can't resolve id expr</td>
+<td>badumbatish:building_upstream_warning</td>
+<td>MERGED</td>
+<td>2024-03-01T10:40:34Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/2874">2874</a></td>
+<td>First stab at issue 2855 by splitting the two maps</td>
+<td>badumbatish:split_up_rust_macro_builtsin</td>
+<td>MERGED</td>
+<td>2024-02-25T21:13:02Z</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Rust-GCC/gccrs/pull/2871">2871</a></td>
+<td>Fix FixMe in changing return type of builtin_macro_from_string() from BuiltinMacro to tl::optional&#x3C;BuiltinMacro></td>
+<td>badumbatish:split_up_rust_macro_builtins</td>
+<td>MERGED</td>
+<td>2024-02-23T21:22:58Z</td>
+</tr>
+</tbody>
+</table>
+<h2 id="end-words"><a href="#end-words">End words</a></h2>
+<p>It's been a blessing to contribute to gccrs this summer (and get paid for it hehe). I am mentored by Arthur Cohen and Pierre-Emmanuel "PEP" Patry; Arthur helped me with the direction of the project and code reviews while Pierre-Emmanuel provided me with code infrastructure navigation and PR code-reviews, both of which are much needed.</p>
+<p>I am looking for internships/new grad gigs for 2025 in compiler and would love to connect and be informed of new opportunities. Please contact me at either:</p>
+<ul>
+<li><a href="mailto:tanghocle456@gmail.com">tanghocle456@gmail.com</a></li>
+<li><a href="mailto:jjasmine@berkeley.edu">jjasmine@berkeley.edu</a></li>
+</ul>
+<p>Thank you for reading :)</p>8:["$","article",null,{"className":"p-8 prose  max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto","children":[["$","div",null,{"className":"flex justify-center text-2xl font-bold ","children":["$","h2",null,{"children":"What I did for GSoc 2024"}]}],["$","div",null,{"className":"flex justify-start text-xl font-bold underline","children":["$","h4",null,{"children":"2024-08-22"}]}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$a"}}]]}]
+4:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"What I did for GSoc 2024"}],["$","meta","2",{"name":"description","content":"Built with NextJS, TailwindCSS, and a tonnn of loveee :)"}],["$","meta","3",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link","4",{"rel":"icon","href":"/_next/static/media/pfp3.5cd65164.png"}],["$","meta","5",{"name":"next-size-adjust"}]]
+7:null
