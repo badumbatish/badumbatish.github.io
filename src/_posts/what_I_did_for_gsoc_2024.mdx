@@ -28,53 +28,51 @@ The tables are produced via `gh` cli tool and some `I use nvim btw` love :)
 ### Issues
 Here's a formatted version of all my issues, up to Aug 22 2024, procured via `gh issue list -A badumbatish --state all`:
 
-| ID   | Status  | Title                                                                                                    | Labels                     | Date                   |
+| Issue Number | Issue Status  | Issue Title                                                                                                    | Labels                     | Filed Date                   |
 |------|---------|----------------------------------------------------------------------------------------------------------|----------------------------|------------------------|
-| [3102](https://github.com/Rust-GCC/gccrs/issues/3102) | OPEN    | Set up the rest of HIR pipeline in InlineAsm                                                              |                            | 2024-07-27T03:20:50Z   |
-| [3099](https://github.com/Rust-GCC/gccrs/issues/3099) | OPEN    | parse_expr not stopping on =>                                                                             |                            | 2024-07-25T19:41:07Z   |
-| [3072](https://github.com/Rust-GCC/gccrs/issues/3072) | OPEN    | asm parser lacking `label` parse functionality                                                           |                            | 2024-07-01T08:54:12Z   |
-| [3069](https://github.com/Rust-GCC/gccrs/issues/3069) | OPEN    | Make asm parser stores parse result                                                                      |                            | 2024-06-25T16:12:44Z   |
-| [3062](https://github.com/Rust-GCC/gccrs/issues/3062) | CLOSED  | Add ExprType::InlineAsm variant to ExprType enum                                                          |                            | 2024-06-24T13:23:55Z   |
-| [3061](https://github.com/Rust-GCC/gccrs/issues/3061) | OPEN    | Typechecking of asm! failed in `let _`                                                                    | bug                        | 2024-06-24T13:24:07Z   |
-| [3057](https://github.com/Rust-GCC/gccrs/issues/3057) | OPEN    | asm! macro failed to exhaustively parse all of options(), clobber_abis(), and register operands           | bug, expansion             | 2024-06-18T13:32:24Z   |
-| [3052](https://github.com/Rust-GCC/gccrs/issues/3052) | OPEN    | Fully incorporate tl::expected into InlineAsm parsing                                                     |                            | 2024-06-14T09:54:17Z   |
-| [3051](https://github.com/Rust-GCC/gccrs/issues/3051) | CLOSED  | Remove unnecessary #include from rust-expr.h                                                              | good-first-pr, cleanup     | 2024-07-11T09:23:53Z   |
-| [3050](https://github.com/Rust-GCC/gccrs/issues/3050) | CLOSED  | Safe guard InlineAsm-related structs                                                                      |                            | 2024-07-03T09:58:52Z   |
-| [3048](https://github.com/Rust-GCC/gccrs/issues/3048) | OPEN    | Handle outer attributes properly for inline assembly                                                      |                            | 2024-06-14T09:55:37Z   |
-| [2937](https://github.com/Rust-GCC/gccrs/issues/2937) | CLOSED  | Docker image and container for Mac                                                                        |                            | 2024-05-10T14:53:25Z   |
+| [3102](https://github.com/Rust-GCC/gccrs/issues/3102) | **OPEN**    | Set up the rest of HIR pipeline in InlineAsm                                                              |                            | 2024-07-27T03:20:50Z   |
+| [3099](https://github.com/Rust-GCC/gccrs/issues/3099) | **OPEN**    | parse_expr not stopping on =>                                                                             |                            | 2024-07-25T19:41:07Z   |
+| [3072](https://github.com/Rust-GCC/gccrs/issues/3072) | **OPEN**    | asm parser lacking `label` parse functionality                                                           |                            | 2024-07-01T08:54:12Z   |
+| [3069](https://github.com/Rust-GCC/gccrs/issues/3069) | **OPEN**    | Make asm parser stores parse result                                                                      |                            | 2024-06-25T16:12:44Z   |
+| [3062](https://github.com/Rust-GCC/gccrs/issues/3062) | **CLOSED**  | Add ExprType::InlineAsm variant to ExprType enum                                                          |                            | 2024-06-24T13:23:55Z   |
+| [3061](https://github.com/Rust-GCC/gccrs/issues/3061) | **OPEN**    | Typechecking of asm! failed in `let _`                                                                    | bug                        | 2024-06-24T13:24:07Z   |
+| [3057](https://github.com/Rust-GCC/gccrs/issues/3057) | **OPEN**    | asm! macro failed to exhaustively parse all of options(), clobber_abis(), and register operands           | bug, expansion             | 2024-06-18T13:32:24Z   |
+| [3052](https://github.com/Rust-GCC/gccrs/issues/3052) | **OPEN**    | Fully incorporate tl::expected into InlineAsm parsing                                                     |                            | 2024-06-14T09:54:17Z   |
+| [3051](https://github.com/Rust-GCC/gccrs/issues/3051) | **CLOSED**  | Remove unnecessary #include from rust-expr.h                                                              | good-first-pr, cleanup     | 2024-07-11T09:23:53Z   |
+| [3050](https://github.com/Rust-GCC/gccrs/issues/3050) | **CLOSED**  | Safe guard InlineAsm-related structs                                                                      |                            | 2024-07-03T09:58:52Z   |
+| [3048](https://github.com/Rust-GCC/gccrs/issues/3048) | **OPEN**    | Handle outer attributes properly for inline assembly                                                      |                            | 2024-06-14T09:55:37Z   |
+| [2937](https://github.com/Rust-GCC/gccrs/issues/2937) | **CLOSED**  | Docker image and container for Mac                                                                        |                            | 2024-05-10T14:53:25Z   |
 
 ### PRs
 
 
 Here's a formatted version of all my pull requests, up to Aug 22 2024, procured via `gh pr list -A badumbatish --state all`:
-
-| PR Number | Title                                                                            | Branch/Author                                | Status  | Date                      |
-|-----------|----------------------------------------------------------------------------------|---------------------------------------------|---------|---------------------------|
-| [3133](https://github.com/Rust-GCC/gccrs/pull/3133)      | Fix the disorder struct and class in inline asm                                  | badumbatish:inline_asm_class_struct         | MERGED  | 2024-08-20T07:41:34Z      |
-| [3119](https://github.com/Rust-GCC/gccrs/pull/3119)      | Add running cicd 32bit                                                           | badumbatish:ccpp32| OPEN    | 2024-08-04T19:47:37Z      |
-| [3109](https://github.com/Rust-GCC/gccrs/pull/3109)      | Inline asm resolve expr                                                          | badumbatish:inline_asm_name_res_typeck      | MERGED  | 2024-07-31T03:41:32Z      |
-| [3103](https://github.com/Rust-GCC/gccrs/pull/3103)      | Inline asm hir pipeline                                                          | badumbatish:inline_asm_hir_pipeline         | MERGED  | 2024-07-27T08:22:57Z      |
-| [3098](https://github.com/Rust-GCC/gccrs/pull/3098)      | Fix the parser's operand and flags storage                                       | badumbatish:asm_parser_fix_operand          | MERGED  | 2024-07-25T16:38:11Z      |
-| [3093](https://github.com/Rust-GCC/gccrs/pull/3093)      | Change assertion of asm operand constructor                                      | badumbatish:asm_reassert_operand            | MERGED  | 2024-07-21T22:46:28Z      |
-| [3090](https://github.com/Rust-GCC/gccrs/pull/3090)      | Added options for ParseMode                                                      | badumbatish:parse_format_asm                | MERGED  | 2024-07-20T07:48:51Z      |
-| [3081](https://github.com/Rust-GCC/gccrs/pull/3081)      | Pin node16 by allowing old version                                               | badumbatish:libgc_226_fix                   | MERGED  | 2024-07-10T02:32:08Z      |
-| [3074](https://github.com/Rust-GCC/gccrs/pull/3074)      | Safe-guard InlineAsm structs                                                     | badumbatish:safeguard_inline_asm_struct     | MERGED  | 2024-07-01T00:43:59Z      |
-| [3073](https://github.com/Rust-GCC/gccrs/pull/3073)      | Store parse result of parse_format_string(s)                                     | badumbatish:asm_parse_store_result          | MERGED  | 2024-07-01T00:24:42Z      |
-| [3063](https://github.com/Rust-GCC/gccrs/pull/3063)      | Added ExprType::InlineAsm                                                        | badumbatish:expr_type_inline_asm            | MERGED  | 2024-06-23T18:06:02Z      |
-| [3060](https://github.com/Rust-GCC/gccrs/pull/3060)      | Asm generic il codegen                                                           | badumbatish:asm_generic_il                  | DRAFT   | 2024-06-23T14:11:44Z      |
-| [3059](https://github.com/Rust-GCC/gccrs/pull/3059)      | Add test case for using asm! outside of unsafe {}                                | badumbatish:unsafe_asm                      | MERGED  | 2024-06-22T06:40:27Z      |
-| [3053](https://github.com/Rust-GCC/gccrs/pull/3053)      | Incorporate tl::expected into InlineAsm parsing                                  | badumbatish:inline_asm_expected             | MERGED  | 2024-06-14T06:08:01Z      |
-| [3011](https://github.com/Rust-GCC/gccrs/pull/3011)      | Remove cstddef header from rust-fmt                                               | badumbatish:remove_cstddef                  | MERGED  | 2024-05-19T03:03:05Z      |
-| [3002](https://github.com/Rust-GCC/gccrs/pull/3002)      | Make gccrs recognize negative_impls                                              | badumbatish:gating_neg_impl                 | MERGED  | 2024-05-15T22:06:45Z      |
-| [2982](https://github.com/Rust-GCC/gccrs/pull/2982)      | Inline asm                                                                       | badumbatish:inline_asm                      | MERGED  | 2024-05-08T19:41:27Z      |
-| [2981](https://github.com/Rust-GCC/gccrs/pull/2981)      | Cleanup macro invoc                                                              | badumbatish:cleanup_macro_invoc             | OPEN    | 2024-05-08T17:47:46Z      |
-| [2980](https://github.com/Rust-GCC/gccrs/pull/2980)      | Fix all tests in execute to be \r\n                                              | badumbatish:line_ending_in_execute          | MERGED  | 2024-05-08T06:47:12Z      |
-| [2941](https://github.com/Rust-GCC/gccrs/pull/2941)      | Add an alternative solution on MacOS                                             | badumbatish:update_readme_macos_build       | MERGED  | 2024-04-05T03:10:57Z      |
-| [2911](https://github.com/Rust-GCC/gccrs/pull/2911)      | Store visibility properly in ExternalTypeItem: Fixes #2897                       | badumbatish:visibility_mod_extern_types     | MERGED  | 2024-03-09T22:46:59Z      |
-| [2895](https://github.com/Rust-GCC/gccrs/pull/2895)      | Add error emitting when we can't resolve id expr                                 | badumbatish:building_upstream_warning       | MERGED  | 2024-03-01T10:40:34Z      |
-| [2874](https://github.com/Rust-GCC/gccrs/pull/2874)      | First stab at issue 2855 by splitting the two maps                               | badumbatish:split_up_rust_macro_builtsin    | MERGED  | 2024-02-25T21:13:02Z      |
-| [2871](https://github.com/Rust-GCC/gccrs/pull/2871)      | Fix FixMe in changing return type of builtin_macro_from_string() from BuiltinMacro to tl::optional\<BuiltinMacro\> | badumbatish:split_up_rust_macro_builtins | MERGED  | 2024-02-23T21:22:58Z      |
-
+| PR Number | PR Status  | PR Title                                                                                      | Filed Date                |
+|-----------|---------|--------------------------------------------------------------------------------------------|---------------------|
+| [3133](https://github.com/Rust-GCC/gccrs/pull/3133)      | **MERGED**  | Fix the disorder struct and class in inline asm                                             | 2024-08-20T07:41:34Z |
+| [3119](https://github.com/Rust-GCC/gccrs/pull/3119)      | **OPEN**    | Add running cicd 32bit                                                                      | 2024-08-04T19:47:37Z |
+| [3109](https://github.com/Rust-GCC/gccrs/pull/3109)      | **MERGED**  | Inline asm resolve expr                                                                     | 2024-07-31T03:41:32Z |
+| [3103](https://github.com/Rust-GCC/gccrs/pull/3103)      | **MERGED**  | Inline asm hir pipeline                                                                     | 2024-07-27T08:22:57Z |
+| [3098](https://github.com/Rust-GCC/gccrs/pull/3098)      | **MERGED**  | Fix the parser's operand and flags storage                                                  | 2024-07-25T16:38:11Z |
+| [3093](https://github.com/Rust-GCC/gccrs/pull/3093)      | **MERGED**  | Change assertion of asm operand constructor                                                 | 2024-07-21T22:46:28Z |
+| [3090](https://github.com/Rust-GCC/gccrs/pull/3090)      | **MERGED**  | Added options for ParseMode                                                                 | 2024-07-20T07:48:51Z |
+| [3081](https://github.com/Rust-GCC/gccrs/pull/3081)      | **MERGED**  | Pin node16 by allowing old version                                                          | 2024-07-10T02:32:08Z |
+| [3074](https://github.com/Rust-GCC/gccrs/pull/3074)      | **MERGED**  | Safe-guard InlineAsm structs                                                                | 2024-07-01T00:43:59Z |
+| [3073](https://github.com/Rust-GCC/gccrs/pull/3073)      | **MERGED**  | Store parse result of parse_format_string(s)                                                | 2024-07-01T00:24:42Z |
+| [3063](https://github.com/Rust-GCC/gccrs/pull/3063)      | **MERGED**  | Added ExprType::InlineAsm                                                                   | 2024-06-23T18:06:02Z |
+| [3060](https://github.com/Rust-GCC/gccrs/pull/3060)      | **DRAFT**   | Asm generic il codegen                                                                      | 2024-06-23T14:11:44Z |
+| [3059](https://github.com/Rust-GCC/gccrs/pull/3059)      | **MERGED**  | Add test case for using asm! outside of unsafe {}                                           | 2024-06-22T06:40:27Z |
+| [3053](https://github.com/Rust-GCC/gccrs/pull/3053)      | **MERGED**  | incorporate tl::expected into InlineAsm parsing                                             | 2024-06-14T06:08:01Z |
+| [3011](https://github.com/Rust-GCC/gccrs/pull/3011)      | **MERGED**  | Remove cstddef header from rust-fmt                                                         | 2024-05-19T03:03:05Z |
+| [3002](https://github.com/Rust-GCC/gccrs/pull/3002)      | **MERGED**  | Make gccrs recognize negative_impls                                                         | 2024-05-15T22:06:45Z |
+| [2982](https://github.com/Rust-GCC/gccrs/pull/2982)      | **MERGED**  | Inline asm                                                                                  | 2024-05-08T19:41:27Z |
+| [2981](https://github.com/Rust-GCC/gccrs/pull/2981)      | **OPEN**    | Cleanup macro invoc                                                                         | 2024-05-08T17:47:46Z |
+| [2980](https://github.com/Rust-GCC/gccrs/pull/2980)      | **MERGED**  | Fix all tests in execute to be \r\n                                                         | 2024-05-08T06:47:12Z |
+| [2941](https://github.com/Rust-GCC/gccrs/pull/2941)      | **MERGED**  | Add an alternative solution on MacOS                                                        | 2024-04-05T03:10:57Z |
+| [2911](https://github.com/Rust-GCC/gccrs/pull/2911)      | **MERGED**  | Store visibility properly in ExternalTypeItem: Fixes #2897                                  | 2024-03-09T22:46:59Z |
+| [2895](https://github.com/Rust-GCC/gccrs/pull/2895)      | **MERGED**  | Add error emitting when we can't resolve id expr                                            | 2024-03-01T10:40:34Z |
+| [2874](https://github.com/Rust-GCC/gccrs/pull/2874)      | **MERGED**  | First stab at issue 2855 by splitting the two maps                                          | 2024-02-25T21:13:02Z |
+| [2871](https://github.com/Rust-GCC/gccrs/pull/2871)      | **MERGED**  | Fix FixMe in changing return type of builtin_macro_from_string() from BuiltinMacro to tl::optional/<BuiltinMacro/> | 2024-02-23T21:22:58Z |
 
 ## End words
 
@@ -84,6 +82,6 @@ I am looking for internships/new grad gigs for 2025 in compiler and would love t
 - tanghocle456@gmail.com (for job posting)
 - jjasmine@berkeley.edu (for job posting)
 - https://x.com/thisisjjasmine (if you like sapphic posting and compiler content)
-- 
+ 
 
 Thank you for reading :)
