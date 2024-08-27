@@ -8,9 +8,22 @@ Hi everyone, this article is a requirement for my GSoc Final Submission, linking
 
 This article will include the summary of my contribution, where you can find all my filed issues and PRs.
 
-## Main contribution aspects
+## Introduction
+
 
 This summer I worked on the [gccrs](https://github.com/Rust-GCC/gccrs) project, a GCC Front-end for Rust.
+
+gccrs is a project to implement the Rust programming languages from scratch in gcc codebase in order to support a wider amount of targets. It currently targets the version 1.49 of Rust right now and is supported by Open Source Security and Embecosm.
+
+By doing this, it helps with a couple things:
+
+- Targets architecture not available with rustc due to the use of LLVM. (SuperH for example, which powers the Dreamcast!)
+- Benefit from the existing GCC community and ecosystem.
+- Help with acceptation of Rust in the Linnux kernel
+- Help with acceptation of Rust in other fields, where having multiple compilers helps.
+- Allow using Rust on targets with very old C++ compilers! (Targets with GCC 4.8 version (which released March 22, 2013) can use Rust)
+
+## Main contribution aspects
 
 Overall, I contributed in 3 main aspects:
 
@@ -43,6 +56,8 @@ Here's a formatted version of all my issues, up to Aug 22 2024, procured via `gh
 | [3048](https://github.com/Rust-GCC/gccrs/issues/3048) | **OPEN**    | Handle outer attributes properly for inline assembly                                                      |                            | 2024-06-14T09:55:37Z   |
 | [2937](https://github.com/Rust-GCC/gccrs/issues/2937) | **CLOSED**  | Docker image and container for Mac                                                                        |                            | 2024-05-10T14:53:25Z   |
 
+The closed/filed rate is 4/8, which is not high. Through out coding up the parser and the backend infra, I realized that there are these little issues that's just easier to just fix and not necessary filed. There is also issues that are discussed via [hackmd notes](https://gist.github.com/badumbatish/9823719ef359a58b131220d9d79d2aec) between me and my mentor that are not necessarily filed via GitHub. Again, not to defend myself, but just to offer some perspectives :)
+
 ### PRs
 
 
@@ -73,6 +88,19 @@ Here's a formatted version of all my pull requests, up to Aug 22 2024, procured 
 | [2895](https://github.com/Rust-GCC/gccrs/pull/2895)      | **MERGED**  | Add error emitting when we can't resolve id expr                                            | 2024-03-01T10:40:34Z |
 | [2874](https://github.com/Rust-GCC/gccrs/pull/2874)      | **MERGED**  | First stab at issue 2855 by splitting the two maps                                          | 2024-02-25T21:13:02Z |
 | [2871](https://github.com/Rust-GCC/gccrs/pull/2871)      | **MERGED**  | Fix FixMe in changing return type of builtin_macro_from_string() from BuiltinMacro to tl::optional/<BuiltinMacro/> | 2024-02-23T21:22:58Z |
+
+The merged/filed rate is 22/25. Half of the PRs are easy to fix / fixable within a short amount of time (Code maintanence aspect). The other half is medium in difficulty, related to my summer project (Project aspect).
+
+## Introspection
+
+Thinking back about the summer internship, I think I wasted a lot of time setting up dev envs, compiling and testing codes. Coding and building gcc/gccrs on a Macbook really sucks since the build step is confusing and there isn't a clear guide on how to do it. Compiling and testing requires a lot of time and for a person with ADHD, everytime I press that [\<space\>b](https://github.com/badumbatish/brt.nvim) button, my mind goes to YouTube and Discord and it really disrupts my flow; I wish getting ADHD meds in America was easier.
+
+As past Jasmine used to say:
+> idk its just hard to do stuff, i'm programming and it takes like x to compile and y minutes to test so i can't focus and then i go and change sth to test out my theory i have to wait like a bit for it to compile and test and then i just don't have any ideas cause i forgot them already and then an email comes in or a zulip msg comes in from my mentor and then fuck now i check them and then i was like "ok now what do i do" then the cycle continues 
+
+
+On the other hand, I did learn a lot. I learned how necessary it is to let the compiler do the work for you and how to design the software / compiler in a way that takes advantage of this as much as possible. This also applies to general stuff in my day to day tasks. Another thing is learning and using your tooling very well. This applies to [neovim, git, bash shell](https://github.com/badumbatish/dotfiles), [ docker ](https://github.com/badumbatish/gccrs-workspace), etc etc etc; A more in-depth mastery of these tools allows me to iterate the development cycle faster and save more time to browse cute transbian on twitter :)
+
 
 ## End words
 
