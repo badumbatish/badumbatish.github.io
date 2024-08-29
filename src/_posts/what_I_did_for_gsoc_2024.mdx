@@ -13,24 +13,24 @@ This article will include the summary of my contribution, where you can find all
 
 This summer I worked on the [gccrs](https://github.com/Rust-GCC/gccrs) project, a GCC Front-end for Rust.
 
-gccrs is a project to implement the Rust programming languages from scratch in gcc codebase in order to support a wider amount of targets. It currently targets the version 1.49 of Rust right now and is supported by Open Source Security and Embecosm.
+gccrs is a project to implement the Rust programming languages from scratch in the GCC codebase in order for rust to be able to be compiled to a wider amount of targets. It currently targets the version 1.49 of Rust and is supported by Open Source Security and Embecosm.
 
 By doing this, it helps with a couple things:
 
 - Targets architecture not available with rustc due to the use of LLVM. (SuperH for example, which powers the Dreamcast!)
-- Benefit from the existing GCC community and ecosystem.
-- Help with acceptation of Rust in the Linnux kernel
-- Help with acceptation of Rust in other fields, where having multiple compilers helps.
-- Allow using Rust on targets with very old C++ compilers! (Targets with GCC 4.8 version (which released March 22, 2013) can use Rust)
+- Benefit from the existing GCC ecosystem.
+- Help with acceptance of Rust in the Linux kernel
+- Help with acceptance of Rust in other fields, where having multiple compilers helps.
+- Enable building Rust on targets with very old C++ compilers! (Targets with at least GCC version 4.8 (which released March 22, 2013) can build Rust)
 
 ## Main contribution aspects
 
 Overall, I contributed in 3 main aspects:
 
-- **My main project** - Inline Assembly in rust: I coded up the parser, set up the code infrastructure for TREE IR generation in the backend, along with AST, HIR lowering and typechecking. 
+- **My main project** - Inline Assembly in rust: I programmed the parser, set up the code infrastructure for TREE IR generation in the backend, along with AST, HIR lowering and typechecking. 
 
-- **CI/CD**: I helped maintain and improve CI/CD pipeline. This includes resolving dependency issues in Github actions, adding support for 32 bit CI and glibc compliance CI.
-I also created a docker-compose dev environment for MacOS-based contributors, with all libraries and dependency installed; this helps them (and myself) bypasses MacOS's annoying build and link issues.
+- **CI/CD**: I helped maintain and improve the CI/CD pipeline. This includes resolving dependency issues in GitHub Actions, adding support for 32 bit CI and glibc compliance CI.
+I also created a docker-compose dev environment for MacOS-based contributors, with all libraries and dependency installed; this helps us bypass MacOS's annoying build and link issues.
 
 - **Code maintainance/Bug Fixes/Code Review**: I maintained the code base via issues filed by my mentor and other contributors. I also helped fix some minor bugs in IR lowering and typechecking. I also help review some new, simple PRs for contributors.
 
@@ -56,7 +56,7 @@ Here's a formatted version of all my issues, up to Aug 22 2024, procured via `gh
 | [3048](https://github.com/Rust-GCC/gccrs/issues/3048) | **OPEN**    | Handle outer attributes properly for inline assembly                                                      |                            | 2024-06-14T09:55:37Z   |
 | [2937](https://github.com/Rust-GCC/gccrs/issues/2937) | **CLOSED**  | Docker image and container for Mac                                                                        |                            | 2024-05-10T14:53:25Z   |
 
-The closed/filed rate is 4/8, which is not high. Through out coding up the parser and the backend infra, I realized that there are these little issues that's just easier to just fix and not necessary filed. There is also issues that are discussed via [hackmd notes](https://gist.github.com/badumbatish/9823719ef359a58b131220d9d79d2aec) between me and my mentor that are not necessarily filed via GitHub. Again, not to defend myself, but just to offer some perspectives :)
+The closed/filed rate is 4/8, which is not high. Through out writing the parser and the backend infra, I realized that there are these little issues that's just easier to just fix and not necessary filed. There is also issues that are discussed via [hackmd notes](https://gist.github.com/badumbatish/9823719ef359a58b131220d9d79d2aec) between me and my mentor that are not necessarily filed via GitHub. 
 
 ### PRs
 
