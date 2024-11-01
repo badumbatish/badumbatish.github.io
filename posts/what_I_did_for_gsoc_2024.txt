@@ -1,11 +1,12 @@
 1:HL["/_next/static/media/7385e8d9d3c5518f-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
 2:HL["/_next/static/css/8af0b8e8fa4b56d5.css","style",{"crossOrigin":""}]
-0:["eZ9WTKCpjI08TIsnlTgSU",[[["",{"children":["posts",{"children":[["id","what_I_did_for_gsoc_2024","d"],{"children":["__PAGE__?{\"id\":\"what_I_did_for_gsoc_2024\"}",{}]}]}]},"$undefined","$undefined",true],"$L3",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/8af0b8e8fa4b56d5.css","precedence":"next","crossOrigin":""}]],"$L4"]]]]
+0:["kqv0ZZzvjVcxjbYTKwA_k",[[["",{"children":["posts",{"children":[["id","what_I_did_for_gsoc_2024","d"],{"children":["__PAGE__?{\"id\":\"what_I_did_for_gsoc_2024\"}",{}]}]}]},"$undefined","$undefined",true],"$L3",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/8af0b8e8fa4b56d5.css","precedence":"next","crossOrigin":""}]],"$L4"]]]]
 5:I[6954,[],""]
 6:I[7264,[],""]
 9:I[8187,["986","static/chunks/986-77351ce039fbbc1a.js","185","static/chunks/app/layout-983322a10cdcef71.js"],""]
 3:[null,["$","html",null,{"lang":"en","className":"px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","a",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"loading":"$undefined","loadingStyles":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[],"childProp":{"current":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children"],"loading":"$undefined","loadingStyles":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined","childProp":{"current":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children",["id","what_I_did_for_gsoc_2024","d"],"children"],"loading":"$undefined","loadingStyles":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined","childProp":{"current":["$L7","$L8",null],"segment":"__PAGE__?{\"id\":\"what_I_did_for_gsoc_2024\"}"},"styles":[]}],"segment":["id","what_I_did_for_gsoc_2024","d"]},"styles":[]}],"segment":"posts"},"styles":[]}]}],["$","$L9",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]}]]}]}],null]
-a:T3a4f,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#introduction">Introduction</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#main-contribution-aspects">Main contribution aspects</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#issues-and-prs">Issues and PRs</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#issues">Issues</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#prs">PRs</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#introspection">Introspection</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#end-words">End words</a></li></ol></nav><p>Hi everyone, this article is a requirement for my GSoc Final Submission, linking directly to the submission.</p>
+4:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"What I did for GSoc 2024"}],["$","meta","2",{"name":"description","content":"Built with NextJS, TailwindCSS, and a tonnn of loveee :)"}],["$","meta","3",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link","4",{"rel":"icon","href":"/_next/static/media/pfp3.5cd65164.png"}],["$","meta","5",{"name":"next-size-adjust"}]]
+a:T1236a,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#introduction">Introduction</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#main-contribution-aspects">Main contribution aspects</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#issues-and-prs">Issues and PRs</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#issues">Issues</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#prs">PRs</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#gccrs-inline-assembly">GCCRS Inline Assembly</a><ol class="toc-level toc-level-3"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#purpose">Purpose</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#syntax">Syntax</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#grammar">Grammar</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#syntax-example">Syntax example</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#overall-architecture">Overall architecture</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#definition">Definition</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#architecture">Architecture</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#related-files">Related files</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#architecture-visualization">Architecture visualization</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#ast">AST</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#parser">Parser</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#ast-to-hir">AST to HIR</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#hir-creation">HIR Creation</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#unsafe-gating">Unsafe gating</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#type-checking">Type checking</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#resolution">Resolution</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#tree-generic">TREE (GENERIC)</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#overall">Overall</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#anatomy">Anatomy</a><ol class="toc-level toc-level-5"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#tree_list">TREE_LIST</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#string_cst">STRING_CST</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#asm_expr">ASM_EXPR</a></li></ol></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#tree-usage">TREE USAGE</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#results">Results</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#reflection-and-whats-next">Reflection and what's next</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#introspection">Introspection</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#end-words">End words</a></li></ol></li></ol></li></ol></nav><p>Hi everyone, this article is a requirement for my GSoc Final Submission, linking directly to the submission.</p>
 <p>This article will include the summary of my contribution, where you can find all my filed issues and PRs.</p>
 <h2 id="introduction"><a href="#introduction">Introduction</a></h2>
 <p>This summer I worked on the <a href="https://github.com/Rust-GCC/gccrs">gccrs</a> project, a GCC Front-end for Rust.</p>
@@ -294,6 +295,488 @@ I also created a docker-compose dev environment for MacOS-based contributors, wi
 </tbody>
 </table>
 <p>The merged/filed rate is 22/25. Half of the PRs are easy to fix / fixable within a short amount of time (Code maintanence aspect). The other half is medium in difficulty, related to my summer project (Project aspect).</p>
+<h1 id="gccrs-inline-assembly"><a href="#gccrs-inline-assembly">GCCRS Inline Assembly</a></h1>
+<p>Alright, let's try to understand what I did this summer in greater detail.</p>
+<p>This write up will try to avoid lower level, implementation-based details but will let you walk away knowing what I, <a href="https://badumbatish.github.io/">badumbatish</a> did this summer :)</p>
+<p>Although I won't post much code, I'll still provide links to my PRs for interested readers. Inspirations  includes contributors from the rust codebase and gccrs codebase. More specifically, <a href="https://github.com/rust-lang/rust/blob/master/compiler/rustc_builtin_macros/src/asm.rs">asm.rs</a> from rustc, Arthur, Pierre-Emmanuel and Mahad from gccrs.</p>
+<h2 id="purpose"><a href="#purpose">Purpose</a></h2>
+<p>Assembly are often used by programmers as a precise instrument in case that compiler's high level constructs are too coarse for the programmers' intent. With the advent of inline  assembly, you can do this without having to create a seperate assembly file, maintaining the stackframe, register invariants, juggling different platforms and different calling conventions by yourself, etc...</p>
+<p>The purpose of my project is to provide support for inline assembly in gccrs. With respect to Rust's memory safety guarantees as well as the context of assembly languages usages in today's modern era, the project aims to alleviate the complexity from the programmmers while providing precautions and safeguards with unsafe blocks requirements and higher level constructs such as register operands, compared to raw hardware registers.</p>
+<h2 id="syntax"><a href="#syntax">Syntax</a></h2>
+<p>In this section we'll take a look at the syntax of inline assembly, as well as dissecting some examples.</p>
+<h3 id="grammar"><a href="#grammar">Grammar</a></h3>
+<p>The syntax for inline assembly is quite simple. This is taken from the <a href="https://doc.rust-lang.org/reference/inline-assembly.html">Rust Reference website</a> :</p>
+<pre><code>format_string := STRING_LITERAL / RAW_STRING_LITERAL
+dir_spec := "in" / "out" / "lateout" / "inout" / "inlateout"
+reg_spec := &#x3C;register class> / "\"" &#x3C;explicit register> "\""
+operand_expr := expr / "_" / expr "=>" expr / expr "=>" "_"
+reg_operand := [ident "="] dir_spec "(" reg_spec ")" operand_expr
+clobber_abi := "clobber_abi(" &#x3C;abi> *("," &#x3C;abi>) [","] ")"
+option := "pure" / "nomem" / "readonly" / "preserves_flags" / "noreturn" / "nostack" / "att_syntax" / "raw"
+options := "options(" option *("," option) [","] ")"
+operand := reg_operand / clobber_abi / options
+asm := "asm!(" format_string *("," format_string) *("," operand) [","] ")"
+global_asm := "global_asm!(" format_string *("," format_string) *("," operand) [","] ")"
+</code></pre>
+<p>The topmost level, or the start of the parse rule is either <code>asm</code> or <code>global_asm</code>.</p>
+<p>The inline assembly code is represented by <code>format_string</code>. The other aspect is <code>operand</code>, which includes <code>reg_operand</code>, <code>clobber_abi</code>, and <code>options</code>.</p>
+<p>More information about different types of operand can be referred to from <a href="https://doc.rust-lang.org/reference/inline-assembly.html">the reference</a>.</p>
+<p>Keep in mind that the way we see this division of the grammar is how we'll construct our AST subsequently, our parser.</p>
+<h3 id="syntax-example"><a href="#syntax-example">Syntax example</a></h3>
+<p>Let's look at some inline assembly examples pulled from the <a href="https://doc.rust-lang.org/rust-by-example/unsafe/asm.html">Rust by example website</a>.</p>
+<ul>
+<li>This is the simplest form, only including a no-op instruction</li>
+</ul>
+<pre><code>use std::arch::asm;
+
+unsafe {
+    asm!("nop");
+}
+</code></pre>
+<ul>
+<li>Of course, more complex (non-simple) form of inline assembly requires some extra functionality:</li>
+</ul>
+<pre><code>use std::arch::asm;
+
+let x: u64;
+unsafe {
+    asm!("mov {}, 5", out(reg) x);
+}
+assert_eq!(x, 5);
+</code></pre>
+<p>This requires the operand functionality, more specifically the reg_operand category. In simple terms, the <code>{}</code> in the format string (template string) (designated by the double quote symbol) refers to the variable x. The out(reg) asks the compiler to substitute the  by the register used to store x and to assume the inline assembly will only write to this register and not expect any particular initial value. On the ARM platform architecture, in the raw assembly, the <code>{}</code> in the formatted string would be replaced with a  register allocated to <code>x</code>, such as the <code>x0</code> register.</p>
+<p>An as a demonstrate, in the following code, <code>move {}, 5</code> is transformed into <code>mov x0, 5</code></p>
+<pre><code>    .cfi_def_cfa_offset 32
+    .cfi_offset 29, -32
+    .cfi_offset 30, -24
+    ...
+#APP
+// 6 "asm_mov.rs" 1
+    mov x0, 5
+
+// 0 "" 2
+#NO_APP
+    ...
+</code></pre>
+<h2 id="overall-architecture"><a href="#overall-architecture">Overall architecture</a></h2>
+<p>In this section we provide common compiler norms, discuss the overall architecture of the project as well as some of the most relevant files to the project.</p>
+<p>The end of this section provides a high level graph for readers to visualize the architecture.</p>
+<h3 id="definition"><a href="#definition">Definition</a></h3>
+<p>Before giving an overview of the architecture of the project, it's necessary to give context to common compiler norms:</p>
+<ul>
+<li>Type checking: The process of ensuring that variables and expressions have types that align with the expected types (explicitly or implicitly) defined in the code, preventing type errors.</li>
+<li>Name resolution: The process of matching names (such as variables, functions, and types) in the code with their corresponding declarations to ensure correct scoping and accessibility.</li>
+<li>Unsafe gating: The mechanism that restricts certain operations (e.g., raw pointer casting, inline assembly) to unsafe blocks, indicating that the programmer takes responsibility for upholding safety guarantees.</li>
+<li>AST: Stands for Abstract syntax tree and is used to represent a program or a code snippet. Usually in a compiler, this data structure is the product of a parser. The compiler can then lower this data structure into a different data structure called HIR, which will be defined in the next sentence.</li>
+<li>HIR: High Level Intermediate Representation. After AST, the compiler lowers the AST into a different representation. In gccrs, this is where different validations such as type checking, name resolution and unsafe gating happens. The compiler then lower this IR into what's known as GENERIC IL</li>
+<li>TREE (GENERIC IL): GENERIC Intermediate Language. gcc's language-independent way of representing different constructs in trees.</li>
+<li>GIMPLE: (From gcc:) is a three-address representation derived from GENERIC by breaking down GENERIC expressions into tuples of no more than 3 operands (with some exceptions like function calls).</li>
+<li>GCC Backend: where gcc starts to generate archiecture-dependent code.</li>
+</ul>
+<h3 id="architecture"><a href="#architecture">Architecture</a></h3>
+<p>I haven't talked about how we should handle this. Obviously the plan is to have the compiler recognize the syntax so a parser is required, but what happens after that?</p>
+<p>Well, like our cousin (or sibling?) rustc, the gccrs compiler itself has the AST, and then HIR. After that, gccrs converts its HIR into gcc's TREE (GENERIC IL) format. At this stage, gcc handles the conversion from inline assembly tree to gimple and then eventually raw architecture-dependent assembly code via gcc's backend.</p>
+<p>We need to also set up other stuff such as inline assembly validation, type checking, name resolution, etc etc. This will be mention in passing as it is relevant to Rust's safety feature.</p>
+<h3 id="related-files"><a href="#related-files">Related files</a></h3>
+<p>The related files for this issue includes</p>
+<ul>
+<li><code>gcc/rust/expand/rust-macrobuiltins-asm.h/cc</code>: Where the parsing of an <code>asm!()</code> happens.</li>
+<li><code>gcc/rust/ast/rust-expr.h</code>: Where the ast of an inline asm is defined.</li>
+<li><code>gcc/rust/hir/tree/rust-hir-expr.h</code>: Where the HIR (high level ir) of an inline asm is defined.</li>
+<li><code>gcc/rust/backend/rust-compile-asm.h/cc</code>: where the backend of inline asm starts processing.</li>
+</ul>
+<h3 id="architecture-visualization"><a href="#architecture-visualization">Architecture visualization</a></h3>
+<p>The picture below depicts the project's pipeline.</p>
+<div></div>
+<h2 id="ast"><a href="#ast">AST</a></h2>
+<p>The AST follows the structure that the syntax provides.</p>
+<p>At the end of PR <a href="https://github.com/Rust-GCC/gccrs/pull/3060">3060</a>, it takes its structure from <a href="https://github.com/rust-lang/rust/blob/master/compiler/rustc_builtin_macros/src/asm.rs">asm.rs</a>. It inherits from the ExprWithoutBlock, which inherits from Expr, indicating that an asm! call is an expr.</p>
+<p>Here, I give the high level structure of the AST related to inline assembly. In the gccrs codebase, the AST are represented with classes and structs.</p>
+<ul>
+<li>InlineAsm: this class inherits from ExprWithoutBlock, and contains containers for templated strings, operands, named arguments, register arguments, clobber abi, and options.</li>
+<li>TupleTemplateStr: stands for a templated string where we store a location as well as the internet string</li>
+<li>InlineAsmOperand: represents an operand in inline assembly, which can be a register operand (class InlineAsmRegOrRegClass) or some non-register operands such as a Sym or a Label.</li>
+</ul>
+<p>By having a close mapping between the three things: Syntax, AST, and parsing, we lower our mental capacity in implementing them, maintaining a clear mental model if ever in need of debugging.</p>
+<h2 id="parser"><a href="#parser">Parser</a></h2>
+<p>Nice, now let's talk about the parser :)</p>
+<p>We'll be writing a simple recursive descent parser as described by our syntax section.</p>
+<p>As referenced above in the syntax section, the parser consists of 4 levels, 0 to 3, maintaining a clear and simple mapping between the parser and the syntax:</p>
+<ul>
+<li>The first level (0), shows the entrance of the parser.</li>
+<li>The second level (1) describes the main loop of the parser, where we repeatedly parse all the formatted strings first, then operands then perform AST validation.</li>
+<li>The third and fourth level goes into the subcategory of each aspect of the second level and so on: parsing formatted strings means repeatedly parsing <em>a</em> formatted string and parsing options means repeatedly parsing <em>an</em> option, etc etc.</li>
+</ul>
+<p>The diagram below shows the totality of the parser architecture, where the two greenish block in level 0 represents the starting point and the ending point of the parser.
+<img src="https://hackmd.io/_uploads/r1tIddrhR.svg" alt="Untitled diagram-2024-09-04-060350"></p>
+<p>Interested readers can look into the master branch, in the file <code>gcc/rust/expand/rust-macro-builtins-asm.h/cc</code> for the implementation detail of the parser.</p>
+<h2 id="ast-to-hir"><a href="#ast-to-hir">AST to HIR</a></h2>
+<p>After we have gotten our AST, the next step is lowering it into HIR.</p>
+<p>Since the inline assembly ASTs doesn't undergo much change in structure from AST to HIR, the HIRs representation inherits almost everything from the ASTs structure.</p>
+<p>Despite similarity in structure, the HIR lowering is a necessary step in the pipeline where we get to inherit all of gccrs' necessary name resolution, unsafe gating and type checking.</p>
+<h3 id="hir-creation"><a href="#hir-creation">HIR Creation</a></h3>
+<p>There must be an automatic way to do this. After all, the call <code>asm!</code> will appear everywhere, maybe in a block, maybe in another AST; how do we make sure that we can reach it and lower it correctly?</p>
+<p>The answer is the visitor pattern, here are <a href="https://en.wikipedia.org/wiki/Visitor_pattern">some</a> of <a href="https://refactoring.guru/design-patterns/visitor">the</a> references to <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">look into</a> if you're new to this pattern.</p>
+<p>In short: The visitor pattern separate algorithms from the objects which they operate on.</p>
+<p>In my opinion, this is where the visitor pattern shines the brightest: you only have to worry about your part. Let's get into the nitty gritty.</p>
+<p>In the gccrs codebase, more specifically, the visitor class responsible for lowering AST to HIR is of the name <code>ASTLowering*</code>.</p>
+<p>The most general AST lowering class is <code>ASTLoweringBase</code> where all other AST lowering class inherits from to overload as needed.</p>
+<p>Since our AST inherits from ExprWithoutBlock, which is a type of Expr, we implement our lowering from <code>ASTLoweringExpr</code>. The following code block highlights the fact that we need to lower all of AST::Expr in our AST::InlineAsm, primarily in our AST::InlineAsmOperand; I show the pattern for the first two lowering of AST::InlineAsmOperand, as well as the method to create the HIR::InlineAsm.</p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#91B4D5">HIR</span><span style="color:#A6ACCD">::InlineAsmOperand</span></span>
+<span class="line"><span style="color:#ADD7FF">translate_operand_in</span><span style="color:#A6ACCD"> (</span><span style="color:#5DE4C7">const</span><span style="color:#91B4D5"> AST</span><span style="color:#A6ACCD">::InlineAsmOperand </span><span style="color:#91B4D5">&#x26;</span><span style="color:#A6ACCD">operand)</span></span>
+<span class="line"><span style="color:#A6ACCD">{</span></span>
+<span class="line"><span style="color:#91B4D5">  auto</span><span style="color:#A6ACCD"> in_value </span><span style="color:#91B4D5">=</span><span style="color:#ADD7FF"> operand</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_in</span><span style="color:#A6ACCD"> ();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#91B4D5">  struct</span><span style="color:#A6ACCDC0"> HIR</span><span style="color:#A6ACCD">::</span><span style="color:#91B4D5">InlineAsmOperand</span><span style="color:#A6ACCD">::</span><span style="color:#A6ACCDC0">In</span><span style="color:#A6ACCD"> in (</span></span>
+<span class="line"><span style="color:#A6ACCD">    in_value.reg,</span></span>
+<span class="line"><span style="color:#A6ACCD">    std::</span><span style="color:#A6ACCDC0">unique_ptr</span><span style="color:#A6ACCD">&#x3C;</span><span style="color:#A6ACCDC0">Expr</span><span style="color:#A6ACCD">> (ASTLoweringExpr::</span><span style="color:#A6ACCDC0">translate</span><span style="color:#A6ACCD"> (*in_value.expr.get ())));</span></span>
+<span class="line"><span style="color:#A6ACCD">  return in;</span></span>
+<span class="line"><span style="color:#A6ACCD">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#91B4D5">HIR</span><span style="color:#A6ACCD">::InlineAsmOperand</span></span>
+<span class="line"><span style="color:#ADD7FF">translate_operand_out</span><span style="color:#A6ACCD"> (</span><span style="color:#5DE4C7">const</span><span style="color:#91B4D5"> AST</span><span style="color:#A6ACCD">::InlineAsmOperand </span><span style="color:#91B4D5">&#x26;</span><span style="color:#A6ACCD">operand)</span></span>
+<span class="line"><span style="color:#A6ACCD">{</span></span>
+<span class="line"><span style="color:#91B4D5">  auto</span><span style="color:#A6ACCD"> out_value </span><span style="color:#91B4D5">=</span><span style="color:#ADD7FF"> operand</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_out</span><span style="color:#A6ACCD"> ();</span></span>
+<span class="line"><span style="color:#91B4D5">  struct</span><span style="color:#A6ACCDC0"> HIR</span><span style="color:#A6ACCD">::</span><span style="color:#91B4D5">InlineAsmOperand</span><span style="color:#A6ACCD">::</span><span style="color:#A6ACCDC0">Out</span><span style="color:#A6ACCD"> out (out_value.reg, out_value.late,</span></span>
+<span class="line"><span style="color:#A6ACCD">					 std::</span><span style="color:#A6ACCDC0">unique_ptr</span><span style="color:#A6ACCD">&#x3C;</span><span style="color:#A6ACCDC0">Expr</span><span style="color:#A6ACCD">> (</span></span>
+<span class="line"><span style="color:#A6ACCD">					   ASTLoweringExpr::</span><span style="color:#A6ACCDC0">translate</span><span style="color:#A6ACCD"> (</span></span>
+<span class="line"><span style="color:#A6ACCD">					     *out_value.expr.get ())));</span></span>
+<span class="line"><span style="color:#A6ACCD">  return out;</span></span>
+<span class="line"><span style="color:#A6ACCD">}</span></span>
+<span class="line"><span style="color:#767C9DB0;font-style:italic">// [...]</span></span>
+<span class="line"><span style="color:#767C9DB0;font-style:italic">// We omit translate_operand_inout, translate_operand_split_in_out,</span></span>
+<span class="line"><span style="color:#767C9DB0;font-style:italic">// translate_operand_const, translate_operand_sym,</span></span>
+<span class="line"><span style="color:#767C9DB0;font-style:italic">// translate_operand_label for clarity</span></span>
+<span class="line"><span style="color:#ADD7FF">from_operand</span><span style="color:#A6ACCD"> (</span><span style="color:#5DE4C7">const</span><span style="color:#91B4D5"> AST</span><span style="color:#A6ACCD">::InlineAsmOperand </span><span style="color:#91B4D5">&#x26;</span><span style="color:#A6ACCD">operand)</span></span>
+<span class="line"><span style="color:#A6ACCD">{</span></span>
+<span class="line"><span style="color:#5DE4C7">  using</span><span style="color:#A6ACCDC0"> RegisterType</span><span style="color:#91B4D5"> =</span><span style="color:#91B4D5"> AST</span><span style="color:#A6ACCD">::</span><span style="color:#91B4D5">InlineAsmOperand</span><span style="color:#A6ACCD">::</span><span style="color:#A6ACCDC0">RegisterType</span><span style="color:#A6ACCD">;</span></span>
+<span class="line"><span style="color:#91B4D5">  auto</span><span style="color:#A6ACCD"> type </span><span style="color:#91B4D5">=</span><span style="color:#ADD7FF"> operand</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_register_type</span><span style="color:#A6ACCD"> ();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6ACCD">  switch (type)</span></span>
+<span class="line"><span style="color:#A6ACCD">    {</span></span>
+<span class="line"><span style="color:#A6ACCD">    case </span><span style="color:#91B4D5">RegisterType</span><span style="color:#A6ACCD">::In:</span></span>
+<span class="line"><span style="color:#A6ACCD">      return </span><span style="color:#ADD7FF">translate_operand_in</span><span style="color:#A6ACCD"> (operand);</span></span>
+<span class="line"><span style="color:#A6ACCD">    case </span><span style="color:#91B4D5">RegisterType</span><span style="color:#A6ACCD">::Out:</span></span>
+<span class="line"><span style="color:#A6ACCD">      return </span><span style="color:#ADD7FF">translate_operand_out</span><span style="color:#A6ACCD"> (operand);</span></span>
+<span class="line"><span style="color:#A6ACCD">    case </span><span style="color:#91B4D5">RegisterType</span><span style="color:#A6ACCD">::InOut:</span></span>
+<span class="line"><span style="color:#A6ACCD">      return </span><span style="color:#ADD7FF">translate_operand_inout</span><span style="color:#A6ACCD"> (operand);</span></span>
+<span class="line"><span style="color:#A6ACCD">    case </span><span style="color:#91B4D5">RegisterType</span><span style="color:#A6ACCD">::SplitInOut:</span></span>
+<span class="line"><span style="color:#A6ACCD">      return </span><span style="color:#ADD7FF">translate_operand_split_in_out</span><span style="color:#A6ACCD"> (operand);</span></span>
+<span class="line"><span style="color:#A6ACCD">    case </span><span style="color:#91B4D5">RegisterType</span><span style="color:#A6ACCD">::Const:</span></span>
+<span class="line"><span style="color:#A6ACCD">      return </span><span style="color:#ADD7FF">translate_operand_const</span><span style="color:#A6ACCD"> (operand);</span></span>
+<span class="line"><span style="color:#A6ACCD">    case </span><span style="color:#91B4D5">RegisterType</span><span style="color:#A6ACCD">::Sym:</span></span>
+<span class="line"><span style="color:#A6ACCD">      return </span><span style="color:#ADD7FF">translate_operand_sym</span><span style="color:#A6ACCD"> (operand);</span></span>
+<span class="line"><span style="color:#A6ACCD">    case </span><span style="color:#91B4D5">RegisterType</span><span style="color:#A6ACCD">::Label:</span></span>
+<span class="line"><span style="color:#A6ACCD">      return </span><span style="color:#ADD7FF">translate_operand_label</span><span style="color:#A6ACCD"> (operand);</span></span>
+<span class="line"><span style="color:#5DE4C7">    default</span><span style="color:#A6ACCD">:</span></span>
+<span class="line"><span style="color:#ADD7FF">      rust_unreachable</span><span style="color:#A6ACCD"> ();</span></span>
+<span class="line"><span style="color:#A6ACCD">    }</span></span>
+<span class="line"><span style="color:#A6ACCD">}</span></span>
+<span class="line"><span style="color:#91B4D5">void</span></span>
+<span class="line"><span style="color:#91B4D5">ASTLoweringExpr</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">visit</span><span style="color:#A6ACCD"> (</span><span style="color:#91B4D5">AST</span><span style="color:#A6ACCD">::InlineAsm </span><span style="color:#91B4D5">&#x26;</span><span style="color:#A6ACCD">expr)</span></span>
+<span class="line"><span style="color:#A6ACCD">{</span></span>
+<span class="line"><span style="color:#91B4D5">  auto</span><span style="color:#A6ACCD"> crate_num </span><span style="color:#91B4D5">=</span><span style="color:#ADD7FF"> mappings</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_current_crate</span><span style="color:#A6ACCD"> ();</span></span>
+<span class="line"><span style="color:#91B4D5">  Analysis</span><span style="color:#A6ACCD">::NodeMapping </span><span style="color:#ADD7FF">mapping</span><span style="color:#A6ACCD"> (crate_num, </span><span style="color:#ADD7FF">expr</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_node_id</span><span style="color:#A6ACCD"> (),</span></span>
+<span class="line"><span style="color:#ADD7FF">				 mappings</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_next_hir_id</span><span style="color:#A6ACCD"> (crate_num),</span></span>
+<span class="line"><span style="color:#ADD7FF">				 mappings</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_next_localdef_id</span><span style="color:#A6ACCD"> (crate_num));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#91B4D5">  std</span><span style="color:#A6ACCD">::vector</span><span style="color:#91B4D5">&#x3C;HIR</span><span style="color:#A6ACCD">::InlineAsmOperand</span><span style="color:#91B4D5">></span><span style="color:#A6ACCD"> hir_operands;</span></span>
+<span class="line"><span style="color:#5DE4C7">  const</span><span style="color:#91B4D5"> std</span><span style="color:#A6ACCD">::vector</span><span style="color:#91B4D5">&#x3C;AST</span><span style="color:#A6ACCD">::InlineAsmOperand</span><span style="color:#91B4D5">></span><span style="color:#91B4D5"> &#x26;</span><span style="color:#A6ACCD">ast_operands </span><span style="color:#91B4D5">=</span><span style="color:#ADD7FF"> expr</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_operands</span><span style="color:#A6ACCD"> ();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6ACCD">  for (</span><span style="color:#91B4D5">auto</span><span style="color:#91B4D5"> &#x26;</span><span style="color:#A6ACCD">operand : ast_operands)</span></span>
+<span class="line"><span style="color:#ADD7FF">      hir_operands</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">push_back</span><span style="color:#A6ACCD"> (</span><span style="color:#ADD7FF">from_operand</span><span style="color:#A6ACCD"> (operand));</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6ACCD">  translated</span></span>
+<span class="line"><span style="color:#91B4D5">    =</span><span style="color:#5DE4C7"> new</span><span style="color:#91B4D5"> HIR</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">InlineAsm</span><span style="color:#A6ACCD"> (</span><span style="color:#ADD7FF">expr</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_locus</span><span style="color:#A6ACCD"> (), </span><span style="color:#ADD7FF">expr</span><span style="color:#A6ACCD">.</span><span style="color:#E4F0FB">is_global_asm</span><span style="color:#A6ACCD">,</span></span>
+<span class="line"><span style="color:#ADD7FF">			  expr</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_template_</span><span style="color:#A6ACCD"> (), </span><span style="color:#ADD7FF">expr</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_template_strs</span><span style="color:#A6ACCD"> (),</span></span>
+<span class="line"><span style="color:#A6ACCD">			  hir_operands, </span><span style="color:#ADD7FF">expr</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_clobber_abi</span><span style="color:#A6ACCD"> (),</span></span>
+<span class="line"><span style="color:#ADD7FF">			  expr</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_options</span><span style="color:#A6ACCD"> (), mapping);</span></span>
+<span class="line"><span style="color:#A6ACCD">}</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<h3 id="unsafe-gating"><a href="#unsafe-gating">Unsafe gating</a></h3>
+<p>Since <code>asm!</code> is platform dependent and is inherently unsafe, i.e "you would get a <a href="https://en.wikipedia.org/wiki/Segmentation_fault">segmentation fault</a> with no probable stacktrace whatsoever", rust requires asm! to be in an unsafe block.</p>
+<p>In the gccrs codebase, this <code>unsafe gating</code> is handled via <code>gcc/rust/checks/rust-unsafe-checker.h/cc</code>, again, employing the <a href="https://stackoverflow.com/questions/6762256/how-does-double-dispatch-work-in-visitor-pattern">double dispatch</a> functionality of the visitor pattern.</p>
+<p>In our implementation, the unsafe checker maintains a stack of contexts named <code>unsafe_context</code> with a convenient boolean function <code>is_in_context</code>. At the time of our visit, we check if it is an unsafe context or not.</p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#91B4D5">void</span></span>
+<span class="line"><span style="color:#91B4D5">UnsafeChecker</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">visit</span><span style="color:#A6ACCD"> (InlineAsm </span><span style="color:#91B4D5">&#x26;</span><span style="color:#A6ACCD">expr)</span></span>
+<span class="line"><span style="color:#A6ACCD">{</span></span>
+<span class="line"><span style="color:#A6ACCD">  if (</span><span style="color:#ADD7FF">unsafe_context</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">is_in_context</span><span style="color:#A6ACCD"> ())</span></span>
+<span class="line"><span style="color:#A6ACCD">    return;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ADD7FF">  rust_error_at</span><span style="color:#A6ACCD"> (</span></span>
+<span class="line"><span style="color:#ADD7FF">    expr</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_locus</span><span style="color:#A6ACCD"> (), </span><span style="color:#91B4D5">ErrorCode</span><span style="color:#A6ACCD">::E0133,</span></span>
+<span class="line"><span style="color:#A6ACCD">    "</span><span style="color:#5DE4C7">use of inline assembly is unsafe and requires unsafe function or block</span><span style="color:#A6ACCD">"</span><span style="color:#A6ACCD">);</span></span>
+<span class="line"><span style="color:#A6ACCD">}</span></span>
+<span class="line"></span></code></pre>
+<blockquote>
+<p>But Jas, why we wouldn't want the UnsafeChecker to just maintain a boolean <code>is_unsafe</code>, and once UnsafeChecker visit an unsafe block, we set the boolean <code>is_unsafe</code> to true and consequently false after the UnsafeChecker finishes visiting?</p>
+</blockquote>
+<p>This won't work if we are traversing an AST where we have nested unsafe block, thus a <code>template &#x3C;typename T> class StackedContexts</code> is needed. Let's examine an example where a single boolean failed and why we would need to use a stack.</p>
+<p>In this example, there is only 1 unsafe context; the boolean implementation satisfies the unsafe requirement.</p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#A6ACCD">let a = 15;</span></span>
+<span class="line"><span style="color:#A6ACCD">unsafe { // we set the boolean to true</span></span>
+<span class="line"><span style="color:#A6ACCD">      // Now unsafe operations are allowed!</span></span>
+<span class="line"><span style="color:#A6ACCD">      let b = *(&#x26;a as *const i32);</span></span>
+<span class="line"><span style="color:#A6ACCD">      let c = std::mem::transmute&#x3C;i32, f32>(b);</span></span>
+<span class="line"><span style="color:#A6ACCD">} // we set it to false</span></span>
+<span class="line"><span style="color:#A6ACCD">// Yay me!!!</span></span>
+<span class="line"></span></code></pre>
+<p>But in the following case, where we have nested unsafe context, the boolean fails to recognize that we are still "unsafe"; thus needing a stack.</p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#A6ACCD">+</span><span style="color:#ADD7FF">unsafe { // wraps the above unsafe context inside another unsafe context</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6ACCD">    let a = 15;</span></span>
+<span class="line"><span style="color:#A6ACCD">    unsafe { // we set the boolean to true</span></span>
+<span class="line"><span style="color:#A6ACCD">         let b = *(&#x26;a as *const i32);</span></span>
+<span class="line"><span style="color:#A6ACCD">         let c = std::mem::transmute&#x3C;i32, f32>(b);</span></span>
+<span class="line"><span style="color:#A6ACCD">    } // we set it to false</span></span>
+<span class="line"><span style="color:#A6ACCD">    // Yay me!!!</span></span>
+<span class="line"><span style="color:#A6ACCD">+</span><span style="color:#ADD7FF"> }</span></span>
+<span class="line"><span style="color:#A6ACCD">+</span><span style="color:#ADD7FF"> // Now unsafe operations are forbidden again, but the boolean is false</span></span>
+<span class="line"><span style="color:#A6ACCD">+</span><span style="color:#ADD7FF"> let f = std::mem::transmute&#x3C;i32, f32>(15); // Uh-oh!</span></span>
+<span class="line"></span></code></pre>
+<p>Before every visit to an unsafe context, the unsafe checker inserts a context into the stack and after every visit, it pops that context out. A check to see if we are still unsafe checks if the stack is empty.
+Readers interested in implementation details can check <code>gcc/rust/checks/errors/rust-unsafe-checker.h/cc</code> and <code>gcc/rust/util/rust-stacked-contexts.h</code></p>
+<h3 id="type-checking"><a href="#type-checking">Type checking</a></h3>
+<p>From the rust compiler dev references:</p>
+<blockquote>
+<p>"The only ones that are of particular interest to rustc are NORETURN which makes asm! return ! instead of ()".</p>
+</blockquote>
+<p>We minimally represent this situation with the following implementation in <code>gcc/rust/typecheck/rust-hir-typecheck-expr.h/cc</code></p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#91B4D5">void</span></span>
+<span class="line"><span style="color:#91B4D5">TypeCheckExpr</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">visit</span><span style="color:#A6ACCD"> (</span><span style="color:#91B4D5">HIR</span><span style="color:#A6ACCD">::InlineAsm </span><span style="color:#91B4D5">&#x26;</span><span style="color:#A6ACCD">expr)</span></span>
+<span class="line"><span style="color:#A6ACCD">{</span></span>
+<span class="line"><span style="color:#767C9DB0;font-style:italic">  // We recursively typechecks its operands.</span></span>
+<span class="line"><span style="color:#ADD7FF">  typecheck_inline_asm_operand</span><span style="color:#A6ACCD"> (expr);</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6ACCD">  if (</span><span style="color:#ADD7FF">expr</span><span style="color:#A6ACCD">.</span><span style="color:#E4F0FB">options</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">count</span><span style="color:#A6ACCD"> (</span><span style="color:#91B4D5">AST</span><span style="color:#A6ACCD">::</span><span style="color:#91B4D5">InlineAsmOption</span><span style="color:#A6ACCD">::NORETURN) </span><span style="color:#91B4D5">==</span><span style="color:#5DE4C7"> 1</span><span style="color:#A6ACCD">)</span></span>
+<span class="line"><span style="color:#A6ACCD">    infered </span><span style="color:#91B4D5">=</span><span style="color:#5DE4C7"> new</span><span style="color:#91B4D5"> TyTy</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">NeverType</span><span style="color:#A6ACCD"> (</span><span style="color:#ADD7FF">expr</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_mappings</span><span style="color:#A6ACCD"> ().</span><span style="color:#ADD7FF">get_hirid</span><span style="color:#A6ACCD"> ());</span></span>
+<span class="line"><span style="color:#A6ACCD">  else</span></span>
+<span class="line"><span style="color:#A6ACCD">    infered</span></span>
+<span class="line"><span style="color:#91B4D5">      =</span><span style="color:#91B4D5"> TyTy</span><span style="color:#A6ACCD">::</span><span style="color:#91B4D5">TupleType</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">get_unit_type</span><span style="color:#A6ACCD"> (</span><span style="color:#ADD7FF">expr</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_mappings</span><span style="color:#A6ACCD"> ().</span><span style="color:#ADD7FF">get_hirid</span><span style="color:#A6ACCD"> ());</span></span>
+<span class="line"><span style="color:#A6ACCD">}</span></span>
+<span class="line"></span></code></pre>
+<p>I omit the part where we also recursive typecheck and infer each expr in each operand for the next part</p>
+<h3 id="resolution"><a href="#resolution">Resolution</a></h3>
+<p>Given an example that is part of <a href="https://github.com/Rust-GCC/gccrs/pull/3060/files#diff-693188f770da1bcaab140cfa09a7df64b510f5b17f21d9dc7627fc401776086a">inline_asm_mov_x86_rs</a> test case, where we refers to _x as a potential output:</p>
+<pre><code>let mut _x: i32 = 0;
+unsafe {
+    asm!(
+        "mov $5, {}",
+        out(reg) _x
+    );
+}
+</code></pre>
+<p>We need a way to somehow link the <code>_x</code> that we refers inside the asm!, inside the unsafe block to the <code>_x</code> outside of the unsafe block.</p>
+<p>The part that handles this is called name resolution. The <a href="https://rustc-dev-guide.rust-lang.org/name-resolution.html#:~:text=The%20name%20resolution%20in%20Rust,other%20via%20the%20ResolverAstLoweringExt%20trait.">Rust Compiler Dev Reference</a> goes into much details for this part.</p>
+<p>Here I provide some implementation details for gccrs.</p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#767C9DB0;font-style:italic">// Perform type checking on expr. Also runs type unification algorithm.</span></span>
+<span class="line"><span style="color:#767C9DB0;font-style:italic">// Returns the unified type of expr</span></span>
+<span class="line"><span style="color:#91B4D5">TyTy</span><span style="color:#A6ACCD">::BaseType </span><span style="color:#91B4D5">*</span></span>
+<span class="line"><span style="color:#91B4D5">TypeCheckExpr</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">Resolve</span><span style="color:#A6ACCD"> (</span><span style="color:#91B4D5">HIR</span><span style="color:#A6ACCD">::Expr </span><span style="color:#91B4D5">*</span><span style="color:#A6ACCD">expr)</span></span>
+<span class="line"><span style="color:#A6ACCD">{</span></span>
+<span class="line"><span style="color:#A6ACCD">  TypeCheckExpr resolver;</span></span>
+<span class="line"><span style="color:#ADD7FF">  expr</span><span style="color:#A6ACCD">-></span><span style="color:#ADD7FF">accept_vis</span><span style="color:#A6ACCD"> (resolver);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6ACCD">  if (</span><span style="color:#ADD7FF">resolver</span><span style="color:#A6ACCD">.</span><span style="color:#E4F0FB">infered</span><span style="color:#91B4D5"> ==</span><span style="color:#5DE4C7"> nullptr</span><span style="color:#A6ACCD">)</span></span>
+<span class="line"><span style="color:#A6ACCD">    return </span><span style="color:#5DE4C7">new</span><span style="color:#91B4D5"> TyTy</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">ErrorType</span><span style="color:#A6ACCD"> (</span><span style="color:#ADD7FF">expr</span><span style="color:#A6ACCD">-></span><span style="color:#ADD7FF">get_mappings</span><span style="color:#A6ACCD"> ().</span><span style="color:#ADD7FF">get_hirid</span><span style="color:#A6ACCD"> ());</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#91B4D5">  auto</span><span style="color:#A6ACCD"> ref </span><span style="color:#91B4D5">=</span><span style="color:#ADD7FF"> expr</span><span style="color:#A6ACCD">-></span><span style="color:#ADD7FF">get_mappings</span><span style="color:#A6ACCD"> ().</span><span style="color:#ADD7FF">get_hirid</span><span style="color:#A6ACCD"> ();</span></span>
+<span class="line"><span style="color:#ADD7FF">  resolver</span><span style="color:#A6ACCD">.</span><span style="color:#E4F0FB">infered</span><span style="color:#A6ACCD">-></span><span style="color:#ADD7FF">set_ref</span><span style="color:#A6ACCD"> (ref);</span></span>
+<span class="line"><span style="color:#ADD7FF">  resolver</span><span style="color:#A6ACCD">.</span><span style="color:#E4F0FB">context</span><span style="color:#A6ACCD">-></span><span style="color:#ADD7FF">insert_type</span><span style="color:#A6ACCD"> (</span><span style="color:#ADD7FF">expr</span><span style="color:#A6ACCD">-></span><span style="color:#ADD7FF">get_mappings</span><span style="color:#A6ACCD"> (), </span><span style="color:#ADD7FF">resolver</span><span style="color:#A6ACCD">.</span><span style="color:#E4F0FB">infered</span><span style="color:#A6ACCD">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6ACCD">  return </span><span style="color:#ADD7FF">resolver</span><span style="color:#A6ACCD">.</span><span style="color:#E4F0FB">infered</span><span style="color:#A6ACCD">;</span></span>
+<span class="line"><span style="color:#A6ACCD">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="tree-generic"><a href="#tree-generic">TREE (GENERIC)</a></h2>
+<p>After we have finished setting up the AST and the HIR, we'll set up the TREE (GENERIC IR) infrastructure for our asm! node and after that, this IR will be lowered by gcc itself (GIMPLE IR), relieving us from duty.</p>
+<p>The most central data structure used in the IR is <code>tree</code>, thus the name. From now, we'll refer to TREE IR as GENERIC IR.</p>
+<p>The knowledge I learned about GENERIC is through this documentation <a href="https://gcc.gnu.org/onlinedocs/gccint/GENERIC.html">https://gcc.gnu.org/onlinedocs/gccint/GENERIC.html</a></p>
+<h3 id="overall"><a href="#overall">Overall</a></h3>
+<p>Let's look at the definition and explore the tree code structures</p>
+<p>From the GCC GENERIC:</p>
+<blockquote>
+<p>The purpose of GENERIC is simply to provide a language-independent way of representing an entire function in trees... If you can express it with the codes in gcc/tree.def, it’s GENERIC.</p>
+</blockquote>
+<p>Needless to say, we are to obtain a working knowledge of trees and tree codes :)</p>
+<p>In the tree.def file, the tree codes are defined with the following structure:</p>
+<pre><code>DEFTREECODE (name, string_name, class, operand_count)
+</code></pre>
+<p>where:</p>
+<ul>
+<li>name: The symbolic name of the tree node.</li>
+<li>string_name: The human-readable string representing the node.</li>
+<li>class: A classification for the nodes to follow a specific structure/functionality.</li>
+<li>operand_count: The number of fields it takes to make the tree of this type.</li>
+</ul>
+<p>Let's give an example of some of the tree codes we're sure to use:</p>
+<table>
+<thead>
+<tr>
+<th>Tree code definition</th>
+<th>definition location in tree.def</th>
+<th>Usage in our backend</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEFTREECOE(TREE_LIST, "tree_list", tcc_exceptional, 0)</td>
+<td>Line 54</td>
+<td>Construction of operands</td>
+</tr>
+<tr>
+<td>DEFTREECODE(STRING_CST, "string_cst", tcc_constant, 0)</td>
+<td>Line 310</td>
+<td>Construction of templated assembly code</td>
+</tr>
+<tr>
+<td>DEFTREECODE(ASM_EXPR, "asm_expr", tcc_statement, 5)</td>
+<td>Line 1008</td>
+<td>Construction of inline assembly node</td>
+</tr>
+</tbody>
+</table>
+<h3 id="anatomy"><a href="#anatomy">Anatomy</a></h3>
+<p>I'll give a detailed look of the ones that are needed for the project.</p>
+<h4 id="tree_list"><a href="#tree_list">TREE_LIST</a></h4>
+<p>TREE_LIST is ... just a list of trees... It has a TREE_VALUE, TREE_PURPOSE and TREE_CHAIN.</p>
+<p>For the first two values, TREE_VALUE holds the element while TREE_PURPOSE gives a directive to later stages on what to do with this TREE_VALUE. In our tree usage section, we'll see that a tree list of register operands contains a TREE_VALUE of variables and a TREE_PURPOSE of register type, denoting if it's input or output register operands.</p>
+<p>The TREE_CHAIN node points to the next element in the tree list, which is also a TREE_LIST.</p>
+<p>In <a href="https://github.com/Rust-GCC/gccrs/blob/master/gcc/tree.cc">gcc/tree.cc</a>, a way to construct a tree list is</p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#767C9DB0;font-style:italic">/* Return a newly created TREE_LIST node whose</span></span>
+<span class="line"><span style="color:#767C9DB0;font-style:italic">   purpose and value fields are PARM and VALUE.  */</span></span>
+<span class="line"><span style="color:#A6ACCD">tree</span></span>
+<span class="line"><span style="color:#ADD7FF">build_tree_list</span><span style="color:#A6ACCD"> (tree parm, tree value MEM_STAT_DECL)</span></span>
+<span class="line"><span style="color:#A6ACCD">{</span></span>
+<span class="line"><span style="color:#A6ACCD">  tree t </span><span style="color:#91B4D5">=</span><span style="color:#ADD7FF"> make_node</span><span style="color:#A6ACCD"> (TREE_LIST PASS_MEM_STAT);</span></span>
+<span class="line"><span style="color:#ADD7FF">  TREE_PURPOSE</span><span style="color:#A6ACCD"> (t) </span><span style="color:#91B4D5">=</span><span style="color:#A6ACCD"> parm;</span></span>
+<span class="line"><span style="color:#ADD7FF">  TREE_VALUE</span><span style="color:#A6ACCD"> (t) </span><span style="color:#91B4D5">=</span><span style="color:#A6ACCD"> value;</span></span>
+<span class="line"><span style="color:#A6ACCD">  return t;</span></span>
+<span class="line"><span style="color:#A6ACCD">}</span></span>
+<span class="line"></span></code></pre>
+<p>A trend you'll see is that these underlying wrapper methods that construct our trees is that they'll start with a <code>tree t = make node(...)</code> or something that allocates memory for a tree, and then some  more <code>UPPER_CASE_SETTER_GETTER_METHOD(t) = ...</code> that follows.</p>
+<h4 id="string_cst"><a href="#string_cst">STRING_CST</a></h4>
+<p>The STRING_CST is a tree constant of string. We'll use this type of TREE in a lot of places. For example, TREE_PURPOSE in the above TREE_LIST often uses some form of STRING_CST as a directive for later stages. We can also use it as a way to encode our unprocessed/templated inline assembly code as STRING_CST.</p>
+<p>Sometimes, our strings can also be represented not by a STRING_CST but by ARRAY of type CHAR, and this is also acceptable. An example of this is in <code>cc</code> for the inline assembly code.</p>
+<p>A call to construct STRING_CST: <code>build_string</code>, takes two parameters: a length of cstr, including the NULL delimiter and the cstr itself.</p>
+<h4 id="asm_expr"><a href="#asm_expr">ASM_EXPR</a></h4>
+<p>An ASM_EXPR has 5 parameters it needs passing.</p>
+<ul>
+<li>An ASM_STRING of treecode STRING_CST</li>
+<li>An ASM_OUTPUTS of treecode TREE_LIST</li>
+<li>An ASM_INPUTS of treecode TREE_LIST</li>
+<li>An ASM_CLOBBERS</li>
+<li>An ASM_LABELS</li>
+</ul>
+<p>I omit the last two treecodes simply because the project hasn't had the capacity to explore the clobber and label functionality.</p>
+<h3 id="tree-usage"><a href="#tree-usage">TREE USAGE</a></h3>
+<p>In constructing the tree representation of our inline assembly, we combine the existing infrastructure as well as our knowledge of tree codes.</p>
+<p>More specifically, we rely on existing tree generation of our variables and raw c strings. We build ourselves a list of input and output registers to make up the ASM_EXPR tree.</p>
+<p>The process of building our ASM_EXPR is as follow:</p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#A6ACCD">tree</span></span>
+<span class="line"><span style="color:#91B4D5">CompileAsm</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">tree_codegen_asm</span><span style="color:#A6ACCD"> (</span><span style="color:#91B4D5">HIR</span><span style="color:#A6ACCD">::InlineAsm </span><span style="color:#91B4D5">&#x26;</span><span style="color:#A6ACCD">expr)</span></span>
+<span class="line"><span style="color:#A6ACCD">{</span></span>
+<span class="line"><span style="color:#91B4D5">  auto</span><span style="color:#A6ACCD"> asm_expr</span></span>
+<span class="line"><span style="color:#91B4D5">    =</span><span style="color:#ADD7FF"> asm_build_stmt</span><span style="color:#A6ACCD"> (</span><span style="color:#ADD7FF">expr</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">get_locus</span><span style="color:#A6ACCD"> (), {</span><span style="color:#ADD7FF">asm_construct_string_tree</span><span style="color:#A6ACCD"> (expr),</span></span>
+<span class="line"><span style="color:#ADD7FF">					  asm_construct_outputs</span><span style="color:#A6ACCD"> (expr),</span></span>
+<span class="line"><span style="color:#ADD7FF">					  asm_construct_inputs</span><span style="color:#A6ACCD"> (expr),</span></span>
+<span class="line"><span style="color:#ADD7FF">					  asm_construct_clobber_tree</span><span style="color:#A6ACCD"> (expr),</span></span>
+<span class="line"><span style="color:#ADD7FF">					  asm_construct_label_tree</span><span style="color:#A6ACCD"> (expr)});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ADD7FF">  ASM_INPUT_P</span><span style="color:#A6ACCD"> (asm_expr) </span><span style="color:#91B4D5">=</span><span style="color:#ADD7FF"> expr</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">is_simple_asm</span><span style="color:#A6ACCD"> ();</span></span>
+<span class="line"><span style="color:#ADD7FF">  ASM_VOLATILE_P</span><span style="color:#A6ACCD"> (asm_expr) </span><span style="color:#91B4D5">=</span><span style="color:#5DE4C7"> false</span><span style="color:#A6ACCD">;</span></span>
+<span class="line"><span style="color:#ADD7FF">  ASM_INLINE_P</span><span style="color:#A6ACCD"> (asm_expr) </span><span style="color:#91B4D5">=</span><span style="color:#ADD7FF"> expr</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">is_inline_asm</span><span style="color:#A6ACCD"> ();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6ACCD">  return asm_expr;</span></span>
+<span class="line"><span style="color:#A6ACCD">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6ACCD">tree</span></span>
+<span class="line"><span style="color:#91B4D5">CompileAsm</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">asm_build_stmt</span><span style="color:#A6ACCD"> (</span></span>
+<span class="line"><span style="color:#A6ACCDC0">  location_t</span><span style="color:#A6ACCD"> loc,</span></span>
+<span class="line"><span style="color:#5DE4C7">  const</span><span style="color:#91B4D5"> std</span><span style="color:#A6ACCD">::array</span><span style="color:#91B4D5">&#x3C;</span><span style="color:#A6ACCD">tree, </span><span style="color:#91B4D5">CompileAsm</span><span style="color:#A6ACCD">::ASM_TREE_ARRAY_LENGTH</span><span style="color:#91B4D5">></span><span style="color:#91B4D5"> &#x26;</span><span style="color:#A6ACCD">trees)</span></span>
+<span class="line"><span style="color:#A6ACCD">{</span></span>
+<span class="line"><span style="color:#767C9DB0;font-style:italic">  // Prototype functiion for building an ASM_EXPR tree.</span></span>
+<span class="line"><span style="color:#A6ACCD">  tree ret;</span></span>
+<span class="line"><span style="color:#91B4D5">  bool</span><span style="color:#A6ACCD"> side_effects;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6ACCD">  ret </span><span style="color:#91B4D5">=</span><span style="color:#ADD7FF"> make_node</span><span style="color:#A6ACCD"> (ASM_EXPR);</span></span>
+<span class="line"><span style="color:#ADD7FF">  TREE_TYPE</span><span style="color:#A6ACCD"> (ret) </span><span style="color:#91B4D5">=</span><span style="color:#A6ACCD"> void_type_node;</span></span>
+<span class="line"><span style="color:#ADD7FF">  SET_EXPR_LOCATION</span><span style="color:#A6ACCD"> (ret, loc);</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6ACCD">  side_effects </span><span style="color:#91B4D5">=</span><span style="color:#5DE4C7"> false</span><span style="color:#A6ACCD">;</span></span>
+<span class="line"><span style="color:#A6ACCD">  for (</span><span style="color:#91B4D5">size_t</span><span style="color:#A6ACCD"> i </span><span style="color:#91B4D5">=</span><span style="color:#5DE4C7"> 0</span><span style="color:#A6ACCD">; i </span><span style="color:#91B4D5">&#x3C;</span><span style="color:#ADD7FF"> trees</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">size</span><span style="color:#A6ACCD"> (); i</span><span style="color:#91B4D5">++</span><span style="color:#A6ACCD">)</span></span>
+<span class="line"><span style="color:#A6ACCD">    {</span></span>
+<span class="line"><span style="color:#A6ACCD">      tree t </span><span style="color:#91B4D5">=</span><span style="color:#ADD7FF"> trees</span><span style="color:#A6ACCD">[i];</span></span>
+<span class="line"><span style="color:#A6ACCD">      if (t </span><span style="color:#91B4D5">&#x26;&#x26;</span><span style="color:#91B4D5"> !</span><span style="color:#ADD7FF">TYPE_P</span><span style="color:#A6ACCD"> (t))</span></span>
+<span class="line"><span style="color:#A6ACCD">	side_effects </span><span style="color:#91B4D5">|=</span><span style="color:#ADD7FF"> TREE_SIDE_EFFECTS</span><span style="color:#A6ACCD"> (t);</span></span>
+<span class="line"><span style="color:#ADD7FF">      TREE_OPERAND</span><span style="color:#A6ACCD"> (ret, i) </span><span style="color:#91B4D5">=</span><span style="color:#A6ACCD"> t;</span></span>
+<span class="line"><span style="color:#A6ACCD">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ADD7FF">  TREE_SIDE_EFFECTS</span><span style="color:#A6ACCD"> (ret) </span><span style="color:#91B4D5">|=</span><span style="color:#A6ACCD"> side_effects;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6ACCD">  return ret;</span></span>
+<span class="line"><span style="color:#A6ACCD">}</span></span>
+<span class="line"></span></code></pre>
+<p>In the end, we add the tree to a list of statements in the following fashion:</p>
+<pre class="shiki poimandres" style="background-color:#1b1e28;color:#a6accd" tabindex="0"><code><span class="line"><span style="color:#91B4D5">void</span></span>
+<span class="line"><span style="color:#91B4D5">CompileExpr</span><span style="color:#A6ACCD">::</span><span style="color:#ADD7FF">visit</span><span style="color:#A6ACCD"> (</span><span style="color:#91B4D5">HIR</span><span style="color:#A6ACCD">::InlineAsm </span><span style="color:#91B4D5">&#x26;</span><span style="color:#A6ACCD">expr)</span></span>
+<span class="line"><span style="color:#A6ACCD">{</span></span>
+<span class="line"><span style="color:#A6ACCD">  CompileAsm </span><span style="color:#ADD7FF">asm_codegen</span><span style="color:#A6ACCD"> (ctx);</span></span>
+<span class="line"><span style="color:#ADD7FF">  ctx</span><span style="color:#A6ACCD">-></span><span style="color:#ADD7FF">add_statement</span><span style="color:#A6ACCD"> (</span><span style="color:#ADD7FF">asm_codegen</span><span style="color:#A6ACCD">.</span><span style="color:#ADD7FF">tree_codegen_asm</span><span style="color:#A6ACCD"> (expr));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6ACCD">}</span></span>
+<span class="line"></span></code></pre>
+<p>Readers interested in the implementation details can refer to
+<code>gcc/rust/backend/rust-compile-asm.h/cc</code> and <code>gcc/rust/backend/rust-compile-expr.h/cc</code></p>
+<h2 id="results"><a href="#results">Results</a></h2>
+<p>Yayyy, we've finally relieved ourselves of code generation responsibilities, leaving the rest to GIMPLE, RTL, and gcc backend. The gccrs compiler can now generate correct instructions using the in and out register operands.</p>
+<p>Below shows a few test cases that gccrs can now pass:</p>
+<pre><code>/* { dg-do run { target arm*-*-* } } */
+/* { dg-output "5\r*\n9\r*\n" }*/
+
+#![feature(rustc_attrs)]
+#[rustc_builtin_macro]
+macro_rules! asm {
+    () => {};
+}
+
+extern "C" {
+    fn printf(s: *const i8, ...);
+}
+
+fn main() -> i32 {
+    let mut x: i32 = 0;
+    let mut _y: i32 = 9;
+
+    unsafe {
+        asm!(
+            "mov {}, 5",
+            out(reg) x
+        );
+        printf("%d\n\0" as *const str as *const i8, x);
+    };
+
+    unsafe {
+        asm!(
+            "mov {}, {}",
+            in(reg) _y,
+            out(reg) x
+        );
+        printf("%d\n\0" as *const str as *const i8, x);
+    }
+
+    0
+}
+</code></pre>
+<h2 id="reflection-and-whats-next"><a href="#reflection-and-whats-next">Reflection and what's next</a></h2>
+<p>Participating in Google Summer of Code for gccrs has been my most gratifying and meaningful experience in software development. I get to talk to Arthur and Pierre-Emmanuel, both of whom are amazing people and mentors.</p>
+<p>Participating in open source allows me to not only sharpen my C++ knowledge but also my problem solving and my software architecture skills.</p>
+<p>I am taking a graduate course in compiler right now (Compiler optimization) (beaten to a pulp) and will try to get into another graduate compiler class next semester (Implementation of PL) and work in the industry in 2025.</p>
+<p>I'm actively seeking opportunities in compiler development and would love to connect further on this. Feel free to reach out at <a href="mailto:jjasmine@berkeley.edu">jjasmine@berkeley.edu</a>, and you can find my resume on the landing page of my site: <a href="https://badumbatish.github.io/">https://badumbatish.github.io/</a>.</p>
 <h2 id="introspection"><a href="#introspection">Introspection</a></h2>
 <p>Thinking back about the summer internship, I think I wasted a lot of time setting up dev envs, compiling and testing codes. Coding and building gcc/gccrs on a Macbook really sucks since the build step is confusing and there isn't a clear guide on how to do it. Compiling and testing requires a lot of time and for a person with ADHD, everytime I press that <a href="https://github.com/badumbatish/brt.nvim">&#x3C;space>b</a> button, my mind goes to YouTube and Discord and it really disrupts my flow; I wish getting ADHD meds in America was easier.</p>
 <p>As past Jasmine used to say:</p>
@@ -310,5 +793,4 @@ I also created a docker-compose dev environment for MacOS-based contributors, wi
 <li><a href="https://x.com/thisisjjasmine">https://x.com/thisisjjasmine</a> (if you like sapphic posting and compiler content)</li>
 </ul>
 <p>Thank you for reading :)</p>8:["$","article",null,{"className":"p-8 prose  max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto","children":[["$","div",null,{"className":"flex justify-center text-2xl font-bold ","children":["$","h2",null,{"children":"What I did for GSoc 2024"}]}],["$","div",null,{"className":"flex justify-start text-xl font-bold underline","children":["$","h4",null,{"children":"2024-08-22"}]}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$a"}}]]}]
-4:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"What I did for GSoc 2024"}],["$","meta","2",{"name":"description","content":"Built with NextJS, TailwindCSS, and a tonnn of loveee :)"}],["$","meta","3",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","link","4",{"rel":"icon","href":"/_next/static/media/pfp3.5cd65164.png"}],["$","meta","5",{"name":"next-size-adjust"}]]
 7:null
