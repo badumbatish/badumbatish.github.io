@@ -91,6 +91,582 @@ Here's a formatted version of all my pull requests, up to Aug 22 2024, procured 
 
 The merged/filed rate is 22/25. Half of the PRs are easy to fix / fixable within a short amount of time (Code maintanence aspect). The other half is medium in difficulty, related to my summer project (Project aspect).
 
+# GCCRS Inline Assembly
+
+Alright, let's try to understand what I did this summer in greater detail.
+
+This write up will try to avoid lower level, implementation-based details but will let you walk away knowing what I, [badumbatish](https://badumbatish.github.io/) did this summer :)
+
+Although I won't post much code, I'll still provide links to my PRs for interested readers. Inspirations  includes contributors from the rust codebase and gccrs codebase. More specifically, [asm.rs](https://github.com/rust-lang/rust/blob/master/compiler/rustc_builtin_macros/src/asm.rs) from rustc, Arthur, Pierre-Emmanuel and Mahad from gccrs.
+
+## Purpose
+
+
+
+Assembly are often used by programmers as a precise instrument in case that compiler's high level constructs are too coarse for the programmers' intent. With the advent of inline  assembly, you can do this without having to create a seperate assembly file, maintaining the stackframe, register invariants, juggling different platforms and different calling conventions by yourself, etc...
+
+The purpose of my project is to provide support for inline assembly in gccrs. With respect to Rust's memory safety guarantees as well as the context of assembly languages usages in today's modern era, the project aims to alleviate the complexity from the programmmers while providing precautions and safeguards with unsafe blocks requirements and higher level constructs such as register operands, compared to raw hardware registers.
+
+
+## Syntax
+In this section we'll take a look at the syntax of inline assembly, as well as dissecting some examples.
+### Grammar
+The syntax for inline assembly is quite simple. This is taken from the [Rust Reference website](https://doc.rust-lang.org/reference/inline-assembly.html) :
+```
+format_string := STRING_LITERAL / RAW_STRING_LITERAL
+dir_spec := "in" / "out" / "lateout" / "inout" / "inlateout"
+reg_spec := <register class> / "\"" <explicit register> "\""
+operand_expr := expr / "_" / expr "=>" expr / expr "=>" "_"
+reg_operand := [ident "="] dir_spec "(" reg_spec ")" operand_expr
+clobber_abi := "clobber_abi(" <abi> *("," <abi>) [","] ")"
+option := "pure" / "nomem" / "readonly" / "preserves_flags" / "noreturn" / "nostack" / "att_syntax" / "raw"
+options := "options(" option *("," option) [","] ")"
+operand := reg_operand / clobber_abi / options
+asm := "asm!(" format_string *("," format_string) *("," operand) [","] ")"
+global_asm := "global_asm!(" format_string *("," format_string) *("," operand) [","] ")"
+```
+
+The topmost level, or the start of the parse rule is either `asm` or `global_asm`.
+
+The inline assembly code is represented by `format_string`. The other aspect is `operand`, which includes `reg_operand`, `clobber_abi`, and `options`.
+
+More information about different types of operand can be referred to from [the reference](https://doc.rust-lang.org/reference/inline-assembly.html).
+
+Keep in mind that the way we see this division of the grammar is how we'll construct our AST subsequently, our parser.
+
+### Syntax example
+
+Let's look at some inline assembly examples pulled from the [Rust by example website](https://doc.rust-lang.org/rust-by-example/unsafe/asm.html).
+- This is the simplest form, only including a no-op instruction
+```
+use std::arch::asm;
+
+unsafe {
+    asm!("nop");
+}
+```
+
+- Of course, more complex (non-simple) form of inline assembly requires some extra functionality:
+
+```
+use std::arch::asm;
+
+let x: u64;
+unsafe {
+    asm!("mov {}, 5", out(reg) x);
+}
+assert_eq!(x, 5);
+```
+
+This requires the operand functionality, more specifically the reg_operand category. In simple terms, the `{}` in the format string (template string) (designated by the double quote symbol) refers to the variable x. The out(reg) asks the compiler to substitute the {} by the register used to store x and to assume the inline assembly will only write to this register and not expect any particular initial value. On the ARM platform architecture, in the raw assembly, the `{}` in the formatted string would be replaced with a  register allocated to `x`, such as the `x0` register.
+
+An as a demonstrate, in the following code, `move {}, 5` is transformed into `mov x0, 5`
+
+```
+    .cfi_def_cfa_offset 32
+    .cfi_offset 29, -32
+    .cfi_offset 30, -24
+    ...
+#APP
+// 6 "asm_mov.rs" 1
+    mov x0, 5
+
+// 0 "" 2
+#NO_APP
+    ...
+```
+## Overall architecture
+
+In this section we provide common compiler norms, discuss the overall architecture of the project as well as some of the most relevant files to the project.
+
+The end of this section provides a high level graph for readers to visualize the architecture.
+
+
+### Definition
+
+Before giving an overview of the architecture of the project, it's necessary to give context to common compiler norms:
+
+- Type checking: The process of ensuring that variables and expressions have types that align with the expected types (explicitly or implicitly) defined in the code, preventing type errors.
+- Name resolution: The process of matching names (such as variables, functions, and types) in the code with their corresponding declarations to ensure correct scoping and accessibility.
+- Unsafe gating: The mechanism that restricts certain operations (e.g., raw pointer casting, inline assembly) to unsafe blocks, indicating that the programmer takes responsibility for upholding safety guarantees.
+- AST: Stands for Abstract syntax tree and is used to represent a program or a code snippet. Usually in a compiler, this data structure is the product of a parser. The compiler can then lower this data structure into a different data structure called HIR, which will be defined in the next sentence.
+- HIR: High Level Intermediate Representation. After AST, the compiler lowers the AST into a different representation. In gccrs, this is where different validations such as type checking, name resolution and unsafe gating happens. The compiler then lower this IR into what's known as GENERIC IL
+- TREE (GENERIC IL): GENERIC Intermediate Language. gcc's language-independent way of representing different constructs in trees.
+- GIMPLE: (From gcc:) is a three-address representation derived from GENERIC by breaking down GENERIC expressions into tuples of no more than 3 operands (with some exceptions like function calls).
+- GCC Backend: where gcc starts to generate archiecture-dependent code.
+### Architecture
+I haven't talked about how we should handle this. Obviously the plan is to have the compiler recognize the syntax so a parser is required, but what happens after that?
+
+Well, like our cousin (or sibling?) rustc, the gccrs compiler itself has the AST, and then HIR. After that, gccrs converts its HIR into gcc's TREE (GENERIC IL) format. At this stage, gcc handles the conversion from inline assembly tree to gimple and then eventually raw architecture-dependent assembly code via gcc's backend.
+
+We need to also set up other stuff such as inline assembly validation, type checking, name resolution, etc etc. This will be mention in passing as it is relevant to Rust's safety feature.
+
+### Related files
+The related files for this issue includes
+- `gcc/rust/expand/rust-macrobuiltins-asm.h/cc`: Where the parsing of an `asm!()` happens.
+- `gcc/rust/ast/rust-expr.h`: Where the ast of an inline asm is defined.
+- `gcc/rust/hir/tree/rust-hir-expr.h`: Where the HIR (high level ir) of an inline asm is defined.
+- `gcc/rust/backend/rust-compile-asm.h/cc`: where the backend of inline asm starts processing.
+
+
+### Architecture visualization
+
+
+The picture below depicts the project's pipeline.
+<img src="https://github.com/badumbatish/badumbatish.github.io/tree/main/public/blogs/mermaid_gsoc_arch1.svg" height="580" alt=""></img>
+
+## AST
+
+The AST follows the structure that the syntax provides.
+
+At the end of PR [3060](https://github.com/Rust-GCC/gccrs/pull/3060), it takes its structure from [asm.rs](https://github.com/rust-lang/rust/blob/master/compiler/rustc_builtin_macros/src/asm.rs). It inherits from the ExprWithoutBlock, which inherits from Expr, indicating that an asm! call is an expr.
+
+Here, I give the high level structure of the AST related to inline assembly. In the gccrs codebase, the AST are represented with classes and structs.
+
+- InlineAsm: this class inherits from ExprWithoutBlock, and contains containers for templated strings, operands, named arguments, register arguments, clobber abi, and options.
+- TupleTemplateStr: stands for a templated string where we store a location as well as the internet string
+- InlineAsmOperand: represents an operand in inline assembly, which can be a register operand (class InlineAsmRegOrRegClass) or some non-register operands such as a Sym or a Label.
+
+By having a close mapping between the three things: Syntax, AST, and parsing, we lower our mental capacity in implementing them, maintaining a clear mental model if ever in need of debugging.
+
+## Parser
+
+Nice, now let's talk about the parser :)
+
+We'll be writing a simple recursive descent parser as described by our syntax section.
+
+As referenced above in the syntax section, the parser consists of 4 levels, 0 to 3, maintaining a clear and simple mapping between the parser and the syntax:
+- The first level (0), shows the entrance of the parser.
+- The second level (1) describes the main loop of the parser, where we repeatedly parse all the formatted strings first, then operands then perform AST validation.
+- The third and fourth level goes into the subcategory of each aspect of the second level and so on: parsing formatted strings means repeatedly parsing *a* formatted string and parsing options means repeatedly parsing *an* option, etc etc.
+
+The diagram below shows the totality of the parser architecture, where the two greenish block in level 0 represents the starting point and the ending point of the parser.
+![Untitled diagram-2024-09-04-060350](https://hackmd.io/_uploads/r1tIddrhR.svg)
+
+Interested readers can look into the master branch, in the file `gcc/rust/expand/rust-macro-builtins-asm.h/cc` for the implementation detail of the parser.
+## AST to HIR
+
+After we have gotten our AST, the next step is lowering it into HIR.
+
+Since the inline assembly ASTs doesn't undergo much change in structure from AST to HIR, the HIRs representation inherits almost everything from the ASTs structure.
+
+Despite similarity in structure, the HIR lowering is a necessary step in the pipeline where we get to inherit all of gccrs' necessary name resolution, unsafe gating and type checking.
+
+
+### HIR Creation
+There must be an automatic way to do this. After all, the call `asm!` will appear everywhere, maybe in a block, maybe in another AST; how do we make sure that we can reach it and lower it correctly?
+
+The answer is the visitor pattern, here are [some](https://en.wikipedia.org/wiki/Visitor_pattern) of [the](https://refactoring.guru/design-patterns/visitor) references to [look into](https://www.youtube.com/watch?v=dQw4w9WgXcQ) if you're new to this pattern.
+
+In short: The visitor pattern separate algorithms from the objects which they operate on.
+
+In my opinion, this is where the visitor pattern shines the brightest: you only have to worry about your part. Let's get into the nitty gritty.
+
+In the gccrs codebase, more specifically, the visitor class responsible for lowering AST to HIR is of the name `ASTLowering*`.
+
+The most general AST lowering class is `ASTLoweringBase` where all other AST lowering class inherits from to overload as needed.
+
+Since our AST inherits from ExprWithoutBlock, which is a type of Expr, we implement our lowering from `ASTLoweringExpr`. The following code block highlights the fact that we need to lower all of AST::Expr in our AST::InlineAsm, primarily in our AST::InlineAsmOperand; I show the pattern for the first two lowering of AST::InlineAsmOperand, as well as the method to create the HIR::InlineAsm.
+
+```c++
+HIR::InlineAsmOperand
+translate_operand_in (const AST::InlineAsmOperand &operand)
+{
+  auto in_value = operand.get_in ();
+
+  struct HIR::InlineAsmOperand::In in (
+    in_value.reg,
+    std::unique_ptr<Expr> (ASTLoweringExpr::translate (*in_value.expr.get ())));
+  return in;
+}
+
+HIR::InlineAsmOperand
+translate_operand_out (const AST::InlineAsmOperand &operand)
+{
+  auto out_value = operand.get_out ();
+  struct HIR::InlineAsmOperand::Out out (out_value.reg, out_value.late,
+					 std::unique_ptr<Expr> (
+					   ASTLoweringExpr::translate (
+					     *out_value.expr.get ())));
+  return out;
+}
+// [...]
+// We omit translate_operand_inout, translate_operand_split_in_out,
+// translate_operand_const, translate_operand_sym,
+// translate_operand_label for clarity
+from_operand (const AST::InlineAsmOperand &operand)
+{
+  using RegisterType = AST::InlineAsmOperand::RegisterType;
+  auto type = operand.get_register_type ();
+
+  switch (type)
+    {
+    case RegisterType::In:
+      return translate_operand_in (operand);
+    case RegisterType::Out:
+      return translate_operand_out (operand);
+    case RegisterType::InOut:
+      return translate_operand_inout (operand);
+    case RegisterType::SplitInOut:
+      return translate_operand_split_in_out (operand);
+    case RegisterType::Const:
+      return translate_operand_const (operand);
+    case RegisterType::Sym:
+      return translate_operand_sym (operand);
+    case RegisterType::Label:
+      return translate_operand_label (operand);
+    default:
+      rust_unreachable ();
+    }
+}
+void
+ASTLoweringExpr::visit (AST::InlineAsm &expr)
+{
+  auto crate_num = mappings.get_current_crate ();
+  Analysis::NodeMapping mapping (crate_num, expr.get_node_id (),
+				 mappings.get_next_hir_id (crate_num),
+				 mappings.get_next_localdef_id (crate_num));
+
+  std::vector<HIR::InlineAsmOperand> hir_operands;
+  const std::vector<AST::InlineAsmOperand> &ast_operands = expr.get_operands ();
+
+  for (auto &operand : ast_operands)
+      hir_operands.push_back (from_operand (operand));
+
+
+  translated
+    = new HIR::InlineAsm (expr.get_locus (), expr.is_global_asm,
+			  expr.get_template_ (), expr.get_template_strs (),
+			  hir_operands, expr.get_clobber_abi (),
+			  expr.get_options (), mapping);
+}
+
+
+```
+
+### Unsafe gating
+
+Since `asm!` is platform dependent and is inherently unsafe, i.e "you would get a [segmentation fault](https://en.wikipedia.org/wiki/Segmentation_fault) with no probable stacktrace whatsoever", rust requires asm! to be in an unsafe block.
+
+In the gccrs codebase, this `unsafe gating` is handled via `gcc/rust/checks/rust-unsafe-checker.h/cc`, again, employing the [double dispatch](https://stackoverflow.com/questions/6762256/how-does-double-dispatch-work-in-visitor-pattern) functionality of the visitor pattern.
+
+
+In our implementation, the unsafe checker maintains a stack of contexts named `unsafe_context` with a convenient boolean function `is_in_context`. At the time of our visit, we check if it is an unsafe context or not.
+
+```cpp
+void
+UnsafeChecker::visit (InlineAsm &expr)
+{
+  if (unsafe_context.is_in_context ())
+    return;
+
+  rust_error_at (
+    expr.get_locus (), ErrorCode::E0133,
+    "use of inline assembly is unsafe and requires unsafe function or block");
+}
+```
+
+> But Jas, why we wouldn't want the UnsafeChecker to just maintain a boolean `is_unsafe`, and once UnsafeChecker visit an unsafe block, we set the boolean `is_unsafe` to true and consequently false after the UnsafeChecker finishes visiting?
+
+This won't work if we are traversing an AST where we have nested unsafe block, thus a `template <typename T> class StackedContexts` is needed. Let's examine an example where a single boolean failed and why we would need to use a stack.
+
+In this example, there is only 1 unsafe context; the boolean implementation satisfies the unsafe requirement.
+```diff
+let a = 15;
+unsafe { // we set the boolean to true
+      // Now unsafe operations are allowed!
+      let b = *(&a as *const i32);
+      let c = std::mem::transmute<i32, f32>(b);
+} // we set it to false
+// Yay me!!!
+```
+But in the following case, where we have nested unsafe context, the boolean fails to recognize that we are still "unsafe"; thus needing a stack.
+
+
+```diff
++unsafe { // wraps the above unsafe context inside another unsafe context
+
+    let a = 15;
+    unsafe { // we set the boolean to true
+         let b = *(&a as *const i32);
+         let c = std::mem::transmute<i32, f32>(b);
+    } // we set it to false
+    // Yay me!!!
++ }
++ // Now unsafe operations are forbidden again, but the boolean is false
++ let f = std::mem::transmute<i32, f32>(15); // Uh-oh!
+```
+Before every visit to an unsafe context, the unsafe checker inserts a context into the stack and after every visit, it pops that context out. A check to see if we are still unsafe checks if the stack is empty.
+Readers interested in implementation details can check `gcc/rust/checks/errors/rust-unsafe-checker.h/cc` and `gcc/rust/util/rust-stacked-contexts.h`
+
+
+### Type checking
+From the rust compiler dev references:
+> "The only ones that are of particular interest to rustc are NORETURN which makes asm! return ! instead of ()".
+
+We minimally represent this situation with the following implementation in `gcc/rust/typecheck/rust-hir-typecheck-expr.h/cc`
+
+```cpp
+void
+TypeCheckExpr::visit (HIR::InlineAsm &expr)
+{
+  // We recursively typechecks its operands.
+  typecheck_inline_asm_operand (expr);
+
+
+  if (expr.options.count (AST::InlineAsmOption::NORETURN) == 1)
+    infered = new TyTy::NeverType (expr.get_mappings ().get_hirid ());
+  else
+    infered
+      = TyTy::TupleType::get_unit_type (expr.get_mappings ().get_hirid ());
+}
+```
+
+I omit the part where we also recursive typecheck and infer each expr in each operand for the next part
+### Resolution
+Given an example that is part of [inline_asm_mov_x86_rs](https://github.com/Rust-GCC/gccrs/pull/3060/files#diff-693188f770da1bcaab140cfa09a7df64b510f5b17f21d9dc7627fc401776086a) test case, where we refers to _x as a potential output:
+```
+let mut _x: i32 = 0;
+unsafe {
+    asm!(
+        "mov $5, {}",
+        out(reg) _x
+    );
+}
+```
+We need a way to somehow link the `_x` that we refers inside the asm!, inside the unsafe block to the `_x` outside of the unsafe block.
+
+The part that handles this is called name resolution. The [Rust Compiler Dev Reference](https://rustc-dev-guide.rust-lang.org/name-resolution.html#:~:text=The%20name%20resolution%20in%20Rust,other%20via%20the%20ResolverAstLoweringExt%20trait.) goes into much details for this part.
+
+Here I provide some implementation details for gccrs.
+```cpp
+// Perform type checking on expr. Also runs type unification algorithm.
+// Returns the unified type of expr
+TyTy::BaseType *
+TypeCheckExpr::Resolve (HIR::Expr *expr)
+{
+  TypeCheckExpr resolver;
+  expr->accept_vis (resolver);
+
+  if (resolver.infered == nullptr)
+    return new TyTy::ErrorType (expr->get_mappings ().get_hirid ());
+
+  auto ref = expr->get_mappings ().get_hirid ();
+  resolver.infered->set_ref (ref);
+  resolver.context->insert_type (expr->get_mappings (), resolver.infered);
+
+  return resolver.infered;
+}
+```
+
+## TREE (GENERIC)
+
+After we have finished setting up the AST and the HIR, we'll set up the TREE (GENERIC IR) infrastructure for our asm! node and after that, this IR will be lowered by gcc itself (GIMPLE IR), relieving us from duty.
+
+The most central data structure used in the IR is `tree`, thus the name. From now, we'll refer to TREE IR as GENERIC IR.
+
+
+The knowledge I learned about GENERIC is through this documentation https://gcc.gnu.org/onlinedocs/gccint/GENERIC.html
+
+### Overall
+
+Let's look at the definition and explore the tree code structures
+
+From the GCC GENERIC:
+> The purpose of GENERIC is simply to provide a language-independent way of representing an entire function in trees... If you can express it with the codes in gcc/tree.def, it’s GENERIC.
+
+Needless to say, we are to obtain a working knowledge of trees and tree codes :)
+
+In the tree.def file, the tree codes are defined with the following structure:
+
+```
+DEFTREECODE (name, string_name, class, operand_count)
+```
+
+where:
+- name: The symbolic name of the tree node.
+- string_name: The human-readable string representing the node.
+- class: A classification for the nodes to follow a specific structure/functionality.
+- operand_count: The number of fields it takes to make the tree of this type.
+
+
+Let's give an example of some of the tree codes we're sure to use:
+
+
+
+| Tree code definition | definition location in tree.def | Usage in our backend |
+| -------- | -------- | -------- |
+| DEFTREECOE(TREE_LIST, "tree_list", tcc_exceptional, 0)   | Line 54     | Construction of operands     |
+| DEFTREECODE(STRING_CST, "string_cst", tcc_constant, 0)    | Line 310    | Construction of templated assembly code  |
+| DEFTREECODE(ASM_EXPR, "asm_expr", tcc_statement, 5)     | Line 1008    | Construction of inline assembly node   |
+
+
+### Anatomy
+
+I'll give a detailed look of the ones that are needed for the project.
+
+#### TREE_LIST
+TREE_LIST is ... just a list of trees... It has a TREE_VALUE, TREE_PURPOSE and TREE_CHAIN.
+
+For the first two values, TREE_VALUE holds the element while TREE_PURPOSE gives a directive to later stages on what to do with this TREE_VALUE. In our tree usage section, we'll see that a tree list of register operands contains a TREE_VALUE of variables and a TREE_PURPOSE of register type, denoting if it's input or output register operands.
+
+The TREE_CHAIN node points to the next element in the tree list, which is also a TREE_LIST.
+
+In [gcc/tree.cc](https://github.com/Rust-GCC/gccrs/blob/master/gcc/tree.cc), a way to construct a tree list is
+```cpp
+/* Return a newly created TREE_LIST node whose
+   purpose and value fields are PARM and VALUE.  */
+tree
+build_tree_list (tree parm, tree value MEM_STAT_DECL)
+{
+  tree t = make_node (TREE_LIST PASS_MEM_STAT);
+  TREE_PURPOSE (t) = parm;
+  TREE_VALUE (t) = value;
+  return t;
+}
+```
+
+A trend you'll see is that these underlying wrapper methods that construct our trees is that they'll start with a `tree t = make node(...)` or something that allocates memory for a tree, and then some  more `UPPER_CASE_SETTER_GETTER_METHOD(t) = ...` that follows.
+
+#### STRING_CST
+The STRING_CST is a tree constant of string. We'll use this type of TREE in a lot of places. For example, TREE_PURPOSE in the above TREE_LIST often uses some form of STRING_CST as a directive for later stages. We can also use it as a way to encode our unprocessed/templated inline assembly code as STRING_CST.
+
+Sometimes, our strings can also be represented not by a STRING_CST but by ARRAY of type CHAR, and this is also acceptable. An example of this is in `cc` for the inline assembly code.
+
+A call to construct STRING_CST: `build_string`, takes two parameters: a length of cstr, including the NULL delimiter and the cstr itself.
+#### ASM_EXPR
+
+An ASM_EXPR has 5 parameters it needs passing.
+
+- An ASM_STRING of treecode STRING_CST
+- An ASM_OUTPUTS of treecode TREE_LIST
+- An ASM_INPUTS of treecode TREE_LIST
+- An ASM_CLOBBERS
+- An ASM_LABELS
+
+I omit the last two treecodes simply because the project hasn't had the capacity to explore the clobber and label functionality.
+
+### TREE USAGE
+
+In constructing the tree representation of our inline assembly, we combine the existing infrastructure as well as our knowledge of tree codes.
+
+More specifically, we rely on existing tree generation of our variables and raw c strings. We build ourselves a list of input and output registers to make up the ASM_EXPR tree.
+
+The process of building our ASM_EXPR is as follow:
+
+```c++
+tree
+CompileAsm::tree_codegen_asm (HIR::InlineAsm &expr)
+{
+  auto asm_expr
+    = asm_build_stmt (expr.get_locus (), {asm_construct_string_tree (expr),
+					  asm_construct_outputs (expr),
+					  asm_construct_inputs (expr),
+					  asm_construct_clobber_tree (expr),
+					  asm_construct_label_tree (expr)});
+
+  ASM_INPUT_P (asm_expr) = expr.is_simple_asm ();
+  ASM_VOLATILE_P (asm_expr) = false;
+  ASM_INLINE_P (asm_expr) = expr.is_inline_asm ();
+
+  return asm_expr;
+}
+
+tree
+CompileAsm::asm_build_stmt (
+  location_t loc,
+  const std::array<tree, CompileAsm::ASM_TREE_ARRAY_LENGTH> &trees)
+{
+  // Prototype functiion for building an ASM_EXPR tree.
+  tree ret;
+  bool side_effects;
+
+  ret = make_node (ASM_EXPR);
+  TREE_TYPE (ret) = void_type_node;
+  SET_EXPR_LOCATION (ret, loc);
+
+
+  side_effects = false;
+  for (size_t i = 0; i < trees.size (); i++)
+    {
+      tree t = trees[i];
+      if (t && !TYPE_P (t))
+	side_effects |= TREE_SIDE_EFFECTS (t);
+      TREE_OPERAND (ret, i) = t;
+    }
+
+  TREE_SIDE_EFFECTS (ret) |= side_effects;
+
+  return ret;
+}
+```
+
+In the end, we add the tree to a list of statements in the following fashion:
+```c++
+void
+CompileExpr::visit (HIR::InlineAsm &expr)
+{
+  CompileAsm asm_codegen (ctx);
+  ctx->add_statement (asm_codegen.tree_codegen_asm (expr));
+
+}
+```
+
+Readers interested in the implementation details can refer to
+`gcc/rust/backend/rust-compile-asm.h/cc` and `gcc/rust/backend/rust-compile-expr.h/cc`
+
+## Results
+
+Yayyy, we've finally relieved ourselves of code generation responsibilities, leaving the rest to GIMPLE, RTL, and gcc backend. The gccrs compiler can now generate correct instructions using the in and out register operands.
+
+Below shows a few test cases that gccrs can now pass:
+```
+/* { dg-do run { target arm*-*-* } } */
+/* { dg-output "5\r*\n9\r*\n" }*/
+
+#![feature(rustc_attrs)]
+#[rustc_builtin_macro]
+macro_rules! asm {
+    () => {};
+}
+
+extern "C" {
+    fn printf(s: *const i8, ...);
+}
+
+fn main() -> i32 {
+    let mut x: i32 = 0;
+    let mut _y: i32 = 9;
+
+    unsafe {
+        asm!(
+            "mov {}, 5",
+            out(reg) x
+        );
+        printf("%d\n\0" as *const str as *const i8, x);
+    };
+
+    unsafe {
+        asm!(
+            "mov {}, {}",
+            in(reg) _y,
+            out(reg) x
+        );
+        printf("%d\n\0" as *const str as *const i8, x);
+    }
+
+    0
+}
+```
+## Reflection and what's next
+
+Participating in Google Summer of Code for gccrs has been my most gratifying and meaningful experience in software development. I get to talk to Arthur and Pierre-Emmanuel, both of whom are amazing people and mentors.
+
+Participating in open source allows me to not only sharpen my C++ knowledge but also my problem solving and my software architecture skills.
+
+I am taking a graduate course in compiler right now (Compiler optimization) (beaten to a pulp) and will try to get into another graduate compiler class next semester (Implementation of PL) and work in the industry in 2025.
+
+I'm actively seeking opportunities in compiler development and would love to connect further on this. Feel free to reach out at jjasmine@berkeley.edu, and you can find my resume on the landing page of my site: https://badumbatish.github.io/.
 ## Introspection
 
 Thinking back about the summer internship, I think I wasted a lot of time setting up dev envs, compiling and testing codes. Coding and building gcc/gccrs on a Macbook really sucks since the build step is confusing and there isn't a clear guide on how to do it. Compiling and testing requires a lot of time and for a person with ADHD, everytime I press that [\<space\>b](https://github.com/badumbatish/brt.nvim) button, my mind goes to YouTube and Discord and it really disrupts my flow; I wish getting ADHD meds in America was easier.
