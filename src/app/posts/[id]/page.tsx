@@ -3,11 +3,17 @@ import { getPostById, getAllPosts } from "@/lib/api";
 
 // Set the title of the page to be the post title, note that we no longer use
 // e.g. next/head in app dir
-export async function generateMetadata({
-                                           params: { id },
-                                       }: {
-    params: { id: string };
-}) {
+export async function generateMetadata(
+    props: {
+        params: Promise<{ id: string }>;
+    }
+) {
+    const params = await props.params;
+
+    const {
+        id
+    } = params;
+
     const { title } = await getPostById(id);
     return {
         title,
@@ -15,11 +21,17 @@ export async function generateMetadata({
 }
 
 // Generate the post, note that this is a "react server component"! it is allowed to be async
-export default async function Post({
-                                       params: { id },
-                                   }: {
-    params: { id: string };
-}) {
+export default async function Post(
+    props: {
+        params: Promise<{ id: string }>;
+    }
+) {
+    const params = await props.params;
+
+    const {
+        id
+    } = params;
+
     const { html, title, date } = await getPostById(id);
     return (
         <article className="p-8 prose  max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto">

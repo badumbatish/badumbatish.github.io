@@ -1,6 +1,6 @@
 import React, {ReactNode, useState} from "react";
 import Image from "next/image";
-import pictureProfile from "public/pfp3.png";
+// import pictureProfile from "";
 import LinkButton from "@/components/LinkButton";
 import AboutMeElement from "@/components/AboutMeElement";
 import {hover_border} from "@/components/tailwind_const";
@@ -65,7 +65,7 @@ const LeftMainCard = () => {
                                 rounded-lg overflow-hidden p-4 
                                 border-2 border-blue-300 gap-2 hover:border-indigo-400 ${hover_border}`}>
             <div className="basis-1/5`}">
-                <Image className="mx-auto rounded-3xl overflow-hidden" src={pictureProfile}
+                <Image className="mx-auto rounded-3xl overflow-hidden" src={"pfp3.png"}
                        alt="picture profile" width={150} height={200}></Image>
 
             </div>
