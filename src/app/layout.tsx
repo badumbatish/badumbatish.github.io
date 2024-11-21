@@ -27,17 +27,19 @@ export default function RootLayout({
     <html lang="en" className={"px-4 py-4"}>
 
 
-      <body className={`${inter.className} flex flex-col min-h-screen`}>
-      <Header>
+    <body className={`${inter.className} flex flex-col min-h-screen`}>
+    <Header>
         <Name></Name>
-      </Header>
-      <div className={"flex-1"}>{children}</div>
-        <UpToTopButton></UpToTopButton>
+    </Header>
+    <div className={"flex-1"}>{children}</div>
+    <UpToTopButton></UpToTopButton>
 
-      <footer className="footer self-center justify-center gap-2 pt-4 items-center italic ">
-          <p>Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)</p>
-      </footer>
-      </body>
+    <footer className="footer self-center justify-center gap-2 pt-4 items-center italic ">
+        <p>I&#39;m looking for new grad compiler work, please email at jjasmine@berkeley.edu</p>
+        <p>Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)</p>
+    </footer>
+
+    </body>
     </html>
   )
 }
