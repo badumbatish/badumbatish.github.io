@@ -1,12 +1,80 @@
 ---
-title: 'Going to the gym with MLIR: Lifting and lowering Dex executable instructions'
-date: 2024-12-12
-recap: "Jas talks about working with MLIR's SSA form, MLIR lifting (with MjolnIR) and lowering via tree matching "
+title: '[REPORT] [ONGOING] Going to the gym with MLIR: Lifting and lowering Dex executable instructions'
+date: 2024-12-7
+recap: "Jas reports on her graduate compiler project: working with MLIR's SSA form, MLIR lifting (with MjolnIR) and lowering."
 ---
 
-Hi everyone, this blog is still on going and it is intended as a submission for [CS265](https://www2.eecs.berkeley.edu/Courses/CS265/) [here](https://github.com/mwillsey/cs265).
+## Prologue
 
-The blog post might be a bit too long, so I think in the future there will be plans to I hope everyone enjoys.
+Hi there, I hope everyone's having a great day. It's December 2024 in beautiful Berkeley for me. It's time like this that I really wanna go to Japantown and inhale like 20 pieces of takoyaki to get myself into a food coma to relax and forget about the finals I'm having in about a week.
+
+Anyways, this article is about utilizing MLIR in analysing and optimizing the [DEX](https://source.android.com/docs/core/runtime/dalvik-bytecode) format.
+
+The blog will be divided into multiple posts. This first one is intended for submission for [CS265](https://www2.eecs.berkeley.edu/Courses/CS265/) [here](https://github.com/mwillsey/cs265), while successive posts goes into more depth about implementation details and act somewhat as a tutorial than a project report.
 
 ## Introduction
 
+The MLIR project from the LLVM framework provides a framework for building reusable and extensible compiler infrastructure. New intermediate representation can be created and used within the framework itself, allowing for a unified handling of different IRs within the same framework.
+
+In the case of the library [Shuriken](https://github.com/Shuriken-Group/Shuriken-Analyzer) from [Shuriken Group](https://github.com/Shuriken-Group) for Dalvik Executable (DEX) file analysis, we can leverage the MLIR by extending a somewhat 1-to-1 mapping of DEX to MLIR, the newly created IR (MjolnIR), allowing us to use the much more mature framework for analyzing the binary itself. As DEX is used as a mean for transportation from a server to an android device where it is compiled into ART for installation, being able to optimize the bytecode size of dex allows us to save cost on networking as well as server and android device's storage cost.
+
+In the future, MjolnIR will be used in optimization, obsfucating, deobsfucating the Dalvik Machine Bytecode.
+
+This blog post wouldn't be possible without the guidance of Eduardo (Edu) Blázquez González (Fare9), ([Eduardo](https://farena.in/)), a PhD doctorate and a compiler engineer at Quarkslab in developing, lifting and lowering the IR.
+
+Edu's the one that reached out to me on twitter to befriend me :) We chatted about compilers and stuff and later he introduced me to the codebase.
+He helps me with understanding the codebase infrastructure, together with emotional support and mlir contributions hahahah :)
+
+I am also grateful to [Max Willsey](https://www.mwillsey.com/), the professor of the compiler graduate class CS265, for allowing me, an undergraduate to enroll as well as guiding me on the direction of the project.
+Throughout the semester, there were some assignments where I fell behind. I know that opportunities are hard to come by and I really took every lesson to heart.
+
+New information tidbits will come around in different sections to avoid giving too much weight for any single one, keeping the reading flow smooth.
+
+It is also worth noting that successful lifting and lowering of DEX via MLIR remains a demo for now. Much work is needed in supporting the full instruction set of DEX as well as optimization of it.
+
+I hope everyone enjoys.
+
+## Planning
+
+In analysing the DEX format, we need to parse the DEX file, construct a CFG (non-MLIR), and then translate the CFG to MLIR's CFG, apply some analysis, then *translate it to smali*, and then translate smali to dex (via 3rd party tool).
+
+The reasoning for this is that smali is an easier output to work with than dex. In dex format, we need to maintain different tables of strings, types, methods and classes in the pre-header before we get to output the actual DEX [TODO_LINK_EDU_PHD].
+
+In smali, all is resolved via text references instead. In such a short amount of time (~ 6 weeks), it's hard to achieve true circular transformation (DEX->MLIR->DEX). We therefore opt for (DEX->MLIR->smali->DEX) first (actually at the time of writing this (Dec 7th 2024), I'm even nervous to see if we can get DEX->MLIR->smali for submission).
+
+With the naming of the MLIR's dialect being MjolnIR, the goal of the project is divided into two fronts:
+- Achieve the circular transformation of: DEX -> MjolnIR (MLIR) -> Smali.
+- Survey some analysis/optimization provided by MLIR, using our new IR.
+
+In parsing the dex and constructing the CFG, the job was done by Edu prior to me joining the team. There was also an effort in lifting some subset of DEX to MLIR in the [KUNAI](https://github.com/Fare9/KUNAI-static-analyzer) repo by Edu (recorded [here](https://www.youtube.com/watch?v=hfqOivYdD40&ab_channel=LLVM)).
+
+Therefore, my responsibilities in the project is to setup mlir, port over and maintain the lifting process of DEX, figure out the optimization and lowering.
+
+The mermaid graph shown below details the steps we need to take in the project.
+
+[TODO_INSERT_FLOWCHART_TD_ON_MERMAIDCHART.COM]
+
+
+## Parsing, cmdline and cmake
+
+Supposedly, the project will provide a command line tool for user to input in either a path to a DEX file or a folder of DEX file so that the tool can either lift and lower the DEX file(s).
+
+The command line executable is hand-written, with the formatting job done via [fmt](https://fmt.dev/11.0/).
+
+To maintain the build of the project, I opt for CMake, which is both Shuriken's build system and LLVM and MLIR's build system. This allows (somewhat) seamless connection between them.
+
+## Non-MLIR CFG to MLIR CFG
+
+A special characteristic of DEX is that it utilizes (almost infinite) virtual registers without caring for stack space.
+
+This allows for a seamless construction of the program's CFG from the DEX format.
+
+After this we translate the code from
+
+## Optimization
+
+## Translation
+
+## Other contributions to project
+
+## Future work
