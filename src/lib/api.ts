@@ -18,6 +18,8 @@ import {
   transformerNotationDiff,
   // ...
 } from '@shikijs/transformers'
+import rehypeHighlight from "rehype-highlight";
+import rehypePrismDiff from "rehype-prism-diff";
 // memoize/cache the creation of the markdown parser, this sped up the
 // building of the blog from ~60s->~10s
 let p: ReturnType<typeof getParserPre> | undefined
@@ -33,9 +35,11 @@ async function getParserPre() {
         .use(remarkGfm)
         // @ts-ignore
         .use(rehypeShiki, {
-            theme :'poimandres',
+            theme: 'catppuccin-frappe',
+            //theme :'poimandres',
+            inline: 'tailing-curly-colon', // or other options
             transformers: [
-    transformerNotationDiff(), 
+    transformerNotationDiff(),
     transformerNotationHighlight(),
 
     // ...
@@ -43,6 +47,8 @@ async function getParserPre() {
         })
         .use(rehypeStringify)
         .use(rehypeSlug)
+        .use(rehypeHighlight)
+        .use(rehypePrismDiff)
         .use(rehypeAutolinkHeadings, {
             behavior : 'wrap',
             content: arg => ({
