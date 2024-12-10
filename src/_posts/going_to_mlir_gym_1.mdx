@@ -6,9 +6,7 @@ recap: "Jas reports on her graduate compiler project: working with MLIR's SSA fo
 
 ## Prologue
 
-Hi there, I hope everyone's having a great day. It's December 2024 in beautiful Berkeley for me. It's time like this that I really wanna go to Japantown and inhale like 20 pieces of takoyaki to get myself into a food coma to relax and forget about the finals I'm having in about a week.
-
-Anyways, this article is about utilizing MLIR in analysing and optimizing the [DEX](https://source.android.com/docs/core/runtime/dalvik-bytecode) format.
+Hi there, I hope everyone's having a great day, this article is about utilizing MLIR in analysing and optimizing the [DEX](https://source.android.com/docs/core/runtime/dalvik-bytecode) format.
 
 The blog will be divided into multiple posts. This first one is intended for submission for [CS265](https://www2.eecs.berkeley.edu/Courses/CS265/) [here](https://github.com/mwillsey/cs265), while successive posts goes into more depth about implementation details and act somewhat as a tutorial than a project report.
 
@@ -36,7 +34,7 @@ I hope everyone enjoys.
 
 ## Planning
 
-In analysing the DEX format, we need to parse the DEX file, construct a CFG (non-MLIR), and then translate the CFG to MLIR's CFG, apply some analysis, then *translate it to smali*, and then translate smali to dex (via 3rd party tool).
+In analysing the DEX format, we need to parse the DEX file, construct a CFG (non-MLIR, and non-SSA), and then translate the CFG to MLIR's SSA CFG, apply some analysis, then *translate it to smali*, and then translate smali to dex (via 3rd party tool).
 
 The reasoning for this is that smali is an easier output to work with than dex. In dex format, we need to maintain different tables of strings, types, methods and classes in the pre-header before we get to output the actual DEX [TODO_LINK_EDU_PHD].
 
@@ -54,6 +52,31 @@ The mermaid graph shown below details the steps we need to take in the project.
 
 [TODO_INSERT_FLOWCHART_TD_ON_MERMAIDCHART.COM]
 
+### MLIR's operations and values
+### Operations
+A section on MLIR high level overview structure not only helps readers understand the project's different playing parts but also helps reviewers of this document review my correct understanding of the project.
+
+MLIR is built on top of these so-called operations
+On the top level, the MLIR features a `ModuleOp`, which is a container operation of a single graph region.
+
+A region is an ordered list of basic blocks. And a basic block is an ordered list of basic block.
+
+In translating from our CFG's instructions to MLIR, we think of
+
+- An input DEX file is comprised of ModuleOps
+- Each method in the DEX file is a ModuleOp
+- Each method might have control flows, which is made up with basic blocks.
+
+Although a simple 1-1 representation, MLIR can feature much more complex hierarchy, as demonstrated below:
+
+[TODO_ADD_MLIR_DIAGRAM_1]
+
+[TODO_ADD_MLIR_DIAGRAM_2]
+
+### Values
+
+An important thing to notice is how is SSA form represented in MLIR, which is done with `mlir::Value`. Given an operation such as the integer addition
+`mlir::arith::AddIOp`, mlir gives us different accessors such as `getLhs()`, `getRhs`, `get
 
 ## Parsing, cmdline and cmake
 
@@ -63,17 +86,26 @@ The command line executable is hand-written, with the formatting job done via [f
 
 To maintain the build of the project, I opt for CMake, which is both Shuriken's build system and LLVM and MLIR's build system. This allows (somewhat) seamless connection between them.
 
-## Non-MLIR CFG to MLIR CFG
+## Non-MLIR, NON-SSA CFG to MLIR-SSA CFG
 
 A special characteristic of DEX is that it utilizes (almost infinite) virtual registers without caring for stack space.
-
 This allows for a seamless construction of the program's CFG from the DEX format.
 
-After this we translate the code from
+After this we translate the NON-SSA CFG to MLIR's SSA CFG via Braun's SSA algorithm.
+
+On the high level overview, we keep a map of integers to mlir::Value.
+When the original CFG's instructions ask to either read or write to the variables, we either get the value from our map or
+create a new value and map the integer variable to said value.
 
 ## Optimization
 
 ## Translation
+
+In translating from MjolnIR to smali, I think two things that troubles me the most is that
+
+- No project (to the best o our knowledge) translate from a custom format to smali.
+- Connecting a out-of-ssa translation to the mlir's infrastructure and realizing it to actually output smali.
+
 
 ## Other contributions to project
 

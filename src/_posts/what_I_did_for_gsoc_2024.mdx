@@ -145,7 +145,7 @@ Keep in mind that the way we see this division of the grammar is how we'll const
 
 Let's look at some inline assembly examples pulled from the [Rust by example website](https://doc.rust-lang.org/rust-by-example/unsafe/asm.html).
 - This is the simplest form, only including a no-op instruction
-```
+```rust
 use std::arch::asm;
 
 unsafe {
@@ -155,7 +155,7 @@ unsafe {
 
 - Of course, more complex (non-simple) form of inline assembly requires some extra functionality:
 
-```
+```rust
 use std::arch::asm;
 
 let x: u64;
@@ -169,7 +169,7 @@ This requires the operand functionality, more specifically the reg_operand categ
 
 An as a demonstrate, in the following code, `move {}, 5` is transformed into `mov x0, 5`
 
-```
+```asm
     .cfi_def_cfa_offset 32
     .cfi_offset 29, -32
     .cfi_offset 30, -24
@@ -669,6 +669,20 @@ fn main() -> i32 {
 ## End words
 
 Participating in Google Summer of Code for gccrs  (and get paid for it hehe) has been my most gratifying and meaningful experience in software development. I am mentored by Arthur Cohen and Pierre-Emmanuel "PEP" Patry; Arthur helped me with the direction of the project and code reviews while Pierre-Emmanuel provided me with code infrastructure navigation and PR code-reviews, both of which are much needed.
+
+The main struggles for me in this internship is three fold:
+- Around designing the code infrastructure to support inline assembly.
+- Around constructing new AST/HIR/ Tree IR via inheritance.
+- In general, navigating around documentation and codebase.
+
+There wasn't much in terms of inline assembly related work before the summer of my internship in gccrs. This means that I need also to decide how to
+create and structure my code in a way that fits into the codebase itself. At that moment, there was just this fear of not knowing what to do, not knowing what to code.
+The concept is akin to create something out of thin air: you made up a class and named it AST, inherited this class from another AST and trust that the visitor
+pattern will come to save you once you have also created your made-up parser to produce this made-up AST; and the pattern continues on.
+That's the thing I love about software engineering in general and compiler more specifically.
+
+Documentation, I've learned, is a some-what of dire thing in the compiler world. I'm now, in retrospect, extra grateful for Arthur when he wrote
+up a whole docs detailing each step for me when I attempted a hard PR. Thank you Arthur moah moah moah I love you.
 
 I am taking a graduate course in compiler right now (Compiler optimization) (beaten to a pulp) and will try to get into another graduate compiler class next semester (Implementation of PL) and work in the industry in 2025.
 
