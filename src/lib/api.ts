@@ -20,6 +20,8 @@ import {
 } from '@shikijs/transformers'
 import rehypeHighlight from "rehype-highlight";
 import rehypePrismDiff from "rehype-prism-diff";
+import rust from 'highlight.js/lib/languages/rust'
+import {common} from "lowlight";
 // memoize/cache the creation of the markdown parser, this sped up the
 // building of the blog from ~60s->~10s
 let p: ReturnType<typeof getParserPre> | undefined
@@ -47,7 +49,9 @@ async function getParserPre() {
         })
         .use(rehypeStringify)
         .use(rehypeSlug)
-        .use(rehypeHighlight)
+        .use(rehypeHighlight, {
+            languages : {...common, rust},
+        })
         .use(rehypePrismDiff)
         .use(rehypeAutolinkHeadings, {
             behavior : 'wrap',
