@@ -6,39 +6,49 @@ recap: "Jas reports on her graduate compiler project: working with MLIR's SSA fo
 
 ## Prologue
 
-Hi there, I hope everyone's having a great day, this article is about utilizing MLIR in analysing and optimizing the [DEX](https://source.android.com/docs/core/runtime/dalvik-bytecode) format.
+Hi there, I hope everyone's having a great day, this article is about writing a recompiler with MLIR, utilizing the framework in analysing and optimizing the [DEX](https://source.android.com/docs/core/runtime/dalvik-bytecode) format.
 
-The blog will be divided into multiple posts. This first one is intended for submission for [CS265](https://www2.eecs.berkeley.edu/Courses/CS265/) [here](https://github.com/mwillsey/cs265), while successive posts goes into more depth about implementation details and act somewhat as a tutorial than a project report.
-
-## Introduction
-
-The MLIR project from the LLVM framework provides a framework for building reusable and extensible compiler infrastructure. New intermediate representation can be created and used within the framework itself, allowing for a unified handling of different IRs within the same framework.
-
-In the case of the library [Shuriken](https://github.com/Shuriken-Group/Shuriken-Analyzer) from [Shuriken Group](https://github.com/Shuriken-Group) for Dalvik Executable (DEX) file analysis, we can leverage the MLIR by extending a somewhat 1-to-1 mapping of DEX to MLIR, the newly created IR (MjolnIR), allowing us to use the much more mature framework for analyzing the binary itself. As DEX is used as a mean for transportation from a server to an android device where it is compiled into ART for installation, being able to optimize the bytecode size of dex allows us to save cost on networking as well as server and android device's storage cost.
-
-In the future, MjolnIR will be used in optimization, obsfucating, deobsfucating the Dalvik Machine Bytecode.
-
-This blog post wouldn't be possible without the guidance of Eduardo (Edu) Blázquez González (Fare9), ([Eduardo](https://farena.in/)), a PhD doctorate and a compiler engineer at Quarkslab in developing, lifting and lowering the IR.
-
-Edu's the one that reached out to me on twitter to befriend me :) We chatted about compilers and stuff and later he introduced me to the codebase.
-He helps me with understanding the codebase infrastructure, together with emotional support and mlir contributions hahahah :)
-
-I am also grateful to [Max Willsey](https://www.mwillsey.com/), the professor of the compiler graduate class CS265, for allowing me, an undergraduate to enroll as well as guiding me on the direction of the project.
-Throughout the semester, there were some assignments where I fell behind. I know that opportunities are hard to come by and I really took every lesson to heart.
-
-New information tidbits will come around in different sections to avoid giving too much weight for any single one, keeping the reading flow smooth.
-
-It is also worth noting that successful lifting and lowering of DEX via MLIR remains a demo for now. Much work is needed in supporting the full instruction set of DEX as well as optimization of it.
+The blog is intended as a report submission for [CS265](https://www2.eecs.berkeley.edu/Courses/CS265/) [here](https://github.com/mwillsey/cs265). In writing this report, I'm getting more practice on writing high level design docs without concerning readers with code, yayy mee.
 
 I hope everyone enjoys.
 
+## Introduction
+
+The MLIR project from the LLVM framework provides a framework for building reusable and extensible compiler infrastructure, allowing for a unified handling of different IRs within the same framework.
+
+In the case of the library [Shuriken](https://github.com/Shuriken-Group/Shuriken-Analyzer) from [Shuriken Group](https://github.com/Shuriken-Group) for Dalvik Executable (DEX) file analysis, we can leverage the MLIR by extending a somewhat 1-to-1 mapping of DEX to MLIR, the newly created IR (MjolnIR), allowing us to use the much more mature framework for analyzing the binary itself. As DEX is used as a mean for transportation from a server to an android device where it is compiled into ART for installation, being able to optimize the bytecode size of dex allows us to save cost on networking as well as server and android device's storage cost.
+
+In the future, MjolnIR will be used in optimization, obfuscating, deobfuscating the Dalvik Machine Bytecode.
+
+This blog post wouldn't be possible without the guidance of Eduardo (Edu) Blázquez González (Fare9), ([Eduardo](https://farena.in/)), a PhD doctorate and a compiler engineer at Quarkslab in developing, lifting and lowering the IR.
+This summer, Edu's the one that reached out to me on twitter to befriend me :) We chatted about compilers and stuff, and later he introduced me to the codebase.
+He's been helping me with onboarding the codebase infrastructure, together with emotional support and chatting about life hahahah :)
+
+I am also grateful to [Max Willsey](https://www.mwillsey.com/), the professor of the compiler graduate class CS265, for allowing me, an undergraduate to enroll as well as guiding me on the direction of the project.
+Throughout the semester, there were some assignments where I fell behind. I know that opportunities are hard to come by and I really took every lesson to heart. I thank you for your advice and your bet for taking me into the class :)
+
+ Much work is needed in supporting the full instruction set of DEX as well as optimization of it. The project report will discuss the current work (which is a subset of the DEX instruction set) as well as future work.
+
+
 ## Planning
+### Version control and contributions
+
+All code for the project is under the [Shuriken Analyzer](https://github.com/Shuriken-Group/Shuriken-Analyzer) repository, which is under the [Shuriken Group](https://github.com/Shuriken-Group)'s ownership.
+
+The group also includes other projects, such as
+- [LLVM/MLIR dependency fetching tool](https://github.com/Shuriken-Group/setup_llvm_tools): To power CI/CD for this project.
+- [Telegram bot for Shuriken](https://github.com/Shuriken-Group/shuribot) : for issue filing and status request, as our group's communication is mainly via telegram.
+
+My contributions for the project are shown separately via the [issues](https://github.com/Shuriken-Group/Shuriken-Analyzer/issues?q=is%3Aissue+author%3Abadumbatish) and [pull requests](https://github.com/Shuriken-Group/Shuriken-Analyzer/pulls?q=is%3Apr+author%3Abadumbatish)
+
+### Goals and current status
 
 In analysing the DEX format, we need to parse the DEX file, construct a CFG (non-MLIR, and non-SSA), and then translate the CFG to MLIR's SSA CFG, apply some analysis, then *translate it to smali*, and then translate smali to dex (via 3rd party tool).
 
-The reasoning for this is that smali is an easier output to work with than dex. In dex format, we need to maintain different tables of strings, types, methods and classes in the pre-header before we get to output the actual DEX [TODO_LINK_EDU_PHD].
 
-In smali, all is resolved via text references instead. In such a short amount of time (~ 6 weeks), it's hard to achieve true circular transformation (DEX->MLIR->DEX). We therefore opt for (DEX->MLIR->smali->DEX) first (actually at the time of writing this (Dec 7th 2024), I'm even nervous to see if we can get DEX->MLIR->smali for submission).
+The reasoning for this is that smali is an easier output to work with than dex. In dex format, we need to maintain different tables of strings, types, methods and classes in the pre-header before we get to output the actual DEX [TODO_LINK_EDU_PHD]. To make matters worse, control flow are done via offsets, which disrupts optimization and requires recalculation of offsets.
+
+In smali, all is resolved via text references instead. In such a short amount of time (~ 6 weeks), it's hard to achieve true circular transformation (DEX->MLIR->DEX). I therefore opted for (DEX->MLIR->smali->DEX) first (actually at the time of writing this (Dec 7th 2024), I'm even nervous to see if we can get DEX->MLIR->smali for submission).
 
 With the naming of the MLIR's dialect being MjolnIR, the goal of the project is divided into two fronts:
 - Achieve the circular transformation of: DEX -> MjolnIR (MLIR) -> Smali.
@@ -46,37 +56,57 @@ With the naming of the MLIR's dialect being MjolnIR, the goal of the project is 
 
 In parsing the dex and constructing the CFG, the job was done by Edu prior to me joining the team. There was also an effort in lifting some subset of DEX to MLIR in the [KUNAI](https://github.com/Fare9/KUNAI-static-analyzer) repo by Edu (recorded [here](https://www.youtube.com/watch?v=hfqOivYdD40&ab_channel=LLVM)).
 
-Therefore, my responsibilities in the project is to setup mlir, port over and maintain the lifting process of DEX, figure out the optimization and lowering.
+Therefore, my responsibilities in the project is to setup mlir, port over and maintain the lifting process of DEX, figure out the optimization and lowering aspect.
 
-The mermaid graph shown below details the steps we need to take in the project.
+The diagram shown below details the steps we need to take in the project.
 
-[TODO_INSERT_FLOWCHART_TD_ON_MERMAIDCHART.COM]
+![mlir_gym_goal.svg](/blogs/mlir_gym_goal.svg)
 
 ### MLIR's operations and values
 ### Operations
-A section on MLIR high level overview structure not only helps readers understand the project's different playing parts but also helps reviewers of this document review my correct understanding of the project.
 
-MLIR is built on top of these so-called operations
+MLIR is built on top of these so-called operations.
 On the top level, the MLIR features a `ModuleOp`, which is a container operation of a single graph region.
 
 A region is an ordered list of basic blocks. And a basic block is an ordered list of basic block.
 
-In translating from our CFG's instructions to MLIR, we think of
+In lifting DEX to MLIR, we think of
 
-- An input DEX file is comprised of ModuleOps
-- Each method in the DEX file is a ModuleOp
+- An input DEX file comprises of ModuleOps, which represent classes.
+- Each method in the DEX file is a MethodOp, a MjolnIR dialect.
 - Each method might have control flows, which is made up with basic blocks.
 
-Although a simple 1-1 representation, MLIR can feature much more complex hierarchy, as demonstrated below:
+Although a simple 1-1 representation, MLIR can feature much more complex hierarchy, as demonstrated below. We however, rely on the rigid structure we've defined for ourselves to simplify the lifting and lowering processes.
 
-[TODO_ADD_MLIR_DIAGRAM_1]
-
-[TODO_ADD_MLIR_DIAGRAM_2]
+The following two diagrams showcases MLIR's fluid structure.
+![mlir_diagram_1](/blogs/mlir_diagram_1.png)
 
 ### Values
 
 An important thing to notice is how is SSA form represented in MLIR, which is done with `mlir::Value`. Given an operation such as the integer addition
-`mlir::arith::AddIOp`, mlir gives us different accessors such as `getLhs()`, `getRhs`, `get
+`mlir::arith::AddIOp`, mlir gives us different accessors such as `getLhs()`, `getRhs()`, `getResult()`. In relation with operations introduced above, the MLIR Language Reference says:
+
+> MLIR is fundamentally based on a graph-like data structure of nodes, called Operations, and edges, called Values.
+
+### Dissecting MLIR
+Knowing how MLIR's operation and value works plays a crucial role in getting the recompiler working, as lifting, optimizing, and lowering all depend on them.
+
+A pretty full (for our sakes) view of MLIR is shown below:
+
+![mlir_diagram_2](/blogs/mlir_diagram_2.png)
+
+
+Below, I show some demos of some textual MLIR.
+
+From Jemery Kun's tutorial (a pretty cool person and maybe my idol), which the report author heavily relies on:
+
+```c
+func.func @main(%arg0: i32) -> i32 { // TODO: Explain this
+  %0 = math.ctlz %arg0 : i32
+  func.return %0 : i32
+}
+```
+
 
 ## Parsing, cmdline and cmake
 
@@ -84,29 +114,72 @@ Supposedly, the project will provide a command line tool for user to input in ei
 
 The command line executable is hand-written, with the formatting job done via [fmt](https://fmt.dev/11.0/).
 
-To maintain the build of the project, I opt for CMake, which is both Shuriken's build system and LLVM and MLIR's build system. This allows (somewhat) seamless connection between them.
+To maintain the build of the project, I opt for CMake, which is both Shuriken's build system and LLVM and MLIR's build system. This allows (somewhat) seamless connection between ours and LLVM's.
 
 ## Non-MLIR, NON-SSA CFG to MLIR-SSA CFG
+
+> From this point forward, referring to non-ssa CFG means that it is non-mlir and vice versa (as MLIR requires SSA form in its CFG).
 
 A special characteristic of DEX is that it utilizes (almost infinite) virtual registers without caring for stack space.
 This allows for a seamless construction of the program's CFG from the DEX format.
 
-After this we translate the NON-SSA CFG to MLIR's SSA CFG via Braun's SSA algorithm.
+After constructing the CFG's non-SSA form, we translate it to MLIR's SSA CFG via Braun's SSA algorithm.
 
-On the high level overview, we keep a map of integers to mlir::Value.
-When the original CFG's instructions ask to either read or write to the variables, we either get the value from our map or
+On the high level overview, we keep an `MLIR::DenseMap` of integers to `mlir::Value`.
+When the original CFG's instructions ask to either read or write to DEX's virtual registers, we either get the value from our map or
 create a new value and map the integer variable to said value.
 
-## Optimization
+[TODO: Expand on this]
+
+## Optimization and Analysis
+
+In writing an optimization pass, MLIR offers a variety of tools for the job. Different machinery includes [DataFlowAnalysis](https://mlir.llvm.org/docs/Tutorials/DataFlowAnalysis/), [Pattern Rewriters](https://mlir.llvm.org/docs/PatternRewriter/), [generic operation pass](https://mlir.llvm.org/docs/PassManagement/).
+
+In writing up this part of the project, the biggest obstacles is surprisingly not about learning the apis of different optimization tools, but actually verifying MLIR's and ourselves' dialect.
+
+For time management, I'm opting for a simple pattern rewriter to remove all nops: the `mlir::applyPatternsAndFoldGreedily` pass. Using the pass runs MLIR's verifier on its built-in dialect, triggering a lot of errors on our compiler build. Despite this, fixing this was somewhat straight forward with MLIR's documentation on its operation.
+
+We feel that
 
 ## Translation
 
-In translating from MjolnIR to smali, I think two things that troubles me the most is that
+In translating from MjolnIR to smali, I opted for a simple out-of-ssa transformation [introduced in class](https://github.com/mwillsey/cs265/blob/2024-fall/lessons/03-ssa.md#converting-out-of-ssa), slightly tweaked to fit MLIR's ssa block arguments fashion:
+```
+For every control flow (cf.condbr and cf.br):
+ - Copies the current arguments being passed into the true block,
+to the actual parameters, which looks like (move* vA, vB)
 
-- No project (to the best o our knowledge) translate from a custom format to smali.
+ - Inserts an instruction that jumps to the true block
+if the operand to the instruction is true, which looks like (if-* vX, :block_Y)
+
+ - Copies the current arguments being passed into the false block,
+to the actual parameters, which looks like (move* vA, vB)
+
+ - Inserts an instruction that jumps to the false block,
+which looks like (goto :block_Y)
+
+The cf.br case simply reduces down to the last two step.
+```
+
+The following drawing executes the algorithm on an example, handwritten by Jasmine.
+
+![out_of_ssa.svg](/blogs/out_of_ssa.svg)
+
+
+
+For this part, I think two things that troubles me the most is that
+- No project (to the best of our knowledge) translating from a custom format to smali, combined with no preexisting knowledge of
 - Connecting a out-of-ssa translation to the mlir's infrastructure and realizing it to actually output smali.
 
 
-## Other contributions to project
-
 ## Future work
+
+In retrospect, despite piling work between Berkeley's other hard classes, full time recruiting, leetcoding and interviewing and
+
+
+## Resources
+
+### Tutorials
+
+
+### Documentations

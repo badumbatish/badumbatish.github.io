@@ -28,6 +28,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rehype-autolink-headings": "^7.0.0",
+    "rehype-highlight": "^7.0.1",
+    "rehype-prism-diff": "^1.1.2",
     "rehype-slug": "^6.0.0",
     "rehype-stringify": "^10.0.0",
     "remark-gfm": "^4.0.0",
