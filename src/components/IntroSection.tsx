@@ -97,8 +97,8 @@ const LeftMainCard = () => {
                         <LinkButton link={"https://www.overleaf.com/read/bzvddqdhfdqp#fb6509"} linkName={"resume.pdf"}></LinkButton>
                         <LinkButton link={"https://leetcode.com/badumbatish/"}
                                     linkName={"Leetcode"}></LinkButton>
-                        <LinkButton link={"https://developers.google.com/profile/u/jjasmine"} linkName={"google.dev"}></LinkButton>
                         <LinkButton link={"https://gcc-rust.zulipchat.com/"} linkName={"gccrs Zulip"}></LinkButton>
+                        <LinkButton link={"https://bsky.app/profile/badumbatish.bsky.social"} linkName={"bluesky"}></LinkButton>
 
                     </div>
                 </div>
@@ -117,7 +117,7 @@ const RightMainCard = () => {
                 <li>
                     <AboutMeElement title="About Me"
                                     lst={["Hi everyone, it's Jasmine here :)  I like compilers, gcc, llvm and occasional scripting.",
-                                        `In my free time, I like going on walks, watching speed runs of Souls, RE games, listening to music, reading manga and learning about new languages. Yes I meant it both ways :)`,
+                                        `In my free time, I like going on walks, watching speed runs of Souls, RE games, listening to music, reading manga and learning about new languages :)`,
                                         `For music, I like pop, pop-rock and electronics pop :)`,
                                         `For manga, I like shonen as well as melancholic slice-of-life manga`]}
                     ></AboutMeElement>
@@ -125,8 +125,8 @@ const RightMainCard = () => {
                 </li>
                 <li>
                     <AboutMeElement title="Studying EECS @ Berkeley." lst={[
-                        `Transferred from Santiago Canyon College in Aug 2023.`,
-                        `Technical Coursework: Introduction to Compilers, Operating Systems, Data Structure and Algorithms, Discrete Math & Probability
+                        `Transferred from Santiago Canyon College in Aug 2023. Graduates in May 2025`,
+                        `Technical Coursework: Undergraduate Compilers, Graduate Compilers in Optimization, Operating Systems, Data Structure and Algorithms, Discrete Math & Probability
                                     Linux System Administration DeCal, Web Development DeCal.`]}
                     ></AboutMeElement>
                 </li>

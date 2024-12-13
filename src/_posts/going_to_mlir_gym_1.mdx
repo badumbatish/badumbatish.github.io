@@ -1,16 +1,16 @@
 ---
-title: '[REPORT] [ONGOING] Going to the gym with MLIR: Lifting and lowering Dex executable instructions'
+title: '[REPORT] [ONGOING] Going to the gym with MLIR: Writing a recompiler for DEX instructions'
 date: 2024-12-7
 recap: "Jas reports on her graduate compiler project: working with MLIR's SSA form, MLIR lifting (with MjolnIR) and lowering."
 ---
 
 ## Prologue
 
-Hi there, I hope everyone's having a great day, this article is about writing a recompiler with MLIR, utilizing the framework in analysing and optimizing the [DEX](https://source.android.com/docs/core/runtime/dalvik-bytecode) format.
+Hi there, I hope everyone's having a great day, this article is about lifting and lowering DEX instructions in MLIR, utilizing the framework in analysing and optimizing the [DEX](https://source.android.com/docs/core/runtime/dalvik-bytecode) format.
 
-The blog is intended as a report submission for [CS265](https://www2.eecs.berkeley.edu/Courses/CS265/) [here](https://github.com/mwillsey/cs265). In writing this report, I'm getting more practice on writing high level design docs without concerning readers with code, yayy mee.
+The blog is intended as a report submission for [CS265](https://www2.eecs.berkeley.edu/Courses/CS265/) [here](https://github.com/mwillsey/cs265). The report focuses more on my experience and the high level details. The project also discusses the ease (or uneasiness) of executing the project, meanwhile introducing the benefits of MLIR with its elements in the ecosystem
 
-I hope everyone enjoys.
+The report is about 2500 words, or 10 minutes of reading. I hope everyone enjoys :)
 
 ## Introduction
 
@@ -56,7 +56,7 @@ With the naming of the MLIR's dialect being MjolnIR, the goal of the project is 
 
 In parsing the dex and constructing the CFG, the job was done by Edu prior to me joining the team. There was also an effort in lifting some subset of DEX to MLIR in the [KUNAI](https://github.com/Fare9/KUNAI-static-analyzer) repo by Edu (recorded [here](https://www.youtube.com/watch?v=hfqOivYdD40&ab_channel=LLVM)).
 
-Therefore, my responsibilities in the project is to setup mlir, port over and maintain the lifting process of DEX, figure out the optimization and lowering aspect.
+Therefore, my responsibilities in the project is to set up MLIR, port over and maintain the lifting process of DEX, figure out the optimization and lowering aspect.
 
 The diagram shown below details the steps we need to take in the project.
 
@@ -65,14 +65,14 @@ The diagram shown below details the steps we need to take in the project.
 ### MLIR's operations and values
 ### Operations
 
-MLIR is built on top of these so-called operations.
+MLIR is built on top of these so-called operations, that describe many different levels of abstractions and computations.
 On the top level, the MLIR features a `ModuleOp`, which is a container operation of a single graph region.
 
 A region is an ordered list of basic blocks. And a basic block is an ordered list of basic block.
 
 In lifting DEX to MLIR, we think of
 
-- An input DEX file comprises of ModuleOps, which represent classes.
+- An input DEX file comprises ModuleOps, which represent classes.
 - Each method in the DEX file is a MethodOp, a MjolnIR dialect.
 - Each method might have control flows, which is made up with basic blocks.
 
@@ -83,10 +83,18 @@ The following two diagrams showcases MLIR's fluid structure.
 
 ### Values
 
-An important thing to notice is how is SSA form represented in MLIR, which is done with `mlir::Value`. Given an operation such as the integer addition
-`mlir::arith::AddIOp`, mlir gives us different accessors such as `getLhs()`, `getRhs()`, `getResult()`. In relation with operations introduced above, the MLIR Language Reference says:
+An important thing to notice is how SSA form is represented in MLIR, which is done with `mlir::Value`. The MLIR Value plays an important role in the project; operations take in values and produces values, passing them to functions and blocks to get out
+some value or to establish control flow. Hence, frequent trips to `mlir::Value`'s [doxygen](https://mlir.llvm.org/doxygen/classmlir_1_1Value.html) are needed.
+
+For example, given an operation such as the integer addition
+`mlir::arith::AddIOp`, MLIR gives us different accessors such as `getLhs()`, `getRhs()`, `getResult()` to access its values.
+Each of these values can consequently invoke `getParentBlock()` or `replaceAllUsesWith()` to further manipulate themselves.
+
+In a big picture with operations introduced above, the MLIR Language Reference succinctly says:
 
 > MLIR is fundamentally based on a graph-like data structure of nodes, called Operations, and edges, called Values.
+
+
 
 ### Dissecting MLIR
 Knowing how MLIR's operation and value works plays a crucial role in getting the recompiler working, as lifting, optimizing, and lowering all depend on them.
@@ -95,26 +103,32 @@ A pretty full (for our sakes) view of MLIR is shown below:
 
 ![mlir_diagram_2](/blogs/mlir_diagram_2.png)
 
-
 Below, I show some demos of some textual MLIR.
 
-From Jemery Kun's tutorial (a pretty cool person and maybe my idol), which the report author heavily relies on:
+From Jeremy Kun's tutorial (a pretty cool person and maybe my idol), which the report author heavily relies on:
 
 ```c
-func.func @main(%arg0: i32) -> i32 { // TODO: Explain this
-  %0 = math.ctlz %arg0 : i32
-  func.return %0 : i32
+// The first func is the dialect's name. The second func is the operation's name
+func.func @main(%arg0: i32) -> i32 { // Variable names (SSA values) are prefixed with %
+
+  %0 = math.ctlz %arg0 : i32 // Here we're using ctlz operation from math dialect
+  func.return %0 : i32 // return op from func dialect
+                    // taking in the ssa value %0 of type i32
 }
 ```
 
+A special thing for dialects in MLIR is that without a compiler writer's specified instruction to print an IR in textual form, MLIR will faithfully print everything that an operation has to the terminal. This helps me quickly debug implementation issues in the project.
 
 ## Parsing, cmdline and cmake
 
 Supposedly, the project will provide a command line tool for user to input in either a path to a DEX file or a folder of DEX file so that the tool can either lift and lower the DEX file(s).
 
-The command line executable is hand-written, with the formatting job done via [fmt](https://fmt.dev/11.0/).
 
-To maintain the build of the project, I opt for CMake, which is both Shuriken's build system and LLVM and MLIR's build system. This allows (somewhat) seamless connection between ours and LLVM's.
+The command line executable is hand-written, with the formatting via [fmt](https://fmt.dev/11.0/).
+
+[TODO_SHOW_CMDLINE]
+
+To maintain the build of the project, I opt for CMake, which is both Shuriken's build system and LLVM and MLIR's build system.
 
 ## Non-MLIR, NON-SSA CFG to MLIR-SSA CFG
 
@@ -123,13 +137,31 @@ To maintain the build of the project, I opt for CMake, which is both Shuriken's 
 A special characteristic of DEX is that it utilizes (almost infinite) virtual registers without caring for stack space.
 This allows for a seamless construction of the program's CFG from the DEX format.
 
-After constructing the CFG's non-SSA form, we translate it to MLIR's SSA CFG via Braun's SSA algorithm.
+After constructing the CFG's non-SSA form, we translate it to MLIR's SSA CFG via [Braun's SSA algorithm](https://c9x.me/compile/bib/braun13cc.pdf)
 
-On the high level overview, we keep an `MLIR::DenseMap` of integers to `mlir::Value`.
-When the original CFG's instructions ask to either read or write to DEX's virtual registers, we either get the value from our map or
-create a new value and map the integer variable to said value.
+On the high level overview, we keep an `MLIR::DenseMap` between the original CFG's basic blocks to a `BasicBlockDef`, this is means to replace the paper's `currentDef[variable][Block]`.
 
-[TODO: Expand on this]
+```c++
+struct BasicBlockDef { // stripped down version of BasicBlockDef
+    mlir::DenseMap<std::uint32_t, mlir::Value> Defs;
+    // ...
+    unsigned Filled : 1;
+};
+```
+
+In the BasicBlockDef wraps another `MLIR::DenseMap` of integers to `mlir::Value`, this is how we're accessing the `variable` in `currentDef[variable][Block]`
+
+When the original CFG's instructions ask to either read or write to DEX's virtual registers, we either get the value from our map between integers and `mlir::Value` in the current block, or we recursively call the query on the block's predecessor(s).
+
+The query of a variable's definition in a block's map in the project is the equivalent of C++ MLIR's
+```c++
+mlir::DenseMap[mlir::Block*][mlir::DenseMap[std::uint32_t][mlir::Value]]
+```
+
+Doing this in MLIR's system introduces several benefits:
+- Reusing different built-in dialects from MLIR saves myself a lot of time from implementation design and implementation bugs.
+- Everything in MLIR (for a beginner) fits well together. For example, the `cf.condbr` and `cf.br` plays really nice with MLIR's SSA block arguments style, providing iterators to their respective block arguments. Having implemented the alternative phi node version in [bril](https://capra.cs.cornell.edu/bril/intro.html) IR makes me realize how clean MLIR's SSA form actually is. In addition, `mlir::Value` provides different ways to identify if a value is from a function or block's argument or a normal value, this makes generating values for smali's `p{}` (method parameters) and `v{}` (local variables) relatively easy.
+
 
 ## Optimization and Analysis
 
@@ -137,12 +169,17 @@ In writing an optimization pass, MLIR offers a variety of tools for the job. Dif
 
 In writing up this part of the project, the biggest obstacles is surprisingly not about learning the apis of different optimization tools, but actually verifying MLIR's and ourselves' dialect.
 
-For time management, I'm opting for a simple pattern rewriter to remove all nops: the `mlir::applyPatternsAndFoldGreedily` pass. Using the pass runs MLIR's verifier on its built-in dialect, triggering a lot of errors on our compiler build. Despite this, fixing this was somewhat straight forward with MLIR's documentation on its operation.
-
-We feel that
+For time management, I'm opting for a simple pattern rewriter to remove all nops: the `mlir::applyPatternsAndFoldGreedily` pass. Using the pass runs MLIR's verifier on its built-in dialect, triggering a lot of errors on our compiler build. Despite this, fixing this was somewhat straight forward with MLIR's error messages and documentation on its operations.
 
 ## Translation
 
+### Parameter versus local registers
+
+The Smali IR differentiates between a parameter and a local variable with the prefix `p` or `v.` This in turn requires us to also somehow identify this in MLIR.
+
+Fortunately with MLIR's helpful methods such as `llvm::dyn_cast<>()`, `llvm::isa<>()`, `mlir::BlockArgument`'s `getOwner()` and `mlir::Block`'s `isEntryBlock()`, it was relatively straightforward to resolve this.
+
+### Getting out of SSA
 In translating from MjolnIR to smali, I opted for a simple out-of-ssa transformation [introduced in class](https://github.com/mwillsey/cs265/blob/2024-fall/lessons/03-ssa.md#converting-out-of-ssa), slightly tweaked to fit MLIR's ssa block arguments fashion:
 ```
 For every control flow (cf.condbr and cf.br):
@@ -161,25 +198,67 @@ which looks like (goto :block_Y)
 The cf.br case simply reduces down to the last two step.
 ```
 
-The following drawing executes the algorithm on an example, handwritten by Jasmine.
+The following drawing executes the algorithm on a handwritten example.
 
 ![out_of_ssa.svg](/blogs/out_of_ssa.svg)
 
 
-
-For this part, I think two things that troubles me the most is that
-- No project (to the best of our knowledge) translating from a custom format to smali, combined with no preexisting knowledge of
-- Connecting a out-of-ssa translation to the mlir's infrastructure and realizing it to actually output smali.
+For this part, I think the part that troubles me the most is the fact that no project (to the best of our knowledge) translating from a custom IR to smali, combined with limited knowledge of both smali and MLIR. The cycle continues itself since not knowing smali well requires me to perform multiple iteration on the custom IR, which suffers again from limited knowledge of MLIR.
 
 
-## Future work
+## So what's going on right now Jaz? What's next?
+The project's progressing at a steady rate right now. With me and Edu's contributing on the MLIR side.
 
-In retrospect, despite piling work between Berkeley's other hard classes, full time recruiting, leetcoding and interviewing and
+Contentedly, with different priorities both in my life (looking at you "full time recruiting") as well as in UC Berkeley (looking at you EE16B and EE126), a short timeline of 6 weeks renders the initial goals of the project somewhat incomplete. That is, although lifting and simple analysis of DEX via MLIR is achieved, some work are needed in translating MjolnIR to smali.
 
+In retrospect, I think I should have thought ahead and started the project 4 weeks earlier (1 month into class). More familiarity with SSA form, SSA construction earlier in the process would have expedited porting the lifter as well as writing up the out-of-ssa translation.
+
+After the semester ends, I'll continue working on the MjolnIR-to-smali translation, besides supporting new DEX feature into MjolnIR and refactoring existing code.
+
+With this new-found knowledge of MLIR, the next steps would be trying to write [an ML compiler](https://github.com/badumbatish/tyoMLIR) by extending upon MLIR's [toy tutorial](https://mlir.llvm.org/docs/Tutorials/Toy/)
+
+
+> But why contentedly?
+
+I've been wanting to dive deeper into MLIR for a long time. When it was time to choose a project, in the back of my mind, I've had some doubts. But the fact is I want to learn, and I don't care if a project I chose ran into time constraints. It was important for me to learn about an industry's tools as well as put my mind to implement different algorithms I've learned in classes in the ecosystem.
+
+I think [VSauce](https://www.youtube.com/Vsauce)'s supertask's [17:42 to 20:07](https://youtu.be/ffUnNaQTfZE?si=7byTONQdK9pP3JnI&t=1062) captures the best the mentality on the project.
+
+I hope everyone's enjoyed the little 10-minute read, I'll see everyone soon with some new blog post :)
 
 ## Resources
 
-### Tutorials
+Below lies the related resources I've visited during the timeline of the project.
+
+### Figures
+
+Edu
+- [https://farena.in/](https://farena.in/)
+- [bluesky](https://bsky.app/profile/farena.in)
+- [twitter](https://x.com/Farenain)
+
+Max Willsey
+- [https://www.mwillsey.com/](https://www.mwillsey.com/)
+
+Jeremy Kun
+- [https://www.jeremykun.com/](https://www.jeremykun.com/)
+
+### Tutorials and Docs
+
+A good tutorial read is MLIR's official [toy tutorial](https://mlir.llvm.org/docs/Tutorials/Toy/). It helps me familiarize myself with the commandline, different elements in MLIR and different ways to do things, as well as their trade-offs.
+
+Jeremy's [MLIR tutorials](https://github.com/j2kun/mlir-tutorial) brings a fresh change into LLVM's terse style of tutorial, I frequent the sites a lot and recommends if you're trying to learn more about mlir.
 
 
-### Documentations
+MLIR's [doxygen](https://mlir.llvm.org/doxygen/index.html) page is much needed for resolving dependency issues as well as correct usage of MLIR's elements. I recommend familiarizing yourself with different operations' and values' method signatures.
+
+MLIR's [LangRef](https://mlir.llvm.org/docs/LangRef/) provides a good worldview about its ecosystem for a beginner.
+
+### Algorithms
+
+Max Willsey's [lesson](https://github.com/mwillsey/cs265/blob/2024-fall/lessons/03-ssa.md) about SSA form is much needed for the project. I also recommended another introductory perspective into the matter with Engineering a Compiler's chapter 9.3.
+
+A read for [Braun's algorithm](https://c9x.me/compile/bib/braun13cc.pdf) is also required. Edu also posted about it for MLIR [here](https://farena.in/compilers/mlir/ssa-mlir-algorithm/), which forms the foundation for his implementation in [KUNAI](https://github.com/Fare9/KUNAI-static-analyzer).
+
+
+
