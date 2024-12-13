@@ -9,12 +9,12 @@ d:I[6213,[],"ViewportBoundary"]
 f:I[4835,[],""]
 1:HL["/_next/static/media/7385e8d9d3c5518f-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
 2:HL["/_next/static/css/166b80320d28fa0e.css","style"]
-0:{"P":null,"b":"yx0YPy5jhlabgSSDMpXC0","p":"","c":["","posts","going_to_mlir_gym_1"],"i":false,"f":[[["",{"children":["posts",{"children":[["id","going_to_mlir_gym_1","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$3","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/166b80320d28fa0e.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","$L4",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}],["$","$L7",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":[["$","p",null,{"children":"I'm looking for new grad compiler work, please email at jjasmine@berkeley.edu"}],["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]]}]]}]}]]}],{"children":["posts",["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]]}],{"children":[["id","going_to_mlir_gym_1","d"],["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children","$0:f:0:1:2:children:2:children:0","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]]}],{"children":["__PAGE__",["$","$3","c",{"children":["$L8",null,["$","$L9",null,{"children":"$La"}]]}],{},null]},null]},null]},null],["$","$3","h",{"children":[null,["$","$3","sEnwMWZqLEnIKHoB5j4Ja",{"children":[["$","$Lb",null,{"children":"$Lc"}],["$","$Ld",null,{"children":"$Le"}],["$","meta",null,{"name":"next-size-adjust"}]]}]]}]]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":true}
+0:{"P":null,"b":"43_vbFWKiePFo_oejoup2","p":"","c":["","posts","going_to_mlir_gym_1"],"i":false,"f":[[["",{"children":["posts",{"children":[["id","going_to_mlir_gym_1","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$3","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/166b80320d28fa0e.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","$L4",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}],["$","$L7",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":[["$","p",null,{"children":"I'm looking for new grad compiler work, please email at jjasmine@berkeley.edu"}],["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]]}]]}]}]]}],{"children":["posts",["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]]}],{"children":[["id","going_to_mlir_gym_1","d"],["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children","$0:f:0:1:2:children:2:children:0","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]]}],{"children":["__PAGE__",["$","$3","c",{"children":["$L8",null,["$","$L9",null,{"children":"$La"}]]}],{},null]},null]},null]},null],["$","$3","h",{"children":[null,["$","$3","5ZA83rDuRDJjd2ijn1MO4",{"children":[["$","$Lb",null,{"children":"$Lc"}],["$","$Ld",null,{"children":"$Le"}],["$","meta",null,{"name":"next-size-adjust"}]]}]]}]]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":true}
 e:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-10:T3f6b,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#prologue">Prologue</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#introduction">Introduction</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#planning">Planning</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#version-control-and-contributions">Version control and contributions</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#goals-and-current-status">Goals and current status</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#mlirs-operations-and-values">MLIR's operations and values</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#operations">Operations</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#values">Values</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#dissecting-mlir">Dissecting MLIR</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#parsing-cmdline-and-cmake">Parsing, cmdline and cmake</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#non-mlir-non-ssa-cfg-to-mlir-ssa-cfg">Non-MLIR, NON-SSA CFG to MLIR-SSA CFG</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#optimization-and-analysis">Optimization and Analysis</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#translation">Translation</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#future-work">Future work</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#resources">Resources</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#tutorials">Tutorials</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#documentations">Documentations</a></li></ol></li></ol></nav><h2 id="prologue"><a href="#prologue">Prologue</a></h2>
-<p>Hi there, I hope everyone's having a great day, this article is about writing a recompiler with MLIR, utilizing the framework in analysing and optimizing the <a href="https://source.android.com/docs/core/runtime/dalvik-bytecode">DEX</a> format.</p>
-<p>The blog is intended as a report submission for <a href="https://www2.eecs.berkeley.edu/Courses/CS265/">CS265</a> <a href="https://github.com/mwillsey/cs265">here</a>. In writing this report, I'm getting more practice on writing high level design docs without concerning readers with code, yayy mee.</p>
-<p>I hope everyone enjoys.</p>
+10:T6ef2,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#prologue">Prologue</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#introduction">Introduction</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#planning">Planning</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#version-control-and-contributions">Version control and contributions</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#goals-and-current-status">Goals and current status</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#mlirs-operations-and-values">MLIR's operations and values</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#operations">Operations</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#values">Values</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#dissecting-mlir">Dissecting MLIR</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#parsing-cmdline-and-cmake">Parsing, cmdline and cmake</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#non-mlir-non-ssa-cfg-to-mlir-ssa-cfg">Non-MLIR, NON-SSA CFG to MLIR-SSA CFG</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#optimization-and-analysis">Optimization and Analysis</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#translation">Translation</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#parameter-versus-local-registers">Parameter versus local registers</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#getting-out-of-ssa">Getting out of SSA</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#so-whats-going-on-right-now-jaz-whats-next">So what's going on right now Jaz? What's next?</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#resources">Resources</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#figures">Figures</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#tutorials-and-docs">Tutorials and Docs</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#algorithms">Algorithms</a></li></ol></li></ol></nav><h2 id="prologue"><a href="#prologue">Prologue</a></h2>
+<p>Hi there, I hope everyone's having a great day, this article is about lifting and lowering DEX instructions in MLIR, utilizing the framework in analysing and optimizing the <a href="https://source.android.com/docs/core/runtime/dalvik-bytecode">DEX</a> format.</p>
+<p>The blog is intended as a report submission for <a href="https://www2.eecs.berkeley.edu/Courses/CS265/">CS265</a> <a href="https://github.com/mwillsey/cs265">here</a>. The report focuses more on my experience and the high level details. The project also discusses the ease (or uneasiness) of executing the project, meanwhile introducing the benefits of MLIR with its elements in the ecosystem</p>
+<p>The report is about 2500 words, or 10 minutes of reading. I hope everyone enjoys :)</p>
 <h2 id="introduction"><a href="#introduction">Introduction</a></h2>
 <p>The MLIR project from the LLVM framework provides a framework for building reusable and extensible compiler infrastructure, allowing for a unified handling of different IRs within the same framework.</p>
 <p>In the case of the library <a href="https://github.com/Shuriken-Group/Shuriken-Analyzer">Shuriken</a> from <a href="https://github.com/Shuriken-Group">Shuriken Group</a> for Dalvik Executable (DEX) file analysis, we can leverage the MLIR by extending a somewhat 1-to-1 mapping of DEX to MLIR, the newly created IR (MjolnIR), allowing us to use the much more mature framework for analyzing the binary itself. As DEX is used as a mean for transportation from a server to an android device where it is compiled into ART for installation, being able to optimize the bytecode size of dex allows us to save cost on networking as well as server and android device's storage cost.</p>
@@ -36,7 +36,26 @@ Throughout the semester, there were some assignments where I fell behind. I know
 <p>My contributions for the project are shown separately via the <a href="https://github.com/Shuriken-Group/Shuriken-Analyzer/issues?q=is%3Aissue+author%3Abadumbatish">issues</a> and <a href="https://github.com/Shuriken-Group/Shuriken-Analyzer/pulls?q=is%3Apr+author%3Abadumbatish">pull requests</a></p>
 <h3 id="goals-and-current-status"><a href="#goals-and-current-status">Goals and current status</a></h3>
 <p>In analysing the DEX format, we need to parse the DEX file, construct a CFG (non-MLIR, and non-SSA), and then translate the CFG to MLIR's SSA CFG, apply some analysis, then <em>translate it to smali</em>, and then translate smali to dex (via 3rd party tool).</p>
-<p>The reasoning for this is that smali is an easier output to work with than dex. In dex format, we need to maintain different tables of strings, types, methods and classes in the pre-header before we get to output the actual DEX [TODO_LINK_EDU_PHD]. To make matters worse, control flow are done via offsets, which disrupts optimization and requires recalculation of offsets.</p>
+<p>Smali is the human-readable assembly format for the dalvik virtual machine. Edu's provided us with a good <a href="https://github.com/Shuriken-Group/Shuriken-Analyzer/wiki/smali_documentation">write-up</a> for smali that I think necessitates a read. Here, I show a small "Hello World" program written in smali that is compiled from java.</p>
+<pre><code># This is a comment
+.method public static main([Ljava/lang/String;)V
+	.registers 2 # We use a total of 2 registers here.
+
+    # Get the PrintStream object into register v0
+	sget-object v0, Ljava/lang/System;->out:Ljava/lang/PrintStream;
+
+    # Get the const string "Hello World" into v1
+	const-string v1, "Hello World"
+
+    # Invoke v0's println method on v1
+	invoke-virtual {v0, v1}, Ljava/lang/PrintStream;->println(Ljava/lang/String;)V
+
+    # return void
+	return-void
+
+.end method
+</code></pre>
+<p>The reasoning for this is that smali is an easier output to work with than dex. In dex format, we need to maintain different tables of strings, types, methods and classes in the pre-header before we get to output the actual DEX. To make matters worse, control flow are done via offsets, which disrupts optimization and requires recalculation of offsets.</p>
 <p>In smali, all is resolved via text references instead. In such a short amount of time (~ 6 weeks), it's hard to achieve true circular transformation (DEX->MLIR->DEX). I therefore opted for (DEX->MLIR->smali->DEX) first (actually at the time of writing this (Dec 7th 2024), I'm even nervous to see if we can get DEX->MLIR->smali for submission).</p>
 <p>With the naming of the MLIR's dialect being MjolnIR, the goal of the project is divided into two fronts:</p>
 <ul>
@@ -44,17 +63,17 @@ Throughout the semester, there were some assignments where I fell behind. I know
 <li>Survey some analysis/optimization provided by MLIR, using our new IR.</li>
 </ul>
 <p>In parsing the dex and constructing the CFG, the job was done by Edu prior to me joining the team. There was also an effort in lifting some subset of DEX to MLIR in the <a href="https://github.com/Fare9/KUNAI-static-analyzer">KUNAI</a> repo by Edu (recorded <a href="https://www.youtube.com/watch?v=hfqOivYdD40&#x26;ab_channel=LLVM">here</a>).</p>
-<p>Therefore, my responsibilities in the project is to setup mlir, port over and maintain the lifting process of DEX, figure out the optimization and lowering aspect.</p>
+<p>Therefore, my responsibilities in the project is to set up MLIR, port over and maintain the lifting process of DEX, figure out the optimization and lowering aspect.</p>
 <p>The diagram shown below details the steps we need to take in the project.</p>
 <p><img src="/blogs/mlir_gym_goal.svg" alt="mlir_gym_goal.svg"></p>
 <h3 id="mlirs-operations-and-values"><a href="#mlirs-operations-and-values">MLIR's operations and values</a></h3>
 <h3 id="operations"><a href="#operations">Operations</a></h3>
-<p>MLIR is built on top of these so-called operations.
+<p>MLIR is built on top of these so-called operations, that describe many different levels of abstractions and computations.
 On the top level, the MLIR features a <code>ModuleOp</code>, which is a container operation of a single graph region.</p>
 <p>A region is an ordered list of basic blocks. And a basic block is an ordered list of basic block.</p>
 <p>In lifting DEX to MLIR, we think of</p>
 <ul>
-<li>An input DEX file comprises of ModuleOps, which represent classes.</li>
+<li>An input DEX file comprises ModuleOps, which represent classes.</li>
 <li>Each method in the DEX file is a MethodOp, a MjolnIR dialect.</li>
 <li>Each method might have control flows, which is made up with basic blocks.</li>
 </ul>
@@ -62,8 +81,12 @@ On the top level, the MLIR features a <code>ModuleOp</code>, which is a containe
 <p>The following two diagrams showcases MLIR's fluid structure.
 <img src="/blogs/mlir_diagram_1.png" alt="mlir_diagram_1"></p>
 <h3 id="values"><a href="#values">Values</a></h3>
-<p>An important thing to notice is how is SSA form represented in MLIR, which is done with <code>mlir::Value</code>. Given an operation such as the integer addition
-<code>mlir::arith::AddIOp</code>, mlir gives us different accessors such as <code>getLhs()</code>, <code>getRhs()</code>, <code>getResult()</code>. In relation with operations introduced above, the MLIR Language Reference says:</p>
+<p>An important thing to notice is how SSA form is represented in MLIR, which is done with <code>mlir::Value</code>. The MLIR Value plays an important role in the project; operations take in values and produces values, passing them to functions and blocks to get out
+some value or to establish control flow. Hence, frequent trips to <code>mlir::Value</code>'s <a href="https://mlir.llvm.org/doxygen/classmlir_1_1Value.html">doxygen</a> are needed.</p>
+<p>For example, given an operation such as the integer addition
+<code>mlir::arith::AddIOp</code>, MLIR gives us different accessors such as <code>getLhs()</code>, <code>getRhs()</code>, <code>getResult()</code> to access its values.
+Each of these values can consequently invoke <code>getParentBlock()</code> or <code>replaceAllUsesWith()</code> to further manipulate themselves.</p>
+<p>In a big picture with operations introduced above, the MLIR Language Reference succinctly says:</p>
 <blockquote>
 <p>MLIR is fundamentally based on a graph-like data structure of nodes, called Operations, and edges, called Values.</p>
 </blockquote>
@@ -72,33 +95,64 @@ On the top level, the MLIR features a <code>ModuleOp</code>, which is a containe
 <p>A pretty full (for our sakes) view of MLIR is shown below:</p>
 <p><img src="/blogs/mlir_diagram_2.png" alt="mlir_diagram_2"></p>
 <p>Below, I show some demos of some textual MLIR.</p>
-<p>From Jemery Kun's tutorial (a pretty cool person and maybe my idol), which the report author heavily relies on:</p>
-<pre class="shiki catppuccin-frappe" style="background-color:#303446;color:#c6d0f5" tabindex="0"><code><span class="line"><span style="color:#C6D0F5">func.func @</span><span style="color:#8CAAEE;font-style:italic">main</span><span style="color:#949CBB">(</span><span style="color:#81C8BE">%</span><span style="color:#C6D0F5">arg0: i32</span><span style="color:#949CBB">)</span><span style="color:#81C8BE"> -></span><span style="color:#C6D0F5"> i32 </span><span style="color:#949CBB">{</span><span style="color:#737994;font-style:italic"> // TODO: Explain this</span></span>
-<span class="line"><span style="color:#81C8BE">  %</span><span style="color:#EF9F76">0</span><span style="color:#81C8BE"> =</span><span style="color:#C6D0F5"> math</span><span style="color:#949CBB">.</span><span style="color:#C6D0F5">ctlz </span><span style="color:#81C8BE">%</span><span style="color:#C6D0F5">arg0 : i32</span></span>
-<span class="line"><span style="color:#C6D0F5">  func</span><span style="color:#949CBB">.</span><span style="color:#C6D0F5">return </span><span style="color:#81C8BE">%</span><span style="color:#EF9F76">0</span><span style="color:#C6D0F5"> : i32</span></span>
+<p>From Jeremy Kun's tutorial (a pretty cool person and maybe my idol), which the report author heavily relies on:</p>
+<pre class="shiki catppuccin-frappe" style="background-color:#303446;color:#c6d0f5" tabindex="0"><code><span class="line"><span style="color:#737994;font-style:italic">// The first func is the dialect's name. The second func is the operation's name</span></span>
+<span class="line"><span style="color:#C6D0F5">func.func @</span><span style="color:#8CAAEE;font-style:italic">main</span><span style="color:#949CBB">(</span><span style="color:#81C8BE">%</span><span style="color:#C6D0F5">arg0: i32</span><span style="color:#949CBB">)</span><span style="color:#81C8BE"> -></span><span style="color:#C6D0F5"> i32 </span><span style="color:#949CBB">{</span><span style="color:#737994;font-style:italic"> // Variable names (SSA values) are prefixed with %</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#81C8BE">  %</span><span style="color:#EF9F76">0</span><span style="color:#81C8BE"> =</span><span style="color:#C6D0F5"> math</span><span style="color:#949CBB">.</span><span style="color:#C6D0F5">ctlz </span><span style="color:#81C8BE">%</span><span style="color:#C6D0F5">arg0 : i32</span><span style="color:#737994;font-style:italic"> // Here we're using ctlz operation from math dialect</span></span>
+<span class="line"><span style="color:#C6D0F5">  func</span><span style="color:#949CBB">.</span><span style="color:#C6D0F5">return </span><span style="color:#81C8BE">%</span><span style="color:#EF9F76">0</span><span style="color:#C6D0F5"> : i32</span><span style="color:#737994;font-style:italic"> // return op from func dialect</span></span>
+<span class="line"><span style="color:#737994;font-style:italic">                    // taking in the ssa value %0 of type i32</span></span>
 <span class="line"><span style="color:#949CBB">}</span></span>
 <span class="line"></span></code></pre>
+<p>A special thing for dialects in MLIR is that without a compiler writer's specified instruction to print an IR in textual form, MLIR will faithfully print everything that an operation has to the terminal. This helps me quickly debug implementation issues in the project.</p>
 <h2 id="parsing-cmdline-and-cmake"><a href="#parsing-cmdline-and-cmake">Parsing, cmdline and cmake</a></h2>
 <p>Supposedly, the project will provide a command line tool for user to input in either a path to a DEX file or a folder of DEX file so that the tool can either lift and lower the DEX file(s).</p>
-<p>The command line executable is hand-written, with the formatting job done via <a href="https://fmt.dev/11.0/">fmt</a>.</p>
-<p>To maintain the build of the project, I opt for CMake, which is both Shuriken's build system and LLVM and MLIR's build system. This allows (somewhat) seamless connection between ours and LLVM's.</p>
+<p>The command line executable is hand-written, with the formatting via <a href="https://fmt.dev/11.0/">fmt</a>.</p>
+<p>Below shows the interface of the entry point executable when ran with <code>--help</code>:</p>
+<pre><code>./shuriken-opt --help
+USAGE: shuriken-opt [-h | --help] [-d | --diagnostics] [-f|--file file_name --lift -g|--graph --lower --opt]
+    -h | --help: Shows the help menu, like what you're seeing right now
+    -d | --diagnostics: Enables diagnostics for shuriken-opt
+    -f | --file: Analyzes a file with file name, needs additional information
+    -lift : Lift the dex format up to MjolnIR
+    -lower: Lower the lifted MjolnIR down to smali (Enables lift when this is opted)
+    -opt: Run some default optimization (Nop removal for now)
+    -g | --graph: Dump the graph in dot format (needs a file)
+</code></pre>
+<p>To maintain the build of the project, I opt for CMake, which is both Shuriken's build system and LLVM and MLIR's build system.</p>
 <h2 id="non-mlir-non-ssa-cfg-to-mlir-ssa-cfg"><a href="#non-mlir-non-ssa-cfg-to-mlir-ssa-cfg">Non-MLIR, NON-SSA CFG to MLIR-SSA CFG</a></h2>
 <blockquote>
 <p>From this point forward, referring to non-ssa CFG means that it is non-mlir and vice versa (as MLIR requires SSA form in its CFG).</p>
 </blockquote>
 <p>A special characteristic of DEX is that it utilizes (almost infinite) virtual registers without caring for stack space.
 This allows for a seamless construction of the program's CFG from the DEX format.</p>
-<p>After constructing the CFG's non-SSA form, we translate it to MLIR's SSA CFG via Braun's SSA algorithm.</p>
-<p>On the high level overview, we keep an <code>MLIR::DenseMap</code> of integers to <code>mlir::Value</code>.
-When the original CFG's instructions ask to either read or write to DEX's virtual registers, we either get the value from our map or
-create a new value and map the integer variable to said value.</p>
-<p>[TODO: Expand on this]</p>
+<p>After constructing the CFG's non-SSA form, we translate it to MLIR's SSA CFG via <a href="https://c9x.me/compile/bib/braun13cc.pdf">Braun's SSA algorithm</a></p>
+<p>On the high level overview, we keep an <code>MLIR::DenseMap</code> between the original CFG's basic blocks to a <code>BasicBlockDef</code>, this is means to replace the paper's <code>currentDef[variable][Block]</code>.</p>
+<pre class="shiki catppuccin-frappe" style="background-color:#303446;color:#c6d0f5" tabindex="0"><code><span class="line"><span style="color:#CA9EE6">struct</span><span style="color:#E5C890;font-style:italic"> BasicBlockDef</span><span style="color:#949CBB"> {</span><span style="color:#737994;font-style:italic"> // stripped down version of BasicBlockDef</span></span>
+<span class="line"><span style="color:#E5C890">    mlir</span><span style="color:#949CBB">::</span><span style="color:#C6D0F5">DenseMap</span><span style="color:#81C8BE">&#x3C;</span><span style="color:#E5C890">std</span><span style="color:#949CBB">::</span><span style="color:#CA9EE6">uint32_t</span><span style="color:#949CBB">,</span><span style="color:#E5C890"> mlir</span><span style="color:#949CBB">::</span><span style="color:#C6D0F5">Value</span><span style="color:#81C8BE">></span><span style="color:#C6D0F5"> Defs</span><span style="color:#949CBB">;</span></span>
+<span class="line"><span style="color:#737994;font-style:italic">    // ...</span></span>
+<span class="line"><span style="color:#CA9EE6">    unsigned</span><span style="color:#C6D0F5"> Filled : </span><span style="color:#EF9F76">1</span><span style="color:#949CBB">;</span></span>
+<span class="line"><span style="color:#949CBB">};</span></span>
+<span class="line"></span></code></pre>
+<p>In the BasicBlockDef wraps another <code>MLIR::DenseMap</code> of integers to <code>mlir::Value</code>, this is how we're accessing the <code>variable</code> in <code>currentDef[variable][Block]</code></p>
+<p>When the original CFG's instructions ask to either read or write to DEX's virtual registers, we either get the value from our map between integers and <code>mlir::Value</code> in the current block, or we recursively call the query on the block's predecessor(s).</p>
+<p>The query of a variable's definition in a block's map in the project is the equivalent of C++ MLIR's</p>
+<pre class="shiki catppuccin-frappe" style="background-color:#303446;color:#c6d0f5" tabindex="0"><code><span class="line"><span style="color:#E5C890">mlir</span><span style="color:#949CBB">::</span><span style="color:#C6D0F5">DenseMap</span><span style="color:#949CBB">[</span><span style="color:#E5C890">mlir</span><span style="color:#949CBB">::</span><span style="color:#C6D0F5">Block</span><span style="color:#81C8BE">*</span><span style="color:#949CBB">][</span><span style="color:#E5C890">mlir</span><span style="color:#949CBB">::</span><span style="color:#C6D0F5">DenseMap</span><span style="color:#949CBB">[</span><span style="color:#E5C890">std</span><span style="color:#949CBB">::</span><span style="color:#CA9EE6">uint32_t</span><span style="color:#949CBB">][</span><span style="color:#E5C890">mlir</span><span style="color:#949CBB">::</span><span style="color:#C6D0F5">Value</span><span style="color:#949CBB">]]</span></span>
+<span class="line"></span></code></pre>
+<p>Doing this in MLIR's system introduces several benefits:</p>
+<ul>
+<li>Reusing different built-in dialects from MLIR saves myself a lot of time from implementation design and implementation bugs.</li>
+<li>Everything in MLIR (for a beginner) fits well together. For example, the <code>cf.condbr</code> and <code>cf.br</code> plays really nice with MLIR's SSA block arguments style, providing iterators to their respective block arguments. Having implemented the alternative phi node version in <a href="https://capra.cs.cornell.edu/bril/intro.html">bril</a> IR makes me realize how clean MLIR's SSA form actually is. In addition, <code>mlir::Value</code> provides different ways to identify if a value is from a function or block's argument or a normal value, this makes generating values for smali's <code>p{}</code> (method parameters) and <code>v{}</code> (local variables) relatively easy.</li>
+</ul>
 <h2 id="optimization-and-analysis"><a href="#optimization-and-analysis">Optimization and Analysis</a></h2>
 <p>In writing an optimization pass, MLIR offers a variety of tools for the job. Different machinery includes <a href="https://mlir.llvm.org/docs/Tutorials/DataFlowAnalysis/">DataFlowAnalysis</a>, <a href="https://mlir.llvm.org/docs/PatternRewriter/">Pattern Rewriters</a>, <a href="https://mlir.llvm.org/docs/PassManagement/">generic operation pass</a>.</p>
 <p>In writing up this part of the project, the biggest obstacles is surprisingly not about learning the apis of different optimization tools, but actually verifying MLIR's and ourselves' dialect.</p>
-<p>For time management, I'm opting for a simple pattern rewriter to remove all nops: the <code>mlir::applyPatternsAndFoldGreedily</code> pass. Using the pass runs MLIR's verifier on its built-in dialect, triggering a lot of errors on our compiler build. Despite this, fixing this was somewhat straight forward with MLIR's documentation on its operation.</p>
-<p>We feel that</p>
+<p>For time management, I'm opting for a simple pattern rewriter to remove all nops: the <code>mlir::applyPatternsAndFoldGreedily</code> pass. Using the pass runs MLIR's verifier on its built-in dialect, triggering a lot of errors on our compiler build. Despite this, fixing this was somewhat straight forward with MLIR's error messages and documentation on its operations.</p>
 <h2 id="translation"><a href="#translation">Translation</a></h2>
+<h3 id="parameter-versus-local-registers"><a href="#parameter-versus-local-registers">Parameter versus local registers</a></h3>
+<p>The Smali IR differentiates between a parameter and a local variable with the prefix <code>p</code> or <code>v.</code> This in turn requires us to also somehow identify this in MLIR.</p>
+<p>Fortunately with MLIR's helpful methods such as <code>llvm::dyn_cast&#x3C;>()</code>, <code>llvm::isa&#x3C;>()</code>, <code>mlir::BlockArgument</code>'s <code>getOwner()</code> and <code>mlir::Block</code>'s <code>isEntryBlock()</code>, it was relatively straightforward to resolve this.</p>
+<h3 id="getting-out-of-ssa"><a href="#getting-out-of-ssa">Getting out of SSA</a></h3>
 <p>In translating from MjolnIR to smali, I opted for a simple out-of-ssa transformation <a href="https://github.com/mwillsey/cs265/blob/2024-fall/lessons/03-ssa.md#converting-out-of-ssa">introduced in class</a>, slightly tweaked to fit MLIR's ssa block arguments fashion:</p>
 <pre><code>For every control flow (cf.condbr and cf.br):
  - Copies the current arguments being passed into the true block,
@@ -115,17 +169,46 @@ which looks like (goto :block_Y)
 
 The cf.br case simply reduces down to the last two step.
 </code></pre>
-<p>The following drawing executes the algorithm on an example, handwritten by Jasmine.</p>
+<p>The following drawing executes the algorithm on a handwritten example.</p>
 <p><img src="/blogs/out_of_ssa.svg" alt="out_of_ssa.svg"></p>
-<p>For this part, I think two things that troubles me the most is that</p>
-<ul>
-<li>No project (to the best of our knowledge) translating from a custom format to smali, combined with no preexisting knowledge of</li>
-<li>Connecting a out-of-ssa translation to the mlir's infrastructure and realizing it to actually output smali.</li>
-</ul>
-<h2 id="future-work"><a href="#future-work">Future work</a></h2>
-<p>In retrospect, despite piling work between Berkeley's other hard classes, full time recruiting, leetcoding and interviewing and</p>
+<p>For this part, I think the part that troubles me the most is the fact that no project (to the best of our knowledge) translating from a custom IR to smali, combined with limited knowledge of both smali and MLIR. The cycle continues itself since not knowing smali well requires me to perform multiple iteration on the custom IR, which suffers again from limited knowledge of MLIR.</p>
+<h2 id="so-whats-going-on-right-now-jaz-whats-next"><a href="#so-whats-going-on-right-now-jaz-whats-next">So what's going on right now Jaz? What's next?</a></h2>
+<p>The project's progressing at a steady rate right now, with me and Edu's contributing on the MLIR side.</p>
+<p>Contentedly, with different priorities both in my life (looking at you "full time recruiting") as well as in UC Berkeley (looking at you EE16B and EE126), a short timeline of 6 weeks renders the initial goals of the project somewhat incomplete. That is, although lifting and simple analysis of DEX via MLIR is achieved, some work are needed in translating MjolnIR to smali.</p>
+<p>In retrospect, I think I should have thought ahead and started the project 4 weeks earlier (1 month into class). More familiarity with SSA form, SSA construction earlier in the process would have expedited porting the lifter as well as writing up the out-of-ssa translation.</p>
+<p>After the semester ends, I'll continue working on the MjolnIR-to-smali translation, besides supporting new DEX feature into MjolnIR and refactoring existing code.</p>
+<p>With this new-found knowledge of MLIR, the next steps would be trying to write <a href="https://github.com/badumbatish/tyoMLIR">an ML compiler</a> by extending upon MLIR's <a href="https://mlir.llvm.org/docs/Tutorials/Toy/">toy tutorial</a></p>
+<blockquote>
+<p>But why contentedly?</p>
+</blockquote>
+<p>I've been wanting to dive deeper into MLIR for a long time. When it was time to choose a project, in the back of my mind, I've had some doubts. But the fact is I want to learn, and I don't care if a project I chose ran into time constraints. It was important for me to learn about an industry's tools as well as put my mind to implement different algorithms I've learned in classes in the ecosystem.</p>
+<p>I think <a href="https://www.youtube.com/Vsauce">VSauce</a>'s supertask's <a href="https://youtu.be/ffUnNaQTfZE?si=7byTONQdK9pP3JnI&#x26;t=1062">17:42 to 20:07</a> captures the best the mentality on the project.</p>
+<p>I hope everyone's enjoyed the little 10-minute read, I'll see everyone soon with some new blog post :)</p>
 <h2 id="resources"><a href="#resources">Resources</a></h2>
-<h3 id="tutorials"><a href="#tutorials">Tutorials</a></h3>
-<h3 id="documentations"><a href="#documentations">Documentations</a></h3>8:["$","article",null,{"className":"p-8 prose  max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto","children":[["$","div",null,{"className":"flex justify-center text-2xl font-bold ","children":["$","h2",null,{"children":"[REPORT] [ONGOING] Going to the gym with MLIR: Lifting and lowering Dex executable instructions"}]}],["$","div",null,{"className":"flex justify-start text-xl font-bold underline","children":["$","h4",null,{"children":"2024-12-07"}]}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"}}]]}]
-c:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"[REPORT] [ONGOING] Going to the gym with MLIR: Lifting and lowering Dex executable instructions"}],["$","meta","2",{"name":"description","content":"Built with NextJS, TailwindCSS, and a tonnn of loveee :)"}],["$","link","3",{"rel":"icon","href":"/_next/static/media/pfp3.5cd65164.png"}]]
+<p>Below lies the related resources I've visited during the timeline of the project.</p>
+<h3 id="figures"><a href="#figures">Figures</a></h3>
+<p>Edu</p>
+<ul>
+<li><a href="https://farena.in/">https://farena.in/</a></li>
+<li><a href="https://bsky.app/profile/farena.in">bluesky</a></li>
+<li><a href="https://x.com/Farenain">twitter</a></li>
+</ul>
+<p>Max Willsey</p>
+<ul>
+<li><a href="https://www.mwillsey.com/">https://www.mwillsey.com/</a></li>
+</ul>
+<p>Jeremy Kun</p>
+<ul>
+<li><a href="https://www.jeremykun.com/">https://www.jeremykun.com/</a></li>
+</ul>
+<h3 id="tutorials-and-docs"><a href="#tutorials-and-docs">Tutorials and Docs</a></h3>
+<p>A good tutorial read is MLIR's official <a href="https://mlir.llvm.org/docs/Tutorials/Toy/">toy tutorial</a>. It helps me familiarize myself with the commandline, different elements in MLIR and different ways to do things, as well as their trade-offs.</p>
+<p>Jeremy's <a href="https://github.com/j2kun/mlir-tutorial">MLIR tutorials</a> brings a fresh change into LLVM's terse style of tutorial, I frequent the sites a lot and recommends if you're trying to learn more about mlir.</p>
+<p>MLIR's <a href="https://mlir.llvm.org/doxygen/index.html">doxygen</a> page is much needed for resolving dependency issues as well as correct usage of MLIR's elements. I recommend familiarizing yourself with different operations' and values' method signatures.</p>
+<p>MLIR's <a href="https://mlir.llvm.org/docs/LangRef/">LangRef</a> provides a good worldview about its ecosystem for a beginner.</p>
+<p>ChatGPT and Claude are also (not really, but kinda) helpful tools in super boosting your learning about MLIR and LLVM's api.</p>
+<h3 id="algorithms"><a href="#algorithms">Algorithms</a></h3>
+<p>Max Willsey's <a href="https://github.com/mwillsey/cs265/blob/2024-fall/lessons/03-ssa.md">lesson</a> about SSA form is much needed for the project. I also recommended another introductory perspective into the matter with Engineering a Compiler's chapter 9.3.</p>
+<p>A read for <a href="https://c9x.me/compile/bib/braun13cc.pdf">Braun's algorithm</a> is also required. Edu also posted about it for MLIR <a href="https://farena.in/compilers/mlir/ssa-mlir-algorithm/">here</a>, which forms the foundation for his implementation in <a href="https://github.com/Fare9/KUNAI-static-analyzer">KUNAI</a>.</p>8:["$","article",null,{"className":"p-8 prose  max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto","children":[["$","div",null,{"className":"flex justify-center text-2xl font-bold ","children":["$","h2",null,{"children":"[REPORT] Going to the gym with MLIR: Writing a recompiler for DEX instructions"}]}],["$","div",null,{"className":"flex justify-start text-xl font-bold underline","children":["$","h4",null,{"children":"2024-12-07"}]}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"}}]]}]
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"[REPORT] Going to the gym with MLIR: Writing a recompiler for DEX instructions"}],["$","meta","2",{"name":"description","content":"Built with NextJS, TailwindCSS, and a tonnn of loveee :)"}],["$","link","3",{"rel":"icon","href":"/_next/static/media/pfp3.5cd65164.png"}]]
 a:null
