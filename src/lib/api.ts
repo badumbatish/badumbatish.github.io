@@ -13,6 +13,8 @@ import rehypeShiki from '@shikijs/rehype'
 import rehypeToc from '@jsdevtools/rehype-toc'
 import * as shiki from 'shiki'
 import remarkMdx from "remark-mdx";
+// @ts-ignore
+import collapse from "remark-collapse";
 import {
     transformerNotationHighlight,
   transformerNotationDiff,
@@ -22,6 +24,7 @@ import rehypeHighlight from "rehype-highlight";
 import rehypePrismDiff from "rehype-prism-diff";
 import rust from 'highlight.js/lib/languages/rust'
 import {common} from "lowlight";
+import rehypeRaw from "rehype-raw";
 // memoize/cache the creation of the markdown parser, this sped up the
 // building of the blog from ~60s->~10s
 let p: ReturnType<typeof getParserPre> | undefined
@@ -33,8 +36,14 @@ async function getParserPre() {
     let result =  unified()
         .use(remarkMdx)
         .use(remarkParse)
-        .use(remarkRehype)
+        .use(collapse, {
+            test: 'Prologue',
+        })
         .use(remarkGfm)
+        .use(remarkRehype, {
+            // Necessary for support HTML embeds (see next plugin)
+            allowDangerousHtml: true,
+        })
         // @ts-ignore
         .use(rehypeShiki, {
             theme: 'catppuccin-frappe',
@@ -48,23 +57,13 @@ async function getParserPre() {
   ],
         })
         .use(rehypeStringify)
+        .use(rehypeRaw)
         .use(rehypeSlug)
         .use(rehypeHighlight, {
             languages : {...common, rust},
         })
         .use(rehypePrismDiff)
-        .use(rehypeAutolinkHeadings, {
-            behavior : 'wrap',
-            content: arg => ({
-                type: 'element',
-                tagName: 'a',
-                properties: {
-                    href: '#' + arg.properties?.id,
-                    style: 'margin-right: 10px',
-                },
-                children: [{ type: 'text', value: `` }],
-            }),
-        })
+        .use(rehypeAutolinkHeadings)
         .use(rehypeToc)
 
     return result;
