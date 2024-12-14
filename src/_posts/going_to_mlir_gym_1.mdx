@@ -304,7 +304,7 @@ In contrast, smali employs different kind of `if-*{:cpp}` instructions as a way 
 
 For example, an `if-ne{:cpp}` is used to represent a `cmplong` instruction of two virtual registers, and then depending on if they're equal or not, jump to a block.
 
-I'll once again use an `mlir::DenseMap{:cpp}` to resolve this issue; in the end, I provide some examples while another simpler method might not work.
+I'll once again use an `mlir::DenseMap{:cpp}` to resolve this issue.
 
 Knowing that `mlir::Value{:cpp}` can be hashed into `mlir::DenseMap{:cpp}`, and that it is SSA, we can make a one to one mapping between an `mlir::Value{:cpp}` and its boolean defining operation (step 1 in mlir). Then when we encounter a `cf.condbr{:cpp}`, we can look up the appropriate boolean defining operation of the predicate and pick the correct smali instruction.
 
