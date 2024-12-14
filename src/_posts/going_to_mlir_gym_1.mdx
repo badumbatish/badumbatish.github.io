@@ -10,7 +10,7 @@ Hi there, I hope everyone's having a great day, this article is about lifting an
 
 The blog is intended as a report submission for [CS265](https://www2.eecs.berkeley.edu/Courses/CS265/) [here](https://github.com/mwillsey/cs265). The report focuses more on my experience and the high level details. The project also discusses the ease (or uneasiness) of executing the project, meanwhile introducing the benefits of MLIR with its elements in the ecosystem
 
-The report is about 2500 words, or 10 minutes of reading. I also include a supporting section to recap different terminologies for unfamiliar readers.
+The report is about 3700 words, or 15 minutes of reading. I also include a supporting section to recap different terminologies for unfamiliar readers.
 
 I hope everyone enjoys :)
 ## Reader supporting section
@@ -127,13 +127,13 @@ On the top level, the MLIR features a `ModuleOp{:cpp}`, which is a container ope
 
 In lifting DEX to MLIR, we think of
 
-- An input DEX file comprises a `ModuleOp{:cpp}`, which represent a class.
+- An input DEX file comprises 1 up to 65535 `ModuleOp{:cpp}`, where each `ModuleOp{:cpp}` represents a class.
 - Each method (class's function) in the DEX file is a `MethodOp{:cpp}`, a MjolnIR dialect's operation similarly to the `func{:cpp}` operation in func dialect.
 - Each method might have control flows, which glues together basic blocks.
 
 Although a simple 1-1 representation, MLIR can feature much more complex hierarchy, as demonstrated below. We however, rely on the rigid structure we've defined for ourselves to simplify the lifting and lowering processes.
 
-The following two diagrams showcases MLIR's fluid structure.
+The following diagram showcases MLIR's recursively fluid structure.
 ![mlir_diagram_1](/blogs/mlir_diagram_1.png)
 
 ### Values
@@ -161,20 +161,20 @@ Below, I show some demos of some textual MLIR.
 From Jeremy Kun's tutorial (a pretty cool person and maybe my idol), which the report author heavily relies on:
 
 ```c
-// The first func is the dialect's name. The second func is the operation's name
+// The first `func` is the dialect's name. The second `func` is the operation's name
 func.func @main(%arg0: i32) -> i32 { // Variable names (SSA values) are prefixed with %
-
+  // by convention naming of %arg0 means it is a different subclass than %0
   %0 = math.ctlz %arg0 : i32 // Here we're using ctlz operation from math dialect
   func.return %0 : i32 // return op from func dialect
                     // taking in the ssa value %0 of type i32
 }
 ```
 
-A special thing for dialects in MLIR is that without a compiler writer's specified instruction to print an IR in textual form, MLIR will faithfully print everything that an operation has to the terminal. This helps me quickly debug implementation issues in the project.
+A special thing for dialects in MLIR is that without a compiler writer's specified instruction to print an IR in textual form, MLIR will faithfully print everything that an operation has to the terminal (auto-generative aspect). This helps me quickly debug implementation issues in the project.
 
 ## Parsing, cmdline and cmake
 
-Supposedly, the project will provide a command line tool for user to input in either a path to a DEX file or a folder of DEX file so that the tool can either lift and lower the DEX file(s).
+Supposedly, the project will provide a command line tool for user to input in either a path to a DEX file or a folder of DEX files so that the tool can either lift and lower the DEX file(s).
 
 
 The command line executable is hand-written, with the formatting via [fmt](https://fmt.dev/11.0/).
@@ -192,7 +192,29 @@ USAGE: shuriken-opt [-h | --help] [-d | --diagnostics] [-f|--file file_name --li
     -g | --graph: Dump the graph in dot format (needs a file)
 ```
 
-To maintain the build of the project, I opt for CMake, which is both Shuriken's build system and LLVM and MLIR's build system.
+To maintain the build of the project, I opt for CMake, which is both Shuriken's build system and LLVM and MLIR's build system. It's also a build system tool I'm most familiar with in C++ ecosystem.
+
+## Dialect reusability and extensibility
+
+A high selling point of MLIR is the ability to reuse its dialects and the ease of defining new dialects in it. This is no different for our library, with our dialect MjolnIR.
+
+In MLIR, there are multiple ways to define a dialect. You can either opt for MLIR's C++ API way to define it. Even though quick, the downsides of this quickly catches up: tons of boilerplate and scattering codes scatter across different files, which screams "update me" whenever LLVM goes to a new version, introducing breaking changes.
+
+Another way to go is via TableGen, a generic language to maintain records of DSLs in a concise way. Benefits (that are relevant to the project) include:
+- Centralized source of truth: Every aspect of an operation should be in the same localized place. This is true to some extent. Some parts of TableGen syntax regarding MLIR are still a bit hazy to me and requires digging through either the MLIR docs or the source code itself for clarification; I think this is expected for any beginners.
+- Boilerplate removal and auto generation: defining and extending a dialect in TableGen syntax is easier than in C++, due to its cutting down on non-needed aspect when extending and its auto-generative nature.
+
+[Chapter 2](https://mlir.llvm.org/docs/Tutorials/Toy/Ch-2/#op-vs-operation-using-mlir-operations) in the toy tutorial demonstrates this the clearest, I recommend a quick skim for confidence.
+
+Introductory asides, in our library, we reuse two of the built-in dialects: `arith{:cpp}`, `cf{:cpp}`. We also extend upon this by creating new operations:
+- A pseudo branch operation `MjolnIR.fallthrough{:cpp}` since entering a block in MLIR requires control flow but in smali the normalcy is to execute the next line after a branch if the condition is not met.
+- Two operations `MjolnIR.method{:cpp}` and `MjolnIR.return{:cpp}` to replace `func.func{:cpp}` and `func.return{:cpp}` since we need to capture extra infos about our method such as accessors such as public, private, static, etc... The `func.return{:cpp}` is obsolete since it requires that its parent is `func.func{:cpp}`, thus the need for `MjolnIR.return{:cpp}`.
+
+#### Conclude
+Doing the project in MLIR's system introduces several benefits:
+- Reusing different built-in dialects from MLIR saves myself a lot of time from implementation design and implementation bugs.
+- Everything in MLIR (for a beginner) fits well together. For example, the `cf.condbr{:cpp}` and `cf.br{:cpp}` plays really nice with MLIR's SSA block arguments style, providing iterators to their respective block arguments. Having implemented the alternative phi node version in [bril](https://capra.cs.cornell.edu/bril/intro.html) IR makes me realize how clean MLIR's SSA form actually is. In addition, `mlir::Value{:cpp}` provides different ways to identify if a value is from a function or block's argument or a normal value, this makes generating values for smali's `p{}` (method parameters) and `v{}` (local variables) relatively easy.
+
 
 ## Non-MLIR, NON-SSA CFG to MLIR-SSA CFG
 
@@ -203,7 +225,7 @@ This allows for a seamless construction of the program's CFG from the DEX format
 
 After constructing the CFG's non-SSA form, we translate it to MLIR's SSA CFG via [Braun's SSA algorithm](https://c9x.me/compile/bib/braun13cc.pdf)
 
-On the high level overview, we keep an `mlir::DenseMap{:cpp}` between the original CFG's basic blocks to a `BasicBlockDef{:cpp}`, this is means to replace the paper's `currentDef[variable][Block]{:cpp}`.
+On the high level overview, we keep an `mlir::DenseMap{:cpp}` between the original CFG's basic blocks to a `BasicBlockDef{:cpp}`, this is meant to replace the paper's `currentDef[variable][Block]{:cpp}`.
 
 ```c++
 struct BasicBlockDef { // stripped down version of BasicBlockDef
@@ -213,7 +235,7 @@ struct BasicBlockDef { // stripped down version of BasicBlockDef
 };
 ```
 
-In the BasicBlockDef wraps another `mlir::DenseMap{:cpp}` of integers to `mlir::Value{:cpp}`, this is how we're accessing the `variable` in `currentDef[variable][Block]` from the paper's algorithm.
+In the BasicBlockDef wraps another `mlir::DenseMap{:cpp}` of `uint32{:cpp}` to `mlir::Value{:cpp}`, this is how we're accessing the `variable` in `currentDef[variable][Block]` from the paper's algorithm.
 
 When the original CFG's instructions ask to either read or write to DEX's virtual registers, we either get the value from our map between integers and `mlir::Value{:cpp}` in the current block, or we recursively call the query on the block's predecessor(s).
 
@@ -222,9 +244,6 @@ The query of a variable's definition in a block's map in the project is the equi
 mlir::DenseMap[mlir::Block*][mlir::DenseMap[std::uint32_t][mlir::Value]]
 ```
 
-Doing this in MLIR's system introduces several benefits:
-- Reusing different built-in dialects from MLIR saves myself a lot of time from implementation design and implementation bugs.
-- Everything in MLIR (for a beginner) fits well together. For example, the `cf.condbr{:cpp}` and `cf.br{:cpp}` plays really nice with MLIR's SSA block arguments style, providing iterators to their respective block arguments. Having implemented the alternative phi node version in [bril](https://capra.cs.cornell.edu/bril/intro.html) IR makes me realize how clean MLIR's SSA form actually is. In addition, `mlir::Value{:cpp}` provides different ways to identify if a value is from a function or block's argument or a normal value, this makes generating values for smali's `p{}` (method parameters) and `v{}` (local variables) relatively easy.
 
 
 ## Optimization and Analysis
@@ -325,7 +344,7 @@ With this new-found knowledge of MLIR, the next steps would be trying to write [
 
 > But why contentedly?
 
-I've been wanting to dive deeper into MLIR for a long time. When it was time to choose a project, in the back of my mind, I've had some doubts. But the fact is I want to learn, and I don't care if a project I chose ran into time constraints. It was important for me to learn about an industry's tools as well as put my mind to implement different algorithms I've learned in classes in the ecosystem.
+I've been wanting to dive deeper into MLIR for a long time. When it was time to choose a project, in the back of my mind, I've had some doubts. But gahh damn boi, I want to learn, and I don't care if a project I chose ran into time constraints. It was important for me to learn about an industry's tools as well as put my mind to implement different algorithms I've learned in classes in the ecosystem.
 
 I think [VSauce](https://www.youtube.com/Vsauce)'s supertask's [17:42 to 20:07](https://youtu.be/ffUnNaQTfZE?si=7byTONQdK9pP3JnI&t=1062) captures the best the mentality on the project.
 
