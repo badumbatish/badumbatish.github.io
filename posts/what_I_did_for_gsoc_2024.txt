@@ -1,17 +1,17 @@
-3:"$Sreact.fragment"
-4:I[4839,["839","static/chunks/839-4366cacede800037.js","565","static/chunks/565-d106929a3b04f825.js","177","static/chunks/app/layout-95398f2090e45e4b.js"],""]
-5:I[5244,[],""]
-6:I[3866,[],""]
-7:I[1168,["839","static/chunks/839-4366cacede800037.js","565","static/chunks/565-d106929a3b04f825.js","177","static/chunks/app/layout-95398f2090e45e4b.js"],"default"]
-9:I[6213,[],"OutletBoundary"]
-b:I[6213,[],"MetadataBoundary"]
-d:I[6213,[],"ViewportBoundary"]
-f:I[4835,[],""]
-1:HL["/_next/static/media/7385e8d9d3c5518f-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
-2:HL["/_next/static/css/166b80320d28fa0e.css","style"]
-0:{"P":null,"b":"IuHwBaVD5rVZA_Ml67QfY","p":"","c":["","posts","what_I_did_for_gsoc_2024"],"i":false,"f":[[["",{"children":["posts",{"children":[["id","what_I_did_for_gsoc_2024","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$3","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/166b80320d28fa0e.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","$L4",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}],["$","$L7",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":[["$","p",null,{"children":"I'm looking for new grad compiler work, please email at jjasmine@berkeley.edu"}],["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]]}]]}]}]]}],{"children":["posts",["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]]}],{"children":[["id","what_I_did_for_gsoc_2024","d"],["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children","$0:f:0:1:2:children:2:children:0","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]]}],{"children":["__PAGE__",["$","$3","c",{"children":["$L8",null,["$","$L9",null,{"children":"$La"}]]}],{},null]},null]},null]},null],["$","$3","h",{"children":[null,["$","$3","cnMzdylCdvSJNEAxCwE_s",{"children":[["$","$Lb",null,{"children":"$Lc"}],["$","$Ld",null,{"children":"$Le"}],["$","meta",null,{"name":"next-size-adjust"}]]}]]}]]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":true}
-e:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-10:T14c28,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#introduction">Introduction</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#main-contribution-aspects">Main contribution aspects</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#issues-and-prs">Issues and PRs</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#issues">Issues</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#prs">PRs</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#gccrs-inline-assembly">GCCRS Inline Assembly</a><ol class="toc-level toc-level-3"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#purpose">Purpose</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#syntax">Syntax</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#grammar">Grammar</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#syntax-example">Syntax example</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#overall-architecture">Overall architecture</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#definition">Definition</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#architecture">Architecture</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#related-files">Related files</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#architecture-visualization">Architecture visualization</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#ast">AST</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#parser">Parser</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#ast-to-hir">AST to HIR</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#hir-creation">HIR Creation</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#unsafe-gating">Unsafe gating</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#type-checking">Type checking</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#resolution">Resolution</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#tree-generic">TREE (GENERIC)</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#overall">Overall</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#anatomy">Anatomy</a><ol class="toc-level toc-level-5"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#tree_list">TREE_LIST</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#string_cst">STRING_CST</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#asm_expr">ASM_EXPR</a></li></ol></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#tree-usage">TREE USAGE</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#results">Results</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#end-words">End words</a></li></ol></li></ol></li></ol></nav><p>Hi everyone, this article is a requirement for my GSoc Final Submission, linking directly to the submission.</p>
+1:"$Sreact.fragment"
+2:I[8173,["173","static/chunks/173-ad05a37061268ac6.js","565","static/chunks/565-d3001cb0b7ac580c.js","177","static/chunks/app/layout-5c184bc8512acba2.js"],""]
+3:I[5244,[],""]
+4:I[3866,[],""]
+5:I[1168,["173","static/chunks/173-ad05a37061268ac6.js","565","static/chunks/565-d3001cb0b7ac580c.js","177","static/chunks/app/layout-5c184bc8512acba2.js"],"default"]
+7:I[6213,[],"OutletBoundary"]
+9:I[6213,[],"MetadataBoundary"]
+b:I[6213,[],"ViewportBoundary"]
+d:I[4835,[],""]
+:HL["/_next/static/media/7385e8d9d3c5518f-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/_next/static/css/4c262d18fc086fff.css","style"]
+0:{"P":null,"b":"h_avrWnGd69mikyxH4BOf","p":"","c":["","posts","what_I_did_for_gsoc_2024"],"i":false,"f":[[["",{"children":["posts",{"children":[["id","what_I_did_for_gsoc_2024","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/4c262d18fc086fff.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","$L2",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[],[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L5",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":[["$","p",null,{"children":"I'm looking for new grad compiler work, please email at jjasmine@berkeley.edu"}],["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]]}]]}]}]]}],{"children":["posts",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","what_I_did_for_gsoc_2024","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children","$0:f:0:1:2:children:2:children:0","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6",null,["$","$L7",null,{"children":"$L8"}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","DcaWW1LRDHSPTXQHRPhaX",{"children":[["$","$L9",null,{"children":"$La"}],["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]]}],false]],"m":"$undefined","G":["$d","$undefined"],"s":false,"S":true}
+c:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+e:T1533f,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#introduction">Introduction</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#main-contribution-aspects">Main contribution aspects</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#issues-and-prs">Issues and PRs</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#issues">Issues</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#prs">PRs</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#gccrs-inline-assembly">GCCRS Inline Assembly</a><ol class="toc-level toc-level-3"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#purpose">Purpose</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#syntax">Syntax</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#grammar">Grammar</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#syntax-example">Syntax example</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#overall-architecture">Overall architecture</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#definition">Definition</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#architecture">Architecture</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#related-files">Related files</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#architecture-visualization">Architecture visualization</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#ast">AST</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#parser">Parser</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#ast-to-hir">AST to HIR</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#hir-creation">HIR Creation</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#unsafe-gating">Unsafe gating</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#type-checking">Type checking</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#resolution">Resolution</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#tree-generic">TREE (GENERIC)</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#overall">Overall</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#anatomy">Anatomy</a><ol class="toc-level toc-level-5"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#tree_list">TREE_LIST</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#string_cst">STRING_CST</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#asm_expr">ASM_EXPR</a></li></ol></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#tree-usage">TREE USAGE</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#results">Results</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#end-words">End words</a></li></ol></li></ol></li></ol></nav><p>Hi everyone, this article is a requirement for my GSoc Final Submission, linking directly to the submission.</p>
 <p>This article will include the summary of my contribution, where you can find all my filed issues and PRs.</p>
 <p><strong>Edit</strong>:</p>
 <p>I would love to be informed of new-grad opportunities for Summer 2025. If you know of a compiler related job posting, please feel free to contact me at either:</p>
@@ -20,7 +20,7 @@ e:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-sca
 <li><a href="mailto:jjasmine@berkeley.edu">jjasmine@berkeley.edu</a> (for job posting)</li>
 <li><a href="https://x.com/thisisjjasmine">https://x.com/thisisjjasmine</a> (social media)</li>
 </ul>
-<h2 id="introduction"><a href="#introduction">Introduction</a></h2>
+<h2 id="introduction"><a aria-hidden="true" tabindex="-1" href="#introduction"><span class="icon icon-link"></span></a>Introduction</h2>
 <p>This summer I worked on the <a href="https://github.com/Rust-GCC/gccrs">gccrs</a> project, a GCC Front-end for Rust.</p>
 <p>gccrs is a project to implement the Rust programming languages from scratch in the GCC codebase in order for rust to be able to be compiled to a wider amount of targets. It currently targets the version 1.49 of Rust and is supported by Open Source Security and Embecosm.</p>
 <p>By doing this, it helps with a couple things:</p>
@@ -31,7 +31,7 @@ e:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-sca
 <li>Help with acceptance of Rust in other fields, where having multiple compilers helps.</li>
 <li>Enable building Rust on targets with very old C++ compilers! (Targets with at least GCC version 4.8 (which released March 22, 2013) can build Rust)</li>
 </ul>
-<h2 id="main-contribution-aspects"><a href="#main-contribution-aspects">Main contribution aspects</a></h2>
+<h2 id="main-contribution-aspects"><a aria-hidden="true" tabindex="-1" href="#main-contribution-aspects"><span class="icon icon-link"></span></a>Main contribution aspects</h2>
 <p>Overall, I contributed in 3 main aspects:</p>
 <ul>
 <li>
@@ -45,278 +45,278 @@ I also created a docker-compose dev environment for MacOS-based contributors, wi
 <p><strong>Code maintainance/Bug Fixes/Code Review</strong>: I maintained the code base via issues filed by my mentor and other contributors. I also helped fix some minor bugs in IR lowering and typechecking. I also help review some new, simple PRs for contributors.</p>
 </li>
 </ul>
-<h2 id="issues-and-prs"><a href="#issues-and-prs">Issues and PRs</a></h2>
+<h2 id="issues-and-prs"><a aria-hidden="true" tabindex="-1" href="#issues-and-prs"><span class="icon icon-link"></span></a>Issues and PRs</h2>
 <p>Below is all the issues, PRs and commits I've made to the <a href="https://github.com/Rust-GCC/gccrs">gccrs</a> repository, up to Aug 22 2024, after producing this I ended up closing some resolved issues that has been silently addressed in some PRs.</p>
 <p>The tables are produced via <code>gh</code> cli tool and some <code>I use nvim btw</code> love :)</p>
-<h3 id="issues"><a href="#issues">Issues</a></h3>
+<h3 id="issues"><a aria-hidden="true" tabindex="-1" href="#issues"><span class="icon icon-link"></span></a>Issues</h3>
 <p>Here's a formatted version of all my issues, up to Aug 22 2024, procured via <code>gh issue list -A badumbatish --state all</code>:</p>
-<table>
-<thead>
-<tr>
-<th>Issue Number</th>
-<th>Issue Status</th>
-<th>Issue Title</th>
-<th>Labels</th>
-<th>Filed Date</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/issues/3102">3102</a></td>
-<td><strong>OPEN</strong></td>
-<td>Set up the rest of HIR pipeline in InlineAsm</td>
-<td></td>
-<td>2024-07-27T03:20:50Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/issues/3099">3099</a></td>
-<td><strong>OPEN</strong></td>
-<td>parse_expr not stopping on =></td>
-<td></td>
-<td>2024-07-25T19:41:07Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/issues/3072">3072</a></td>
-<td><strong>OPEN</strong></td>
-<td>asm parser lacking <code>label</code> parse functionality</td>
-<td></td>
-<td>2024-07-01T08:54:12Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/issues/3069">3069</a></td>
-<td><strong>OPEN</strong></td>
-<td>Make asm parser stores parse result</td>
-<td></td>
-<td>2024-06-25T16:12:44Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/issues/3062">3062</a></td>
-<td><strong>CLOSED</strong></td>
-<td>Add ExprType::InlineAsm variant to ExprType enum</td>
-<td></td>
-<td>2024-06-24T13:23:55Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/issues/3061">3061</a></td>
-<td><strong>OPEN</strong></td>
-<td>Typechecking of asm! failed in <code>let _</code></td>
-<td>bug</td>
-<td>2024-06-24T13:24:07Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/issues/3057">3057</a></td>
-<td><strong>OPEN</strong></td>
-<td>asm! macro failed to exhaustively parse all of options(), clobber_abis(), and register operands</td>
-<td>bug, expansion</td>
-<td>2024-06-18T13:32:24Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/issues/3052">3052</a></td>
-<td><strong>OPEN</strong></td>
-<td>Fully incorporate tl::expected into InlineAsm parsing</td>
-<td></td>
-<td>2024-06-14T09:54:17Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/issues/3051">3051</a></td>
-<td><strong>CLOSED</strong></td>
-<td>Remove unnecessary #include from rust-expr.h</td>
-<td>good-first-pr, cleanup</td>
-<td>2024-07-11T09:23:53Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/issues/3050">3050</a></td>
-<td><strong>CLOSED</strong></td>
-<td>Safe guard InlineAsm-related structs</td>
-<td></td>
-<td>2024-07-03T09:58:52Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/issues/3048">3048</a></td>
-<td><strong>OPEN</strong></td>
-<td>Handle outer attributes properly for inline assembly</td>
-<td></td>
-<td>2024-06-14T09:55:37Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/issues/2937">2937</a></td>
-<td><strong>CLOSED</strong></td>
-<td>Docker image and container for Mac</td>
-<td></td>
-<td>2024-05-10T14:53:25Z</td>
-</tr>
-</tbody>
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Issue Number</th><th>Issue Status</th><th>Issue Title</th><th>Labels</th><th>Filed Date</th></tr></thead><tbody><tr><td><a href="https://github.com/Rust-GCC/gccrs/issues/3102">3102</a></td><td><strong>OPEN</strong></td><td>Set up the rest of HIR pipeline in InlineAsm</td><td></td><td>2024-07-27T03:20:50Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/issues/3099">3099</a></td><td><strong>OPEN</strong></td><td>parse_expr not stopping on =></td><td></td><td>2024-07-25T19:41:07Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/issues/3072">3072</a></td><td><strong>OPEN</strong></td><td>asm parser lacking <code>label</code> parse functionality</td><td></td><td>2024-07-01T08:54:12Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/issues/3069">3069</a></td><td><strong>OPEN</strong></td><td>Make asm parser stores parse result</td><td></td><td>2024-06-25T16:12:44Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/issues/3062">3062</a></td><td><strong>CLOSED</strong></td><td>Add ExprType::InlineAsm variant to ExprType enum</td><td></td><td>2024-06-24T13:23:55Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/issues/3061">3061</a></td><td><strong>OPEN</strong></td><td>Typechecking of asm! failed in <code>let _</code></td><td>bug</td><td>2024-06-24T13:24:07Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/issues/3057">3057</a></td><td><strong>OPEN</strong></td><td>asm! macro failed to exhaustively parse all of options(), clobber_abis(), and register operands</td><td>bug, expansion</td><td>2024-06-18T13:32:24Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/issues/3052">3052</a></td><td><strong>OPEN</strong></td><td>Fully incorporate tl::expected into InlineAsm parsing</td><td></td><td>2024-06-14T09:54:17Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/issues/3051">3051</a></td><td><strong>CLOSED</strong></td><td>Remove unnecessary #include from rust-expr.h</td><td>good-first-pr, cleanup</td><td>2024-07-11T09:23:53Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/issues/3050">3050</a></td><td><strong>CLOSED</strong></td><td>Safe guard InlineAsm-related structs</td><td></td><td>2024-07-03T09:58:52Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/issues/3048">3048</a></td><td><strong>OPEN</strong></td><td>Handle outer attributes properly for inline assembly</td><td></td><td>2024-06-14T09:55:37Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/issues/2937">2937</a></td><td><strong>CLOSED</strong></td><td>Docker image and container for Mac</td><td></td><td>2024-05-10T14:53:25Z</td></tr></tbody></table>
 <p>The closed/filed rate is 4/8, which is not high. Through out writing the parser and the backend infra, I realized that there are these little issues that's just easier to just fix and not necessary filed. There is also issues that are discussed via <a href="https://gist.github.com/badumbatish/9823719ef359a58b131220d9d79d2aec">hackmd notes</a> between me and my mentor that are not necessarily filed via GitHub.</p>
-<h3 id="prs"><a href="#prs">PRs</a></h3>
+<h3 id="prs"><a aria-hidden="true" tabindex="-1" href="#prs"><span class="icon icon-link"></span></a>PRs</h3>
 <p>Here's a formatted version of all my pull requests, up to Aug 22 2024, procured via <code>gh pr list -A badumbatish --state all</code>:</p>
-<table>
-<thead>
-<tr>
-<th>PR Number</th>
-<th>PR Status</th>
-<th>PR Title</th>
-<th>Filed Date</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3133">3133</a></td>
-<td><strong>MERGED</strong></td>
-<td>Fix the disorder struct and class in inline asm</td>
-<td>2024-08-20T07:41:34Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3119">3119</a></td>
-<td><strong>OPEN</strong></td>
-<td>Add running cicd 32bit</td>
-<td>2024-08-04T19:47:37Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3109">3109</a></td>
-<td><strong>MERGED</strong></td>
-<td>Inline asm resolve expr</td>
-<td>2024-07-31T03:41:32Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3103">3103</a></td>
-<td><strong>MERGED</strong></td>
-<td>Inline asm hir pipeline</td>
-<td>2024-07-27T08:22:57Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3098">3098</a></td>
-<td><strong>MERGED</strong></td>
-<td>Fix the parser's operand and flags storage</td>
-<td>2024-07-25T16:38:11Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3093">3093</a></td>
-<td><strong>MERGED</strong></td>
-<td>Change assertion of asm operand constructor</td>
-<td>2024-07-21T22:46:28Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3090">3090</a></td>
-<td><strong>MERGED</strong></td>
-<td>Added options for ParseMode</td>
-<td>2024-07-20T07:48:51Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3081">3081</a></td>
-<td><strong>MERGED</strong></td>
-<td>Pin node16 by allowing old version</td>
-<td>2024-07-10T02:32:08Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3074">3074</a></td>
-<td><strong>MERGED</strong></td>
-<td>Safe-guard InlineAsm structs</td>
-<td>2024-07-01T00:43:59Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3073">3073</a></td>
-<td><strong>MERGED</strong></td>
-<td>Store parse result of parse_format_string(s)</td>
-<td>2024-07-01T00:24:42Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3063">3063</a></td>
-<td><strong>MERGED</strong></td>
-<td>Added ExprType::InlineAsm</td>
-<td>2024-06-23T18:06:02Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3060">3060</a></td>
-<td><strong>DRAFT</strong></td>
-<td>Asm generic il codegen</td>
-<td>2024-06-23T14:11:44Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3059">3059</a></td>
-<td><strong>MERGED</strong></td>
-<td>Add test case for using asm! outside of unsafe </td>
-<td>2024-06-22T06:40:27Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3053">3053</a></td>
-<td><strong>MERGED</strong></td>
-<td>incorporate tl::expected into InlineAsm parsing</td>
-<td>2024-06-14T06:08:01Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3011">3011</a></td>
-<td><strong>MERGED</strong></td>
-<td>Remove cstddef header from rust-fmt</td>
-<td>2024-05-19T03:03:05Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/3002">3002</a></td>
-<td><strong>MERGED</strong></td>
-<td>Make gccrs recognize negative_impls</td>
-<td>2024-05-15T22:06:45Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/2982">2982</a></td>
-<td><strong>MERGED</strong></td>
-<td>Inline asm</td>
-<td>2024-05-08T19:41:27Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/2981">2981</a></td>
-<td><strong>OPEN</strong></td>
-<td>Cleanup macro invoc</td>
-<td>2024-05-08T17:47:46Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/2980">2980</a></td>
-<td><strong>MERGED</strong></td>
-<td>Fix all tests in execute to be \r\n</td>
-<td>2024-05-08T06:47:12Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/2941">2941</a></td>
-<td><strong>MERGED</strong></td>
-<td>Add an alternative solution on MacOS</td>
-<td>2024-04-05T03:10:57Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/2911">2911</a></td>
-<td><strong>MERGED</strong></td>
-<td>Store visibility properly in ExternalTypeItem: Fixes #2897</td>
-<td>2024-03-09T22:46:59Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/2895">2895</a></td>
-<td><strong>MERGED</strong></td>
-<td>Add error emitting when we can't resolve id expr</td>
-<td>2024-03-01T10:40:34Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/2874">2874</a></td>
-<td><strong>MERGED</strong></td>
-<td>First stab at issue 2855 by splitting the two maps</td>
-<td>2024-02-25T21:13:02Z</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Rust-GCC/gccrs/pull/2871">2871</a></td>
-<td><strong>MERGED</strong></td>
-<td>Fix FixMe in changing return type of builtin_macro_from_string() from BuiltinMacro to tl::optional/<div></div></td>
-<td>2024-02-23T21:22:58Z</td>
-</tr>
-</tbody>
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>PR Number</th><th>PR Status</th><th>PR Title</th><th>Filed Date</th></tr></thead><tbody><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3133">3133</a></td><td><strong>MERGED</strong></td><td>Fix the disorder struct and class in inline asm</td><td>2024-08-20T07:41:34Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3119">3119</a></td><td><strong>OPEN</strong></td><td>Add running cicd 32bit</td><td>2024-08-04T19:47:37Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3109">3109</a></td><td><strong>MERGED</strong></td><td>Inline asm resolve expr</td><td>2024-07-31T03:41:32Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3103">3103</a></td><td><strong>MERGED</strong></td><td>Inline asm hir pipeline</td><td>2024-07-27T08:22:57Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3098">3098</a></td><td><strong>MERGED</strong></td><td>Fix the parser's operand and flags storage</td><td>2024-07-25T16:38:11Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3093">3093</a></td><td><strong>MERGED</strong></td><td>Change assertion of asm operand constructor</td><td>2024-07-21T22:46:28Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3090">3090</a></td><td><strong>MERGED</strong></td><td>Added options for ParseMode</td><td>2024-07-20T07:48:51Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3081">3081</a></td><td><strong>MERGED</strong></td><td>Pin node16 by allowing old version</td><td>2024-07-10T02:32:08Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3074">3074</a></td><td><strong>MERGED</strong></td><td>Safe-guard InlineAsm structs</td><td>2024-07-01T00:43:59Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3073">3073</a></td><td><strong>MERGED</strong></td><td>Store parse result of parse_format_string(s)</td><td>2024-07-01T00:24:42Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3063">3063</a></td><td><strong>MERGED</strong></td><td>Added ExprType::InlineAsm</td><td>2024-06-23T18:06:02Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3060">3060</a></td><td><strong>DRAFT</strong></td><td>Asm generic il codegen</td><td>2024-06-23T14:11:44Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3059">3059</a></td><td><strong>MERGED</strong></td><td>Add test case for using asm! outside of unsafe </td><td>2024-06-22T06:40:27Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3053">3053</a></td><td><strong>MERGED</strong></td><td>incorporate tl::expected into InlineAsm parsing</td><td>2024-06-14T06:08:01Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3011">3011</a></td><td><strong>MERGED</strong></td><td>Remove cstddef header from rust-fmt</td><td>2024-05-19T03:03:05Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/3002">3002</a></td><td><strong>MERGED</strong></td><td>Make gccrs recognize negative_impls</td><td>2024-05-15T22:06:45Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/2982">2982</a></td><td><strong>MERGED</strong></td><td>Inline asm</td><td>2024-05-08T19:41:27Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/2981">2981</a></td><td><strong>OPEN</strong></td><td>Cleanup macro invoc</td><td>2024-05-08T17:47:46Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/2980">2980</a></td><td><strong>MERGED</strong></td><td>Fix all tests in execute to be \r\n</td><td>2024-05-08T06:47:12Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/2941">2941</a></td><td><strong>MERGED</strong></td><td>Add an alternative solution on MacOS</td><td>2024-04-05T03:10:57Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/2911">2911</a></td><td><strong>MERGED</strong></td><td>Store visibility properly in ExternalTypeItem: Fixes #2897</td><td>2024-03-09T22:46:59Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/2895">2895</a></td><td><strong>MERGED</strong></td><td>Add error emitting when we can't resolve id expr</td><td>2024-03-01T10:40:34Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/2874">2874</a></td><td><strong>MERGED</strong></td><td>First stab at issue 2855 by splitting the two maps</td><td>2024-02-25T21:13:02Z</td></tr><tr><td><a href="https://github.com/Rust-GCC/gccrs/pull/2871">2871</a></td><td><strong>MERGED</strong></td><td>Fix FixMe in changing return type of builtin_macro_from_string() from BuiltinMacro to tl::optional/<div></div></td><td>2024-02-23T21:22:58Z</td></tr></tbody></table>
 <p>The merged/filed rate is 22/25. Half of the PRs are easy to fix / fixable within a short amount of time (Code maintanence aspect). The other half is medium in difficulty, related to my summer project (Project aspect).</p>
-<h1 id="gccrs-inline-assembly"><a href="#gccrs-inline-assembly">GCCRS Inline Assembly</a></h1>
+<h1 id="gccrs-inline-assembly"><a aria-hidden="true" tabindex="-1" href="#gccrs-inline-assembly"><span class="icon icon-link"></span></a>GCCRS Inline Assembly</h1>
 <p>Alright, let's try to understand what I did this summer in greater detail.</p>
 <p>This write up will try to avoid lower level, implementation-based details but will let you walk away knowing what I, <a href="https://badumbatish.github.io/">badumbatish</a> did this summer :)</p>
 <p>Although I won't post much code, I'll still provide links to my PRs for interested readers. Inspirations  includes contributors from the rust codebase and gccrs codebase. More specifically, <a href="https://github.com/rust-lang/rust/blob/master/compiler/rustc_builtin_macros/src/asm.rs">asm.rs</a> from rustc, Arthur, Pierre-Emmanuel and Mahad from gccrs.</p>
-<h2 id="purpose"><a href="#purpose">Purpose</a></h2>
+<h2 id="purpose"><a aria-hidden="true" tabindex="-1" href="#purpose"><span class="icon icon-link"></span></a>Purpose</h2>
 <p>Assembly are often used by programmers as a precise instrument in case that compiler's high level constructs are too coarse for the programmers' intent. With the advent of inline  assembly, you can do this without having to create a seperate assembly file, maintaining the stackframe, register invariants, juggling different platforms and different calling conventions by yourself, etc...</p>
 <p>The purpose of my project is to provide support for inline assembly in gccrs. With respect to Rust's memory safety guarantees as well as the context of assembly languages usages in today's modern era, the project aims to alleviate the complexity from the programmmers while providing precautions and safeguards with unsafe blocks requirements and higher level constructs such as register operands, compared to raw hardware registers.</p>
-<h2 id="syntax"><a href="#syntax">Syntax</a></h2>
+<h2 id="syntax"><a aria-hidden="true" tabindex="-1" href="#syntax"><span class="icon icon-link"></span></a>Syntax</h2>
 <p>In this section we'll take a look at the syntax of inline assembly, as well as dissecting some examples.</p>
-<h3 id="grammar"><a href="#grammar">Grammar</a></h3>
+<h3 id="grammar"><a aria-hidden="true" tabindex="-1" href="#grammar"><span class="icon icon-link"></span></a>Grammar</h3>
 <p>The syntax for inline assembly is quite simple. This is taken from the <a href="https://doc.rust-lang.org/reference/inline-assembly.html">Rust Reference website</a> :</p>
 <pre><code>format_string := STRING_LITERAL / RAW_STRING_LITERAL
 dir_spec := "in" / "out" / "lateout" / "inout" / "inlateout"
@@ -334,7 +334,7 @@ global_asm := "global_asm!(" format_string *("," format_string) *("," operand) [
 <p>The inline assembly code is represented by <code>format_string</code>. The other aspect is <code>operand</code>, which includes <code>reg_operand</code>, <code>clobber_abi</code>, and <code>options</code>.</p>
 <p>More information about different types of operand can be referred to from <a href="https://doc.rust-lang.org/reference/inline-assembly.html">the reference</a>.</p>
 <p>Keep in mind that the way we see this division of the grammar is how we'll construct our AST subsequently, our parser.</p>
-<h3 id="syntax-example"><a href="#syntax-example">Syntax example</a></h3>
+<h3 id="syntax-example"><a aria-hidden="true" tabindex="-1" href="#syntax-example"><span class="icon icon-link"></span></a>Syntax example</h3>
 <p>Let's look at some inline assembly examples pulled from the <a href="https://doc.rust-lang.org/rust-by-example/unsafe/asm.html">Rust by example website</a>.</p>
 <ul>
 <li>This is the simplest form, only including a no-op instruction</li>
@@ -343,8 +343,7 @@ global_asm := "global_asm!(" format_string *("," format_string) *("," operand) [
 <span class="line"></span>
 <span class="line"><span style="color:#CA9EE6">unsafe</span><span style="color:#949CBB"> {</span></span>
 <span class="line"><span style="color:#8CAAEE;font-style:italic">    asm!</span><span style="color:#949CBB">(</span><span style="color:#A6D189">"nop"</span><span style="color:#949CBB">);</span></span>
-<span class="line"><span style="color:#949CBB">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"><span style="color:#949CBB">}</span></span></code></pre>
 <ul>
 <li>Of course, more complex (non-simple) form of inline assembly requires some extra functionality:</li>
 </ul>
@@ -354,8 +353,7 @@ global_asm := "global_asm!(" format_string *("," format_string) *("," operand) [
 <span class="line"><span style="color:#CA9EE6">unsafe</span><span style="color:#949CBB"> {</span></span>
 <span class="line"><span style="color:#8CAAEE;font-style:italic">    asm!</span><span style="color:#949CBB">(</span><span style="color:#A6D189">"mov </span><span style="color:#949CBB">{}</span><span style="color:#A6D189">, 5"</span><span style="color:#949CBB">,</span><span style="color:#8CAAEE;font-style:italic"> out</span><span style="color:#949CBB">(</span><span style="color:#C6D0F5">reg</span><span style="color:#949CBB">)</span><span style="color:#C6D0F5"> x</span><span style="color:#949CBB">);</span></span>
 <span class="line"><span style="color:#949CBB">}</span></span>
-<span class="line"><span style="color:#8CAAEE;font-style:italic">assert_eq!</span><span style="color:#949CBB">(</span><span style="color:#C6D0F5">x</span><span style="color:#949CBB">,</span><span style="color:#EF9F76"> 5</span><span style="color:#949CBB">);</span></span>
-<span class="line"></span></code></pre>
+<span class="line"><span style="color:#8CAAEE;font-style:italic">assert_eq!</span><span style="color:#949CBB">(</span><span style="color:#C6D0F5">x</span><span style="color:#949CBB">,</span><span style="color:#EF9F76"> 5</span><span style="color:#949CBB">);</span></span></code></pre>
 <p>This requires the operand functionality, more specifically the reg_operand category. In simple terms, the <code>{}</code> in the format string (template string) (designated by the double quote symbol) refers to the variable x. The out(reg) asks the compiler to substitute the  by the register used to store x and to assume the inline assembly will only write to this register and not expect any particular initial value. On the ARM platform architecture, in the raw assembly, the <code>{}</code> in the formatted string would be replaced with a  register allocated to <code>x</code>, such as the <code>x0</code> register.</p>
 <p>An as a demonstrate, in the following code, <code>move {}, 5</code> is transformed into <code>mov x0, 5</code></p>
 <pre class="shiki catppuccin-frappe" style="background-color:#303446;color:#c6d0f5" tabindex="0"><code><span class="line"><span style="color:#C6D0F5">    .cfi_def_cfa_offset </span><span style="color:#EF9F76">32</span></span>
@@ -368,12 +366,11 @@ global_asm := "global_asm!(" format_string *("," format_string) *("," operand) [
 <span class="line"></span>
 <span class="line"><span style="color:#C6D0F5">// </span><span style="color:#EF9F76">0</span><span style="color:#C6D0F5"> "" </span><span style="color:#EF9F76">2</span></span>
 <span class="line"><span style="color:#C6D0F5">#NO_APP</span></span>
-<span class="line"><span style="color:#C6D0F5">    ...</span></span>
-<span class="line"></span></code></pre>
-<h2 id="overall-architecture"><a href="#overall-architecture">Overall architecture</a></h2>
+<span class="line"><span style="color:#C6D0F5">    ...</span></span></code></pre>
+<h2 id="overall-architecture"><a aria-hidden="true" tabindex="-1" href="#overall-architecture"><span class="icon icon-link"></span></a>Overall architecture</h2>
 <p>In this section we provide common compiler norms, discuss the overall architecture of the project as well as some of the most relevant files to the project.</p>
 <p>The end of this section provides a high level graph for readers to visualize the architecture.</p>
-<h3 id="definition"><a href="#definition">Definition</a></h3>
+<h3 id="definition"><a aria-hidden="true" tabindex="-1" href="#definition"><span class="icon icon-link"></span></a>Definition</h3>
 <p>Before giving an overview of the architecture of the project, it's necessary to give context to common compiler norms:</p>
 <ul>
 <li>Type checking: The process of ensuring that variables and expressions have types that align with the expected types (explicitly or implicitly) defined in the code, preventing type errors.</li>
@@ -385,11 +382,11 @@ global_asm := "global_asm!(" format_string *("," format_string) *("," operand) [
 <li>GIMPLE: (From gcc:) is a three-address representation derived from GENERIC by breaking down GENERIC expressions into tuples of no more than 3 operands (with some exceptions like function calls).</li>
 <li>GCC Backend: where gcc starts to generate archiecture-dependent code.</li>
 </ul>
-<h3 id="architecture"><a href="#architecture">Architecture</a></h3>
+<h3 id="architecture"><a aria-hidden="true" tabindex="-1" href="#architecture"><span class="icon icon-link"></span></a>Architecture</h3>
 <p>I haven't talked about how we should handle this. Obviously the plan is to have the compiler recognize the syntax so a parser is required, but what happens after that?</p>
 <p>Well, like our cousin (or sibling?) rustc, the gccrs compiler itself has the AST, and then HIR. After that, gccrs converts its HIR into gcc's TREE (GENERIC IL) format. At this stage, gcc handles the conversion from inline assembly tree to gimple and then eventually raw architecture-dependent assembly code via gcc's backend.</p>
 <p>We need to also set up other stuff such as inline assembly validation, type checking, name resolution, etc etc. This will be mention in passing as it is relevant to Rust's safety feature.</p>
-<h3 id="related-files"><a href="#related-files">Related files</a></h3>
+<h3 id="related-files"><a aria-hidden="true" tabindex="-1" href="#related-files"><span class="icon icon-link"></span></a>Related files</h3>
 <p>The related files for this issue includes</p>
 <ul>
 <li><code>gcc/rust/expand/rust-macrobuiltins-asm.h/cc</code>: Where the parsing of an <code>asm!()</code> happens.</li>
@@ -397,10 +394,10 @@ global_asm := "global_asm!(" format_string *("," format_string) *("," operand) [
 <li><code>gcc/rust/hir/tree/rust-hir-expr.h</code>: Where the HIR (high level ir) of an inline asm is defined.</li>
 <li><code>gcc/rust/backend/rust-compile-asm.h/cc</code>: where the backend of inline asm starts processing.</li>
 </ul>
-<h3 id="architecture-visualization"><a href="#architecture-visualization">Architecture visualization</a></h3>
+<h3 id="architecture-visualization"><a aria-hidden="true" tabindex="-1" href="#architecture-visualization"><span class="icon icon-link"></span></a>Architecture visualization</h3>
 <p>The picture below depicts the project's pipeline.
 <img src="/blogs/mermaid_gsoc_arch1.svg" alt="mermaid_gsoc_arch"></p>
-<h2 id="ast"><a href="#ast">AST</a></h2>
+<h2 id="ast"><a aria-hidden="true" tabindex="-1" href="#ast"><span class="icon icon-link"></span></a>AST</h2>
 <p>The AST follows the structure that the syntax provides.</p>
 <p>At the end of PR <a href="https://github.com/Rust-GCC/gccrs/pull/3060">3060</a>, it takes its structure from <a href="https://github.com/rust-lang/rust/blob/master/compiler/rustc_builtin_macros/src/asm.rs">asm.rs</a>. It inherits from the ExprWithoutBlock, which inherits from Expr, indicating that an asm! call is an expr.</p>
 <p>Here, I give the high level structure of the AST related to inline assembly. In the gccrs codebase, the AST are represented with classes and structs.</p>
@@ -410,7 +407,7 @@ global_asm := "global_asm!(" format_string *("," format_string) *("," operand) [
 <li>InlineAsmOperand: represents an operand in inline assembly, which can be a register operand (class InlineAsmRegOrRegClass) or some non-register operands such as a Sym or a Label.</li>
 </ul>
 <p>By having a close mapping between the three things: Syntax, AST, and parsing, we lower our mental capacity in implementing them, maintaining a clear mental model if ever in need of debugging.</p>
-<h2 id="parser"><a href="#parser">Parser</a></h2>
+<h2 id="parser"><a aria-hidden="true" tabindex="-1" href="#parser"><span class="icon icon-link"></span></a>Parser</h2>
 <p>Nice, now let's talk about the parser :)</p>
 <p>We'll be writing a simple recursive descent parser as described by our syntax section.</p>
 <p>As referenced above in the syntax section, the parser consists of 4 levels, 0 to 3, maintaining a clear and simple mapping between the parser and the syntax:</p>
@@ -422,11 +419,11 @@ global_asm := "global_asm!(" format_string *("," format_string) *("," operand) [
 <p>The diagram below shows the totality of the parser architecture, where the two greenish block in level 0 represents the starting point and the ending point of the parser.
 <img src="https://hackmd.io/_uploads/r1tIddrhR.svg" alt="Untitled diagram-2024-09-04-060350"></p>
 <p>Interested readers can look into the master branch, in the file <code>gcc/rust/expand/rust-macro-builtins-asm.h/cc</code> for the implementation detail of the parser.</p>
-<h2 id="ast-to-hir"><a href="#ast-to-hir">AST to HIR</a></h2>
+<h2 id="ast-to-hir"><a aria-hidden="true" tabindex="-1" href="#ast-to-hir"><span class="icon icon-link"></span></a>AST to HIR</h2>
 <p>After we have gotten our AST, the next step is lowering it into HIR.</p>
 <p>Since the inline assembly ASTs doesn't undergo much change in structure from AST to HIR, the HIRs representation inherits almost everything from the ASTs structure.</p>
 <p>Despite similarity in structure, the HIR lowering is a necessary step in the pipeline where we get to inherit all of gccrs' necessary name resolution, unsafe gating and type checking.</p>
-<h3 id="hir-creation"><a href="#hir-creation">HIR Creation</a></h3>
+<h3 id="hir-creation"><a aria-hidden="true" tabindex="-1" href="#hir-creation"><span class="icon icon-link"></span></a>HIR Creation</h3>
 <p>There must be an automatic way to do this. After all, the call <code>asm!</code> will appear everywhere, maybe in a block, maybe in another AST; how do we make sure that we can reach it and lower it correctly?</p>
 <p>The answer is the visitor pattern, here are <a href="https://en.wikipedia.org/wiki/Visitor_pattern">some</a> of <a href="https://refactoring.guru/design-patterns/visitor">the</a> references to <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">look into</a> if you're new to this pattern.</p>
 <p>In short: The visitor pattern separate algorithms from the objects which they operate on.</p>
@@ -506,9 +503,8 @@ global_asm := "global_asm!(" format_string *("," format_string) *("," operand) [
 <span class="line"><span style="color:#C6D0F5">			  expr</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE;font-style:italic">get_options</span><span style="color:#949CBB"> (),</span><span style="color:#C6D0F5"> mapping</span><span style="color:#949CBB">);</span></span>
 <span class="line"><span style="color:#949CBB">}</span></span>
 <span class="line"></span>
-<span class="line"></span>
 <span class="line"></span></code></pre>
-<h3 id="unsafe-gating"><a href="#unsafe-gating">Unsafe gating</a></h3>
+<h3 id="unsafe-gating"><a aria-hidden="true" tabindex="-1" href="#unsafe-gating"><span class="icon icon-link"></span></a>Unsafe gating</h3>
 <p>Since <code>asm!</code> is platform dependent and is inherently unsafe, i.e "you would get a <a href="https://en.wikipedia.org/wiki/Segmentation_fault">segmentation fault</a> with no probable stacktrace whatsoever", rust requires asm! to be in an unsafe block.</p>
 <p>In the gccrs codebase, this <code>unsafe gating</code> is handled via <code>gcc/rust/checks/rust-unsafe-checker.h/cc</code>, again, employing the <a href="https://stackoverflow.com/questions/6762256/how-does-double-dispatch-work-in-visitor-pattern">double dispatch</a> functionality of the visitor pattern.</p>
 <p>In our implementation, the unsafe checker maintains a stack of contexts named <code>unsafe_context</code> with a convenient boolean function <code>is_in_context</code>. At the time of our visit, we check if it is an unsafe context or not.</p>
@@ -521,8 +517,7 @@ global_asm := "global_asm!(" format_string *("," format_string) *("," operand) [
 <span class="line"><span style="color:#8CAAEE;font-style:italic">  rust_error_at</span><span style="color:#949CBB"> (</span></span>
 <span class="line"><span style="color:#C6D0F5">    expr</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE;font-style:italic">get_locus</span><span style="color:#949CBB"> (),</span><span style="color:#E5C890"> ErrorCode</span><span style="color:#949CBB">::</span><span style="color:#C6D0F5">E0133</span><span style="color:#949CBB">,</span></span>
 <span class="line"><span style="color:#A6D189">    "use of inline assembly is unsafe and requires unsafe function or block"</span><span style="color:#949CBB">);</span></span>
-<span class="line"><span style="color:#949CBB">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"><span style="color:#949CBB">}</span></span></code></pre>
 <blockquote>
 <p>But Jas, why we wouldn't want the UnsafeChecker to just maintain a boolean <code>is_unsafe</code>, and once UnsafeChecker visit an unsafe block, we set the boolean <code>is_unsafe</code> to true and consequently false after the UnsafeChecker finishes visiting?</p>
 </blockquote>
@@ -534,8 +529,7 @@ global_asm := "global_asm!(" format_string *("," format_string) *("," operand) [
 <span class="line"><span style="color:#C6D0F5">      let b = *(&#x26;a as *const i32);</span></span>
 <span class="line"><span style="color:#C6D0F5">      let c = std::mem::transmute&#x3C;i32, f32>(b);</span></span>
 <span class="line"><span style="color:#C6D0F5">} // we set it to false</span></span>
-<span class="line"><span style="color:#C6D0F5">// Yay me!!!</span></span>
-<span class="line"></span></code></pre>
+<span class="line"><span style="color:#C6D0F5">// Yay me!!!</span></span></code></pre>
 <p>But in the following case, where we have nested unsafe context, the boolean fails to recognize that we are still "unsafe"; thus needing a stack.</p>
 <pre class="shiki catppuccin-frappe" style="background-color:#303446;color:#c6d0f5" tabindex="0"><code><span class="line"><span style="color:#949CBB">+</span><span style="color:#A6D189">unsafe { // wraps the above unsafe context inside another unsafe context</span></span>
 <span class="line"></span>
@@ -547,11 +541,10 @@ global_asm := "global_asm!(" format_string *("," format_string) *("," operand) [
 <span class="line"><span style="color:#C6D0F5">    // Yay me!!!</span></span>
 <span class="line"><span style="color:#949CBB">+</span><span style="color:#A6D189"> }</span></span>
 <span class="line"><span style="color:#949CBB">+</span><span style="color:#A6D189"> // Now unsafe operations are forbidden again, but the boolean is false</span></span>
-<span class="line"><span style="color:#949CBB">+</span><span style="color:#A6D189"> let f = std::mem::transmute&#x3C;i32, f32>(15); // Uh-oh!</span></span>
-<span class="line"></span></code></pre>
+<span class="line"><span style="color:#949CBB">+</span><span style="color:#A6D189"> let f = std::mem::transmute&#x3C;i32, f32>(15); // Uh-oh!</span></span></code></pre>
 <p>Before every visit to an unsafe context, the unsafe checker inserts a context into the stack and after every visit, it pops that context out. A check to see if we are still unsafe checks if the stack is empty.
 Readers interested in implementation details can check <code>gcc/rust/checks/errors/rust-unsafe-checker.h/cc</code> and <code>gcc/rust/util/rust-stacked-contexts.h</code></p>
-<h3 id="type-checking"><a href="#type-checking">Type checking</a></h3>
+<h3 id="type-checking"><a aria-hidden="true" tabindex="-1" href="#type-checking"><span class="icon icon-link"></span></a>Type checking</h3>
 <p>From the rust compiler dev references:</p>
 <blockquote>
 <p>"The only ones that are of particular interest to rustc are NORETURN which makes asm! return ! instead of ()".</p>
@@ -569,10 +562,9 @@ Readers interested in implementation details can check <code>gcc/rust/checks/err
 <span class="line"><span style="color:#CA9EE6">  else</span></span>
 <span class="line"><span style="color:#C6D0F5">    infered</span></span>
 <span class="line"><span style="color:#81C8BE">      =</span><span style="color:#E5C890"> TyTy</span><span style="color:#949CBB">::</span><span style="color:#C6D0F5">TupleType</span><span style="color:#949CBB">::</span><span style="color:#8CAAEE;font-style:italic">get_unit_type</span><span style="color:#949CBB"> (</span><span style="color:#C6D0F5">expr</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE;font-style:italic">get_mappings</span><span style="color:#949CBB"> ().</span><span style="color:#8CAAEE;font-style:italic">get_hirid</span><span style="color:#949CBB"> ());</span></span>
-<span class="line"><span style="color:#949CBB">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"><span style="color:#949CBB">}</span></span></code></pre>
 <p>I omit the part where we also recursive typecheck and infer each expr in each operand for the next part</p>
-<h3 id="resolution"><a href="#resolution">Resolution</a></h3>
+<h3 id="resolution"><a aria-hidden="true" tabindex="-1" href="#resolution"><span class="icon icon-link"></span></a>Resolution</h3>
 <p>Given an example that is part of <a href="https://github.com/Rust-GCC/gccrs/pull/3060/files#diff-693188f770da1bcaab140cfa09a7df64b510f5b17f21d9dc7627fc401776086a">inline_asm_mov_x86_rs</a> test case, where we refers to _x as a potential output:</p>
 <pre><code>let mut _x: i32 = 0;
 unsafe {
@@ -601,13 +593,12 @@ unsafe {
 <span class="line"><span style="color:#C6D0F5">  resolver</span><span style="color:#949CBB">.</span><span style="color:#C6D0F5">context</span><span style="color:#949CBB">-></span><span style="color:#8CAAEE;font-style:italic">insert_type</span><span style="color:#949CBB"> (</span><span style="color:#C6D0F5">expr</span><span style="color:#949CBB">-></span><span style="color:#8CAAEE;font-style:italic">get_mappings</span><span style="color:#949CBB"> (),</span><span style="color:#C6D0F5"> resolver</span><span style="color:#949CBB">.</span><span style="color:#C6D0F5">infered</span><span style="color:#949CBB">);</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#CA9EE6">  return</span><span style="color:#C6D0F5"> resolver</span><span style="color:#949CBB">.</span><span style="color:#C6D0F5">infered</span><span style="color:#949CBB">;</span></span>
-<span class="line"><span style="color:#949CBB">}</span></span>
-<span class="line"></span></code></pre>
-<h2 id="tree-generic"><a href="#tree-generic">TREE (GENERIC)</a></h2>
+<span class="line"><span style="color:#949CBB">}</span></span></code></pre>
+<h2 id="tree-generic"><a aria-hidden="true" tabindex="-1" href="#tree-generic"><span class="icon icon-link"></span></a>TREE (GENERIC)</h2>
 <p>After we have finished setting up the AST and the HIR, we'll set up the TREE (GENERIC IR) infrastructure for our asm! node and after that, this IR will be lowered by gcc itself (GIMPLE IR), relieving us from duty.</p>
 <p>The most central data structure used in the IR is <code>tree</code>, thus the name. From now, we'll refer to TREE IR as GENERIC IR.</p>
 <p>The knowledge I learned about GENERIC is through this documentation <a href="https://gcc.gnu.org/onlinedocs/gccint/GENERIC.html">https://gcc.gnu.org/onlinedocs/gccint/GENERIC.html</a></p>
-<h3 id="overall"><a href="#overall">Overall</a></h3>
+<h3 id="overall"><a aria-hidden="true" tabindex="-1" href="#overall"><span class="icon icon-link"></span></a>Overall</h3>
 <p>Let's look at the definition and explore the tree code structures</p>
 <p>From the GCC GENERIC:</p>
 <blockquote>
@@ -625,35 +616,35 @@ unsafe {
 <li>operand_count: The number of fields it takes to make the tree of this type.</li>
 </ul>
 <p>Let's give an example of some of the tree codes we're sure to use:</p>
-<table>
-<thead>
-<tr>
-<th>Tree code definition</th>
-<th>definition location in tree.def</th>
-<th>Usage in our backend</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DEFTREECOE(TREE_LIST, "tree_list", tcc_exceptional, 0)</td>
-<td>Line 54</td>
-<td>Construction of operands</td>
-</tr>
-<tr>
-<td>DEFTREECODE(STRING_CST, "string_cst", tcc_constant, 0)</td>
-<td>Line 310</td>
-<td>Construction of templated assembly code</td>
-</tr>
-<tr>
-<td>DEFTREECODE(ASM_EXPR, "asm_expr", tcc_statement, 5)</td>
-<td>Line 1008</td>
-<td>Construction of inline assembly node</td>
-</tr>
-</tbody>
-</table>
-<h3 id="anatomy"><a href="#anatomy">Anatomy</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tree code definition</th><th>definition location in tree.def</th><th>Usage in our backend</th></tr></thead><tbody><tr><td>DEFTREECOE(TREE_LIST, "tree_list", tcc_exceptional, 0)</td><td>Line 54</td><td>Construction of operands</td></tr><tr><td>DEFTREECODE(STRING_CST, "string_cst", tcc_constant, 0)</td><td>Line 310</td><td>Construction of templated assembly code</td></tr><tr><td>DEFTREECODE(ASM_EXPR, "asm_expr", tcc_statement, 5)</td><td>Line 1008</td><td>Construction of inline assembly node</td></tr></tbody></table>
+<h3 id="anatomy"><a aria-hidden="true" tabindex="-1" href="#anatomy"><span class="icon icon-link"></span></a>Anatomy</h3>
 <p>I'll give a detailed look of the ones that are needed for the project.</p>
-<h4 id="tree_list"><a href="#tree_list">TREE_LIST</a></h4>
+<h4 id="tree_list"><a aria-hidden="true" tabindex="-1" href="#tree_list"><span class="icon icon-link"></span></a>TREE_LIST</h4>
 <p>TREE_LIST is ... just a list of trees... It has a TREE_VALUE, TREE_PURPOSE and TREE_CHAIN.</p>
 <p>For the first two values, TREE_VALUE holds the element while TREE_PURPOSE gives a directive to later stages on what to do with this TREE_VALUE. In our tree usage section, we'll see that a tree list of register operands contains a TREE_VALUE of variables and a TREE_PURPOSE of register type, denoting if it's input or output register operands.</p>
 <p>The TREE_CHAIN node points to the next element in the tree list, which is also a TREE_LIST.</p>
@@ -667,14 +658,13 @@ unsafe {
 <span class="line"><span style="color:#8CAAEE;font-style:italic">  TREE_PURPOSE</span><span style="color:#949CBB"> (</span><span style="color:#C6D0F5">t</span><span style="color:#949CBB">)</span><span style="color:#81C8BE"> =</span><span style="color:#C6D0F5"> parm</span><span style="color:#949CBB">;</span></span>
 <span class="line"><span style="color:#8CAAEE;font-style:italic">  TREE_VALUE</span><span style="color:#949CBB"> (</span><span style="color:#C6D0F5">t</span><span style="color:#949CBB">)</span><span style="color:#81C8BE"> =</span><span style="color:#C6D0F5"> value</span><span style="color:#949CBB">;</span></span>
 <span class="line"><span style="color:#CA9EE6">  return</span><span style="color:#C6D0F5"> t</span><span style="color:#949CBB">;</span></span>
-<span class="line"><span style="color:#949CBB">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"><span style="color:#949CBB">}</span></span></code></pre>
 <p>A trend you'll see is that these underlying wrapper methods that construct our trees is that they'll start with a <code>tree t = make node(...)</code> or something that allocates memory for a tree, and then some  more <code>UPPER_CASE_SETTER_GETTER_METHOD(t) = ...</code> that follows.</p>
-<h4 id="string_cst"><a href="#string_cst">STRING_CST</a></h4>
+<h4 id="string_cst"><a aria-hidden="true" tabindex="-1" href="#string_cst"><span class="icon icon-link"></span></a>STRING_CST</h4>
 <p>The STRING_CST is a tree constant of string. We'll use this type of TREE in a lot of places. For example, TREE_PURPOSE in the above TREE_LIST often uses some form of STRING_CST as a directive for later stages. We can also use it as a way to encode our unprocessed/templated inline assembly code as STRING_CST.</p>
 <p>Sometimes, our strings can also be represented not by a STRING_CST but by ARRAY of type CHAR, and this is also acceptable. An example of this is in <code>cc</code> for the inline assembly code.</p>
 <p>A call to construct STRING_CST: <code>build_string</code>, takes two parameters: a length of cstr, including the NULL delimiter and the cstr itself.</p>
-<h4 id="asm_expr"><a href="#asm_expr">ASM_EXPR</a></h4>
+<h4 id="asm_expr"><a aria-hidden="true" tabindex="-1" href="#asm_expr"><span class="icon icon-link"></span></a>ASM_EXPR</h4>
 <p>An ASM_EXPR has 5 parameters it needs passing.</p>
 <ul>
 <li>An ASM_STRING of treecode STRING_CST</li>
@@ -684,7 +674,7 @@ unsafe {
 <li>An ASM_LABELS</li>
 </ul>
 <p>I omit the last two treecodes simply because the project hasn't had the capacity to explore the clobber and label functionality.</p>
-<h3 id="tree-usage"><a href="#tree-usage">TREE USAGE</a></h3>
+<h3 id="tree-usage"><a aria-hidden="true" tabindex="-1" href="#tree-usage"><span class="icon icon-link"></span></a>TREE USAGE</h3>
 <p>In constructing the tree representation of our inline assembly, we combine the existing infrastructure as well as our knowledge of tree codes.</p>
 <p>More specifically, we rely on existing tree generation of our variables and raw c strings. We build ourselves a list of input and output registers to make up the ASM_EXPR tree.</p>
 <p>The process of building our ASM_EXPR is as follow:</p>
@@ -731,8 +721,7 @@ unsafe {
 <span class="line"><span style="color:#8CAAEE;font-style:italic">  TREE_SIDE_EFFECTS</span><span style="color:#949CBB"> (</span><span style="color:#C6D0F5">ret</span><span style="color:#949CBB">)</span><span style="color:#81C8BE"> |=</span><span style="color:#C6D0F5"> side_effects</span><span style="color:#949CBB">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#CA9EE6">  return</span><span style="color:#C6D0F5"> ret</span><span style="color:#949CBB">;</span></span>
-<span class="line"><span style="color:#949CBB">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"><span style="color:#949CBB">}</span></span></code></pre>
 <p>In the end, we add the tree to a list of statements in the following fashion:</p>
 <pre class="shiki catppuccin-frappe" style="background-color:#303446;color:#c6d0f5" tabindex="0"><code><span class="line"><span style="color:#CA9EE6">void</span></span>
 <span class="line"><span style="color:#C6D0F5">CompileExpr</span><span style="color:#949CBB">::</span><span style="color:#8CAAEE;font-style:italic">visit</span><span style="color:#949CBB"> (</span><span style="color:#E5C890">HIR</span><span style="color:#949CBB">::</span><span style="color:#C6D0F5">InlineAsm </span><span style="color:#81C8BE">&#x26;</span><span style="color:#C6D0F5">expr</span><span style="color:#949CBB">)</span></span>
@@ -740,11 +729,10 @@ unsafe {
 <span class="line"><span style="color:#C6D0F5">  CompileAsm </span><span style="color:#8CAAEE;font-style:italic">asm_codegen</span><span style="color:#949CBB"> (</span><span style="color:#C6D0F5">ctx</span><span style="color:#949CBB">);</span></span>
 <span class="line"><span style="color:#C6D0F5">  ctx</span><span style="color:#949CBB">-></span><span style="color:#8CAAEE;font-style:italic">add_statement</span><span style="color:#949CBB"> (</span><span style="color:#C6D0F5">asm_codegen</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE;font-style:italic">tree_codegen_asm</span><span style="color:#949CBB"> (</span><span style="color:#C6D0F5">expr</span><span style="color:#949CBB">));</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#949CBB">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"><span style="color:#949CBB">}</span></span></code></pre>
 <p>Readers interested in the implementation details can refer to
 <code>gcc/rust/backend/rust-compile-asm.h/cc</code> and <code>gcc/rust/backend/rust-compile-expr.h/cc</code></p>
-<h2 id="results"><a href="#results">Results</a></h2>
+<h2 id="results"><a aria-hidden="true" tabindex="-1" href="#results"><span class="icon icon-link"></span></a>Results</h2>
 <p>Yayyy, we've finally relieved ourselves of code generation responsibilities, leaving the rest to GIMPLE, RTL, and gcc backend. The gccrs compiler can now generate correct instructions using the in and out register operands.</p>
 <p>Below shows a few test cases that gccrs can now pass:</p>
 <pre><code>/* { dg-do run { target arm*-*-* } } */
@@ -784,7 +772,7 @@ fn main() -> i32 {
     0
 }
 </code></pre>
-<h2 id="end-words"><a href="#end-words">End words</a></h2>
+<h2 id="end-words"><a aria-hidden="true" tabindex="-1" href="#end-words"><span class="icon icon-link"></span></a>End words</h2>
 <p>Participating in Google Summer of Code for gccrs  (and get paid for it hehe) has been my most gratifying and meaningful experience in software development. I am mentored by Arthur Cohen and Pierre-Emmanuel "PEP" Patry; Arthur helped me with the direction of the project and code reviews while Pierre-Emmanuel provided me with code infrastructure navigation and PR code-reviews, both of which are much needed.</p>
 <p>The main struggles for me in this internship is three fold:</p>
 <ul>
@@ -806,6 +794,6 @@ up a whole docs detailing each step for me when I attempted a hard PR. Thank you
 <li><a href="mailto:jjasmine@berkeley.edu">jjasmine@berkeley.edu</a> (for job posting)</li>
 <li><a href="https://x.com/thisisjjasmine">https://x.com/thisisjjasmine</a> (social media)</li>
 </ul>
-<p>Thank you for reading :)</p>8:["$","article",null,{"className":"p-8 prose  max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto","children":[["$","div",null,{"className":"flex justify-center text-2xl font-bold ","children":["$","h2",null,{"children":"What I did for GSoc 2024"}]}],["$","div",null,{"className":"flex justify-start text-xl font-bold underline","children":["$","h4",null,{"children":"2024-08-22"}]}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"}}]]}]
-c:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"What I did for GSoc 2024"}],["$","meta","2",{"name":"description","content":"Built with NextJS, TailwindCSS, and a tonnn of loveee :)"}],["$","link","3",{"rel":"icon","href":"/_next/static/media/pfp3.5cd65164.png"}]]
-a:null
+<p>Thank you for reading :)</p>6:["$","article",null,{"className":"p-8 prose  max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto","children":[["$","div",null,{"className":"flex justify-center text-2xl font-bold ","children":["$","h2",null,{"children":"What I did for GSoc 2024"}]}],["$","div",null,{"className":"flex justify-start text-xl font-bold underline","children":["$","h4",null,{"children":"2024-08-22"}]}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$e"}}]]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"What I did for GSoc 2024"}],["$","meta","2",{"name":"description","content":"Built with NextJS, TailwindCSS, and a tonnn of loveee :)"}],["$","link","3",{"rel":"icon","href":"/_next/static/media/pfp3.5cd65164.png"}]]
+8:null
