@@ -3,8 +3,6 @@ title: '[REPORT] Going to the gym with MLIR: Writing a recompiler for DEX instru
 date: 2024-12-7
 recap: "Jas reports on her graduate compiler project: working with MLIR's SSA form, lifting DEX (with MLIR's MjolnIR) and lowering to smali."
 ---
-# hi
-<details><summary>Open example</summary>Tada! :tada:</details>
 ## Prologue
 Hi there, I hope everyone's having a great day, this article is about lifting and lowering DEX instructions in MLIR, utilizing the framework in analysing and optimizing the [DEX](https://source.android.com/docs/core/runtime/dalvik-bytecode) format.
 
@@ -87,8 +85,8 @@ The diagram shown below details the steps we need to take in the project.
 ### MLIR's operations and values
 ### Operations
 
-MLIR is built on top of these so-called operations, that describe many different levels of abstractions and computations.
-On the top level, the MLIR features a `ModuleOp`, which is a container operation of a single graph region.
+MLIR is built from what are known as "Operations," which are used to describe many different levels of abstractions and computations.
+On the top level, the MLIR features a `ModuleOp{:cpp}`, which is a container operation of a single graph region.
 
 A region is an ordered list of basic blocks. And a basic block is an ordered list of basic block.
 
@@ -105,12 +103,12 @@ The following two diagrams showcases MLIR's fluid structure.
 
 ### Values
 
-An important thing to notice is how SSA form is represented in MLIR, which is done with `mlir::Value`. The MLIR Value plays an important role in the project; operations take in values and produces values, passing them to functions and blocks to get out
-some value or to establish control flow. Hence, frequent trips to `mlir::Value`'s [doxygen](https://mlir.llvm.org/doxygen/classmlir_1_1Value.html) are needed.
+An important thing to notice is how SSA form is represented in MLIR, which is done with `mlir::Value{:cpp}`. The MLIR Value plays an important role in the project; operations take in values and produces values, passing them to functions and blocks (these are operations as described above) to get out
+some value or to establish control flow. Hence, frequent trips to `mlir::Value{:cpp}`'s [doxygen](https://mlir.llvm.org/doxygen/classmlir_1_1Value.html) are needed.
 
 For example, given an operation such as the integer addition
-`mlir::arith::AddIOp`, MLIR gives us different accessors such as `getLhs()`, `getRhs()`, `getResult()` to access its values.
-Each of these values can consequently invoke `getParentBlock()` or `replaceAllUsesWith()` to further manipulate themselves.
+`mlir::arith::AddIOp{:cpp}`, MLIR gives us different accessors such as `getLhs(){:cpp}`, `getRhs(){:cpp}`, `getResult(){:cpp}` to access its values.
+Each of these values can consequently invoke `getParentBlock(){:cpp}` or `replaceAllUsesWith(){:cpp}` to further manipulate themselves.
 
 In a big picture with operations introduced above, the MLIR Language Reference succinctly says:
 
@@ -148,7 +146,7 @@ Supposedly, the project will provide a command line tool for user to input in ei
 
 The command line executable is hand-written, with the formatting via [fmt](https://fmt.dev/11.0/).
 
-Below shows the interface of the entry point executable when ran with `--help`:
+Below shows the interface of the entry point executable when ran with `--help{:bash}`:
 ```
 ./shuriken-opt --help
 USAGE: shuriken-opt [-h | --help] [-d | --diagnostics] [-f|--file file_name --lift -g|--graph --lower --opt]
@@ -172,7 +170,7 @@ This allows for a seamless construction of the program's CFG from the DEX format
 
 After constructing the CFG's non-SSA form, we translate it to MLIR's SSA CFG via [Braun's SSA algorithm](https://c9x.me/compile/bib/braun13cc.pdf)
 
-On the high level overview, we keep an `MLIR::DenseMap` between the original CFG's basic blocks to a `BasicBlockDef`, this is means to replace the paper's `currentDef[variable][Block]`.
+On the high level overview, we keep an `mlir::DenseMap{:cpp}` between the original CFG's basic blocks to a `BasicBlockDef{:cpp}`, this is means to replace the paper's `currentDef[variable][Block]{:cpp}`.
 
 ```c++
 struct BasicBlockDef { // stripped down version of BasicBlockDef
@@ -182,9 +180,9 @@ struct BasicBlockDef { // stripped down version of BasicBlockDef
 };
 ```
 
-In the BasicBlockDef wraps another `MLIR::DenseMap` of integers to `mlir::Value`, this is how we're accessing the `variable` in `currentDef[variable][Block]`
+In the BasicBlockDef wraps another `mlir::DenseMap{:cpp}` of integers to `mlir::Value{:cpp}`, this is how we're accessing the `variable` in `currentDef[variable][Block]` from the paper's algorithm.
 
-When the original CFG's instructions ask to either read or write to DEX's virtual registers, we either get the value from our map between integers and `mlir::Value` in the current block, or we recursively call the query on the block's predecessor(s).
+When the original CFG's instructions ask to either read or write to DEX's virtual registers, we either get the value from our map between integers and `mlir::Value{:cpp}` in the current block, or we recursively call the query on the block's predecessor(s).
 
 The query of a variable's definition in a block's map in the project is the equivalent of C++ MLIR's
 ```c++
@@ -193,7 +191,7 @@ mlir::DenseMap[mlir::Block*][mlir::DenseMap[std::uint32_t][mlir::Value]]
 
 Doing this in MLIR's system introduces several benefits:
 - Reusing different built-in dialects from MLIR saves myself a lot of time from implementation design and implementation bugs.
-- Everything in MLIR (for a beginner) fits well together. For example, the `cf.condbr` and `cf.br` plays really nice with MLIR's SSA block arguments style, providing iterators to their respective block arguments. Having implemented the alternative phi node version in [bril](https://capra.cs.cornell.edu/bril/intro.html) IR makes me realize how clean MLIR's SSA form actually is. In addition, `mlir::Value` provides different ways to identify if a value is from a function or block's argument or a normal value, this makes generating values for smali's `p{}` (method parameters) and `v{}` (local variables) relatively easy.
+- Everything in MLIR (for a beginner) fits well together. For example, the `cf.condbr{:cpp}` and `cf.br{:cpp}` plays really nice with MLIR's SSA block arguments style, providing iterators to their respective block arguments. Having implemented the alternative phi node version in [bril](https://capra.cs.cornell.edu/bril/intro.html) IR makes me realize how clean MLIR's SSA form actually is. In addition, `mlir::Value{:cpp}` provides different ways to identify if a value is from a function or block's argument or a normal value, this makes generating values for smali's `p{}` (method parameters) and `v{}` (local variables) relatively easy.
 
 
 ## Optimization and Analysis
@@ -202,7 +200,7 @@ In writing an optimization pass, MLIR offers a variety of tools for the job. Dif
 
 In writing up this part of the project, the biggest obstacles is surprisingly not about learning the apis of different optimization tools, but actually verifying MLIR's and ourselves' dialect.
 
-For time management, I'm opting for a simple pattern rewriter to remove all nops: the `mlir::applyPatternsAndFoldGreedily` pass. Using the pass runs MLIR's verifier on its built-in dialect, triggering a lot of errors on our compiler build. Despite this, fixing this was somewhat straight forward with MLIR's error messages and documentation on its operations.
+For time management, I'm opting for a simple pattern rewriter to remove all nops: the `mlir::applyPatternsAndFoldGreedily{:cpp}` pass. Using the pass runs MLIR's verifier on its built-in dialect, triggering a lot of errors on our compiler build. Despite this, fixing this was somewhat straight forward with MLIR's error messages and documentation on its operations.
 
 ## Translation
 
@@ -210,7 +208,7 @@ For time management, I'm opting for a simple pattern rewriter to remove all nops
 
 The Smali IR differentiates between a parameter and a local variable with the prefix `p` or `v.` This in turn requires us to also somehow identify this in MLIR.
 
-Fortunately with MLIR's helpful methods such as `llvm::dyn_cast<>()`, `llvm::isa<>()`, `mlir::BlockArgument`'s `getOwner()` and `mlir::Block`'s `isEntryBlock()`, it was relatively straightforward to resolve this.
+Fortunately with MLIR's helpful methods such as `llvm::dyn_cast<>(){:cpp}`, `llvm::isa<>(){:cpp}`, `mlir::BlockArgument{:cpp}`'s `getOwner()` and `mlir::Block{:cpp}`'s `isEntryBlock(){:cpp}`, it was relatively straightforward to resolve this.
 
 ### Getting out of SSA
 In translating from MjolnIR to smali, I opted for a simple out-of-ssa transformation [introduced in class](https://github.com/mwillsey/cs265/blob/2024-fall/lessons/03-ssa.md#converting-out-of-ssa), slightly tweaked to fit MLIR's ssa block arguments fashion:
@@ -236,7 +234,8 @@ The following drawing executes the algorithm on a handwritten example.
 ![out_of_ssa.svg](/blogs/out_of_ssa.svg)
 
 
-For this part, I think the part that troubles me the most is the fact that no project (to the best of our knowledge) translating from a custom IR to smali, combined with limited knowledge of both smali and MLIR. The cycle continues itself since not knowing smali well requires me to perform multiple iteration on the custom IR, which suffers again from limited knowledge of MLIR.
+
+For this part, I think the part that troubles me the most is the fact that, to the best of our knowledge, no project exists to translate from a custom IR to smali. Combined with limited knowledge of both smali and MLIR, the cycle continues itself since not knowing smali well requires me to perform multiple iteration on the custom IR, which suffers again from limited knowledge of MLIR.
 
 
 ## So what's going on right now Jaz? What's next?

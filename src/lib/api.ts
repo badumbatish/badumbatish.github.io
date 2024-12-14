@@ -11,8 +11,8 @@ import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
 import rehypeShiki from '@shikijs/rehype'
 import rehypeToc from '@jsdevtools/rehype-toc'
-import * as shiki from 'shiki'
 import remarkMdx from "remark-mdx";
+
 // @ts-ignore
 import collapse from "remark-collapse";
 import {
@@ -37,7 +37,7 @@ async function getParserPre() {
         .use(remarkMdx)
         .use(remarkParse)
         .use(collapse, {
-            test: 'Prologue',
+            test: '.*[sS]upporting section$',
         })
         .use(remarkGfm)
         .use(remarkRehype, {
