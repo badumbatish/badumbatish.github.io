@@ -37,7 +37,7 @@ async function getParserPre() {
         .use(remarkMdx)
         .use(remarkParse)
         .use(collapse, {
-            test: '.*[sS]upporting section$',
+            test: '.*[sS]upporting section.*',
         })
         .use(remarkGfm)
         .use(remarkRehype, {

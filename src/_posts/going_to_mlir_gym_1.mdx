@@ -10,7 +10,37 @@ Hi there, I hope everyone's having a great day, this article is about lifting an
 
 The blog is intended as a report submission for [CS265](https://www2.eecs.berkeley.edu/Courses/CS265/) [here](https://github.com/mwillsey/cs265). The report focuses more on my experience and the high level details. The project also discusses the ease (or uneasiness) of executing the project, meanwhile introducing the benefits of MLIR with its elements in the ecosystem
 
-The report is about 2500 words, or 10 minutes of reading. I hope everyone enjoys :)
+The report is about 2500 words, or 10 minutes of reading. I also include a supporting section to recap different terminologies for unfamiliar readers.
+
+I hope everyone enjoys :)
+## Reader supporting section
+
+This section introduces some terminology and/or acronyms that reviews from my friends deemed might be important context.
+
+### Terminology
+
+- SSA: Static Single Assignment, a form where each variable is assigned exactly once, enabling easier optimization and analysis. This form is enforced in MLIR. We'll see the useful feature of this in the translation section.
+
+- Dialect: A custom language extension in MLIR like arith (stands for arithmetic) or cf (stands for control flow) or func (for function related things) used to represent IRs.
+
+- Operations: A term (and concrete thing in MLIR's C++ API) that can be used to represent different concepts in MLIR. This ranges from higher-level concepts like function definitions, function calls, buffer allocations, view or slices of buffers, and process creation, to lower-level concepts like target-independent arithmetic, target-specific instructions, configuration registers, and logic gates.
+
+To give an example of the two terminology, the dialect `arith` features different operations such `addf` (adding two floats) or `addi` (adding two integers) or `cmpi` (comparing two integers). Another example is the `func`'s dialect's `func` (to represent a function) or `return` to represent a return call or `call` to represent invoking a function.
+
+
+### Acronyms
+- LLVM: used to mean Low level virtual machine, but now is an umbrella term for a collection of modular and reusable compiler and toolchain technologies. Another meaning for LLVM is the subproject LLVM within the LLVM collection. The subproject provides reusable components for code generation, optimization, and analysis, enabling developers to build high-performance, platform-agnostic tools.
+
+- MLIR: stands for Multi-Level Intermediate Representation. A flexible, extensible compiler infrastructure within the LLVM project designed to support multiple levels of abstraction and domain-specific optimizations. It provides a unified framework for building high-performance compilers and tools tailored to diverse hardware and programming models.
+
+- DEX: Stands for Dalvik Executable, which is a format used on Android before being replaced by ART, which stands for Android runtime.
+
+- MjolnIR: A custom IR for representing DEX instructions built from MLIR's facility. The library's current implementation uses this IR primarily.
+
+- Basic block (BB): a straight-line code sequence with no branches in except to the entry and no branches out except at the exit.
+
+- CFG: Control flow graph, the graphical representation of control flow or computation during the execution of programs or applications. On its most basic level, a CFG (control flow graph) contains a bunch of BBs (basic blocks), which are glued together by control flows
+
 
 ## Introduction
 
@@ -86,15 +116,20 @@ The diagram shown below details the steps we need to take in the project.
 ### Operations
 
 MLIR is built from what are known as "Operations," which are used to describe many different levels of abstractions and computations.
-On the top level, the MLIR features a `ModuleOp{:cpp}`, which is a container operation of a single graph region.
 
-A region is an ordered list of basic blocks. And a basic block is an ordered list of basic block.
+Every operation has a unique name, often written in the format dialect.operation_name. For example:
+-	arith.addi (integer addition in the arith dialect)
+-	func.func (function definition in the func dialect)
+
+An operation may contain one or more regions, which in turn contain blocks of other operations. This allows hierarchical nesting, making MLIR very expressive.
+
+On the top level, the MLIR features a `ModuleOp{:cpp}`, which is a container operation of a single graph region.
 
 In lifting DEX to MLIR, we think of
 
-- An input DEX file comprises ModuleOps, which represent classes.
-- Each method in the DEX file is a MethodOp, a MjolnIR dialect.
-- Each method might have control flows, which is made up with basic blocks.
+- An input DEX file comprises a `ModuleOp{:cpp}`, which represent a class.
+- Each method (class's function) in the DEX file is a `MethodOp{:cpp}`, a MjolnIR dialect's operation similarly to the `func{:cpp}` operation in func dialect.
+- Each method might have control flows, which glues together basic blocks.
 
 Although a simple 1-1 representation, MLIR can feature much more complex hierarchy, as demonstrated below. We however, rely on the rigid structure we've defined for ourselves to simplify the lifting and lowering processes.
 
@@ -104,9 +139,9 @@ The following two diagrams showcases MLIR's fluid structure.
 ### Values
 
 An important thing to notice is how SSA form is represented in MLIR, which is done with `mlir::Value{:cpp}`. The MLIR Value plays an important role in the project; operations take in values and produces values, passing them to functions and blocks (these are operations as described above) to get out
-some value or to establish control flow. Hence, frequent trips to `mlir::Value{:cpp}`'s [doxygen](https://mlir.llvm.org/doxygen/classmlir_1_1Value.html) are needed.
+some value or to establish control flow. Hence, frequent trips to `mlir::Value{:cpp}`'s [doxygen](https://mlir.llvm.org/doxygen/classmlir_1_1Value.html) are needed. A fun thing to note is that with `mlir::DenseMap{:cpp}`, `mlir::Value{:cpp}` can be hashed; this powers both the lifting process and the lowering process.
 
-For example, given an operation such as the integer addition
+To glue together the concept of operations and values, let's look at an example. Given an operation such as the integer addition
 `mlir::arith::AddIOp{:cpp}`, MLIR gives us different accessors such as `getLhs(){:cpp}`, `getRhs(){:cpp}`, `getResult(){:cpp}` to access its values.
 Each of these values can consequently invoke `getParentBlock(){:cpp}` or `replaceAllUsesWith(){:cpp}` to further manipulate themselves.
 
@@ -114,10 +149,8 @@ In a big picture with operations introduced above, the MLIR Language Reference s
 
 > MLIR is fundamentally based on a graph-like data structure of nodes, called Operations, and edges, called Values.
 
-
-
 ### Dissecting MLIR
-Knowing how MLIR's operation and value works plays a crucial role in getting the recompiler working, as lifting, optimizing, and lowering all depend on them.
+Knowing how MLIR's operation and value works plays a crucial role in getting the recompiler working, as lifting, optimizing, and lowering all depend on them. I think therefore, it's also important to look at its textual form.
 
 A pretty full (for our sakes) view of MLIR is shown below:
 
@@ -211,6 +244,33 @@ The Smali IR differentiates between a parameter and a local variable with the pr
 Fortunately with MLIR's helpful methods such as `llvm::dyn_cast<>(){:cpp}`, `llvm::isa<>(){:cpp}`, `mlir::BlockArgument{:cpp}`'s `getOwner()` and `mlir::Block{:cpp}`'s `isEntryBlock(){:cpp}`, it was relatively straightforward to resolve this.
 
 ### Getting out of SSA
+
+#### SSA value to virtual registers (again).
+Since SSA variables are only assigned once, we can assign each SSA variable to its virtual register counter-part by keeping a counter, seeing a new SSA variable means incrementing the counter and assign that SSA variable that newly incremented counter value.
+
+
+We'll use C++ templating to do this with a class called `SmaliCounter{:cpp}`, generic on type `Aspect{:cpp}`.
+```cpp
+template<class Aspect> // a template so we can reuse it
+class SmaliCounter {
+    size_t counter = 0;
+    mlir::DenseMap<Aspect, size_t> counter_map;
+public:
+    size_t get_counter(Aspect a) {
+        if (this->counter_map.find(a) == this->counter_map.end())
+            this->counter_map[a] = counter++;
+        return this->counter_map[a];
+    }
+};
+```
+
+We have 3 counters to keep track of: the parameters, the local variables and the basic blocks themselves. Let's respectively call them `prc{:cpp}`, `vrc{:cpp}` and `bc{:cpp}`. To determine a location to jump to, we input a `mlir::Block*{:cpp}` to `bc` and get out either a preexisting location or a new one, as indicated by `get_counter{:cpp}`.
+
+The situation is a bit trickier with `prc{:cpp}` (method parameters) and `vrc{:cpp}` (local variables) since they're both `mlir::Value{:cpp}`. However, an interesting thing to note is that the method parameters are actually `mlir::BlockArgument{:cpp}`, a subclass of `mlir::Value{:cpp}`. This subclass exposes a method called `getOwner{:cpp}` that returns a block*, and the block in turns exposes a method to check if its the entry block of a method or not.
+
+Thus, if an `mlir::Value{:cpp}` is actually of `mlir::BlockArgument{:cpp}` and if it belongs to the entry block of a method, then it is a parameter, and will be inputted to `prc{:cpp}` and vice versa. I add the second requirement since a block argument can also come from different blocks that are divided by control flow instead.
+
+#### Dealing with phis (block arguments)
 In translating from MjolnIR to smali, I opted for a simple out-of-ssa transformation [introduced in class](https://github.com/mwillsey/cs265/blob/2024-fall/lessons/03-ssa.md#converting-out-of-ssa), slightly tweaked to fit MLIR's ssa block arguments fashion:
 ```
 For every control flow (cf.condbr and cf.br):
@@ -233,9 +293,22 @@ The following drawing executes the algorithm on a handwritten example.
 
 ![out_of_ssa.svg](/blogs/out_of_ssa.svg)
 
+### Control flow combination
 
+A quirky thing between MLIR and smali is how they differ in their branching.
 
-For this part, I think the part that troubles me the most is the fact that, to the best of our knowledge, no project exists to translate from a custom IR to smali. Combined with limited knowledge of both smali and MLIR, the cycle continues itself since not knowing smali well requires me to perform multiple iteration on the custom IR, which suffers again from limited knowledge of MLIR.
+In MLIR, we first obtain a boolean value from something like `arith{:cpp}`'s `cmpi{:cpp}`. Then we use this value to feed it
+into `cf.condbr{:cpp}` to either jump to a block or continue as normal.
+
+In contrast, smali employs different kind of `if-*{:cpp}` instructions as a way to combine the MLIR's two-step approach.
+
+For example, an `if-ne{:cpp}` is used to represent a `cmplong` instruction of two virtual registers, and then depending on if they're equal or not, jump to a block.
+
+I'll once again use an `mlir::DenseMap{:cpp}` to resolve this issue; in the end, I provide some examples while another simpler method might not work.
+
+Knowing that `mlir::Value{:cpp}` can be hashed into `mlir::DenseMap{:cpp}`, and that it is SSA, we can make a one to one mapping between an `mlir::Value{:cpp}` and its boolean defining operation (step 1 in mlir). Then when we encounter a `cf.condbr{:cpp}`, we can look up the appropriate boolean defining operation of the predicate and pick the correct smali instruction.
+
+For this part (translating), I think what troubles me the most is the fact that, to the best of our knowledge, no project exists to translate from a custom IR to smali. Combined with limited knowledge of both smali and MLIR, the cycle continues itself since not knowing smali well requires me to perform multiple iteration on the custom IR, which suffers again from limited knowledge of MLIR.
 
 
 ## So what's going on right now Jaz? What's next?
@@ -267,6 +340,7 @@ Jasmine
 - [https://badumbatish.github.io/](https://badumbatish.github.io/)
 - [bluesky](https://bsky.app/profile/badumbatish.bsky.social)
 - [linkedin](https://www.linkedin.com/in/jjasmine-t/)
+
 Edu
 - [https://farena.in/](https://farena.in/)
 - [bluesky](https://bsky.app/profile/farena.in)
