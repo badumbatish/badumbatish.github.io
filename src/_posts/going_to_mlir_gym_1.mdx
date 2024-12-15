@@ -330,7 +330,10 @@ For example, an `if-ne{:cpp}` is used to represent a `arith.cmpi{:cpp}` instruct
 
 I'll once again use the SSA property to resolve this issue.
 
-Upon a branching based on a predicate (`cf.condbr{:cpp}`), we can query the defining op of an `mlir::Value{:cpp}` to obtain its boolean defining operation (step 1 in mlir). Then,  we proceed to pick the correct branching smali instruction. Since the nature of SSA is a value can only be defined once, a single value can not correspond to different boolean defining operation.
+
+Upon a branching based on a predicate (`cf.condbr{:cpp}`), we can query the defining op of an `mlir::Value{:cpp}` to obtain its boolean defining operation (step 1 in mlir). Notice that when we first encounter that boolean defining operation, we still generate its smali equivalent (since we don't know if it might be used once or multiple times or will be passed in to some other blocks). Then, we proceed to pick the correct branching smali instruction. Since the nature of SSA is a value can only be defined once, a single value can not correspond to different boolean defining operation.
+
+For the case that `mlir::Value::getDefiningOp(){:cpp}` returning `nullptr{:cpp}`, this means that its a block argument. We just generate `if-nez` from smali.
 
 For this part (translating), I think what troubles me the most is the fact that, to the best of our knowledge, no project exists to translate from a custom IR to smali. Combined with limited knowledge of both smali and MLIR, the cycle continues itself since not knowing smali well requires me to perform multiple iteration on the custom IR, which suffers again from limited knowledge of MLIR.
 
