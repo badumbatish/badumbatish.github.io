@@ -6,9 +6,7 @@ recap: "Jas reports on her graduate compiler project: working with MLIR's SSA fo
 ## Prologue
 Hi there, I hope everyone's having a great day, this article is about lifting and lowering DEX instructions in MLIR, utilizing the framework in analysing and optimizing the [DEX](https://source.android.com/docs/core/runtime/dalvik-bytecode) format.
 
-
-
-The blog is intended as a report submission for [CS265](https://www2.eecs.berkeley.edu/Courses/CS265/) [here](https://github.com/mwillsey/cs265). The report focuses more on my experience and the high level details. The project also discusses the ease (or uneasiness) of executing the project, meanwhile introducing the benefits of MLIR with its elements in the ecosystem
+The blog is intended as a report submission for [CS265](https://www2.eecs.berkeley.edu/Courses/CS265/) [here](https://github.com/mwillsey/cs265). The report focuses more on the high level details. The project also discusses the ease (or uneasiness) of executing the project, meanwhile introducing the benefits of MLIR with its elements in the ecosystem
 
 The report is about 3700 words, or 15 minutes of reading. I also include a supporting section to recap different terminologies for unfamiliar readers.
 
@@ -287,9 +285,9 @@ We have 3 counters to keep track of: the parameters, the local variables and the
 
 The situation is a bit trickier with `prc{:cpp}` (method parameters) and `vrc{:cpp}` (local variables) since they're both `mlir::Value{:cpp}`. However, an interesting thing to note is that the method parameters are actually `mlir::BlockArgument{:cpp}`, a subclass of `mlir::Value{:cpp}`. This subclass exposes a method called `getOwner{:cpp}` that returns a block*, and the block in turns exposes a method to check if its the entry block of a method or not.
 
-Thus, if an `mlir::Value{:cpp}` is actually of `mlir::BlockArgument{:cpp}` and if it belongs to the entry block of a method, then it is a parameter, and will be inputted to `prc{:cpp}` and vice versa. I add the second requirement since a block argument can also come from different blocks that are divided by control flow instead.
+Thus, if an `mlir::Value{:cpp}` is actually of `mlir::BlockArgument{:cpp}` and if it belongs to the entry block of a method, then it is a parameter, and will be inputted to `prc{:cpp}` and vice versa. I add the second requirement since a block argument can also come from different blocks that are glued together by control flow instead.
 
-#### Dealing with phis (block arguments)
+#### Dealing with phis (block arguments) (SSA destruction)
 In translating from MjolnIR to smali, I opted for a simple out-of-ssa transformation [introduced in class](https://github.com/mwillsey/cs265/blob/2024-fall/lessons/03-ssa.md#converting-out-of-ssa), slightly tweaked to fit MLIR's ssa block arguments fashion:
 ```
 For every control flow (cf.condbr and cf.br):
@@ -321,11 +319,11 @@ into `cf.condbr{:cpp}` to either jump to a block or continue as normal.
 
 In contrast, smali employs different kind of `if-*{:cpp}` instructions as a way to combine the MLIR's two-step approach.
 
-For example, an `if-ne{:cpp}` is used to represent a `cmplong` instruction of two virtual registers, and then depending on if they're equal or not, jump to a block.
+For example, an `if-ne{:cpp}` is used to represent a `cmpi` instruction of two `mlir::Value{:cpp}`, and then depending on if they're equal or not, jump to a block.
 
-I'll once again use an `mlir::DenseMap{:cpp}` to resolve this issue.
+I'll once again use the SSA property to resolve this issue.
 
-Knowing that `mlir::Value{:cpp}` can be hashed into `mlir::DenseMap{:cpp}`, and that it is SSA, we can make a one to one mapping between an `mlir::Value{:cpp}` and its boolean defining operation (step 1 in mlir). Then when we encounter a `cf.condbr{:cpp}`, we can look up the appropriate boolean defining operation of the predicate and pick the correct smali instruction.
+Knowing that `mlir::Value{:cpp}` is SSA, upon a branching based on a predicate, we can query the defining op of an `mlir::Value{:cpp}` to obtain its boolean defining operation (step 1 in mlir). Then,  we proceed to pick the correct branching smali instruction. Since the nature of SSA is a value can only be defined once, a single value can not correspond to different boolean defining operation.
 
 For this part (translating), I think what troubles me the most is the fact that, to the best of our knowledge, no project exists to translate from a custom IR to smali. Combined with limited knowledge of both smali and MLIR, the cycle continues itself since not knowing smali well requires me to perform multiple iteration on the custom IR, which suffers again from limited knowledge of MLIR.
 
