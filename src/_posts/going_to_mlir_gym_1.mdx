@@ -206,9 +206,13 @@ Another way to go is via TableGen, a generic language to maintain records of DSL
 
 [Chapter 2](https://mlir.llvm.org/docs/Tutorials/Toy/Ch-2/#op-vs-operation-using-mlir-operations) in the toy tutorial demonstrates this the clearest, I recommend a quick skim for confidence.
 
-Introductory asides, in our library, we reuse two of the built-in dialects: `arith{:cpp}`, `cf{:cpp}`. We also extend upon this by creating new operations:
+
+Introductory asides, it's clear we opt for the TableGen method instead. I'm also in favor of using TableGen since this is an opportunity to learn about new stuff!
+
+In our library, we reuse two of the built-in dialects: `arith{:cpp}`, `cf{:cpp}`. We also extend upon this by creating new operations:
 - A pseudo branch operation `MjolnIR.fallthrough{:cpp}` since entering a block in MLIR requires control flow but in smali the normalcy is to execute the next line after a branch if the condition is not met.
 - Two operations `MjolnIR.method{:cpp}` and `MjolnIR.return{:cpp}` to replace `func.func{:cpp}` and `func.return{:cpp}` since we need to capture extra infos about our method such as accessors such as public, private, static, etc... The `func.return{:cpp}` is obsolete since it requires that its parent is `func.func{:cpp}`, thus the need for `MjolnIR.return{:cpp}`.
+
 
 #### Conclude
 Doing the project in MLIR's system introduces several benefits:
