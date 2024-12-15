@@ -257,7 +257,7 @@ In writing an optimization pass, MLIR offers a variety of tools for the job. Dif
 
 In writing up this part of the project, the biggest obstacles is surprisingly not about learning the apis of different optimization tools, but actually verifying MLIR's and ourselves' dialect.
 
-For time management, I'm opting for a simple pattern rewriter to remove all nops: the `mlir::applyPatternsAndFoldGreedily{:cpp}` pass. Using the pass runs MLIR's verifier on its built-in dialect, triggering a lot of errors on our compiler build. Despite this, fixing this was somewhat straight forward with MLIR's error messages and documentation on its operations.
+For time management, I'm opting for a simple pattern rewriter to remove all nops: the `mlir::applyPatternsAndFoldGreedily{:cpp}` pass. Using the pass runs MLIR's verifier on its built-in dialect, triggering a lot of errors on our compiler build. Despite this, fixing this was somewhat straight forward with MLIR's error messages (?!) and documentation on its operations.
 
 ## Translation
 
@@ -265,7 +265,7 @@ For time management, I'm opting for a simple pattern rewriter to remove all nops
 
 The Smali IR differentiates between a parameter and a local variable with the prefix `p` or `v.` This in turn requires us to also somehow identify this in MLIR.
 
-Fortunately with MLIR's helpful methods such as `llvm::dyn_cast<>(){:cpp}`, `llvm::isa<>(){:cpp}`, `mlir::BlockArgument{:cpp}`'s `getOwner()` and `mlir::Block{:cpp}`'s `isEntryBlock(){:cpp}`, it was relatively straightforward to resolve this.
+Fortunately with MLIR's helpful methods such as `llvm::dyn_cast<>(){:cpp}`, `llvm::isa<>(){:cpp}`, `mlir::BlockArgument::getOwner(){:cpp}` and `mlir::Block::isEntryBlock(){:cpp}`, it was relatively straightforward to resolve this.
 
 ### Getting out of SSA
 
