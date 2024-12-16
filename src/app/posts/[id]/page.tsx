@@ -41,6 +41,15 @@ export default async function Post(
             <div className="flex justify-start text-xl font-bold underline">
                 <h4>{date}</h4>
             </div>
+            <div className="flex font-bold">Edit:</div>
+
+            I would love to be informed of new-grad opportunities for Summer 2025. If you know of a compiler related job posting, please feel free to contact me at either:
+            <ul>
+                <li><a href={"tanghocle456@gmail.com"}>tanghocle456@gmail.com</a> (for job posting)</li>
+                <li><a href={"jjasmine@berkeley.edu"}>jjasmine@berkeley.edu</a> (for job posting)</li>
+                <li><a href={"https://x.com/thisisjjasmine"} target={"_blank"}>https://x.com/thisisjjasmine</a> (social media)</li>
+            </ul>
+            <hr></hr>
             <div dangerouslySetInnerHTML={{ __html: html }} />
         </article>
     );
