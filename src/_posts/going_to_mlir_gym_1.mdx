@@ -22,6 +22,10 @@ This section introduces some terminology and/or acronyms that reviews from my fr
 
 - SSA: Static Single Assignment, a form where each variable is assigned exactly once, enabling easier optimization and analysis. This form is enforced in MLIR. We'll see the useful feature of this in the translation section.
 
+- Phi: A phi node is an SSA (Static Single Assignment) construct that selects a value based on the control flow predecessor, allowing variables to have multiple incoming definitions at a basic block merge point.
+
+- Block arguments: Equivalent to phi (?!) but in a different form.
+
 - Dialect: A custom language extension in MLIR like arith (stands for arithmetic) or cf (stands for control flow) or func (for function related things) used to represent IRs.
 
 - Operations: A term (and concrete thing in MLIR's C++ API) that can be used to represent different concepts in MLIR. This ranges from higher-level concepts like function definitions, function calls, buffer allocations, view or slices of buffers, and process creation, to lower-level concepts like target-independent arithmetic, target-specific instructions, configuration registers, and logic gates.
@@ -51,7 +55,7 @@ In the case of the library [Shuriken](https://github.com/Shuriken-Group/Shuriken
 
 In the future, MjolnIR will be used in optimization, obfuscating, deobfuscating the Dalvik Machine Bytecode.
 
-This blog post wouldn't be possible without the guidance of Eduardo (Edu) Blázquez González (Fare9), ([Eduardo](https://farena.in/)), a PhD doctorate and a compiler engineer at Quarkslab in developing, lifting and lowering the IR.
+This project (and this blog post) wouldn't be possible without the guidance of Eduardo (Edu) Blázquez González (Fare9), ([Eduardo](https://farena.in/)), a PhD doctorate and a compiler engineer at Quarkslab in developing, lifting and lowering the IR.
 This summer, Edu's the one that reached out to me on twitter to befriend me :) We chatted about compilers and stuff, and later he introduced me to the codebase.
 He's been helping me with onboarding the codebase infrastructure, together with emotional support and chatting about life hahahah :)
 
@@ -265,11 +269,11 @@ For time management, I'm opting for a simple pattern rewriter to remove all nops
 
 The Smali IR differentiates between a parameter and a local variable with the prefix `p` or `v.` This in turn requires us to also somehow identify this in MLIR.
 
-Fortunately with MLIR's helpful methods such as `llvm::dyn_cast<>(){:cpp}`, `llvm::isa<>(){:cpp}`, `mlir::BlockArgument::getOwner(){:cpp}` and `mlir::Block::isEntryBlock(){:cpp}`, it was relatively straightforward to resolve this.
+Fortunately with MLIR's helpful methods such as `llvm::dyn_cast<>(){:cpp}`, `llvm::isa<>(){:cpp}`, `mlir::BlockArgument::getOwner(){:cpp}` and `mlir::Block::isEntryBlock(){:cpp}`, it was relatively straightforward to resolve this, which will be shown in the next section.
 
 ### Getting out of SSA
 
-#### SSA value to virtual registers (again).
+#### SSA value to virtual registers
 Since SSA variables are only assigned once, we can assign each SSA variable to its virtual register counter-part by keeping a counter, seeing a new SSA variable means incrementing the counter and assign that SSA variable that newly incremented counter value.
 
 
@@ -280,6 +284,7 @@ class SmaliCounter {
     size_t counter = 0;
     mlir::DenseMap<Aspect, size_t> counter_map;
 public:
+    SmaliCounter(size_t start_from) : counter(start_from) {}
     size_t get_counter(Aspect a) {
         if (this->counter_map.find(a) == this->counter_map.end())
             this->counter_map[a] = counter++;
@@ -317,7 +322,7 @@ The following drawing executes the algorithm on a handwritten example.
 
 ![out_of_ssa.svg](/blogs/out_of_ssa.svg)
 
-### Control flow combination
+#### Control flow combination
 
 A quirky thing between MLIR and smali is how they differ in their branching.
 
@@ -331,9 +336,9 @@ For example, an `if-ne{:cpp}` is used to represent a `arith.cmpi{:cpp}` instruct
 I'll once again use the SSA property to resolve this issue.
 
 
-Upon a branching based on a predicate (`cf.condbr{:cpp}`), we can query the defining op of an `mlir::Value{:cpp}` to obtain its boolean defining operation (step 1 in mlir). Notice that when we first encounter that boolean defining operation, we still generate its smali equivalent (since we don't know if it might be used once or multiple times or will be passed in to some other blocks). Then, we proceed to pick the correct branching smali instruction. Since the nature of SSA is a value can only be defined once, a single value can not correspond to different boolean defining operation.
+Upon a branching based on a predicate (`cf.condbr{:cpp}`), we can query the defining op of an `mlir::Value{:cpp}` to obtain its boolean defining operation (defOp) (step 1 in mlir). Notice that when we first encounter that defOp, we still generate its smali equivalent (since we don't know if it might be used once or multiple times or will be passed in to some other blocks). Then, we proceed to pick the correct branching smali instruction. Since the nature of SSA is a value can only be defined once, a single value can not correspond to different defOps.
 
-For the case that `mlir::Value::getDefiningOp(){:cpp}` returning `nullptr{:cpp}`, this means that its a block argument. We just generate `if-nez` from smali.
+For the case that `mlir::Value::getDefiningOp(){:cpp}` returning `nullptr{:cpp}`, this means that its a block argument. We just generate `if-nez{:cpp}` from smali.
 
 For this part (translating), I think what troubles me the most is the fact that, to the best of our knowledge, no project exists to translate from a custom IR to smali. Combined with limited knowledge of both smali and MLIR, the cycle continues itself since not knowing smali well requires me to perform multiple iteration on the custom IR, which suffers again from limited knowledge of MLIR.
 
@@ -341,7 +346,7 @@ For this part (translating), I think what troubles me the most is the fact that,
 ## So what's going on right now Jaz? What's next?
 The project's progressing at a steady rate right now, with me and Edu's contributing on the MLIR side.
 
-Contentedly, with different priorities both in my life (looking at you "full time recruiting") as well as in UC Berkeley (looking at you EE16B and EE126), a short timeline of 6 weeks renders the initial goals of the project somewhat incomplete. That is, although lifting and simple analysis of DEX via MLIR is achieved, some work are needed in translating MjolnIR to smali.
+Contentedly, with different priorities both in my life (looking at you "full time recruiting") and in UC Berkeley (looking at you EE16B and EE126), a short timeline of 6 weeks renders the initial goals of the project somewhat incomplete. That is, although lifting and simple analysis of DEX via MLIR is achieved, some work are needed in translating MjolnIR to smali.
 
 In retrospect, I think I should have thought ahead and started the project 4 weeks earlier (1 month into class). More familiarity with SSA form, SSA construction earlier in the process would have expedited porting the lifter as well as writing up the out-of-ssa translation.
 
@@ -352,7 +357,7 @@ With this new-found knowledge of MLIR, the next steps would be trying to write [
 
 > But why contentedly?
 
-I've been wanting to dive deeper into MLIR for a long time. When it was time to choose a project, in the back of my mind, I've had some doubts. But gahh damn boi, I want to learn, and I don't care if a project I chose ran into time constraints. It was important for me to learn about an industry's tools as well as put my mind to implement different algorithms I've learned in classes in the ecosystem.
+I've been wanting to dive deeper into MLIR for a long time. When it was time to choose a project, in the back of my mind, I've had some doubts. But ughh, I want to learn, and I don't care if a project I chose ran into time constraints. It was important for me to learn about an industry's tools as well as put my mind to implement different algorithms I've learned in classes in the ecosystem.
 
 I think [VSauce](https://www.youtube.com/Vsauce)'s supertask's [17:42 to 20:07](https://youtu.be/ffUnNaQTfZE?si=7byTONQdK9pP3JnI&t=1062) captures the best the mentality on the project.
 
