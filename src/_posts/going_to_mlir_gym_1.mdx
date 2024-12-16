@@ -26,11 +26,11 @@ This section introduces some terminology and/or acronyms that reviews from my fr
 
 - Block arguments: Equivalent to phi (?!) but in a different form.
 
-- Dialect: A custom language extension in MLIR like arith (stands for arithmetic) or cf (stands for control flow) or func (for function related things) used to represent IRs.
+- Dialect: A custom language extension in MLIR like `arith{:cpp}` (stands for arithmetic) or `cf{:cpp}` (stands for control flow) or `func{:cpp}` (for function related things) used to represent IRs.
 
 - Operations: A term (and concrete thing in MLIR's C++ API) that can be used to represent different concepts in MLIR. This ranges from higher-level concepts like function definitions, function calls, buffer allocations, view or slices of buffers, and process creation, to lower-level concepts like target-independent arithmetic, target-specific instructions, configuration registers, and logic gates.
 
-To give an example of the two terminology, the dialect `arith` features different operations such `addf` (adding two floats) or `addi` (adding two integers) or `cmpi` (comparing two integers). Another example is the `func`'s dialect's `func` (to represent a function) or `return` to represent a return call or `call` to represent invoking a function.
+To give an example of the two terms, the dialect `arith{:cpp}` features different operations such `addf{:cpp}` (adding two floats) or `addi{:cpp}` (adding two integers) or `cmpi{:cpp}` (comparing two integers). Another example is the `func`'s dialect's `func` (to represent a function) or `return` to represent a return call or `call` to represent invoking a function.
 
 
 ### Acronyms
@@ -59,7 +59,7 @@ This project (and this blog post) wouldn't be possible without the guidance of E
 This summer, Edu's the one that reached out to me on twitter to befriend me :) We chatted about compilers and stuff, and later he introduced me to the codebase.
 He's been helping me with onboarding the codebase infrastructure, together with emotional support and chatting about life hahahah :)
 
-I am also grateful to [Max Willsey](https://www.mwillsey.com/), the professor of the compiler graduate class CS265, for allowing me, an undergraduate to enroll as well as guiding me on the direction of the project.
+I am also grateful to [Max Willsey](https://www.mwillsey.com/), the professor of the compiler graduate class CS265, for allowing me, an undergraduate, to enroll as well as guiding me in the direction of the project.
 Throughout the semester, there were some assignments where I fell behind. I know that opportunities are hard to come by and I really took every lesson to heart. I thank you for your advice and your bet for taking me into the class :)
 
  Much work is needed in supporting the full instruction set of DEX as well as optimization of it. The project report will discuss the current work (which is a subset of the DEX instruction set) as well as future work.
@@ -101,7 +101,7 @@ Smali is the human-readable assembly format for the dalvik virtual machine. Edu'
 
 .end method
 ```
-The reasoning for this is that smali is an easier output to work with than dex. In dex format, we need to maintain different tables of strings, types, methods and classes in the pre-header before we get to output the actual DEX. To make matters worse, control flow are done via offsets, which disrupts optimization and requires recalculation of offsets.
+The reasoning for this is that smali is an easier output to work with than dex. In dex format, we need to maintain different tables of strings, types, methods and classes in the pre-header before we get to output the actual DEX. To make matters worse, control flow is done via offsets, which disrupts optimization and requires recalculation of offsets.
 
 In smali, all is resolved via text references instead. In such a short amount of time (~ 6 weeks), it's hard to achieve true circular transformation (DEX->MLIR->DEX). I therefore opted for (DEX->MLIR->smali->DEX) first (actually at the time of writing this (Dec 7th 2024), I'm even nervous to see if we can get DEX->MLIR->smali for submission).
 
@@ -111,7 +111,7 @@ With the naming of the MLIR's dialect being MjolnIR, the goal of the project is 
 
 In parsing the dex and constructing the CFG, the job was done by Edu prior to me joining the team. There was also an effort in lifting some subset of DEX to MLIR in the [KUNAI](https://github.com/Fare9/KUNAI-static-analyzer) repo by Edu (recorded [here](https://www.youtube.com/watch?v=hfqOivYdD40&ab_channel=LLVM)).
 
-Therefore, my responsibilities in the project is to set up MLIR, port over and maintain the lifting process of DEX, figure out the optimization and lowering aspect.
+Therefore, my responsibilities in the project are to set up MLIR, port over and maintain the lifting process of DEX, figure out the optimization and lowering aspect.
 
 The diagram shown below details the steps we need to take in the project.
 
@@ -136,14 +136,14 @@ In lifting DEX to MLIR, we think of
 - Each method (class's function) in the DEX file is a `MethodOp{:cpp}`, a MjolnIR dialect's operation similarly to the `func{:cpp}` operation in func dialect.
 - Each method might have control flows, which glues together basic blocks.
 
-Although a simple 1-1 representation, MLIR can feature much more complex hierarchy, as demonstrated below. We however, rely on the rigid structure we've defined for ourselves to simplify the lifting and lowering processes.
+Although a simple 1–1 representation, MLIR can feature much more complex hierarchy, as demonstrated below. We, however, rely on the rigid structure we've defined for ourselves to simplify the lifting and lowering processes.
 
 The following diagram showcases MLIR's recursively fluid structure.
 ![mlir_diagram_1](/blogs/mlir_diagram_1.png)
 
 ### Values
 
-An important thing to notice is how SSA form is represented in MLIR, which is done with `mlir::Value{:cpp}`. The MLIR Value plays an important role in the project; operations take in values and produces values, passing them to functions and blocks (these are operations as described above) to get out
+An important thing to notice is how the SSA form is represented in MLIR, which is done with `mlir::Value{:cpp}`. The MLIR Value plays an important role in the project; operations take in values and produce values, passing them to functions and blocks (these are operations as described above) to get out
 some value or to establish control flow. Hence, frequent trips to `mlir::Value{:cpp}`'s [doxygen](https://mlir.llvm.org/doxygen/classmlir_1_1Value.html) are needed. A fun thing to note is that with `mlir::DenseMap{:cpp}`, `mlir::Value{:cpp}` can be hashed; this powers both the lifting process and the lowering process.
 
 To glue together the concept of operations and values, let's look at an example. Given an operation such as the integer addition
@@ -182,7 +182,7 @@ A special thing for dialects in MLIR is that without a compiler writer's specifi
 Supposedly, the project will provide a command line tool for user to input in either a path to a DEX file or a folder of DEX files so that the tool can either lift and lower the DEX file(s).
 
 
-The command line executable is hand-written, with the formatting via [fmt](https://fmt.dev/11.0/).
+The command line executable is handwritten with the formatting via [fmt](https://fmt.dev/11.0/).
 
 Below shows the interface of the entry point executable when ran with `--help{:bash}`:
 ```
@@ -197,17 +197,17 @@ USAGE: shuriken-opt [-h | --help] [-d | --diagnostics] [-f|--file file_name --li
     -g | --graph: Dump the graph in dot format (needs a file)
 ```
 
-To maintain the build of the project, I opt for CMake, which is both Shuriken's build system and LLVM and MLIR's build system. It's also a build system tool I'm most familiar with in C++ ecosystem.
+To maintain the build of the project, I opt for CMake, which is both Shuriken's build system and LLVM and MLIR's build system. It's also a build system tool I'm most familiar with in the C++ ecosystem.
 
 ## Dialect reusability and extensibility
 
 A high selling point of MLIR is the ability to reuse its dialects and the ease of defining new dialects in it. This is no different for our library, with our dialect MjolnIR.
 
-In MLIR, there are multiple ways to define a dialect. You can either opt for MLIR's C++ API way to define it. Even though quick, the downsides of this quickly catches up: tons of boilerplate and scattering codes scatter across different files, which screams "update me" whenever LLVM goes to a new version, introducing breaking changes.
+In MLIR, there are multiple ways to define a dialect. You can either opt for MLIR's C++ API way to define it. Even though quick, the downsides of this quickly catch up: tons of boilerplate and scattering codes scatter across different files, which screams "update me" whenever LLVM goes to a new version, introducing breaking changes.
 
 Another way to go is via TableGen, a generic language to maintain records of DSLs in a concise way. Benefits (that are relevant to the project) include:
-- Centralized source of truth: Every aspect of an operation should be in the same localized place. This is true to some extent. Some parts of TableGen syntax regarding MLIR are still a bit hazy to me and requires digging through either the MLIR docs or the source code itself for clarification; I think this is expected for any beginners.
-- Boilerplate removal and auto generation: defining and extending a dialect in TableGen syntax is easier than in C++, due to its cutting down on non-needed aspect when extending and its auto-generative nature.
+- Centralized source of truth: Every aspect of an operation should be in the same localized place. This is true to some extent. Some parts of TableGen syntax regarding MLIR are still a bit hazy to me and require digging through either the MLIR docs or the source code itself for clarification; I think this is expected for any beginners.
+- Boilerplate removal and auto generation: defining and extending a dialect in TableGen syntax is easier than in C++, due to its cutting down on non-needed aspects when extending and its auto-generative nature.
 
 [Chapter 2](https://mlir.llvm.org/docs/Tutorials/Toy/Ch-2/#op-vs-operation-using-mlir-operations) in the toy tutorial demonstrates this the clearest, I recommend a quick skim for confidence.
 
@@ -227,7 +227,7 @@ Doing the project in MLIR's system introduces several benefits:
 
 ## Non-MLIR, NON-SSA CFG to MLIR-SSA CFG
 
-> From this point forward, referring to non-ssa CFG means that it is non-mlir and vice versa (as MLIR requires SSA form in its CFG).
+> From this point forward, referring to non-ssa CFG means that it is non-mlir and vice versa (as MLIR requires the SSA form in its CFG).
 
 A special characteristic of DEX is that it utilizes (almost infinite) virtual registers without caring for stack space.
 This allows for a seamless construction of the program's CFG from the DEX format.
@@ -259,7 +259,7 @@ mlir::DenseMap[mlir::Block*][mlir::DenseMap[std::uint32_t][mlir::Value]]
 
 In writing an optimization pass, MLIR offers a variety of tools for the job. Different machinery includes [DataFlowAnalysis](https://mlir.llvm.org/docs/Tutorials/DataFlowAnalysis/), [Pattern Rewriters](https://mlir.llvm.org/docs/PatternRewriter/), [generic operation pass](https://mlir.llvm.org/docs/PassManagement/).
 
-In writing up this part of the project, the biggest obstacles is surprisingly not about learning the apis of different optimization tools, but actually verifying MLIR's and ourselves' dialect.
+In writing up this part of the project, the biggest obstacle is surprisingly not about learning the apis of different optimization tools, but actually verifying MLIR's and ourselves' dialect.
 
 For time management, I'm opting for a simple pattern rewriter to remove all nops: the `mlir::applyPatternsAndFoldGreedily{:cpp}` pass. Using the pass runs MLIR's verifier on its built-in dialect, triggering a lot of errors on our compiler build. Despite this, fixing this was somewhat straight forward with MLIR's error messages (?!) and documentation on its operations.
 
@@ -295,7 +295,7 @@ public:
 
 We have 3 counters to keep track of: the parameters, the local variables and the basic blocks themselves. Let's respectively call them `prc{:cpp}`, `vrc{:cpp}` and `bc{:cpp}`. To determine a location to jump to, we input a `mlir::Block*{:cpp}` to `bc` and get out either a preexisting location or a new one, as indicated by `get_counter{:cpp}`.
 
-The situation is a bit trickier with `prc{:cpp}` (method parameters) and `vrc{:cpp}` (local variables) since they're both `mlir::Value{:cpp}`. However, an interesting thing to note is that the method parameters are actually `mlir::BlockArgument{:cpp}`, a subclass of `mlir::Value{:cpp}`. This subclass exposes a method called `getOwner{:cpp}` that returns a block*, and the block in turns exposes a method to check if its the entry block of a method or not.
+The situation is a bit trickier with `prc{:cpp}` (method parameters) and `vrc{:cpp}` (local variables) since they're both `mlir::Value{:cpp}`. However, an interesting thing to note is that the method parameters are actually `mlir::BlockArgument{:cpp}`, a subclass of `mlir::Value{:cpp}`. This subclass exposes a method called `getOwner{:cpp}` that returns a block*, and the block in turns exposes a method to check if it is the entry block of a method or not.
 
 Thus, if an `mlir::Value{:cpp}` is actually of `mlir::BlockArgument{:cpp}` and if it belongs to the entry block of a method, then it is a parameter, and will be inputted to `prc{:cpp}` and vice versa. I add the second requirement since a block argument can also come from different blocks that are glued together by control flow instead.
 
@@ -336,19 +336,19 @@ For example, an `if-ne{:cpp}` is used to represent a `arith.cmpi{:cpp}` instruct
 I'll once again use the SSA property to resolve this issue.
 
 
-Upon a branching based on a predicate (`cf.condbr{:cpp}`), we can query the defining op of an `mlir::Value{:cpp}` to obtain its boolean defining operation (defOp) (step 1 in mlir). Notice that when we first encounter that defOp, we still generate its smali equivalent (since we don't know if it might be used once or multiple times or will be passed in to some other blocks). Then, we proceed to pick the correct branching smali instruction. Since the nature of SSA is a value can only be defined once, a single value can not correspond to different defOps.
+Upon a branching based on a predicate (`cf.condbr{:cpp}`), we can query the defining op of an `mlir::Value{:cpp}` to obtain its boolean defining operation (defOp) (step 1 in mlir). Notice that when we first encounter that defOp, we still generate its smali equivalent (since we don't know if it might be used once or multiple times or will be passed in to some other blocks). Then, we proceed to pick the correct branching smali instruction. Since the nature of SSA is a value can only be defined once, a single value cannot correspond to different defOps.
 
-For the case that `mlir::Value::getDefiningOp(){:cpp}` returning `nullptr{:cpp}`, this means that its a block argument. We just generate `if-nez{:cpp}` from smali.
+For the case that `mlir::Value::getDefiningOp(){:cpp}` returning `nullptr{:cpp}`, this means that it's a block argument. We just generate `if-nez{:cpp}` from smali.
 
-For this part (translating), I think what troubles me the most is the fact that, to the best of our knowledge, no project exists to translate from a custom IR to smali. Combined with limited knowledge of both smali and MLIR, the cycle continues itself since not knowing smali well requires me to perform multiple iteration on the custom IR, which suffers again from limited knowledge of MLIR.
+For this part (translating), I think what troubles me the most is the fact that, to the best of our knowledge, no project exists to translate from a custom IR to smali. Combined with limited knowledge of both smali and MLIR, the cycle continues itself since not knowing smali well requires me to perform multiple iterations on the custom IR, which suffers again from limited knowledge of MLIR.
 
 
-## So what's going on right now Jaz? What's next?
+## So what's going on right now, Jaz? What's next?
 The project's progressing at a steady rate right now, with me and Edu's contributing on the MLIR side.
 
-Contentedly, with different priorities both in my life (looking at you "full time recruiting") and in UC Berkeley (looking at you EE16B and EE126), a short timeline of 6 weeks renders the initial goals of the project somewhat incomplete. That is, although lifting and simple analysis of DEX via MLIR is achieved, some work are needed in translating MjolnIR to smali.
+Contentedly, with different priorities both in my life (looking at you "full time recruiting") and in UC Berkeley (looking at you EE16B and EE126), a short timeline of 6 weeks renders the initial goals of the project somewhat incomplete. That is, although lifting and simple analysis of DEX via MLIR is achieved, some work is needed in translating MjolnIR to smali.
 
-In retrospect, I think I should have thought ahead and started the project 4 weeks earlier (1 month into class). More familiarity with SSA form, SSA construction earlier in the process would have expedited porting the lifter as well as writing up the out-of-ssa translation.
+In retrospect, I think I should have thought ahead and started the project 4 weeks earlier (1 month into class). More familiarity with the SSA form, SSA construction earlier in the process would have expedited porting the lifter as well as writing up the out-of-ssa translation.
 
 After the semester ends, I'll continue working on the MjolnIR-to-smali translation, besides supporting new DEX feature into MjolnIR and refactoring existing code. Then, some form of dataflow analysis on the new IR is expected.
 
@@ -388,7 +388,7 @@ Jeremy Kun
 
 A good tutorial read is MLIR's official [toy tutorial](https://mlir.llvm.org/docs/Tutorials/Toy/). It helps me familiarize myself with the commandline, different elements in MLIR and different ways to do things, as well as their trade-offs.
 
-Jeremy's [MLIR tutorials](https://github.com/j2kun/mlir-tutorial) brings a fresh change into LLVM's terse style of tutorial, I frequent the sites a lot and recommends if you're trying to learn more about mlir.
+Jeremy's [MLIR tutorials](https://github.com/j2kun/mlir-tutorial) brings a fresh change into LLVM's terse style of tutorial, I frequent the sites a lot and recommend if you're trying to learn more about mlir.
 
 
 MLIR's [doxygen](https://mlir.llvm.org/doxygen/index.html) page is much needed for resolving dependency issues as well as correct usage of MLIR's elements. I recommend familiarizing yourself with different operations' and values' method signatures.
