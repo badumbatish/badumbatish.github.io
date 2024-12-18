@@ -43,7 +43,9 @@ export default async function Post(
             </div>
             <div className="flex font-bold">Edit:</div>
 
-            I would love to be informed of new-grad opportunities for Summer 2025. If you know of a compiler related job posting, please feel free to contact me at either:
+            I would love to be informed of new-grad opportunities for Summer 2025.
+            My resume is located at <a href={"https://www.overleaf.com/project/638120c30d0003f7bfe10360"}>https://www.overleaf.com/project/638120c30d0003f7bfe10360 </a>
+            If you know of a compiler related job posting, please feel free to contact me or refer me at either:
             <ul>
                 <li><a href={"tanghocle456@gmail.com"}>tanghocle456@gmail.com</a> (for job posting)</li>
                 <li><a href={"jjasmine@berkeley.edu"}>jjasmine@berkeley.edu</a> (for job posting)</li>
