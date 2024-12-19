@@ -1,5 +1,7 @@
 import Link from 'next/link'
+
 import { getAllPosts } from '@/lib/api'
+import {CopyIcon} from "@/components/LinkButton";
 
 export default async function Page() {
     const posts = await getAllPosts()
@@ -16,10 +18,11 @@ export default async function Page() {
                     return (
                         <li className="" key={id}>
                             <div className="flex flex-col ">
-                                <div className="flex flex-row gap-4">
-                                    <div className="underline text-lg">{date}</div>-
+                                <div className="flex flex-row gap-4 text-lg sm:text-base md:text-base">
+                                    <div className="underline">{date}</div>
+                                    <CopyIcon link={`/posts/${id}`}></CopyIcon>
                                     <Link href={`/posts/${id}`}>
-                                        <div className="underline text-lg text-blue-400">{title}</div>
+                                        <div className="underline text-blue-400 text-lg">{title}</div>
                                     </Link>
                                 </div>
                                 <div>

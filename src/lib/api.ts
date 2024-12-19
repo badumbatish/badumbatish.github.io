@@ -26,7 +26,6 @@ import rust from 'highlight.js/lib/languages/rust'
 import {common} from "lowlight";
 import rehypeRaw from "rehype-raw";
 import rehypeExternalLinks from "rehype-external-links";
-import Target from "rehype-external-links";
 // memoize/cache the creation of the markdown parser, this sped up the
 // building of the blog from ~60s->~10s
 let p: ReturnType<typeof getParserPre> | undefined
