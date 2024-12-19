@@ -269,7 +269,7 @@ The most general AST lowering class is `ASTLoweringBase` where all other AST low
 
 Since our AST inherits from ExprWithoutBlock, which is a type of Expr, we implement our lowering from `ASTLoweringExpr`. The following code block highlights the fact that we need to lower all of AST::Expr in our AST::InlineAsm, primarily in our AST::InlineAsmOperand; I show the pattern for the first two lowering of AST::InlineAsmOperand, as well as the method to create the HIR::InlineAsm.
 
-```c++
+```cpp
 HIR::InlineAsmOperand
 translate_operand_in (const AST::InlineAsmOperand &operand)
 {
@@ -347,12 +347,12 @@ ASTLoweringExpr::visit (AST::InlineAsm &expr)
 
 ### Unsafe gating
 
-Since `asm!` is platform dependent and is inherently unsafe, i.e "you would get a [segmentation fault](https://en.wikipedia.org/wiki/Segmentation_fault) with no probable stacktrace whatsoever", rust requires asm! to be in an unsafe block.
+Since `asm!{:rust}` is platform dependent and is inherently unsafe, i.e "you would get a [segmentation fault](https://en.wikipedia.org/wiki/Segmentation_fault) with no probable stacktrace whatsoever", rust requires asm! to be in an unsafe block.
 
 In the gccrs codebase, this `unsafe gating` is handled via `gcc/rust/checks/rust-unsafe-checker.h/cc`, again, employing the [double dispatch](https://stackoverflow.com/questions/6762256/how-does-double-dispatch-work-in-visitor-pattern) functionality of the visitor pattern.
 
 
-In our implementation, the unsafe checker maintains a stack of contexts named `unsafe_context` with a convenient boolean function `is_in_context`. At the time of our visit, we check if it is an unsafe context or not.
+In our implementation, the unsafe checker maintains a stack of contexts named `unsafe_context{:cpp}` with a convenient boolean function `is_in_context(){:cpp}`. At the time of our visit, we check if it is an unsafe context or not.
 
 ```cpp
 void
@@ -367,7 +367,7 @@ UnsafeChecker::visit (InlineAsm &expr)
 }
 ```
 
-> But Jas, why we wouldn't want the UnsafeChecker to just maintain a boolean `is_unsafe`, and once UnsafeChecker visit an unsafe block, we set the boolean `is_unsafe` to true and consequently false after the UnsafeChecker finishes visiting?
+> But Jas, why we wouldn't want the UnsafeChecker to just maintain a boolean `is_unsafe{:cpp}`, and once UnsafeChecker visit an unsafe block, we set the boolean `is_unsafe{:cpp}` to true and consequently false after the UnsafeChecker finishes visiting?
 
 This won't work if we are traversing an AST where we have nested unsafe block, thus a `template <typename T> class StackedContexts` is needed. Let's examine an example where a single boolean failed and why we would need to use a stack.
 
@@ -426,7 +426,7 @@ TypeCheckExpr::visit (HIR::InlineAsm &expr)
 I omit the part where we also recursive typecheck and infer each expr in each operand for the next part
 ### Resolution
 Given an example that is part of [inline_asm_mov_x86_rs](https://github.com/Rust-GCC/gccrs/pull/3060/files#diff-693188f770da1bcaab140cfa09a7df64b510f5b17f21d9dc7627fc401776086a) test case, where we refers to _x as a potential output:
-```
+```rust
 let mut _x: i32 = 0;
 unsafe {
     asm!(
@@ -555,7 +555,7 @@ More specifically, we rely on existing tree generation of our variables and raw 
 
 The process of building our ASM_EXPR is as follow:
 
-```c++
+```cpp
 tree
 CompileAsm::tree_codegen_asm (HIR::InlineAsm &expr)
 {
@@ -603,7 +603,7 @@ CompileAsm::asm_build_stmt (
 ```
 
 In the end, we add the tree to a list of statements in the following fashion:
-```c++
+```cpp
 void
 CompileExpr::visit (HIR::InlineAsm &expr)
 {
@@ -621,7 +621,7 @@ Readers interested in the implementation details can refer to
 Yayyy, we've finally relieved ourselves of code generation responsibilities, leaving the rest to GIMPLE, RTL, and gcc backend. The gccrs compiler can now generate correct instructions using the in and out register operands.
 
 Below shows a few test cases that gccrs can now pass:
-```
+```rust
 /* { dg-do run { target arm*-*-* } } */
 /* { dg-output "5\r*\n9\r*\n" }*/
 
