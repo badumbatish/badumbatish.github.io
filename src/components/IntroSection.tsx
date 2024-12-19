@@ -1,10 +1,48 @@
-import React, {ReactNode, useState} from "react";
+import React, {ReactNode, useEffect, useState} from "react";
 import Image from "next/image";
 // import pictureProfile from "";
 import LinkButton from "@/components/LinkButton";
 import AboutMeElement from "@/components/AboutMeElement";
 import {hover_border} from "@/components/tailwind_const";
+import { create, all } from 'mathjs';
 
+const math = create(all);
+
+const RandomProfilePicture = () => {
+    const [currentPfp, setCurrentPfp] = useState(1);
+    const pfps = ['pfp3.png', 'pfp1.jpg']; // Add all your pfp filenames here
+
+    const getGaussianInterval = () => {
+        // Generate number between 5-10 seconds using Gaussian distribution
+        let interval = math.random(7, 12);
+
+        return interval * 1000; // Convert to milliseconds
+    };
+
+    useEffect(() => {
+        const changeImage = () => {
+            setCurrentPfp((prev) => (prev + 1) % pfps.length);
+            const nextInterval = getGaussianInterval();
+            timer = setTimeout(changeImage, nextInterval);
+        };
+
+        let timer = setTimeout(changeImage, getGaussianInterval());
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    return (
+        <div className="basis-1/5">
+            <Image
+                className="mx-auto rounded-3xl overflow-hidden"
+                src={pfps[currentPfp]}
+                alt="profile picture"
+                width={150}
+                height={200}
+            />
+        </div>
+    );
+};
 const IntroSection: React.FC<{children: ReactNode, className? : string}> = ({ children , className}) => {
     return (
         <div className={`flex flex-col md:flex-row justify-center  p-6  ${className}`}>
@@ -59,16 +97,20 @@ const NickNameButton = () => {
         </span>
     </span>
 }
+
+
 const LeftMainCard = () => {
     return (
         <div className={`font-mono flex flex-col items-center basis-2/6
                                 rounded-lg overflow-hidden p-4 
                                 border-2 border-blue-300 gap-2 hover:border-indigo-400 ${hover_border}`}>
-            <div className="basis-1/5`}">
-                <Image className="mx-auto rounded-3xl overflow-hidden" src={"pfp3.png"}
+            {/* <div className="basis-1/5`}">
+               <Image className="mx-auto rounded-3xl overflow-hidden" src={"pfp3.png"}
                        alt="picture profile" width={150} height={200}></Image>
 
             </div>
+            */}
+            <RandomProfilePicture></RandomProfilePicture>
             <div className="basis-4/5 flex flex-col gap-2">
 
                 <NickNameButton></NickNameButton>
@@ -117,6 +159,7 @@ const RightMainCard = () => {
                 <li>
                     <AboutMeElement title="About Me"
                                     lst={["Hi everyone, it's Jasmine here :)  I like compilers, gcc, llvm and occasional scripting.",
+                                        `I enjoy technical writings and have some blogs, please feel free to give them a try on with the blog button`,
                                         `In my free time, I like going on walks, watching speed runs of Souls, RE games, listening to music, reading manga and learning about new languages :)`,
                                         `For music, I like pop, pop-rock and electronics pop :)`,
                                         `For manga, I like shonen as well as melancholic slice-of-life manga`]}
