@@ -20,9 +20,8 @@ export default async function Page() {
                             <div className="flex flex-col ">
                                 <div className="flex flex-row gap-4 text-lg sm:text-base md:text-base">
                                     <div className="underline">{date}</div>
-                                    <CopyIcon link={`/posts/${id}`}></CopyIcon>
                                     <Link href={`/posts/${id}`}>
-                                        <div className="underline text-blue-400 text-lg">{title}</div>
+                                        <div className="underline text-blue-400 ">{title}</div>
                                     </Link>
                                 </div>
                                 <div>
