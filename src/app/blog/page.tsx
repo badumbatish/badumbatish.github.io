@@ -17,8 +17,8 @@ export default async function Page() {
                     }
                     return (
                         <li className="" key={id}>
-                            <div className="flex flex-col ">
-                                <div className="flex flex-row gap-4 text-lg sm:text-base md:text-base">
+                            <div className="flex flex-col sm:text-sm md:text-base">
+                                <div className="flex flex-row gap-4 ">
                                     <div className="underline">{date}</div>
                                     <Link href={`/posts/${id}`}>
                                         <div className="underline text-blue-400 ">{title}</div>
