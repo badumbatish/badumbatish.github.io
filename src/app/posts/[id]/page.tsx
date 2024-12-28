@@ -42,27 +42,11 @@ export default async function Post(
                 <h4>{date}</h4>
             </div>
             <div className="flex font-bold">Edit:</div>
-
-            I would love to be informed of new-grad opportunities for Summer 2025.
-            <br/>
-            <br/>
-            My resume is located at <a
-            href={"https://www.overleaf.com/project/638120c30d0003f7bfe10360"}>https://www.overleaf.com/project/638120c30d0003f7bfe10360 </a>
-            <br/>
-            If you know of a compiler related job posting, please feel free to contact me or refer me at either:
-            <ul>
-                <li><a href={"tanghocle456@gmail.com"}>tanghocle456@gmail.com</a> (for job posting)</li>
-                <li><a href={"jjasmine@berkeley.edu"}>jjasmine@berkeley.edu</a> (for job posting)</li>
-                <li><a href={"https://x.com/thisisjjasmine"} target={"_blank"}>https://x.com/thisisjjasmine</a> (social
-                    media)
-                </li>
-            </ul>
-            <hr></hr>
-            <div className={"flex flex-row"}>
-            <span className="flex font-bold">See anything wrong </span>&nbsp;
-                <span> with this blog?</span>
-            </div>
-            -{">"} Use the copy button or directly give me the link through one of my emails :)
+            My resume is located <a
+            href={"https://www.overleaf.com/project/638120c30d0003f7bfe10360"}>here</a> (downloadable).
+            If you know of a compiler related job posting, please feel free to contact me or refer me at either <a
+            href={"tanghocle456@gmail.com"}>tanghocle456@gmail.com</a> or <a
+            href={"jjasmine@berkeley.edu"}>jjasmine@berkeley.edu</a>.
             <hr></hr>
             <div dangerouslySetInnerHTML={{__html: html}}/>
         </article>
