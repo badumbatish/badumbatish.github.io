@@ -1,0 +1,63 @@
+---
+title: '[ONGOING] Going to the gym with MLIR: Linear register allocation for ... a stackless virtual machine?'
+date: 2025-01-01
+recap: "Jasmine plans out register allocation for the DEX recompiler with Wimmer's and Franz's paper."
+---
+Please don't read it now. It's unfinished :)
+## Prologue
+Hi everyone, I hope everybody's been great :) I hope you like my last report for my graduate class [here]
+(https://badumbatish.github.io/posts/going_to_mlir_gym_1). This article discusses the SSA linear scan register
+allocation algorithm and the steps it takes to implement it.
+
+## Introduction
+
+Talks about motivation and method.
+
+Discuss the difference and why register allocation is also important in the context of obfuscation. Also talk a bit
+about what paper I've read.
+
+
+## Reader supporting section
+
+- Dominance:
+
+- Loop header: . Knowing how to discuss the loop header, we'll also need to discuss how to find the loop of the
+loop header itself.
+
+- Live range
+
+- Live interval . Discuss
+## Planning
+
+Plans out stuff, discuss api.
+
+- scc iterator : https://llvm.org/doxygen/classllvm_1_1scc__iterator.html
+
+- mlir gets block sorted by dominance (not enough, not strict enough ordering)
+
+- need to also detect loop
+https://pages.cs.wisc.edu/~fischer/cs701.f14/finding.loops.html
+
+
+### Algorithm
+#### Topo sort with loop continuity
+```cpp
+
+auto topo_blocks = mlir get blocks sorted by dom;
+auto order = map that maps order to block
+auto result = {};
+for each block b in topo_block
+    if already in result
+        continue
+    else
+        if exist a back edge from e to b
+
+
+```
+#### Building live intervals
+```cpp
+using LiveRange = std::pair;
+DenseMap<Value, Vector<LiveRange>> build_intervals(MethodOp op) {
+
+}
+```

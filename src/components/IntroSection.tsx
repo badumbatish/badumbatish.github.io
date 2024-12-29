@@ -10,32 +10,14 @@ const math = create(all);
 
 const RandomProfilePicture = () => {
     const [currentPfp, setCurrentPfp] = useState(1);
-    const pfps = ['pfp3.png', 'pfp1.jpg']; // Add all your pfp filenames here
 
-    const getGaussianInterval = () => {
-        // Generate number between 5-10 seconds using Gaussian distribution
-        let interval = math.random(7, 12);
 
-        return interval * 1000; // Convert to milliseconds
-    };
-
-    useEffect(() => {
-        const changeImage = () => {
-            setCurrentPfp((prev) => (prev + 1) % pfps.length);
-            const nextInterval = getGaussianInterval();
-            timer = setTimeout(changeImage, nextInterval);
-        };
-
-        let timer = setTimeout(changeImage, getGaussianInterval());
-
-        return () => clearTimeout(timer);
-    }, []);
 
     return (
         <div className="basis-1/5">
             <Image
                 className="mx-auto rounded-3xl overflow-hidden"
-                src={pfps[currentPfp]}
+                src={'pfp3.png'}
                 alt="profile picture"
                 width={150}
                 height={200}
