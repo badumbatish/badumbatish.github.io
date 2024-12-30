@@ -12,6 +12,7 @@ import rehypeStringify from 'rehype-stringify'
 import rehypeShiki from '@shikijs/rehype'
 import rehypeToc from '@jsdevtools/rehype-toc'
 import remarkMdx from "remark-mdx";
+import remarkMath from 'remark-math'
 
 // @ts-ignore
 import collapse from "remark-collapse";
@@ -26,6 +27,8 @@ import rust from 'highlight.js/lib/languages/rust'
 import {common} from "lowlight";
 import rehypeRaw from "rehype-raw";
 import rehypeExternalLinks from "rehype-external-links";
+import rehypeKatex from "rehype-katex";
+import rehypeMermaid from "rehype-mermaid";
 // memoize/cache the creation of the markdown parser, this sped up the
 // building of the blog from ~60s->~10s
 let p: ReturnType<typeof getParserPre> | undefined
@@ -41,6 +44,7 @@ async function getParserPre() {
             test: '.*[sS]upporting section.*',
         })
         .use(remarkGfm)
+        .use(remarkMath)
         .use(remarkRehype, {
             // Necessary for support HTML embeds (see next plugin)
             allowDangerousHtml: true,
@@ -57,8 +61,9 @@ async function getParserPre() {
     // ...
   ],
         })
-        .use(rehypeStringify)
         .use(rehypeRaw)
+        .use(rehypeKatex)
+        .use(rehypeStringify)
         .use(rehypeExternalLinks, { rel: ['nofollow'], target: '_blank'})
         .use(rehypeSlug)
         .use(rehypeHighlight, {

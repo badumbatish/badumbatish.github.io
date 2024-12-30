@@ -1,4 +1,5 @@
 import { getPostById, getAllPosts } from "@/lib/api";
+import 'katex/dist/katex.min.css' // for styling math
 
 
 // Set the title of the page to be the post title, note that we no longer use

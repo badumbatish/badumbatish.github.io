@@ -1,15 +1,60 @@
 ---
 title: '[ONGOING] Going to the gym with MLIR: Linear register allocation for ... a stackless virtual machine?'
 date: 2025-01-01
-recap: "Jasmine plans out register allocation for the DEX recompiler with Wimmer's and Franz's paper."
+recap: "Jasmine plans out register allocation for the DEX recompiler with Mössenböck's and Pfeiffer's paper."
 ---
-Please don't read it now. It's unfinished :)
+
+[Please, please, please](https://www.youtube.com/watch?v=zAgVtzhjfCA&ab_channel=SabrinaCarpenter-Topic) don't read
+it now. It's unfinished :)
+
 ## Prologue
-Hi everyone, I hope everybody's been great :) I hope you like my last report for my graduate class [here]
-(https://badumbatish.github.io/posts/going_to_mlir_gym_1). This article discusses the SSA linear scan register
+Hi everyone, I hope everybody's been great :) I hope you like my last report for my graduate class [here](https://badumbatish.github.io/posts/going_to_mlir_gym_1). This article discusses the SSA linear scan register
 allocation algorithm and the steps it takes to implement it.
 
+Just like the last MLIR report post, I also include a supporting section right before the introduction for unfamiliar
+reader in the compiler space. The supporting section assumes the knowledge of the [last report](https://badumbatish.github.io/posts/going_to_mlir_gym_1)'s supporting section.
+
+And as is tradition, I also wanna share a [song](https://www.youtube.com/watch?v=5HFyoxqUi0g&ab_channel=CROWONHYENAS) for
+you to listen to while reading. Initially it was between this song and [that](https://www.youtube.com/watch?v=y-LKgloPswQ&ab_channel=hazardclique) song. What can I say? I guess this is a long form way to say I want you to listen to
+both :)
+
+I hope everybody enjoys :)
+
+
+## Reader supp section
+- Dominance: In a CFG, with the entry basic block $BB_0$ and any two basic block A and B, if all paths from
+$BB_0$ to B goes through A, then A is said to dominate B. The notation for dominance is A
+$\gg$ B and every node is said to dominate itself.
+
+
+
+- Loop header: In hand with dominance, a block is said to be a loop header if it dominates one of its
+predecessors (a block that points to it). Knowing what a loop header is, and later identifying it would be of great
+help in
+our live intervals (of our linear register allocator) construction. As in the paper by Wimmer and Franz, their live
+intervals construction bypasses the dataflow analysis cost itself.
+
+Before heading further, let's look at an example for the two concept. In this control flow graph, D is:
+![dominance_mlir_gym_2.svg](/blogs/dominance_mlir_gym_2.svg)
+
+- Find
+discuss the loop header, we'll also need to discuss
+how to find
+the
+loop of the
+loop header itself.
+
+- Live range
+
+- Live interval . Discuss
+
 ## Introduction
+
+Register allocation has always been an important aspect in the compiler construction phase. Being the fastest
+(but most limited) locations in the memory hierarchy, the compiler's register allocator must be strategic about this
+resource; values being manipulated in the registers instead of the stack space means reduced latency and
+improved overall execution speed.
+
 
 Talks about motivation and method.
 
@@ -17,16 +62,6 @@ Discuss the difference and why register allocation is also important in the cont
 about what paper I've read.
 
 
-## Reader supporting section
-
-- Dominance:
-
-- Loop header: . Knowing how to discuss the loop header, we'll also need to discuss how to find the loop of the
-loop header itself.
-
-- Live range
-
-- Live interval . Discuss
 ## Planning
 
 Plans out stuff, discuss api.
@@ -61,3 +96,17 @@ DenseMap<Value, Vector<LiveRange>> build_intervals(MethodOp op) {
 
 }
 ```
+
+## Resources
+
+### Papers
+- [Linear Scan Register Allocation in the Context of SSA Form and Register Constraints](https://link.springer.com/content/pdf/10.1007/3-540-45937-5_17.pdf) - Hanspeter Mössenböck and Michael Pfeiffer.
+
+- [Linear Scan Register Allocation](https://web.cs.ucla.edu/~palsberg/course/cs132/linearscan.pdf) - Massimiliano Poletto and VIVEK SARKAR
+### Textbooks
+
+- [Engineering a Compiler](https://www.goodreads.com/book/show/60277251-engineering-a-compiler) - Keith D. Cooper and Linda Torczon.
+
+### AI tools
+
+Hahahaha you're really funny.
