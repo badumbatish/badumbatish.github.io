@@ -1,6 +1,6 @@
 ---
 title: '[ONGOING] Going to the gym with MLIR: Linear register allocation for ... a stackless virtual machine?'
-date: 2025-01-01
+date: 8888-08-08
 recap: "Jasmine plans out register allocation for the DEX recompiler with Mössenböck's and Pfeiffer's paper."
 ---
 
@@ -8,11 +8,20 @@ recap: "Jasmine plans out register allocation for the DEX recompiler with Mösse
 it now. It's unfinished :)
 
 ## Prologue
-Hi everyone, I hope everybody's been great :) I hope you like my last report for my graduate class [here](https://badumbatish.github.io/posts/going_to_mlir_gym_1). This article discusses the SSA linear scan register
-allocation algorithm and the steps it takes to implement it.
+Hi everyone, I hope everybody's been great :) I hope you like my last report for my graduate class [here](https://badumbatish.github.io/posts/going_to_mlir_gym_1). This article is also related to the same project. It
+discusses the
+SSA linear scan
+register
+allocation algorithm and the steps taken to implement it.
 
-Just like the last MLIR report post, I also include a supporting section right before the introduction for unfamiliar
-reader in the compiler space. The supporting section assumes the knowledge of the [last report](https://badumbatish.github.io/posts/going_to_mlir_gym_1)'s supporting section.
+Just like the last MLIR report post, I also include a supporting section (SS) right before the introduction for
+unfamiliar
+reader in the compiler space.
+
+Without reading the SS, I assume interested readers are familiar with some basic middle-end IR concepts (e.g $\phi$
+notation, liveness analysis, loops).
+
+With reading the SS, there is some context from the last report's [SS](https://badumbatish.github.io/posts/going_to_mlir_gym_1#reader-supporting-section) that I think would be helpful.
 
 And as is tradition, I also wanna share a [song](https://www.youtube.com/watch?v=5HFyoxqUi0g&ab_channel=CROWONHYENAS) for
 you to listen to while reading. Initially it was between this song and [that](https://www.youtube.com/watch?v=y-LKgloPswQ&ab_channel=hazardclique) song. What can I say? I guess this is a long form way to say I want you to listen to
@@ -21,49 +30,74 @@ both :)
 I hope everybody enjoys :)
 
 
-## Reader supp section
+## Reader supporting section
 - Dominance: In a CFG, with the entry basic block $BB_0$ and any two basic block A and B, if all paths from
 $BB_0$ to B goes through A, then A is said to dominate B. The notation for dominance is A
 $\gg$ B and every node is said to dominate itself.
 
+- Dataflow analysis: Abstractly, dataflow analysis is a way to understand how data moves and changes throughout a
+computer program.
+It helps us track what happens to different values (like variables) as the program runs from start to finish.
 
+For example, when [reaching definition](https://en.wikipedia.org/wiki/Reaching_definition) is
+run, the compiler can detect if some variable is possibly uninitialized and warn us if such cases appear:
+```rust
+fn reaching_def_example(condition: bool) {
+    let x: i32; // x is declared but not initialized
+
+    if condition { // if this `if` condition is `false`,
+       x = 5;      // `x` is not initialized
+    }
+
+    println!("{}", x); // Warning: x might be uninitialized
+                      // if condition is false
+}
+```
 
 - Loop header: In hand with dominance, a block is said to be a loop header if it dominates one of its
 predecessors (a block that points to it). Knowing what a loop header is, and later identifying it would be of great
 help in
 our live intervals (of our linear register allocator) construction. As in the paper by Wimmer and Franz, their live
-intervals construction bypasses the dataflow analysis cost itself.
+intervals construction bypasses the dataflow analysis cost itself, simply on the concept of dominance and loop header.
 
-Before heading further, let's look at an example for the two concept. In this control flow graph, D is:
+Before heading further, let's look at an example for the two concepts.
+
+In this control flow graph, A dominates every BB, including itself.
+B dominates D; even though there is a path from
+D to B, it must have first passed from B first. Since B dominates its predecessor, B is a loop header; hence,
+there is a loop :)
+
+D is:
 ![dominance_mlir_gym_2.svg](/blogs/dominance_mlir_gym_2.svg)
 
-- Find
-discuss the loop header, we'll also need to discuss
-how to find
-the
-loop of the
-loop header itself.
+- Live range: (TODO: derrive from eng a comp)
 
-- Live range
-
-- Live interval . Discuss
+- Live interval: (TODO: ordered linked list kinda thing)
 
 ## Introduction
 
-Register allocation has always been an important aspect in the compiler construction phase. Being the fastest
-(but most limited) locations in the memory hierarchy, the compiler's register allocator must be strategic about this
-resource; values being manipulated in the registers instead of the stack space means reduced latency and
-improved overall execution speed.
+Register allocation is an important aspect in the compiler construction phase.
+Registers being the fastest
+(but most limited) in the memory hierarchy, the compiler's register allocator must be strategic about this
+resource, more usages in registers instead of the stack means reduced latency and
+improved execution speed.
 
+In the case of our recompiler, the main motivation related to obfuscation. [Edu](https://farena.in/)'s employer,
+[Quarkslab](https://www.quarkslab.com/) is interested in applying obfuscation method to DEX files. With the methods
+generating a lot of virtual registers, there were concerns about it exceeding the limit of $2^{16} = 65,536$ virtual
+registers. In this case, the linear register allocation project helps bring down the number of virtual registers under
+the limit (of course they can just run less obfuscation hahahah).
 
-Talks about motivation and method.
+Personally, this is also another opportunity for me to improve my compiler arsenal. Most undergraduate compiler
+classes leave this part out or only as part of a pen and paper exercise; knowing how to perform register allocation
+(and writing about it)
+would be a big push in the direction.
 
-Discuss the difference and why register allocation is also important in the context of obfuscation. Also talk a bit
-about what paper I've read.
-
+All discussed concepts are driven from the links in the resources section.
 
 ## Planning
-
+We're planning to improve the lowering of MjolnIR to smali. What this means is that instead of lowering with
+`template<class Aspect> class SmaliCounter{:cpp}`
 Plans out stuff, discuss api.
 
 - scc iterator : https://llvm.org/doxygen/classllvm_1_1scc__iterator.html
@@ -73,6 +107,13 @@ Plans out stuff, discuss api.
 - need to also detect loop
 https://pages.cs.wisc.edu/~fischer/cs701.f14/finding.loops.html
 
+The procedure will be
+
+- Linearize the blocks of CFG based on dominance, with blocks in the loop being the same.
+
+- Construct the live ranges (with live holes).
+
+- Construct the
 
 ### Algorithm
 #### Topo sort with loop continuity
@@ -101,8 +142,9 @@ DenseMap<Value, Vector<LiveRange>> build_intervals(MethodOp op) {
 
 ### Papers
 - [Linear Scan Register Allocation in the Context of SSA Form and Register Constraints](https://link.springer.com/content/pdf/10.1007/3-540-45937-5_17.pdf) - Hanspeter Mössenböck and Michael Pfeiffer.
-
-- [Linear Scan Register Allocation](https://web.cs.ucla.edu/~palsberg/course/cs132/linearscan.pdf) - Massimiliano Poletto and VIVEK SARKAR
+- [Linear Scan Register Allocation on SSA Form](http://www.christianwimmer.at/Publications/Wimmer10a/Wimmer10a.pdf) - Christian Wimmer and Michael Franz
+- [Linear Scan Register Allocation](https://web.cs.ucla.edu/~palsberg/course/cs132/linearscan.pdf) - Massimiliano
+Poletto and Vivek Sarkar
 ### Textbooks
 
 - [Engineering a Compiler](https://www.goodreads.com/book/show/60277251-engineering-a-compiler) - Keith D. Cooper and Linda Torczon.

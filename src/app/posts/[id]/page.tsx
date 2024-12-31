@@ -43,8 +43,8 @@ export default async function Post(
                 <h4>{date}</h4>
             </div>
             <div className="flex font-bold">Edit:</div>
-            My resume is located <a
-            href={"https://www.overleaf.com/project/638120c30d0003f7bfe10360"}>here</a> (downloadable).
+            My resume is <a
+            href={"https://www.overleaf.com/project/638120c30d0003f7bfe10360"}>here</a> (and downloadable <a href={"https://badumbatish.github.io/about_me/Jasmine_Resume_Badumbatish.pdf"}>here</a>).
             If you know of a compiler related job posting, please feel free to contact me or refer me at either <a
             href={"tanghocle456@gmail.com"}>tanghocle456@gmail.com</a> or <a
             href={"jjasmine@berkeley.edu"}>jjasmine@berkeley.edu</a>.
