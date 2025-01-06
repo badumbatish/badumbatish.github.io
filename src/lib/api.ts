@@ -13,6 +13,7 @@ import rehypeShiki from '@shikijs/rehype'
 import rehypeToc from '@jsdevtools/rehype-toc'
 import remarkMdx from "remark-mdx";
 import remarkMath from 'remark-math'
+import rehypeMermaid from 'rehype-mermaid'
 
 // @ts-ignore
 import collapse from "remark-collapse";
@@ -28,7 +29,8 @@ import {common} from "lowlight";
 import rehypeRaw from "rehype-raw";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeKatex from "rehype-katex";
-import rehypeMermaid from "rehype-mermaid";
+import remarkMermaid from 'remark-mermaidjs'
+
 // memoize/cache the creation of the markdown parser, this sped up the
 // building of the blog from ~60s->~10s
 let p: ReturnType<typeof getParserPre> | undefined
@@ -69,8 +71,8 @@ async function getParserPre() {
         .use(rehypeHighlight, {
             languages : {...common, rust},
         })
-        .use(rehypePrismDiff)
         .use(rehypeAutolinkHeadings)
+        .use(rehypePrismDiff)
         .use(rehypeToc)
 
     return result;

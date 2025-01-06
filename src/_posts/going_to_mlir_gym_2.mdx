@@ -1,12 +1,16 @@
 ---
 title: '[ONGOING] Going to the gym with MLIR: Linear register allocation for ... a stackless virtual machine?'
 date: 8888-08-08
-recap: "Jasmine plans out register allocation for the DEX recompiler with Mössenböck's and Pfeiffer's paper."
+recap: "Jasmine plans out register allocation for the DEX recompiler."
 ---
 
 [Please, please, please](https://www.youtube.com/watch?v=zAgVtzhjfCA&ab_channel=SabrinaCarpenter-Topic) don't read
-it now. It's unfinished :)
+it now. It's unfinished, and I'm not sure if it'll go into impl or design doc :)
 
+todo:
+- Bold SS text
+- Add live interval, live ranges explanation. When add, explain why
+- Add first step of lin scan reg
 ## Prologue
 Hi everyone, I hope everybody's been great :) I hope you like my last report for my graduate class [here](https://badumbatish.github.io/posts/going_to_mlir_gym_1). This article is also related to the same project. It
 discusses the
@@ -96,9 +100,33 @@ would be a big push in the direction.
 All discussed concepts are driven from the links in the resources section.
 
 ## Planning
-We're planning to improve the lowering of MjolnIR to smali. What this means is that instead of lowering with
-`template<class Aspect> class SmaliCounter{:cpp}`
-Plans out stuff, discuss api.
+
+### Differences
+We're planning to improve the lowering of MjolnIR to smali. What this means is that instead of lowering directly
+from SSA variables to virtual registers with
+`template<class Aspect> class SmaliCounter{:cpp}`, we lower indirectly with our register
+allocation.
+
+More specifically, we'll :
+
+- Map from one SSA value to a live interval.
+- Optionally merge `compatible` live intervals together (this process is called coalescing).
+- Lower down to virtual registers.
+
+This new process introduces new stages that are clearly described and compared through this diagram.
+
+[todo add mermaid here]
+
+### Steps
+
+To say that linear register allocation simply comprises 3 steps is a simplification. The three big steps eventually
+breaks down into substeps when a reader starts asking these questions of the sort: Where and how do
+we get our live intervals? How do we map SSA value to said interval? What mechanics helps us merge `compatible`? How is
+MLIR helping here?
+
+#### Live intervals
+
+
 
 - scc iterator : https://llvm.org/doxygen/classllvm_1_1scc__iterator.html
 
@@ -137,14 +165,16 @@ DenseMap<Value, Vector<LiveRange>> build_intervals(MethodOp op) {
 
 }
 ```
+## Obstacles
 
 ## Resources
 
 ### Papers
 - [Linear Scan Register Allocation in the Context of SSA Form and Register Constraints](https://link.springer.com/content/pdf/10.1007/3-540-45937-5_17.pdf) - Hanspeter Mössenböck and Michael Pfeiffer.
-- [Linear Scan Register Allocation on SSA Form](http://www.christianwimmer.at/Publications/Wimmer10a/Wimmer10a.pdf) - Christian Wimmer and Michael Franz
+- [Linear Scan Register Allocation on SSA Form](http://www.christianwimmer.at/Publications/Wimmer10a/Wimmer10a.pdf) -
+Christian Wimmer and Michael Franz.
 - [Linear Scan Register Allocation](https://web.cs.ucla.edu/~palsberg/course/cs132/linearscan.pdf) - Massimiliano
-Poletto and Vivek Sarkar
+Poletto and Vivek Sarkar.
 ### Textbooks
 
 - [Engineering a Compiler](https://www.goodreads.com/book/show/60277251-engineering-a-compiler) - Keith D. Cooper and Linda Torczon.
