@@ -216,8 +216,19 @@ for each block b in topo_block
 using LRStart = uint32_t;
 using LREnd= uint32_t;
 using LiveRange = std::pair<LRStart, LREnd>; // From above description
-DenseMap<Value, Vector<LiveRange>> build_intervals(MethodOp op) {
+DenseMap<Value, Vector<LiveRange>> build_intervals(todo: type of set vector block from topo sort and correct loop
+continuity) {
+    // TODO: i know my ass will need the smali counter again soon. Maybe split the function here.
 
+    // TODO: We get the value from the operand like this
+
+    for b in blocks:
+        for op in b:
+            if v = op.getValue() then
+                smali_counter.getCounter(v);
+
+    // todo: we do this because although we visualize ssa as having an inherent counter, it is not visible in the
+mlir api
 }
 ```
 ## Obstacles
