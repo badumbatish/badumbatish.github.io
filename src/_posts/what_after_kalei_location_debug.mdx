@@ -5,7 +5,13 @@ recap: "Jasmine discusses a simple error/warn/log method after Kaleidoscope."
 ---
 
 ## Prologue
-Hi everyone, wow, it's been a quick minute since I last updated my blog. The article is to new people who might be
+Hi everyone, wow, it's been a quick minute since I last updated my blog. How's everyone doing :) I'm still chugging
+away at life applying to compiler jobs as well as schooling at Cal. Hope everybody's doing great :)
+
+The
+article is to new
+people
+who might be
 asking:
 
 "Ok, I've done the [llvm tutorial](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/index.html) already.
@@ -41,6 +47,18 @@ class Location {
 
     // override | (to combine multiple Location)
     // int overload
-}
+};
+```
+
+Suppose our tokens are modeled as:
+```cpp
+class Token {
+public:
+  TokenType type;
+  std::string lexeme;
+  Location location;
+  Token(TokenType type, std::string lexeme, Location location)
+      : type(type), lexeme(std::move(lexeme)), location(location) {}
+};
 ```
 ## Ending words
