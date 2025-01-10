@@ -143,7 +143,7 @@ const RightMainCard = () => {
                                     lst={["Hi everyone, it's Jasmine here :)  I like compilers, gcc, llvm and occasional scripting.",
                                         `I enjoy technical writings and have some blogs, please feel free to give them a try on with the blog button`,
                                         `In my free time, I like going on walks, watching speed runs of Souls, RE games, listening to music, reading manga and learning about new languages :)`,
-                                        `For music, I like pop, pop-rock and electronics pop :)`,
+                                        `For music, I like rap, pop, pop-rock and electronics pop :)`,
                                         `For manga, I like shonen as well as melancholic slice-of-life manga`]}
                     ></AboutMeElement>
 

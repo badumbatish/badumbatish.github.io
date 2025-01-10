@@ -7,9 +7,6 @@ recap: "Jasmine plans out register allocation for the DEX recompiler."
 [Please, please, please](https://www.youtube.com/watch?v=zAgVtzhjfCA&ab_channel=SabrinaCarpenter-Topic) don't read
 it now. It's unfinished, and I'm not sure if it'll go into impl or design doc :)
 
-todo:
-- Add live interval, live ranges explanation. When add, explain why
-- Add first step of lin scan reg
 ## Prologue
 Hi everyone, I hope everybody's been great :) I hope you like my last report for my graduate class [here](https://badumbatish.github.io/posts/going_to_mlir_gym_1). This article is also related to the same project. It
 discusses the
@@ -113,6 +110,9 @@ generating a lot of virtual registers, there were concerns about it exceeding th
 registers. In this case, the linear register allocation project helps bring down the number of virtual registers under
 the limit (of course they can just run less obfuscation hahahah).
 
+This article then draws the learning mainly from three sources: the text book Engineer a Compiler, and two papers
+from Mössenböck & Pfeiffer [MP02] and Wimmer & Franz [WF10].
+
 Personally, this is also another opportunity for me to improve my compiler arsenal. Some undergraduate compiler
 classes leave this part out or only as part of a pen and paper exercise; knowing how to perform register allocation
 (and writing about it)
@@ -126,12 +126,12 @@ All discussed concepts are driven from the links in the resources section.
 We're planning to improve the lowering of MjolnIR to smali. What this means is that instead of lowering directly
 from SSA variables to virtual registers with
 `template<class Aspect> class SmaliCounter{:cpp}`, we lower indirectly with our register
-allocation.
+allocation, first translating them into the namespace of live intervals first, then down to virtual registers.
 
 More specifically, we'll :
 
-- Map from one SSA value to a live interval.
-- Optionally merge `compatible` live intervals together (this process is called coalescing).
+- Produce live intervals from ssa values and their uses and defs.
+- Optionally merge `compatible` live intervals together (the process is called coalescing).
 - Lower down to virtual registers.
 
 This new process introduces new stages that are clearly described and compared through this diagram.
@@ -143,7 +143,29 @@ This new process introduces new stages that are clearly described and compared t
 To say that linear register allocation simply comprises 3 steps is a simplification. The three big steps eventually
 break down into substeps when a reader starts asking these questions of the sort: Where and how do
 we get our live intervals? How do we map SSA value to a said interval? What mechanics helps us merge `compatible`? How is
-MLIR helping here? We'll first deal with live intervals first, then [todo]
+MLIR helping here? We'll
+- First discuss the problem of $\phi$ in the context of live intervals.
+- Number the mlir operation via the topological ordering of basic blocks.
+- Construct our live intervals.
+- Coalesce
+- Translate to virtual registers, during this time we might split intervals to produce what is called live holes.
+
+It is important to note that although I follow the MP02 paper, some recaps for WF10 will also be noted.
+
+### $\phi$ in register allocation
+
+The nuisance of $\phi$s is rooted in the idea that if two basic blocks $B_1$ and $B_2$ with their respective SSA
+variables $b_1$ and $b_2$ both connect at basic block $C$ with the $\phi_{c}$, the two SSA variables (and the $\phi$)
+should really be in the same register, right??
+
+In this context, different papers (MP02 and WF10) handle this problem differently.
+
+traverses the CFG and add them to this
+
+T
+todo: discuss Brock and then wimmer.
+
+
 
 ### Live intervals
 
@@ -212,6 +234,11 @@ for each block b in topo_block
 
 ```
 ### Building live intervals
+
+In building the live intervals, we first start with the numbering of operations.
+
+
+TODO: say how phi's hard to handle
 ```cpp
 using LRStart = uint32_t;
 using LREnd= uint32_t;
@@ -236,8 +263,10 @@ mlir api
 ## Resources
 
 ### Papers
-- [Linear Scan Register Allocation in the Context of SSA Form and Register Constraints](https://link.springer.com/content/pdf/10.1007/3-540-45937-5_17.pdf) - Hanspeter Mössenböck and Michael Pfeiffer.
-- [Linear Scan Register Allocation on SSA Form](http://www.christianwimmer.at/Publications/Wimmer10a/Wimmer10a.pdf) -
+- MP02 - [Linear Scan Register Allocation in the Context of SSA Form and Register Constraints](https://link.springer.
+com/content/pdf/10.1007/3-540-45937-5_17.pdf) - Hanspeter Mössenböck and Michael Pfeiffer.
+- WF10 [Linear Scan Register Allocation on SSA Form](http://www.christianwimmer.at/Publications/Wimmer10a/Wimmer10a.
+pdf) -
 Christian Wimmer and Michael Franz.
 - [Linear Scan Register Allocation](https://web.cs.ucla.edu/~palsberg/course/cs132/linearscan.pdf) - Massimiliano
 Poletto and Vivek Sarkar.

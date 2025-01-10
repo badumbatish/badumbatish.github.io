@@ -1,11 +1,46 @@
 ---
-title: '[ONGOING] What after Kaleidoscope'
+title: '[ONGOING] What after Kaleidoscope: Error location'
 date: 8888-08-08
-recap: "Jasmine discusses a simple error/warn/log Location class after Kaleidoscope."
+recap: "Jasmine discusses a simple error/warn/log method after Kaleidoscope."
 ---
 
 ## Prologue
+Hi everyone, wow, it's been a quick minute since I last updated my blog. The article is to new people who might be
+asking:
 
+"Ok, I've done the [llvm tutorial](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/index.html) already.
+What's next?" More specifically, the article is about adding primitive support for error reporting to the
+toy compiler.
 
-## Epilogue
+As is tradition :) I also wanna share some songs with you. The two songs are [Valentine]() and [Into my arms](),
+both by COIN, one of my fav band.
 
+I hope you enjoy :) (both the songs and the blog hahah)
+## Introduction
+
+Compiler diagnostics is an important aspect in one's compiler. From erroring out on the programmer's mistake to
+providing warnings, the ability to accurately locate the location of the pesky problems to said
+programmer is proven to be very valuable.
+
+The article then discusses a way to improve upon the llvm Kaleidoscope toy compiler in the diagnostic aspect to the
+user.
+
+## Tokens
+
+Let's start with the tokens and the lexer. When given the source code as a string (maybe via a file), the lexer
+scans from left to right on that string, each time updating the index on that input string and returning a token.
+This is the basis of our class Location.
+
+```cpp
+class Location {
+    size_t internal_index = 0;
+    // todo, Jasmine please doooo thissss
+    // override ++ operator
+    // override -- operator
+    // override == operator
+
+    // override | (to combine multiple Location)
+    // int overload
+}
+```
+## Ending words
