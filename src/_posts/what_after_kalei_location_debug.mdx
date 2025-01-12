@@ -31,7 +31,7 @@ programmer is proven to be very valuable.
 The article then discusses a way to improve upon the llvm Kaleidoscope toy compiler in the diagnostic aspect to the
 user.
 
-## Tokens
+## Tokens (and the lexer)
 
 Let's start with the tokens and the lexer. When given the source code as a string (maybe via a file), the lexer
 scans from left to right on that string, each time updating the index on that input string and returning a token.
@@ -61,4 +61,29 @@ public:
       : type(type), lexeme(std::move(lexeme)), location(location) {}
 };
 ```
+
+## AST nodes (and the parser)
+After we've produced our tokens, the parser takes in the stream of tokens and produces our AST. One of the question
+is: "If something went wrong, how do we notify programmers?"
+
+The simple thing to do is to combine all the AST's token's location into the AST's location. Below shows a pseudo
+code for that
+
+```cpp
+curr_tok_location = first token location of AST
+For all tokens T that made up the AST:
+    curr_tok_location |= T.location
+AST.Location = curr_tok_location
+```
+
+
+## Reporting
+Nice, now that I'm listening to a true crime show on Netflix, writing this part, I feel a little bit hype and
+scared hahah.
+
+You'll probably wondering why we're having these location and haven't done anything yet.
+
+
+
+
 ## Ending words
