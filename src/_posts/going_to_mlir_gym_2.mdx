@@ -165,12 +165,53 @@ traverses the CFG and add them to this
 T
 todo: discuss Brock and then wimmer.
 
+```cpp
+// todo: this should be llvm::Expected or llvm::Result i don't remember
+void gen_moves(MethodOp& region) {
+    Block *n = nullptr;
+    for (auto &b : region) {
+        for (auto &p : b.getPredecessors()) {
+            if (llvm::size(b.getPredecessors()) > 1 and p.getNumSuccessors() > 1) {
+                n = region.addBlock();
+                // todo: how to glue from p to n, and then n to b,
+                // this function is not implemented rn
+                // clue: something terminator
+                // rename so that p's terminator arg that previously pointing to b is now pointing to n
+                //
+                glue_from_between_to(p, n, b);
+            } else {
+                n = p;
+            }
 
+            for (auto &arg: b.getArguments()) {
+                // rename your block arguments, but this is weird since the paper is awkwardly phis
+            }
+        }
+    }
+}
 
-### Live intervals
+// todo: this should be llvm::Expected or llvm::Result i don't remember
+void glue_from_between_to(Block* from, Block* between, Block* to) {
+    // handling from here
 
-In linear scan register allocation, we first flatten the CFG into a list of live intervals first. In the
-Wimmer and Franz paper, this is achieved with an ordered list based on the BB's dominance. I should also note here that
+    // handling between here
+
+    // handling to here
+}
+
+void
+```
+
+### Topo blocks and numbering
+
+In linear scan register allocation, after we have handled our $\phi$s as prescribed above, we then flatten the CFG
+into a list of
+basic blocks.
+
+The reason for this is todo: numbering the op
+
+In both the MP02 and the
+WF10 paper, this is achieved with an ordered list based on the BB's dominance. I should also note here that
 ordered (in layperson terms)
 means that if
 block A arrives before block B, then block B cannot dominate block A.
@@ -201,18 +242,24 @@ blocks belonging to the same loop must be continuous and that "TODO".
 
 Personally, I think the API provided by MLIR won't
 satisfy
-the condition. Given A is the header of a loop, that either goes to B* (the loop) or breaks out to C, since B* loops
-back to A. Then, if the list ordering is A-C-B*, the live intervals of C interferes with the loop's live intervals,
-forcing us to take C into the equation and degrade the loop's register performance.
+the condition; there is a chance that a loop header block might be followed by its exit, non-looping block, and then,
+the blocks that belong to the loop body.
 
-Thus the next step is to make sure that a loop header should always be followed by its loop body.
+The write up here follows the MP02 paper more. Thus the need for loop detection is left as an [afterthought](https://pages.cs.wisc.edu/~fischer/cs701.f14/finding.loops.html)
 
-- todo: need to also detect loop
-https://pages.cs.wisc.edu/~fischer/cs701.f14/finding.loops.html
 
-The procedure will be
+```cpp
+                                        // the arg is from mlir::getBlocksSortedByDominance
+SmaliCounter<Operation*> numberOperation(SetVector<Block*> blocks) {
+    SmaliCounter op_counter;
 
-- Linearize the blocks of CFG based on dominance, with blocks in the loop being the same.
+    for (auto &block : blocks)
+        for (auto &op : block)
+           op_counter.get_counter(op);
+
+    return op_counter;
+}
+```
 
 - Construct the live ranges (with live holes).
 
@@ -220,7 +267,6 @@ The procedure will be
 
 ### Building live intervals
 
-In building the live intervals, we first start with the numbering of operations.
 
 
 TODO: say how phi's hard to handle
@@ -228,8 +274,12 @@ TODO: say how phi's hard to handle
 using LRStart = uint32_t;
 using LREnd= uint32_t;
 using LiveRange = std::pair<LRStart, LREnd>; // From above description
-DenseMap<Value, Vector<LiveRange>> build_intervals(todo: type of set vector block from topo sort and correct loop
-continuity) {
+
+// todo: do add range here
+void add_range(ins i, block b, end: int32_t) {
+    // jasmine plz do this
+}
+DenseMap<Value, Vector<LiveRange>> build_intervals(Region &region) {
     // TODO: i know my ass will need the smali counter again soon. Maybe split the function here.
 
     // TODO: We get the value from the operand like this
@@ -243,15 +293,16 @@ continuity) {
 mlir api
 }
 ```
+
+todo: Note that we will not directly output any register. What we'll do is we'll have a 2D hash map that given an
+instruction and an SSA value, we get out some new virtual registers that is not dependent on the smali counter.
 ## Obstacles
 
 ## Resources
 
 ### Papers
-- MP02 - [Linear Scan Register Allocation in the Context of SSA Form and Register Constraints](https://link.springer.
-com/content/pdf/10.1007/3-540-45937-5_17.pdf) - Hanspeter Mössenböck and Michael Pfeiffer.
-- WF10 [Linear Scan Register Allocation on SSA Form](http://www.christianwimmer.at/Publications/Wimmer10a/Wimmer10a.
-pdf) -
+- MP02 - [Linear Scan Register Allocation in the Context of SSA Form and Register Constraints](https://link.springer.com/content/pdf/10.1007/3-540-45937-5_17.pdf) - Hanspeter Mössenböck and Michael Pfeiffer.
+- WF10 [Linear Scan Register Allocation on SSA Form](http://www.christianwimmer.at/Publications/Wimmer10a/Wimmer10a.pdf) -
 Christian Wimmer and Michael Franz.
 - [Linear Scan Register Allocation](https://web.cs.ucla.edu/~palsberg/course/cs132/linearscan.pdf) - Massimiliano
 Poletto and Vivek Sarkar.
