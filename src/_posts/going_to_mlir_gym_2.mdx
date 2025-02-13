@@ -158,16 +158,24 @@ The nuisance of $\phi$s is rooted in the idea that if two basic blocks $B_1$ and
 variables $b_1$ and $b_2$ both connect at basic block $C$ with the $\phi_{c}$, the two SSA variables (and the $\phi$)
 should really be in the same register, right??
 
-In this context, different papers (MP02 and WF10) handle this problem differently.
+In this context, different papers (MP02 and WF10) handle this problem differently. Expectedly, the two papers made
+no mention of MLIR (of course hahaa).
 
-traverses the CFG and add them to this
+Idea: The idea is that in MLIR, we can use MjolnIR's move op on these.
 
-T
+these $b_1$ and $b_2$ is the resulting
+operands of
+$B_1$ and
+$B_2$'s terminators and
+that when the control flows to $C$, their representation turns into $\phi_{c}$. Simply put, we can focus on
+generating the virtual registers for $\phi_{c}$ and produce redundant moves as the first step for the algorithm.
+
+todo: show the graph of B1 and B2 flowing into C.
 todo: discuss Brock and then wimmer.
 
 ```cpp
 // todo: this should be llvm::Expected or llvm::Result i don't remember
-void gen_moves(MethodOp& region) {
+void standardize(MethodOp& region) {
     Block *n = nullptr;
     for (auto &b : region) {
         for (auto &p : b.getPredecessors()) {
