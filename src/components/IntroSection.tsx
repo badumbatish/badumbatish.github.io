@@ -17,10 +17,10 @@ const RandomProfilePicture = () => {
         <div className="basis-1/5">
             <Image
                 className="mx-auto rounded-3xl overflow-hidden"
-                src={'pfp3.png'}
+                src={'pfp5.jpeg'}
                 alt="profile picture"
-                width={150}
-                height={200}
+                width={250}
+                height={300}
             />
         </div>
     );

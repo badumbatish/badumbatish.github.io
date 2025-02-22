@@ -2,7 +2,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 
-import rounded_pfp from '/public/pfp3.png';
+import rounded_pfp from '/public/pfp5.jpeg';
 import Name from "@/components/Name";
 import Header from "@/components/Header";
 import UpToTopButton from "@/components/UpToTopButton";

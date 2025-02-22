@@ -5,32 +5,132 @@ recap: "Jasmine discusses a simple error/warn/log method after Kaleidoscope."
 ---
 
 ## Prologue
-Hi everyone, wow, it's been a quick minute since I last updated my blog. How's everyone doing :) I'm still chugging
-away at life applying to compiler jobs as well as schooling at Cal. Hope everybody's doing great :)
+Hi everyone, wow, it's been a quick minute since I posted a new article. How's everyone doing :) I'm still trucking
+away at life applying to compiler jobs as well as schooling at Berk. Hope everybody's doing great :)
 
 The
-article is to new
+article is for
 people
 who might be
 asking:
 
 "Ok, I've done the [llvm tutorial](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/index.html) already.
-What's next?" More specifically, the article is about adding primitive support for error reporting to the
+What's next?"
+
+More specifically, the article is about adding primitive support for error reporting to the
 toy compiler.
 
+Besides that, the article is also to share my software design decisions regarding my compiler's diagnostics.
+
 As is tradition :) I also wanna share some songs with you. The two songs are [Valentine]() and [Into my arms](),
-both by COIN, one of my fav band.
+both by COIN, one of my fav band. todo explain more about this.
 
 I hope you enjoy :) (both the songs and the blog hahah)
 ## Introduction
 
 Compiler diagnostics is an important aspect in one's compiler. From erroring out on the programmer's mistake to
-providing warnings, the ability to accurately locate the location of the pesky problems to said
-programmer is proven to be very valuable.
+providing warnings or giving diagnostics, the ability to accurately locate the location of the pesky problems to said
+programmer is proven to be extremely valuable: only providing to the programmer the row and column number of where an error occurs is less helpful and more confusing than a compiler pointing, tracing and explaining an error to a programmer.
 
-The article then discusses a way to improve upon the llvm Kaleidoscope toy compiler in the diagnostic aspect to the
-user.
+The article then discusses a way to improve upon the llvm Kaleidoscope toy compiler in the diagnostic aspect for the
+user. The result below shows the difference between a primitive and a somewhat sophisticated
+error
+diagnostics scheme and is are
+implemented as
+part of
+the sammine
+compiler.
 
+![comparison between](/blogs/what_after_kalei_location_debug/comparison.png)
+## Location, Reporter, Locator and Reporter
+
+Let's start with a simple description of the problem and a simple answer to the said problem.
+
+> Given a string (which is the input of the compiler), and a starting point index and an ending point index of said
+string, indicating the component (either a token or a subpart of some AST) that is faulty.
+
+Below shows a string of a `let expression{:cpp}` and its corresponding starting and ending point in the input string.
+
+```
+start of let expr
+|       end of let expr
+|       |
+↓       ↓
+01234556789
+let x = 1;\eof
+```
+
+Here, the starting point for the let expr has index 0 in
+the string, and the ending point for the let expr has index 7 in the string (the semicolon at 8 is not counted).
+
+From first principles, how can a compiler consolidate the location of these tokens: `let`, `x`, `=`, `1`
+together and understand that the `let expression` spans from 0 to 7?
+
+Let us define the class `Location`, `Reportee`
+and `Reporter` currently implemented as part of the compiler and see how all of these building blocks fit in together.
+
+#### The Location class
+The `Location` class is basically two indices, indicating the location of a construct in the
+input string. The first index
+`source_start`
+signifies the
+starting location of a component and vice versa for `source_end`. If a construct in the compiler (a token or an AST)
+only occupies a single space, then `source_start == source_end`.
+
+When two `Location`s come together to form one singular `Location`, we take the minimum of all
+`source_start` and the maximum of all the `source_end`. This is implemented as the pipe operator `|` for the class:
+
+```cpp
+// Combine two locations
+Location operator|(const Location &other) const {
+    Location result;
+    result.source_start = std::min(source_start, other.source_start);
+    result.source_end = std::max(source_end, other.source_end);
+    return result;
+}
+
+void operator|=(const Location &other) {
+    source_start = std::min(source_start, other.source_start);
+    source_end = std::max(source_end, other.source_end);
+}
+```
+
+Let's look at an example, given the string of a binary expression `x+y`, since `x` takes the `Location(0,0)`, `y`
+takes the `Location(2,2)`. The location for the resulting binary expression is `Location(min(0,2), max(0,2)) =
+Location(0, 2)`.
+
+#### The Reportee class
+
+Given a location, we need a message to be associated with it, together with the diagnostic kind: Is this message an
+error? Is it a warning? Is this just to provide the programmer/compiler writer with some extra information for an
+informed decision?
+
+The class that takes care of this is the `Reportee` class. It defines different `ReportKind{:cpp}` such as `error`,
+`warn` or `diag` for error, warning or diagnostics respectively. It also provides abstraction such as `add_error()`,
+`add_warn()` or `add_diag` for said `ReportKind`s.
+
+Who's calling `add_error()` and `add_warn()`? Whichever phase the compiler needs to communicate with the programmer
+about, that phase will inherit from this `Reportee` class and use these utilities functions. The sections on Lexer and
+Parser will go over these finer details.
+
+Besides this, the `Reportee` class also carries `size_t` of `error_count`, `warn_count` and
+`diag_count` to be used as statistics for the `Reporter` class, which is the topic of our next subsection.
+
+#### The Reporter class
+
+You must be wondering, just the `source_start, source_end` is not enough, this result is just the bare minimum.
+Somehow the compiler needs to be able to map a location of `
+(source_start, source_end)` to the starting and ending rows and columns for easier visualization. The compiler also
+needs to 'report' messages coming from different stages such as lexing, parsing or type checking. Keeping these
+details in mind, let's look at the `Reporter` class, who's in charge of these functionalities.
+
+The `Reporter` class is in charge of inputting
+
+
+
+#### The Locator class
+
+### Inferring to rows and columns
 ## Tokens (and the lexer)
 
 Let's start with the tokens and the lexer. When given the source code as a string (maybe via a file), the lexer
@@ -76,14 +176,8 @@ For all tokens T that made up the AST:
 AST.Location = curr_tok_location
 ```
 
-
-## Reporting
-Nice, now that I'm listening to a true crime show on Netflix, writing this part, I feel a little bit hype and
-scared hahah.
-
-You'll probably wondering why we're having these location and haven't done anything yet.
-
-
-
-
+## Study case: scope checking visitor
 ## Ending words
+Implemented diagnostics for my compiler was really fun. I knew being able to abstract and reuse code is a really
+important aspect in software engineering but it is especially essential in compiler. Different stages in a compiler
+means that unless I reuse code, repetitive concepts will keep popping up again (hence the Reportee class).
