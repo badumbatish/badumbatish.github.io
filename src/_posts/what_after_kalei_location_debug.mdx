@@ -70,6 +70,7 @@ Let us define the class `Location`, `Reportee`
 and `Reporter` currently implemented as part of the compiler and see how all of these building blocks fit in together.
 
 #### The Location class
+
 The `Location` class is basically two indices, indicating the location of a construct in the
 input string. The first index
 `source_start`
@@ -99,6 +100,9 @@ Let's look at an example, given the string of a binary expression `x+y`, since `
 takes the `Location(2,2)`. The location for the resulting binary expression is `Location(min(0,2), max(0,2)) =
 Location(0, 2)`.
 
+Another thing to notice is that the Location class offers modifiers on `source_end`, this is mostly useful in the
+case of lexing different token such as `+` and `+=` - often in sammine I have to backtrack and thus this is really
+helpful.
 #### The Reportee class
 
 Given a location, we need a message to be associated with it, together with the diagnostic kind: Is this message an
@@ -107,7 +111,8 @@ informed decision?
 
 The class that takes care of this is the `Reportee` class. It defines different `ReportKind{:cpp}` such as `error`,
 `warn` or `diag` for error, warning or diagnostics respectively. It also provides abstraction such as `add_error()`,
-`add_warn()` or `add_diag` for said `ReportKind`s.
+`add_warn()` or `add_diag` for said `ReportKind`s. The input to these `add_*()` call is a `Report` type, which is
+just a tuple of `ReportKind, Location, std::string`.
 
 Who's calling `add_error()` and `add_warn()`? Whichever phase the compiler needs to communicate with the programmer
 about, that phase will inherit from this `Reportee` class and use these utilities functions. The sections on Lexer and
@@ -118,14 +123,26 @@ Besides this, the `Reportee` class also carries `size_t` of `error_count`, `warn
 
 #### The Reporter class
 
-You must be wondering, just the `source_start, source_end` is not enough, this result is just the bare minimum.
+You must be wondering, just the linear `(source_start, source_end){:cpp}` indices is not enough, this result is just
+the
+bare
+minimum.
 Somehow the compiler needs to be able to map a location of `
 (source_start, source_end)` to the starting and ending rows and columns for easier visualization. The compiler also
 needs to 'report' messages coming from different stages such as lexing, parsing or type checking. Keeping these
 details in mind, let's look at the `Reporter` class, who's in charge of these functionalities.
 
-The `Reporter` class is in charge of inputting
+The `Reporter` class is in charge taking a `Report`, which again is just a tuple of `ReportKind, Location,
+std::string` and print the message via stderr to the programmer.
 
+It needs to know that for a `ReportKind`, which color should be printed. If the Location is of `Location(a, b)`, how
+does the `Reporter` class transform this to rows and columns? What if we also want some lines of code before and
+after the concerning line of code for more context, how would the `Reporter` do that?
+Maybe if the `Location` needed to be
+reported is one,
+or two,
+or
+three lines only, and it'd be very helpful to hone in and point out the mistake for the programmer. Let
 
 
 #### The Locator class
@@ -133,51 +150,105 @@ The `Reporter` class is in charge of inputting
 ### Inferring to rows and columns
 ## Tokens (and the lexer)
 
-Let's start with the tokens and the lexer. When given the source code as a string (maybe via a file), the lexer
+Let's talk about the tokens and the lexer. When given the source code as a string (maybe via a file), the lexer
 scans from left to right on that string, each time updating the index on that input string and returning a token.
-This is the basis of our class Location.
+Thus, this is the basis of our class Location.
 
-```cpp
-class Location {
-    size_t internal_index = 0;
-    // todo, Jasmine please doooo thissss
-    // override ++ operator
-    // override -- operator
-    // override == operator
-
-    // override | (to combine multiple Location)
-    // int overload
-};
-```
-
-Suppose our tokens are modeled as:
+In sammine, tokens are (loosely) modeled as:
 ```cpp
 class Token {
 public:
-  TokenType type;
-  std::string lexeme;
-  Location location;
-  Token(TokenType type, std::string lexeme, Location location)
+    TokenType type;
+    std::string lexeme;
+    Location location;
+    Token(TokenType type, std::string lexeme, Location location)
       : type(type), lexeme(std::move(lexeme)), location(location) {}
 };
 ```
 
-## AST nodes (and the parser)
-After we've produced our tokens, the parser takes in the stream of tokens and produces our AST. One of the question
-is: "If something went wrong, how do we notify programmers?"
+and for the lexer:
+```cpp
+class Lexer : public sammine_util::Reportee {
+private:
+    sammine_util::Location location;
+    std::vector<Token> tokStream;
+    ...
+```
 
-The simple thing to do is to combine all the AST's token's location into the AST's location. Below shows a pseudo
-code for that
+One thing to note is after we've recognized a token together with its `Location`, we update the Location of the
+Lexer via `update_location(){:cpp}`.
+```cpp
+void Lexer::updateLocation() {
+    location = sammine_util::Location(location.source_end, location.source_end);
+}
+```
+
+The reasoning for this is that if we don't do this, then in the following example, the
+token `+=` as well as the token `b` will have inaccurate locations, spanning from the start of the input to the
+current index.
+
+```
+Location a: (0, 0)
+| Location +=: (0, 3)
+| |  Location b: (0, 5)
+↓ ↓  ↓
+012345
+a += b
+```
+
+
+## AST nodes (and the parser)
+After we've produced our tokens, the parser takes in the stream of tokens and produces our ASTs. An AST is created
+after identification for a specific ordering of some tokens.
+
+For this newly created AST, the simple thing to do is to combine all the AST's token's location into one. Below shows
+pseudocode for that
 
 ```cpp
-curr_tok_location = first token location of AST
-For all tokens T that made up the AST:
-    curr_tok_location |= T.location
-AST.Location = curr_tok_location
+AST_construct(Token tok1, Token tok2, ...) {
+    ...
+    AST.Location = first token location of AST
+    For all tokens T that made up the AST:
+        AST.Location |= T.location
+    ...
+}
 ```
 
 ## Study case: scope checking visitor
+
+Knowing how a `Location` plays out in a `lexer`'s token and `parser`'s AST is helpful, but so what? Operations on the
+AST such as scope checking or type checking also needs report on where a programmer went wrong, the responsibility
+is
+not just within the lexer
+and the parser.
+
+In this case, let's see how we
+can use
+`Location` to inform our programmers of some scope problem.
+
+In functional `sammine`, given a function, the compiler should error out if an unknown variable is referenced or if
+a variable is defined twice (the language prevents shadowing variable (just to make a case hahah)).
+
+Given the following code:
+```cpp
+fn f(x : f64) {
+    let x = 0;
+    ...
+}
+```
+the compiler should error out since we don't allow shadowing of a variable.
+
+
+
+## What's next?
+
 ## Ending words
 Implemented diagnostics for my compiler was really fun. I knew being able to abstract and reuse code is a really
-important aspect in software engineering but it is especially essential in compiler. Different stages in a compiler
-means that unless I reuse code, repetitive concepts will keep popping up again (hence the Reportee class).
+important aspect in software engineering, but it is especially essential in compiler. Different stages in a compiler
+needing diagnostics
+mean that unless I reuse code, repetitive concepts will keep popping up again (hence the Reportee class).
+
+
+## Resources
+
+Working in gccrs todo todo.
