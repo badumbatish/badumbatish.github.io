@@ -126,14 +126,15 @@ informed decision?
 
 The class that takes care of this is the `Reportee{:cpp}` class. It defines different `ReportKind{:cpp}` such as `error{:cpp}`,
 `warn{:cpp}` or `diag{:cpp}` for error, warning or diagnostics respectively. It also provides abstraction such as `add_error(){:cpp}`,
-`add_warn(){:cpp}` or `add_diag{:cpp}` for said `ReportKind`s. The input to these `add_*(){:cpp}` call is a `Report{:cpp}` type, which is
-just a tuple of `ReportKind, Location, std::string`.
+`add_warn(){:cpp}` or `add_diag{:cpp}` for said `ReportKind{:cpp}`s. The input to these `add_*(){:cpp}` call is a `Report{:cpp}` type, which is
+just a tuple of `ReportKind, Location, std::string{:cpp}`.
 
-Who's calling `add_error(){:cpp}` and `add_warn()`? Whichever phase the compiler needs to communicate with the programmer
+Who's calling `add_error(){:cpp}` and `add_warn(){:cpp}`? Whichever phase the compiler needs to communicate with the
+programmer
 about, that phase will inherit from this `Reportee{:cpp}` class and use these utilities functions. The sections on Lexer and
 Parser will go over these finer details.
 
-Besides this, the `Reportee{:cpp}` class also carries `size_t{:cpp}` of `error_count`, `warn_count{:cpp}` and
+Besides this, the `Reportee{:cpp}` class also carries `size_t{:cpp}` of `error_count{:cpp}`, `warn_count{:cpp}` and
 `diag_count{:cpp}` to be used as statistics for the `Reporter{:cpp}` class, which is the topic of our next subsection.
 
 #### The Reporter class
@@ -145,8 +146,8 @@ Upon construction, it takes in a file name, the source code string, and the cont
 radius is 2, then if we're reporting on 1 line of code at line 3, we would print out from line 1 to line 5 (via the
 Locator class).
 
-Then it splits this source code string into different strings seperated by newlines, and construct a `std::vector{:cpp}
-` of pairs of the running length of the concatenation of all the strings up to the current string and the current
+Then it splits this source code string into different strings seperated by newlines, and construct a `std::vector{:cpp}`
+of pairs of the running sum lengths of all the strings up to the current string and the current
 string. This is implemented as `Reporter::get_diagnostic_data{:cpp}` and the result is stored as an intermediary
 ingredient for the `Locator{:cpp}` class:
 
@@ -200,7 +201,8 @@ returns the row and column needed for reporting.
 This is why we're making `DiagnosticData{:cpp}` to be a vector of
 pairs where the first element is monotonically increasing: we can binary search on the first element of the pair to
 get out the index of the vector (which tells us what row it is), as well as the second element of said index (which
-allows us to print out the involving row).
+allows us to print out the involving row). The reduction from $O(n)$ to $O(ln(n))$ is a much-needed break once the
+compiler input exceeds 10,000 rows or more with multiple files.
 
 It then subtracts and adds, respectively on these rows obtained from
 `source_start{:cpp}` and `source_end{:cpp}`, the provided `context_radius{:cpp}` to get the final rows and columns
