@@ -8,7 +8,7 @@ recap: "Jasmine discusses a simple error/warn/log method after Kaleidoscope."
 Hi everyone, wow, it's been a quick minute since I posted a new article. How's everyone doing :) I'm still trucking
 away at life applying to compiler jobs as well as schooling at Berk. Hope everybody's doing great :)
 
-The
+This
 article is for
 people
 who might be
@@ -18,12 +18,25 @@ asking:
 What's next?"
 
 More specifically, the article is about adding primitive support for error reporting to the
-toy compiler.
+toy compiler. The article assumes some familiarity with lexer, parsing and the visitor pattern. Some familiarity with
+the parser and its abstract syntax tree (AST) construction from the [llvm tutorial](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/index.html)
+is helpful
+but not necessary.
 
-Besides that, the article is also to share my software design decisions regarding my compiler's diagnostics.
+Besides that, the article is also to share my software design decisions regarding my compiler's diagnostics and to
+improve my technical writing ability.
 
-As is tradition :) I also wanna share some songs with you. The two songs are [Valentine]() and [Into my arms](),
-both by COIN, one of my fav band. todo explain more about this.
+As is tradition :) I also wanna share some songs with you. The two songs are [Valentine](https://www.youtube.com/watch?v=r-zubTTp8Tg&ab_channel=COIN) and [Into my arms](https://www.youtube.com/watch?v=XvG12DVUCNg&ab_channel=COIN),
+both by COIN, one of my fav bands :) To me, Valentine is this flirty and fun—like a rush of butterflies, you know?
+It’s got that energetic, dreamy beat that feels like falling in love for the first time. But Into My Arms' this
+pure intimacy, deep, and emotional calling. It's as if the singer knows what they really wants and they're just
+pulling at the heartstrings and begging
+you to just melt
+into
+someone’s
+embrace.
+
+Sigh, at this point you might be thinking I must be writing blogs just to share and review music, huh? :) Smh
 
 I hope you enjoy :) (both the songs and the blog hahah)
 ## Introduction
@@ -33,7 +46,7 @@ providing warnings or giving diagnostics, the ability to accurately locate the l
 programmer is proven to be extremely valuable: only providing to the programmer the row and column number of where an error occurs is less helpful and more confusing than a compiler pointing, tracing and explaining an error to a programmer.
 
 The article then discusses a way to improve upon the llvm Kaleidoscope toy compiler in the diagnostic aspect for the
-user. The result below shows the difference between a primitive and a somewhat sophisticated
+user. The picture below shows the difference between a primitive and a somewhat sophisticated
 error
 diagnostics scheme and is are
 implemented as
@@ -49,11 +62,13 @@ Let's start with a simple description of the problem and a simple answer to the 
 > Given a string (which is the input of the compiler), and a starting point index and an ending point index of said
 string, indicating the component (either a token or a subpart of some AST) that is faulty.
 
-Below shows a string of a `let expression{:cpp}` and its corresponding starting and ending point in the input string.
+Below shows a string of a `variable definition {:cpp}` and its corresponding starting and ending point in
+the input
+string.
 
 ```
-start of let expr
-|       end of let expr
+start of decl
+|       end of decl
 |       |
 ↓       ↓
 01234556789
@@ -63,23 +78,23 @@ let x = 1;\eof
 Here, the starting point for the let expr has index 0 in
 the string, and the ending point for the let expr has index 7 in the string (the semicolon at 8 is not counted).
 
-From first principles, how can a compiler consolidate the location of these tokens: `let`, `x`, `=`, `1`
-together and understand that the `let expression` spans from 0 to 7?
+From first principles, how can a compiler consolidate the location of these tokens: `let{:cpp}`, `x{:cpp}`, `={:cpp}`, `1{:cpp}`
+together and understand that the declaration spans from 0 to 7?
 
-Let us define the class `Location`, `Reportee`
-and `Reporter` currently implemented as part of the compiler and see how all of these building blocks fit in together.
+Let us define the class `Location{:cpp}`, `Reportee{:cpp}`
+and `Reporter{:cpp}` currently implemented as part of the compiler and see how all of these building blocks fit in together.
 
 #### The Location class
 
-The `Location` class is basically two indices, indicating the location of a construct in the
+The `Location{:cpp}` class is basically two indices, indicating the location of a construct in the
 input string. The first index
-`source_start`
+`source_start{:cpp}`
 signifies the
-starting location of a component and vice versa for `source_end`. If a construct in the compiler (a token or an AST)
-only occupies a single space, then `source_start == source_end`.
+starting location of a component and vice versa for `source_end{:cpp}`. If a construct in the compiler (a token or an AST)
+only occupies a single space, then `source_start{:cpp}` == `source_end{:cpp}`.
 
-When two `Location`s come together to form one singular `Location`, we take the minimum of all
-`source_start` and the maximum of all the `source_end`. This is implemented as the pipe operator `|` for the class:
+When two `Location{:cpp}`s come together to form one singular `Location{:cpp}`, we take the minimum of all
+`source_start{:cpp}` and the maximum of all the `source_end{:cpp}`. This is implemented as the pipe operator `|{:cpp}` for the class:
 
 ```cpp
 // Combine two locations
@@ -96,12 +111,12 @@ void operator|=(const Location &other) {
 }
 ```
 
-Let's look at an example, given the string of a binary expression `x+y`, since `x` takes the `Location(0,0)`, `y`
-takes the `Location(2,2)`. The location for the resulting binary expression is `Location(min(0,2), max(0,2)) =
-Location(0, 2)`.
+Let's look at an example, given the string of a binary expression `x+y{:cpp}`, since `x{:cpp}` takes the `Location(0,0){:cpp}`, `y{:cpp}`
+takes the `Location(2,2){:cpp}`. The location for the resulting binary expression is `Location(min(0,2), max(0,2)) =
+Location(0, 2){:cpp}`.
 
-Another thing to notice is that the Location class offers modifiers on `source_end`, this is mostly useful in the
-case of lexing different token such as `+` and `+=` - often in sammine I have to backtrack and thus this is really
+Another thing to notice is that the Location class offers modifiers on `source_end{:cpp}`, this is mostly useful in the
+case of lexing different token such as `+{:cpp}` and `+={:cpp}` - often in sammine I have to backtrack and thus this is really
 helpful.
 #### The Reportee class
 
@@ -109,36 +124,36 @@ Given a location, we need a message to be associated with it, together with the 
 error? Is it a warning? Is this just to provide the programmer/compiler writer with some extra information for an
 informed decision?
 
-The class that takes care of this is the `Reportee` class. It defines different `ReportKind{:cpp}` such as `error`,
-`warn` or `diag` for error, warning or diagnostics respectively. It also provides abstraction such as `add_error()`,
-`add_warn()` or `add_diag` for said `ReportKind`s. The input to these `add_*()` call is a `Report` type, which is
+The class that takes care of this is the `Reportee{:cpp}` class. It defines different `ReportKind{:cpp}` such as `error{:cpp}`,
+`warn{:cpp}` or `diag{:cpp}` for error, warning or diagnostics respectively. It also provides abstraction such as `add_error(){:cpp}`,
+`add_warn(){:cpp}` or `add_diag{:cpp}` for said `ReportKind`s. The input to these `add_*(){:cpp}` call is a `Report{:cpp}` type, which is
 just a tuple of `ReportKind, Location, std::string`.
 
-Who's calling `add_error()` and `add_warn()`? Whichever phase the compiler needs to communicate with the programmer
-about, that phase will inherit from this `Reportee` class and use these utilities functions. The sections on Lexer and
+Who's calling `add_error(){:cpp}` and `add_warn()`? Whichever phase the compiler needs to communicate with the programmer
+about, that phase will inherit from this `Reportee{:cpp}` class and use these utilities functions. The sections on Lexer and
 Parser will go over these finer details.
 
-Besides this, the `Reportee` class also carries `size_t` of `error_count`, `warn_count` and
-`diag_count` to be used as statistics for the `Reporter` class, which is the topic of our next subsection.
+Besides this, the `Reportee{:cpp}` class also carries `size_t{:cpp}` of `error_count`, `warn_count{:cpp}` and
+`diag_count{:cpp}` to be used as statistics for the `Reporter{:cpp}` class, which is the topic of our next subsection.
 
 #### The Reporter class
 
-You must be wondering, just the linear `(source_start, source_end){:cpp}` indices is not enough, this result is just
+You must be wondering, just the linear `(source_start, source_end){:cpp}{:cpp}` indices is not enough, this result is just
 the
 bare
 minimum.
 Somehow the compiler needs to be able to map a location of `
-(source_start, source_end)` to the starting and ending rows and columns for easier visualization. The compiler also
+(source_start, source_end){:cpp}` to the starting and ending rows and columns for easier visualization. The compiler also
 needs to 'report' messages coming from different stages such as lexing, parsing or type checking. Keeping these
-details in mind, let's look at the `Reporter` class, who's in charge of these functionalities.
+details in mind, let's look at the `Reporter{:cpp}` class, who's in charge of these functionalities.
 
-The `Reporter` class is in charge taking a `Report`, which again is just a tuple of `ReportKind, Location,
-std::string` and print the message via stderr to the programmer.
+The `Reporter{:cpp}` class is in charge taking a `Report{:cpp}`, which again is just a tuple of `ReportKind,
+Location, std::string{:cpp}` and print the message via stderr to the programmer.
 
-It needs to know that for a `ReportKind`, which color should be printed. If the Location is of `Location(a, b)`, how
-does the `Reporter` class transform this to rows and columns? What if we also want some lines of code before and
-after the concerning line of code for more context, how would the `Reporter` do that?
-Maybe if the `Location` needed to be
+It needs to know that for a `ReportKind{:cpp}`, which color should be printed. If the Location is of `Location(a, b){:cpp}`, how
+does the `Reporter{:cpp}` class transform this to rows and columns? What if we also want some lines of code before and
+after the concerning line of code for more context, how would the `Reporter{:cpp}` do that?
+Maybe if the `Location{:cpp}` needed to be
 reported is one,
 or two,
 or
@@ -175,7 +190,7 @@ private:
     ...
 ```
 
-One thing to note is after we've recognized a token together with its `Location`, we update the Location of the
+One thing to note is after we've recognized a token together with its `Location{:cpp}`, we update the Location of the
 Lexer via `update_location(){:cpp}`.
 ```cpp
 void Lexer::updateLocation() {
@@ -184,7 +199,7 @@ void Lexer::updateLocation() {
 ```
 
 The reasoning for this is that if we don't do this, then in the following example, the
-token `+=` as well as the token `b` will have inaccurate locations, spanning from the start of the input to the
+token `+={:cpp}` as well as the token `b{:cpp}` will have inaccurate locations, spanning from the start of the input to the
 current index.
 
 ```
@@ -214,20 +229,42 @@ AST_construct(Token tok1, Token tok2, ...) {
 }
 ```
 
+In AST construction, we follow quite literally what the parser is parsing, for the following example: there is an
+AST of function with an AST
+of expr being nested in it,
+```
+fn f(x : f64) {
+    let y = 0;
+}
+```
+
+The code block then translates to this pseudocode c++ structure:
+
+```cpp
+class AST_Func { // this stands for fn f
+    std::string func_name // stands for the name `f`
+    std::vector<AST_TypedVar> function_arguments // this stands for `x : 64`
+    AST_Block function_block {
+        std::vector<AST::Expr> statements // this stands for a singular `let y = 0;`
+    }
+}
+```
+
+
 ## Study case: scope checking visitor
 
-Knowing how a `Location` plays out in a `lexer`'s token and `parser`'s AST is helpful, but so what? Operations on the
-AST such as scope checking or type checking also needs report on where a programmer went wrong, the responsibility
+Knowing how a `Location{:cpp}` plays out in a `lexer{:cpp}`'s token and `parser{:cpp}`'s AST is helpful, but so what? Operations on the
+AST such as scope checking or type checking also needs reporting on where a programmer went wrong, the responsibility
 is
 not just within the lexer
 and the parser.
 
 In this case, let's see how we
 can use
-`Location` to inform our programmers of some scope problem.
+`Location{:cpp}` to inform our programmers of some scope problem.
 
-In functional `sammine`, given a function, the compiler should error out if an unknown variable is referenced or if
-a variable is defined twice (the language prevents shadowing variable (just to make a case hahah)).
+In `sammine{:cpp}`, given a function, the compiler should error out if an unknown variable is referenced or if
+a variable is defined twice (the language prevents shadowing variable).
 
 Given the following code:
 ```cpp
@@ -236,19 +273,109 @@ fn f(x : f64) {
     ...
 }
 ```
-the compiler should error out since we don't allow shadowing of a variable.
+the compiler should error out since we don't allow shadowing of a variable:
 
+To do this, we set up an AST visitor first, where each kind of visitor visits an outlying AST `out{:cpp}` first, perform
+something (walk) on that AST ([preorder](https://en.wikipedia.org/wiki/Tree_traversal#Pre-order_implementation)), then
+visit its children AST, and then comes back and perform another action (walk) on the
+AST `out{:cpp}` ([postorder](https://en.wikipedia.org/wiki/Tree_traversal#Post-order_implementation)).
+
+For paraphrasing purposes, on how to [set up
+the AST visitor pattern](https://en.wikipedia.org/wiki/Visitor_pattern#Java_example), we
+separate the step between visiting an AST and performing the pre- and post-ordering operation on said AST.
+
+The action of perform the pre- and post-ordering operation on an AST is called walking and is implemented as
+`pre_order_walk{:cpp}` and `post_order_walk{:cpp}`.
+
+Without specified otherwise, readers (and programmers) can assume that this is the execution ordering for a visitor:
+
+```
+Visit(AST):
+    pre_order_walk(ast)
+    ~ recursively visit each element (sub AST) in the AST ~
+    post_order_walk(ast)
+```
+
+Following the assumption that a visit to AST will ultimately and recursively visit each element of the AST as well,
+the following sections on scope checking
+will only discuss the `pre_order_walk(){:cpp}` and the `post_order_walk(){:cpp}`
+### class Lexical Scope
+
+The Lexical Scope class stores information about variable declarations and can be used to query whether a certain
+variable (represented by a string) existed in a scope or not.
+
+For example, in a function `f{:cpp}`, if we haven't defined a variable `x{:cpp}` but we're using it, it is considered
+illegal in
+`sammine{:cpp}` .
+
+To do this, the scope class consists of a mapping `symbol_to_loc{:cpp}` between symbols to locations as well as a
+reference to
+the parent
+scope (just in case we want to implement some kind of lambda).
+
+The reason to have a mapping between symbols and locations is when we have a clash of symbol, we can error out and
+report on the location that is registered for the clashed symbol.
+### Visiting
+
+The scope visitor will, of course, visit different ASTs at play. However, what we're concerned with is how these
+orders affect what we want to do, in this case, scope checking. What we want to do next is to declare a few rules
+for the scope visitor to register a scope and check for variable shadowing in a scope. Since we have seperated the
+pattern into the visit step and the walk step.
+
+- `pre_order_walk(FunctionAST){:cpp}`: We push a newly created scope on the
+scope stack.
+-  `post_order_walk(FunctionAST){:cpp}`: We pop that stack out of the scope stack
+
+Let's talk about VarDefAST's walk first, after which the walk of PrototypeAST will make more sense. A VarDefAST
+basically just contains a variable definition:
+- `pre_order_walk(VarDefAST){:cpp}`: We check if a variable named `var{:cpp}` that we want to define has already been
+defined or not.
+If it has, then we query the location that previously defined `var{:cpp}` via `symbol_to_loc[var]{:cpp}` and `add_error(){:cpp}` both
+the previous location and the current `VarDefAST{:cpp}`'s location.
+-  `post_order_walk(VarDefAST){:cpp}`: Do nothing.
+
+Since `PrototypeAST{:cpp}`, the definition of a `FunctionAST{:cpp}`, contains a vector of variable declaration, we apply the same
+procedure that we have for `VarDefAST{:cpp}` on `PrototypeAST{:cpp}`.
+
+- `pre_order_walk(PrototypeAST){:cpp}` : Same as `pre_order_walk(VarDefAST){:cpp}` for its vector of variable declaration.
+- `post_order_walk(PrototypeAST){:cpp}`: Do nothing.
+### Result
+
+Yayyy! Now, if we call the scope checking visitor and let it recursively visit down to each function and
+consequently to each variable definition, we'll get something like this to the terminal for the following program.
+
+```
+# this is a function
+fn f(x : f64) {
+    # Use `let{:cpp}` keyword
+    let x = 0;
+    3 + 1;
+    x + 2;
+    x - 2;
+    x = 2;
+}
+
+```
+
+![scope_check_demo](/blogs/what_after_kalei_location_debug/scopecheck_error.png)
 
 
 ## What's next?
 
-## Ending words
-Implemented diagnostics for my compiler was really fun. I knew being able to abstract and reuse code is a really
-important aspect in software engineering, but it is especially essential in compiler. Different stages in a compiler
-needing diagnostics
-mean that unless I reuse code, repetitive concepts will keep popping up again (hence the Reportee class).
+That's it from me for now!
 
+Implementing diagnostics for my compiler was really fun. I knew that being able to abstract and reuse code is a
+crucial aspect of software engineering, and showcasing this in an actual project is a big deal for me. Different
+stages in a compiler needing diagnostics mean that unless I reuse code, repetitive concepts will keep popping up.
 
-## Resources
+There are still features to be desired and to be implemented. One of them is chaining diagnostic locations: figuring
+out a clean way to chain together multiple diagnostic would be really helpful for programmers.Another one is
+propagating the location info down to LLVM's codegen stage:
+this means that we need to somehow conform the `Location{:cpp}` class to LLVM's debugging location info class.
+Interested readers can read about the write up [here](https://llvm.org/docs/SourceLevelDebugging.html)
 
-Working in gccrs todo todo.
+After this quick demonstration, hopefully I have motivated you to now implement features like detecting the *use of
+not-yet-defined
+variables* and *use of not-yet-defined functions*.
+
+I hope you enjoyed the blog! (And the music recommendations as well—heheh.)
