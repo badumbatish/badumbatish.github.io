@@ -137,36 +137,81 @@ Besides this, the `Reportee{:cpp}` class also carries `size_t{:cpp}` of `error_c
 `diag_count{:cpp}` to be used as statistics for the `Reporter{:cpp}` class, which is the topic of our next subsection.
 
 #### The Reporter class
+The compiler
+needs to 'report' messages coming from different stages (Reportee) such as lexing, parsing or type checking, of
+which the `Reporter{:cpp}` class is in charge.
 
-You must be wondering, just the linear `(source_start, source_end){:cpp}{:cpp}` indices is not enough, this result is just
+Upon construction, it takes in a file name, the source code string, and the context radius. For example, if the context
+radius is 2, then if we're reporting on 1 line of code at line 3, we would print out from line 1 to line 5 (via the
+Locator class).
+
+Then it splits this source code string into different strings seperated by newlines, and construct a `std::vector{:cpp}
+` of pairs of the running length of the concatenation of all the strings up to the current string and the current
+string. This is implemented as `Reporter::get_diagnostic_data{:cpp}` and the result is stored as an intermediary
+ingredient for the `Locator{:cpp}` class:
+
+```cpp
+using DiagnosticData = std::vector<std::pair<std::size_t, std::string_view>>;
+DiagnosticData Reporter::get_diagnostic_data(std::string_view str) {
+  DiagnosticData result;
+  size_t start = 0;
+
+  while (start < str.size()) {
+    size_t end = str.find('\n', start);
+    if (end == std::string_view::npos) {
+      // Add the last substring if no more newlines are found
+      result.push_back({start, str.substr(start)});
+      break;
+    }
+    // Add the substring excluding the newline character
+    result.push_back({start, str.substr(start, end - start)});
+    start = end + 1;
+  }
+  return result;
+}
+```
+
+Then, the `Reporter{:cpp}` class takes in a `Report{:cpp}`, a tuple of `ReportKind, Location, std::string{:cpp}` and
+print the message via stderr to the programmer; it also knows that for a specific
+`ReportKind{:cpp}`, which color should be printed.
+
+#### The Locator class
+
+You must be wondering, just the linear `(source_start, source_end){:cpp}` indices is not enough, this result is just
 the
 bare
 minimum.
 Somehow the compiler needs to be able to map a location of `
-(source_start, source_end){:cpp}` to the starting and ending rows and columns for easier visualization. The compiler also
-needs to 'report' messages coming from different stages such as lexing, parsing or type checking. Keeping these
-details in mind, let's look at the `Reporter{:cpp}` class, who's in charge of these functionalities.
-
-The `Reporter{:cpp}` class is in charge taking a `Report{:cpp}`, which again is just a tuple of `ReportKind,
-Location, std::string{:cpp}` and print the message via stderr to the programmer.
-
-It needs to know that for a `ReportKind{:cpp}`, which color should be printed. If the Location is of `Location(a, b){:cpp}`, how
-does the `Reporter{:cpp}` class transform this to rows and columns? What if we also want some lines of code before and
-after the concerning line of code for more context, how would the `Reporter{:cpp}` do that?
+(source_start, source_end){:cpp}` to the starting and ending rows and columns for easier visualization.
+What if we also want some lines of code before and
+after the concerning line of code for more context, how would we do that?
 Maybe if the `Location{:cpp}` needed to be
 reported is one,
 or two,
 or
-three lines only, and it'd be very helpful to hone in and point out the mistake for the programmer. Let
+three lines only, and it'd be very helpful to hone in and point out the mistake for the programmer.
 
+To do this, the `Locator{:cpp}`, with the `source_start{:cpp}` and `source_end{:cpp}`, consecutively performs binary search on the
+`DiagnosticData{:cpp}`
+given by the `Reporter{:cpp}`,
+and
+returns the row and column needed for reporting.
 
-#### The Locator class
+This is why we're making `DiagnosticData{:cpp}` to be a vector of
+pairs where the first element is monotonically increasing: we can binary search on the first element of the pair to
+get out the index of the vector (which tells us what row it is), as well as the second element of said index (which
+allows us to print out the involving row).
 
-### Inferring to rows and columns
+It then subtracts and adds, respectively on these rows obtained from
+`source_start{:cpp}` and `source_end{:cpp}`, the provided `context_radius{:cpp}` to get the final rows and columns
+result,
+usable by the `Reporter{:cpp}` class.
+
 ## Tokens (and the lexer)
 
+Wewwww....
 Let's talk about the tokens and the lexer. When given the source code as a string (maybe via a file), the lexer
-scans from left to right on that string, each time updating the index on that input string and returning a token.
+scans from left to right on that string, each time incrementing the index on the string and returning a token.
 Thus, this is the basis of our class Location.
 
 In sammine, tokens are (loosely) modeled as:
@@ -231,7 +276,7 @@ AST_construct(Token tok1, Token tok2, ...) {
 
 In AST construction, we follow quite literally what the parser is parsing, for the following example: there is an
 AST of function with an AST
-of expr being nested in it,
+of expr being nested in it (as a list of expressions).
 ```
 fn f(x : f64) {
     let y = 0;
@@ -242,8 +287,10 @@ The code block then translates to this pseudocode c++ structure:
 
 ```cpp
 class AST_Func { // this stands for fn f
-    std::string func_name // stands for the name `f`
-    std::vector<AST_TypedVar> function_arguments // this stands for `x : 64`
+    AST_Prototype prototype {
+        std::string func_name // stands for the name `f`
+        std::vector<AST_TypedVar> function_arguments // this stands for `x : 64`
+    }
     AST_Block function_block {
         std::vector<AST::Expr> statements // this stands for a singular `let y = 0;`
     }
