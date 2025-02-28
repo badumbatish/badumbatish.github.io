@@ -19,7 +19,7 @@ What's next?"
 
 More specifically, the article is about adding primitive support for error reporting to the
 toy compiler. The article assumes some familiarity with lexer, parsing and the visitor pattern. Some familiarity with
-the parser and its abstract syntax tree (AST) construction from the [llvm tutorial](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/index.html)
+the parser and its abstract syntax tree ([AST](https://dev.to/balapriya/abstract-syntax-tree-ast-explained-in-plain-english-1h38)) construction from the [llvm tutorial](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/index.html)
 is helpful
 but not necessary.
 
@@ -48,8 +48,7 @@ programmer is proven to be extremely valuable: only providing to the programmer 
 The article then discusses a way to improve upon the llvm Kaleidoscope toy compiler in the diagnostic aspect for the
 user. The picture below shows the difference between a primitive and a somewhat sophisticated
 error
-diagnostics scheme and is are
-implemented as
+diagnostics scheme and is implemented as
 part of
 the sammine
 compiler.
@@ -146,7 +145,7 @@ Upon construction, it takes in a file name, the source code string, and the cont
 radius is 2, then if we're reporting on 1 line of code at line 3, we would print out from line 1 to line 5 (via the
 Locator class).
 
-Then it splits this source code string into different strings seperated by newlines, and construct a `std::vector{:cpp}`
+Then it splits this source code string into different strings seperated by newlines, and constructs a `std::vector{:cpp}`
 of pairs of the running sum lengths of all the strings up to the current string and the current
 string. This is implemented as `Reporter::get_diagnostic_data{:cpp}` and the result is stored as an intermediary
 ingredient for the `Locator{:cpp}` class:
@@ -418,7 +417,7 @@ crucial aspect of software engineering, and showcasing this in an actual project
 stages in a compiler needing diagnostics mean that unless I reuse code, repetitive concepts will keep popping up.
 
 There are still features to be desired and to be implemented. One of them is chaining diagnostic locations: figuring
-out a clean way to chain together multiple diagnostic would be really helpful for programmers.Another one is
+out a clean way to chain together multiple diagnostic would be really helpful for programmers. Another one is
 propagating the location info down to LLVM's codegen stage:
 this means that we need to somehow conform the `Location{:cpp}` class to LLVM's debugging location info class.
 Interested readers can read about the write up [here](https://llvm.org/docs/SourceLevelDebugging.html)
