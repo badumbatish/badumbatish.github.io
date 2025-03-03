@@ -51,8 +51,8 @@ export default async function Post(
             My resume is <a
             href={"https://badumbatish.github.io/about_me/Jasmine_Resume_Badumbatish.pdf"}>here</a>.
             If you know of a compiler related job posting, please feel free to contact me or refer me at either <a
-            href={"tanghocle456@gmail.com"}>tanghocle456@gmail.com</a> or <a
-            href={"jjasmine@berkeley.edu"}>jjasmine@berkeley.edu</a>.
+            href={"mailto:tanghocle456@gmail.com"}>tanghocle456@gmail.com</a> or <a
+            href={"mailto:jjasmine@berkeley.edu"}>jjasmine@berkeley.edu</a>.
             <hr></hr>
             <div dangerouslySetInnerHTML={{__html: html}}/>
         </article>

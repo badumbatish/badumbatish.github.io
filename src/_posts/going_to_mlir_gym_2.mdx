@@ -95,6 +95,7 @@ reading the two (closely related) definitions and seeing how they're defined to 
 up the
 confusion.
 
+- Terminologies: in this article, sometimes I refer to SSA variables as mlir::Value. This boils down to the same meaning.
 
 ## Introduction
 
@@ -111,7 +112,7 @@ registers. In this case, the linear register allocation project helps bring down
 the limit (of course they can just run less obfuscation hahahah).
 
 This article then draws the learning mainly from three sources: the text book Engineer a Compiler, and two papers
-from Mössenböck & Pfeiffer [MP02] and Wimmer & Franz [WF10].
+from Mössenböck & Pfeiffer [MP02](https://link.springer.com/content/pdf/10.1007/3-540-45937-5_17.pdf) and Wimmer & Franz [WF10](http://www.christianwimmer.at/Publications/Wimmer10a/Wimmer10a.pdf).
 
 Personally, this is also another opportunity for me to improve my compiler arsenal. Some undergraduate compiler
 classes leave this part out or only as part of a pen and paper exercise; knowing how to perform register allocation
@@ -120,9 +121,8 @@ would be a big push in the direction.
 
 All discussed concepts are driven from the links in the resources section.
 
-## Planning
 
-### Differences
+## Differences
 We're planning to improve the lowering of MjolnIR to smali. What this means is that instead of lowering directly
 from SSA variables to virtual registers with
 `template<class Aspect> class SmaliCounter{:cpp}`, we lower indirectly with our register
@@ -138,7 +138,7 @@ This new process introduces new stages that are clearly described and compared t
 
 [todo add mermaid here]
 
-### Steps
+## Steps
 
 To say that linear register allocation simply comprises 3 steps is a simplification. The three big steps eventually
 break down into substeps when a reader starts asking these questions of the sort: Where and how do
@@ -152,13 +152,19 @@ MLIR helping here? We'll
 
 It is important to note that although I follow the MP02 paper, some recaps for WF10 will also be noted.
 
-### Phis in register allocation
+## Phis in register allocation (4.1)
 
-The nuisance of $\phi$s is rooted in the idea that if two basic blocks $B_1$ and $B_2$ with their respective SSA
+The (natural) nuisance of $\phi$s is rooted in the idea of false registers contention. If two basic blocks $B_1$ and $B_2$ with their respective SSA
 variables $b_1$ and $b_2$ both connect at basic block $C$ with the $\phi_{c}$, the two SSA variables (and the $\phi$)
-should really be in the same register, right??
+all refers to the same entity. In this case, even though the live range of $b_1$ and $b_2$ clashes together,
+they should still share the same register.
 
-In this context, different papers (MP02 and WF10) handle this problem differently. Expectedly, the two papers made
+To navigate this, we often perform a preprocessing step called copy generation or move generation: add a proxy move instruction
+and introduce new SSA variables to make sure that $b_1$ and $b_2$ doesn't clash anymore, then perform a step called register coalesce to join them together.
+
+
+In this context, different papers (MP02 and WF10) handle this problem differently in terms of preprocessing the graph.
+Expectedly, the two papers made
 no mention of MLIR (of course hahaa).
 
 Idea: The idea is that in MLIR, we can use MjolnIR's move op on these.
@@ -173,48 +179,14 @@ generating the virtual registers for $\phi_{c}$ and produce redundant moves as t
 todo: show the graph of B1 and B2 flowing into C.
 todo: discuss Brock and then wimmer.
 
-```cpp
-// todo: this should be llvm::Expected or llvm::Result i don't remember
-void standardize(MethodOp& region) {
-    Block *n = nullptr;
-    for (auto &b : region) {
-        for (auto &p : b.getPredecessors()) {
-            if (llvm::size(b.getPredecessors()) > 1 and p.getNumSuccessors() > 1) {
-                n = region.addBlock();
-                // todo: how to glue from p to n, and then n to b,
-                // this function is not implemented rn
-                // clue: something terminator
-                // rename so that p's terminator arg that previously pointing to b is now pointing to n
-                //
-                glue_from_between_to(p, n, b);
-            } else {
-                n = p;
-            }
+## Topo blocks and numbering (4.2)
 
-            for (auto &arg: b.getArguments()) {
-                // rename your block arguments, but this is weird since the paper is awkwardly phis
-            }
-        }
-    }
-}
-
-// todo: this should be llvm::Expected or llvm::Result i don't remember
-void glue_from_between_to(Block* from, Block* between, Block* to) {
-    // handling from here
-
-    // handling between here
-
-    // handling to here
-}
-
-void
-```
-
-### Topo blocks and numbering
+In order for a live range to make sense, we need to know where (or when) does an SSA value start living and where (or when)
+does an SSA value ends its life. To do this, we need to number the instruction topologically.
 
 In linear scan register allocation, after we have handled our $\phi$s as prescribed above, we then flatten the CFG
 into a list of
-basic blocks.
+basic blocks topologically. In a DAG, this reduces to Reverse Post Order traversal, or RPO for short.
 
 The reason for this is todo: numbering the op
 
@@ -273,19 +245,38 @@ SmaliCounter<Operation*> numberOperation(SetVector<Block*> blocks) {
 
 - Construct the
 
-### Building live intervals
+## Building live intervals (4.3)
 
+In MP02, the paper starts off with what it means for an SSA variable to be live. Since we know that for a variable to be
+used in block b, it must have been defined in either b or one of its predecessors p.
+
+Let's call $r_{v,b}$ the live range
+of an SSA variable in a block. MP02 describes different intricacies in handling this:
+- An algorithm on calculating live ranges
+- How the live range of a $\phi$ variable should be.
 
 
 TODO: say how phi's hard to handle
+TODO: you really should define a live range class.
+TODO: Talk about how the MP02 paper conflates the live range of an instruction with an SSA value.
 ```cpp
 using LRStart = uint32_t;
 using LREnd= uint32_t;
 using LiveRange = std::pair<LRStart, LREnd>; // From above description
 
 // todo: do add range here
-void add_range(ins i, block b, end: int32_t) {
+// todo: readers probably find the algorithm too complicated. you might wanna draw some kind of diagram.
+void add_range(ins i, ssa value, block b, end: int32_t) {
+    // assume that ssa value ends its living at `end`
+    // and that the instruction i uniquely defines the ssa value (of course cause its ssa duh hahaha)
     // jasmine plz do this
+
+    if (b.contains_instruction(i)) {
+        live_interval[value].combine_range(numbering_of(i), end);
+    } else
+        live_interval[value].combine_range(numbering_of(b.begin()), end);
+
+    // For example, the ranges [1,3[, [3,7[ are merged into a single range [1,7[
 }
 DenseMap<Value, Vector<LiveRange>> build_intervals(Region &region) {
     // TODO: i know my ass will need the smali counter again soon. Maybe split the function here.
@@ -293,9 +284,23 @@ DenseMap<Value, Vector<LiveRange>> build_intervals(Region &region) {
     // TODO: We get the value from the operand like this
 
     for b in blocks:
-        for op in b:
-            if v = op.getValue() then
-                smali_counter.getCounter(v);
+        live = {}
+
+    for b in blocks:
+        for s in b.get_successors():
+        b.live = b.live.union(s.live)
+        for each argument arg of the block s:
+            b.live = b.live - arg
+        for each terminator t  in b:
+            b.live = b.live union t's jump argument input
+        for each ssa value v in live do:
+            add_range(get_defining_instruction(v), v, b, numbering_of(b.end()) + 1)
+        for instruction i in b.reverse():
+            b.live = b.live - i.defining_result()
+            for each op in i:
+            if op not in live:
+                b.live = b.live union op
+                add_range(get_defining_instruction(op), op, b, numbering_of(i))
 
     // todo: we do this because although we visualize ssa as having an inherent counter, it is not visible in the
 mlir api
@@ -304,6 +309,27 @@ mlir api
 
 todo: Note that we will not directly output any register. What we'll do is we'll have a 2D hash map that given an
 instruction and an SSA value, we get out some new virtual registers that is not dependent on the smali counter.
+## Coalescing arguments
+
+mlir::Value has `hasOneUse()`
+
+```
+if op = move a <- b && b.hasOneUse():
+    union(a, b, uf)
+
+
+mlir::Value find(mlir::Value v
+void union(mlir::Value a, mlir::Value b, UF uf) {
+
+}
+```
+
+## Assigning registers
+
+In greedily assigning SSA variables to
+
+
+todo: no concept of spilled.
 ## Obstacles
 
 ## Resources
