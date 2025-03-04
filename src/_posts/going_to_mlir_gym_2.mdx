@@ -95,7 +95,8 @@ reading the two (closely related) definitions and seeing how they're defined to 
 up the
 confusion.
 
-- Terminologies: in this article, sometimes I refer to SSA variables as mlir::Value. This boils down to the same meaning.
+- Terminologies: in this article, sometimes I refer to SSA variables as mlir::Value. This boils down to the same
+concept: a variable that is defined only once (and cannot be changed).
 
 ## Introduction
 
@@ -326,10 +327,50 @@ void union(mlir::Value a, mlir::Value b, UF uf) {
 
 ## Assigning registers
 
-In greedily assigning SSA variables to
+In greedily assigning SSA variables to registers -> needs priority queue to always get the lowest starting pointer
+interval available.
 
+note: need a register counter class, need composition for customized set.
+
+note: need dedicated class for live range, it needs to optionally store a reg. It needs to have `bool ends_before
+(LiveRange other)` and `bool no_overlap()`
+
+
+note: set in C++ is binary tree, we can compromise speed of pq for ease of algo impl
+
+4 different collections:
+- unhandled (set): all intervals that start after cur.beg
+- handled (set) : all intervals end before cur.beg
+- active (set): all intervlas where one of the ranges overlap cur.beg
+- inactive (set): all intervals where cur.beg falls into one of their holes
+
+todo: explain to readers meaning of "ends before" versus "does not overlap"
+
+
+```cpp
+LinearScan() {
+    auto unhandled = get_ranges_from(build_intervals(method))
+    DenseSet active, inactive, handled;
+
+
+    while (!unhanlded.empty()) {
+        auto curr = unhandled.top(); unhandled.pop();
+
+        for (auto i : active) {
+            // todo
+        }
+        for (auto i : inactive) {
+            // todo
+        }
+    }
+}
+```
 
 todo: no concept of spilled.
+
+todo: if we don't assign mem loc to an SSA, we need to prove that assign mem loc is the same as not assigning mem loc.
+
+
 ## Obstacles
 
 ## Resources
