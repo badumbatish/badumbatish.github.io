@@ -47,6 +47,8 @@ export default async function Post(
             <div className="flex justify-start text-xl font-bold underline">
                 <h4>{date}</h4>
             </div>
+
+{/*
             <div className="flex font-bold">Edit:</div>
             My resume is <a
             href={"https://badumbatish.github.io/about_me/Jasmine_Resume_Badumbatish.pdf"}>here</a>.
@@ -54,6 +56,7 @@ export default async function Post(
             href={"mailto:tanghocle456@gmail.com"}>tanghocle456@gmail.com</a> or <a
             href={"mailto:jjasmine@berkeley.edu"}>jjasmine@berkeley.edu</a>.
             <hr></hr>
+*/}
             <div dangerouslySetInnerHTML={{__html: html}}/>
         </article>
         </div>
