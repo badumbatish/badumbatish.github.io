@@ -35,7 +35,7 @@ export default function RootLayout({
     <UpToTopButton></UpToTopButton>
 
     <footer className="footer self-center justify-center gap-2 pt-4 items-center italic ">
-        <p>I&#39;m looking for new grad compiler work, please email at jjasmine@berkeley.edu</p>
+        {/*<p>I&#39;m looking for new grad compiler work, please email at jjasmine@berkeley.edu</p>*/}
         <p>Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)</p>
     </footer>
 
