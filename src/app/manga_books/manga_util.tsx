@@ -56,12 +56,12 @@ export function QuickReadButton({ content, children }: {content: string,  childr
             </button>
 
             {isVisible && (
-                <div className="fixed inset-0 bg-black/30 backdrop-blur-md flex items-center justify-center overflow-hidden z-50">
+                <div className="fixed inset-0 bg-black/30 backdrop-blur-md flex items-center justify-center overflow-hidden z-50 backdrop-brightness-75">
 
                     <article
                         ref={textboxRef}
-                        className={`bg-white p-4 rounded-lg shadow-lg w-2/4  overflow-y-auto 
-                                   transition-all duration-300 ease-in-out
+                        className={`bg-white p-4 rounded-lg  shadow-lg w-3/4 md:w-2/4  overflow-y-auto 
+                                   transition-all duration-300 ease-in-out brightness-100
                                    ${isAnimating ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
                         style={{maxHeight: "80vh", overflowY: "auto"}}
                     >
