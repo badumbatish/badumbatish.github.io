@@ -4,6 +4,7 @@ import {IntroSection, LeftMainCard, RightMainCard} from "@/components/IntroSecti
 import ExperienceSection from "@/components/ExperienceSection";
 import {ProjectSection, ProjectCard} from "@/components/ProjectSection";
 import {TimePiece, TimeLine} from "@/components/TimeLineRelated";
+import {BlogArticleCard, BlogArticleSection} from "@/components/BlogArticleCard";
 
 export default function Home() {
     let sectionClassName = "h-full w-full flex flex-col font-mono gap-10";
@@ -14,6 +15,11 @@ export default function Home() {
                 <LeftMainCard></LeftMainCard>
                 <RightMainCard></RightMainCard>
             </IntroSection>
+
+            <BlogArticleSection>
+               <BlogArticleCard blog_title={"Blog"} introduction={"Technical blogs and non manga/book articles."} link={"/blog/"}></BlogArticleCard>
+                <BlogArticleCard blog_title={"JasRead"} introduction={"Reviews/Recommendations for manga/books"} link={"/manga_books/"}></BlogArticleCard>
+            </BlogArticleSection>
 
             <ExperienceSection className={sectionClassName}>
                 <TimeLine>

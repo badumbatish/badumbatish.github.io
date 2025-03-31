@@ -7,3 +7,9 @@ export interface ExperienceInfo {
     img_name? : string;
     img_link? : string;
 }
+
+export interface JazzReadInfo {
+    blog_title: string;
+    introduction: string;
+    link : string;
+}

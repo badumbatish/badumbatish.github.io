@@ -117,12 +117,11 @@ const LeftMainCard = () => {
 
                         <LinkButton link={"https://github.com/badumbatish/"}
                                     linkName={"GitHub"}></LinkButton>
-                        <LinkButton link={"/blog"} linkName={"Blog"}></LinkButton>
                         <LinkButton link={"https://badumbatish.github.io/about_me/Jasmine_Resume_Badumbatish.pdf"} linkName={"resume.pdf"}></LinkButton>
                         <LinkButton link={"https://leetcode.com/badumbatish/"}
                                     linkName={"Leetcode"}></LinkButton>
                         <LinkButton link={"https://gcc-rust.zulipchat.com/"} linkName={"gccrs Zulip"}></LinkButton>
-                        <LinkButton link={"https://bsky.app/profile/badumbatish.bsky.social"} linkName={"bluesky"}></LinkButton>
+                        {/*<LinkButton link={"https://bsky.app/profile/badumbatish.bsky.social"} linkName={"bluesky"}></LinkButton>*/}
 
                     </div>
                 </div>
