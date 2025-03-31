@@ -3,7 +3,7 @@ import matter from "gray-matter";
 import path from "node:path";
 
 import fs from "fs";
-import {QuickReadButton} from "@/app/manga_books/manga_util";
+import {QuickReadButton} from "@/app/jas_reads/manga_util";
 import remarkMdx from "remark-mdx";
 import {unified} from "unified";
 import remarkParse from "remark-parse";
