@@ -134,10 +134,11 @@ export default async function Page() {
                 <div className={"mx-auto text-2xl font-bold"}>Manga</div>
                 {posts.map(( post) => (
                         <div key={post.slug} className="bg-gray-50 py-4 px-4 my-2 rounded-md">
-                            <div className={"flex flex-row space-x-4"}>
-                                <QuickReadButton content={post.text}>
+                            <div className={"flex flex-col space-x-4 sm:flex-row"}>
+                                <QuickReadButton content={post.text} >
                                     <Image src={post.imageUrl} alt={post.slug} width={85} height={80}
-                                           className={"shadow-2xl rounded-md hover:border-2 hover:border-black hover:rounded-md hover:scale-150"}/>
+                                           className={"shadow-2xl rounded-md mb-2 sm:mb-0 hover:border-2 hover:border-black hover:rounded-md hover:scale-150"}>
+                                    </Image>
                                 </QuickReadButton>
                                 <div className={"pl-4 border-l-slate-800 border-double border-r-0 border-y-0 border-4 flex flex-col justify-center"}>
                                     <QuickReadButton content={post.text}>
