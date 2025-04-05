@@ -17,8 +17,8 @@ export default function Home() {
             </IntroSection>
 
             <BlogArticleSection>
-               <BlogArticleCard blog_title={"Blog"} introduction={"Technical blogs and non manga/book articles."} link={"/blog/"}></BlogArticleCard>
-                <BlogArticleCard blog_title={"JasRead"} introduction={"Reviews/Recommendations for manga/books"} link={"/jas_reads/"}></BlogArticleCard>
+               <BlogArticleCard blog_title={"(Tech) Blog"} introduction={"Technical blogs."} link={"/blog/"}></BlogArticleCard>
+                <BlogArticleCard blog_title={"Media"} introduction={"Reviews/Recommendations for media/books/media"} link={"/media/"}></BlogArticleCard>
             </BlogArticleSection>
 
             <ExperienceSection className={sectionClassName}>

@@ -3,7 +3,7 @@ import matter from "gray-matter";
 import path from "node:path";
 
 import fs from "fs";
-import {QuickReadButton} from "@/app/jas_reads/manga_util";
+import {QuickReadButton} from "@/app/media/media_util";
 import remarkMdx from "remark-mdx";
 import {unified} from "unified";
 import remarkParse from "remark-parse";
@@ -14,6 +14,9 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeToc from "@jsdevtools/rehype-toc";
+import {hover_border} from "@/components/tailwind_const";
+import Link from "next/link";
+import React from "react";
 
 const typeStyles = new Map([
     ["trans", (text : string) => (
@@ -58,7 +61,7 @@ interface MangaPost {
 }
 
 async function getMangaPosts() {
-    const postsDirectory = path.join(process.cwd(), "src/_manga");
+    const postsDirectory = path.join(process.cwd(), "src/_media");
     const postFolders = fs.readdirSync(postsDirectory);
 
     const posts = postFolders.map(async (folder) => {
@@ -77,10 +80,11 @@ async function getMangaPosts() {
             slug: folder,
             title: data.title,
             tags: data.tags.split(','),
+            type: data.type,
             text: String(html),
             date : `${isoString.slice(0, 10)}`,
             author : data.author,
-            imageUrl: `/manga/${folder}/picture.png`, // Assuming you serve static images from public or proper route
+            imageUrl: `/media/${folder}/picture.png`, // Assuming you serve static images from public or proper route
         };
     });
 
@@ -124,42 +128,58 @@ export default async function Page() {
     
     return (
         <div className="py-12 flex flex-col items-center  justify-items-start mx-auto ">
-            <h1 className="text-4xl">JasRead</h1>
-            <p className="pt-2">Hi everyone, welcome to the manga/books corner; this is where I document and give reviews on
+            <h1 className="text-4xl">Media</h1>
+            <p className="pt-2">Hi everyone, welcome to the manga/books/media corner; this is where I document and give
+                recommendations/reviews on
                 whatever note-worthy manga or books ive been reading.
             </p>
             <br/>
+
             <div className={"p-4 rounded-lg flex flex-col"}>
-                <div className={"mx-auto text-2xl font-bold"}>Manga</div>
-                {posts.map(( post) => (
-                        <div key={post.slug} className="bg-gray-50 py-4 px-4 my-2 rounded-md">
-                            <div className={"flex flex-col space-x-4 sm:flex-row"}>
-                                <QuickReadButton content={post.text} >
-                                    <Image src={post.imageUrl} alt={post.slug} width={85} height={80}
-                                           className={"shadow-2xl rounded-md mb-2 sm:mb-0 hover:border-2 hover:border-black hover:rounded-md hover:scale-150"}>
-                                    </Image>
+                <div className={"mx-auto text-2xl font-bold"}>Media</div>
+                {posts.map((post) => (
+                    <div key={post.slug} className={`rounded-lg p-4 border-2 border-blue-300 gap-2 my-2 ${hover_border}`}>
+                        <div className={"flex flex-col space-x-4 sm:flex-row"}>
+                            <QuickReadButton content={post.text}>
+                                <Image src={post.imageUrl} alt={post.slug} width={85} height={80}
+                                       className={"z-20 mx-auto border-blue-400 border-2 hover:border-4 bg-blue-50 shadow-md " +
+                                           "rounded-md mb-2 sm:mb-0  hover:border-blue"}
+                                         >
+                                </Image>
+                            </QuickReadButton>
+                            <div
+                                className={"pl-4 border-l-slate-800 border-double border-r-0 border-y-0 py-2 border-4 flex flex-col justify-center"}>
+                                <QuickReadButton content={post.text}>
+                                    <h2 className={"font-bold text-lg pb-2 hover:underline"}>{post.title}</h2>
                                 </QuickReadButton>
-                                <div className={"pl-4 border-l-slate-800 border-double border-r-0 border-y-0 border-4 flex flex-col justify-center"}>
-                                    <QuickReadButton content={post.text}>
-                                        <h2 className={"font-bold text-lg pb-2 hover:underline"}>{post.title}</h2>
-                                    </QuickReadButton>
-                                    <div className={"flex flex-row text-md uppercase rounded-md pl-4 pb-2"}>
-                                        <div className={"underline"}>
-                                            Tags:
-                                        </div>
-                                        {post.tags.map((manga_tag : string) => (stylizeMangaTags(manga_tag)))}
+                                <div className={"flex flex-row text-md  rounded-md pl-4 pb-2"}>
+                                    <div className={"uppercase underline"}>
+                                        Type
                                     </div>
-                                    <div>
+                                    :
+                                    <div className={"first-letter:capitalize pl-2"}>
+                                        {post.type}
+                                    </div>
+                                </div>
+                                <div className={"flex flex-row text-md uppercase rounded-md pl-4 pb-2"}>
+                                    <div className={"uppercase underline"}>
+                                        Tags
+                                    </div>
+                                    :
+                                    {post.tags.map((manga_tag: string) => (stylizeMangaTags(manga_tag)))}
+                                </div>
+                                <div>
                                         <span>
                                         <span className={"text-sm font-bold"}>Author(s): </span>
-                                             {post.author}
+                                            {post.author}
                                         </span>
-                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 ))}
-        </div></div>
+            </div>
+        </div>
     )
 }
 
