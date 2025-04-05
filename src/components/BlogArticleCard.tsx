@@ -28,7 +28,7 @@ export const BlogArticleCard: React.FC<JazzReadInfo> = ({blog_title, introductio
                                 ${hover_border}`}>
             <div className={"flex flex-col md:flex-row justify-start content-s px-4 py-4 mx-auto"}>
                     <div className="mx-3 lg:my-auto text-xl font-bold hover:underline ">
-                        <Link href={link} rel="noopener noreferrer" target="_blank">
+                        <Link href={link}>
                         {blog_title}↙
                         </Link>
                     </div>

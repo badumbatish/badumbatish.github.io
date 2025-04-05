@@ -104,7 +104,6 @@ async function getParserPre() {
         .use(rehypeExternalLinks, { rel: ['nofollow'], target: '_blank'})
         .use(rehypeSlug)
         .use(rehypeAutolinkHeadings)
-        .use(rehypeToc)
 
     return result;
 }
