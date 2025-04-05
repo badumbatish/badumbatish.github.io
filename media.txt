@@ -1,0 +1,187 @@
+1:"$Sreact.fragment"
+2:I[8173,["173","static/chunks/173-09f9817a8afa96b6.js","970","static/chunks/970-1bb5a11d460674d4.js","177","static/chunks/app/layout-8efea218579f6a1a.js"],""]
+3:I[5244,[],""]
+4:I[3866,[],""]
+5:I[1168,["173","static/chunks/173-09f9817a8afa96b6.js","970","static/chunks/970-1bb5a11d460674d4.js","177","static/chunks/app/layout-8efea218579f6a1a.js"],"default"]
+7:I[6213,[],"OutletBoundary"]
+9:I[6213,[],"MetadataBoundary"]
+b:I[6213,[],"ViewportBoundary"]
+d:I[4835,[],""]
+:HL["/_next/static/media/7385e8d9d3c5518f-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/_next/static/css/d9bc7f7efd1039ef.css","style"]
+0:{"P":null,"b":"AcTKuSBNdC9qYuaBBazz_","p":"","c":["","media"],"i":false,"f":[[["",{"children":["media",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/d9bc7f7efd1039ef.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","$L2",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[],[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L5",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]}]]}]}]]}],{"children":["media",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","media","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6",null,["$","$L7",null,{"children":"$L8"}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","eHepiTCw8O8y-WZs0hZS5",{"children":[["$","$L9",null,{"children":"$La"}],["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]]}],false]],"m":"$undefined","G":["$d","$undefined"],"s":false,"S":true}
+c:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"jjasmine"}],["$","meta","2",{"name":"description","content":"Built with NextJS, TailwindCSS, and a tonnn of loveee :)"}],["$","link","3",{"rel":"icon","href":"/_next/static/media/pfp5.0daa0f7d.jpeg"}]]
+8:null
+e:I[5332,["970","static/chunks/970-1bb5a11d460674d4.js","49","static/chunks/app/media/page-15662046a4f56429.js"],"QuickReadButton"]
+10:I[7970,["970","static/chunks/970-1bb5a11d460674d4.js","49","static/chunks/app/media/page-15662046a4f56429.js"],"Image"]
+f:Tdb3,<h2 id="introduction"><a aria-hidden="true" tabindex="-1" href="#introduction"><span class="icon icon-link"></span></a>Introduction</h2>
+<p>From CD Projekt RED:</p>
+<blockquote>
+<p>CD Projekt RED is proud to present The Witcher 3: Wild Hunt "Killing Monsters" cinematic trailer to the public for
+the first time, offering a thrilling glimpse into the morally ambiguous universe of Geralt of Rivia.
+"Killing Monsters" portrays the cruel and gritty world of The Witcher and foreshadows the mature mood of the upcoming story-driven RPG, The Witcher 3: Wild Hunt. The game is scheduled to launch May 19, 2015 and will be available on Xbox One, PC and PlayStation®4.</p>
+</blockquote>
+<p>The Witcher 3: <a href="https://www.youtube.com/watch?v=c0i88t0Kacs&#x26;pp=ygUNdGhlIHdpdGNoZXIgMw%3D%3D" rel="nofollow" target="_blank">https://www.youtube.com/watch?v=c0i88t0Kacs&#x26;pp=ygUNdGhlIHdpdGNoZXIgMw%3D%3D</a></p>
+<p>Also from CD Projekt RED:</p>
+<blockquote>
+<p>The Witcher series returns with a new protagonist. CD Projekt Red's new RPG saga replaces Geralt with Ciri as the
+playable character to lead us into a new fantasy saga. From the developers of The Witcher 3: Wild Hunt and Cyberpunk 2077, CDPR give us our first glimpse into the world of The Witcher 4 as Ciri takes on a fearsome monster called the Bauk in this trailer pre-rendered in a custom build of Unreal Engine 5.</p>
+</blockquote>
+<p>The Witcher 4: <a href="https://www.youtube.com/watch?v=yWMu6JeT2g8&#x26;pp=ygUNdGhlIHdpdGNoZXIgNA%3D%3D" rel="nofollow" target="_blank">https://www.youtube.com/watch?v=yWMu6JeT2g8&#x26;pp=ygUNdGhlIHdpdGNoZXIgNA%3D%3D</a></p>
+<h2 id="quotes-from-the-witcher-3"><a aria-hidden="true" tabindex="-1" href="#quotes-from-the-witcher-3"><span class="icon icon-link"></span></a>Quotes from The Witcher 3:</h2>
+<p>From @daviskay4518</p>
+<pre><code>"Tough hunt?"
+"Tougher than yours."
+Fucking rekt
+</code></pre>
+<p>From @KingOfMilfgaard:</p>
+<pre><code>"W-w-what are you doing?!"
+
+"Killing. monsters."
+
+ Fuckin coolest line
+</code></pre>
+<p>From @shubhamnema8281</p>
+<pre><code>Came back here after Witcher 4 reveal trailer, I must say the legacy will live forever.
+</code></pre>
+<p>From @omnuu</p>
+<blockquote>
+<p>"Just make it quick Geralt!"
+Pissed Vesemir trying to get to White Orchard but geralt stops to kill thugs every 50m.</p>
+</blockquote>
+<h2 id="quotes-from-the-witcher-4"><a aria-hidden="true" tabindex="-1" href="#quotes-from-the-witcher-4"><span class="icon icon-link"></span></a>Quotes from The Witcher 4:</h2>
+<p>From @herbieherbs</p>
+<blockquote>
+<p>Me looking at my PC
+My PC: I'm tired boss.</p>
+</blockquote>
+<p>From @SaltyCinder</p>
+<blockquote>
+<p>I sincerely hope that we get more dangerous Witcher contracts.
+Ones where hunting a monster actually makes you feel as if you are chasing down something really dangerous.
+Where we could go all out on sniffing out clues, determining
+which monsters it could be through a multiple choice mechanic and prepare accordingly.</p>
+</blockquote>
+<p>From @gabthegreat01</p>
+<pre><code>Getting a reminded of the Witcher 3 trailer at the end there
+“W-what are you doing?”
+“Killing monsters...”
+</code></pre>
+<p>From @Alesz15</p>
+<blockquote>
+<p>Please guys. For the love of god.
+Release this when its ready. Donn give this game the release Cyberpunk treatment. We all will wait patiently.</p>
+</blockquote>
+<p>From @thomasgregory8397</p>
+<blockquote>
+<p>That was a 6 minute trailer, i was so engrossed in it i thought it was 2 minutes</p>
+</blockquote>11:Tdb3,<h2 id="introduction"><a aria-hidden="true" tabindex="-1" href="#introduction"><span class="icon icon-link"></span></a>Introduction</h2>
+<p>From CD Projekt RED:</p>
+<blockquote>
+<p>CD Projekt RED is proud to present The Witcher 3: Wild Hunt "Killing Monsters" cinematic trailer to the public for
+the first time, offering a thrilling glimpse into the morally ambiguous universe of Geralt of Rivia.
+"Killing Monsters" portrays the cruel and gritty world of The Witcher and foreshadows the mature mood of the upcoming story-driven RPG, The Witcher 3: Wild Hunt. The game is scheduled to launch May 19, 2015 and will be available on Xbox One, PC and PlayStation®4.</p>
+</blockquote>
+<p>The Witcher 3: <a href="https://www.youtube.com/watch?v=c0i88t0Kacs&#x26;pp=ygUNdGhlIHdpdGNoZXIgMw%3D%3D" rel="nofollow" target="_blank">https://www.youtube.com/watch?v=c0i88t0Kacs&#x26;pp=ygUNdGhlIHdpdGNoZXIgMw%3D%3D</a></p>
+<p>Also from CD Projekt RED:</p>
+<blockquote>
+<p>The Witcher series returns with a new protagonist. CD Projekt Red's new RPG saga replaces Geralt with Ciri as the
+playable character to lead us into a new fantasy saga. From the developers of The Witcher 3: Wild Hunt and Cyberpunk 2077, CDPR give us our first glimpse into the world of The Witcher 4 as Ciri takes on a fearsome monster called the Bauk in this trailer pre-rendered in a custom build of Unreal Engine 5.</p>
+</blockquote>
+<p>The Witcher 4: <a href="https://www.youtube.com/watch?v=yWMu6JeT2g8&#x26;pp=ygUNdGhlIHdpdGNoZXIgNA%3D%3D" rel="nofollow" target="_blank">https://www.youtube.com/watch?v=yWMu6JeT2g8&#x26;pp=ygUNdGhlIHdpdGNoZXIgNA%3D%3D</a></p>
+<h2 id="quotes-from-the-witcher-3"><a aria-hidden="true" tabindex="-1" href="#quotes-from-the-witcher-3"><span class="icon icon-link"></span></a>Quotes from The Witcher 3:</h2>
+<p>From @daviskay4518</p>
+<pre><code>"Tough hunt?"
+"Tougher than yours."
+Fucking rekt
+</code></pre>
+<p>From @KingOfMilfgaard:</p>
+<pre><code>"W-w-what are you doing?!"
+
+"Killing. monsters."
+
+ Fuckin coolest line
+</code></pre>
+<p>From @shubhamnema8281</p>
+<pre><code>Came back here after Witcher 4 reveal trailer, I must say the legacy will live forever.
+</code></pre>
+<p>From @omnuu</p>
+<blockquote>
+<p>"Just make it quick Geralt!"
+Pissed Vesemir trying to get to White Orchard but geralt stops to kill thugs every 50m.</p>
+</blockquote>
+<h2 id="quotes-from-the-witcher-4"><a aria-hidden="true" tabindex="-1" href="#quotes-from-the-witcher-4"><span class="icon icon-link"></span></a>Quotes from The Witcher 4:</h2>
+<p>From @herbieherbs</p>
+<blockquote>
+<p>Me looking at my PC
+My PC: I'm tired boss.</p>
+</blockquote>
+<p>From @SaltyCinder</p>
+<blockquote>
+<p>I sincerely hope that we get more dangerous Witcher contracts.
+Ones where hunting a monster actually makes you feel as if you are chasing down something really dangerous.
+Where we could go all out on sniffing out clues, determining
+which monsters it could be through a multiple choice mechanic and prepare accordingly.</p>
+</blockquote>
+<p>From @gabthegreat01</p>
+<pre><code>Getting a reminded of the Witcher 3 trailer at the end there
+“W-what are you doing?”
+“Killing monsters...”
+</code></pre>
+<p>From @Alesz15</p>
+<blockquote>
+<p>Please guys. For the love of god.
+Release this when its ready. Donn give this game the release Cyberpunk treatment. We all will wait patiently.</p>
+</blockquote>
+<p>From @thomasgregory8397</p>
+<blockquote>
+<p>That was a 6 minute trailer, i was so engrossed in it i thought it was 2 minutes</p>
+</blockquote>14:T514,<h2 id="introduction"><a aria-hidden="true" tabindex="-1" href="#introduction"><span class="icon icon-link"></span></a>Introduction</h2>
+<p>Hello everyone, this post for the HITMAN - E3 2015 trailer will present a link and then some quotes from the Youtube comments :)</p>
+<p><a href="https://www.youtube.com/watch?v=LVqxMCZ3u6k&#x26;ab_channel=PlayStation" rel="nofollow" target="_blank">https://www.youtube.com/watch?v=LVqxMCZ3u6k&#x26;ab_channel=PlayStation</a></p>
+<p>From @katlegopolelo7800:</p>
+<blockquote>
+<p>when you realise this trailer is 100x better than both hitman movies released</p>
+</blockquote>
+<p>From @bizzzzle:</p>
+<blockquote>
+<p>The breathing at the end was the best bit, how fast he regained his normal breathing, shows the ability to kill in an instant.</p>
+</blockquote>
+<p>From @ryanstaiger1712:</p>
+<blockquote>
+<p>I cannot say how clever it is to use someone’s breathe as the beat for the background music.
+And the way it speeds up means he’s getting closer and closer to his targets.
+Whoever came up with the idea for this trailer did a phenomenal job</p>
+</blockquote>
+<p>From @ShadowMXify:</p>
+<blockquote>
+<p>Even with all the jump cuts, the color palette and the framing never lets you mix the situations. That´s how you do an amazing trailer.</p>
+</blockquote>15:T514,<h2 id="introduction"><a aria-hidden="true" tabindex="-1" href="#introduction"><span class="icon icon-link"></span></a>Introduction</h2>
+<p>Hello everyone, this post for the HITMAN - E3 2015 trailer will present a link and then some quotes from the Youtube comments :)</p>
+<p><a href="https://www.youtube.com/watch?v=LVqxMCZ3u6k&#x26;ab_channel=PlayStation" rel="nofollow" target="_blank">https://www.youtube.com/watch?v=LVqxMCZ3u6k&#x26;ab_channel=PlayStation</a></p>
+<p>From @katlegopolelo7800:</p>
+<blockquote>
+<p>when you realise this trailer is 100x better than both hitman movies released</p>
+</blockquote>
+<p>From @bizzzzle:</p>
+<blockquote>
+<p>The breathing at the end was the best bit, how fast he regained his normal breathing, shows the ability to kill in an instant.</p>
+</blockquote>
+<p>From @ryanstaiger1712:</p>
+<blockquote>
+<p>I cannot say how clever it is to use someone’s breathe as the beat for the background music.
+And the way it speeds up means he’s getting closer and closer to his targets.
+Whoever came up with the idea for this trailer did a phenomenal job</p>
+</blockquote>
+<p>From @ShadowMXify:</p>
+<blockquote>
+<p>Even with all the jump cuts, the color palette and the framing never lets you mix the situations. That´s how you do an amazing trailer.</p>
+</blockquote>6:["$","div",null,{"className":"py-12 flex flex-col items-center  justify-items-start mx-auto ","children":[["$","h1",null,{"className":"text-4xl","children":"Media"}],["$","p",null,{"className":"pt-2","children":"Hi everyone, welcome to the manga/books/media corner; this is where I document and give recommendations/reviews on whatever note-worthy manga or books ive been reading."}],["$","br",null,{}],["$","div",null,{"className":"p-4 rounded-lg flex flex-col","children":[["$","div",null,{"className":"mx-auto text-2xl font-bold","children":"Media"}],[["$","div","witcher_trailer_3_4",{"className":"rounded-lg p-4 border-2 border-blue-300 gap-2 my-2 hover:shadow-lg hover:border-indigo-300","children":["$","div",null,{"className":"flex flex-col space-x-4 sm:flex-row","children":[["$","$Le",null,{"content":"$f","children":["$","$L10",null,{"src":"/media/witcher_trailer_3_4/picture.png","alt":"witcher_trailer_3_4","width":85,"height":80,"className":"z-20 mx-auto border-blue-400 border-2 hover:border-4 bg-blue-50 shadow-md rounded-md mb-2 sm:mb-0  hover:border-blue"}]}],["$","div",null,{"className":"pl-4 border-l-slate-800 border-double border-r-0 border-y-0 py-2 border-4 flex flex-col justify-center","children":[["$","$Le",null,{"content":"$11","children":["$","h2",null,{"className":"font-bold text-lg pb-2 hover:underline","children":"The legacy continues with \"The Witcher 3 & 4 Game Trailer\""}]}],["$","div",null,{"className":"flex flex-row text-md  rounded-md pl-4 pb-2","children":[["$","div",null,{"className":"uppercase underline","children":"Type"}],":",["$","div",null,{"className":"first-letter:capitalize pl-2","children":"game trailer"}]]}],["$","div",null,{"className":"flex flex-row text-md uppercase rounded-md pl-4 pb-2","children":[["$","div",null,{"className":"uppercase underline","children":"Tags"}],":",["$@12","$@13"]]}],["$","div",null,{"children":["$","span",null,{"children":[["$","span",null,{"className":"text-sm font-bold","children":"Author(s): "}],"CD Projekt Red"]}]}]]}]]}]}],["$","div","hitman_2015_trailer",{"className":"rounded-lg p-4 border-2 border-blue-300 gap-2 my-2 hover:shadow-lg hover:border-indigo-300","children":["$","div",null,{"className":"flex flex-col space-x-4 sm:flex-row","children":[["$","$Le",null,{"content":"$14","children":["$","$L10",null,{"src":"/media/hitman_2015_trailer/picture.png","alt":"hitman_2015_trailer","width":85,"height":80,"className":"z-20 mx-auto border-blue-400 border-2 hover:border-4 bg-blue-50 shadow-md rounded-md mb-2 sm:mb-0  hover:border-blue"}]}],["$","div",null,{"className":"pl-4 border-l-slate-800 border-double border-r-0 border-y-0 py-2 border-4 flex flex-col justify-center","children":[["$","$Le",null,{"content":"$15","children":["$","h2",null,{"className":"font-bold text-lg pb-2 hover:underline","children":"\"HITMAN - E3 2015 Trailer\" - timeless hitman trailer"}]}],["$","div",null,{"className":"flex flex-row text-md  rounded-md pl-4 pb-2","children":[["$","div",null,{"className":"uppercase underline","children":"Type"}],":",["$","div",null,{"className":"first-letter:capitalize pl-2","children":"game trailer"}]]}],["$","div",null,{"className":"flex flex-row text-md uppercase rounded-md pl-4 pb-2","children":[["$","div",null,{"className":"uppercase underline","children":"Tags"}],":",["$@16","$@17"]]}],["$","div",null,{"children":["$","span",null,{"children":[["$","span",null,{"className":"text-sm font-bold","children":"Author(s): "}],"Sony"]}]}]]}]]}]}],["$","div","balance_policy",{"className":"rounded-lg p-4 border-2 border-blue-300 gap-2 my-2 hover:shadow-lg hover:border-indigo-300","children":["$","div",null,{"className":"flex flex-col space-x-4 sm:flex-row","children":[["$","$Le",null,{"content":"<h2 id=\"introduction\"><a aria-hidden=\"true\" tabindex=\"-1\" href=\"#introduction\"><span class=\"icon icon-link\"></span></a>Introduction</h2>\n<p>From MangaDex:</p>\n<blockquote>\n<p>Balance Policy is about Masaomi, a young boy who is trying to restore his friendship with Kenji-kun,\na boy who has been changed in an unspecified manner into a girl\nwith newest science technology in order to help maintain the human population\nafter some kind of fertility failure worldwide resulting in the birth of few girl babies.\nFrom TS Anthology Change H!</p>\n</blockquote>","children":["$","$L10",null,{"src":"/media/balance_policy/picture.png","alt":"balance_policy","width":85,"height":80,"className":"z-20 mx-auto border-blue-400 border-2 hover:border-4 bg-blue-50 shadow-md rounded-md mb-2 sm:mb-0  hover:border-blue"}]}],["$","div",null,{"className":"pl-4 border-l-slate-800 border-double border-r-0 border-y-0 py-2 border-4 flex flex-col justify-center","children":[["$","$Le",null,{"content":"<h2 id=\"introduction\"><a aria-hidden=\"true\" tabindex=\"-1\" href=\"#introduction\"><span class=\"icon icon-link\"></span></a>Introduction</h2>\n<p>From MangaDex:</p>\n<blockquote>\n<p>Balance Policy is about Masaomi, a young boy who is trying to restore his friendship with Kenji-kun,\na boy who has been changed in an unspecified manner into a girl\nwith newest science technology in order to help maintain the human population\nafter some kind of fertility failure worldwide resulting in the birth of few girl babies.\nFrom TS Anthology Change H!</p>\n</blockquote>","children":["$","h2",null,{"className":"font-bold text-lg pb-2 hover:underline","children":"\"Balance policy\" - Coping with transitioning"}]}],["$","div",null,{"className":"flex flex-row text-md  rounded-md pl-4 pb-2","children":[["$","div",null,{"className":"uppercase underline","children":"Type"}],":",["$","div",null,{"className":"first-letter:capitalize pl-2","children":"manga"}]]}],["$","div",null,{"className":"flex flex-row text-md uppercase rounded-md pl-4 pb-2","children":[["$","div",null,{"className":"uppercase underline","children":"Tags"}],":",["$@18","$@19"]]}],["$","div",null,{"children":["$","span",null,{"children":[["$","span",null,{"className":"text-sm font-bold","children":"Author(s): "}],"Akihito Yoshitomi"]}]}]]}]]}]}],["$","div","good_ending",{"className":"rounded-lg p-4 border-2 border-blue-300 gap-2 my-2 hover:shadow-lg hover:border-indigo-300","children":["$","div",null,{"className":"flex flex-col space-x-4 sm:flex-row","children":[["$","$Le",null,{"content":"<h2 id=\"introduction\"><a aria-hidden=\"true\" tabindex=\"-1\" href=\"#introduction\"><span class=\"icon icon-link\"></span></a>Introduction</h2>\n<p>From MangaDex :)</p>\n<blockquote>\n<p>Utsumi is your everyday student.\nHe is also a boy that has always had a strong sense of what is right in the world.\nWith nothing but innocence and a mind that longs for his\n\"significant other,\" Utsumi takes on one of the toughest subjects: love. With the help of the devious and mysterious Kurokawa Yuki,\nwill Utsumi learn how to be fortunate in the game of love? Only through the ups and downs of real life,\nand the assistance of his friends, will Utsumi be able to take a bite out of life and learn just what love is.</p>\n</blockquote>","children":["$","$L10",null,{"src":"/media/good_ending/picture.png","alt":"good_ending","width":85,"height":80,"className":"z-20 mx-auto border-blue-400 border-2 hover:border-4 bg-blue-50 shadow-md rounded-md mb-2 sm:mb-0  hover:border-blue"}]}],["$","div",null,{"className":"pl-4 border-l-slate-800 border-double border-r-0 border-y-0 py-2 border-4 flex flex-col justify-center","children":[["$","$Le",null,{"content":"<h2 id=\"introduction\"><a aria-hidden=\"true\" tabindex=\"-1\" href=\"#introduction\"><span class=\"icon icon-link\"></span></a>Introduction</h2>\n<p>From MangaDex :)</p>\n<blockquote>\n<p>Utsumi is your everyday student.\nHe is also a boy that has always had a strong sense of what is right in the world.\nWith nothing but innocence and a mind that longs for his\n\"significant other,\" Utsumi takes on one of the toughest subjects: love. With the help of the devious and mysterious Kurokawa Yuki,\nwill Utsumi learn how to be fortunate in the game of love? Only through the ups and downs of real life,\nand the assistance of his friends, will Utsumi be able to take a bite out of life and learn just what love is.</p>\n</blockquote>","children":["$","h2",null,{"className":"font-bold text-lg pb-2 hover:underline","children":"\"Good ending\" - a manga I cant never let go of"}]}],["$","div",null,{"className":"flex flex-row text-md  rounded-md pl-4 pb-2","children":[["$","div",null,{"className":"uppercase underline","children":"Type"}],":",["$","div",null,{"className":"first-letter:capitalize pl-2","children":"manga"}]]}],["$","div",null,{"className":"flex flex-row text-md uppercase rounded-md pl-4 pb-2","children":[["$","div",null,{"className":"uppercase underline","children":"Tags"}],":",["$@1a"]]}],["$","div",null,{"children":["$","span",null,{"children":[["$","span",null,{"className":"text-sm font-bold","children":"Author(s): "}],"Kei Sasuga"]}]}]]}]]}]}]]]}]]}]
+12:["$","div",null,{"className":"pl-2 inline-block","children":["$","div",null,{"className":"","children":"fantasy"}]}]
+13:["$","div",null,{"className":"pl-2 inline-block","children":["$","span",null,{"children":" witcher"}]}]
+16:["$","div",null,{"className":"pl-2 inline-block","children":["$","span",null,{"children":"assasination"}]}]
+17:["$","div",null,{"className":"pl-2 inline-block","children":["$","span",null,{"children":" hitman"}]}]
+18:["$","div",null,{"className":"pl-2 inline-block","children":["$","div",null,{"className":"","children":"trans"}]}]
+19:["$","div",null,{"className":"pl-2 inline-block","children":["$","span",null,{"children":" sci-fi"}]}]
+1a:["$","div",null,{"className":"pl-2 inline-block","children":["$","div",null,{"className":"","children":"romance"}]}]
