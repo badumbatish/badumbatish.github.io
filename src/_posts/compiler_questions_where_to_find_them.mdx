@@ -1,0 +1,326 @@
+---
+title: 'Compiler (related) questions and how to find them'
+date: 2025-4-17
+recap: "Jasmine shares her new grad interview journey via some questions"
+---
+
+# Prologue
+
+Hi everyone, how's everyone doing? It's been a while since I've written another blog. I'm doing good :) This May of
+2025 I'm graduating and happy to annouce that I'm starting my employment at Igalia this June hacking on compilers :)
+
+Igalia is a
+"worker-owned, employee-run cooperative model consultancy focused on open source software" and I'm so happy I am
+accepted and offered to work here. I'll be working remotely from work, hacking on compilers :) Besides the
+diversity and the worker cooperative model, family and work-life
+balance also play a huge role in my life, hence my pick for Igalia.
+
+During my compiler-focused recruiting time, in interviews, I got asked a lot of compiler-related questions and I felt
+really
+under-prepared for them. I of course have some experience in compilers, but there wasn't a database like leetcode
+that you
+can turn to to practice and hone your compiler skills. I want to write this article to talk about compiler (related)
+questions
+asked in interviews,
+to share with everyone who's
+looking for a junior job; maybe it can help you with your compiler recruiting.
+
+# Introduction
+
+It's often discouraging to .... In this currently dire and over-competitive economy, once you apply for a role, it's
+hard to get past the OA stage; once you get past the OA stage, it's
+hard to get
+past the resume
+screen
+stage; once you get
+past the resume screen stage, it's hard to get past the interview stage. Companies are asking compiler questions that are often not
+addressed in your average compiler class and it's hard to be prepared for them; you ask chatgpt to prep up some
+questions for you, but it doesn't seem to go into details much. In this article, I want to put together all the
+(compiler related)
+questions I've been asked so that you can hopefully get a head start in your recruiting.
+
+Company names will be replaced by names of dishes for anonymity reasons, and to also avoid tunnel-visioning. There
+also won't be no behavioral questions mentioned.  I hope
+everyone enjoys :)
+
+## Pre-December 2024
+
+During this time starting between Aug 2024 to December 2024, my mind was still fresh in the game. Limited interviews
+from the previous year have frozen my leetcode and behavioral interview skills.
+I had been doing
+leetcode on the daily throughout the timeline; by the time the pre-December period ends, I would have done around 350
+leetcode
+problems.
+
+Beginning of August 2024, I haven't taken any advanced compiler course nor have I been focused on my own toy
+compiler project. The GSoc project for gccrs had just ended, and I was still trying to frame my résumé in
+the best light for
+potential employers.
+
+### Pad Kee Mao
+
+One of my first interviews for the recruiting seasons.
+5 rounds of technical interviews. The company really loves leetcode-typed questions.
+
+#### Round 1
+Question is [Leetcode 1462 - Course Schedule IV](https://leetcode.com/problems/course-schedule-iv/description/)
+
+I read the problem statement and coded up the solution, step by step explaining it to them.
+
+There were some bugs in my code.
+But I debugged it and fixed it right away.
+After the code passes the test case, the interviewer asked how I can speed it up.
+I answered by using cache on edges of the graph.
+Interviewer then explained that cache is good but hinted that caching on the nodes of the graph is more efficient.
+I agreed with them and provided pseudocode for the implementation.
+
+#### Round 2
+Question is [Leetcode 39 - Combination Sum](https://leetcode.com/problems/combination-sum/description/)
+
+I spent around 10-15 minutes to walk over an example, asked the interviewer about the constraints as well as coding up
+the implementation.
+
+There were 2-3 follow up questions:
+
+- What is the time complexity of this
+- How do we make sure we don't waste time computing the combination sum that doesn't have an answer.
+- Given a big list of element to sum up, and a large number n, and around 1000-2000 machines, on a high level, how
+would you parallelize this?
+
+#### Round 3
+
+Interviewer starts with non-leetcode questions, then they transition into leetcode questions.
+
+- Why hardware is important in faster inferrence of machine learning models?
+- [Leetcode 198 - House Robber](https://leetcode.com/problems/house-robber/description/)
+- [Leetcode 2016 - Maximum difference between increasing elements](https://leetcode.com/problems/maximum-difference-between-increasing-elements/description/)
+
+Follow up on leetcode questions are still the same: whats the time complexity
+#### Round 4
+
+Interview asked me to code up a recursive descent lexer/parser combination for the simply untyped lambda calculus. I was
+kind of taken off guard
+by the question a bit. But I've been hand-writing recursive descent parser in my compiler project so I kinda got the
+general idea.
+
+I was grateful (?!) that they didn't ask about operator precedence climbing as well as pratt parsing as I didn't get
+into them until after December 2024.
+
+In this economy,
+it's hard to know what questions will be thrown at you. Please be prepared for operator precedence climbing and
+pratt parsing by implementing a simple calculator with +, -, *, /, (, ) yourself.
+
+## Post-December 2024
+
+The post-December era seemed like Luffy's post-timeskip in One Piece.
+I am much more confident in my interviewing skills now.
+
+My resume's been much more refined with my graduate class
+project.
+
+Interviewing with a lot of stray companies made me more indifferent, more emboldened and wiser to
+the recruiting process. Ghosting, generic answers doesn't bother me as much. Rejections just mean there are better
+candidates than me, and they are a much better fit than me, and that I need to strive to better myself more.
+
+I learned that in a competitive market, it is important to market oneself to the employers. Thus, I polished my
+website and published a lot of blogs, and then posting them on LinkedIn, X, bluesky for visibility, meanwhile
+advertising
+in each blog article that I am actively looking for a full time compiler job.
+
+It is important to advocate for yourself in an over-saturated market, whether it is through your resume or
+general marketing. Please never forget that.
+
+### Sinigang ng hipon
+
+#### Round 1
+A leetcode-styled question on a string-stack-parsing problem.
+
+Given a string of "add(mul(5,2), 3)", produce the final numeric answer.
+
+The interviewer then asked me to provide the complexity of the problem.
+End of round, they asked "which area interests you the most in cs", of course the answer is "compilers" hahahaha.
+They also ask "outside of your technical areas, what do you enjoy doing". I said "reading up on social issues and
+technical writings".
+
+#### Round 2
+
+Another leetcode-styled question named "Bit-flip." I think companies really like leetcode questions.
+
+Given a monochrome bitmap represented as a flat array of bytes, with one bit per pixel, flip it horizontally in-place.
+The follow-up question is "if you have a lot of request, what kind of optimization/parallelization can you perform"
+
+The problem was 3-fold. It tested if the interviewee could map from 2D array to 1D array. It then tested if
+interviewee is comfortable with bit manipulation. Finally, it tested the interviewee ability to parallelize the problem.
+#### Round 3
+
+This time it's another modified version of an official problem that I know of:
+[Leetcode 38 - Count and Say](https://leetcode.com/problems/count-and-say/description/)
+
+I didn't have much passing impression with this round.
+
+### Macaroni and Cheese
+
+Interviewers in this company asked a lot of tricky and hard problems. Some are straight examples of compiler
+optimization, some are leetcode hards, some are related to compiler + AI.
+
+Together with `Takoyaki` and `Honey Almond Cream Cheese Bagel`, the three companies asked really hard and creative
+questions, all have managed to catch me off-guard in different ways.
+
+#### Round 1
+
+Given a sequence of matrix multiplication, optimize the order of matrix multiplication such that we use the least
+amount of memory other than the pre-existing memory used to store the matrices.
+
+For example;
+```
+A = ARR(12000x7)
+B = ARR(7x3000)
+C = ARR(3000x9000)
+D = ARR(9000x15000)
+E = ARR(15000x2)
+```
+
+This problem can be solved in $O(2^n)$ time naively or $O(n^3)$ time with dynamic programming. I rank it a leetcode
+hard. I could only come up with the naive solution.
+
+#### Round 2
+Another leetcode hard, this time it is [Leetcode 127 - Word ladder](https://leetcode.com/problems/word-ladder/description/)
+
+I have done the problem 2 or 3 times over, and am able to answer.
+#### Round 3
+
+Interviewer asked "how would you lower a convolution down to some specific architecture."
+
+Interviewer also asked about my projects with GPU and AI. I didn't have much experience in the areas and thus could
+not answer either problem. I'm still trying to improve in the area after feeling pretty defeated.
+
+### Honey Almond Cream Cheese Bagel
+
+#### Round 1
+The pre-screen round (round 1) starts with [Leetcode 509 - Fibonacci](https://leetcode.com/problems/fibonacci-number/description/)
+
+Interviewer asked me to implement the naive approach. Then moved on to ask me how would I test them and asked me
+to come up with different ways to test this. They also asked me how to make sure the test isn't just reusing the linear
+pattern: testing f(1), then f(2), then f(3) as the implementator can easily exploit the linear nature.
+
+I said let's break the fibonacci instance recursively into its sum.
+like $f(3) = f(2) + f(1) = 2(f1) + f(0)$ and test each of them
+
+They said this would work. But another way was to perform randomized testing: pick a number randomly in a range and
+test it.
+
+They then asked for complexity of fibonacci. I said this is O(2^n) from the master theorem, or we can see that each
+time,
+we
+recomputed
+the subproblem twice, leading to O(2^n).
+
+They asked me for my choice of types as input and output to the function. What would happen user put in negative number?
+I proposed uin64_t in C++ and then they asked me "why not just use unsigned." I said that different platforms might
+have different meaning for `unsigned`, and that "users use our fibonacci library over our competitor partly due to the
+reliability of our implementation. If they can't count on the fact that different platforms with the same library
+will provide the same result, I think that speaks to us and our software engineering practices."
+
+
+He then asked me to do the iterative implementation.
+I admittedly used a different naming convention for my variables,
+and I think that must have made the interviewer think I'm struggling. They directed me to have two variables, now named
+`current` and `prev`.
+During this time, I really felt I've nailed it down, so I took initiative, asked the interviewer to trust me, and let me code the implementation.
+
+Things slowly got more complicated. I need to test the iterative version as well so I then have to refactor the
+original
+test to accept a callable instead (with std::function). I embarrassingly needed interviewer to remind me how to
+embed a function signature to std::function, as I didn't remember the old school way with function pointers in C++.
+
+Interviewers then finally asked me "is there any other way to speed this up?". I thought they meant complexity-wise so I
+answer "yes, with matrix multiplication this goes to $O(log(n))$". They indicated they were more looking for this
+behavior
+"User calls f(1) then calls f(10) then f(20). How to speed up?"
+
+I then proposed that we used C++'s `std::map<int, int>` to handle this: binary search to the smaller and nearest cached
+instance
+to the current input and start the computation from there.
+
+At this point, the interviewer
+indicated
+that they wanted a language-agnostic name for the data structure, to which I refined on and answered "binary search
+tree."
+
+The Interviewer seemed satisfied, and we ended this round of interview.
+
+#### Round 2
+
+Interviewer gave me a piece of code that involves a for loop, together with array accesses in said for loop.
+
+```kotlin
+fun printArrayElements(arr: List<Int>) {
+    for (i in 0 until arr.size) {
+        println("Element at index $i is ${arr[i]}")
+    }
+}
+```
+
+They told me that "this is a safe language, so array accesses, when lowered into assembly, will need to have a
+branch that jumps to a section of code that handles error."
+
+After the information, they asked me to "please lower this into assembly, you can ignore $\phi$ nodes but keep in
+mind about the SSA value. When lowering, remember that you will need to create a branch and a jump section for the
+array bound access."
+
+They also specified that the language also has overflowing checking on its integers, and that "show that via
+some compiler optimization, the compiler can guarantee that the overflowing check on `i=i+1` in the IR never happens,
+thus
+speeding up the program considerably"
+
+After all this, depending on my jump assembly section ordering, they asked me to explain why different placements of
+the jump assembly section might affect the execution speed of my CPU (hint: this depends on the branch predictor, cache
+size of the
+CPU as well as pipelining?!).
+#### Round 3
+
+This round is all about the front end as well as the general type-checking.
+
+The interviewer asked me about the different phases of the compiler (front-end, middle-end, back-end).
+
+The interviewer asked me about my toy compiler project, and what I plan to do next with it. I told them "I probably
+would want to implement a type checker in." They then iterated on this, saying "ok how would you assign types in
+your language initially." After a little bit of work, I told them "after the parsing and AST construction stage, I
+would assign types, for example: a NumberExpr would probably get a `f64_t` type."
+
+We moved on to talk about if-else type checking. They asked me to give actual pseudo code that type checks an
+If-else expression. I had to quickly make up a struct-like version of the If-Else expr, gave them the high level
+overview (of what a laywoman thinks) on what it means that an if-else expression is checked successfully.
+
+They then moved on to ask me how I would figure out that given two types A and B, find the type that is the
+supertype of those two types. After this, they followed up with "now that you have the way to find out the
+supertype of 2 types, with this in mind, how would you go on to check the supertype of k types?"
+
+We then ended the interview.
+### Takoyaki
+
+#### Round 1 & 2
+
+The Takoyaki company process is really different. They seemed really interested in trying to know me as a person,
+through my résumé as well as my thoughts on certain topics.
+As a result, they asked me a ton of questions about my resume, about my experience in Gsoc gccrs, about
+mlir, about the difference between GCC Tree IR versus llvm-ir; let's just say that if
+the project has the word
+"compiler" or "programming languages,", they're gonna ask in details each line that I wrote in the resume.
+
+They also asked me that in my toy language, does it have error reporting? I reluctantly said no, and that's why I
+incorporate that feature and wrote about it in this [article](what_after_kalei_location_debug).
+
+There are also non-resume, non-leetcode questions:
+- "what's the most important thing in software engineering, according to you" - I told the interviewer that
+it's "building
+tools."
+- "on a high level, how would you debug a JIT compiler" - Hahah this is a hard question.
+- "on a high level, how would you debug/detect a memory bug" - Static analyzer and sanitizers.
+- "how useful do you think AI is in your day to day workflow" - It's not good enough, but it's helpful for searching
+for documentation.
+- "described how you would debug an issue that popped up on your most recent commit" - Git bisect.
+- "what do you like to do outside of coding, in a business setting, there may be other roles you can take on" -
+Same as the `Sinigang ng hipon` interviewer in round 1, my answer is technical writings.
+- "what OS would you like to use for compiler dev" - I answered them "I have a Macbook right now but it's a pain to
+set up LLVM on MacOS, I'd like to switch to Ubuntu, it's just a popular linux distribution".
