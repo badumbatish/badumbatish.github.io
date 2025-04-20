@@ -274,7 +274,9 @@ Result R = A@B@C@D@E.
 Should we do B@C first? or C@D first? How about A@B? Please algorithmically figure this out.
 ```
 
-This problem can be solved in $O(2^n)$ time naively or $O(n^3)$ time with dynamic programming. I rank it a leetcode
+This problem ([Matrix Chain Multiplication](https://en.wikipedia.org/wiki/Matrix_chain_multiplication)) can be
+solved in $O(2^n)$ time naively or $O(n^3)$ time with dynamic
+programming. I rank it a leetcode
 hard. I could only come up with the naive solution. The interviewer seemed satisfied with the answer, however.
 
 The interviewer then asked me about the middle end of the compiler:
@@ -285,9 +287,9 @@ The interviewer then asked me about the middle end of the compiler:
 #### Round 2
 Another leetcode hard, this time it is [Leetcode 127 - Word ladder](https://leetcode.com/problems/word-ladder/description/)
 
-I have done the problem 2 or 3 times over, and am able to answer this.
+I have done the problem 2 or 3 times over, and was able to answer this.
 
-In this round as well as round 1, I don't think I could come up with the (efficient) solution
+In this round as well as round 1, in retrospect, I don't think I could come up with the (efficient) solution
 without seeing them previously. It is sadly the current state of affairs in an employers' market.
 
 The interviewer also asked me stuff about C++, a few examples are: "what's a smart pointer?", "when you first
@@ -295,7 +297,7 @@ construct a unique ptr, it assumes the ownership of object, yet you can still as
 ptr to a variable, why is that?"
 #### Round 3
 
-Interviewer asked "how would you lower a convolution down to some specific architecture."
+Interviewer asked "how would you lower a convolution down to some specific architecture, or to a lower form of IR?"
 
 Interviewer also asked about my projects with GPU and AI. I didn't have much experience in the areas and thus could
 not answer either problem. I'm still trying to improve in the area after feeling pretty defeated. The interview
@@ -317,11 +319,11 @@ like $f(3) = f(2) + f(1) = 2(f1) + f(0)$ and test each of them.
 They said this would work. But another way was to perform randomized testing: pick a number randomly in a range and
 test it.
 
-They then asked for complexity of fibonacci. I said this is O(2^n) from the master theorem, or we can see that each
+They then asked for complexity of fibonacci. I said this is $O(2^n)$ from the master theorem, or we can see that each
 time,
 we
 recomputed
-the subproblem twice, leading to O(2^n).
+the subproblem twice, leading to $O(2^n)$.
 
 They asked me for my choice of types as input and output to the function. What would happen user put in negative number?
 I proposed `uin64_t{:cpp}` in C++ and then they asked me "why not just use unsigned." I said that different platforms
@@ -349,7 +351,8 @@ answer "yes, with matrix multiplication this goes to $O(log(n))$." They indicate
 behavior
 "User calls f(1) then calls f(10) then f(20). How to speed up?"
 
-I then proposed that we used C++'s `std::map<int, int>` to handle this: binary search to the smaller and nearest cached
+I then proposed that we used C++'s `std::map<uint64_t, uint64_t>` to handle this: binary search to the smaller and
+nearest cached
 instance
 to the current input and start the computation from there.
 
@@ -362,7 +365,7 @@ The interviewer seemed satisfied, and we ended this round of interview. I went o
 
 #### Round 2
 
-Interviewer gave me a piece of code that involves a for loop, together with array accesses in said for loop.
+Interviewer gave me a piece of code that involves a for-loop, together with array accesses in said for-loop.
 
 ```kotlin
 fun printArrayElements(arr: List<Int>, info: List<Int>) {
@@ -402,8 +405,9 @@ The interviewer then asked me about my toy compiler project, and what I plan to 
 probably
 would want to implement a type checker in the compiler." They then iterated on this, saying "ok, how would you assign
 types in
-your language initially." After a little bit of work, I told them "after the parsing and AST construction stage, I
-would assign types, for example, a NumberExpr would probably get a `f64_t` type."
+your language initially." After a little bit of thinking, I told them "after the parsing and AST construction
+stage, I
+would assign types, for example, a `NumberExpr` would probably get a `f64_t` type."
 
 We moved on to talk about if-else type checking. They wanted me to provide actual pseudocode that type checks an
 If-else expression. I had to quickly make up a struct-like version of the If-Else expr, gave them the high level
@@ -424,7 +428,8 @@ earlier days, when I was a kid being surrounded by Fermilab's brilliant engineer
 
 I deeply regretted not working more on my toy compiler. If I had implemented a simple bidirectional type
 checker for my compiler, the if-else expr type checking question would have been easier. If I had enrolled in one of
-our school's upper divisions in software-hardware architecture, the question on lowering assembly would have been easier.
+our school's upper divisions in software-hardware architecture instead of randomized algorithms, the question on
+lowering assembly would have been easier.
 
 It was also during this time period that I realized not every answer needed to be perfect. Oftentimes, as long as I
 managed to spell out the keywords that the interviewers are looking for, or as long as I was progressing towards the
@@ -434,10 +439,15 @@ The interview process with the company had ignited my drive to work harder to be
 skills we're looking for, but it's not there yet." Needless to say, what
 followed next was a rejection.
 ### Takoyaki
-
+The Takoyaki company process is completely different from the rest of the line up. If Honey Almond Cream Cheese
+Bagel wanted to gauge my skills through providing actual pseudocode for simulated problems, then Takoyaki opted for
+repeatedly hard-hitting questions in different areas in random orders that are tailored specifically to my résumé.
 #### Round 1 & 2
 
-The Takoyaki company process is really different. They seemed really interested in trying to know me as a person,
+The company seemed really
+interested in
+trying to know me
+as a person,
 through my résumé as well as my thoughts on certain topics.
 As a result, they asked me a ton of questions about my resume, about my experience in GSoc gccrs, about
 mlir, about the difference between GCC Tree IR versus llvm-ir; let's just say that if
