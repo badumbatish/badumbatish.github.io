@@ -1,7 +1,7 @@
 ---
 title: 'Compiler (related) questions and where to find them'
 date: 2025-4-17
-recap: "Jasmine helps new grad in compiler by sharing interview questions through her new grad recruiting journey"
+recap: "Jasmine helps new grads in compiler by sharing interview questions through her new grad recruiting journey"
 ---
 
 # Prologue
@@ -62,12 +62,12 @@ In
 this currently dire and over-competitive economy, once you
 apply for a role,
 it's
-hard to get past the OA stage; once you get past the OA stage, it's
-hard to get
+hard to compete and get past the OA stage; once you get past the OA stage, it's
+hard to compete and get
 past the resume
 screen
 stage; once you get
-past the resume screen stage, it's hard to get past the interview stage.
+past the resume screen stage, it's hard to compete and get past the interview stage.
 
 Companies are asking (compiler) questions that are often not
 addressed in your average compiler class, and it's hard to be prepared for them; you ask ChatGPT to prep up some
@@ -76,7 +76,12 @@ questions for you, but it doesn't seem to go into details much. In this article,
 questions I've been asked so that you can hopefully get a head start in your recruiting.
 
 Company names will be replaced by names of dishes for anonymity reasons, and to also avoid tunnel-visioning. There
-also won't be no behavioral questions mentioned.  I hope
+won't be any name-dropping. There
+also won't be no behavioral questions mentioned.
+
+The questions compiled here,
+as well as my perspective on each interview round, have been written since December 2024.
+I hope
 everyone enjoys :)
 
 ## Pre-December 2024
@@ -84,11 +89,12 @@ everyone enjoys :)
 During this time starting between Aug 2024 to December 2024, my mind was still dull in the game. Limited interviews
 from the previous year have frozen my leetcode and behavioral interview skills.
 I started and had been doing
-leetcode on the daily throughout the timeline; by the time the pre-December period ends, I would have done around 350
+leetcode on the daily throughout the timeline to get back into the game; by the time the pre-December period ends, I
+would have done around 350
 leetcode
 problems.
 
-Beginning of August 2024, I haven't yet taken any advanced compiler course nor have I been focused on my own toy
+Beginning of August 2024, I hadn't yet taken any advanced compiler course nor had I been focused on my own toy
 compiler project. The GSoc project for gccrs had just started to wrap up; with now only two compiler projects, I was
 still trying to frame my
 résumé in
@@ -157,23 +163,29 @@ I am much more confident in my interviewing skills now.
 My résumé's been much more refined with my graduate class
 project.
 
-Interviewing with a lot of stray companies made me more indifferent, more efficient and wiser to
-the recruiting process. Ghosting, generic answers doesn't bother me as much. Rejections just mean there are better
-candidates than me, and they are a much better fit than me, and that I need to strive to better myself more.
+Interviewing with a lot of stray companies made me more indifferent, more efficient and better at
+the recruiting process. Ghosting or generic rejections don't bother me as much. Rejections just mean there are better
+candidates than me; they are a much better fit than me, and that I need to strive to better myself more.
 
 I learned that in a competitive market, it is important to market oneself to the employers. Thus, I polished my
 website and published a lot of blogs, and posted them on LinkedIn, X, bluesky for visibility, meanwhile
 advertising
-in each blog article that I am actively looking for a full time compiler job.
+in each blog article that I am actively looking for a full time compiler job. An employee from a company
+has reached out, as well as recruiters from top companies to offer referral or advancement to bypass OA and straight to
+the interviewing stage.
 
-It is important to advocate for yourself in an over-saturated market, whether it is through your projects, resume or
-general marketing. Please never forget that.
+It is important to improve and advocate for yourself, especially in an over-saturated market, whether it is through
+your projects,
+resume or
+general marketing. I can't stress that fact enough; please never forget that.
 
 By the time I wrapped up my recruitment process, my leetcode count has hit 500+, compared to the pre-December period
 of ~350 leetcodes.
 
 ### Macaroni and Cheese
-3 rounds of technical leetcode interviews. I think companies really like leetcode questions, even in compilers.
+3 rounds of technical leetcode interviews. I'm beginning to be convinced that companies really like leetcode questions,
+even in
+compilers.
 #### Round 1
 A leetcode-styled question on a string-stack-parsing problem.
 
@@ -229,6 +241,11 @@ E = ARR(15000x2)
 This problem can be solved in $O(2^n)$ time naively or $O(n^3)$ time with dynamic programming. I rank it a leetcode
 hard. I could only come up with the naive solution.
 
+The interviewer then asked me about the middle end of the compiler:
+- "Have you worked on any SSA form in your project or experience?"
+- "Explain to me common subexpression elimination"
+- "What kind of compiler optimization have you dealt with?"
+
 #### Round 2
 Another leetcode hard, this time it is [Leetcode 127 - Word ladder](https://leetcode.com/problems/word-ladder/description/)
 
@@ -245,7 +262,8 @@ ptr to a variable, why is that?"
 Interviewer asked "how would you lower a convolution down to some specific architecture."
 
 Interviewer also asked about my projects with GPU and AI. I didn't have much experience in the areas and thus could
-not answer either problem. I'm still trying to improve in the area after feeling pretty defeated.
+not answer either problem. I'm still trying to improve in the area after feeling pretty defeated. The interview
+ended shortly after.
 
 ### Honey Almond Cream Cheese Bagel
 
@@ -307,9 +325,9 @@ The Interviewer seemed satisfied, and we ended this round of interview.
 Interviewer gave me a piece of code that involves a for loop, together with array accesses in said for loop.
 
 ```kotlin
-fun printArrayElements(arr: List<Int>) {
+fun printArrayElements(arr: List<Int>, info: List<Int>) {
     for (i in 0 until arr.size) {
-        println("Element at index $i is ${arr[i]}")
+        println("Element at index $i is ${arr[i]} with info ${info[arr[i]]}")
     }
 }
 ```
@@ -336,26 +354,27 @@ This round is all about the front end as well as the general type-checking.
 
 The interviewer asked me about the different phases of the compiler (front-end, middle-end, back-end).
 
-The interviewer asked me about my toy compiler project, and what I plan to do next with it. I told them, "I probably
+The interviewer then asked me about my toy compiler project, and what I plan to do next with it. I told them, "I
+probably
 would want to implement a type checker in." They then iterated on this, saying "ok, how would you assign types in
 your language initially." After a little bit of work, I told them "after the parsing and AST construction stage, I
 would assign types, for example, a NumberExpr would probably get a `f64_t` type."
 
-We moved on to talk about if-else type checking. They asked me to give actual pseudocode that type checks an
+We moved on to talk about if-else type checking. They wanted me to provide actual pseudocode that type checks an
 If-else expression. I had to quickly make up a struct-like version of the If-Else expr, gave them the high level
 overview (of what a laywoman thinks) on what it means that an if-else expression is checked successfully.
 
-They then moved on to ask me how I would figure out that given two types A and B, find the type that is the
+They then followed up with how I would figure out that given two types A and B, find the type that is the
 supertype of those two types. After this, they followed up with "now that you have the way to find out the
 supertype of 2 types, with this in mind, how would you go on to check the supertype of k types?"
 
 We then ended the interview.
 #### Introspection
 
-This company features the most interactive and problem-solving aspect in the whole line up, exceeding just a bit
+This company featured the most interactive and problem-solving aspect in the whole line up, exceeding just a bit
 behind Takoyaki. A lot of the questions being asked in this company's interviews really made me think hard about my
 answers. The amount of ingenuity and
-teamwork the team has displayed to me during my interview made me stand in awe. They really took me back in my
+teamwork the team had displayed to me during my interview made me stand in awe. They really took me back in my
 earlier days, when I was a kid being surrounded by Fermilab's brilliant engineers.
 
 I deeply regretted not working more on my toy compiler. If I had implemented a simple bidirectional type
@@ -363,7 +382,8 @@ checker for my compiler, the if-else expr type checking question would have been
 our school's upper divisions in software-hardware architecture, the question on lowering assembly would have been easier.
 
 The interview process with the company had ignited my drive to work harder to better myself. Needless to say, what
-followed next was a rejection.
+followed next was a rejection. The recruiter thankfully gave me a very helpful feedback: "you have some of the
+skills we're looking for, but it's not there yet."
 ### Takoyaki
 
 #### Round 1 & 2
@@ -372,25 +392,32 @@ The Takoyaki company process is really different. They seemed really interested 
 through my résumé as well as my thoughts on certain topics.
 As a result, they asked me a ton of questions about my resume, about my experience in GSoc gccrs, about
 mlir, about the difference between GCC Tree IR versus llvm-ir; let's just say that if
-the project has the word
-"compiler" or "programming languages,", they're gonna ask in details each line that I wrote in the resume.
+a project has the word
+"compiler" or "programming languages,", they're gonna ask, in detail, each line that I wrote in the resume.
 
-They also asked me that in my toy language, does it have error reporting? I reluctantly said no, and that's why I
+They also asked me that in one of my compiler projects, does it have error reporting? I reluctantly said no, and that's
+why I
 incorporate that feature and wrote about it in this [article](what_after_kalei_location_debug).
 
 There are also non-resume, non-leetcode questions:
 - "what's the most important thing in software engineering, according to you" - I told the interviewer that
-it's "building
-tools."
+it's "building tools."
 - "on a high level, how would you debug a JIT compiler" - Hahah this is a hard question.
 - "on a high level, how would you debug/detect a memory bug" - Static analyzer, sanitizers, gdb, and lldb.
 - "how useful do you think AI is in your day-to-day workflow" - It's not good enough, but it's helpful for searching
 for documentation.
+- "what, to your knowledge, might be a difference in a compiler's AST and HIR?"
 - "described how you would debug an issue that popped up on your most recent commit" - Git bisect.
 - "what do you like to do outside coding, in a business setting, there may be other roles you can take on" -
 Same as the `Sinigang ng hipon` interviewer in round 1, my answer is technical writings.
 - "what OS would you like to use for compiler dev" - I answered them "I have a Macbook right now, but it's a pain to
 set up LLVM on macOS, I'd like to switch to Ubuntu, it's just a popular linux distribution."
+- "what's your favorite programming language?" — I actually don't know if I have a favorite language :) Rust is
+probably one of
+them. C++ scores pretty high on the nostalgic feel as well. It's hard.
+- "how does linear register allocation work?"
+- "We highly value inclusivity together with diversity here at the company. Can you tell us what you have done
+outside professional experience that speaks to this aspect?"
 
 # Epilogue
 
@@ -400,6 +427,44 @@ pounding, my arms and knees get a little weak from thinking about all these proc
 Despite this, I've also been grateful for the situation that I'm in. With the current competitive and dire market,
 a lot of people who are significantly smarter than me who are not able to find a job in this economy, just because they're international.
 My heart goes out for those people.
+
+I feel that I need to acknowledge my privileges. I want to acknowledge that I've never had to work during the
+semesters at Berkeley
+and that I've
+always had a stable
+apartment
+under my head, with supporting family and friends to care for me. That the school I go to, UC Berkeley, offers one
+of the highest quality of education I can ever dream of. These factors played a huge role in how prepared
+I am for these interviews and have afforded me the
+opportunities to work on more projects and leetcode more to improve my résumé and problem-solving skills. These are
+privileges that I think are
+important to acknowledge.
+
+But I also have disadvantages. It's hard for me to focus on a single problem for too long; I lose focus on
+non-interesting
+stuff. I have problems
+with
+spelling out numbers. I'm a transgender woman of color, who for every 2-4 months, has to take blood tests of
+for $200. A
+child of immigrants from Vietnam, I
+have
+had to work
+graveyard shifts
+in UPS trailers, hauling heavy boxes and packages for shipping to support myself and my family
+through covid. A
+child of
+immigrants, I have to wait a year for california resident tuition to kick in before I can attend community college.
+A child of immigrants, I have no other way
+but to attend community college instead of attending a public university from the get-go, lest I want to pay an
+exorbitant
+amount of money that I don't have to attend private university.
+
+In acknowledging my privileges and shortcomings, I don't mean to erase or elevate my success. These experiences
+may complicate my achievements, but more importantly, they absolutely enlighten new grad readers a vision to paint a
+path to success for themselves.
+Every journey is messy and unique, tangled with each person's upbringing,
+characteristics and environments. Mine is no exception—yet within its nuances, others may find the courage to forge
+their own.
 
 Here are some pictures documenting my emotions throughout the process. Thank you for reading.
 
