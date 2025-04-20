@@ -298,6 +298,26 @@ Another leetcode hard, this time it is [Leetcode 127 - Word ladder](https://leet
 
 I have done the problem 2 or 3 times over, and was able to answer this.
 
+With my high level answer (and code) containing an `std::unordered_map{:cpp}` of `std::string{:cpp}` to set of
+`std::string{:cpp}` as pseudo-edge between a pseudo word and the original words as follows,
+the interviewer then asked me if there were any way to optimize the space usage:
+```cpp
+std::unordered_map<std::string, std::unordered_set<std::string>> dict;
+
+for (auto &word : wordList) {
+    for (int i = 0; i < word.size(); i++) {
+        auto transformed_word = word.substr(0, i) + "*" + word.substr(i+1);
+        dict[transformed_word].insert(word);
+    }
+}
+...
+```
+
+I then told them we can turn the `std::unordered_map{:cpp}` into a [trie](https://en.wikipedia.org/wiki/Trie), and
+that we can map a `transformed_word` to
+an `std::unordered_set{:cpp}` of a pair of `std::string_view{:cpp}` instead of constructing a full string everytime to
+optimize on space.
+
 In this round as well as round 1, in retrospect, I don't think I could come up with the (efficient) solution
 without seeing them previously. It is sadly the current state of affairs in an employers' market.
 
@@ -337,7 +357,8 @@ recomputed
 the subproblem twice, leading to $O(2^n)$.
 
 They asked me for my choice of types as input and output to the function. What would happen user put in negative number?
-I proposed `uin64_t{:cpp}` in C++ and then they asked me "why not just use unsigned." I said that different platforms
+I proposed `uin64_t{:cpp}` in C++ and then they asked me "why not just use `unsigned{:cpp}`." I said that different
+platforms
 might
 have different meaning for `unsigned{:cpp}`, and that "users use our fibonacci library over our competitor partly due
 to the
@@ -358,7 +379,8 @@ so I then
 have to
 refactor the
 original
-test to accept a callable instead (with `std::function{:cpp}`). I embarrassingly needed interviewer to remind me how to
+test to accept a callable instead (with `std::function{:cpp}`). I embarrassingly needed the interviewer to remind me
+how to
 embed a function signature to a function parameter, as I didn't remember the old school way with function pointers in
 C++.
 
@@ -380,6 +402,8 @@ tree."
 The interviewer seemed satisfied, and we ended this round of interview. I went over the time limit by a few minutes.
 
 #### Round 2
+
+This round tested my knowledge in the middle-end and back-end phase.
 
 Interviewer gave me a piece of code that involves a for-loop, together with array accesses in said for-loop.
 
@@ -429,8 +453,8 @@ We moved on to talk about if-else type checking. They wanted me to provide actua
 If-else expression. I had to quickly make up a struct-like version of the If-Else expr, gave them the high level
 overview (of what a laywoman thinks) on what it means that an if-else expression is checked successfully.
 
-They then followed up with how I would figure out that given two types A and B, find the type that is the
-supertype of those two types. After this, they followed up with "now that you have the way to find out the
+They then followed up with "given two types A and B, how would you find out the supertype of those two types. After
+this, they followed up with "now that you have the way to find out the
 supertype of 2 types, with this in mind, how would you go on to check the supertype of k types?" (Hint: Draw out a
 diagram as a tree representing all the types in your language, with the supertype of all types at the root of the tree.)
 
@@ -451,7 +475,7 @@ one of
 our school's upper divisions in software-hardware architecture instead of randomized algorithms, the question on
 lowering assembly would have been easier.  Despite this, I'm still grateful for all the questions the company have
 asked, despite their difficulties; they could have easily asked something like "How would you design the type system for
-your function call?"
+your language's function?"
 
 It was also during this time period that I realized not every answer needed to be perfect. Oftentimes, as long as I
 managed to spell out the keywords that the interviewers were looking for, or as long as I was progressing towards the
@@ -461,10 +485,13 @@ The interview process with the company had ignited my drive to work harder to be
 thankfully gave me very helpful feedback: "you have some of the
 skills we're looking for, but it's not there yet." Needless to say, what
 followed next was a rejection.
+
 ### Takoyaki
+
 The Takoyaki company process is completely different from the rest of the line-up. If Honey Almond Cream Cheese
 Bagel wanted to gauge my skills through providing actual pseudocode for simulated problems, then Takoyaki opted for
 repeatedly hard-hitting questions in different areas in random orders that were tailored specifically to my résumé.
+
 #### Round 1 & 2
 
 The company seemed really
@@ -477,7 +504,7 @@ mlir, about the difference between GCC Tree IR versus llvm-ir; let's just say th
 a project has the word
 "compiler" or "programming languages,", they were gonna ask, in detail, each word and each line that I wrote in the
 résumé. It really felt like they were looking for a true independent thinker who's also a problem solver in their own
-ways. Despite this, not a single leetcode questions were asked in both rounds.
+ways. Despite this, not a single leetcode questions or programming questions were asked in both rounds.
 
 They also asked me that in one of my compiler projects, does it have error reporting? I reluctantly said no, and that's
 why I
@@ -488,7 +515,7 @@ There are also non-resume questions:
 it's "building tools."
 - "On a high level, how would you debug a JIT compiler" - Hahah this is a hard question. I talked about how
 difficult it is to
-debug a JIT compiler instead, and the interviewer seemed satisfied.
+debug a JIT compiler instead.
 - "On a high level, how would you debug/detect a memory bug" — Static analyzer, sanitizers, gdb, and lldb.
 - "How useful do you think AI is in your day-to-day workflow" - It's not good enough, but it's helpful for searching
 for documentation.
@@ -515,7 +542,7 @@ Hence, the name.
 
 #### Questions
 
-- What do you like about programming languages and compilers?
+- "What do you like about programming languages and compilers?"
 - "It is possible to perform dataflow analysis on non-SSA values, even so, we keep on insisting on transforming
 our IR to SSA-IR form. What's going on here?"
 - "Tell us about all the compiler optimization you can think of"
@@ -546,7 +573,7 @@ int FreeMeFromLeetcodeHards(const std::vector<int> &v) {
 - "If, in testing, my implementation of an algorithm runs twice as slow when my input $n=200$ is twice bigger than my
 $n=100$, does
 that mean my implementation is linear in its complexity? Give your reasoning or counter examples on why it is or is
-not. If it is not linear in its complexity, what would you need to confirm/reject this hypothesis?"
+not. If it is not linear in its complexity, what would you do to confirm/reject this hypothesis?"
 
 # Epilogue
 
