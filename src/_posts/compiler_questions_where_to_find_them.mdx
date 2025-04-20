@@ -41,7 +41,7 @@ not excluding:
 - Arthur: for your support during GSoc and GT.
 - Josh: For referring me to different companies, helping me with offer negotiation and going on walks with me :)
 - Nicole, Roger and everyone for your patience.
-- Brian and James: For our little biweekly meet up since 2023 :)
+- Brian and James: For our little biweekly virtual meet up since Fall 2023 :)
 - Max & Audrey: for your CS265 class and for SIGPLAN-M :)
 - Jasmangle: for chatting with me through the hiring cycles and helping me with my leetcode.
 - Ahmad: for chatting and being dumb with me through the latter half of the recruitment cycle.
@@ -278,15 +278,15 @@ C = ARR(3000x9000)
 D = ARR(9000x15000)
 E = ARR(15000x2)
 
-Result R = A@B@C@D@E.
+Result R = AxBxCxDxE.
 
-Should we do B@C first? or C@D first? How about A@B? Please algorithmically figure this out.
+Should we do BxC first? or CxD first? How about AxB? Please algorithmically figure this out.
 ```
 
 This problem ([Matrix Chain Multiplication](https://en.wikipedia.org/wiki/Matrix_chain_multiplication)) can be
 solved in $O(2^n)$ time naively or $O(n^3)$ time with dynamic
-programming. I rank it a leetcode
-hard. I could only come up with the naive solution. The interviewer seemed satisfied with the answer, however.
+programming. There are also an $O(n\log n)$ solution and another $O(n)$ approximation solution. I rank it a leetcode
+hard. I could only come up with the naive solution.
 
 The interviewer then asked me about the middle end of the compiler:
 - "Have you worked on any SSA form in your project or experience?"
@@ -344,16 +344,21 @@ to the
 reliability of our implementation. If they can't count on the fact that different platforms with the same library
 will provide the same result, I think that speaks to us and our software engineering practices."
 
-He then asked me to do the iterative implementation.
+They then asked me to do the iterative implementation.
 I admittedly used a different naming convention for my variables,
 and I think that must have made the interviewer think I was struggling. They directed me to have two variables, now
 named
 `current` and `prev`.
 During this time, I really felt I've nailed it down, so I took initiative, asked the interviewer to trust me and let me code the implementation.
 
-Things slowly got more complicated. I was asked to test the iterative version as well, so I then have to refactor the
+Things slowly got more complicated. They then asked for the iterative version's run time and memory complexity. I was
+also asked to test the iterative
+version as well,
+so I then
+have to
+refactor the
 original
-test to accept a callable instead (with std::function). I embarrassingly needed interviewer to remind me how to
+test to accept a callable instead (with `std::function{:cpp}`). I embarrassingly needed interviewer to remind me how to
 embed a function signature to a function parameter, as I didn't remember the old school way with function pointers in
 C++.
 
@@ -379,7 +384,7 @@ The interviewer seemed satisfied, and we ended this round of interview. I went o
 Interviewer gave me a piece of code that involves a for-loop, together with array accesses in said for-loop.
 
 ```kotlin
-fun printArrayElements(arr: List<Int>, info: List<Int>) {
+fun IDespiseLeetcodeHards(arr: List<Int>, info: List<Int>) {
     for (i in 0 until arr.size) {
         println("Element at index $i is ${arr[i]} with info ${info[arr[i]]}")
     }
@@ -501,9 +506,6 @@ set up LLVM on macOS, I'd like to switch to Ubuntu, it's just a popular linux di
 probably one of
 them. C++ scores pretty high on the nostalgic feel as well. It's hard.
 - "How does linear register allocation work?" - I have no hint for this question.
-- "We highly value inclusivity together with diversity here at the company. Can you tell us what you have done
-outside professional experience that speaks to this aspect? It doesn't need to be a 1-to-1 match, some volunteer
-experience will suffice."
 ### Phở
 
 I have a disclaimer to make. Phở is actually not a single company. But it's actually an amalgamation of different
@@ -512,6 +514,8 @@ single question wasted.
 Hence, the name.
 
 #### Questions
+
+- What do you like about programming languages and compilers?
 - "It is possible to perform dataflow analysis on non-SSA values, even so, we keep on insisting on transforming
 our IR to SSA-IR form. What's going on here?"
 - "Tell us about all the compiler optimization you can think of"
@@ -524,11 +528,13 @@ our IR to SSA-IR form. What's going on here?"
 Why is
 that?"
 - [Leetcode 90 - Subsets II](https://leetcode.com/problems/subsets-ii/description/)
-
+- "We highly value inclusivity together with diversity here at the company. Can you tell us what you have done
+outside professional experience that speaks to this aspect? It doesn't need to be a 1-to-1 match, some volunteer
+experience will suffice."
 - "Given the following piece of code, tell me what's the run time complexity of the executable after possible
 compiler optimizations":
-```
-int IHateLeetCode(const std::vector<int> &v) {
+```cpp
+int FreeMeFromLeetcodeHards(const std::vector<int> &v) {
     int sum = 0;
 
     for (int i = 0; i < v.size(); i++) sum += v[i];
@@ -540,7 +546,7 @@ int IHateLeetCode(const std::vector<int> &v) {
 - "If, in testing, my implementation of an algorithm runs twice as slow when my input $n=200$ is twice bigger than my
 $n=100$, does
 that mean my implementation is linear in its complexity? Give your reasoning or counter examples on why it is or is
-not. If it is not linear in its complexity, what would you need to confirm that it will be linear?"
+not. If it is not linear in its complexity, what would you need to confirm/reject this hypothesis?"
 
 # Epilogue
 
