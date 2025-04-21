@@ -336,12 +336,12 @@ ended shortly after.
 ### Honey Almond Cream Cheese Bagel
 
 #### Round 1
-The pre-screen round (round 1) started off with [Leetcode 509 - Fibonacci](https://leetcode.
-com/problems/fibonacci-number/description/)
+The pre-screen round (round 1) started off with
+[Leetcode 509 - Fibonacci](https://leetcode.com/problems/fibonacci-number/description/)
 
 Interviewer asked me to implement the naive, recursive approach. Then moved on to ask me how I would test them and
 asked me
-to come up with different ways to test this. They also asked me how to make sure the test wasn't just reusing the linear
+to come up with different ways to test this. They also asked me to make sure the test wasn't just reusing the linear
 pattern: testing $f(1)$, then $f(2)$, then $f(3)$ as the implementer could easily exploit the linear nature.
 
 I said let's break the fibonacci instance recursively into its sum.
@@ -362,7 +362,9 @@ They asked me for my choice of types as input and output to the function. What w
 I proposed `uint64_t{:cpp}` in C++ and then they asked me "why not just use `unsigned{:cpp}`." I said that different
 platforms
 might
-have different meaning for `unsigned{:cpp}`, and that "users use our fibonacci library over our competitor partly due
+have different meaning for `unsigned{:cpp}`, that "I felt really weird about using `unsigned{:cpp}`, and that "users
+might have chosen to use our
+fibonacci library over our competitor partly due
 to the
 reliability of our implementation. If they can't count on the fact that different platforms with the same library
 will provide the same result, I think that speaks to us and our software engineering practices."
@@ -403,6 +405,8 @@ tree."
 
 The interviewer seemed satisfied, and we ended this round of interview. I went over the time limit by a few minutes.
 
+This round, as well as the next two rounds, are all highly interactive and back and forth.
+
 #### Round 2
 
 This round tested my knowledge in the middle-end and back-end phase.
@@ -440,7 +444,7 @@ CPU as well as pipelining?!).
 This round was all about the front end as well as the general type-checking.
 
 The interviewer asked me about the different phases of the compiler and how it works (front-end, middle-end, back-end).
-They also want to know which phase I am the most comfortable with. I told them front-end and middle-end, but I am
+They also wanted to know which phase I am the most comfortable with. I told them front-end and middle-end, but I was
 willing to dabble in anything.
 
 The interviewer then asked me about my toy compiler project, and what I plan to do next with it. I told them, "I
@@ -451,7 +455,8 @@ your language initially." After a little bit of thinking, I told them "after the
 stage, I
 would assign types, for example, a `NumberExpr` would probably get a `f64_t` type."
 
-We moved on to talk about if-else type checking. They wanted me to provide actual pseudocode that type checks an
+We moved on to talk about if-else type checking. They wanted me to provide pseudocode (in a CoderPad) that type
+checks an
 If-else expression. I had to quickly make up a struct-like version of the If-Else expr, gave them the high level
 overview (of what a laywoman thinks) on what it means that an if-else expression is checked successfully.
 
@@ -485,7 +490,7 @@ goal, interviewers were willing to guide me to get to the question's answer myse
 
 The interview process with the company had ignited my drive to work harder to better myself.  The recruiter
 thankfully gave me very helpful feedback: "you have some of the
-skills we're looking for, but it's not there yet." I was thankful for the recruiter's transparency. Needless to say,
+skills we're looking for, but it's not there yet." I was grateful for the recruiter's transparency. Needless to say,
 what
 followed next was a rejection.
 
@@ -503,7 +508,7 @@ trying to know me
 as a person,
 through my résumé as well as my thoughts on certain topics.
 As a result, they asked me a ton of questions about my resume, about my experience in GSoc gccrs, about
-mlir, about the difference between GCC Tree IR versus llvm-ir; let's just say that if
+MLIR, about the difference between GCC Tree IR versus llvm-ir; let's just say that if
 a project has the word
 "compiler" or "programming languages,", they were gonna ask, in detail, each word and each line that I wrote in the
 résumé. It really felt like they were looking for a true independent thinker who's also a problem solver in their own
@@ -552,11 +557,13 @@ our IR to SSA-IR form. What's going on here?"
 - [Leetcode 38 - Count and say](https://leetcode.com/problems/count-and-say/description/)
 - "What's your experience with CMake?"
 - "Which version of C++ are you using daily?"
+- "What's your experience with AI models and Python?"
+- "What's your experience with quantum computing?"
 - "Explain to me what's the visitor pattern?"
 - "Explain to me what's the concept of the mixins pattern?"
 - "You'll notice that when you make a class in C++, you cannot make the class's templated method virtual as well.
 Why is
-that?" (Hint: something something vtables)
+that?" (Hint: something about vtables, hmmm)
 - [Leetcode 90 - Subsets II](https://leetcode.com/problems/subsets-ii/description/)
 - "We highly value inclusivity together with diversity here at the company. Can you tell us what you have done
 outside professional experience that speaks to this aspect? It doesn't need to be a 1-to-1 match, some volunteer
@@ -573,10 +580,17 @@ int FreeMeFromLeetcodeHards(const std::vector<int> &v) {
 }
 ```
 
-- "If, in testing, my implementation of an algorithm runs twice as slow when my input $n=200$ is twice bigger than my
-$n=100$, does
+- "If, in testing, my implementation of an algorithm runs twice as slow when my input size $n_2=200$ is twice bigger
+than my initial input size of
+$n_1=100$, does
 that mean my implementation is linear in its complexity? Give your reasoning or counter examples on why it is or is
-not. If it is not linear in its complexity, what would you do to confirm/reject this hypothesis?"
+not. If it is not linear in its complexity, what would you do to confirm/reject this hypothesis?" (Hint: something
+to do with plotting and coefficients and hidden constants)
+- "Now if you're still struggling with the previous question, let me ask you this, what if in testing another
+algorithm's implementation, my run time is now $4=2^2$ times as slow when my input size is $n_2=1000$, doubled
+compared to when my
+input size was
+$n_1=500$, does it mean that my implementation is $O(n^2)$?"
 
 # Epilogue
 
@@ -584,46 +598,9 @@ The recruiting process has been one of the most stressful times in my life. Coun
 pounding, my arms and knees get a little weak from thinking about all these processes.
 
 Despite this, I've also been grateful for the situation that I'm in. With the current competitive and dire market,
-a lot of people who are significantly smarter than me who are not able to find a job in this economy, just because they're international.
+a lot of people who are significantly smarter and harder working than me who are not able to find a job in this
+economy, just because they're international.
 My heart goes out for those people.
-
-I feel that I need to acknowledge my privileges. I want to acknowledge that I've never had to work during the
-semesters at Berkeley
-and that I've
-always had a stable
-apartment
-under my head, with supporting family and friends to care for me. That the school I go to, UC Berkeley, offers one
-of the highest quality of education I can ever dream of. These factors played a huge role in how prepared
-I am for these interviews and have afforded me the
-opportunities to work on more projects and leetcode more to improve my résumé and problem-solving skills. These are
-privileges that I think are
-important to acknowledge.
-
-But I also have disadvantages. It's hard for me to focus on a single problem for too long; I lose focus on
-non-interesting
-stuff. I have problems
-with
-spelling out numbers. A
-child of immigrants from Vietnam, I
-have
-had to work
-graveyard shifts
-in UPS trailers, hauling heavy boxes and packages for shipping to support myself and my family
-through covid. A
-child of
-immigrants, I have to wait a year for california resident tuition to kick in before I can attend community college.
-A child of immigrants, I have no other way
-but to attend community college instead of attending a public university from the get-go, lest I want to pay an
-exorbitant
-amount of money that I don't have to attend private university.
-
-In acknowledging my privileges and shortcomings, I don't mean to erase or elevate my success. These experiences
-may complicate my achievements, but more importantly, they absolutely enlighten new grad readers a clear vision to
-paint a
-path to success for themselves.
-Every journey is messy and unique, entangled with each person's
-characteristics and environments. Mine is no exception—yet within its nuances, others may find the courage to forge
-their own.
 
 Here are some pictures documenting my emotions throughout the process. Thank you for reading.
 
