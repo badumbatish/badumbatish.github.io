@@ -149,7 +149,8 @@ the implementation.
 
 There were 2–3 followup questions:
 
-- What is the time complexity of this? (Hint: constant time for an upper limit on the input size, but please explain
+- What is the time and space complexity of this? (Hint: constant time for an upper limit on the input size, but please
+explain
 this in
 detail)
 - How do we make sure we don't waste time computing the combination sums that doesn't have an answer? (Hint: think
@@ -168,7 +169,7 @@ to ask ChatGPT for some help, I did it after the interview ended, you might as w
 - [Leetcode 198 - House Robber](https://leetcode.com/problems/house-robber/description/)
 - [Leetcode 2016 - Maximum difference between increasing elements](https://leetcode.com/problems/maximum-difference-between-increasing-elements/description/)
 
-Follow-ups on leetcode questions were still the same: "what's the time complexity?"
+Follow-ups on leetcode questions were still the same: "what's the time and space complexity?"
 #### Round 4
 
 Interview provided me with the schematics for the untyped lambda calculus syntax and asked me to code up a
@@ -240,7 +241,7 @@ technical writings."
 Another leetcode-styled question, this one is named "Bit-flip."
 
 Given a monochrome bitmap represented as a flat array of bytes, with one bit per pixel, flip it horizontally in-place.
-The follow-up question is "if you have a lot of requests, what kind of optimization/parallelization can you perform"
+The follow-up question was "if you have a lot of requests, what kind of optimization/parallelization can you perform"
 
 The problem was 3-fold. It tested if the interviewee could map indices from 2D array to 1D array. It then tested if
 interviewee was comfortable with bit manipulation. Finally, it tested the interviewee's ability to parallelize the
@@ -335,18 +336,20 @@ ended shortly after.
 ### Honey Almond Cream Cheese Bagel
 
 #### Round 1
-The pre-screen round (round 1) starts with [Leetcode 509 - Fibonacci](https://leetcode.com/problems/fibonacci-number/description/)
+The pre-screen round (round 1) started off with [Leetcode 509 - Fibonacci](https://leetcode.
+com/problems/fibonacci-number/description/)
 
 Interviewer asked me to implement the naive, recursive approach. Then moved on to ask me how I would test them and
 asked me
-to come up with different ways to test this. They also asked me how to make sure the test isn't just reusing the linear
-pattern: testing f(1), then f(2), then f(3) as the implementer can easily exploit the linear nature.
+to come up with different ways to test this. They also asked me how to make sure the test wasn't just reusing the linear
+pattern: testing $f(1)$, then $f(2)$, then $f(3)$ as the implementer could easily exploit the linear nature.
 
 I said let's break the fibonacci instance recursively into its sum.
 like $f(3) = f(2) + f(1) = 2(f1) + f(0)$ and test each of them, despite me not knowing how to actually break it up
 hahha.
 
-They said this could work. But another way was to perform randomized testing: pick a number randomly in a range and
+They said this could work. But another (easier) way was to perform randomized testing: pick a number randomly in a
+range and
 test it.
 
 They then asked for complexity of fibonacci. I said this is $O(2^n)$ from the master theorem, or we can see that each
@@ -356,7 +359,7 @@ recomputed
 the subproblem twice, leading to $O(2^n)$.
 
 They asked me for my choice of types as input and output to the function. What would happen user put in negative number?
-I proposed `uin64_t{:cpp}` in C++ and then they asked me "why not just use `unsigned{:cpp}`." I said that different
+I proposed `uint64_t{:cpp}` in C++ and then they asked me "why not just use `unsigned{:cpp}`." I said that different
 platforms
 might
 have different meaning for `unsigned{:cpp}`, and that "users use our fibonacci library over our competitor partly due
@@ -375,7 +378,7 @@ Things slowly got more complicated. They then asked for the iterative version's 
 also asked to test the iterative
 version as well,
 so I then
-have to
+had to
 refactor the
 original
 test to accept a callable instead (with `std::function{:cpp}`). I embarrassingly needed the interviewer to remind me
@@ -434,7 +437,7 @@ size of the
 CPU as well as pipelining?!).
 #### Round 3
 
-This round is all about the front end as well as the general type-checking.
+This round was all about the front end as well as the general type-checking.
 
 The interviewer asked me about the different phases of the compiler and how it works (front-end, middle-end, back-end).
 They also want to know which phase I am the most comfortable with. I told them front-end and middle-end, but I am
@@ -482,12 +485,13 @@ goal, interviewers were willing to guide me to get to the question's answer myse
 
 The interview process with the company had ignited my drive to work harder to better myself.  The recruiter
 thankfully gave me very helpful feedback: "you have some of the
-skills we're looking for, but it's not there yet." Needless to say, what
+skills we're looking for, but it's not there yet." I was thankful for the recruiter's transparency. Needless to say,
+what
 followed next was a rejection.
 
 ### Takoyaki
 
-The Takoyaki company process is completely different from the rest of the line-up. If Honey Almond Cream Cheese
+The Takoyaki company process was completely different from the rest of the line-up. If Honey Almond Cream Cheese
 Bagel wanted to gauge my skills through providing actual pseudocode for simulated problems, then Takoyaki opted for
 repeatedly hard-hitting questions in different areas in random orders that were tailored specifically to my résumé.
 
@@ -505,7 +509,7 @@ a project has the word
 résumé. It really felt like they were looking for a true independent thinker who's also a problem solver in their own
 ways. Despite this, not a single leetcode questions or programming questions were asked in both rounds.
 
-They also asked me that in one of my compiler projects, does it have error reporting? I reluctantly said no, and that's
+They also asked me that in one of my compiler projects, did it have error reporting? I reluctantly said no, and that's
 why I
 incorporate that feature and wrote about it in this [article](what_after_kalei_location_debug).
 
@@ -552,7 +556,7 @@ our IR to SSA-IR form. What's going on here?"
 - "Explain to me what's the concept of the mixins pattern?"
 - "You'll notice that when you make a class in C++, you cannot make the class's templated method virtual as well.
 Why is
-that?"
+that?" (Hint: something something vtables)
 - [Leetcode 90 - Subsets II](https://leetcode.com/problems/subsets-ii/description/)
 - "We highly value inclusivity together with diversity here at the company. Can you tell us what you have done
 outside professional experience that speaks to this aspect? It doesn't need to be a 1-to-1 match, some volunteer
