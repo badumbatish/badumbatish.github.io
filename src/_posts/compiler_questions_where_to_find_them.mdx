@@ -88,7 +88,6 @@ All the code I have written for the interviews (including pseudocode) is in C++1
 The questions compiled here,
 as well as my perspective on each interview round, have been written since November 2024.
 
-
 ## Pre-December 2024
 
 During this time starting between Aug 2024 to December 2024, my mind was still dull and unsharpened. Limited interviews
@@ -120,7 +119,7 @@ the best light for
 potential compiler employers.
 
 I could feel a hint of despair and helplessness in my heart myself whenever I click "send"
-on an application.
+on an application. All I could do was keeping my head down and keep on grinding.
 
 ### Pad Kee Mao
 
@@ -138,7 +137,10 @@ After the code passed the test case, the interviewer asked how I can speed it up
 I answered by using cache on the edges of the graph.
 The interviewer then explained that caching was good but hinted that caching on the nodes of the graph was more
 efficient.
-I agreed with them and provided pseudocode for the implementation.
+I paused for a bit, asked them to explain to me why caching on nodes is better (lol). After a minute or two, I agreed
+with them and provided
+pseudocode for the
+implementation.
 
 Shortly after this, we ended the interview.
 #### Round 2
@@ -286,8 +288,10 @@ Should we do BxC first? or CxD first? How about AxB? Please algorithmically figu
 
 This problem ([Matrix Chain Multiplication](https://en.wikipedia.org/wiki/Matrix_chain_multiplication)) can be
 solved in $O(2^n)$ time naively or $O(n^3)$ time with dynamic
-programming. There are also an $O(n\log n)$ solution and another $O(n)$ approximation solution. I rank it a leetcode
-hard. I could only come up with the naive solution.
+programming. There are also an $O(n\log n)$ solution and another $O(n)$ approximation solution. I rank it a
+[leetcode
+superduper crackhead hard](https://www.reddit.com/r/cscareerquestions/comments/1jjva6s/my_company_is_starting_to_ask_leet_code_hards_and/).
+I could only come up with the naive solution.
 
 The interviewer then asked me about the middle end of the compiler:
 - "Have you worked on any SSA form in your project or experience?"
@@ -492,11 +496,12 @@ goal, interviewers were willing to guide me to get to the question's answer myse
 
 The recruiter
 thankfully gave me very helpful feedback: "you have some of the
-skills we're looking for, but it's not there yet." I was grateful for the recruiter's transparency. Needless to say,
+skills the team was looking for, but it's not there yet." I was grateful for the recruiter and the team's transparency.
+Needless to say,
 what
 followed next was a stinging rejection.
 
-As I'm writing this article, I shudder to think about my past self and all the time I've been rejected: "I hope the
+As I'm writing this article, I shudder to think about my past selves and all the time I've been rejected: "I hope the
 past Jasmine didn't attribute her self-worth to a result
 of an interview process." I hope you don't either - we play the card we're dealt with, and refuse to let them define us.
 
@@ -506,6 +511,15 @@ The Takoyaki company process was completely different from the rest of the line-
 Bagel wanted to gauge my skills through providing actual pseudocode for simulated problems, then Takoyaki opted for
 repeatedly hard-hitting questions in different areas in random orders that were tailored specifically to my résumé.
 
+Interviewing with the company felt like talking to a colleague instead of being quizzed on a test with leetcodes. I
+felt like I was also contributing to the conversation, it was amazing :)
+
+The Takoyaki was also one of the few companies that really hold in respect their transparency. They clearly set the
+interview expectation, told me straight from the start "there won't be any leetcode, we're gonna talk about your
+résumé," and talk we did!
+
+Gosh I hope I'm not gushing over Honey Almond Cream Cheese Bagel and Takoyaki too much. At least now you know which of
+the listed dishes are my favorites :)
 #### Round 1 & 2
 
 The company seemed really
@@ -525,13 +539,13 @@ why I
 incorporate that feature and wrote about it in this [article](what_after_kalei_location_debug).
 
 There are also non-resume questions:
-- "What's the most important thing in software engineering, according to you" - I told the interviewer that
+- "What's the most important thing in software engineering, according to you?" - I told the interviewer that
 it's "building tools."
-- "On a high level, how would you debug a JIT compiler" - Hahah this is a hard question. I talked about how
+- "On a high level, how would you debug a JIT compiler?" - Hahah this is a hard question. I talked about how
 difficult it is to
 debug a JIT compiler instead.
-- "On a high level, how would you debug/detect a memory bug" — Static analyzer, sanitizers, gdb, and lldb.
-- "How useful do you think AI is in your day-to-day workflow" - It's not good enough, but it's helpful for searching
+- "On a high level, how would you debug/detect a memory bug?" — Static analyzer, sanitizers, valgrind, gdb, and lldb.
+- "How useful do you think AI is in your day-to-day workflow?" - It's not good enough, but it's helpful for searching
 for documentation.
 - "What, to your knowledge, might be a difference in a compiler's AST and HIR?" (Hint: syntax desugaring, custom SSA
 IR form, sometimes it also happens that your compiler typechecking and such only exists in the HIR level (this is
@@ -546,6 +560,7 @@ set up LLVM on macOS, I'd like to switch to Ubuntu, it's just a popular linux di
 - "What's your favorite programming language?" — I actually don't know if I have a favorite language :) Rust is
 probably one of
 them. C++ scores pretty high on the nostalgic feel as well. It's hard.
+- "What's your experience with CI/CD?"
 - "How does linear register allocation work?" - No hint for this question.
 
 ### Phở
@@ -564,7 +579,9 @@ our IR to SSA-IR form. What's going on here?"
 - [Leetcode 38 - Count and say](https://leetcode.com/problems/count-and-say/description/)
 - "What's your experience with CMake?"
 - "Which version of C++ are you using daily?"
-- "What's your experience with AI models and Python?"
+- "What's your experience with AI models?"
+- "Can you tell us what free software is and how you feel about the concept?"
+- "How are your Python skills? If you're comfortable, can we do the technical interview in Python?"
 - "What's your experience with quantum computing?"
 - "If one day you're starting a new company, how would you like it to be run?"
 - "Explain to me what's the visitor pattern?"
@@ -573,15 +590,16 @@ our IR to SSA-IR form. What's going on here?"
 Why is
 that?" (Hint: something about vtables, hmmm)
 - "What's your experience with the RISC-V architecture?"
-- "Do you have any experience with any JavaScript compiler?"
+- "Do you have any experience with any JavaScript compiler? Can you tell us why you think there are different
+JavaScript compilers? If you have no experience, you're welcome to take some guesses, let's discuss this together."
 - [Leetcode 90 - Subsets II](https://leetcode.com/problems/subsets-ii/description/)
 - "We highly value inclusivity together with diversity here at the company. Can you tell us your experience
 (professional or not) that speaks to this aspect? It doesn't need to be a 1-to-1 match."
-- "What do you feel about free software?"
-- "We care deeply about giving back and contributing to open source software, have you had any experience in this facet?"
+- "We care deeply about giving back and contributing to open source software, have you had any experience in this
+facet? It is completely ok if the experience is not compiler-related."
 - "As the job application (that you have read and applied) for the compiler team is about the development of our
 language SkibidiToiletRizz, can you tell us (even if you haven't coded in it) what you like about the language? What
-about it that you don't like?" (Hint: make sure that you actually search up the language beforehand, don't be like me)
+about it that you don't like?"
 - "Given the following piece of code, tell me what's the run time complexity of the executable after possible
 compiler optimizations":
 ```cpp
