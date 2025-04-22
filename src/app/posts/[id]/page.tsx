@@ -16,9 +16,10 @@ export async function generateMetadata(
         id
     } = params;
 
-    const { title } = await getPostById(id);
+    const { title, recap } = await getPostById(id);
     return {
         title,
+        description: recap,
     };
 }
 
