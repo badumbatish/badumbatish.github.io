@@ -197,7 +197,8 @@ into them until after December 2024.
 
 In this economy,
 it's hard to know what questions will be thrown at you. Please be prepared for operator precedence climbing and
-pratt parsing by implementing a simple calculator with +, -, *, /, (, ) yourself. It's better to learn in the practice
+pratt parsing by implementing a simple calculator with +, -, *, /, (, ) yourself. As they always say, it's better to
+learn in the practice
 exam than in the exam itself.
 
 ## Post-December 2024
@@ -413,7 +414,7 @@ behavior
 
 I then proposed that we used C++'s `std::map<uint64_t, uint64_t>` to handle this: binary search to the smaller and
 nearest cached
-instance
+instances
 to the current input and start the computation from there.
 
 At this point, the interviewer
@@ -429,7 +430,7 @@ This round, as well as the next two rounds, are all highly interactive and advan
 
 This round tested my practical knowledge in the middle-end and back-end phase.
 
-Interviewer gave me a piece of code that involves a for-loop, together with array accesses in said for-loop.
+The interviewer gave me a piece of code that involves a for-loop, together with array accesses in said for-loop.
 
 ```kotlin
 fun DoYouKnowTheMuffinMan(arr: List<Int>, info: List<Int>) {
@@ -446,10 +447,10 @@ After the information, they asked me to "please lower this into assembly, you ca
 mind about the SSA value. When lowering, remember that you will need to create a branch and a jump section for the
 array bound access."
 
-They also specified that the language also has overflowing checking on its integers, and that "show that via
-some compiler optimization, the compiler can guarantee that the overflowing check on `i=i+1` in the IR never happens,
+They also specified that the language also has overflow checking on its integers, and that "show that via
+some compiler optimization, the compiler can guarantee that the overflow check on `i=i+1` in the IR never happens,
 thus
-speeding up the program considerably"
+speeding up the program considerably."
 
 After all this, depending on my jump assembly section ordering, they asked me to explain why different placements of
 the jump assembly section might affect the execution speed of my executable in my CPU (hint: this depends on the branch
@@ -477,7 +478,8 @@ would probably get a `f64_t` type."
 We moved on to talk about if-else type checking. They wanted me to provide pseudocode (in a CoderPad) that type
 checks an
 If-else expression. I had to quickly make up a struct-like version of the If-Else expr, gave them the high level
-overview (of what a laywoman thinks) on what it means that an if-else expression is checked successfully.
+overview (of what a laywoman thinks) on what it means that an if-else expression is checked successfully. I asked
+them a lot of questions about the language's syntax and the assumption that I could make behind the type system.
 
 They then followed up with "given two types A and B, how would you find out the supertype of those two types. After
 this, they followed up with "now that you have the way to find out the
@@ -487,20 +489,21 @@ diagram as a tree representing all the types in your language, with the supertyp
 We then ended the interview.
 #### Introspection
 
-This company featured the most interactive aspect in the whole line up, just a bit
+This company featured the most interactive interview style in the whole line up, just a bit
 behind Takoyaki. A lot of the questions being asked in this company's interviews really made me think hard about my
-answers.
+answers. It's clear to say their challenging questions perfectly blended between practicality, depth and theory.
 
-Looking back, I think working more on my toy compiler would have helped a lot.
+Looking back, I think working more on my toy compiler could have helped a lot.
 If I had
 implemented a simple bidirectional type
 checker for my compiler, the if-else expr type checking question would have been easier—I could have been more
 methodical in my answers.
 If I had enrolled in
 one of
-our school's upper divisions in software-hardware architecture instead of studying randomized algorithms, the
+our school's upper divisions in software-hardware architecture instead of randomized algorithms, answering
+the
 question on
-lowering assembly would have been easier.
+assembly lowering could have been smoother. Whatever, we work with what we have :)
 
 It was also during this time period that I realized not every answer needed to be perfect. Oftentimes, as long as I
 managed to spell out the keywords that the interviewers were looking for, or as long as I was progressing towards the
@@ -573,7 +576,8 @@ set up LLVM on macOS, I'd like to switch to Ubuntu, it's just a popular linux di
 probably one of
 them. C++ scores pretty high on the nostalgic feel as well. It's hard.
 - "What's your experience with CI/CD?"
-- "How does linear register allocation work?" — No hint for this question.
+- "How does linear register allocation work? How does register coalescing work in this scheme" — No hint for this
+question.
 
 ### Phở
 
@@ -590,6 +594,7 @@ our IR to SSA-IR form. What's going on here?"
 - "Tell us about all the compiler optimization you can think of"
 - [Leetcode 38 - Count and say](https://leetcode.com/problems/count-and-say/description/)
 - "What's your experience with CMake?"
+- "How about your CUDA skills?"
 - "Which version of C++ are you using daily?"
 - "What's your experience with AI models?"
 - "What are your favorite gcc flags?" - Wall, Wextra, Werror :)
