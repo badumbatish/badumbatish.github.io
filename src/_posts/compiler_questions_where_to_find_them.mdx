@@ -90,6 +90,10 @@ All the code I have written for the interviews (including pseudocode) is in C++1
 The questions compiled here,
 as well as my perspective on each interview round, have been written since November 2024.
 
+If a question doesn't have a hint, that's because the answer is either too broad, too personal, too hard or the hint
+might
+have been too obvious, or I haven't touched it yet :P
+
 
 ## Pre-December 2024
 
@@ -235,6 +239,8 @@ project.
 By the time I wrapped up my recruitment process, my leetcode count has hit 520+, compared to the pre-December period
 of ~350 leetcodes.
 
+I could feel some hope then, sending out applications and networking.
+
 ### Macaroni and Cheese
 3 rounds of technical leetcode interviews. I'm beginning to be convinced that companies really like leetcode questions,
 even in
@@ -242,7 +248,7 @@ compilers.
 #### Round 1
 A leetcode-styled question on a string-stack-parsing problem.
 
-Given a string of "add(mul(5,2), 3)", produce the final numeric answer. (Hint: if you're a compiler person, on a
+Given a string of "add(mul(5, 2), 3)", produce the final numeric answer. (Hint: if you're a compiler person, on a
 high level,
 think
 about this in terms of phases, from the perspective of lexing tokens first, and then transition into parsing)
@@ -256,8 +262,9 @@ technical writings."
 
 Another leetcode-styled question, this one is named "Bit-flip."
 
+
 Given a monochrome bitmap represented as a flat array of bytes, with one bit per pixel, flip it horizontally in-place.
-The follow-up question was "if you have a lot of requests, what kind of optimization/parallelization can you perform"
+The follow-up question was "if you have a lot of requests, what kind of optimization/parallelization can you perform?"
 
 The problem was 3-fold. It tested if the interviewee could map indices from 2D array to 1D array. It then tested if
 interviewee was comfortable with bit manipulation. Finally, it tested the interviewee's ability to parallelize the
@@ -387,7 +394,7 @@ They asked me for my choice of types as input and output to the function. What w
 I proposed `uint64_t{:cpp}` in C++ and then they asked me "why not just use `unsigned{:cpp}`." I said that different
 platforms
 might
-have different meaning for `unsigned{:cpp}`, that "I felt really weird about using `unsigned{:cpp}`, and that "users
+have different meaning for `unsigned{:cpp}`, that "I felt really weird about using `unsigned{:cpp}`", and that "users
 might have chosen to use our
 fibonacci library over our competitor partly due
 to the
@@ -416,7 +423,7 @@ C++.
 Interviewers then finally asked me, "is there any other way to speed this up?" I thought they meant complexity-wise, so I
 answer "yes, with matrix multiplication this goes down to $O(log(n))$." They indicated they were more looking for this
 behavior
-"User calls $f(1)$ then calls $f(10)$ then $f(20)$. How to speed up?"
+"User calls $f(1)$, then calls $f(10)$ then $f(20)$. How to speed up?"
 
 I then proposed that we used C++'s `std::map<uint64_t, uint64_t>` to handle this: binary search to the smaller and
 nearest cached
@@ -499,7 +506,7 @@ class IfExpr : public Expr {
 ```
 
 They then followed up with "given two types A and B, how would you find out the lowest supertype (LS) of those two
-types.
+types?"
 After
 this, they followed up with "now that you have the way to find out the
 LS of 2 types, with this in mind, how would you go on to check the LS of k types?" (Hint: Draw
@@ -540,7 +547,7 @@ Needless to say,
 what
 followed next was a rejection.
 
-As I'm writing this article, I shudder to think about my past selves and all the time I've been rejected: "I hope the
+As I'm writing this article, I shudder to think about my past selves and all the times I've been rejected: "I hope the
 past Jasmine didn't attribute her self-worth to a result
 of an interview process." I hope you don't either - we play the card we're dealt with, and refuse to let them define us.
 
@@ -610,7 +617,8 @@ were asked in both rounds, the interviews at Takoyaki were still highly technica
 ### Phở
 
 I have a disclaimer to make. Phở is actually not a single company. But it's actually an amalgamation of different
-companies' questions that were asked. I want to add all the relevant questions that I was asked, not a
+companies' questions that were asked. In protecting companies' anonymity, I want to add all the relevant questions
+that I was asked, not a
 single question wasted.
 Hence, the name.
 
@@ -648,7 +656,7 @@ repository? We welcome all suggestions!"
 facet? It is completely ok if the experience is not compiler-related."
 - "As the job application (that you have read and applied) for the compiler team is about the development of our
 language SkibidiToiletRizz, can you tell us (even if you haven't coded in it) what you like about the language? What
-about it that you don't like?"
+about it that you don't like? We value all inputs."
 - "Given the following piece of code, tell me what's the run time complexity of the executable after some possible
 compiler optimizations, feel free to take your time. Please specify in depth the
 [compiler optimization](https://en.wikipedia.org/wiki/Dead_code)
@@ -664,6 +672,7 @@ int YourMomHahahahahhhhah(const std::vector<int> &v) {
     return 42;
 }
 ```
+- "Do you have any experience in static analysis?"
 - "Why do you think inlining and register allocation are really important in compiler optimization? It is ok to take
 a guess, let's work from there."
 - "If, in testing, my algorithm implementation from a paper runs twice as slow when my input size $n_2=200$ is twice
