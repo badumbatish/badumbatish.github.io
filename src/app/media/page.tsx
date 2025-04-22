@@ -36,6 +36,17 @@ const typeStyles = new Map([
     )]
 ]);
 
+
+export async function generateMetadata(
+) {
+    const title = "Media";
+    const description = "Jasmine's media garden, featuring game trailers, mangas and others' essays, etc";
+    return {
+        title,
+        description,
+    };
+}
+
 const validMangaTypes = new Set(["trans", "romance", "sci-fi", "fantasy", "horror"]);
 async function stylizeMangaTags (mangaType : string)  {
         let typeStyle = typeStyles.get(mangaType);
