@@ -4,7 +4,9 @@ date: 2024-12-7
 recap: "Jas reports on her graduate compiler project: working with MLIR's SSA form, lifting DEX (with MLIR's MjolnIR) and lowering to smali."
 ---
 ## Prologue
-Hi there, I hope everyone's having a great day, this article is about lifting and lowering DEX instructions in MLIR, utilizing the framework in analysing and optimizing the [DEX](https://source.android.com/docs/core/runtime/dalvik-bytecode) format.
+Hi there, how has everybody been?
+
+I hope everyone's having a great day, this article is about lifting and lowering DEX instructions in MLIR, utilizing the framework in analysing and optimizing the [DEX](https://source.android.com/docs/core/runtime/dalvik-bytecode) format.
 
 The blog is intended as a report submission for [CS265](https://www2.eecs.berkeley.edu/Courses/CS265/) [here](https://github.com/mwillsey/cs265). The report focuses more on the high level details. The project also discusses the ease (or uneasiness) of executing the project, meanwhile introducing the benefits of MLIR with its elements in the ecosystem
 
@@ -22,7 +24,7 @@ This section introduces some terminology and/or acronyms that reviews from my fr
 
 - SSA: Static Single Assignment, a form where each variable is assigned exactly once, enabling easier optimization and analysis. This form is enforced in MLIR. We'll see the useful feature of this in the translation section.
 
-- Phi: A phi node is an SSA (Static Single Assignment) construct that selects a value based on the control flow predecessor, allowing variables to have multiple incoming definitions at a basic block merge point.
+- Phi ($\phi$): A phi node is an SSA (Static Single Assignment) construct that selects a value based on the control flow predecessor, allowing variables to have multiple incoming definitions at a basic block merge point.
 
 - Block arguments: Equivalent to phi (?!) but in a different form.
 
