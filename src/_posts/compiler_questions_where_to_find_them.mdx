@@ -488,6 +488,16 @@ If-else expression. I had to quickly make up a struct-like version of the If-Els
 overview (of what a laywoman thinks) on what it means that an if-else expression is checked successfully. I asked
 them a lot of questions about the language's syntax and the assumption that I could make behind the type system.
 
+For visualization, I typed something similar to this:
+```cpp
+class IfExpr : public Expr {
+  Expr* cond;
+  Expr* then;
+  Expr* else;
+  ...
+};
+```
+
 They then followed up with "given two types A and B, how would you find out the lowest supertype (LS) of those two
 types.
 After
