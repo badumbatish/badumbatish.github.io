@@ -1,5 +1,5 @@
 ---
-title: 'Compiler (related) interview questions and where to find them'
+title: 'Compiler (related) interview questions and nowhere to find them'
 date: 2025-4-17
 recap: "Jasmine helps new grads in compiler by sharing interview questions through her new grad recruiting journey"
 ---
@@ -131,6 +131,7 @@ One of my first interviews for the recruiting season.
 #### Round 1
 Question is [Leetcode 1462 - Course Schedule IV](https://leetcode.com/problems/course-schedule-iv/description/)
 
+A classic graph traversal problem that's solvable by DFS or BFS.
 I read the problem statement and coded up the solution, step by step explaining it to them.
 
 There were some bugs in my code.
@@ -148,6 +149,10 @@ Shortly after this, we ended the interview.
 #### Round 2
 Question is [Leetcode 39 - Combination Sum](https://leetcode.com/problems/combination-sum/description/)
 
+Another DFS problem that's powered by backtracking. I think anybody who's done some leetcode has seen it. Personally,
+I'd recommend readers to also solve
+[Leetcode 40 - Combination Sum II](https://leetcode.com/problems/combination-sum-ii/) and
+[Leetcode 17 - Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/).
 I spent around 10–15 minutes to walk over an example, asked the interviewer about the constraints as well as coding up
 the implementation.
 
@@ -163,6 +168,8 @@ about the comparison between the sum of all elements and the target being asked)
 would you parallelize this? (Hint: think about when you first split up the big problem into smaller subproblems, how
 that exposes the independence between them.)
 
+Although the interviewer didn't ask me about the time and space complexity when the input isn't bounded, I think
+it's a good exercise to try and figure it out. Some pencil and paper would suffice.
 #### Round 3
 
 The interviewer started with non-leetcode questions, then they transitioned into leetcode questions.
@@ -176,16 +183,16 @@ to ask ChatGPT for some help, I did it after the interview ended, you might as w
 Follow-ups on leetcode questions were still the same: "what's the time and space complexity?"
 #### Round 4
 
-Interview provided me with the schematics for the untyped lambda calculus syntax and asked me to code up a
+The interviewer provided me with the schematics for the untyped lambda calculus syntax and asked me to code up a
 recursive
 descent lexer/parser combination for
-it . I was
+it. I was
 kind of taken off guard
 by the question a bit. But I had been hand-writing recursive descent parser in my compiler project as well as for
 gccrs, so I kinda got the
 general idea.
 
-I was grateful (?!) that they didn't ask about operator precedence climbing as well as Pratt parsing as I didn't get
+I was relieved (?!) that they didn't ask about operator precedence climbing as well as Pratt parsing as I didn't get
 into them until after December 2024.
 
 In this economy,
@@ -196,10 +203,6 @@ exam than in the exam itself.
 ## Post-December 2024
 
 The post-December era seemed like Luffy's post-timeskip in One Piece.
-I am much more confident in my interviewing skills now.
-
-My résumé's also been much more refined with my graduate class
-project.
 
 Interviewing with a lot of stray companies has made me more indifferent, more efficient and better at
 the recruiting process. Ghosting or generic rejections don't bother me as much. Rejections just mean there are better
@@ -219,7 +222,10 @@ your projects, leetcode,
 résumé or
 general marketing and networking. I can't stress that fact enough; please never forget that.
 
-By the time I wrapped up my recruitment process, my leetcode count has hit 500+, compared to the pre-December period
+I am much more confident in my interviewing skills now.
+My résumé's also been much more refined with my graduate class
+project.
+By the time I wrapped up my recruitment process, my leetcode count has hit 520+, compared to the pre-December period
 of ~350 leetcodes.
 
 ### Macaroni and Cheese
@@ -251,6 +257,7 @@ interviewee was comfortable with bit manipulation. Finally, it tested the interv
 problem.
 #### Round 3
 
+Weww, it's raining BFS and DFS everyone.
 This time it's another modified version of an official problem that I know of:
 [Leetcode 63 - Unique Paths II](https://leetcode.com/problems/unique-paths-ii/description/)
 
@@ -283,14 +290,16 @@ E = ARR(15000x2)
 
 Result R = AxBxCxDxE.
 
-Should we do BxC first? or CxD first? How about AxB? Please algorithmically figure this out.
+To obtain R, should we do BxC first? or CxD first? How about AxB?
+
+Please algorithmically figure this out.
 ```
 
 This problem ([Matrix Chain Multiplication](https://en.wikipedia.org/wiki/Matrix_chain_multiplication)) can be
 solved in $O(2^n)$ time naively or $O(n^3)$ time with dynamic
 programming. There are also an $O(n\log n)$ solution and another $O(n)$ approximation solution. I rank it a
-[leetcode
-superduper crackhead hard](https://www.reddit.com/r/cscareerquestions/comments/1jjva6s/my_company_is_starting_to_ask_leet_code_hards_and/).
+leetcode
+superduper crackhead hard.
 I could only come up with the naive solution.
 
 The interviewer then asked me about the middle end of the compiler:
@@ -341,8 +350,12 @@ ended shortly after.
 ### Honey Almond Cream Cheese Bagel
 
 #### Round 1
-The pre-screen round (round 1) started off with
+
+The screening round (round 1) started off with
 [Leetcode 509 - Fibonacci](https://leetcode.com/problems/fibonacci-number/description/)
+
+This round was designed to test the interviewee's software engineering skills and practices. A lot of refactoring were
+needed throughout all the iterations. I'm glad I know vim pretty well to handle all of them.
 
 Interviewer asked me to implement the naive, recursive approach. Then moved on to ask me how I would test them and
 asked me
@@ -374,7 +387,7 @@ to the
 reliability of our implementation. If they can't count on the fact that different platforms with the same library
 will provide the same result, I think that speaks to us and our software engineering practices."
 
-They then asked me to do the iterative implementation.
+We switched to a different direction. They then asked me to do the iterative implementation.
 I admittedly used a different naming convention for my variables,
 and I think that must have made the interviewer think I was struggling. They directed me to have two variables, now
 named
@@ -394,7 +407,7 @@ embed a function signature to a function parameter, as I didn't remember the old
 C++.
 
 Interviewers then finally asked me, "is there any other way to speed this up?" I thought they meant complexity-wise, so I
-answer "yes, with matrix multiplication this goes to $O(log(n))$." They indicated they were more looking for this
+answer "yes, with matrix multiplication this goes down to $O(log(n))$." They indicated they were more looking for this
 behavior
 "User calls $f(1)$ then calls $f(10)$ then $f(20)$. How to speed up?"
 
@@ -414,7 +427,7 @@ This round, as well as the next two rounds, are all highly interactive and advan
 
 #### Round 2
 
-This round tested my knowledge in the middle-end and back-end phase.
+This round tested my practical knowledge in the middle-end and back-end phase.
 
 Interviewer gave me a piece of code that involves a for-loop, together with array accesses in said for-loop.
 
@@ -458,7 +471,8 @@ would want to implement a type checker in the compiler." They then iterated on t
 types in
 your language initially." After a little bit of thinking, I told them "after the parsing and AST construction
 stage, I
-would assign types, for example, a `NumberExpr` would probably get a `f64_t` type."
+would assign types, for example, a [`NumberExpr`](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/index.html)
+would probably get a `f64_t` type."
 
 We moved on to talk about if-else type checking. They wanted me to provide pseudocode (in a CoderPad) that type
 checks an
@@ -475,8 +489,7 @@ We then ended the interview.
 
 This company featured the most interactive aspect in the whole line up, just a bit
 behind Takoyaki. A lot of the questions being asked in this company's interviews really made me think hard about my
-answers. The amount of ingenuity and
-teamwork the team had displayed to me during my interview made me stand in awe.
+answers.
 
 Looking back, I think working more on my toy compiler would have helped a lot.
 If I had
@@ -542,7 +555,7 @@ There are also non-résumé questions:
 it's "building tools."
 - "On a high level, how would you debug a JIT compiler?" - Hahah this is a hard question. I talked about how
 difficult it is to
-debug a JIT compiler instead.
+debug a JIT compiler instead. It seemed to suffice.
 - "On a high level, how would you debug/detect a memory bug?" — Static analyzer, sanitizers, valgrind, gdb, and lldb.
 - "How useful do you think AI is in your day-to-day workflow?" - It's not good enough, but it's helpful for searching
 for documentation.
@@ -593,20 +606,27 @@ that?" (Hint: something about vtables, hmmm)
 - "Do you have any experience with any JavaScript compiler? Can you tell us why you think there are different
 JavaScript compilers? If you have no experience, you're welcome to take some guesses, let's discuss this together."
 - [Leetcode 90 - Subsets II](https://leetcode.com/problems/subsets-ii/description/)
-- "We highly value inclusivity together with diversity here at the company. Can you tell us your experience
+- "We highly value [inclusivity](https://dictionary.cambridge.org/us/dictionary/english/inclusivity) together with
+[diversity](https://dictionary.cambridge.org/us/dictionary/english/diversity) here at the company. Can you tell us your experience
 (professional or not) that speaks to this aspect? It doesn't need to be a 1-to-1 match."
+- "Here's our newly published open source codebase. Can you tell us anything you like or don't like about the
+repository? We welcome all suggestions!"
 - "We care deeply about giving back and contributing to open source software, have you had any experience in this
 facet? It is completely ok if the experience is not compiler-related."
 - "As the job application (that you have read and applied) for the compiler team is about the development of our
 language SkibidiToiletRizz, can you tell us (even if you haven't coded in it) what you like about the language? What
 about it that you don't like?"
-- "Given the following piece of code, tell me what's the run time complexity of the executable after possible
-compiler optimizations, feel free to take your time":
+- "Given the following piece of code, tell me what's the run time complexity of the executable after some possible
+compiler optimizations, feel free to take your time. Please specify in depth the
+[compiler optimization](https://en.wikipedia.org/wiki/Dead_code)
+as well as the
+[framework](https://en.wikipedia.org/wiki/Data-flow_analysis)
+behind it":
 ```cpp
 int YourMomHahahahahhhhah(const std::vector<int> &v) {
     int sum = 0;
 
-    for (int i = 0; i < v.size(); i++) sum += v[i];
+    for (auto i : v) sum += i;
 
     return 42;
 }
@@ -617,8 +637,10 @@ a guess, let's work from there."
 bigger
 than my initial input size of
 $n_1=100$, does
-that mean my implementation is linear in its complexity? Give your reasoning or counter examples on why it is or is
-not. If it is not linear in its complexity, what would you do to confirm/reject this hypothesis?" (Hint: something
+that mean my implementation is linear in its complexity? Can you provide your reasoning or counter-examples on why
+it is
+or is
+not? If it is not linear in its complexity, what would you do to confirm/reject this hypothesis?" (Hint: something
 to do with plotting and coefficients and hidden constants)
 - "Now if you're still struggling with the previous question, let me ask you this, what if in testing another
 algorithm's implementation, my run time is now $4=2^2$ times as slow when my input size is $n_2=1000$, doubled
