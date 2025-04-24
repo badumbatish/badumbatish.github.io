@@ -151,12 +151,12 @@ implementation.
 
 Shortly after this, we ended the interview.
 #### Round 2
-Question is [Leetcode 39 - Combination Sum](https://leetcode.com/problems/combination-sum/description/)
+Question is [Leetcode 40 - Combination Sum II](https://leetcode.com/problems/combination-sum-ii/)
 
 Another DFS problem that's powered by backtracking. I think anybody who's done some leetcode has seen it. Personally,
 I'd recommend readers to also solve
-[Leetcode 40 - Combination Sum II](https://leetcode.com/problems/combination-sum-ii/) and
-[Leetcode 17 - Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/).
+[Leetcode 17 - Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
+and [Leetcode 2787](https://leetcode.com/problems/ways-to-express-an-integer-as-sum-of-powers/).
 I spent around 10–15 minutes to walk over an example, asked the interviewer about the constraints as well as coding up
 the implementation.
 
@@ -166,7 +166,11 @@ There were 2–3 followup questions:
 explain
 this in
 detail)
-- How do we make sure we don't waste time computing the combination sums that doesn't have an answer? (Hint: think
+- How do we make sure we don't waste time computing the combination sums that
+doesn't
+have an
+answer?
+(Hint: think
 about the comparison between the sum of all elements and the target being asked)
 - Given a big list of elements to sum up, and a large number n, and around 1000–2000 machines, at a high level, how
 would you parallelize this? (Hint: think about when you first split up the big problem into smaller subproblems, how
@@ -181,13 +185,14 @@ The interviewer started with non-leetcode questions, then they transitioned into
 - (Why is)/(Give a reason why) hardware important for faster inference of machine learning models? (Hint: think
 about information/memory traversing time in the hardware, how custom hardware can make this better, don't be afraid
 to ask ChatGPT for some help, I did it after the interview ended, you might as well do it before the interview hahaha)
-- [Leetcode 198 - House Robber](https://leetcode.com/problems/house-robber/description/)
+- [Leetcode 198 - House Robber](https://leetcode.com/problems/house-robber/description/) - A simple 1d-DP problem.
 - [Leetcode 2016 - Maximum difference between increasing elements](https://leetcode.com/problems/maximum-difference-between-increasing-elements/description/)
 
 Follow-ups on leetcode questions were still the same: "what's the time and space complexity?"
 #### Round 4
 
-The interviewer provided me with the schematics for the untyped lambda calculus syntax and asked me to code up a
+The interviewer provided me with the schematics for the untyped
+[lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus) syntax and asked me to code up a
 recursive
 descent lexer/parser combination for
 it. I was
@@ -245,10 +250,14 @@ compilers.
 #### Round 1
 A leetcode-styled question on a string-stack-parsing problem.
 
-Given a string of "add(mul(5, 2), 3)", produce the final numeric answer. (Hint: if you're a compiler person, on a
+```
+Given a string of "add(mul(5, 2), 3)", produce the final numeric answer.
+```
+
+Hint: if you're a compiler person, on a
 high level,
 think
-about this in terms of phases, from the perspective of lexing tokens first, and then transition into parsing)
+about this in terms of phases, from the perspective of lexing tokens first, and then transition into parsing.
 
 The interviewer then asked me to provide the complexity of the problem.
 End of round, they asked "which area interests you the most in cs," of course the answer is "compilers" hahahaha.
@@ -259,9 +268,10 @@ technical writings."
 
 Another leetcode-styled question, this one is named "Bit-flip."
 
-
+```
 Given a monochrome bitmap represented as a flat array of bytes, with one bit per pixel, flip it horizontally in-place.
 The follow-up question was "if you have a lot of requests, what kind of optimization/parallelization can you perform?"
+```
 
 The problem was 3-fold. It tested if the interviewee could map indices from 2D array to 1D array. It then tested if
 interviewee was comfortable with bit manipulation. Finally, it tested the interviewee's ability to parallelize the
@@ -311,16 +321,18 @@ solved in $O(2^n)$ time naively or $O(n^3)$ time with dynamic
 programming. There are also an $O(n\log n)$ solution and another $O(n)$ approximation solution. I rank it a
 leetcode
 superduper crackhead hard.
-I could only come up with the naive solution.
+I could only come up with the naive solution. Personally, I struggled to understand the reasoning behind asking this
+question; there are more productive and efficient ways to go about testing an interviewee's knowledge and skills.
 
-The interviewer then asked me about the middle end of the compiler:
+To make up for my lack of AI skills, the interviewer then gauged my knowledge of the compiler's middle end:
 - "Have you worked on any [SSA](https://en.wikipedia.org/wiki/Static_single-assignment_form) form in your project or
 experience?"
 - "Explain to me [common subexpression elimination](https://en.wikipedia.org/wiki/Common_subexpression_elimination) (CSE)"
 - "What kind of compiler optimization have you dealt with?"
 
 #### Round 2
-Another leetcode hard, this time it is [Leetcode 127 - Word ladder](https://leetcode.com/problems/word-ladder/description/)
+Another leetcode hard, this time it is
+[Leetcode 127 - Word ladder](https://leetcode.com/problems/word-ladder/description/).
 
 I have done the problem 2 or 3 times over, and was able to answer this.
 
@@ -349,14 +361,18 @@ without seeing them previously. It is sadly the current state of affairs in an e
 
 The interviewer also asked me stuff about C++, a few examples are: "what's a smart pointer?", "when you first
 construct a unique ptr, it assumes the ownership of object, yet you can still assign the construction of that unique
-ptr to a variable, why is that?" (Hint: std::move and rvalue), "How do shared ptrs work?"
+ptr to a variable, why is that?" (Hint: std::move and rvalue), "How do shared ptrs work?" (Hint: reference counting).
 #### Round 3
 
 The interviewer started off with "how would you lower a convolution down to some specific architecture or to a lower
 form of IR?" (Hint: I actually have no hint. I don't know how to answer this question...)
 
 Interviewer also asked about my projects with GPU and AI. I didn't have much experience in the areas and thus could
-not answer either question. I was still trying to improve in the area and was feeling pretty defeated. The interview
+not answer either question. I transferred to UC Berkeley 1.5 years ago and could only have so much time to learn so
+many different courses; sadly, compilers and algorithms were prioritized instead of GPU and AI. I was
+still
+trying to improve in the area and was feeling pretty defeated. The
+interview
 ended shortly after.
 
 ### Honey Almond Cream Cheese Bagel
@@ -364,10 +380,11 @@ ended shortly after.
 #### Round 1
 
 The screening round (round 1) started off with
-[Leetcode 509 - Fibonacci](https://leetcode.com/problems/fibonacci-number/description/)
+[Leetcode 509 - Fibonacci](https://leetcode.com/problems/fibonacci-number/description/) - simple, but you'll soon
+realize :)
 
 This round was designed to test the interviewee's software engineering skills and practices. A lot of refactoring was
-needed throughout all the iterations. I'm glad I know vim pretty well to handle all of them.
+needed throughout all the iterations. I'm glad I know vim pretty well to handle all the code changes.
 
 Interviewer asked me to implement the naive, recursive approach. Then moved on to ask me how I would test them and
 asked me
@@ -375,14 +392,23 @@ to come up with different ways to test this. They also asked me to make sure the
 pattern: testing $f(1)$, then $f(2)$, then $f(3)$ as the implementer could easily exploit the linear nature.
 
 I said let's break the fibonacci instance recursively into its sum.
-like $f(3) = f(2) + f(1) = 2(f1) + f(0)$ and test each of them, despite me not knowing how to actually break it up
+like $f(3) = f(2) + f(1) = 2(f1) + f(0)$ and test each of them
+([P versus NP](https://en.wikipedia.org/wiki/P_versus_NP_problem) much anyone?!), despite me not knowing
+how to
+actually break it up
 hahha.
 
 They said this could work. But another (easier) way was to perform randomized testing: pick a number randomly in a
 range and
-test it.
+test it; repeat this for $k$ times.
 
-They then asked for complexity of fibonacci. I said this is $O(2^n)$ from the master theorem, or we can see that each
+They then asked for the complexity of recursive fibonacci and asked me to code up the caching scheme for the version. I
+said this
+is $O
+(2^n)$ from the
+master theorem, or we
+can see
+that each
 time,
 we
 recomputed
@@ -493,21 +519,33 @@ If-else expression. I had to quickly make up a struct-like version of the If-Els
 overview (of what a laywoman thinks) on what it means that an if-else expression is checked successfully. I asked
 them a lot of questions about the language's syntax and the assumption that I could make behind the type system.
 
-For visualization, I typed something similar to this:
+💡Jas here with more hints💡. A few
+examples you can ask are:
+- "Has the visitor (and walker) pattern been implemented for me?"
+- "Have the types already been assigned for me, so I can just check them?"
+- "Can I assume I can just call some function named `get_type(){:cpp}` to get the AST's type?"
+- "Can I use Rust's smart enum for the sake of elegance instead of C++'s crude integer enum when typechecking?"
+- ~~"Can I skip this interview because it's too hard?"~~
+
+Be sure to not assume too much, because by then the interviewer could grade your abilities as "not good" since
+you have nothing to show for yourself. Asking good assumptions is a skill to be trained for.
+
+For visualization, I typed something similar to this for the AST's struct:
 ```cpp
-class IfExpr : public Expr {
-  Expr* cond;
-  Expr* then;
-  Expr* else;
+struct IfExpr : public Expr {
+  Expr* m_cond;
+  Expr* m_then;
+  Expr* m_else;
   ...
+  // after this, struct depends on what interviewer answers about the assumptions
 };
 ```
 
 They then followed up with "given two types A and B, how would you find out the lowest supertype (LS) of those two
 types?"
 After
-this, they followed up with "now that you have the way to find out the
-LS of 2 types, with this in mind, how would you go on to check the LS of k types?" (Hint: Draw
+this, they then followed up on the followup with "now that you have a way to find out the
+LS of 2 types, with this tool in mind, how would you go on to check the LS of k types?" (Hint: Draw
 out a
 diagram as a tree representing all the types in your language, with the supertype of all types at the root of the tree.)
 
@@ -520,19 +558,22 @@ glad I went through the trials.
 
 This company featured the most interactive interview style in the whole line up, just a bit
 behind Takoyaki. A lot of the questions being asked in this company's interviews really made me think hard about my
-answers. It's clear to say their challenging questions perfectly blended between practicality, depth and theory.
+answers. It's clear to say their challenging questions blended perfectly between practicality, depth and theory.
 
-Looking back, I think working more on my toy compiler could have helped a lot.
+Looking back, I think working more on my toy compiler would have helped a lot.
 If I had
 implemented a simple bidirectional type
 checker for my compiler, the if-else expr type checking question would have been easier—I could have been more
 methodical in my answers.
 If I had enrolled in
 one of
-our school's upper divisions in software-hardware architecture instead of randomized algorithms, answering
+our school's upper divisions in "software-hardware architecture" instead of "randomized processes and algorithms,"
+answering
 the
 question on
-assembly lowering could have been smoother. Whatever, we work with what we have :)
+assembly lowering could have been smoother. Ah well, maybe one day when
+[martingales](https://en.wikipedia.org/wiki/Martingale_(probability_theory)) show up in compilers :) Whatever, we work
+with what we have :)
 
 It was also during this time period that I realized not every answer needed to be perfect. Oftentimes, as long as I
 managed to spell out the keywords that the interviewers were looking for, or as long as I was progressing towards the
@@ -540,7 +581,7 @@ goal, interviewers were willing to guide me to get to the question's answer myse
 
 The recruiter
 thankfully gave me very helpful feedback: "you have some of the
-skills the team was looking for, but it's not there yet." I was grateful for the recruiter and the team's honesty.
+skills the team is looking for, but it's not there yet." I was grateful for the recruiter and the team's honesty.
 Needless to say,
 what
 followed next was a rejection.
@@ -553,7 +594,7 @@ of an interview process." I hope you don't either - we play the card we're dealt
 
 The Takoyaki company process was completely different from the rest of the line-up. If Honey Almond Cream Cheese
 Bagel wanted to gauge my skills through providing actual pseudocode for simulated problems, then Takoyaki opted for
-high frequency in questions in randomly different areas that were tailored specifically to my résumé.
+high frequency of questions in randomly different areas that were tailored specifically to my résumé.
 
 Interviewing with the company felt like talking to a colleague instead of being quizzed on a test with leetcodes. I
 felt like I was also contributing to the conversation, it was amazing :)
@@ -564,6 +605,9 @@ résumé," and talk we did!
 
 Gosh I hope I'm not gushing over Honey Almond Cream Cheese Bagel and Takoyaki too much. At least now you know which of
 the listed dishes are my favorites (together with Phở of course) :)
+
+> I also like redbull :) if you like this article, maybe consider
+[buying me one](https://ko-fi.com/badumbatish) ? :)
 #### Round 1 & 2
 
 The company seemed really
@@ -571,8 +615,9 @@ interested in
 trying to know me
 as a person,
 through my résumé as well as my thoughts on certain topics.
-As a result, they asked me a ton of questions about my résumé, about my experience in GSoc gccrs, about
-MLIR, about the difference between GCC IR versus llvm-ir; let's just say that if
+As a result, they asked me a ton of questions about my résumé, about
+[my experience in GSoc gccrs](what_I_did_for_gsoc_2024), about
+MLIR, about the difference between GCC IR versus LLVM IR; let's just say that if
 a project has the word
 "compiler" or "programming languages,", they were gonna ask, in detail, each word and each line that I wrote in the
 résumé. It really felt like they were looking for an independent thinker who's also a problem solver in their own
@@ -611,11 +656,11 @@ question.
 
 I hope to appeal to potential interviewers that although not a single leetcode questions or programming
 questions
-were asked in both rounds, the interviews at Takoyaki were still highly technical.
+were asked in both rounds, the interviews at Takoyaki were still highly technical and demanding of the interviewee.
 ### Phở
 
 I have a disclaimer to make. There wasn't any company that interviewed for only 3 rounds or fewer, except Takoyaki.
-Most of them interviewed for 4 or 5 rounds; in protecting companies' anonymity, I need to cut out some questions
+Most of them interviewed for 4 or 5 rounds, even 6; in protecting companies' anonymity, I need to cut out some questions
 that might reveal them and put them here.
 Phở is actually
 not a single company. But it's
@@ -630,13 +675,14 @@ Hence, the name.
 
 - "What do you like about programming languages and compilers?"
 - "It is possible to perform dataflow analysis on non-SSA values, even so, we keep on insisting on transforming
-our IR to SSA-IR form. What's going on here?"
+our IR to SSA-IR form. What's going on here?" (Hint: something about complexity hmm).
 - "Tell us about all the compiler optimization you can think of"
 - [Leetcode 38 - Count and say](https://leetcode.com/problems/count-and-say/description/)
 - "What's your experience with CMake? Any other build systems?"
 - "How about your CUDA skills?"
 - "Which version of C++ are you using daily?"
 - "What's your experience with AI models?"
+- "Have you read about Sea of Nodes IR? What do you think about it?"
 - "What are your favorite gcc flags?" - Wall, Wextra, Werror :)
 - "Can you tell us what free software is and how you feel about the concept?"
 - "How are your Python skills? If you're comfortable, can we do the technical interview in Python?"
@@ -657,7 +703,7 @@ JavaScript compilers? If you have no experience, you're welcome to take some gue
 - "Here's our newly published open source codebase. Can you tell us anything you like or don't like about the
 repository? We welcome all suggestions!"
 - "We care deeply about giving back and contributing to open source software, have you had any experience in this
-facet? It is completely ok if the experience is not compiler-related."
+facet? It is completely ok if the experience is not compiler-related or PL-related."
 - "As the job application (that you have read and applied) for the compiler team is about the development of our
 language SkibidiToiletRizz, can you tell us (even if you haven't coded in it) what you like about the language? What
 about it that you don't like? We value all inputs."
@@ -677,7 +723,9 @@ int YourMomHahahahahhhhah(const std::vector<int> &v) {
 }
 ```
 - "Do you have any experience in static analysis?"
-- "Why do you think inlining and register allocation are really important in compiler optimization? It is ok to take
+- "Why do you think [inlining](https://en.wikipedia.org/wiki/Inline_expansion) and register allocation are really
+important in compiler optimization? Can you give us a high level overview on how you would
+implement inlining? It is ok to take
 a guess, let's work from there."
 - "If, in testing, my algorithm implementation from a paper runs twice as slow when my input size $n_2=200$ is twice
 bigger
