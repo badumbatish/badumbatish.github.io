@@ -10,9 +10,9 @@ d:I[4835,[],""]
 :HL["/_next/static/media/7385e8d9d3c5518f-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
 :HL["/_next/static/css/d9bc7f7efd1039ef.css","style"]
 :HL["/_next/static/css/7ad14cf05ba66ef7.css","style"]
-0:{"P":null,"b":"8u6rZr5Xv4oThG_CBlbkd","p":"","c":["","posts","compiler_questions_where_to_find_them"],"i":false,"f":[[["",{"children":["posts",{"children":[["id","compiler_questions_where_to_find_them","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/d9bc7f7efd1039ef.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","$L2",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[],[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L5",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]}]]}]}]]}],{"children":["posts",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","compiler_questions_where_to_find_them","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children","$0:f:0:1:2:children:2:children:0","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/7ad14cf05ba66ef7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L7",null,{"children":"$L8"}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","Gmyl1baQLOwmHfJnQ_hhs",{"children":[["$","$L9",null,{"children":"$La"}],["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]]}],false]],"m":"$undefined","G":["$d","$undefined"],"s":false,"S":true}
+0:{"P":null,"b":"3z1zQ5RpBVJyFOsDGUL3m","p":"","c":["","posts","compiler_questions_where_to_find_them"],"i":false,"f":[[["",{"children":["posts",{"children":[["id","compiler_questions_where_to_find_them","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/d9bc7f7efd1039ef.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","$L2",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[],[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L5",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]}]]}]}]]}],{"children":["posts",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","compiler_questions_where_to_find_them","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children","$0:f:0:1:2:children:2:children:0","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/7ad14cf05ba66ef7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L7",null,{"children":"$L8"}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","x9bKVQF3BwANkW3xud4aT",{"children":[["$","$L9",null,{"children":"$La"}],["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]]}],false]],"m":"$undefined","G":["$d","$undefined"],"s":false,"S":true}
 c:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-e:T1228c,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#prologue">Prologue</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#introduction">Introduction</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#pre-december-2024">Pre-December 2024</a><ol class="toc-level toc-level-3"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#pad-kee-mao">Pad Kee Mao</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-1">Round 1</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-2">Round 2</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-3">Round 3</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-4">Round 4</a></li></ol></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#post-december-2024">Post-December 2024</a><ol class="toc-level toc-level-3"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#macaroni-and-cheese">Macaroni and Cheese</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-1-1">Round 1</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-2-1">Round 2</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-3-1">Round 3</a></li></ol></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#sinigang-ng-hipon">Sinigang ng hipon</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-1-2">Round 1</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-2-2">Round 2</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-3-2">Round 3</a></li></ol></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#honey-almond-cream-cheese-bagel">Honey Almond Cream Cheese Bagel</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-1-3">Round 1</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-2-3">Round 2</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-3-3">Round 3</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#introspection">Introspection</a></li></ol></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#takoyaki">Takoyaki</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-1--2">Round 1 &#x26; 2</a></li></ol></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#phở">Phở</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#questions">Questions</a></li></ol></li></ol></li></ol></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#epilogue">Epilogue</a></li></ol></nav><h1 id="prologue"><a aria-hidden="true" tabindex="-1" href="#prologue"><span class="icon icon-link"></span></a>Prologue</h1>
+e:T12f1d,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#prologue">Prologue</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#introduction">Introduction</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#pre-december-2024">Pre-December 2024</a><ol class="toc-level toc-level-3"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#pad-kee-mao">Pad Kee Mao</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-1">Round 1</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-2">Round 2</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-3">Round 3</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-4">Round 4</a></li></ol></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#post-december-2024">Post-December 2024</a><ol class="toc-level toc-level-3"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#macaroni-and-cheese">Macaroni and Cheese</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-1-1">Round 1</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-2-1">Round 2</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-3-1">Round 3</a></li></ol></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#sinigang-ng-hipon">Sinigang ng hipon</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-1-2">Round 1</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-2-2">Round 2</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-3-2">Round 3</a></li></ol></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#honey-almond-cream-cheese-bagel">Honey Almond Cream Cheese Bagel</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-1-3">Round 1</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-2-3">Round 2</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-3-3">Round 3</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#introspection">Introspection</a></li></ol></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#takoyaki">Takoyaki</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#round-1--2">Round 1 &#x26; 2</a></li></ol></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#phở">Phở</a><ol class="toc-level toc-level-4"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#questions">Questions</a></li></ol></li></ol></li></ol></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#epilogue">Epilogue</a></li></ol></nav><h1 id="prologue"><a aria-hidden="true" tabindex="-1" href="#prologue"><span class="icon icon-link"></span></a>Prologue</h1>
 <p>Hi everyone, how's everyone doing? It's been a while since I've written another blog. I'm doing good :) This May
 2025,
 I'm graduating and happy to announce that I'm starting my employment at Igalia this June hacking on compilers :)</p>
@@ -132,11 +132,11 @@ pseudocode for the
 implementation.</p>
 <p>Shortly after this, we ended the interview.</p>
 <h4 id="round-2"><a aria-hidden="true" tabindex="-1" href="#round-2"><span class="icon icon-link"></span></a>Round 2</h4>
-<p>Question is <a href="https://leetcode.com/problems/combination-sum/description/" rel="nofollow" target="_blank">Leetcode 39 - Combination Sum</a></p>
+<p>Question is <a href="https://leetcode.com/problems/combination-sum-ii/" rel="nofollow" target="_blank">Leetcode 40 - Combination Sum II</a></p>
 <p>Another DFS problem that's powered by backtracking. I think anybody who's done some leetcode has seen it. Personally,
 I'd recommend readers to also solve
-<a href="https://leetcode.com/problems/combination-sum-ii/" rel="nofollow" target="_blank">Leetcode 40 - Combination Sum II</a> and
-<a href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/" rel="nofollow" target="_blank">Leetcode 17 - Letter Combinations of a Phone Number</a>.
+<a href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/" rel="nofollow" target="_blank">Leetcode 17 - Letter Combinations of a Phone Number</a>
+and <a href="https://leetcode.com/problems/ways-to-express-an-integer-as-sum-of-powers/" rel="nofollow" target="_blank">Leetcode 2787</a>.
 I spent around 10–15 minutes to walk over an example, asked the interviewer about the constraints as well as coding up
 the implementation.</p>
 <p>There were 2–3 followup questions:</p>
@@ -145,7 +145,11 @@ the implementation.</p>
 explain
 this in
 detail)</li>
-<li>How do we make sure we don't waste time computing the combination sums that doesn't have an answer? (Hint: think
+<li>How do we make sure we don't waste time computing the combination sums that
+doesn't
+have an
+answer?
+(Hint: think
 about the comparison between the sum of all elements and the target being asked)</li>
 <li>Given a big list of elements to sum up, and a large number n, and around 1000–2000 machines, at a high level, how
 would you parallelize this? (Hint: think about when you first split up the big problem into smaller subproblems, how
@@ -159,12 +163,13 @@ it's a good exercise to try and figure it out. Some pencil and paper would suffi
 <li>(Why is)/(Give a reason why) hardware important for faster inference of machine learning models? (Hint: think
 about information/memory traversing time in the hardware, how custom hardware can make this better, don't be afraid
 to ask ChatGPT for some help, I did it after the interview ended, you might as well do it before the interview hahaha)</li>
-<li><a href="https://leetcode.com/problems/house-robber/description/" rel="nofollow" target="_blank">Leetcode 198 - House Robber</a></li>
+<li><a href="https://leetcode.com/problems/house-robber/description/" rel="nofollow" target="_blank">Leetcode 198 - House Robber</a> - A simple 1d-DP problem.</li>
 <li><a href="https://leetcode.com/problems/maximum-difference-between-increasing-elements/description/" rel="nofollow" target="_blank">Leetcode 2016 - Maximum difference between increasing elements</a></li>
 </ul>
 <p>Follow-ups on leetcode questions were still the same: "what's the time and space complexity?"</p>
 <h4 id="round-4"><a aria-hidden="true" tabindex="-1" href="#round-4"><span class="icon icon-link"></span></a>Round 4</h4>
-<p>The interviewer provided me with the schematics for the untyped lambda calculus syntax and asked me to code up a
+<p>The interviewer provided me with the schematics for the untyped
+<a href="https://en.wikipedia.org/wiki/Lambda_calculus" rel="nofollow" target="_blank">lambda calculus</a> syntax and asked me to code up a
 recursive
 descent lexer/parser combination for
 it. I was
@@ -210,18 +215,21 @@ even in
 compilers.</p>
 <h4 id="round-1-1"><a aria-hidden="true" tabindex="-1" href="#round-1-1"><span class="icon icon-link"></span></a>Round 1</h4>
 <p>A leetcode-styled question on a string-stack-parsing problem.</p>
-<p>Given a string of "add(mul(5, 2), 3)", produce the final numeric answer. (Hint: if you're a compiler person, on a
+<pre><code>Given a string of "add(mul(5, 2), 3)", produce the final numeric answer.
+</code></pre>
+<p>Hint: if you're a compiler person, on a
 high level,
 think
-about this in terms of phases, from the perspective of lexing tokens first, and then transition into parsing)</p>
+about this in terms of phases, from the perspective of lexing tokens first, and then transition into parsing.</p>
 <p>The interviewer then asked me to provide the complexity of the problem.
 End of round, they asked "which area interests you the most in cs," of course the answer is "compilers" hahahaha.
 They also asked "outside of your technical areas, what do you enjoy doing." I said "reading up on social issues and
 technical writings."</p>
 <h4 id="round-2-1"><a aria-hidden="true" tabindex="-1" href="#round-2-1"><span class="icon icon-link"></span></a>Round 2</h4>
 <p>Another leetcode-styled question, this one is named "Bit-flip."</p>
-<p>Given a monochrome bitmap represented as a flat array of bytes, with one bit per pixel, flip it horizontally in-place.
-The follow-up question was "if you have a lot of requests, what kind of optimization/parallelization can you perform?"</p>
+<pre><code>Given a monochrome bitmap represented as a flat array of bytes, with one bit per pixel, flip it horizontally in-place.
+The follow-up question was "if you have a lot of requests, what kind of optimization/parallelization can you perform?"
+</code></pre>
 <p>The problem was 3-fold. It tested if the interviewee could map indices from 2D array to 1D array. It then tested if
 interviewee was comfortable with bit manipulation. Finally, it tested the interviewee's ability to parallelize the
 problem.</p>
@@ -260,8 +268,9 @@ solved in <span class="katex"><span class="katex-mathml"><math xmlns="http://www
 programming. There are also an <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> solution and another <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> approximation solution. I rank it a
 leetcode
 superduper crackhead hard.
-I could only come up with the naive solution.</p>
-<p>The interviewer then asked me about the middle end of the compiler:</p>
+I could only come up with the naive solution. Personally, I struggled to understand the reasoning behind asking this
+question; there are more productive and efficient ways to go about testing an interviewee's knowledge and skills.</p>
+<p>To make up for my lack of AI skills, the interviewer then gauged my knowledge of the compiler's middle end:</p>
 <ul>
 <li>"Have you worked on any <a href="https://en.wikipedia.org/wiki/Static_single-assignment_form" rel="nofollow" target="_blank">SSA</a> form in your project or
 experience?"</li>
@@ -269,7 +278,8 @@ experience?"</li>
 <li>"What kind of compiler optimization have you dealt with?"</li>
 </ul>
 <h4 id="round-2-2"><a aria-hidden="true" tabindex="-1" href="#round-2-2"><span class="icon icon-link"></span></a>Round 2</h4>
-<p>Another leetcode hard, this time it is <a href="https://leetcode.com/problems/word-ladder/description/" rel="nofollow" target="_blank">Leetcode 127 - Word ladder</a></p>
+<p>Another leetcode hard, this time it is
+<a href="https://leetcode.com/problems/word-ladder/description/" rel="nofollow" target="_blank">Leetcode 127 - Word ladder</a>.</p>
 <p>I have done the problem 2 or 3 times over, and was able to answer this.</p>
 <p>With my high level answer (and code) containing an <span class="shiki catppuccin-frappe" style="background-color:#303446;color:#c6d0f5" tabindex="0"><code><span class="line"><span style="color:#E5C890">std</span><span style="color:#949CBB">::</span><span style="color:#C6D0F5">unordered_map</span></span></code></span> of <span class="shiki catppuccin-frappe" style="background-color:#303446;color:#c6d0f5" tabindex="0"><code><span class="line"><span style="color:#E5C890">std</span><span style="color:#949CBB">::</span><span style="color:#C6D0F5">string</span></span></code></span> to set of
 <span class="shiki catppuccin-frappe" style="background-color:#303446;color:#c6d0f5" tabindex="0"><code><span class="line"><span style="color:#E5C890">std</span><span style="color:#949CBB">::</span><span style="color:#C6D0F5">string</span></span></code></span> as pseudo-edge between a pseudo word and the original words as follows,
@@ -291,30 +301,44 @@ optimize on space.</p>
 without seeing them previously. It is sadly the current state of affairs in an employers' market.</p>
 <p>The interviewer also asked me stuff about C++, a few examples are: "what's a smart pointer?", "when you first
 construct a unique ptr, it assumes the ownership of object, yet you can still assign the construction of that unique
-ptr to a variable, why is that?" (Hint: std::move and rvalue), "How do shared ptrs work?"</p>
+ptr to a variable, why is that?" (Hint: std::move and rvalue), "How do shared ptrs work?" (Hint: reference counting).</p>
 <h4 id="round-3-2"><a aria-hidden="true" tabindex="-1" href="#round-3-2"><span class="icon icon-link"></span></a>Round 3</h4>
 <p>The interviewer started off with "how would you lower a convolution down to some specific architecture or to a lower
 form of IR?" (Hint: I actually have no hint. I don't know how to answer this question...)</p>
 <p>Interviewer also asked about my projects with GPU and AI. I didn't have much experience in the areas and thus could
-not answer either question. I was still trying to improve in the area and was feeling pretty defeated. The interview
+not answer either question. I transferred to UC Berkeley 1.5 years ago and could only have so much time to learn so
+many different courses; sadly, compilers and algorithms were prioritized instead of GPU and AI. I was
+still
+trying to improve in the area and was feeling pretty defeated. The
+interview
 ended shortly after.</p>
 <h3 id="honey-almond-cream-cheese-bagel"><a aria-hidden="true" tabindex="-1" href="#honey-almond-cream-cheese-bagel"><span class="icon icon-link"></span></a>Honey Almond Cream Cheese Bagel</h3>
 <h4 id="round-1-3"><a aria-hidden="true" tabindex="-1" href="#round-1-3"><span class="icon icon-link"></span></a>Round 1</h4>
 <p>The screening round (round 1) started off with
-<a href="https://leetcode.com/problems/fibonacci-number/description/" rel="nofollow" target="_blank">Leetcode 509 - Fibonacci</a></p>
+<a href="https://leetcode.com/problems/fibonacci-number/description/" rel="nofollow" target="_blank">Leetcode 509 - Fibonacci</a> - simple, but you'll soon
+realize :)</p>
 <p>This round was designed to test the interviewee's software engineering skills and practices. A lot of refactoring was
-needed throughout all the iterations. I'm glad I know vim pretty well to handle all of them.</p>
+needed throughout all the iterations. I'm glad I know vim pretty well to handle all the code changes.</p>
 <p>Interviewer asked me to implement the naive, recursive approach. Then moved on to ask me how I would test them and
 asked me
 to come up with different ways to test this. They also asked me to make sure the test wasn't just reusing the linear
 pattern: testing <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>, then <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">2</span><span class="mclose">)</span></span></span></span>, then <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">3</span><span class="mclose">)</span></span></span></span> as the implementer could easily exploit the linear nature.</p>
 <p>I said let's break the fibonacci instance recursively into its sum.
-like <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>+</mo><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mo stretchy="false">(</mo><mi>f</mi><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mi>f</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(3) = f(2) + f(1) = 2(f1) + f(0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">3</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span></span></span></span> and test each of them, despite me not knowing how to actually break it up
+like <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>+</mo><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mo stretchy="false">(</mo><mi>f</mi><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mi>f</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(3) = f(2) + f(1) = 2(f1) + f(0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">3</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span></span></span></span> and test each of them
+(<a href="https://en.wikipedia.org/wiki/P_versus_NP_problem" rel="nofollow" target="_blank">P versus NP</a> much anyone?!), despite me not knowing
+how to
+actually break it up
 hahha.</p>
 <p>They said this could work. But another (easier) way was to perform randomized testing: pick a number randomly in a
 range and
-test it.</p>
-<p>They then asked for complexity of fibonacci. I said this is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mn>2</mn><mi>n</mi></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(2^n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> from the master theorem, or we can see that each
+test it; repeat this for <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> times.</p>
+<p>They then asked for the complexity of recursive fibonacci and asked me to code up the caching scheme for the version. I
+said this
+is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mn>2</mn><mi>n</mi></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O
+(2^n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> from the
+master theorem, or we
+can see
+that each
 time,
 we
 recomputed
@@ -401,18 +425,30 @@ checks an
 If-else expression. I had to quickly make up a struct-like version of the If-Else expr, gave them the high level
 overview (of what a laywoman thinks) on what it means that an if-else expression is checked successfully. I asked
 them a lot of questions about the language's syntax and the assumption that I could make behind the type system.</p>
-<p>For visualization, I typed something similar to this:</p>
-<pre class="shiki catppuccin-frappe" style="background-color:#303446;color:#c6d0f5" tabindex="0"><code><span class="line"><span style="color:#CA9EE6">class</span><span style="color:#E5C890;font-style:italic"> IfExpr</span><span style="color:#949CBB"> :</span><span style="color:#CA9EE6"> public</span><span style="color:#E5C890;font-style:italic"> Expr</span><span style="color:#949CBB"> {</span></span>
-<span class="line"><span style="color:#C6D0F5">  Expr</span><span style="color:#81C8BE">*</span><span style="color:#C6D0F5"> cond</span><span style="color:#949CBB">;</span></span>
-<span class="line"><span style="color:#C6D0F5">  Expr</span><span style="color:#81C8BE">*</span><span style="color:#C6D0F5"> then</span><span style="color:#949CBB">;</span></span>
-<span class="line"><span style="color:#C6D0F5">  Expr</span><span style="color:#81C8BE">*</span><span style="color:#CA9EE6"> else</span><span style="color:#949CBB">;</span></span>
+<p>💡Jas here with more hints💡. A few
+examples you can ask are:</p>
+<ul>
+<li>"Has the visitor (and walker) pattern been implemented for me?"</li>
+<li>"Have the types already been assigned for me, so I can just check them?"</li>
+<li>"Can I assume I can just call some function named <span class="shiki catppuccin-frappe" style="background-color:#303446;color:#c6d0f5" tabindex="0"><code><span class="line"><span style="color:#8CAAEE;font-style:italic">get_type</span><span style="color:#949CBB">()</span></span></code></span> to get the AST's type?"</li>
+<li>"Can I use Rust's smart enum for the sake of elegance instead of C++'s crude integer enum when typechecking?"</li>
+<li><del>"Can I skip this interview because it's too hard?"</del></li>
+</ul>
+<p>Be sure to not assume too much, because by then the interviewer could grade your abilities as "not good" since
+you have nothing to show for yourself. Asking good assumptions is a skill to be trained for.</p>
+<p>For visualization, I typed something similar to this for the AST's struct:</p>
+<pre class="shiki catppuccin-frappe" style="background-color:#303446;color:#c6d0f5" tabindex="0"><code><span class="line"><span style="color:#CA9EE6">struct</span><span style="color:#E5C890;font-style:italic"> IfExpr</span><span style="color:#949CBB"> :</span><span style="color:#CA9EE6"> public</span><span style="color:#E5C890;font-style:italic"> Expr</span><span style="color:#949CBB"> {</span></span>
+<span class="line"><span style="color:#C6D0F5">  Expr</span><span style="color:#81C8BE">*</span><span style="color:#C6D0F5"> m_cond</span><span style="color:#949CBB">;</span></span>
+<span class="line"><span style="color:#C6D0F5">  Expr</span><span style="color:#81C8BE">*</span><span style="color:#C6D0F5"> m_then</span><span style="color:#949CBB">;</span></span>
+<span class="line"><span style="color:#C6D0F5">  Expr</span><span style="color:#81C8BE">*</span><span style="color:#C6D0F5"> m_else</span><span style="color:#949CBB">;</span></span>
 <span class="line"><span style="color:#C6D0F5">  ...</span></span>
+<span class="line"><span style="color:#737994;font-style:italic">  // after this, struct depends on what interviewer answers about the assumptions</span></span>
 <span class="line"><span style="color:#949CBB">};</span></span></code></pre>
 <p>They then followed up with "given two types A and B, how would you find out the lowest supertype (LS) of those two
 types?"
 After
-this, they followed up with "now that you have the way to find out the
-LS of 2 types, with this in mind, how would you go on to check the LS of k types?" (Hint: Draw
+this, they then followed up on the followup with "now that you have a way to find out the
+LS of 2 types, with this tool in mind, how would you go on to check the LS of k types?" (Hint: Draw
 out a
 diagram as a tree representing all the types in your language, with the supertype of all types at the root of the tree.)</p>
 <p>We then ended the interview.</p>
@@ -422,24 +458,27 @@ knowledge needed to ace the round, but nobody had told me: "this is how you comb
 glad I went through the trials.</p>
 <p>This company featured the most interactive interview style in the whole line up, just a bit
 behind Takoyaki. A lot of the questions being asked in this company's interviews really made me think hard about my
-answers. It's clear to say their challenging questions perfectly blended between practicality, depth and theory.</p>
-<p>Looking back, I think working more on my toy compiler could have helped a lot.
+answers. It's clear to say their challenging questions blended perfectly between practicality, depth and theory.</p>
+<p>Looking back, I think working more on my toy compiler would have helped a lot.
 If I had
 implemented a simple bidirectional type
 checker for my compiler, the if-else expr type checking question would have been easier—I could have been more
 methodical in my answers.
 If I had enrolled in
 one of
-our school's upper divisions in software-hardware architecture instead of randomized algorithms, answering
+our school's upper divisions in "software-hardware architecture" instead of "randomized processes and algorithms,"
+answering
 the
 question on
-assembly lowering could have been smoother. Whatever, we work with what we have :)</p>
+assembly lowering could have been smoother. Ah well, maybe one day when
+<a href="https://en.wikipedia.org/wiki/Martingale_(probability_theory)" rel="nofollow" target="_blank">martingales</a> show up in compilers :) Whatever, we work
+with what we have :)</p>
 <p>It was also during this time period that I realized not every answer needed to be perfect. Oftentimes, as long as I
 managed to spell out the keywords that the interviewers were looking for, or as long as I was progressing towards the
 goal, interviewers were willing to guide me to get to the question's answer myself.</p>
 <p>The recruiter
 thankfully gave me very helpful feedback: "you have some of the
-skills the team was looking for, but it's not there yet." I was grateful for the recruiter and the team's honesty.
+skills the team is looking for, but it's not there yet." I was grateful for the recruiter and the team's honesty.
 Needless to say,
 what
 followed next was a rejection.</p>
@@ -449,7 +488,7 @@ of an interview process." I hope you don't either - we play the card we're dealt
 <h3 id="takoyaki"><a aria-hidden="true" tabindex="-1" href="#takoyaki"><span class="icon icon-link"></span></a>Takoyaki</h3>
 <p>The Takoyaki company process was completely different from the rest of the line-up. If Honey Almond Cream Cheese
 Bagel wanted to gauge my skills through providing actual pseudocode for simulated problems, then Takoyaki opted for
-high frequency in questions in randomly different areas that were tailored specifically to my résumé.</p>
+high frequency of questions in randomly different areas that were tailored specifically to my résumé.</p>
 <p>Interviewing with the company felt like talking to a colleague instead of being quizzed on a test with leetcodes. I
 felt like I was also contributing to the conversation, it was amazing :)</p>
 <p>The Takoyaki was also one of the few companies that really hold in respect their transparency. They clearly set the
@@ -457,14 +496,19 @@ interview expectation, told me straight from the start, "there won't be any leet
 résumé," and talk we did!</p>
 <p>Gosh I hope I'm not gushing over Honey Almond Cream Cheese Bagel and Takoyaki too much. At least now you know which of
 the listed dishes are my favorites (together with Phở of course) :)</p>
+<blockquote>
+<p>I also like redbull :) if you like this article, maybe consider
+<a href="https://ko-fi.com/badumbatish" rel="nofollow" target="_blank">buying me one</a> ? :)</p>
+</blockquote>
 <h4 id="round-1--2"><a aria-hidden="true" tabindex="-1" href="#round-1--2"><span class="icon icon-link"></span></a>Round 1 &#x26; 2</h4>
 <p>The company seemed really
 interested in
 trying to know me
 as a person,
 through my résumé as well as my thoughts on certain topics.
-As a result, they asked me a ton of questions about my résumé, about my experience in GSoc gccrs, about
-MLIR, about the difference between GCC IR versus llvm-ir; let's just say that if
+As a result, they asked me a ton of questions about my résumé, about
+<a href="what_I_did_for_gsoc_2024">my experience in GSoc gccrs</a>, about
+MLIR, about the difference between GCC IR versus LLVM IR; let's just say that if
 a project has the word
 "compiler" or "programming languages,", they were gonna ask, in detail, each word and each line that I wrote in the
 résumé. It really felt like they were looking for an independent thinker who's also a problem solver in their own
@@ -501,10 +545,10 @@ question.</li>
 </ul>
 <p>I hope to appeal to potential interviewers that although not a single leetcode questions or programming
 questions
-were asked in both rounds, the interviews at Takoyaki were still highly technical.</p>
+were asked in both rounds, the interviews at Takoyaki were still highly technical and demanding of the interviewee.</p>
 <h3 id="phở"><a aria-hidden="true" tabindex="-1" href="#phở"><span class="icon icon-link"></span></a>Phở</h3>
 <p>I have a disclaimer to make. There wasn't any company that interviewed for only 3 rounds or fewer, except Takoyaki.
-Most of them interviewed for 4 or 5 rounds; in protecting companies' anonymity, I need to cut out some questions
+Most of them interviewed for 4 or 5 rounds, even 6; in protecting companies' anonymity, I need to cut out some questions
 that might reveal them and put them here.
 Phở is actually
 not a single company. But it's
@@ -518,13 +562,14 @@ Hence, the name.</p>
 <ul>
 <li>"What do you like about programming languages and compilers?"</li>
 <li>"It is possible to perform dataflow analysis on non-SSA values, even so, we keep on insisting on transforming
-our IR to SSA-IR form. What's going on here?"</li>
+our IR to SSA-IR form. What's going on here?" (Hint: something about complexity hmm).</li>
 <li>"Tell us about all the compiler optimization you can think of"</li>
 <li><a href="https://leetcode.com/problems/count-and-say/description/" rel="nofollow" target="_blank">Leetcode 38 - Count and say</a></li>
 <li>"What's your experience with CMake? Any other build systems?"</li>
 <li>"How about your CUDA skills?"</li>
 <li>"Which version of C++ are you using daily?"</li>
 <li>"What's your experience with AI models?"</li>
+<li>"Have you read about Sea of Nodes IR? What do you think about it?"</li>
 <li>"What are your favorite gcc flags?" - Wall, Wextra, Werror :)</li>
 <li>"Can you tell us what free software is and how you feel about the concept?"</li>
 <li>"How are your Python skills? If you're comfortable, can we do the technical interview in Python?"</li>
@@ -545,7 +590,7 @@ JavaScript compilers? If you have no experience, you're welcome to take some gue
 <li>"Here's our newly published open source codebase. Can you tell us anything you like or don't like about the
 repository? We welcome all suggestions!"</li>
 <li>"We care deeply about giving back and contributing to open source software, have you had any experience in this
-facet? It is completely ok if the experience is not compiler-related."</li>
+facet? It is completely ok if the experience is not compiler-related or PL-related."</li>
 <li>"As the job application (that you have read and applied) for the compiler team is about the development of our
 language SkibidiToiletRizz, can you tell us (even if you haven't coded in it) what you like about the language? What
 about it that you don't like? We value all inputs."</li>
@@ -565,7 +610,9 @@ behind it":</li>
 <span class="line"><span style="color:#949CBB">}</span></span></code></pre>
 <ul>
 <li>"Do you have any experience in static analysis?"</li>
-<li>"Why do you think inlining and register allocation are really important in compiler optimization? It is ok to take
+<li>"Why do you think <a href="https://en.wikipedia.org/wiki/Inline_expansion" rel="nofollow" target="_blank">inlining</a> and register allocation are really
+important in compiler optimization? Can you give us a high level overview on how you would
+implement inlining? It is ok to take
 a guess, let's work from there."</li>
 <li>"If, in testing, my algorithm implementation from a paper runs twice as slow when my input size <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>2</mn></msub><mo>=</mo><mn>200</mn></mrow><annotation encoding="application/x-tex">n_2=200</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">200</span></span></span></span> is twice
 bigger
