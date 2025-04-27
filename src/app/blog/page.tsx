@@ -19,10 +19,23 @@ export default async function Page() {
     return (
         <div className="py-12 flex flex-col items-center  justify-items-start mx-auto ">
             <h1 className="text-4xl">My blog</h1>
+
+            <h1 className=" sm:text-sm md:text-base mt-2">
+                Jasmine's (usually) long form content (tech) blog.
+
+            </h1>
+            <h1 className=" sm:text-sm md:text-base mb-2">
+                Each blog,
+                starting from <a className={"text-blue-400"} href={"posts/going_to_mlir_gym_1"}>MLIR gym 1</a>, comes
+                with
+                music recommendations :)
+
+                I hope everyone enjoys :)
+            </h1>
             <ul className="flex flex-col gap-6 ">
                 {posts.map(post => {
-                    const { id, date, title, hidden, recap, html} = post
-                    if (hidden == true ) {
+                    const {id, date, title, hidden, recap, html} = post
+                    if (hidden == true) {
                         return
                     }
                     return (
