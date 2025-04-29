@@ -21,7 +21,7 @@ export default async function Page() {
             <h1 className="text-4xl">My blog</h1>
 
             <h1 className=" sm:text-sm md:text-base mt-2">
-                Jasmine&apos;(usually) long form content (tech) blog.
+                Jasmine&apos;s (usually) long form content (tech) blog.
 
             </h1>
             <h1 className=" sm:text-sm md:text-base mb-2">
