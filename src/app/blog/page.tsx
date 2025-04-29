@@ -26,7 +26,7 @@ export default async function Page() {
             </h1>
             <h1 className=" sm:text-sm md:text-base mb-2">
                 Each blog,
-                starting from <a className={"text-blue-400"} href={"posts/going_to_mlir_gym_1"}>MLIR gym 1</a>, comes
+                starting from <a className={"text-blue-400"} href={"posts/going_to_mlir_gym_1"}>MLIR gym 1</a> (2024-12-07), comes
                 with
                 music recommendations :)
 
