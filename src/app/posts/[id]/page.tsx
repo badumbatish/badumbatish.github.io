@@ -41,15 +41,41 @@ export default async function Post(
         <Link href={"/blog"} className={"flex justify-center text-4xl"}>
             <h2>My blog</h2>
         </Link>
-        <article className="p-8 prose pt-0.5 max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto">
-            <div className="flex justify-center text-2xl font-bold ">
-                <h2>{title}</h2>
-            </div>
-            <div className="flex justify-start text-xl font-bold underline">
-                <h4>{date}</h4>
-            </div>
 
-{/*
+            <article className="p-8 prose pt-0.5 max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto">
+                <div className="flex justify-center text-2xl font-bold ">
+                    <h2>{title}</h2>
+                </div>
+
+                <div className="flex font-bold">Edit:</div>
+                <p>Hi everyone!
+                    My friend <a href={"https://www.linkedin.com/in/julius-alexandre/"}>Julius</a> is
+                    looking for compiler full time roles and/or internship opportunities for 2025/2026.
+
+                </p>
+                <p>Julius is an undergrad at Western Governors University specializing in computer architecture and
+                    compilers.</p>
+
+                <p>
+                    He's <a href={"https://github.com/llvm/llvm-project/commits/main/?author=wizardengineer"}>contributed
+                    to LLVM</a> and is knowledgeable of the compiler architecture, as a result, he's
+                    well‑versed in C, C++, Python, LLVM, and Assembly.
+                </p>
+                <p>
+                    His open source projects, which have a combined stars of 200+, range from developing OS kernels to
+                    writing hypervisors for AMD-v.
+                </p>
+
+                <p>
+                    His resume is <a href={"https://badumbatish.github.io/blogs/compiler_questions_where_to_find_them/Julius_Alexander_SWE_Compiler.pdf"}>here</a>.
+                    I hope everybody can give him a referral
+                    or reach out to him at his <a href={"https://www.linkedin.com/in/julius-alexandre/"}>LinkedIn</a>
+                </p>
+                <div className="flex justify-start text-xl font-bold underline">
+                    <h4>{date}</h4>
+                </div>
+
+                {/*
             <div className="flex font-bold">Edit:</div>
             My resume is <a
             href={"https://badumbatish.github.io/about_me/Jasmine_Resume_Badumbatish.pdf"}>here</a>.
@@ -58,8 +84,8 @@ export default async function Post(
             href={"mailto:jjasmine@berkeley.edu"}>jjasmine@berkeley.edu</a>.
             <hr></hr>
 */}
-            <div dangerouslySetInnerHTML={{__html: html}}/>
-        </article>
+                <div dangerouslySetInnerHTML={{__html: html}}/>
+            </article>
         </div>
     );
 }
