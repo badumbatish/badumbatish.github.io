@@ -62,7 +62,7 @@ export default async function Post(
                     in C, C++, Python, LLVM, and Assembly.
                 </p>
                 <p>
-                    His open source projects, which have a combined stars of 200+, range from developing OS kernels to
+                    His impressive open source projects, which have a combined stars of 200+, range from developing OS kernels to
                     writing hypervisors for AMD-v.
                 </p>
 
