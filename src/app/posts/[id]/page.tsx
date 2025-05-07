@@ -57,8 +57,8 @@ export default async function Post(
                     compilers.</p>
 
                 <p>
-                    He&apos; <a href={"https://github.com/llvm/llvm-project/commits/main/?author=wizardengineer"}>contributed
-                    to LLVM</a> and is knowledgeable of the compiler architecture, as a result, he&apos; well‑versed
+                    He&apos;s <a href={"https://github.com/llvm/llvm-project/commits/main/?author=wizardengineer"}>contributed
+                    to LLVM</a> and is knowledgeable of the compiler architecture, as a result, he&apos;s well‑versed
                     in C, C++, Python, LLVM, and Assembly.
                 </p>
                 <p>
