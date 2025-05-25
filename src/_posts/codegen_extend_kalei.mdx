@@ -1,0 +1,53 @@
+---
+title: 'Extending Kaleidoscope: Code-gen edition'
+date: 2025-06-27
+recap: "Jasmine reports what she learned of LLVM basic codegen capabilities"
+---
+
+
+## Prologue
+Hey everyone, how everyone's doing? I've been back at my parents' place for a while now, getting ready to start Igalia :)
+I'm still doing good hahhaa :) Getting back to OC after being far far away in Berkeley wonderland means that I have to build back
+as well as get in touch with old support network. I guess it's just takes a while to get used to.
+
+This article documents what I've learned about the basics of LLVM's code generation process, self-contained in lowering from AST to LLVM-IR only :) More experience and time is needed to venture out further away to write more sophisticated articles. Oh well, maybe after I've been at Igalia for a while hahaha :)
+
+As is tradition, here are three songs for you by Zedd: Papercut, Addicted To A Memory, and Done With Love. All three songs showcase extremely well the emotional depth of a person in and out of love.
+
+I hope you enjoy the songs :)
+
+
+## Introduction
+
+Something something about how codegen in llvm is made very easy. bla bla bla talk a bit about your mom hahahhaha
+
+## Alloca(tion of the stack) and mem2reg
+
+todo talk about allocation of the stack, first draws out an example of the global var in llvm ir
+
+
+## Variables
+
+discuss three modes:
+- creation: in var def and the map that keeps it, this done using alloca
+- modification: in binary op =, this stores to address of alloca
+- read: this loads from address of alloca.
+## Control flow
+
+discuss how alloca makes this easier.
+
+## Functions and Extern (via PrototypeAST)
+
+todo: talk about a caveat that we need to allocate "alloca" addresses at the start of the function.
+todo: relate to how strong the visitor pattern is
+
+# Epilogue
+
+The article, as you can tell, is directed towards new grads and/or beginners in LLVM. If you've benefited from the article
+or if you'd like to support my writing these blogs, please consider [getting me a red bull]() :)
+
+I also want to extend my thanks to all the developers that helped contributed to the
+Kaleidoscope. Without them, the journey to generate code, as well as the creation of this article, would be
+ten-fold harder. I realize that we all stands on the shoulder of the previous generations and of giants and I would like to pay my tribute to them.
+
+
