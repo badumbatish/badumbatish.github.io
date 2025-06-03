@@ -1,5 +1,5 @@
 ---
-title: '[ONGOING] Extending Kaleidoscope: Code-gen edition'
+title: '[ONGOING] LLVExtending Kaleidoscope: Code-gen edition'
 date: 2025-06-27
 recap: "Jasmine reports what she learned of LLVM basic codegen capabilities"
 ---
@@ -21,6 +21,17 @@ I hope you enjoy the songs :)
 
 Something something about how codegen in llvm is made very easy. bla bla bla talk a bit about your mom hahahhaha
 
+## A few brief words on building tools and ast-ir inspection
+
+A very very smart CS person in my compiler class at UC Berkeley (where i once studied) once told me something along
+the line of  "use your tool
+very well" or "build your tools" and I feel like
+I want to share it in this blog. The use case of when he told me might be different
+, but the principle will still remain.
+
+Regardless if it's about the compiler, terminal tool, docker, ci/cd or text editors such as neovim,
+vscode, helix, it really pays off to learn how to use your tool so good that it
+completely boosts your productivity into a different dimension
 ## Alloca(tion of the stack) and mem2reg
 
 todo talk about allocation of the stack, first draws out an example of the global var in llvm ir
@@ -32,6 +43,8 @@ discuss three modes:
 - creation: in var def and the map that keeps it, this done using alloca
 - modification: in binary op =, this stores to address of alloca
 - read: this loads from address of alloca.
+
+todo: talks about in relation to the walk and visitor pattern
 ## Control flow
 
 discuss how alloca makes this easier.
