@@ -6,32 +6,62 @@ recap: "Jasmine reports what she learned of LLVM basic codegen capabilities"
 
 
 ## Prologue
-Hey everyone, how everyone's doing? I've been back at my parents' place for a while now, getting ready to start Igalia :)
+Hey everyone, how everyone's doing? I've been back at my parents' place for a while now, getting ready to start
+Igalia :)
 I'm still doing good hahhaa :) Getting back to OC after being far far away in Berkeley wonderland means that I have to build back
-as well as get in touch with old support network. I guess it's just takes a while to get used to.
+as well as get in touch with old support network. I guess it's just takes a while to get used to. [TODO: talk about
+health and personal issues persist, nanny]
 
 This article documents what I've learned about the basics of LLVM's code generation process, self-contained in lowering from AST to LLVM-IR only :) More experience and time is needed to venture out further away to write more sophisticated articles. Oh well, maybe after I've been at Igalia for a while hahaha :)
 
-As is tradition, here are three songs for you by Zedd: Papercut, Addicted To A Memory, and Done With Love. All three songs showcase extremely well the emotional depth of a person in and out of love.
+As is tradition, here are three songs for you by Zedd: [Papercut](https://youtu.be/HwtljkGZJnI?si=6kS1eXfN3DS7TokP),
+[Addicted To A Memory](https://youtu.be/ZqJiXLJs_Pg?si=P8as3-nXevZ3BfuA), and
+[Done With Love](https://youtu.be/BjsjIkSb0cM?si=rNyI9JeS6N5r1NFc). All
+three songs showcase extremely well the emotional depth of a person in and out of love.
 
 I hope you enjoy the songs :)
 
 
 ## Introduction
 
-Something something about how codegen in llvm is made very easy. bla bla bla talk a bit about your mom hahahhaha
+Codegen in LLVM is an extremely well-thought-out process. For a simple stack-centric codegen
+process, the framework
+users
+can abstract away SSA form; the **alloca** process together with mem2reg allows an
+extremely fast assembly generation even for primitive stack allocations.
+
+In this article, I'll report on the codegen process of sammine-lang, an extension on the kaleidoscope tutorial.
+Besides code generation for scalar values, funcitons and control flow, the article also touches on code gen for
+aggregated data types such as structs :) I hope everyone enjoys :)
+
+The below picture demonstrates sammine's ability to generate code for fibonacci, a classic mathematical problem :)
+[TODO: show that sammine can indeed code fibonacci and output assembly for it]
+
+Aggregated datatype's also generated with sammine:
+[TODO: show that sammine can indeed code record]
+
 
 ## A few brief words on building tools and ast-ir inspection
 
-A very very smart CS person in my compiler class at UC Berkeley (where i once studied) once told me something along
-the line of  "use your tool
-very well" or "build your tools" and I feel like
+A very, very smart CS person in my compiler class at UC Berkeley once told me something along
+the line of "use/build your tool very well" and I feel like
 I want to share it in this blog. The use case of when he told me might be different
-, but the principle will still remain.
+, but the principle still remains the same: regardless if it's about the compiler, terminal tool, or
+your IDE, it really pays off to learn how to use your tool so good that it
+completely boosts your productivity into a different dimension.
 
-Regardless if it's about the compiler, terminal tool, docker, ci/cd or text editors such as neovim,
-vscode, helix, it really pays off to learn how to use your tool so good that it
-completely boosts your productivity into a different dimension
+After having to `cmake --build build -j` the compiler project for 50+ times a day, I built [brt.nvim]() to shorten
+the dev
+cycle;
+now I press
+three keystrokes to build, run and test the compiler project (Hence the name BRT :)) :)
+
+The
+same
+applies for developing sammine itself :) There were a lot of frictions for different features. bla bla bla
+
+
+
 ## Alloca(tion of the stack) and mem2reg
 
 todo talk about allocation of the stack, first draws out an example of the global var in llvm ir

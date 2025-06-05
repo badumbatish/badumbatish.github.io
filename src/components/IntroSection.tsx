@@ -34,7 +34,8 @@ const IntroSection: React.FC<{children: ReactNode, className? : string}> = ({ ch
 };
 
 const NickNameButton = () => {
-    let NickNameArray : String[]= [ "Jasmine", "badumbatish", "jsmn", "Lễ", "Jazz", "Thảo", "jjasmine", "jjsm", "fried chicken little", "bagel adventurer" ];
+    let NickNameArray : String[]= [ "Jasmine", "badumbatish", "jsmn", "Lễ", "Jazz", "Thảo", "jjasmine",
+                                     "jjsm", "fried chicken little", "bagel adventurer", "whyareuscared" ];
     let clickMe = <Image className={"inline"} src={"clickme.png"} alt={"click me button"} width={8} height={8}></Image>
     const [NickName, setNickName] = useState<String>("Jasmine");
     const [Counter, setCounter] = useState(0);
