@@ -40,8 +40,8 @@ The below picture demonstrates sammine's ability to generate code for fibonacci,
 Aggregated datatype's also generated with sammine:
 [TODO: show that sammine can indeed code record]
 
-
-## A few brief words on building tools and ast-ir inspection
+## On the side of coding
+### A few brief words on building tools and ast-ir inspection
 
 A very, very smart CS person in my compiler class at UC Berkeley once told me something along
 the line of "use/build your tool very well" and I feel like
@@ -62,13 +62,13 @@ same
 applies for developing sammine itself :) There were a lot of frictions for different features. bla bla bla
 
 
-
-## Alloca(tion of the stack) and mem2reg
+## Codegening
+### Alloca(tion of the stack) and mem2reg
 
 todo talk about allocation of the stack, first draws out an example of the global var in llvm ir
 
 
-## Variables
+### Variables
 
 discuss three modes:
 - creation: in var def and the map that keeps it, this done using alloca
@@ -76,14 +76,55 @@ discuss three modes:
 - read: this loads from address of alloca.
 
 todo: talks about in relation to the walk and visitor pattern
-## Control flow
+### Control flow
 
 discuss how alloca makes this easier.
 
-## Functions and Extern (via PrototypeAST)
+### Functions and Extern (via PrototypeAST)
 
 todo: talk about a caveat that we need to allocate "alloca" addresses at the start of the function.
 todo: relate to how strong the visitor pattern is
+
+#### Case study: printf
+
+Back in Berk, I sometimes would play [Factorio](https://www.factorio.com/) in my free time. The game is intuitive
+and interesting. But for some
+reasons, the game really stresses me out. "Wait a minute, I love problem-solving, don't I? But I feel so stressed
+trying to build the factory with these new science packs and these new different energy types." Now, in this summer
+of 2025, when I'm writing my own compiler, I suddenly realize the reason. I love problem sovling, but I was solving
+the wrong problems. I wasn't interested in trying to build and maintain factories. Rather, compiler always seems to have
+a softer spot in my heart. That and blog writing, hence I'm writing this :)
+
+Ah, I still don't know what I'm rambling
+about. I guess what I'm trying to say is in that in my experience, while I enjoy problem-solving in general, it also
+matters what type of problems I'm solving. Factorio, leaning hard into resource management and logistics, just isn't
+my forte, which is creative expression (writing), coding and abstraction (compiler engineer). Maybe front-end
+and/or back-end
+development
+isn't what you love,
+then you
+should consider switching to compiler engineering, ahhahahha :P
+
+
+Anyways, let's now talk about the
+lowering of printing..
+
+Right now, in sammine, I'm adopting a python-esque way of printing:
+```
+print(x);  # x and y are variables in this case
+println(y);
+println(2.4 + 5.3); # printing should also support expressions
+```
+
+With int and double powered by alloca, how should we go around lowering this?
+
+We know that in libc, the signature for printf() is bla bla bla hahaha
+- print(2)
+- print("x")
+- println(2.4)
+
+### Garbage collection
+#### Case study: malloc
 
 # Epilogue
 
