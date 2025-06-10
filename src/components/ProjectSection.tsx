@@ -25,7 +25,7 @@ const ProjectCard: React.FC<ExperienceInfo> = ({title, experience, img_name ="cu
 
     return (
         <div className={`font-mono flex flex-col basis-1/2
-                                rounded-lg overflow-hidden p-4 border-2 border-blue-300 gap-2
+                                rounded-lg overflow-hidden p-4 border-2 border-blue-300 gap-2 justify-items-center
                                 ${hover_border}`}>
             <div className={"flex flex-col md:flex-row justify-start content-s px-4 py-4 mx-auto"}>
                 <Link href={img_link} rel="noopener noreferrer" target="_blank">

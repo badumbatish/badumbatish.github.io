@@ -26,14 +26,14 @@ export const BlogArticleCard: React.FC<JazzReadInfo> = ({blog_title, introductio
         <div className={`font-mono flex flex-col basis-1/4
                                 rounded-lg overflow-hidden p-4 border-2 border-blue-300 gap-2
                                 ${hover_border}`}>
-            <div className={"flex flex-col md:flex-row justify-start content-s px-4 py-4 mx-auto"}>
-                    <div className="mx-3 lg:my-auto text-xl font-bold hover:underline ">
+            <div className={"flex md:flex-row justify-center content-s px-4 py-4 mx-auto"}>
+                    <div className="mx-3 lg:my-auto text-xl font-bold hover:underline">
                         <Link href={link}>
                         {blog_title}↙
                         </Link>
                     </div>
             </div>
-            <div className={"px-2"}>
+            <div className={"px-2 flex flex-col justify-center "}>
                 {introduction}
             </div>
 
