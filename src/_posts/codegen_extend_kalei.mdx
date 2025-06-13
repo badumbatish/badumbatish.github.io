@@ -6,20 +6,29 @@ recap: "Jasmine extends her language with string, tuple, if-else codegen togethe
 
 
 ## Prologue
-Hey everyone, how everyone's doing? I've been back at my parents' place for a while now, getting ready to start
+Hey everyone, how everyone's doing? I've graduated Berkeley and have been back at my parents' place for a while now,
+getting
+ready to start
 Igalia :)
-I'm still doing good hahhaa :) Getting back to OC after being far far away in Berkeley wonderland means that I have to build back
-as well as get in touch with old support network. I guess it's just takes a while to get used to. [TODO: talk about
-health and personal issues persist, nanny]
+I'm still doing good hahhaa :)
 
-This article documents what I've learned about the basics of LLVM's code generation process, self-contained in lowering from AST to LLVM-IR only :) More experience and time is needed to venture out further away to write more sophisticated articles. Oh well, maybe after I've been at Igalia for a while hahaha :)
+I always thought getting back to OC after being far far away in Berkeley wonderland means that everything's gonna
+change for me: I won't have to do homework anymore :) I'll go to bed early blabla bla; But here I am writing this
+blog at 2 AM hahhaha. I realized that changing the environment doesn't necessarily change me personally; I'd need
+to change myself on my own :) Being next to my family makes me really grateful, but now I'm starting to miss my
+high school teacher as well as my nanny in Viet Nam. I really wanna go back soon :)
+
+Anyways, let's talk business hahah :)
+This article documents what I've learned about the basics of LLVM's code generation process, self-contained in
+lowering from AST to LLVM-IR. This includes basic stack variables, addition, subtraction, etc etc to strings, structs
+as well as garbage collection.
 
 As is tradition, here are three songs for you by Zedd: [Papercut](https://youtu.be/HwtljkGZJnI?si=6kS1eXfN3DS7TokP),
 [Addicted To A Memory](https://youtu.be/ZqJiXLJs_Pg?si=P8as3-nXevZ3BfuA), and
 [Done With Love](https://youtu.be/BjsjIkSb0cM?si=rNyI9JeS6N5r1NFc). All
 three songs showcase extremely well the emotional depth of a person in and out of love.
 
-I hope you enjoy the songs :)
+I hope you enjoy the songs (and the blog post as well!) :)
 
 
 ## Introduction
