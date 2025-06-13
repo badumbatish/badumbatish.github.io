@@ -126,6 +126,19 @@ We know that in libc, the signature for printf() is bla bla bla hahaha
 What we'll do is, depending on the type via the AST, we'll access the
 
 ### Garbage collection
+#### Let's talk a bit about records (or structs)
+
+#### Shadow GC
+
+When a function `y`  is called from a function `x`. The function y needs to know that x is its caller. Unfortunately, at the llvm IR, everything is abstracted away with the call() syntax.
+
+
+-> This means `y` doesn't actually know who its caller is.
+
+We'll solve this by maintaining a list of stack entries:
+- Each time a calle is called, the caller needs to construct and push a new stack entry onto the global linked list of stack entries.
+- When the callee wakes up, it know exactly who its caller is, just by querying the global linked list.
+- One problem remains: should the callee pops the stack entry when its done? or should the caller? (maybe something to do with main)
 #### Case study: malloc
 
 # Epilogue
