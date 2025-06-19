@@ -105,9 +105,11 @@ const LeftMainCard = () => {
                 </h2>
                 <div>
                     <div className="text-xl">Contact:</div>
-                    <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-1 text-sm lg:text-base">
+                    <div className="grid sm:grid-cols-1 md:grid-cols-1 gap-1 text-sm lg:text-base">
+                        <LinkButton link={"mailto:jjasmine@igalia.com"}
+                                    linkName={"jjasmine@igalia.edu"}></LinkButton>
                         <LinkButton link={"mailto:jjasmine@berkeley.edu"}
-                                    linkName={"Email"}></LinkButton>
+                                    linkName={"jjasmine@berkeley.edu"}></LinkButton>
                         <LinkButton link={"https://www.linkedin.com/in/jjasmine-t/"}
                                     linkName={"LinkedIn"}></LinkButton>
                     </div>
