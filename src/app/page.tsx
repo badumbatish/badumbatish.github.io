@@ -23,11 +23,13 @@ export default function Home() {
 
             <ExperienceSection className={sectionClassName}>
                 <TimeLine>
+                    <TimePiece date={"June 2025 -> Present"} title={"LLVM Compiler Engineer @ Igalia"} experience={[
+                        `Doing open source contributions to LLVM. Area: Compiler backend in WebAssembly/RISC-V (and potentially MLIR).`
+                    ]}/>
                     <TimePiece date={"May -> Aug 2024"} title={"Google Summer Of Code Participant with GCC"} experience={[
-                        `Visit my resume for more information about my work.`
-                    //     `Work work work! Jasmine's going to work on gccrs (the GNU Compiler for Rust) :), providing inline assembly support
-                    //     for it. The project focuses on adding implementation for two built-in Rust macros: asm!(), and global_asm!(). `,
-                    // `gccrs will be able to detect and parse the assembly code within asm!, and global_asm! macro, converting them to gcc assembly format to eventually generate code.`
+                         `Work work work! Jasmine's going to work on gccrs (the GNU Compiler for Rust) :), providing inline assembly support
+                         for it. The project focuses on adding implementation for two built-in Rust macros: asm!(), and global_asm!(). `,
+                     `gccrs will be able to detect and parse the assembly code within asm!, and global_asm! macro, converting them to gcc assembly format to eventually generate code.`
                     ]}/>
 
                     <></>

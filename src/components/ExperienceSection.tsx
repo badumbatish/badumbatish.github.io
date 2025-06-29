@@ -7,7 +7,7 @@ const ExperienceSection: React.FC<{children: ReactNode, className? : string}> = 
                 <h1 className="text-3xl  font-bold ">
                     Experience</h1>
             </div>
-            <div className="flex justify-center">
+            <div className="flex flex-col justify-content py-6 gap-10">
                 {children}
             </div>
 

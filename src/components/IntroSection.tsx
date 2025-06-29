@@ -148,7 +148,7 @@ const RightMainCard = () => {
                 <li>
                     <AboutMeElement title="About Me"
                                     lst={["Hi everyone, it's Jasmine here :)  I like compilers, gcc, llvm and occasional scripting.",
-                                        `I enjoy technical writings and have some blogs, please feel free to give them a try on with the blog button`,
+                                        `I enjoy technical writings and have some blogs, give them a try!`,
                                         `In my free time, I like going on walks, watching speed runs of Souls, RE games, listening to music, reading manga and learning about new languages :)`,
                                         `For music, I like rap, pop, pop-rock and electronics pop :)`,
                                         `For manga, I like shonen as well as melancholic slice-of-life manga`]}
@@ -156,10 +156,14 @@ const RightMainCard = () => {
 
                 </li>
                 <li>
-                    <AboutMeElement title="Studying EECS @ Berkeley." lst={[
-                        `Transferred from Santiago Canyon College in Aug 2023. Graduates in May 2025`,
-                        `Technical Coursework: Undergraduate Compilers, Graduate Compilers in Optimization, Operating Systems, Data Structure and Algorithms, Discrete Math & Probability
-                                    Linux System Administration DeCal, Web Development DeCal.`]}
+                    <AboutMeElement title="LLVM Compiler Engineer @ Igalia" lst={["La la la I'm working at Igaliaaa."
+                                    ]}
+                    ></AboutMeElement>
+                </li>
+                <li>
+                    <AboutMeElement title="Studied EECS @ Berkeley." lst={[
+                        `Transferred from Santiago Canyon College in Aug 2023. Graduated in May 2025`,
+                        `Technical Coursework: Intro to Compilers (CS164), Compiler Optimizations (CS265), Operating Systems (CS162), Intro & Advanced Algorithms (CS70 & CS170)`]}
                     ></AboutMeElement>
                 </li>
 
@@ -168,4 +172,4 @@ const RightMainCard = () => {
     )
 }
 
-export  {IntroSection, LeftMainCard, RightMainCard};
+export {IntroSection, LeftMainCard, RightMainCard};
