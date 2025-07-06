@@ -1,0 +1,327 @@
+1:"$Sreact.fragment"
+2:I[8173,["173","static/chunks/173-09f9817a8afa96b6.js","880","static/chunks/app/posts/%5Bid%5D/page-0a046863f2056281.js"],""]
+3:I[5244,[],""]
+4:I[3866,[],""]
+5:I[1168,["173","static/chunks/173-09f9817a8afa96b6.js","970","static/chunks/970-1bb5a11d460674d4.js","177","static/chunks/app/layout-8efea218579f6a1a.js"],"default"]
+7:I[6213,[],"OutletBoundary"]
+9:I[6213,[],"MetadataBoundary"]
+b:I[6213,[],"ViewportBoundary"]
+d:I[4835,[],""]
+:HL["/_next/static/media/7385e8d9d3c5518f-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/_next/static/css/54aca6634d1e4e28.css","style"]
+:HL["/_next/static/css/7ad14cf05ba66ef7.css","style"]
+0:{"P":null,"b":"parPzQQjJsWSub83w5J7s","p":"","c":["","posts","jasmine_in_llvm_land_and_config"],"i":false,"f":[[["",{"children":["posts",{"children":[["id","jasmine_in_llvm_land_and_config","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/54aca6634d1e4e28.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","$L2",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[],[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L5",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]}]]}]}]]}],{"children":["posts",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","jasmine_in_llvm_land_and_config","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","posts","children","$0:f:0:1:2:children:2:children:0","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/7ad14cf05ba66ef7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L7",null,{"children":"$L8"}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","IXjTllt50nyyuXX4WO5IT",{"children":[["$","$L9",null,{"children":"$La"}],["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]]}],false]],"m":"$undefined","G":["$d","$undefined"],"s":false,"S":true}
+c:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+e:T68f2,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#prologue">Prologue</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#introduction">Introduction</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#areas-of-contribution-issues-and-pull-requests">Areas of contribution, issues and pull requests</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#area-of-contribution">Area of contribution</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#issues-and-pull-requests">Issues and Pull requests</a></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#dotfiles-and-toolings">Dotfiles and toolings</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#why">Why?</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#initialization-and-upkeep">Initialization and Upkeep</a><ol class="toc-level toc-level-3"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#initialization">Initialization</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#upkeep-via-custom-commands">Upkeep via custom commands</a></li></ol></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#window-manager-wm">Window Manager (WM)</a><ol class="toc-level toc-level-3"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#wm-keybinds">WM keybinds</a></li></ol></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#atuin">Atuin</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#kitty">Kitty</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#ccache">ccache</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#neovim-and-programming">Neovim and programming</a><ol class="toc-level toc-level-3"><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#scratchpad-file-and-debugging">Scratchpad file and debugging.</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#fuzzy-finder--grepping">Fuzzy-finder &#x26; Grepping</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#language-server-support">Language server support</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#git-support">Git support</a></li><li class="toc-item toc-item-h4"><a class="toc-link toc-link-h4" href="#autocmd">Autocmd</a></li></ol></li></ol></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#introspection">Introspection</a></li></ol></nav><h2 id="prologue"><a aria-hidden="true" tabindex="-1" href="#prologue"><span class="icon icon-link"></span></a>Prologue</h2>
+<p>Hi everyone, how's everybody doing? :) I hope everybody's doing great :) I'm still doing good. I've moved back to
+my parents' place in OC after graduated from Berkeley.</p>
+<p>So, today's article is mostly a report on my current progress learning about the llvm codebase as well as all the
+modifications I've made to my dotfiles since then. I hope everybody enjoys.</p>
+<p>Also, as tradition, here's <a href="https://youtu.be/N8OHSXvneOE?si=G4ZzUuDYDsdkreG6" rel="nofollow" target="_blank">First Steps</a> and
+<a href="https://youtu.be/0etenwnI1wo?si=P2amnweyT2EEtEIw" rel="nofollow" target="_blank">Scattered and Lost</a>, both from Celeste by
+<a href="https://en.wikipedia.org/wiki/Lena_Raine" rel="nofollow" target="_blank">Lena Raine</a> :)</p>
+<p>There's also an <a href="https://www.youtube.com/watch?v=qUzOuiLto6M&#x26;t=743s&#x26;pp=ygUbc2NhdHRlcmVkIGFuZCBsb3N0IGFuYWx5c2lz" rel="nofollow" target="_blank">analysis</a>
+video on the latter if you wanna check them out :)</p>
+<p>I hope everybody enjoys.</p>
+<h2 id="introduction"><a aria-hidden="true" tabindex="-1" href="#introduction"><span class="icon icon-link"></span></a>Introduction</h2>
+<p>Working on LLVM (with neovim btw as your text editor) can be a frightening process, especially for a beginner. Since
+starting my
+employment at
+Igalia,
+I've been learning a lot, as well as sharpening my dotfiles to increase my efficiency/productivity. In this article,
+I'll report on what I've done since then, as well as any changes I've made to my dotfiles.</p>
+<p>This article won't deep dive into the technicalities too much like <a href="/posts/what_I_did_for_gsoc_2024">the gccrs blog</a>,
+but instead give a quick overview and then scoot right into the modifications of dotfiles together with their
+reasoning for it.</p>
+<h2 id="areas-of-contribution-issues-and-pull-requests"><a aria-hidden="true" tabindex="-1" href="#areas-of-contribution-issues-and-pull-requests"><span class="icon icon-link"></span></a>Areas of contribution, issues and pull requests</h2>
+<h3 id="area-of-contribution"><a aria-hidden="true" tabindex="-1" href="#area-of-contribution"><span class="icon icon-link"></span></a>Area of contribution</h3>
+<p>At Igalia currently, I'm tasked with contributing to the back end in WebAssembly and RISCV. Since then, I've
+opened 7 issues and closed 3 of them. I've also opened 6 pull requests and closed 5 of them. Most of my PR dealt with
+optimization on the
+<a href="https://llvm.org/doxygen/classllvm_1_1SelectionDAG.html" rel="nofollow" target="_blank">SelectionDAG</a> framework in
+the WebAssembly back end. I'm still investigating and watching a loop optimization issue for RISCV but not sure how
+I'll solve it :)</p>
+<p>A few notable PRs include:</p>
+<ul>
+<li><a href="https://github.com/llvm/llvm-project/pull/145627" rel="nofollow" target="_blank">PR145627</a>: I optimized the WebAssembly back end by querying the
+SelectionDAG and redid the computation for the bitmask instruction of illegal size <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>></mo></mrow><annotation encoding="application/x-tex">></annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">></span></span></span></span> 128, reducing 400 lines of
+assembly into around 10 lines.</li>
+<li><a href="https://github.com/llvm/llvm-project/pull/145829" rel="nofollow" target="_blank">PR145829</a>: I and my technical mentor Luke Lau solved a 2-year-old
+issue from 2023, helping optimize a <code>add-global nuw -> load</code> to <code>load</code>, cutting down the instruction size by half every
+time we load a global address wth a nuw (no unsigned wrap) offset in WebAssembly.
+-<a href="https://github.com/llvm/llvm-project/pull/146750" rel="nofollow" target="_blank">PR146750</a>: I helped propagate poison to a few trivially
+vectorizable intrinsic in LLVM IR by folding them into a Poison value directly. This helps enable other optimization
+pass by cutting down on calls to such intrinsics.</li>
+</ul>
+<h3 id="issues-and-pull-requests"><a aria-hidden="true" tabindex="-1" href="#issues-and-pull-requests"><span class="icon icon-link"></span></a>Issues and Pull requests</h3>
+<p>Here is the list of issues that I've opened, generated from</p>
+<pre><code>gh issue list -A badumbatish --state all --json title,number,state,createdAt --jq '.[] | "| [\(.number)]
+(https://github.com/llvm/llvm-project/pull/\(.number)) |  **\(.state)** |  \(.title) | \(.createdAt) |"'
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Issue Number</th><th>Issue Status</th><th>Issue Title</th><th>Date</th></tr></thead><tbody><tr><td><a href="https://github.com/llvm/llvm-project/issues/147116" rel="nofollow" target="_blank">147116</a></td><td><strong>OPEN</strong></td><td>[NFC] Clean up one off case of poison folding in simplifyBinaryIntrinsic</td><td>2025-07-04T22:18:13Z</td></tr><tr><td><a href="https://github.com/llvm/llvm-project/issues/146769" rel="nofollow" target="_blank">146769</a></td><td><strong>OPEN</strong></td><td>[ConstantFolding][Intrinsics] Missed folding of poison in a few trivially vectorizable intrinsics</td><td>2025-07-02T20:20:31Z</td></tr><tr><td><a href="https://github.com/llvm/llvm-project/issues/146473" rel="nofollow" target="_blank">146473</a></td><td><strong>CLOSED</strong></td><td>[BOLT] Error BOLT-PGO-ing clang on MacOS 15.4</td><td>2025-07-01T06:09:51Z</td></tr><tr><td><a href="https://github.com/llvm/llvm-project/issues/145433" rel="nofollow" target="_blank">145433</a></td><td><strong>OPEN</strong></td><td>[Infrastructure] Failed unrelated LLDB TestRetryWithStdModule.py</td><td>TestStdModuleWithConflicts.py</td></tr><tr><td><a href="https://github.com/llvm/llvm-project/issues/145416" rel="nofollow" target="_blank">145416</a></td><td><strong>CLOSED</strong></td><td>[Code clean up] [X86 Test] DebugInfo/assignment-tracking/X86/large-type.ll lacks target triple</td><td>2025-06-23T22:04:45Z</td></tr><tr><td><a href="https://github.com/llvm/llvm-project/issues/145177" rel="nofollow" target="_blank">145177</a></td><td><strong>CLOSED</strong></td><td>[WebAssembly] Missed optimization in any_true/all_true</td><td>2025-06-21T16:45:17Z</td></tr><tr><td><a href="https://github.com/llvm/llvm-project/issues/144614" rel="nofollow" target="_blank">144614</a></td><td><strong>OPEN</strong></td><td>[WebAssembly] Degenerate case in vectorization of all true</td><td>2025-06-17T22:36:27Z</td></tr></tbody></table>
+<p>Here is the list of PR that I've attempted, generated from</p>
+<pre><code>gh pr list -A badumbatish --state all --json title,number,state,createdAt --jq '.[] | "| [\(.number)]
+(https://github.com/llvm/llvm-project/pull/\(.number)) |  **\(.state)** |  \(.title) | \(.createdAt) |"'
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>PR Number</th><th>PR Status</th><th>PR Title</th><th>Date</th></tr></thead><tbody><tr><td><a href="https://github.com/llvm/llvm-project/pull/146750" rel="nofollow" target="_blank">146750</a></td><td><strong>MERGED</strong></td><td>[InstCombine] Propagate poison pow[i], [us]add, [us]sub and [us]mul</td><td>2025-07-02T17:38:04Z</td></tr><tr><td><a href="https://github.com/llvm/llvm-project/pull/145829" rel="nofollow" target="_blank">145829</a></td><td><strong>MERGED</strong></td><td>[WebAssembly] Fold TargetGlobalAddress with added offset</td><td>2025-06-26T02:01:33Z</td></tr><tr><td><a href="https://github.com/llvm/llvm-project/pull/145764" rel="nofollow" target="_blank">145764</a></td><td><strong>MERGED</strong></td><td>Add triple target to buildtype.ll in X86</td><td>2025-06-25T18:49:47Z</td></tr><tr><td><a href="https://github.com/llvm/llvm-project/pull/145627" rel="nofollow" target="_blank">145627</a></td><td><strong>MERGED</strong></td><td>[WebAssembly] [Backend] Wasm optimize illegal bitmask</td><td>2025-06-25T02:18:47Z</td></tr><tr><td><a href="https://github.com/llvm/llvm-project/pull/145108" rel="nofollow" target="_blank">145108</a></td><td><strong>OPEN</strong></td><td>[WebAssembly] [Backend] Combine and(X, shuffle(X, pow 2 mask)) to all true</td><td>2025-06-20T22:05:28Z</td></tr><tr><td><a href="https://github.com/llvm/llvm-project/pull/144741" rel="nofollow" target="_blank">144741</a></td><td><strong>MERGED</strong></td><td>[WebAssembly] Fold any/alltrue (setcc x, 0, eq/ne) to [not] any/alltrue x</td><td>2025-06-18T16:08:30Z</td></tr></tbody></table>
+<p>I want to emphasize that a lot of the issues that enabled these PRs were sourced by Luke. Without these issues, I'm
+afraid I might still be searching for llvm issues on github without knowing their difficulty, wasting my own time
+and efforts on unnecessary unfriendly-to-beginner issues. I'm thankful for his guidance for my first few steps.</p>
+<h2 id="dotfiles-and-toolings"><a aria-hidden="true" tabindex="-1" href="#dotfiles-and-toolings"><span class="icon icon-link"></span></a>Dotfiles and toolings</h2>
+<p>Alright hahhaha nice, we've finally got over the technical part, let's talk about my
+<a href="https://github.com/badumbatish/dotfiles" rel="nofollow" target="_blank">dotfiles</a>.</p>
+<p>During the first few weeks at Igalia, a lot of modifications were made to my dotfiles configuration to allow for
+more efficient workflow.</p>
+<p>The dotfiles is thus geared towards neovim/tmux/MacOS and my job, which is compiler development.</p>
+<p>Here, I'm providing readers with detailed reasoning for my modifications of my dotfiles. Interested readers can
+find the most up to date docs and reasoning through this <a href="https://github.com/badumbatish/dotfiles" rel="nofollow" target="_blank">dotfiles link</a>.</p>
+<p>Before blindly initializing and running the commands in this dotfile, do your due diligence first and read through every link here if you're not familiar with one. You can also dive into the configuration files themselves.</p>
+<h3 id="why"><a aria-hidden="true" tabindex="-1" href="#why"><span class="icon icon-link"></span></a>Why?</h3>
+<p>A very, very smart CS person in my compiler class at uni once told me something along
+the line of "use/build your tool very well" and I feel like
+I want to share it in this blog. The use case of when he told me might be different
+, but the principle still remains the same: regardless if it's about the compiler, terminal tool, or
+your IDE, it really pays off to learn how to use your tool so good that it
+completely boosts your productivity into a different dimension.</p>
+<p>In my case, automating to shave seconds off each time I compile, test, debug or query my code really reinforces the
+dev cycle, making me lose less mental capacity and gain more efficiency.</p>
+<p>Alright, that's all the yapping. Let's get to it :)</p>
+<h3 id="initialization-and-upkeep"><a aria-hidden="true" tabindex="-1" href="#initialization-and-upkeep"><span class="icon icon-link"></span></a>Initialization and Upkeep</h3>
+<p>I used <a href="https://www.chezmoi.io/" rel="nofollow" target="_blank">chezmoi</a> to manage my dotfiles.</p>
+<h4 id="initialization"><a aria-hidden="true" tabindex="-1" href="#initialization"><span class="icon icon-link"></span></a>Initialization</h4>
+<p>Fork <a href="https://github.com/badumbatish/dotfiles" rel="nofollow" target="_blank">this repository</a> and then run the following command to initial the configuration.</p>
+<pre><code>chezmoi init git@github.com:&#x3C;your_github_username>/dotfiles.git &#x26;&#x26; chezmoi update
+</code></pre>
+<h4 id="upkeep-via-custom-commands"><a aria-hidden="true" tabindex="-1" href="#upkeep-via-custom-commands"><span class="icon icon-link"></span></a>Upkeep via custom commands</h4>
+<p>With a large number of files to keep up with and update, I've outgrown chezmoi's default commands: chezmoi add, git add, and git push... The demands to automate the upkeep of my files has led to a small number of commands that wraps chezmoi to make my maintainance easier:</p>
+<ul>
+<li><code>cadd</code>: <code>chezmoi add</code> every files that is managed by chezmoi to git, commit them and show the difference. I still have to add the file once manually.</li>
+<li><code>cpush</code>: Push all the changes to remote (Basically a wrapped chezmoi cd &#x26;&#x26; git push)</li>
+<li><code>cap</code>: A wrapper executable that executes <code>cadd</code> and <code>cpush</code></li>
+<li><code>cinstall</code>: On a new mac machine, I call this script to install (almost) all necessary packages for my development.</li>
+</ul>
+<h3 id="window-manager-wm"><a aria-hidden="true" tabindex="-1" href="#window-manager-wm"><span class="icon icon-link"></span></a>Window Manager (WM)</h3>
+<p>On MacOS, I'm currently using <a href="https://github.com/koekeishiya/yabai" rel="nofollow" target="_blank">yabai</a> together with <a href="https://github.com/koekeishiya/skhd" rel="nofollow" target="_blank">skhd</a> to drive my window management setup. Have a quick read about them if you haven't got a chance.</p>
+<p>Using a Window Manager alleviate my reliance on the built-in mousepad and relieve me from programming <a href="https://www.reddit.com/r/learnprogramming/comments/1dx9qgr/wrist_hurts_from_too_much_programming/" rel="nofollow" target="_blank">wrist pain</a></p>
+<p>Let's talk about WM now :)</p>
+<p>I provide an executable called <code>yabai_reload</code> to automate reloading and running yabai/skhd whenever you restart MacOS or edit your yabai/skhd config.</p>
+<p>Firstly, run <code>yabai_reload</code> to get yabai and skhd running/reset.</p>
+<p>Secondly, there's a philosophy that you probably need to know about the window manager keybind's prefix.</p>
+<ul>
+<li>Cmd + <code>key</code>: Switch the focus to ...</li>
+<li>Shift + Cmd + <code>key</code>: Move the actual window to ...</li>
+</ul>
+<h4 id="wm-keybinds"><a aria-hidden="true" tabindex="-1" href="#wm-keybinds"><span class="icon icon-link"></span></a>WM keybinds</h4>
+<ul>
+<li>Cmd + hjkl : Switch the focus to left down up right window in the current workspace.</li>
+<li>Cmd + 1234: Switch to focus to workspace 1 2 3 4</li>
+<li>Shift + Cmd + hjkl: Move the current window (in the current workspace) to left down up right.</li>
+<li>Shift + Cmd + 1234: Move the current window to workspace 1 2 3 4.</li>
+</ul>
+<h3 id="atuin"><a aria-hidden="true" tabindex="-1" href="#atuin"><span class="icon icon-link"></span></a>Atuin</h3>
+<p>Atuin is an automatic fuzzy finding tool for your terminal commands. It has helped me so much with rerunning my building and testing commands and has saved me hours of work.</p>
+<p>I recommend you check out their <a href="https://atuin.sh/" rel="nofollow" target="_blank">website</a> and watch the demo for yourself.</p>
+<p>In my opinion, it's a pretty essential tool for all CLI users.</p>
+<h3 id="kitty"><a aria-hidden="true" tabindex="-1" href="#kitty"><span class="icon icon-link"></span></a>Kitty</h3>
+<p>Kitty is my chosen terminal. I switched from iterm2 to Kitty for the following reason:</p>
+<ul>
+<li>GPU acceleration: Kitty is smoother and faster than iterm2, this is important on a big codebase like llvm due to its massive improvement on rendering speed (rendering text in a big codebase in neovim on iterm2 is a pain.)</li>
+<li>Configuration ease: configuration for Kitty is extremely easy: everything is in 1 single file, from themes to extra shortcuts.</li>
+</ul>
+<p>When you're doing software dev on a big codebase, aesthetics is an afterthought instead of <a href="https://sw.kovidgoyal.net/kitty/performance/" rel="nofollow" target="_blank">performance/speed</a>.</p>
+<p>I also configure a few sane commands in Kitty for faster project maneuver:</p>
+<ul>
+<li>Cmd + <code>M</code>: Run the executable <code>sesh</code> in the current terminal.</li>
+<li>Cmd + <code>D</code>: Run the command <code>ctrl + b + d</code> to exit the current tmux session.</li>
+<li>Cmd + <code>N</code>: Run the command <code>ctrl + b + n</code> to go to the next panel in the current tmux session.</li>
+</ul>
+<h3 id="ccache"><a aria-hidden="true" tabindex="-1" href="#ccache"><span class="icon icon-link"></span></a>ccache</h3>
+<p>I set my ccache to be</p>
+<pre><code>file_clone = true
+inode_cache = true
+max_size = 70G
+base_dir = /
+absolute_paths_in_stderr = true
+</code></pre>
+<p>to allow ccache of multiple directories and more max size as well as more caching speed on my llvm builds, both release and debug version.</p>
+<p>Read the ccache manual for option explanations.</p>
+<h3 id="neovim-and-programming"><a aria-hidden="true" tabindex="-1" href="#neovim-and-programming"><span class="icon icon-link"></span></a>Neovim and programming</h3>
+<p>Let's talk about neovim btw. Neovim is my chosen hyperextensible text editor.</p>
+<p>Throughout my two years of using neovim, I've accummulated a few commands to help ease my development process.
+As a result, here is a selected list of commands, ordered by functionality</p>
+<h4 id="scratchpad-file-and-debugging"><a aria-hidden="true" tabindex="-1" href="#scratchpad-file-and-debugging"><span class="icon icon-link"></span></a>Scratchpad file and debugging.</h4>
+<ul>
+<li><code>&#x3C;leader>ps</code>: (P)aste the content in register <code>+</code> to a newly created, name-inputted-by-user file under the scratch/ directory, and copied the file name into your copy-and-paste register (+).</li>
+<li><code>&#x3C;leader>ys</code>: (Y)ank and paste the currently selection to a newly created, name-inputted-by-user file under the scratch/ directory and copied the file name into your copy-and-paste register (+).</li>
+<li><code>&#x3C;leader>yl</code>: Yank the full path + current file name + current line of the cursor and put it in the copy-and-paste register (+).</li>
+<li><code>&#x3C;leader>yf</code>: Yank the full path + current file name and put it in the copy-and-paste register (+).</li>
+</ul>
+<p>The functionality related to scratchpad-ing and debugging are helpful in regards to quickly recreating a file on your local machine from a github issue and execute/run them, as well as quickly input the file name + cursor location to <a href="https://lldb.llvm.org/" rel="nofollow" target="_blank">lldb</a> for debugging.</p>
+<h4 id="fuzzy-finder--grepping"><a aria-hidden="true" tabindex="-1" href="#fuzzy-finder--grepping"><span class="icon icon-link"></span></a>Fuzzy-finder &#x26; Grepping</h4>
+<p>Back before starting my employment @ Igalia, I relied on <a href="https://github.com/nvim-telescope/telescope.nvim" rel="nofollow" target="_blank">telescope</a> for all of my fuzzy finding. It turns out telescope is <a href="https://www.reddit.com/r/neovim/comments/ura4vu/telescope_too_slow_for_large_directories/" rel="nofollow" target="_blank">really really slow</a> on big repository, even with ripgrep in place of grep.</p>
+<p>With fzf-lua being soooo sooo so customizable, I then turned my focus to said library and hasn't looked back since.</p>
+<p>The mapping group for the fuzzy finding functionality is <code>&#x3C;leader>f*</code> and <code>&#x3C;leader>g*</code></p>
+<ul>
+<li><code>&#x3C;leader>fg</code>: live fuzzy find using ripgrep.</li>
+<li><code>&#x3C;leader>ff</code>: live fuzzy find using fd.</li>
+<li><code>&#x3C;leader>fr</code>: resume the last live fuzzy find session.</li>
+<li><code>&#x3C;leader>fd</code>: live fuzzy find vim diagnostics.</li>
+<li><code>&#x3C;leader>fm</code>: live fuzzy find marks.</li>
+<li><code>&#x3C;leader>fb</code>: live fuzzy find recently opened buffers (within current nvim-executed folder)</li>
+<li><code>&#x3C;leader>g</code>: fuzzy find using ripgrep the word under the cursor or the current selection.</li>
+</ul>
+<p>A cool thing about fzf-lua is I can add nvim-treesitter-context as a dependency, which gives me extra context for every match in a file. This makes it so that for example, if I'm searching for a string or a variable in C++, I can instantly know which function the variable is residing in.</p>
+<p>The following picture shows me trying to live grep a text called <code>MI.get</code> in LLVM, you can see that the current
+match is highlighted. You can see that (without actually going to the match location itself), there is also extra
+context showing that the current <code>MI.get</code> is
+from the function <code>LowerMemSet</code>.
+<img src="/blogs/jasmine_in_llvm_land_and_config/livegrep.png" alt="livegrep"></p>
+<h4 id="language-server-support"><a aria-hidden="true" tabindex="-1" href="#language-server-support"><span class="icon icon-link"></span></a>Language server support</h4>
+<p>Language server protocol is a much needed functionality in a code editor.</p>
+<p>It is also supported via the mapping group <code>&#x3C;leader>l*</code></p>
+<ul>
+<li><code>&#x3C;leader>la</code>: Trigger code action on the cursor from the language server. This includes capitalize functions and variables to satisfy a standard, filling in the remaining case of a C++ switch construct.</li>
+<li><code>&#x3C;leader>lr</code>: Smart rename - renaming a variable/function scope-wise.</li>
+<li><code>&#x3C;leader>c</code>: For C++, switch from a header file to its corresponding source file.</li>
+</ul>
+<h4 id="git-support"><a aria-hidden="true" tabindex="-1" href="#git-support"><span class="icon icon-link"></span></a>Git support</h4>
+<p>For a beginner in a codebase (even a seasoned programmer), the ability to obtain more information and context, extending further than the code sitting in front of them, is extremely helpful.
+Furthermore, small quality-of-life ability such as staging the current selected change to git add (instead of git adding the whole file) is very much appreciated.</p>
+<p>My neovim config also supports git through the mapping group <code>&#x3C;leader>h*</code>. A few capabilities include:</p>
+<ul>
+<li>Automatic git signs: shows green in the column for addition, and red for deletion.</li>
+<li>Automatic git blame on current line: shows the author and the commit message for the last change to current line.</li>
+<li><code>&#x3C;leader>yh</code>: Copy the git blame SHA on current line</li>
+<li><code>&#x3C;leader>hb</code>: Show the git blame on the current file</li>
+<li><code>&#x3C;leader>hs</code>: Stage the current hunk to git add</li>
+<li><code>&#x3C;leader>hr</code>: Reset the current hunk from git add</li>
+</ul>
+<p>Below shows a demo of the <code>&#x3C;leader>hb</code> command as well as the automatic git blame line:</p>
+<p><img src="/blogs/jasmine_in_llvm_land_and_config/gitblame.png" alt="gitblame_demo"></p>
+<h4 id="autocmd"><a aria-hidden="true" tabindex="-1" href="#autocmd"><span class="icon icon-link"></span></a>Autocmd</h4>
+<p>I also have some quality-of-life auto commands.</p>
+<ul>
+<li>
+<p>When I've performed a yank, I automatically highlight the yanked content for half a second to cognitively confirm the content.</p>
+</li>
+<li>
+<p>When I opened a file again, I automatically go to the last position where it was edited.</p>
+</li>
+<li>
+<p>When I've searched for something and it's highlighted across the file, I automatically remove the highlighting when
+I enter insert mode.</p>
+</li>
+</ul>
+<h2 id="introspection"><a aria-hidden="true" tabindex="-1" href="#introspection"><span class="icon icon-link"></span></a>Introspection</h2>
+<p>Reflecting on the past 3 weeks, I think my speed of absorbing new llvm knowledge is satisfiable. Regrettably, a lot
+of the modifications to my dotfile was not in place when I was going through implementing a few of my llvm pull
+requests. This meant that my speed was essentially reduced or wasted on typing commands that could have been
+automated. All of these frictions lose me a few seconds and my developer mental capacity here and there, which adds
+up to
+hours
+over the course
+of a
+week.</p>
+<p>Whoopsies, anyways hahahaha. Here's to a more productive time at Igalia. I hope you've enjoyed this article :)</p>6:["$","div",null,{"className":"py-12 flex flex-col items-center  justify-items-start mx-auto ","children":[["$","$L2",null,{"href":"/blog","className":"flex justify-center text-4xl","children":["$","h2",null,{"children":"My blog"}]}],["$","article",null,{"className":"p-8 prose pt-0.5 max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto","children":[["$","div",null,{"className":"flex justify-center text-2xl font-bold ","children":["$","h2",null,{"children":"Jasmine in llvm-land and her dotfiles"}]}],["$","div",null,{"className":"flex justify-start text-xl font-bold underline","children":["$","h4",null,{"children":"8888-08-08"}]}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$e"}}]]}]]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"Jasmine in llvm-land and her dotfiles"}],["$","meta","2",{"name":"description","content":"Jasmine reports on her first 3 weeks at Igalia and her dotfiles modification"}],["$","link","3",{"rel":"icon","href":"/_next/static/media/pfp5.0daa0f7d.jpeg"}]]
+8:null
