@@ -52,7 +52,7 @@ assembly into around 10 lines.
 issue from 2023, helping optimize a `add-global nuw -> load` to `load`, cutting down the instruction size by half every
 time we load a global address wth a nuw (no unsigned wrap) offset in WebAssembly.
 
--[PR146750](https://github.com/llvm/llvm-project/pull/146750): I helped propagate poison to a few trivially
+- [PR146750](https://github.com/llvm/llvm-project/pull/146750): I helped propagate poison to a few trivially
 vectorizable intrinsic in LLVM IR by folding them into a Poison value directly. This helps enable other optimization
 pass by cutting down on calls to such intrinsics.
 
@@ -74,15 +74,15 @@ gh issue list -A badumbatish --state all --json title,number,state,createdAt --j
 (https://github.com/llvm/llvm-project/pull/\(.number)) |  **\(.state)** |  \(.title) | \(.createdAt) |"'
 ```
 
-| Issue Number | Issue Status  | Issue Title | Date
-|------|---------|----------------------------------------------------------------------------------------------------------|----------------------------|
-| [147116](https://github.com/llvm/llvm-project/issues/147116) |  **OPEN** |  [NFC] Clean up one off case of poison folding in simplifyBinaryIntrinsic | 2025-07-04T22:18:13Z |
-| [146769](https://github.com/llvm/llvm-project/issues/146769) |  **OPEN** |  [ConstantFolding][Intrinsics] Missed folding of poison in a few trivially vectorizable intrinsics | 2025-07-02T20:20:31Z |
-| [146473](https://github.com/llvm/llvm-project/issues/146473) |  **CLOSED** |  [BOLT] Error BOLT-PGO-ing clang on MacOS 15.4 | 2025-07-01T06:09:51Z |
-| [145433](https://github.com/llvm/llvm-project/issues/145433) |  **OPEN** |  [Infrastructure] Failed unrelated LLDB TestRetryWithStdModule.py|TestStdModuleWithConflicts.py|TestImportStdModule.py | 2025-06-23T23:35:05Z |
-| [145416](https://github.com/llvm/llvm-project/issues/145416) |  **CLOSED** |  [Code clean up] [X86 Test] DebugInfo/assignment-tracking/X86/large-type.ll lacks target triple | 2025-06-23T22:04:45Z |
-| [145177](https://github.com/llvm/llvm-project/issues/145177) |  **CLOSED** |  [WebAssembly] Missed optimization in any_true/all_true | 2025-06-21T16:45:17Z |
-| [144614](https://github.com/llvm/llvm-project/issues/144614) |  **OPEN** |  [WebAssembly] Degenerate case in vectorization of all true | 2025-06-17T22:36:27Z |
+| Issue Number                                                 | Issue Status | Issue Title                                                                                                                                                | Date                 |
+|--------------------------------------------------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------|
+| [147116](https://github.com/llvm/llvm-project/issues/147116) | **OPEN**     | [NFC] Clean up one off case of poison folding in simplifyBinaryIntrinsic                                                                                   | 2025-07-04T22:18:13Z |
+| [146769](https://github.com/llvm/llvm-project/issues/146769) | **OPEN**     | [ConstantFolding][Intrinsics] Missed folding of poison in a few trivially vectorizable intrinsics                                                          | 2025-07-02T20:20:31Z |
+| [146473](https://github.com/llvm/llvm-project/issues/146473) | **CLOSED**   | [BOLT] Error BOLT-PGO-ing clang on MacOS 15.4                                                                                                              | 2025-07-01T06:09:51Z |
+| [145433](https://github.com/llvm/llvm-project/issues/145433) | **OPEN**     | [Infrastructure] Failed unrelated LLDB TestRetryWithStdModule.py                                  & TestStdModuleWithConflicts.py & TestImportStdModule.py | 2025-06-23T23:35:05Z |
+| [145416](https://github.com/llvm/llvm-project/issues/145416) | **CLOSED**   | [Code clean up] [X86 Test] DebugInfo/assignment-tracking/X86/large-type.ll lacks target triple                                                             | 2025-06-23T22:04:45Z |
+| [145177](https://github.com/llvm/llvm-project/issues/145177) | **CLOSED**   | [WebAssembly] Missed optimization in any_true/all_true                                                                                                     | 2025-06-21T16:45:17Z |
+| [144614](https://github.com/llvm/llvm-project/issues/144614) | **OPEN**     | [WebAssembly] Degenerate case in vectorization of all true                                                                                                 | 2025-06-17T22:36:27Z |
 
 Here is the list of PR that I've attempted, generated from
 
@@ -90,14 +90,14 @@ Here is the list of PR that I've attempted, generated from
 gh pr list -A badumbatish --state all --json title,number,state,createdAt --jq '.[] | "| [\(.number)]
 (https://github.com/llvm/llvm-project/pull/\(.number)) |  **\(.state)** |  \(.title) | \(.createdAt) |"'
 ```
-| PR Number | PR Status  | PR Title | Date
-|------|---------|----------------------------------------------------------------------------------------------------------|----------------------------|
-| [146750](https://github.com/llvm/llvm-project/pull/146750) |  **MERGED** |  [InstCombine] Propagate poison pow[i], [us]add, [us]sub and [us]mul | 2025-07-02T17:38:04Z |
-| [145829](https://github.com/llvm/llvm-project/pull/145829) |  **MERGED** |  [WebAssembly] Fold TargetGlobalAddress with added offset | 2025-06-26T02:01:33Z |
-| [145764](https://github.com/llvm/llvm-project/pull/145764) |  **MERGED** |  Add triple target to buildtype.ll in X86 | 2025-06-25T18:49:47Z |
-| [145627](https://github.com/llvm/llvm-project/pull/145627) |  **MERGED** |  [WebAssembly] [Backend] Wasm optimize illegal bitmask | 2025-06-25T02:18:47Z |
-| [145108](https://github.com/llvm/llvm-project/pull/145108) |  **OPEN** |  [WebAssembly] [Backend] Combine and(X, shuffle(X, pow 2 mask)) to all true | 2025-06-20T22:05:28Z |
-| [144741](https://github.com/llvm/llvm-project/pull/144741) |  **MERGED** |  [WebAssembly] Fold any/alltrue (setcc x, 0, eq/ne) to [not] any/alltrue x | 2025-06-18T16:08:30Z |
+| PR Number                                                  | PR Status  | PR Title                                                                   | Date                 |
+|------------------------------------------------------------|------------|----------------------------------------------------------------------------|----------------------|
+| [146750](https://github.com/llvm/llvm-project/pull/146750) | **MERGED** | [InstCombine] Propagate poison pow[i], [us]add, [us]sub and [us]mul        | 2025-07-02T17:38:04Z |
+| [145829](https://github.com/llvm/llvm-project/pull/145829) | **MERGED** | [WebAssembly] Fold TargetGlobalAddress with added offset                   | 2025-06-26T02:01:33Z |
+| [145764](https://github.com/llvm/llvm-project/pull/145764) | **MERGED** | Add triple target to buildtype.ll in X86                                   | 2025-06-25T18:49:47Z |
+| [145627](https://github.com/llvm/llvm-project/pull/145627) | **MERGED** | [WebAssembly] [Backend] Wasm optimize illegal bitmask                      | 2025-06-25T02:18:47Z |
+| [145108](https://github.com/llvm/llvm-project/pull/145108) | **OPEN**   | [WebAssembly] [Backend] Combine and(X, shuffle(X, pow 2 mask)) to all true | 2025-06-20T22:05:28Z |
+| [144741](https://github.com/llvm/llvm-project/pull/144741) | **MERGED** | [WebAssembly] Fold any/alltrue (setcc x, 0, eq/ne) to [not] any/alltrue x  | 2025-06-18T16:08:30Z |
 
 I want to emphasize that a lot of the issues that enabled these PRs were sourced by Luke. Without these issues, I'm
 afraid I might still be searching for llvm issues on github without knowing their difficulty, wasting my own time
@@ -164,10 +164,17 @@ With a large number of files to keep up with and update, I've outgrown chezmoi's
 - `cap`: A wrapper executable that executes `cadd` and `cpush`
 - `cinstall`: On a new mac machine, I call this script to install (almost) all necessary packages for my development.
 
+With these commands, I:
+- Don't have to remember which files I've edited or changed.
+- Don't have to remember which package/library I need to install on a new machine
+- Cut downs from (at minimum) 20 keystrokes to (at most) 4 keystrokes to register my new modifications.
+- Waste no time waiting for chezmoi to add, and push as there is a script guaranteeing that each time it's the same
+result.
+
 ### Window Manager (WM)
 On MacOS, I'm currently using [yabai](https://github.com/koekeishiya/yabai) together with [skhd](https://github.com/koekeishiya/skhd) to drive my window management setup. Have a quick read about them if you haven't got a chance.
 
-Using a Window Manager alleviate my reliance on the built-in mousepad and relieve me from programming [wrist pain](https://www.reddit.com/r/learnprogramming/comments/1dx9qgr/wrist_hurts_from_too_much_programming/)
+Using a Window Manager alleviates my reliance on the built-in mousepad and relieves me from programming [wrist pain](https://www.reddit.com/r/learnprogramming/comments/1dx9qgr/wrist_hurts_from_too_much_programming/)
 
 Let's talk about WM now :)
 
@@ -182,10 +189,10 @@ Secondly, there's a philosophy that you probably need to know about the window m
 - Shift + Cmd + `key`: Move the actual window to ...
 
 #### WM keybinds
-- Cmd + hjkl : Switch the focus to left down up right window in the current workspace.
-- Cmd + 1234: Switch to focus to workspace 1 2 3 4
-- Shift + Cmd + hjkl: Move the current window (in the current workspace) to left down up right.
-- Shift + Cmd + 1234: Move the current window to workspace 1 2 3 4.
+- Cmd + hjkl: (Switch) the focus to left down up right window in the current workspace.
+- Cmd + 1234: (Switch) to focus to workspace 1 2 3 4
+- Shift + Cmd + hjkl: (Move the current window) (in the current workspace) to left down up right.
+- Shift + Cmd + 1234: (Move the current window) to workspace 1 2 3 4.
 
 ### Atuin
 
@@ -208,6 +215,8 @@ I also configure a few sane commands in Kitty for faster project maneuver:
 - Cmd + `M`: Run the executable `sesh` in the current terminal.
 - Cmd + `D`: Run the command `ctrl + b + d` to exit the current tmux session.
 - Cmd + `N`: Run the command `ctrl + b + n` to go to the next panel in the current tmux session.
+- Cmd + `B`: Run the command `ctrl + b + p` to go to the previous panel in the current tmux session.
+
 ### ccache
 I set my ccache to be
 ```
@@ -223,20 +232,23 @@ to allow ccache of multiple directories and more max size as well as more cachin
 Read the ccache manual for option explanations.
 ### Neovim and programming
 
-Let's talk about neovim btw. Neovim is my chosen hyperextensible text editor.
+Let's talk about neovim btw. Neovim is my chosen hyper-extensible text editor.
 
-Throughout my two years of using neovim, I've accummulated a few commands to help ease my development process.
+Throughout my two years of using neovim, I've accumulated a few commands to help ease my development process.
 As a result, here is a selected list of commands, ordered by functionality
 
 
 #### Scratchpad file and debugging.
 
-- `<leader>ps`: (P)aste the content in register `+` to a newly created, name-inputted-by-user file under the scratch/ directory, and copied the file name into your copy-and-paste register (+).
-- `<leader>ys`: (Y)ank and paste the currently selection to a newly created, name-inputted-by-user file under the scratch/ directory and copied the file name into your copy-and-paste register (+).
-- `<leader>yl`: Yank the full path + current file name + current line of the cursor and put it in the copy-and-paste register (+).
-- `<leader>yf`: Yank the full path + current file name and put it in the copy-and-paste register (+).
+- `<leader>ps`: (P)aste the content in register `+` to a newly created, name-inputted-by-user file under the
+scratch/ directory, and copied the full path file name into your copy-and-paste register (+).
+- `<leader>ys`: (Y)ank and paste the current selection to a newly created, name-inputted-by-user file under the
+scratch/ directory and copied the full path file name into your copy-and-paste register (+).
+- `<leader>yl`: (Y)ank the full path + current file name + current line of the cursor and put it in the
+copy-and-paste register (+).
+- `<leader>yf`: (Y)ank the full path + current file name and put it in the copy-and-paste register (+).
 
-The functionality related to scratchpad-ing and debugging are helpful in regards to quickly recreating a file on your local machine from a github issue and execute/run them, as well as quickly input the file name + cursor location to [lldb](https://lldb.llvm.org/) for debugging.
+The functionality related to scratchpad-ing and debugging are helpful in regard to quickly recreating a file on your local machine from a github issue and execute/run them, as well as quickly input the file name + cursor location to [lldb](https://lldb.llvm.org/) for debugging.
 
 #### Fuzzy-finder & Grepping
 
@@ -262,11 +274,12 @@ from the function `LowerMemSet`.
 ![livegrep](/blogs/jasmine_in_llvm_land_and_config/livegrep.png)
 #### Language server support
 
-Language server protocol is a much needed functionality in a code editor.
+Language server protocol is a much-needed functionality in a code editor.
 
 It is also supported via the mapping group `<leader>l*`
-- `<leader>la`: Trigger code action on the cursor from the language server. This includes capitalize functions and variables to satisfy a standard, filling in the remaining case of a C++ switch construct.
-- `<leader>lr`: Smart rename - renaming a variable/function scope-wise.
+- `<leader>la`: Trigger code (a)ction on the cursor from the language server. This includes capitalize functions and
+variables to satisfy a standard, filling in the remaining case of a C++ switch construct.
+- `<leader>lr`: Smart (r)ename - renaming a variable/function scope-wise.
 - `<leader>c`: For C++, switch from a header file to its corresponding source file.
 
 #### Git support
@@ -276,10 +289,10 @@ Furthermore, small quality-of-life ability such as staging the current selected 
 My neovim config also supports git through the mapping group `<leader>h*`. A few capabilities include:
 - Automatic git signs: shows green in the column for addition, and red for deletion.
 - Automatic git blame on current line: shows the author and the commit message for the last change to current line.
-- `<leader>yh`: Copy the git blame SHA on current line
-- `<leader>hb`: Show the git blame on the current file
-- `<leader>hs`: Stage the current hunk to git add
-- `<leader>hr`: Reset the current hunk from git add
+- `<leader>yh`: (Y)ank the git blame SHA on current line
+- `<leader>hb`: Show the git (b)lame on the current file
+- `<leader>hs`: (S)tage the current hunk to git add
+- `<leader>hr`: (R)eset the current hunk from git add
 
 Below shows a demo of the `<leader>hb` command as well as the automatic git blame line:
 
@@ -292,13 +305,13 @@ I also have some quality-of-life auto commands.
 
 - When I opened a file again, I automatically go to the last position where it was edited.
 
-- When I've searched for something and it's highlighted across the file, I automatically remove the highlighting when
+- When I've searched for something, and it's highlighted across the file, I automatically remove the highlighting when
 I enter insert mode.
 
 ## Introspection
 
 Reflecting on the past 3 weeks, I think my speed of absorbing new llvm knowledge is satisfiable. Regrettably, a lot
-of the modifications to my dotfile was not in place when I was going through implementing a few of my llvm pull
+of the modifications to my dotfile were not in place when I was going through implementing a few of my llvm pull
 requests. This meant that my speed was essentially reduced or wasted on typing commands that could have been
 automated. All of these frictions lose me a few seconds and my developer mental capacity here and there, which adds
 up to
