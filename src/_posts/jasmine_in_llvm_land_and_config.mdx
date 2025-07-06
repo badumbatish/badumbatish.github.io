@@ -1,0 +1,286 @@
+---
+title: 'Jasmine in llvm land and her dotfiles'
+date: 2025-07-06
+recap: "Jasmine reports on her first 3 weeks at Igalia and her dotfiles modification"
+---
+
+## Prologue
+Hi everyone, how's everybody doing? :) I hope everybody's doing great :) I'm still doing good. I've moved back to
+my parents' place in OC after graduated from Berkeley.
+
+So, today's article is mostly a report on my current progress learning about the llvm codebase as well as all the
+ modifications I've made to my dotfiles since then. I hope everybody enjoys.
+
+Also, as tradition, here's [First Steps](https://youtu.be/N8OHSXvneOE?si=G4ZzUuDYDsdkreG6) and
+[Scattered and Lost](https://youtu.be/0etenwnI1wo?si=P2amnweyT2EEtEIw), both from Celeste by
+[Lena Raine](https://en.wikipedia.org/wiki/Lena_Raine) :)
+
+There's also an [analysis](https://www.youtube.com/watch?v=qUzOuiLto6M&t=743s&pp=ygUbc2NhdHRlcmVkIGFuZCBsb3N0IGFuYWx5c2lz)
+video on the latter if you wanna check them out :)
+
+I hope everybody enjoys.
+
+## Introduction
+
+Working on LLVM (with neovim btw as your text editor) can be a frightening process, especially for a beginner. Since
+starting my
+employment at
+Igalia,
+I've been learning a lot, as well as sharpening my dotfiles to increase my efficiency/productivity. In this article,
+I'll report on what I've done since then, as well as any changes I've made to my dotfiles.
+
+This article won't deep dive into the technicalities too much like [the gccrs blog](/posts/what_I_did_for_gsoc_2024),
+but instead give a quick overview and then scoot right into the modifications of dotfiles together with their
+reasoning for it.
+
+## Areas of contribution, issues and pull requests
+
+### Area of contribution
+At Igalia currently, I'm tasked with contributing to the back end in WebAssembly and RISCV. Since then, I've
+opened 7 issues and closed 3 of them. I've also opened 6 pull requests and closed 5 of them. Most of my PR dealt with
+optimization on the
+[SelectionDAG](https://llvm.org/doxygen/classllvm_1_1SelectionDAG.html) framework in
+the WebAssembly back end. I'm still investigating and watching a loop optimization issue for RISCV but not sure how
+I'll solve it :)
+
+A few notable PRs include:
+- [PR145627](https://github.com/llvm/llvm-project/pull/145627): I optimized the WebAssembly back end by querying the
+SelectionDAG and redid the computation for the bitmask instruction of illegal size $$>$$ 128, reducing 400 lines of
+assembly into around 10 lines.
+- [PR145829](https://github.com/llvm/llvm-project/pull/145829): I and my technical mentor Luke Lau solved a 2-year-old
+issue from 2023, helping optimize a `add-global nuw -> load` to `load`, cutting down the instruction size by half every
+time we load a global address wth a nuw (no unsigned wrap) offset in WebAssembly.
+-[PR146750](https://github.com/llvm/llvm-project/pull/146750): I helped propagate poison to a few trivially
+vectorizable intrinsic in LLVM IR by folding them into a Poison value directly. This helps enable other optimization
+pass by cutting down on calls to such intrinsics.
+### Issues and Pull requests
+
+Here is the list of issues that I've opened, generated from
+
+```
+gh issue list -A badumbatish --state all --json title,number,state,createdAt --jq '.[] | "| [\(.number)]
+(https://github.com/llvm/llvm-project/pull/\(.number)) |  **\(.state)** |  \(.title) | \(.createdAt) |"'
+```
+
+| Issue Number | Issue Status  | Issue Title | Date
+|------|---------|----------------------------------------------------------------------------------------------------------|----------------------------|
+| [147116](https://github.com/llvm/llvm-project/issues/147116) |  **OPEN** |  [NFC] Clean up one off case of poison folding in simplifyBinaryIntrinsic | 2025-07-04T22:18:13Z |
+| [146769](https://github.com/llvm/llvm-project/issues/146769) |  **OPEN** |  [ConstantFolding][Intrinsics] Missed folding of poison in a few trivially vectorizable intrinsics | 2025-07-02T20:20:31Z |
+| [146473](https://github.com/llvm/llvm-project/issues/146473) |  **CLOSED** |  [BOLT] Error BOLT-PGO-ing clang on MacOS 15.4 | 2025-07-01T06:09:51Z |
+| [145433](https://github.com/llvm/llvm-project/issues/145433) |  **OPEN** |  [Infrastructure] Failed unrelated LLDB TestRetryWithStdModule.py|TestStdModuleWithConflicts.py|TestImportStdModule.py | 2025-06-23T23:35:05Z |
+| [145416](https://github.com/llvm/llvm-project/issues/145416) |  **CLOSED** |  [Code clean up] [X86 Test] DebugInfo/assignment-tracking/X86/large-type.ll lacks target triple | 2025-06-23T22:04:45Z |
+| [145177](https://github.com/llvm/llvm-project/issues/145177) |  **CLOSED** |  [WebAssembly] Missed optimization in any_true/all_true | 2025-06-21T16:45:17Z |
+| [144614](https://github.com/llvm/llvm-project/issues/144614) |  **OPEN** |  [WebAssembly] Degenerate case in vectorization of all true | 2025-06-17T22:36:27Z |
+
+Here is the list of PR that I've attempted, generated from
+
+```
+gh pr list -A badumbatish --state all --json title,number,state,createdAt --jq '.[] | "| [\(.number)]
+(https://github.com/llvm/llvm-project/pull/\(.number)) |  **\(.state)** |  \(.title) | \(.createdAt) |"'
+```
+| PR Number | PR Status  | PR Title | Date
+|------|---------|----------------------------------------------------------------------------------------------------------|----------------------------|
+| [146750](https://github.com/llvm/llvm-project/pull/146750) |  **MERGED** |  [InstCombine] Propagate poison pow[i], [us]add, [us]sub and [us]mul | 2025-07-02T17:38:04Z |
+| [145829](https://github.com/llvm/llvm-project/pull/145829) |  **MERGED** |  [WebAssembly] Fold TargetGlobalAddress with added offset | 2025-06-26T02:01:33Z |
+| [145764](https://github.com/llvm/llvm-project/pull/145764) |  **MERGED** |  Add triple target to buildtype.ll in X86 | 2025-06-25T18:49:47Z |
+| [145627](https://github.com/llvm/llvm-project/pull/145627) |  **MERGED** |  [WebAssembly] [Backend] Wasm optimize illegal bitmask | 2025-06-25T02:18:47Z |
+| [145108](https://github.com/llvm/llvm-project/pull/145108) |  **OPEN** |  [WebAssembly] [Backend] Combine and(X, shuffle(X, pow 2 mask)) to all true | 2025-06-20T22:05:28Z |
+| [144741](https://github.com/llvm/llvm-project/pull/144741) |  **MERGED** |  [WebAssembly] Fold any/alltrue (setcc x, 0, eq/ne) to [not] any/alltrue x | 2025-06-18T16:08:30Z |
+
+I want to emphasize that a lot of the issues that enabled these PRs were sourced by Luke. Without these issues, I'm
+afraid I might still be searching for llvm issues on github without knowing their difficulty, wasting my own time
+and efforts on unnecessary unfriendly-to-beginner issues. I'm thankful for his guidance for my first few steps.
+
+
+
+## Dotfiles and toolings
+
+Alright hahhaha nice, we've finally got over the technical part, let's talk about my
+[dotfiles](https://github.com/badumbatish/dotfiles).
+
+During the first few weeks at Igalia, a lot of modifications were made to my dotfiles configuration to allow for
+more efficient workflow.
+
+The dotfiles is thus geared towards neovim/tmux/MacOS and my job, which is compiler development.
+
+Here, I'm providing readers with detailed reasoning for my modifications of my dotfiles. Interested readers can
+find the most up to date docs and reasoning through this [dotfiles link](https://github.com/badumbatish/dotfiles).
+
+Before blindly initializing and running the commands in this dotfile, do your due diligence first and read through every link here if you're not familiar with one. You can also dive into the configuration files themselves.
+### Why?
+
+A very, very smart CS person in my compiler class at uni once told me something along
+the line of "use/build your tool very well" and I feel like
+I want to share it in this blog. The use case of when he told me might be different
+, but the principle still remains the same: regardless if it's about the compiler, terminal tool, or
+your IDE, it really pays off to learn how to use your tool so good that it
+completely boosts your productivity into a different dimension.
+
+In my case, automating to shave seconds off each time I compile, test, debug or query my code really reinforces the
+dev cycle, making me lose less mental capacity and gain more efficiency.
+
+Alright, that's all the yapping. Let's get to it :)
+### Initialization and Upkeep
+
+I used [chezmoi](https://www.chezmoi.io/) to manage my dotfiles.
+
+#### Initialization
+Fork [this repository](https://github.com/badumbatish/dotfiles) and then run the following command to initial the configuration.
+
+```
+chezmoi init git@github.com:<your_github_username>/dotfiles.git && chezmoi update
+```
+
+#### Upkeep via custom commands
+
+With a large number of files to keep up with and update, I've outgrown chezmoi's default commands: chezmoi add, git add, and git push... The demands to automate the upkeep of my files has led to a small number of commands that wraps chezmoi to make my maintainance easier:
+
+- `cadd`: `chezmoi add` every files that is managed by chezmoi to git, commit them and show the difference. I still have to add the file once manually.
+- `cpush`: Push all the changes to remote (Basically a wrapped chezmoi cd && git push)
+- `cap`: A wrapper executable that executes `cadd` and `cpush`
+- `cinstall`: On a new mac machine, I call this script to install (almost) all necessary packages for my development.
+
+### Window Manager (WM)
+On MacOS, I'm currently using [yabai](https://github.com/koekeishiya/yabai) together with [skhd](https://github.com/koekeishiya/skhd) to drive my window management setup. Have a quick read about them if you haven't got a chance.
+
+Using a Window Manager alleviate my reliance on the built-in mousepad and relieve me from programming [wrist pain](https://www.reddit.com/r/learnprogramming/comments/1dx9qgr/wrist_hurts_from_too_much_programming/)
+
+Let's talk about WM now :)
+
+I provide an executable called `yabai_reload` to automate reloading and running yabai/skhd whenever you restart MacOS or edit your yabai/skhd config.
+
+
+Firstly, run `yabai_reload` to get yabai and skhd running/reset.
+
+Secondly, there's a philosophy that you probably need to know about the window manager keybind's prefix.
+
+- Cmd + `key`: Switch the focus to ...
+- Shift + Cmd + `key`: Move the actual window to ...
+
+#### WM keybinds
+- Cmd + hjkl : Switch the focus to left down up right window in the current workspace.
+- Cmd + 1234: Switch to focus to workspace 1 2 3 4
+- Shift + Cmd + hjkl: Move the current window (in the current workspace) to left down up right.
+- Shift + Cmd + 1234: Move the current window to workspace 1 2 3 4.
+
+### Atuin
+
+Atuin is an automatic fuzzy finding tool for your terminal commands. It has helped me so much with rerunning my building and testing commands and has saved me hours of work.
+
+I recommend you check out their [website](https://atuin.sh/) and watch the demo for yourself.
+
+In my opinion, it's a pretty essential tool for all CLI users.
+
+### Kitty
+Kitty is my chosen terminal. I switched from iterm2 to Kitty for the following reason:
+
+- GPU acceleration: Kitty is smoother and faster than iterm2, this is important on a big codebase like llvm due to its massive improvement on rendering speed (rendering text in a big codebase in neovim on iterm2 is a pain.)
+- Configuration ease: configuration for Kitty is extremely easy: everything is in 1 single file, from themes to extra shortcuts.
+
+When you're doing software dev on a big codebase, aesthetics is an afterthought instead of [performance/speed](https://sw.kovidgoyal.net/kitty/performance/).
+
+I also configure a few sane commands in Kitty for faster project maneuver:
+
+- Cmd + `M`: Run the executable `sesh` in the current terminal.
+- Cmd + `D`: Run the command `ctrl + b + d` to exit the current tmux session.
+- Cmd + `N`: Run the command `ctrl + b + n` to go to the next panel in the current tmux session.
+### ccache
+I set my ccache to be
+```
+file_clone = true
+inode_cache = true
+max_size = 70G
+base_dir = /
+absolute_paths_in_stderr = true
+```
+
+to allow ccache of multiple directories and more max size as well as more caching speed on my llvm builds, both release and debug version.
+
+Read the ccache manual for option explanations.
+### Neovim and programming
+
+Let's talk about neovim btw. Neovim is my chosen hyperextensible text editor.
+
+Throughout my two years of using neovim, I've accummulated a few commands to help ease my development process.
+As a result, here is a selected list of commands, ordered by functionality
+
+
+#### Scratchpad file and debugging.
+
+- `<leader>ps`: (P)aste the content in register `+` to a newly created, name-inputted-by-user file under the scratch/ directory, and copied the file name into your copy-and-paste register (+).
+- `<leader>ys`: (Y)ank and paste the currently selection to a newly created, name-inputted-by-user file under the scratch/ directory and copied the file name into your copy-and-paste register (+).
+- `<leader>yl`: Yank the full path + current file name + current line of the cursor and put it in the copy-and-paste register (+).
+- `<leader>yf`: Yank the full path + current file name and put it in the copy-and-paste register (+).
+
+The functionality related to scratchpad-ing and debugging are helpful in regards to quickly recreating a file on your local machine from a github issue and execute/run them, as well as quickly input the file name + cursor location to [lldb](https://lldb.llvm.org/) for debugging.
+
+#### Fuzzy-finder & Grepping
+
+Back before starting my employment @ Igalia, I relied on [telescope](https://github.com/nvim-telescope/telescope.nvim) for all of my fuzzy finding. It turns out telescope is [really really slow](https://www.reddit.com/r/neovim/comments/ura4vu/telescope_too_slow_for_large_directories/) on big repository, even with ripgrep in place of grep.
+
+With fzf-lua being soooo sooo so customizable, I then turned my focus to said library and hasn't looked back since.
+
+The mapping group for the fuzzy finding functionality is `<leader>f*` and `<leader>g*`
+- `<leader>fg`: live fuzzy find using ripgrep.
+- `<leader>ff`: live fuzzy find using fd.
+- `<leader>fr`: resume the last live fuzzy find session.
+- `<leader>fd`: live fuzzy find vim diagnostics.
+- `<leader>fm`: live fuzzy find marks.
+- `<leader>fb`: live fuzzy find recently opened buffers (within current nvim-executed folder)
+- `<leader>g`: fuzzy find using ripgrep the word under the cursor or the current selection.
+
+A cool thing about fzf-lua is I can add nvim-treesitter-context as a dependency, which gives me extra context for every match in a file. This makes it so that for example, if I'm searching for a string or a variable in C++, I can instantly know which function the variable is residing in.
+
+The following picture shows me trying to live grep a text called `MI.get` in LLVM, you can see that the current
+match is highlighted. You can see that (without actually going to the match location itself), there is also extra
+context showing that the current `MI.get` is
+from the function `LowerMemSet`.
+![livegrep](/blogs/jasmine_in_llvm_land_and_config/livegrep.png)
+#### Language server support
+
+Language server protocol is a much needed functionality in a code editor.
+
+It is also supported via the mapping group `<leader>l*`
+- `<leader>la`: Trigger code action on the cursor from the language server. This includes capitalize functions and variables to satisfy a standard, filling in the remaining case of a C++ switch construct.
+- `<leader>lr`: Smart rename - renaming a variable/function scope-wise.
+- `<leader>c`: For C++, switch from a header file to its corresponding source file.
+
+#### Git support
+For a beginner in a codebase (even a seasoned programmer), the ability to obtain more information and context, extending further than the code sitting in front of them, is extremely helpful.
+Furthermore, small quality-of-life ability such as staging the current selected change to git add (instead of git adding the whole file) is very much appreciated.
+
+My neovim config also supports git through the mapping group `<leader>h*`. A few capabilities include:
+- Automatic git signs: shows green in the column for addition, and red for deletion.
+- Automatic git blame on current line: shows the author and the commit message for the last change to current line.
+- `<leader>yh`: Copy the git blame SHA on current line
+- `<leader>hb`: Show the git blame on the current file
+- `<leader>hs`: Stage the current hunk to git add
+- `<leader>hr`: Reset the current hunk from git add
+
+Below shows a demo of the `<leader>hb` command as well as the automatic git blame line:
+
+![gitblame_demo](/blogs/jasmine_in_llvm_land_and_config/gitblame.png)
+#### Autocmd
+
+I also have some quality-of-life auto commands.
+
+- When I've performed a yank, I automatically highlight the yanked content for half a second to cognitively confirm the content.
+
+- When I opened a file again, I automatically go to the last position where it was edited.
+
+- When I've searched for something and it's highlighted across the file, I automatically remove the highlighting when
+I enter insert mode.
+
+## Introspection
+
+Reflecting on the past 3 weeks, I think my speed of absorbing new llvm knowledge is satisfiable. Regrettably, a lot
+of the modifications to my dotfile was not in place when I was going through implementing a few of my llvm pull
+requests. This meant that my speed was essentially reduced or wasted on typing commands that could have been
+automated. All of these frictions lose me a few seconds and my developer mental capacity here and there, which adds
+up to
+hours
+over the course
+of a
+week.
+
+Whoopsies, anyways hahahaha. Here's to a more productive time at Igalia. I hope you've enjoyed this article :)

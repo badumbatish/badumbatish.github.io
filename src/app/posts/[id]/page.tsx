@@ -47,30 +47,6 @@ export default async function Post(
                     <h2>{title}</h2>
                 </div>
 
-                <div className="flex font-bold">Edit:</div>
-                <p>Hi everyone!
-                    My friend <a href={"https://www.linkedin.com/in/julius-alexandre/"}>Julius</a> is
-                    looking for compiler full time roles and/or internship opportunities for 2025/2026.
-
-                </p>
-                <p>Julius is an undergrad at Western Governors University specializing in computer architecture and
-                    compilers.</p>
-
-                <p>
-                    He&apos;s <a href={"https://github.com/llvm/llvm-project/commits/main/?author=wizardengineer"}>contributed
-                    to LLVM</a> and is knowledgeable of the compiler architecture, as a result, he&apos;s well‑versed
-                    in C, C++, Python, LLVM, and Assembly.
-                </p>
-                <p>
-                    His impressive open source projects, which have a combined stars of 200+, range from developing OS kernels to
-                    writing hypervisors for AMD-v.
-                </p>
-
-                <p>
-                    His resume is <a href={"https://badumbatish.github.io/blogs/compiler_questions_where_to_find_them/Julius_Alexander_SWE_Compiler.pdf"}>here</a>.
-                    I hope everybody can give him a referral
-                    or reach out to him at his <a href={"https://www.linkedin.com/in/julius-alexandre/"}>LinkedIn</a>
-                </p>
                 <div className="flex justify-start text-xl font-bold underline">
                     <h4>{date}</h4>
                 </div>
