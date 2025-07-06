@@ -47,9 +47,11 @@ A few notable PRs include:
 - [PR145627](https://github.com/llvm/llvm-project/pull/145627): I optimized the WebAssembly back end by querying the
 SelectionDAG and redid the computation for the bitmask instruction of illegal size $$>$$ 128, reducing 400 lines of
 assembly into around 10 lines.
+
 - [PR145829](https://github.com/llvm/llvm-project/pull/145829): I and my technical mentor Luke Lau solved a 2-year-old
 issue from 2023, helping optimize a `add-global nuw -> load` to `load`, cutting down the instruction size by half every
 time we load a global address wth a nuw (no unsigned wrap) offset in WebAssembly.
+
 -[PR146750](https://github.com/llvm/llvm-project/pull/146750): I helped propagate poison to a few trivially
 vectorizable intrinsic in LLVM IR by folding them into a Poison value directly. This helps enable other optimization
 pass by cutting down on calls to such intrinsics.
