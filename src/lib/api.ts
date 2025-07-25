@@ -106,6 +106,7 @@ export async function getPostById(id: string) {
         tag : data.tag,
         hidden : data.hidden,
         date: `${isoString.slice(0, 10)}`,
+        dateIso: isoString,
         html: html.value.toString(),
     }
 }

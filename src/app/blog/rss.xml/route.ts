@@ -27,7 +27,7 @@ export async function GET() {
                 id : `${post.id}`,
                 link: `https://badumbatish.github.io/posts/${post.id}`,
                 description: `${post.recap ?? ""}`,
-                date: new Date(`${post.date}`),
+                date: new Date(`${post.dateIso}`),
            });
         }
     });
