@@ -4,7 +4,7 @@
         <title>Jasmine Tang RSS Feed</title>
         <link>https://badumbatish.github.io/blog/rss.xml</link>
         <description>Jasmine's blog</description>
-        <lastBuildDate>Fri, 25 Jul 2025 06:53:38 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 25 Jul 2025 06:59:23 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -64,7 +64,7 @@
             <description><![CDATA[Jasmine discusses a simple error/warn/log method for junior compiler writers after Kaleidoscope.]]></description>
         </item>
         <item>
-            <title><![CDATA[jjasmine’s Gsoc GCCRS proposal]]></title>
+            <title><![CDATA[jjasmine's Gsoc GCCRS proposal]]></title>
             <link>https://badumbatish.github.io/posts/gsoc_prop</link>
             <guid isPermaLink="false">gsoc_prop</guid>
             <pubDate>Tue, 25 Feb 2025 00:00:00 GMT</pubDate>
