@@ -4,7 +4,7 @@
         <title>Jasmine Tang RSS Feed</title>
         <link>https://badumbatish.github.io/blog/rss.xml</link>
         <description>Jasmine's blog</description>
-        <lastBuildDate>Fri, 25 Jul 2025 06:51:16 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 25 Jul 2025 06:53:38 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -53,7 +53,7 @@
             <title><![CDATA[Compiler (related) interview questions and nowhere to find them in 2025]]></title>
             <link>https://badumbatish.github.io/posts/compiler_questions_where_to_find_them</link>
             <guid isPermaLink="false">compiler_questions_where_to_find_them</guid>
-            <pubDate>Wed, 07 May 2025 00:00:00 GMT</pubDate>
+            <pubDate>Wed, 07 May 2025 07:00:00 GMT</pubDate>
             <description><![CDATA[Jasmine helps compiler new grads by sharing interview questions through her new grad recruiting journey]]></description>
         </item>
         <item>
@@ -81,7 +81,7 @@
             <title><![CDATA[[REPORT] Going to the gym with MLIR: Writing a recompiler for DEX instructions]]></title>
             <link>https://badumbatish.github.io/posts/going_to_mlir_gym_1</link>
             <guid isPermaLink="false">going_to_mlir_gym_1</guid>
-            <pubDate>Sat, 07 Dec 2024 00:00:00 GMT</pubDate>
+            <pubDate>Sat, 07 Dec 2024 08:00:00 GMT</pubDate>
             <description><![CDATA[Jas reports on her graduate compiler project: working with MLIR's SSA form, lifting DEX (with MLIR's MjolnIR) and lowering to smali.]]></description>
         </item>
         <item>
@@ -116,7 +116,7 @@
             <title><![CDATA["Getting into GSoc how?"]]></title>
             <link>https://badumbatish.github.io/posts/getting_gsoc</link>
             <guid isPermaLink="false">getting_gsoc</guid>
-            <pubDate>Sat, 04 May 2024 00:00:00 GMT</pubDate>
+            <pubDate>Sat, 04 May 2024 07:00:00 GMT</pubDate>
             <description><![CDATA[Jasmine writes about the overview of getting into GCC's Google Summer Of Code 2024, from a request of a friend.]]></description>
         </item>
         <item>
