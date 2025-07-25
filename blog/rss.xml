@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Jasmine Tang RSS Feed</title>
+        <link>https://badumbatish.github.io/blog/rss.xml</link>
+        <description>Jasmine's blog</description>
+        <lastBuildDate>Fri, 25 Jul 2025 06:38:23 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <copyright>All rights for public use and education, Jasmine Tang</copyright>
+        <item>
+            <title><![CDATA[[ONGOING] Extending LLVM's Kaleidoscope: Code-gen edition]]></title>
+            <link>https://badumbatish.github.io/blog/codegen_extend_kalei</link>
+            <guid isPermaLink="false">codegen_extend_kalei</guid>
+            <pubDate>Sun, 08 Aug 8888 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jasmine extends her language with string, tuple, if-else codegen together with a garbage collector]]></description>
+        </item>
+        <item>
+            <title><![CDATA[[ONGOING] Jasmine and the hitchhiker's guide to LLVM's debugging tools]]></title>
+            <link>https://badumbatish.github.io/blog/hitchhiker_guide_to_llvm_debugging</link>
+            <guid isPermaLink="false">hitchhiker_guide_to_llvm_debugging</guid>
+            <pubDate>Sun, 08 Aug 8888 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jasmine introduces to readers debugging techniques that would benefit their LLVM development.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[[ONGOING] Jasmines bagel adventure]]></title>
+            <link>https://badumbatish.github.io/blog/jasmine_bagel_count</link>
+            <guid isPermaLink="false">jasmine_bagel_count</guid>
+            <pubDate>Sun, 08 Aug 8888 00:00:00 GMT</pubDate>
+            <description><![CDATA[Hey doc, you like bagels and my writing? You've come to the right place :)]]></description>
+        </item>
+        <item>
+            <title><![CDATA[[ONGOING] The Good, the Bad, and the Scalar Evolution]]></title>
+            <link>https://badumbatish.github.io/blog/scalar_evolution_self_study</link>
+            <guid isPermaLink="false">scalar_evolution_self_study</guid>
+            <pubDate>Sun, 08 Aug 8888 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jasmine's self studying on the Scalar Evolution analysis in LLVM]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Jasmine's first time in llvm land and her dotfiles]]></title>
+            <link>https://badumbatish.github.io/blog/jasmine_in_llvm_land_and_config</link>
+            <guid isPermaLink="false">jasmine_in_llvm_land_and_config</guid>
+            <pubDate>Sun, 06 Jul 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jasmine reports on her first 3 weeks at Igalia and her dotfiles modification]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Compiler (related) interview questions and nowhere to find them in 2025]]></title>
+            <link>https://badumbatish.github.io/blog/compiler_questions_where_to_find_them</link>
+            <guid isPermaLink="false">compiler_questions_where_to_find_them</guid>
+            <pubDate>Wed, 07 May 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jasmine helps compiler new grads by sharing interview questions through her new grad recruiting journey]]></description>
+        </item>
+        <item>
+            <title><![CDATA[What after Kaleidoscope: Error location]]></title>
+            <link>https://badumbatish.github.io/blog/what_after_kalei_location_debug</link>
+            <guid isPermaLink="false">what_after_kalei_location_debug</guid>
+            <pubDate>Thu, 27 Feb 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jasmine discusses a simple error/warn/log method for junior compiler writers after Kaleidoscope.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[jjasmine’s Gsoc GCCRS proposal]]></title>
+            <link>https://badumbatish.github.io/blog/gsoc_prop</link>
+            <guid isPermaLink="false">gsoc_prop</guid>
+            <pubDate>Tue, 25 Feb 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jasmine revealed her self-hosted 2024 GSoc proposal for 'Getting into GSoc how?' and LinkedIn article]]></description>
+        </item>
+        <item>
+            <title><![CDATA[[HIATUS] Going to the gym with MLIR: Linear register allocation for ... a stackless virtual machine?]]></title>
+            <link>https://badumbatish.github.io/blog/going_to_mlir_gym_2</link>
+            <guid isPermaLink="false">going_to_mlir_gym_2</guid>
+            <pubDate>Thu, 16 Jan 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jasmine plans out register allocation for the DEX recompiler.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[[REPORT] Going to the gym with MLIR: Writing a recompiler for DEX instructions]]></title>
+            <link>https://badumbatish.github.io/blog/going_to_mlir_gym_1</link>
+            <guid isPermaLink="false">going_to_mlir_gym_1</guid>
+            <pubDate>Sat, 07 Dec 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jas reports on her graduate compiler project: working with MLIR's SSA form, lifting DEX (with MLIR's MjolnIR) and lowering to smali.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Randomly picking the correct number somehow? An introduction into the probabilistic method]]></title>
+            <link>https://badumbatish.github.io/blog/getting_the_correct_number_somehow_intro_to_probabilistic_method</link>
+            <guid isPermaLink="false">getting_the_correct_number_somehow_intro_to_probabilistic_method</guid>
+            <pubDate>Wed, 25 Sep 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jasmine talks about usage of the probabilistic method in games.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[What I did for GSoc 2024]]></title>
+            <link>https://badumbatish.github.io/blog/what_I_did_for_gsoc_2024</link>
+            <guid isPermaLink="false">what_I_did_for_gsoc_2024</guid>
+            <pubDate>Thu, 22 Aug 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[The article is a report of what Jasmine's done for her Google Summer Of Code]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Jasmine's llvm playground - 1]]></title>
+            <link>https://badumbatish.github.io/blog/llvm_playground_1</link>
+            <guid isPermaLink="false">llvm_playground_1</guid>
+            <pubDate>Sat, 13 Jul 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jasmine starts learning LLVM (again)]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Coming out ?]]></title>
+            <link>https://badumbatish.github.io/blog/coming_out</link>
+            <guid isPermaLink="false">coming_out</guid>
+            <pubDate>Fri, 12 Jul 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jasmine talks about how the term 'coming out' has changed over the years for her.]]></description>
+        </item>
+        <item>
+            <title><![CDATA["Getting into GSoc how?"]]></title>
+            <link>https://badumbatish.github.io/blog/getting_gsoc</link>
+            <guid isPermaLink="false">getting_gsoc</guid>
+            <pubDate>Sat, 04 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jasmine writes about the overview of getting into GCC's Google Summer Of Code 2024, from a request of a friend.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[My first semester at Berkeley, a transfer experience]]></title>
+            <link>https://badumbatish.github.io/blog/transfer_sem_exp</link>
+            <guid isPermaLink="false">transfer_sem_exp</guid>
+            <pubDate>Thu, 12 Oct 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jasmine talks about her first semester being an EECS transfer at Berkeley.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Building, and destroying my first website]]></title>
+            <link>https://badumbatish.github.io/blog/building-and-destroying-my-first-personal-website</link>
+            <guid isPermaLink="false">building-and-destroying-my-first-personal-website</guid>
+            <pubDate>Sat, 30 Sep 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[The author talks about her (truly) first time writing a website in FullStack DeCal and how sad she is to let it go in favor of the new tech.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Jazz's rain]]></title>
+            <link>https://badumbatish.github.io/blog/rain_jazz</link>
+            <guid isPermaLink="false">rain_jazz</guid>
+            <pubDate>Mon, 22 Aug 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Short form paragraph about Jasmine's rain.]]></description>
+        </item>
+    </channel>
+</rss>
