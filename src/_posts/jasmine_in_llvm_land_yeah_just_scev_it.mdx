@@ -1,0 +1,10 @@
+---
+title: "[ONGOING] The Good, the Bad, and the Scalar Evolution"
+date: 8888-08-08
+recap: "Jasmine's self studying on the Scalar Evolution analysis in LLVM"
+---
+
+
+Quote:
+> In general, it’s easier to use SCEV in loops that are in LCSSA form. The evolution of a scalar (loop-variant) expression that SCEV can analyze is, by definition, relative to a loop. An expression is represented in LLVM by an llvm::Instruction. If the expression is inside two (or more) loops (which can only happen if the loops are nested, like in the example above) and you want to get an analysis of its evolution (from SCEV), you have to also specify relative to what Loop you want it. Specifically, you have to use getSCEVAtScope().
+However, if all loops are in LCSSA form, each expression is actually represented by two different llvm::Instructions. One inside the loop and one outside, which is the loop-closing PHI node and represents the value of the expression after the last iteration (effectively, we break each loop-variant expression into two expressions and so, every expression is at most in one loop). You can now just use getSCEV(). and which of these two llvm::Instructions you pass to it disambiguates the context / scope / relative loop.
