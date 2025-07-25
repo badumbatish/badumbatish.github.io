@@ -7,7 +7,13 @@ const feed = new Feed({
     id: "https://badumbatish.github.io/blog",
     link: "https://badumbatish.github.io/blog/rss.xml",
     language: "en",
+    image: "https://badumbatish.github.io/pfp5.jpeg",
     copyright: "All rights for public use and education, Jasmine Tang",
+    author: {
+        name: "Jasmine Tang",
+        email: "thisisjjasmine@gmail.com",
+        link: "https://badumbatish.github.io/"
+    }
 });
 export const dynamic = 'force-static';
 
@@ -19,7 +25,7 @@ export async function GET() {
             feed.addItem({
                 title: `${post.title}`,
                 id : `${post.id}`,
-                link: `https://badumbatish.github.io/blog/${post.id}`,
+                link: `https://badumbatish.github.io/posts/${post.id}`,
                 description: `${post.recap ?? ""}`,
                 date: new Date(`${post.date}`),
            });
