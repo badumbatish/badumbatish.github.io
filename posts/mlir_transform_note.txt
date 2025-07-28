@@ -1,0 +1,137 @@
+1:"$Sreact.fragment"
+2:I[6874,["874","static/chunks/874-437a265a67d6cfee.js","880","static/chunks/app/posts/%5Bid%5D/page-f0f7551128d4c13f.js"],""]
+3:I[7555,[],""]
+4:I[1295,[],""]
+5:I[7921,["874","static/chunks/874-437a265a67d6cfee.js","63","static/chunks/63-63ed21df6f1fc3e7.js","177","static/chunks/app/layout-05e345a4cd50b3e1.js"],"default"]
+7:I[9665,[],"OutletBoundary"]
+9:I[4911,[],"AsyncMetadataOutlet"]
+b:I[9665,[],"ViewportBoundary"]
+d:I[9665,[],"MetadataBoundary"]
+e:"$Sreact.suspense"
+10:I[8393,[],""]
+:HL["/_next/static/media/7385e8d9d3c5518f-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/_next/static/css/3b37cf79ceb9ce8f.css","style"]
+:HL["/_next/static/css/3864b451a61e4546.css","style"]
+0:{"P":null,"b":"mxP4LDdSqwlUxlxiQVSS1","p":"","c":["","posts","mlir_transform_note"],"i":false,"f":[[["",{"children":["posts",{"children":[["id","mlir_transform_note","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b37cf79ceb9ce8f.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","$L2",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L5",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]}]]}]}]]}],{"children":["posts",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","mlir_transform_note","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3864b451a61e4546.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L7",null,{"children":["$L8",["$","$L9",null,{"promise":"$@a"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$Ld",null,{"children":["$","div",null,{"hidden":true,"children":["$","$e",null,{"fallback":null,"children":"$Lf"}]}]}]]}],false]],"m":"$undefined","G":["$10",[]],"s":false,"S":true}
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+12:I[8175,[],"IconMark"]
+11:T1ecc,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#resources">Resources</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#structured-linalg-ops">Structured linalg ops</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#linalggeneric">linalg.generic</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#alright-what-about-tiling-and-looping-actually">Alright what about tiling and looping actually?</a></li></ol></nav><h1 id="resources"><a aria-hidden="true" tabindex="-1" href="#resources"><span class="icon icon-link"></span></a>Resources</h1>
+<ul>
+<li><a href="https://mlir.llvm.org/docs/Tutorials/transform/" rel="nofollow" target="_blank">https://mlir.llvm.org/docs/Tutorials/transform/</a></li>
+<li><a href="https://mlir.llvm.org/docs/Dialects/Linalg/" rel="nofollow" target="_blank">https://mlir.llvm.org/docs/Dialects/Linalg/</a></li>
+</ul>
+<h1 id="structured-linalg-ops"><a aria-hidden="true" tabindex="-1" href="#structured-linalg-ops"><span class="icon icon-link"></span></a>Structured linalg ops</h1>
+<p><code>indexing maps</code> and <code>affine_map</code>: a lot of the time, MLIR ops accept something called <code>affine_map</code>, which
+is a linear mapping of indexes that an array, a vector or a tensor can iterate on.</p>
+<p>iterator_types: now, when you're iterating over these array or vector, you'll need to tell the indexer, for each dimension,
+if you're "parallel"-ing (keeping its dimension) or "reduction" (reducing the dimension)</p>
+<p>For example, the following code's <code>result</code> use <code>vector.contract</code> op. The operation takes in
+two attributes: indexing_maps and iterator_types. There are three affine_map setting in
+<code>indexing_maps</code>, as we have 2 inputs and 1 output (making it 3). The singular <code>i</code> is because we only have 1 dimension.
+The former <code>i</code> stands for the available index variable to use, and the latter <code>i</code> (if present) stands for the index that the array,
+tensor or vector would use.
+Since we're producing an integer, the third affine_map goes from <code>(i)</code> to <code>()</code>, thus the <code>reduction</code> type of iterator_types</p>
+<p>Note that since we have 8 elements in first input, and 8 elements in second input (same dimension), we can use the same (i).</p>
+<pre><code>%init  = arith.constant 0.0 : f32
+// Neutral element of multiplication.
+%ones = arith.constant dense&#x3C;1.0> : vector&#x3C;8xf32>
+// Actual contraction.
+%result = vector.contract {
+  indexing_maps = [affine_map&#x3C;(i) -> (i)>,
+                   affine_map&#x3C;(i) -> (i)>,
+                   affine_map&#x3C;(i) -> ()>],
+  iterator_types = ["reduction"]
+} %0, %ones, %init : vector&#x3C;8xf32>, vector&#x3C;8xf32> into f32
+</code></pre>
+<p>The pseudo code for the loop is</p>
+<pre><code>for i in 0 to 8:
+  init += p0[i] * ones[i]
+</code></pre>
+<p>Alright, seems like you quite got that? Let's do another round:</p>
+<pre><code>%result = vector.contract {
+  indexing_maps = [affine_map&#x3C;(i, j, k) -> (i, k)>,
+                   affine_map&#x3C;(i, j, k) -> (k, j)>,
+                   affine_map&#x3C;(i, j, k) -> (i, j)>],
+  iterator_types = ["parallel", "parallel", "reduction"]
+} %lhs, %rhs, %init: vector&#x3C;8x10xf32>, vector&#x3C;10x16xf32> into vector&#x3C;8x16xf32>
+</code></pre>
+<p>Here you take 2 input and get out 1 output, so there are 3 affine_maps. Each vector have 3 dimension, so <code>(i, j, k)</code>.
+The first vector uses i and k to index its two dimension. The second vector uses k and j to index its two dimension, and the
+output vector uses the i and j index. we have 8, 10, 16,so we need to do (i, j, k) instead of just <code>i, j</code>.</p>
+<p>Here's the pseudo code in for-loops</p>
+<pre><code>for i in 0 to 8:
+  for j in 0 to 16:
+    for k in 0 to 10:
+      init[i, j] += lhs[i, k] * rhs[k, j]
+</code></pre>
+<h1 id="linalggeneric"><a aria-hidden="true" tabindex="-1" href="#linalggeneric"><span class="icon icon-link"></span></a>linalg.generic</h1>
+<p>linalg.generic can be used to implement other operation. Let's do this</p>
+<pre><code>linalg.generic {
+  indexing_maps [affine_map&#x3C;(i) -> (i)>, affine_map&#x3C;(i) -> (i)>],
+  iterator_types = ["parallel"]
+} ins(%in : memref&#x3C;?xf32>) outs(%out : memref&#x3C;?xf32>) {
+^bb0(%in_one : f32, %out_one : f32):
+  %c0 = arith.constant 0.0 : f32
+  %0 = arith.cmpf ogt %in_one, %c0 : f32
+  %1 = arith.select %0, %in_one, %c0 : f32
+  linalg.yield %1 : f32
+}
+</code></pre>
+<p>The prior code shows you how to use <code>linalg.generic</code> to implement a ReLu filter.
+The basic block <code>bb0</code> (marked with a ^ in the front) implements the ReLu kernel on a per-index basis,
+and the way we index these things are specified by the <code>indexing_maps</code> attribute.
+Inside this basic block, you can use other scalar operations to implement the kernel:</p>
+<ul>
+<li>Initialize 0 as a constant to <code>c0</code>.</li>
+<li>Compare the input scalar to <code>c0</code>, and put the result to <code>%0</code>.</li>
+<li>Select either the input scalar or <code>c0</code>, depending on the comparison result <code>%0</code>, assigning it to <code>%1</code></li>
+<li>Return the <code>%1</code>.</li>
+</ul>
+<p>Seems easy enough? hahhahahaha</p>
+<h1 id="alright-what-about-tiling-and-looping-actually"><a aria-hidden="true" tabindex="-1" href="#alright-what-about-tiling-and-looping-actually"><span class="icon icon-link"></span></a>Alright what about tiling and looping actually?</h1>
+<p>Let's talk about tiling first. I first learned about tiling through the PMPP book's example on matrix multiplcation. The transform tutorial couldn't have put it any better:</p>
+<blockquote>
+<p>Tiling, in general, can be seen as partitioning the iteration space into smaller parts, or tiles, so that the data required by each part fits into a level of cache for example. The order in which tiles are executed must preserve the original data dependencies.</p>
+</blockquote>
+<pre><code>%0 = scf.forall (%i, %j) in (4, 2)
+     shared_outs(%shared = %init) -> (tensor&#x3C;8x16xf32>) {
+
+  // Scale the loop induction variables by the tile sizes.
+  %3 = affine.apply affine_map&#x3C;(d0) -> (d0 * 2)>(%i)
+  %4 = affine.apply affine_map&#x3C;(d0) -> (d0 * 8)>(%j)
+
+  // Take slices of inputs and outputs. Only the "i" and "j" dimensions are sliced.
+  %lhs_slice = tensor.extract_slice %lhs[%3, 0] [2, 10] [1, 1]
+             : tensor&#x3C;8x10xf32> to tensor&#x3C;2x10xf32>
+  %rhs_slice = tensor.extract_slice %rhs[0, %4] [10, 8] [1, 1]
+             : tensor&#x3C;10x16xf32> to tensor&#x3C;10x8xf32>
+  %result_slice = tensor.extract_slice %shared[%3, %4] [2, 8] [1, 1]
+                : tensor&#x3C;8x16xf32> to tensor&#x3C;2x8xf32>
+
+  // This is exactly the same operation as before, but now operating on smaller
+  // slices of data.
+  %partial =  linalg.generic {
+  indexing_maps = [affine_map&#x3C;(i, j, k) -> (i, k)>,
+                   affine_map&#x3C;(i, j, k) -> (k, j)>,
+                   affine_map&#x3C;(i, j, k) -> (i, j)>],
+  iterator_types = ["parallel", "parallel", "reduction"]
+  } ins(%lhs_slice, %rhs_slice : tensor&#x3C;2x10xf32>, tensor&#x3C;10x8xf32>)
+    outs(%result_slice : tensor&#x3C;2x8xf32>) -> tensor&#x3C;2x8xf32> {
+  ^bb0(%lhs_one: f32, %rhs_one: f32, %init_one: f32):
+    %0 = arith.mulf %lhs_one, %rhs_one : f32
+    %1 = arith.addf %init_one, %0 : f32
+    linalg.yield %1 : f32
+  } : tensor&#x3C;2x8xf32>
+
+  // Terminator for the loop with tensor-insertion semantics. Inserts a slice
+  // into a larger tensor, potentially in parallel.
+  scf.forall.in_parallel {
+    tensor.parallel_insert_slice %partial into %shared[%3, %4] [2, 8] [1, 1]
+        : tensor&#x3C;2x8xf32> into tensor&#x3C;8x16xf32>
+  }
+}
+</code></pre>
+<p>Here, the</p>6:["$","div",null,{"className":"py-12 flex flex-col items-center  justify-items-start mx-auto ","children":[["$","$L2",null,{"href":"/blog","className":"flex justify-center text-4xl","children":["$","h2",null,{"children":"My blog"}]}],["$","article",null,{"className":"p-8 prose pt-0.5 max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto","children":[["$","div",null,{"className":"flex justify-center text-2xl font-bold ","children":["$","h2",null,{"children":"[ONGOING] MLIR Transform note"}]}],["$","div",null,{"className":"flex justify-start text-xl font-bold underline","children":["$","h4",null,{"children":"2025-07-27"}]}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$11"}}]]}]]}]
+a:{"metadata":[["$","title","0",{"children":"[ONGOING] MLIR Transform note"}],["$","meta","1",{"name":"description","content":"Jasmine MLIR transform note"}],["$","link","2",{"rel":"icon","href":"/_next/static/media/pfp5.0daa0f7d.jpeg"}],["$","$L12","3",{}]],"error":null,"digest":"$undefined"}
+f:"$a:metadata"

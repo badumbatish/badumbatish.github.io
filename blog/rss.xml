@@ -4,7 +4,7 @@
         <title>Jasmine Tang RSS Feed</title>
         <link>https://badumbatish.github.io/blog/rss.xml</link>
         <description>Jasmine's blog</description>
-        <lastBuildDate>Sun, 27 Jul 2025 20:24:57 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 28 Jul 2025 15:19:46 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -14,34 +14,6 @@
             <link>https://badumbatish.github.io/blog/rss.xml</link>
         </image>
         <copyright>All rights for public use and education, Jasmine Tang</copyright>
-        <item>
-            <title><![CDATA[[ONGOING] Extending LLVM's Kaleidoscope: Code-gen edition]]></title>
-            <link>https://badumbatish.github.io/posts/codegen_extend_kalei</link>
-            <guid isPermaLink="false">codegen_extend_kalei</guid>
-            <pubDate>Sun, 08 Aug 8888 00:00:00 GMT</pubDate>
-            <description><![CDATA[Jasmine extends her language with string, tuple, if-else codegen together with a garbage collector]]></description>
-        </item>
-        <item>
-            <title><![CDATA[[ONGOING] Jasmine and the hitchhiker's guide to LLVM's debugging tools]]></title>
-            <link>https://badumbatish.github.io/posts/hitchhiker_guide_to_llvm_debugging</link>
-            <guid isPermaLink="false">hitchhiker_guide_to_llvm_debugging</guid>
-            <pubDate>Sun, 08 Aug 8888 00:00:00 GMT</pubDate>
-            <description><![CDATA[Jasmine introduces to readers debugging techniques that would benefit their LLVM development.]]></description>
-        </item>
-        <item>
-            <title><![CDATA[[ONGOING] Jasmines bagel adventure]]></title>
-            <link>https://badumbatish.github.io/posts/jasmine_bagel_count</link>
-            <guid isPermaLink="false">jasmine_bagel_count</guid>
-            <pubDate>Sun, 08 Aug 8888 00:00:00 GMT</pubDate>
-            <description><![CDATA[Hey doc, you like bagels and my writing? You've come to the right place :)]]></description>
-        </item>
-        <item>
-            <title><![CDATA[[ONGOING] The Good, the Bad, and the Scalar Evolution]]></title>
-            <link>https://badumbatish.github.io/posts/scalar_evolution_self_study</link>
-            <guid isPermaLink="false">scalar_evolution_self_study</guid>
-            <pubDate>Sun, 08 Aug 8888 00:00:00 GMT</pubDate>
-            <description><![CDATA[Jasmine's self studying on the Scalar Evolution analysis in LLVM]]></description>
-        </item>
         <item>
             <title><![CDATA[Jasmine's first time in llvm land and her dotfiles]]></title>
             <link>https://badumbatish.github.io/posts/jasmine_in_llvm_land_and_config</link>
