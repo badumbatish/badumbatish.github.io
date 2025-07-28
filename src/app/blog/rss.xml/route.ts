@@ -21,7 +21,7 @@ export async function GET() {
     const posts = await getAllPosts();
 
     posts.forEach((post) => {
-        if (post.hidden != true) {
+        if (post.hidden != true && !post.title.includes("[ONGOING]")) {
             feed.addItem({
                 title: `${post.title}`,
                 id : `${post.id}`,
