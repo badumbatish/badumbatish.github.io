@@ -1,5 +1,5 @@
 ---
-title: "[ONGOING] MLIR Transform note"
+title: "[ONGOING] tMLIR Transform note"
 date: 2025-07-27
 recap: "Jasmine MLIR transform note"
 ---
@@ -7,6 +7,13 @@ recap: "Jasmine MLIR transform note"
 
 - https://mlir.llvm.org/docs/Tutorials/transform/
 - https://mlir.llvm.org/docs/Dialects/Linalg/
+
+# Payload and transform
+
+In the Transform dialect there's two kind of IR:
+
+- If an IR is operating on others, transforming them, that is called a Transform IR.
+- If an IR is being operated on, its called a payload IR.
 # Structured linalg ops
 
 `indexing maps` and `affine_map`: a lot of the time, MLIR ops accept something called `affine_map`, which
@@ -135,5 +142,11 @@ Let's talk about tiling first. I first learned about tiling through the PMPP boo
   }
 }
 ```
+scf.forall evaluates a block multiple time in parallel.
 
-Here, the
+A tile in the transform IR is a slice of the original data:
+> In the case of linalg.generic operations, the iteration space is implicit and is defined by the shape of the operands. Therefore, a tile can be expressed by performing the same operation on a subset (slice) of the original data
+
+Arghhhh i hate this i don't get thissssss arghhhhhhhhhhh what the hell is going onnnnnnnnnnn.
+
+gonna go watch netflix and ice cream and takoyaki

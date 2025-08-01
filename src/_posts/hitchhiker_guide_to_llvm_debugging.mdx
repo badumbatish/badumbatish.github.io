@@ -5,31 +5,85 @@ recap: "Jasmine introduces to readers debugging techniques that would benefit th
 ---
 
 # Prologue
+[TODO]: Jasmine you need to make your blog more personable, apparently there's a dude out plaglarising people's blog https://www.linkedin.com/posts/alexander-logunov_deeplearning-microlearning-criticalthinking-activity-7353354281934020608-rE2J?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC6QhfkBsgNZDMpt_hworID-CPWTYLaq4kg
 
 Hello everyone, how's everybody doing? I'm still chugging away at solving LLVM issues at Igalia :) Fall and winter's
 coming soon, and by the time this blog's up, I will be turning a year older. Welp, another year a few
 more blogs am i right hahahahhaa.
 
 This blog will be detailing my debugging methods since working on LLVM. For the foreseeable future (while the blog
-title has [ONGOING]), this blog will be continually updated with new knowledge of mine
+title has [ONGOING]), this blog will be continually updated with new knowledge of mine, given that I'm still new in llvm
 
 # Introduction
+
+# Grepping
+
+Something something grepping is very helpful
+
+# Git blame and pull requests
+For a beginner in a codebase (even a seasoned programmer),
+the ability to obtain more information and context,
+extending further than the code sitting in front of them, is extremely helpful.
+
+With git blame: https://git-scm.com/docs/git-blame
+
+It's also helpful to look up on the internet for the commit's pull requests, either through github or through reviews.llvm.org
+
+for example https://reviews.llvm.org/D124685?id=431828#inline-1213666 has a TODO, but without reading the PRs, the TODO would seem very unclear and hazy.
+
+In other words, reading code is the first step, after that, commit messages provides greater additional context on the problems being solved and finally, the pull request
+and the reviews.llvm provides opinions and directives.
+# -print-after-all, -print-changed and all that
+
+# lldb and debuggers
+
+Give motivational thinking about
+
 
 
 lldb has auto repeat on when you press sth then you press return
 
-debugging also comes from lang ref
+## llvm/utils/lldbDataFormatters.py
 
-dump
+Load into LLDB with 'command script import /path/to/lldbDataFormatters.py'
+```
+...
+(lldb) command script import /path/to/lldbDataFormatters.py
+...
+```
+Gives out pretty printer for DenseMap, DenseSet, StringRef, SmallVector, SmallStrings
 
+## Conditional breakpoints
+
+## dump.*
+
+The `dump()` helper function in llvm is basically a pretty printer for
+
+A lot of the time, when you perform
+ripgrep `void dump.*\(\) `
 Loop class has dumpVerbose
 
 RegAlloc class has dumpState
 
 
+# gitbisect
 should spawn its own shell so git bisect run is not affected
 
-llvm-reduce
+# llvm-reduce
 
+Something about being interesting to be able to reduce.
 
-ripgrep `void dump.*\(\) `
+# rsp_bisect.py
+
+rsp file is response file? not sure how relevant this will be or if newcomers will ever use it
+
+# tdiff.py
+
+# llvm-extract
+
+# Reading skills, experience, (or think harder)
+
+Yep yep, you read it right
+
+debugging also comes from lang ref:
+for example, if you're creating a new instruction from another instruction, for example: llvm.reduce.and i32 to i1
