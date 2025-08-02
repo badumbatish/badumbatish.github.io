@@ -5,7 +5,8 @@ recap: "Jasmine introduces to readers debugging techniques that would benefit th
 ---
 
 # Prologue
-[TODO]: Jasmine you need to make your blog more personable, apparently there's a dude out plaglarising people's blog https://www.linkedin.com/posts/alexander-logunov_deeplearning-microlearning-criticalthinking-activity-7353354281934020608-rE2J?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC6QhfkBsgNZDMpt_hworID-CPWTYLaq4kg
+[TODO]: Jasmine you need to make your blog more personable, apparently there's a dude out plaglarising people's blog, despicable
+https://www.linkedin.com/posts/alexander-logunov_deeplearning-microlearning-criticalthinking-activity-7353354281934020608-rE2J?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC6QhfkBsgNZDMpt_hworID-CPWTYLaq4kg
 
 Hello everyone, how's everybody doing? I'm still chugging away at solving LLVM issues at Igalia :) Fall and winter's
 coming soon, and by the time this blog's up, I will be turning a year older. Welp, another year a few
@@ -33,27 +34,19 @@ for example https://reviews.llvm.org/D124685?id=431828#inline-1213666 has a TODO
 
 In other words, reading code is the first step, after that, commit messages provides greater additional context on the problems being solved and finally, the pull request
 and the reviews.llvm provides opinions and directives.
-# -print-after-all, -print-changed and all that
+# godbolt, -debug-only, -print-after-all, -print-changed and all that
 
+If you haven't heard of godbolt, think of it as a way for compiler developer to say no to "but but but it works on my machineeee :('
 # lldb and debuggers
 
+If
+
+If you've ever heard of gdb (the GNU debugger) from gcc (the GNU compiler collection)
 Give motivational thinking about
 
 
 
 lldb has auto repeat on when you press sth then you press return
-
-## llvm/utils/lldbDataFormatters.py
-
-Load into LLDB with 'command script import /path/to/lldbDataFormatters.py'
-```
-...
-(lldb) command script import /path/to/lldbDataFormatters.py
-...
-```
-Gives out pretty printer for DenseMap, DenseSet, StringRef, SmallVector, SmallStrings
-
-## Conditional breakpoints
 
 ## dump.*
 
@@ -64,6 +57,41 @@ ripgrep `void dump.*\(\) `
 Loop class has dumpVerbose
 
 RegAlloc class has dumpState
+## llvm/utils/lldbDataFormatters.py
+
+lldbDataFormatters.py (LDF) is a python script to integrate with LLDB. In LLDB, when you print a specific LLVM data structure
+ that doesn't have the `dump()` helper function, things can get a bit messy due to how the debugger's treating the data structure as
+a pointer only.
+
+With LDF, you can
+
+Load into LLDB with 'command script import llvm/utils/lldbDataFormatters.py'
+```
+...
+(lldb) command script import llvm/utils/lldbDataFormatters.py
+...
+```
+Gives out pretty printer for DenseMap, DenseSet, StringRef, SmallVector, SmallStrings
+
+Here's an picture showing the before and after
+
+![showcase_lldbformatters](/blogs/hitchhiker_guide_to_llvm_debugging/showcase_lldbDataFormatters.png)
+## Conditional breakpoints
+
+Personally, I set up a keymap in my neovim so I don't have to type so much. Here's the lua code for the keymap
+```lua
+local yank_for_conditional_break = function ()
+    local path = vim.fn.expand('%:.')
+    local line = vim.fn.line('.')
+    local word = vim.fn.expand("<cword>")
+    local result = 'breakpoint set --file '.. path .. ' --line ' .. line .. ' --condition ' .. '\'' .. word
+    vim.fn.setreg('+', result)
+end
+```
+
+## Watchpoint
+
+TODO: Explain watchpoint
 
 
 # gitbisect
