@@ -5,8 +5,7 @@ recap: "Jasmine introduces to readers debugging techniques that would benefit th
 ---
 
 # Prologue
-[TODO]: Jasmine you need to make your blog more personable, apparently there's a dude out plaglarising people's blog, despicable
-https://www.linkedin.com/posts/alexander-logunov_deeplearning-microlearning-criticalthinking-activity-7353354281934020608-rE2J?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC6QhfkBsgNZDMpt_hworID-CPWTYLaq4kg
+[TODO]: Jasmine you need to make your blog more personable, apparently there's a dude out plaglarising people's blog
 
 Hello everyone, how's everybody doing? I'm still chugging away at solving LLVM issues at Igalia :) Fall and winter's
 coming soon, and by the time this blog's up, I will be turning a year older. Welp, another year a few
@@ -16,6 +15,9 @@ This blog will be detailing my debugging methods since working on LLVM. For the 
 title has [ONGOING]), this blog will be continually updated with new knowledge of mine, given that I'm still new in llvm
 
 # Introduction
+
+Debugging has always been a quintessential tool in a software engineer's toolboxes. As a piece of software or framework gets more complicated
+
 
 # Grepping
 
@@ -63,19 +65,32 @@ lldbDataFormatters.py (LDF) is a python script to integrate with LLDB. In LLDB, 
  that doesn't have the `dump()` helper function, things can get a bit messy due to how the debugger's treating the data structure as
 a pointer only.
 
-With LDF, you can
+For LLVM-specific data structures, LDF provides helpful pretty printer for DenseMap, DenseSet, StringRef, SmallVector, SmallStrings
 
-Load into LLDB with 'command script import llvm/utils/lldbDataFormatters.py'
+To utilize the script, once you fire up LLDB, you can provide LLDB with `command script import PathToScript/lldbDataFormatters.py{:bash}`
+where PathToScript is the directory path to LDF.
+
+For example, if you're debugging in `llvm-project`, which houses the lldbDataFormatters naturally in llvm/utils:
 ```
 ...
 (lldb) command script import llvm/utils/lldbDataFormatters.py
 ...
 ```
-Gives out pretty printer for DenseMap, DenseSet, StringRef, SmallVector, SmallStrings
 
-Here's an picture showing the before and after
+Here's a picture showing the before and after importing the formatter script:
 
 ![showcase_lldbformatters](/blogs/hitchhiker_guide_to_llvm_debugging/showcase_lldbDataFormatters.png)
+
+Alas, a programmer would not be a programmer if not for their automation. It would be an inconvenience (and a detriment to their productivity)
+if a programmer were supposed to remember the script import command and then remember to type it in
+every time.
+
+Instead, you can add this to `.lldbinit` in your home directory and let the computer perform said steps for you:
+```
+script
+"llvm-project" in os.getcwd() and lldb.debugger.HandleCommand("command script import llvm/utils/lldbDataFormatters.py")
+```
+
 ## Conditional breakpoints
 
 Personally, I set up a keymap in my neovim so I don't have to type so much. Here's the lua code for the keymap
@@ -93,19 +108,63 @@ end
 
 TODO: Explain watchpoint
 
+# tablegen
 
+For a short overview on tablegen, the [LLVM tablegen docs](https://llvm.org/docs/TableGen/) cannot be more succint:
+> TableGen’s purpose is to help a human develop and maintain records of domain-specific information.
+... [reducing] the amount of duplication, the chance of error, and [making] it easier to structure domain specific information.
+
+.td (tablegen) files are ubiquitous in the LLVM world; if you have contributed to LLVM, chances are you've read a `.td` file.
+If something's wrong with a tablegen, a programmer needs to understand at least the debugging techniques for a tablegen file.
+
+When a .td file is table-generated, it spits out an .inc (`include`) file in the build folder
+
+TODO: Add more about this.
 # gitbisect
+
+It is quite frustrating that on a big repository, after ~100,000 commits from you and a few thousands contributors, you're asked
+to solve a bug that happen on some new releases but not older ones. You say to yourself: "Welp I can't really build the llvm codebase
+and run the test case 100,000 times to find the commit that causes the bugs."
+
+Instead, with git-bisect's `binary search to find the commit that introduced a bug,` you can reduce this down to $$log_2(100,000) = 16.61$$
 should spawn its own shell so git bisect run is not affected
+
+The rest of this gitbisect section focuses on helping you set up a basic script to automate the bug finding process with gitbisect.
+
 
 # llvm-reduce
 
-Something about being interesting to be able to reduce.
+Often, when a bug fails on a big test case, it is imperative to `reduce` the test case to a smaller one, so that other people can pinpoint exactly where
+exactly the bug occurs.
+
+llvm-reduce works on the programmer telling it what test case execution is `interesting.` And in a unix fashion, if something returns a non-zero code,
+it is considered `interesting.` We can then blah blah blah
+
+
+```
+--- BEFORE llvm-reduce
+define i64 @stest_f64i64(double %x) {
+entry:
+  %conv = fptosi double %x to i128
+  %0 = icmp slt i128 %conv, 9223372036854775807
+  %spec.store.select = select i1 %0, i128 %conv, i128 9223372036854775807
+  %1 = icmp sgt i128 %spec.store.select, -9223372036854775808
+  %spec.store.select7 = select i1 %1, i128 %spec.store.select, i128 -9223372036854775808
+  %conv6 = trunc i128 %spec.store.select7 to i64
+  ret i64 %conv6
+}
+
+--- AFTER llvm-reduce
+define <2 x i128> @stest_f64i64() {
+entry:
+  %conv = fptosi <2 x double> splat (double 0x7FF8000000000000) to <2 x i128>
+  ret <2 x i128> %conv
+}
+```
 
 # rsp_bisect.py
 
 rsp file is response file? not sure how relevant this will be or if newcomers will ever use it
-
-# tdiff.py
 
 # llvm-extract
 
