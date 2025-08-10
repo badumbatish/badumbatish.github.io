@@ -1,29 +1,86 @@
 ---
-title: "[ONGOING] Jasmine and the hitchhiker's guide to LLVM's debugging tools"
+title: "[ONGOING] Jasmine and the hitchhiker's guide to LLVM debugging tools"
 date: 8888-08-08
 recap: "Jasmine introduces to readers debugging techniques that would benefit their LLVM development."
 ---
 
 # Prologue
-[TODO]: Jasmine you need to make your blog more personable, apparently there's a dude out plaglarising people's blog
 
 Hello everyone, how's everybody doing? I'm still chugging away at solving LLVM issues at Igalia :) Fall and winter's
 coming soon, and by the time this blog's up, I will be turning a year older. Welp, another year a few
 more blogs am i right hahahahhaa.
 
+A few weekends ago, I went up to Thousand Oaks and Malibu beach to visit my friend from Berkeley and then took an Amtrak with a date to
+San Diego. Isn't life just beautiful like that? I couldn't have asked for more.
+
 This blog will be detailing my debugging methods since working on LLVM. For the foreseeable future (while the blog
-title has [ONGOING]), this blog will be continually updated with new knowledge of mine, given that I'm still new in llvm
+title has [ONGOING]), this blog will be continually updated with new knowledge of mine for any shortcomings as I'm still new to LLVM.
+
+For external reviewers and discussion of this blog and others, you can join the discord server [here](https://discord.gg/mvdVEqDQxn) or the discord link in my front page.
+
+For internal reviewers at Igalia, you can also dm me on Matrix, up to your preferences!
+
+As tradition, here's a [song](https://www.youtube.com/watch?v=kvqfHcgIagI) for interested readers :) I hope everyone enjoys :)
 
 # Introduction
 
-Debugging has always been a quintessential tool in a software engineer's toolboxes. As a piece of software or framework gets more complicated
+Debugging has always been a quintessential tool in a software engineer's toolboxes.
 
-TODO: https://www.npopov.com/2023/10/22/How-to-reduce-LLVM-crashes.html
+As a piece of software or framework gets more complicated, the flow of a program invariantly gets more complex, which requires software
+engineers to careful and methodically investigate an issue/bug instead of blindly following one's instinct.
+
+In this sense, although the article talks about debugging, the article inherently provides a sample of the author's problem-solving toolbox.
+
+I hope this helps junior LLVM developer or low level developer just starting out in their journey!
+
+Welp, let's dig in!
+# Resources
+
+In writing the blog, I utilize these resources, including, but not excluding:
+- [How to reduce LLVM crashes](https://www.npopov.com/2023/10/22/How-to-reduce-LLVM-crashes.html)
+- [Clear step by step to oneshot debugging any LLVM issue with ChatGPT](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+- [Git manual](https://git-scm.com/doc)
+- [LLVM lang ref](https://llvm.org/docs/LangRef.html)
+
+
+# Compiling and execution time
+
+For a programmer working on a big codebase
+
+## (Release + Assertion) and/or (Debug)
+
+Have two build profile
+
+TODO: get the LLVM flags
+## Build your target/subproject only
+
+For example, if you're doing majority webassembly or x86, don't build RISCV on top of it. For example, some tablegen changes in RISCV
+takes a dozen of seconds to compile. Over the course of a week, if you're working on tablegen over the course of a week, it'll add up
+to maybe half an hour or more.
+
+TODO: get the LLVM flags
+
+## LLVM-release compilers
+
+From David Spickett's comment on Discord:
+> At least for Linux x86 and AArch64, LLVM's release archives on GitHub are already BOLT-ed (you can check with objdump -h clang | grep bolt). So if there are potential issues, we're all at risk 🙂
+If you want to try BOLT-ing something yourself, https://github.com/llvm/llvm-project/blob/main/bolt/docs/OptimizingClang.md seems like a good place to start (I've not done this myself).
+
+TODO: Show users the link for/on github release
+## ccache
+
+You can use the LLVM's flag for ccache
+
+TODO: get the LLVM flags
+
+Also, use this option for ccache
+
 # Grepping
 
 Something something grepping is very helpful
 
-# Git blame and pull requests
+With such importance, often in the following sections, I will try to provide how grepping integrates with each area.
+# Git, Git blame and pull requests
 For a beginner in a codebase (even a seasoned programmer),
 the ability to obtain more information and context,
 extending further than the code sitting in front of them, is extremely helpful.
@@ -36,9 +93,33 @@ for example https://reviews.llvm.org/D124685?id=431828#inline-1213666 has a TODO
 
 In other words, reading code is the first step, after that, commit messages provides greater additional context on the problems being solved and finally, the pull request
 and the reviews.llvm provides opinions and directives.
+
+
+With trying to explore what's happening for a subproject/subsection in LLVM, you can also utilize grepping in git without going through the github online gui.
+
+Belows shows a picture of me applying git grep to the topic of WebAssembly where theres a mention of either "fold" or "DAG" via this command:
+```
+git log --grep='WebAssembly' --grep='fold\|DAG' --all-match
+```
+
+![showing git grep](/blogs/hitchhiker_guide_to_llvm_debugging/git_grep_wasm_fold_dag.png)
+
 # godbolt, -debug-only, -print-after-all, -print-changed and all that
 
 If you haven't heard of godbolt, think of it as a way for compiler developer to say no to "but but but it works on my machineeee :('
+
+## Inspecting IR changes
+
+TODO: Explain this in a way that's akin to -print-changed
+
+![godbolt_show_opt](/blogs/hitchhiker_guide_to_llvm_debugging/godbolt_show_opt.png)
+## Cutting out the noise
+
+## Deep diving into a specific passes
+
+After you've filtered out the specific pass that you think are affecting your
+
+
 # lldb and debuggers
 
 If
@@ -104,10 +185,6 @@ local yank_for_conditional_break = function ()
 end
 ```
 
-## Watchpoint
-
-TODO: Explain watchpoint
-
 # tablegen
 
 For a short overview on tablegen, the [LLVM tablegen docs](https://llvm.org/docs/TableGen/) cannot be more succint:
@@ -119,7 +196,19 @@ If something's wrong with a tablegen, a programmer needs to understand at least 
 
 When a .td file is table-generated, it spits out an .inc (`include`) file in the build folder
 
-TODO: Add more about this.
+TODO: Mention a developer's love hate relationship with tablegen, for example, with Jeremy Kun's perspective on mlir's tablegen:
+
+> It sounds nice, but I have a love hate relationship with tablegen. I personally find it to be unpleasant to use, primarily because it provides poor diagnostic information when you do things wrong. Today, though, I realize that my part of my frustration came from having the wrong initial mindset around tablegen. I thought, incorrectly, that tablegen was an abstraction layer. That is, I could write my tablegen files, build them, and only think about the parts of the generated code that I needed to implement.
+
+Personally, my experience with tablegen in the backend is akin to this:
+for certain issues/problems, if you don't use tablegen, then you'll end up writing more code and spend more time/effort maintaining said code.
+
+## Grepping tablegen
+With version 14.1.1, Ripgrep provides a way to filter out the file type so often times, you can use this to exclusively search for ripgrep.
+
+```
+rg --type-add 'td:*.td' -ttd "<What you want to search here" <where you want to search>
+```
 # gitbisect
 
 It is quite frustrating that on a big repository, after ~100,000 commits from you and a few thousands contributors, you're asked
@@ -127,6 +216,7 @@ to solve a bug that happen on some new releases but not older ones. You say to y
 and run the test case 100,000 times to find the commit that causes the bugs."
 
 Instead, with git-bisect's `binary search to find the commit that introduced a bug,` you can reduce this down to $$log_2(100,000) = 16.61$$
+
 should spawn its own shell so git bisect run is not affected
 
 The rest of this gitbisect section focuses on helping you set up a basic script to automate the bug finding process with gitbisect.
@@ -174,3 +264,7 @@ Yep yep, you read it right
 
 debugging also comes from lang ref:
 for example, if you're creating a new instruction from another instruction, for example: llvm.reduce.and i32 to i1
+i
+# Asking people
+
+# Acknowledgments
