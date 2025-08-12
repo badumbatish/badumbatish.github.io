@@ -73,8 +73,8 @@ Therefore, it's very beneficial to have two build modes when contributing to LLV
 
 You can set the modes for your build by appending these two options when configuring CMake
 ```
-Debug            : ... -DCMAKE_BUILD_TYPE=Debug ...
-Release + Assert : ... -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ASSERTIONS=ON ...
+Debug            : -DCMAKE_BUILD_TYPE=Debug
+Release + Assert : -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ASSERTIONS=ON
 ```
 
 ## Build your target/subproject only
@@ -138,7 +138,30 @@ For increment builds, ccache "speeds up recompilation by caching previous compil
 In my use case, when compiling the codebase from different commits (because some branches are opened a few weeks ago and some are opened recently after I have `git pull` from upstream),
 compiling the same `build` folder would often take a lot of time. This is where ccache comes in.
 
-You can use the LLVM's flag for ccache together with other CMake flags `-DLLVM_CCACHE_BUILD=true`
+You can use the LLVM's flag for ccache together with other CMake flags `-DLLVM_CCACHE_BUILD=true`.
+
+In addition to this, you can create a ccache configuration in `$HOME/.ccache/ccache.conf`, allowing more flexibility and power to ccache.
+
+```
+file_clone = true
+inode_cache = true
+max_size = 200G
+base_dir = /
+absolute_paths_in_stderr = true
+```
+
+Below, I'll provide the explanation for each configuration option.
+
+- `file_clone = true`: performs copy-on-write if possible, improving the caching performance.
+- `inode_cache = true`: instruct ccache to cache a file based on its device, inode and timestamps. This cuts down on time spent hashing
+files and therefore improves caching performance since some file in LLVM can contain tens of thousands of lines.
+- `max_size = 200G`: allocates 200 gigabyte of storage on your computer for ccache to use.
+- `base_dir = /`: allows caching of all directories (any directory's path that starts with /).
+- `absolute_paths_in_stderr`: instruct ccache to rewrite relative paths to absolute paths in a compiler's textual output in lieu of
+incorrect relative paths in warning or error messages.
+
+I want to thank my colleague Alex Bradbury for introducing me to these options :)
+
 ### Ninja
 
 Ninja's a build system thats focused on speed and is designed `run builds as fast as possible.`
@@ -162,9 +185,9 @@ From the LLVM's LLD page:
 In fact, it is so fast that I think it's a necessity to enable this by default when developing LLVM, especially when your
 lld executable comes from the LLVM release page that has PGO and BOLT enabled, providing even faster linking time.
 
-As of Monday, August 11, 2025, here is the comparison from the LLVM LLD page, with the percentage difference when compared to the GNU's ld linker:
+As of Monday, August 11, 2025, here is the comparison from the LLVM LLD page, with the percentage difference between ld, gold and lld.
 
-| Program       | Output size | GNU ld (time) | GNU gold (time) | lld (time) |
+| Program       | Output size | GNU ld (time) | GNU gold w/ threads (time) | lld w/ threads (time) |
 |---------------|-------------|-------------------------|----------------------------|------------|
 | ffmpeg dbg    | 92 MiB      | 1.72s, (4.91x)            | 1.01s, (2.89x)               | 0.35s  (1.00x)    |
 | mysqld dbg    | 154 MiB     | 8.50s, (12.50x)           | 2.68s, (3.94x)               | 0.68s  (1.00x)    |
@@ -176,24 +199,36 @@ You can enable the LLD linker with `-DLLVM_USE_LINKER=lld`
 
 Well, now all that's out of the way, let's talk about grepping.
 
-Grepping
+In a big and unfamiliar codebase, sometimes, you just don't have much of a clue on how things go. In cases like this, you can
+start querying random keywords that are related to your issue and work your way from there.
 
-With such importance, often in the following sections, I will try to provide how grepping integrates with each area.
-# Git, Git blame and pull requests
+Sometimes, it just so happens that when you're querying a function that's used in a test case via an [LSP](https://en.wikipedia.org/wiki/Language_Server_Protocol),
+the LSP gives you the source from the OS compiler or the LLVM release compiler (since you built the project with it), grepping might be
+one of the few ways to get you to the function's source in the repository instead.
+
+In my case, I opt for ripgrep instead of grep due to the [performance difference](https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#quick-examples-comparing-tools).
+
+With such aforementioned importance, often in the following sections, I will try to provide how grepping integrates with each area.
+
+# Git potpourri on the pull requests
 For a beginner in a codebase (even a seasoned programmer),
 the ability to obtain more information and context,
 extending further than the code sitting in front of them, is extremely helpful.
 
-With git blame: https://git-scm.com/docs/git-blame
+## Blame & show a commit
+When exploring a new area/file, I would often combine [git blame](https://git-scm.com/docs/git-blame) together with [git show](https://git-scm.com/docs/git-show)
+to obtain more context for what I'm working with.
 
-It's also helpful to look up on the internet for the commit's pull requests, either through github or through reviews.llvm.org
+The workflow is: `git blame` the file -> get the commit hash for the line I'm interested in -> input the commit hash to `git show`
 
-for example https://reviews.llvm.org/D124685?id=431828#inline-1213666 has a TODO, but without reading the PRs, the TODO would seem very unclear and hazy.
+In investigating an issue through commits, it's also helpful to look up on the internet for the commit's pull requests, either through GitHub or through reviews.llvm.org.
+For example, in this [pull request](https://reviews.llvm.org/D124685?id=431828#inline-1213666), the author and reviewers have added a TODO, but without reading the PRs,
+the TODO would seem very unclear and hazy, leaving code readers wanting more context.
 
-In other words, reading code is the first step, after that, commit messages provides greater additional context on the problems being solved and finally, the pull request
-and the reviews.llvm provides opinions and directives.
+In other words, exploring code is the first step, after that, commit messages provides greater additional context on the problems being solved and finally, the pull request
+and the `reviews.llvm.org` provides opinions and directives.
 
-
+## grepping it
 With trying to explore what's happening for a subproject/subsection in LLVM, you can also utilize grepping in git without going through the github online gui.
 
 Belows shows a picture of me applying git grep to the topic of WebAssembly where theres a mention of either "fold" or "DAG" via this command:
@@ -207,12 +242,19 @@ git log --grep='WebAssembly' --grep='fold\|DAG' --all-match
 
 If you haven't heard of godbolt, think of it as a way for compiler developer to say no to "but but but it works on my machineeee :('
 
+Formally, godbolt is `an interactive online compiler which shows the assembly output of compiled C++, Rust, Go (and many more) code.`
+
+Buttt, such a simple description couldn't possibly do the site its justice bla bla blah
+
+TODO: HEY JASMINE: Ok, the mindset here is while providing users how to use godbolt, I should also provide a way to do this via the command line.
 ## Inspecting IR changes
 
 TODO: Explain this in a way that's akin to -print-changed
 
 ![godbolt_show_opt](/blogs/hitchhiker_guide_to_llvm_debugging/godbolt_show_opt.png)
 ## Cutting out the noise
+
+-print-changed
 
 ## Deep diving into a specific passes
 
@@ -221,12 +263,11 @@ After you've filtered out the specific pass that you think are affecting your
 
 # lldb and debuggers
 
-If
+A quick google on "gdb versus lldb" would give a similar generic answer to how similar the two tools are and it's often up to personal
+preferences. This article won't try to persuade you to use either gdb or lldb, but perhaps it will introduce you more to the strong integration
+between lldb and the LLVM codebase :)
 
-If you've ever heard of gdb (the GNU debugger) from gcc (the GNU compiler collection)
-Give motivational thinking about
-
-
+## Default
 
 lldb has auto repeat on when you press sth then you press return
 
@@ -303,7 +344,7 @@ Personally, my experience with tablegen in the backend is akin to this:
 for certain issues/problems, if you don't use tablegen, then you'll end up writing more code and spend more time/effort maintaining said code.
 
 ## Grepping tablegen
-With version 14.1.1, Ripgrep provides a way to filter out the file type so often times, you can use this to exclusively search for ripgrep.
+At the time of writing this article, with version 14.1.1, ripgrep provides a way to filter out the file type so often times, you can use this to exclusively search for ripgrep.
 
 ```
 rg --type-add 'td:*.td' -ttd "<What you want to search here" <where you want to search>
