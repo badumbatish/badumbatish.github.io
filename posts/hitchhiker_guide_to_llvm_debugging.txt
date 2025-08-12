@@ -12,11 +12,11 @@ e:"$Sreact.suspense"
 :HL["/_next/static/media/7385e8d9d3c5518f-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
 :HL["/_next/static/css/3b37cf79ceb9ce8f.css","style"]
 :HL["/_next/static/css/3864b451a61e4546.css","style"]
-0:{"P":null,"b":"M7CTb-qAplPo4A_RCn6VQ","p":"","c":["","posts","hitchhiker_guide_to_llvm_debugging"],"i":false,"f":[[["",{"children":["posts",{"children":[["id","hitchhiker_guide_to_llvm_debugging","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b37cf79ceb9ce8f.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","$L2",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L5",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]}]]}]}]]}],{"children":["posts",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","hitchhiker_guide_to_llvm_debugging","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3864b451a61e4546.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L7",null,{"children":["$L8",["$","$L9",null,{"promise":"$@a"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$Ld",null,{"children":["$","div",null,{"hidden":true,"children":["$","$e",null,{"fallback":null,"children":"$Lf"}]}]}]]}],false]],"m":"$undefined","G":["$10",[]],"s":false,"S":true}
+0:{"P":null,"b":"b7-JaOFC9L-eD89TjdTDC","p":"","c":["","posts","hitchhiker_guide_to_llvm_debugging"],"i":false,"f":[[["",{"children":["posts",{"children":[["id","hitchhiker_guide_to_llvm_debugging","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b37cf79ceb9ce8f.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","$L2",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L5",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]}]]}]}]]}],{"children":["posts",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","hitchhiker_guide_to_llvm_debugging","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3864b451a61e4546.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L7",null,{"children":["$L8",["$","$L9",null,{"promise":"$@a"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$Ld",null,{"children":["$","div",null,{"hidden":true,"children":["$","$e",null,{"fallback":null,"children":"$Lf"}]}]}]]}],false]],"m":"$undefined","G":["$10",[]],"s":false,"S":true}
 c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 8:null
 12:I[8175,[],"IconMark"]
-11:T5f52,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#prologue">Prologue</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#introduction">Introduction</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#resources">Resources</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#compiling-and-execution-time">Compiling and execution time</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#release--assertion-andor-debug">(Release + Assertion) and/or (Debug)</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#build-your-targetsubproject-only">Build your target/subproject only</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#llvm-release-compilers">LLVM-release compilers</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#ccache">ccache</a></li></ol></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#grepping">Grepping</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#git-git-blame-and-pull-requests">Git, Git blame and pull requests</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#godbolt--debug-only--print-after-all--print-changed-and-all-that">godbolt, -debug-only, -print-after-all, -print-changed and all that</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#inspecting-ir-changes">Inspecting IR changes</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#cutting-out-the-noise">Cutting out the noise</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#deep-diving-into-a-specific-passes">Deep diving into a specific passes</a></li></ol></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#lldb-and-debuggers">lldb and debuggers</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#dump">dump.*</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#llvmutilslldbdataformatterspy">llvm/utils/lldbDataFormatters.py</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#conditional-breakpoints">Conditional breakpoints</a></li></ol></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#tablegen">tablegen</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#grepping-tablegen">Grepping tablegen</a></li></ol></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#gitbisect">gitbisect</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#llvm-reduce">llvm-reduce</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#rsp_bisectpy">rsp_bisect.py</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#llvm-extract">llvm-extract</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#reading-skills-experience-or-think-harder">Reading skills, experience, (or think harder)</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#asking-people">Asking people</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#acknowledgments">Acknowledgments</a></li></ol></nav><h1 id="prologue"><a aria-hidden="true" tabindex="-1" href="#prologue"><span class="icon icon-link"></span></a>Prologue</h1>
+11:T818f,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#prologue">Prologue</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#introduction">Introduction</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#resources">Resources</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#compiling-and-testing-time">Compiling and testing time</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#release--assertion--debug">(Release + Assertion) + (Debug)</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#build-your-targetsubproject-only">Build your target/subproject only</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#use-llvm-release-compilers">Use LLVM-release compilers</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#ccache-ninja-and-lld">ccache, ninja and LLD</a><ol class="toc-level toc-level-3"><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#ccache">ccache</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#ninja">Ninja</a></li><li class="toc-item toc-item-h3"><a class="toc-link toc-link-h3" href="#lld">LLD</a></li></ol></li></ol></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#grepping">Grepping</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#git-git-blame-and-pull-requests">Git, Git blame and pull requests</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#godbolt--debug-only--print-after-all--print-changed-and-all-that">godbolt, -debug-only, -print-after-all, -print-changed and all that</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#inspecting-ir-changes">Inspecting IR changes</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#cutting-out-the-noise">Cutting out the noise</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#deep-diving-into-a-specific-passes">Deep diving into a specific passes</a></li></ol></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#lldb-and-debuggers">lldb and debuggers</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#dump">dump.*</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#llvmutilslldbdataformatterspy">llvm/utils/lldbDataFormatters.py</a></li><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#conditional-breakpoints">Conditional breakpoints</a></li></ol></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#tablegen">tablegen</a><ol class="toc-level toc-level-2"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#grepping-tablegen">Grepping tablegen</a></li></ol></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#gitbisect">gitbisect</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#llvm-reduce">llvm-reduce</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#rsp_bisectpy">rsp_bisect.py</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#llvm-extract">llvm-extract</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#reading-skills-experience-or-think-harder">Reading skills, experience, (or think harder)</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#asking-people">Asking people</a></li><li class="toc-item toc-item-h1"><a class="toc-link toc-link-h1" href="#acknowledgments">Acknowledgments</a></li></ol></nav><h1 id="prologue"><a aria-hidden="true" tabindex="-1" href="#prologue"><span class="icon icon-link"></span></a>Prologue</h1>
 <p>Hello everyone, how's everybody doing? I'm still chugging away at solving LLVM issues at Igalia :) Fall and winter's
 coming soon, and by the time this blog's up, I will be turning a year older. Welp, another year a few
 more blogs am i right hahahahhaa.</p>
@@ -42,29 +42,142 @@ engineers to careful and methodically investigate an issue/bug instead of blindl
 <li><a href="https://git-scm.com/doc" rel="nofollow" target="_blank">Git manual</a></li>
 <li><a href="https://llvm.org/docs/LangRef.html" rel="nofollow" target="_blank">LLVM lang ref</a></li>
 </ul>
-<h1 id="compiling-and-execution-time"><a aria-hidden="true" tabindex="-1" href="#compiling-and-execution-time"><span class="icon icon-link"></span></a>Compiling and execution time</h1>
-<p>For a programmer working on a big codebase</p>
-<h2 id="release--assertion-andor-debug"><a aria-hidden="true" tabindex="-1" href="#release--assertion-andor-debug"><span class="icon icon-link"></span></a>(Release + Assertion) and/or (Debug)</h2>
-<p>Have two build profile</p>
-<p>TODO: get the LLVM flags</p>
+<h1 id="compiling-and-testing-time"><a aria-hidden="true" tabindex="-1" href="#compiling-and-testing-time"><span class="icon icon-link"></span></a>Compiling and testing time</h1>
+<p><strong>Note</strong>: Some parts of the section takes inspiration from Nikita Popov's <a href="https://developers.redhat.com/articles/2022/12/20/how-contribute-llvm" rel="nofollow" target="_blank">How to contribute to LLVM</a>
+and LLVM's <a href="https://llvm.org/docs/CMake.html" rel="nofollow" target="_blank">Building LLVM with CMake</a>. I highly recommend you take a few minutes to read through them!</p>
+<p>Compile time on a big codebase has always been a pain point for programmers. A few seconds here, a few minutes there, and you have wasted
+at least half an hour extra waiting to compile the LLVM repository.</p>
+<p>Once you hit compile, if you have to wait a while, your mind wanders away to other things and you start to drift away, thinking about other topics.
+Point is, the context switching causes you to lose out on your focusing power.</p>
+<p>The following subsections then describes how to save time on your compiling and executing. This will reduce your development cycle
+and TODO</p>
+<p><img src="/blogs/hitchhiker_guide_to_llvm_debugging/compile_meme.png" alt="compile_meme"></p>
+<h2 id="release--assertion--debug"><a aria-hidden="true" tabindex="-1" href="#release--assertion--debug"><span class="icon icon-link"></span></a>(Release + Assertion) + (Debug)</h2>
+<p>A common rule of thumb to have is you build a codebase in Debug mode when you're in development, and then you build it in Release mode
+when shipping it out to users. But this is not always the case...</p>
+<p>If you're not stepping through the code with the LLDB debugger, chances are the trade-off of being in Debug mode; receiving
+accurate stack trace locations and source layout position is not worth it.
+Debug mode takes longer to compile and link, test cases with Debug mode are often compiled and ran slower.</p>
+<p>Release mode with assertion turned on, on the other hands, compiles and run tests blazingly fast as well as gives good diagnostics.</p>
+<p>Therefore, it's very beneficial to have two build modes when contributing to LLVM:</p>
+<p>You can set the modes for your build by appending these two options when configuring CMake</p>
+<pre><code>Debug            : ... -DCMAKE_BUILD_TYPE=Debug ...
+Release + Assert : ... -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ASSERTIONS=ON ...
+</code></pre>
 <h2 id="build-your-targetsubproject-only"><a aria-hidden="true" tabindex="-1" href="#build-your-targetsubproject-only"><span class="icon icon-link"></span></a>Build your target/subproject only</h2>
-<p>For example, if you're doing majority webassembly or x86, don't build RISCV on top of it. For example, some tablegen changes in RISCV
-takes a dozen of seconds to compile. Over the course of a week, if you're working on tablegen over the course of a week, it'll add up
-to maybe half an hour or more.</p>
-<p>TODO: get the LLVM flags</p>
-<h2 id="llvm-release-compilers"><a aria-hidden="true" tabindex="-1" href="#llvm-release-compilers"><span class="icon icon-link"></span></a>LLVM-release compilers</h2>
-<p>From David Spickett's comment on Discord:</p>
+<p>You can also save on your development time by only building the subproject that are of interests to you.</p>
+<p>For example, if you're doing majority webassembly or x86, don't build RISCV on top of it. Some tablegen changes in common between RISCV and WebAssembly
+will inevitably trigger compilation on the RISCV target, taking a dozen of seconds to compile. Enabling extra targets will also
+enable extra tests for that target.</p>
+<p>The flag to include/exclude subprojects is <code>LLVM_TARGETS_TO_BUILD</code></p>
+<p>From LLVM:</p>
 <blockquote>
-<p>At least for Linux x86 and AArch64, LLVM's release archives on GitHub are already BOLT-ed (you can check with objdump -h clang | grep bolt). So if there are potential issues, we're all at risk 🙂
+<p>Semicolon-separated list of targets to build, or all for building all targets. Case-sensitive. Defaults to all. Example: -DLLVM_TARGETS_TO_BUILD="X86;PowerPC".</p>
+</blockquote>
+<blockquote>
+<p>The full list, as of March 2023, is: AArch64, AMDGPU, ARM, AVR, BPF, Hexagon, Lanai, LoongArch, Mips, MSP430, NVPTX, PowerPC, RISCV, Sparc, SystemZ, VE, WebAssembly, X86, XCore.</p>
+</blockquote>
+<h2 id="use-llvm-release-compilers"><a aria-hidden="true" tabindex="-1" href="#use-llvm-release-compilers"><span class="icon icon-link"></span></a>Use LLVM-release compilers</h2>
+<p>If you're using a package manager's <code>clang</code> or a <code>clang</code> that comes with your operating system, chances are you're losing out
+on development time.</p>
+<p>With <a href="https://en.wikipedia.org/wiki/Profile-guided_optimization" rel="nofollow" target="_blank">PGO</a>, <a href="https://research.facebook.com/publications/bolt-a-practical-binary-optimizer-for-data-centers-and-beyond/" rel="nofollow" target="_blank">BOLT</a>
+and various tips and tricks turned on,
+LLVM maintainer and volunteers have been hard at work optimizing the LLVM official release version of clang
+to be highly optimized for the LLVM compiler development experiment. How good is it? You can see for yourself with the claim from
+the BOLT paper</p>
+<blockquote>
+<p>For datacenter applications, BOLT achieves up to 7.0% performance speedups on top of profile-guided function reordering and LTO.
+For the GCC and Clang compilers, our evaluation shows that BOLT speeds up their binaries by up to 20.4% on top of FDO and LTO,
+and up to 52.1% if the binaries are built without FDO and LTO.</p>
+</blockquote>
+<p>Unfortunately, for MacOS users, BOLT only comes with Linux x86 and AArch64. However, I'd still recommend downloading your
+OS's version of the compiler from LLVM's <a href="https://github.com/llvm/llvm-project/releases" rel="nofollow" target="_blank">release page</a> as anecdotally, I can
+still feel some extra perform when compiling LLVM.</p>
+<p>After you've downloaded the LLVM release compiler to a folder, you can use it in your CMake configuration command as follow</p>
+<pre><code>-DCMAKE_C_COMPILER=$HOME/Developer/igalia/LLVM-20.1.7-macOS-ARM64/bin/clang \
+-DCMAKE_CXX_COMPILER=$HOME/Developer/igalia/LLVM-20.1.7-macOS-ARM64/bin/clang++
+</code></pre>
+<p>provided that you download and extract it to a folder of <code>$HOME/Developer/igalia/LLVM-20.1.7-macOS-ARM64</code></p>
+<p>Btw, I learned about this through my conversation with David Spicket:</p>
+<blockquote>
+<p>bdbt: i'm new grad and joining a company as a compiler engineer, would compiling a new, seperate compiler that's BOLT-activated specifically for compiling compiler makes sense?
+It will give me a sizable reduction in compile time and allow for faster iteration but i'm not sure if there will be errors when using the special version? any insights would be appreciated</p>
+</blockquote>
+<blockquote>
+<p>David Spicket: At least for Linux x86 and AArch64, LLVM's release archives on GitHub are already BOLT-ed (you can check with objdump -h clang | grep bolt). So if there are potential issues, we're all at risk 🙂
 If you want to try BOLT-ing something yourself, <a href="https://github.com/llvm/llvm-project/blob/main/bolt/docs/OptimizingClang.md" rel="nofollow" target="_blank">https://github.com/llvm/llvm-project/blob/main/bolt/docs/OptimizingClang.md</a> seems like a good place to start (I've not done this myself).</p>
 </blockquote>
-<p>TODO: Show users the link for/on github release</p>
-<h2 id="ccache"><a aria-hidden="true" tabindex="-1" href="#ccache"><span class="icon icon-link"></span></a>ccache</h2>
-<p>You can use the LLVM's flag for ccache</p>
-<p>TODO: get the LLVM flags</p>
-<p>Also, use this option for ccache</p>
+<h2 id="ccache-ninja-and-lld"><a aria-hidden="true" tabindex="-1" href="#ccache-ninja-and-lld"><span class="icon icon-link"></span></a>ccache, ninja and LLD</h2>
+<p>Haha, you thought we were done huh. Even on top of all this, we can use extra tools to squeeze out
+extra time in our day-to-day work.</p>
+<h3 id="ccache"><a aria-hidden="true" tabindex="-1" href="#ccache"><span class="icon icon-link"></span></a>ccache</h3>
+<p>For increment builds, ccache "speeds up recompilation by caching previous compilations and detecting when the same compilation is being done again."</p>
+<p>In my use case, when compiling the codebase from different commits (because some branches are opened a few weeks ago and some are opened recently after I have <code>git pull</code> from upstream),
+compiling the same <code>build</code> folder would often take a lot of time. This is where ccache comes in.</p>
+<p>You can use the LLVM's flag for ccache together with other CMake flags <code>-DLLVM_CCACHE_BUILD=true</code></p>
+<h3 id="ninja"><a aria-hidden="true" tabindex="-1" href="#ninja"><span class="icon icon-link"></span></a>Ninja</h3>
+<p>Ninja's a build system thats focused on speed and is designed <code>run builds as fast as possible.</code></p>
+<p>From Ninja's wikipedia:</p>
+<blockquote>
+<p>In essence, Ninja is meant to replace Make, which is slow when performing incremental (or no-op) builds. This can considerably slow down developers working on large projects, such as Google Chrome which compiles 40,000 input files into a single executable. In fact, Google Chrome is a main user and motivation for Ninja. It's also used to build Android (via Makefile translation by Kati), and is used by most developers working on LLVM.</p>
+</blockquote>
+<p>You can opt to use Ninja when configuring CMake with <code>-GNinja</code> and build your code with another seperate command
+<code>ninja -C &#x3C;your_build_folder> &#x3C;your_build_target></code></p>
+<p>For example, to build the codebase and test everything:</p>
+<pre class="shiki catppuccin-frappe" style="background-color:#303446;color:#c6d0f5" tabindex="0"><code><span class="line"><span style="color:#8CAAEE;font-style:italic">ninja</span><span style="color:#A6D189"> -C</span><span style="color:#A6D189"> build</span><span style="color:#A6D189"> check-all</span></span></code></pre>
+<h3 id="lld"><a aria-hidden="true" tabindex="-1" href="#lld"><span class="icon icon-link"></span></a>LLD</h3>
+<p>From the LLVM's LLD page:</p>
+<blockquote>
+<p>LLD is a linker from the LLVM project that is a drop-in replacement for system linkers and runs much faster than them.</p>
+</blockquote>
+<p>In fact, it is so fast that I think it's a necessity to enable this by default when developing LLVM, especially when your
+lld executable comes from the LLVM release page that has PGO and BOLT enabled, providing even faster linking time.</p>
+<p>As of Monday, August 11, 2025, here is the comparison from the LLVM LLD page, with the percentage difference when compared to the GNU's ld linker:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Program</th><th>Output size</th><th>GNU ld (time)</th><th>GNU gold (time)</th><th>lld (time)</th></tr></thead><tbody><tr><td>ffmpeg dbg</td><td>92 MiB</td><td>1.72s, (4.91x)</td><td>1.01s, (2.89x)</td><td>0.35s  (1.00x)</td></tr><tr><td>mysqld dbg</td><td>154 MiB</td><td>8.50s, (12.50x)</td><td>2.68s, (3.94x)</td><td>0.68s  (1.00x)</td></tr><tr><td>clang dbg</td><td>1.67 GiB</td><td>104.03s, (19.70x)</td><td>23.49s, (4.45x)</td><td>5.28s  (1.00x)</td></tr><tr><td>chromium dbg</td><td>1.14 GiB</td><td>209.05s, (12.52x)</td><td>60.82s, (3.64x)</td><td>16.70s  (1.00x)</td></tr></tbody></table>
+<p>You can enable the LLD linker with <code>-DLLVM_USE_LINKER=lld</code></p>
 <h1 id="grepping"><a aria-hidden="true" tabindex="-1" href="#grepping"><span class="icon icon-link"></span></a>Grepping</h1>
-<p>Something something grepping is very helpful</p>
+<p>Well, now all that's out of the way, let's talk about grepping.</p>
+<p>Grepping</p>
 <p>With such importance, often in the following sections, I will try to provide how grepping integrates with each area.</p>
 <h1 id="git-git-blame-and-pull-requests"><a aria-hidden="true" tabindex="-1" href="#git-git-blame-and-pull-requests"><span class="icon icon-link"></span></a>Git, Git blame and pull requests</h1>
 <p>For a beginner in a codebase (even a seasoned programmer),
@@ -188,6 +301,6 @@ entry:
 for example, if you're creating a new instruction from another instruction, for example: llvm.reduce.and i32 to i1
 i</p>
 <h1 id="asking-people"><a aria-hidden="true" tabindex="-1" href="#asking-people"><span class="icon icon-link"></span></a>Asking people</h1>
-<h1 id="acknowledgments"><a aria-hidden="true" tabindex="-1" href="#acknowledgments"><span class="icon icon-link"></span></a>Acknowledgments</h1>6:["$","div",null,{"className":"py-12 flex flex-col items-center  justify-items-start mx-auto ","children":[["$","$L2",null,{"href":"/blog","className":"flex justify-center text-4xl","children":["$","h2",null,{"children":"My blog"}]}],["$","article",null,{"className":"p-8 prose pt-0.5 max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto","children":[["$","div",null,{"className":"flex justify-center text-2xl font-bold ","children":["$","h2",null,{"children":"[ONGOING] Jasmine and the hitchhiker's guide to LLVM debugging tools"}]}],["$","div",null,{"className":"flex justify-start text-xl font-bold underline","children":["$","h4",null,{"children":"8888-08-08"}]}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$11"}}]]}]]}]
-a:{"metadata":[["$","title","0",{"children":"[ONGOING] Jasmine and the hitchhiker's guide to LLVM debugging tools"}],["$","meta","1",{"name":"description","content":"Jasmine introduces to readers debugging techniques that would benefit their LLVM development."}],["$","link","2",{"rel":"icon","href":"/_next/static/media/pfp5.0daa0f7d.jpeg"}],["$","$L12","3",{}]],"error":null,"digest":"$undefined"}
+<h1 id="acknowledgments"><a aria-hidden="true" tabindex="-1" href="#acknowledgments"><span class="icon icon-link"></span></a>Acknowledgments</h1>6:["$","div",null,{"className":"py-12 flex flex-col items-center  justify-items-start mx-auto ","children":[["$","$L2",null,{"href":"/blog","className":"flex justify-center text-4xl","children":["$","h2",null,{"children":"My blog"}]}],["$","article",null,{"className":"p-8 prose pt-0.5 max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto","children":[["$","div",null,{"className":"flex justify-center text-2xl font-bold ","children":["$","h2",null,{"children":"[ONGOING] The hitchhiker's guide to LLVM debugging tools"}]}],["$","div",null,{"className":"flex justify-start text-xl font-bold underline","children":["$","h4",null,{"children":"8888-08-08"}]}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$11"}}]]}]]}]
+a:{"metadata":[["$","title","0",{"children":"[ONGOING] The hitchhiker's guide to LLVM debugging tools"}],["$","meta","1",{"name":"description","content":"Jasmine introduces to readers debugging techniques that would benefit their LLVM development."}],["$","link","2",{"rel":"icon","href":"/_next/static/media/pfp5.0daa0f7d.jpeg"}],["$","$L12","3",{}]],"error":null,"digest":"$undefined"}
 f:"$a:metadata"
