@@ -1,5 +1,5 @@
 ---
-title: "[ONGOING] Jasmine and the hitchhiker's guide to LLVM debugging tools"
+title: "[ONGOING] The hitchhiker's guide to LLVM debugging tools"
 date: 8888-08-08
 recap: "Jasmine introduces to readers debugging techniques that would benefit their LLVM development."
 ---
@@ -43,41 +43,140 @@ In writing the blog, I utilize these resources, including, but not excluding:
 - [LLVM lang ref](https://llvm.org/docs/LangRef.html)
 
 
-# Compiling and execution time
+# Compiling and testing time
 
-For a programmer working on a big codebase
+**Note**: Some parts of the section takes inspiration from Nikita Popov's [How to contribute to LLVM](https://developers.redhat.com/articles/2022/12/20/how-contribute-llvm)
+and LLVM's [Building LLVM with CMake](https://llvm.org/docs/CMake.html). I highly recommend you take a few minutes to read through them!
 
-## (Release + Assertion) and/or (Debug)
+Compile time on a big codebase has always been a pain point for programmers. A few seconds here, a few minutes there, and you have wasted
+at least half an hour extra waiting to compile the LLVM repository.
 
-Have two build profile
+Once you hit compile, if you have to wait a while, your mind wanders away to other things and you start to drift away, thinking about other topics.
+Point is, the context switching causes you to lose out on your focusing power.
 
-TODO: get the LLVM flags
+The following subsections then describes how to save time on your compiling and executing. This will reduce your development cycle
+and TODO
+
+![compile_meme](/blogs/hitchhiker_guide_to_llvm_debugging/compile_meme.png)
+## (Release + Assertion) + (Debug)
+
+A common rule of thumb to have is you build a codebase in Debug mode when you're in development, and then you build it in Release mode
+when shipping it out to users. But this is not always the case...
+
+If you're not stepping through the code with the LLDB debugger, chances are the trade-off of being in Debug mode; receiving
+accurate stack trace locations and source layout position is not worth it.
+Debug mode takes longer to compile and link, test cases with Debug mode are often compiled and ran slower.
+
+Release mode with assertion turned on, on the other hands, compiles and run tests blazingly fast as well as gives good diagnostics.
+
+Therefore, it's very beneficial to have two build modes when contributing to LLVM:
+
+You can set the modes for your build by appending these two options when configuring CMake
+```
+Debug            : ... -DCMAKE_BUILD_TYPE=Debug ...
+Release + Assert : ... -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ASSERTIONS=ON ...
+```
+
 ## Build your target/subproject only
 
-For example, if you're doing majority webassembly or x86, don't build RISCV on top of it. For example, some tablegen changes in RISCV
-takes a dozen of seconds to compile. Over the course of a week, if you're working on tablegen over the course of a week, it'll add up
-to maybe half an hour or more.
+You can also save on your development time by only building the subproject that are of interests to you.
 
-TODO: get the LLVM flags
+For example, if you're doing majority webassembly or x86, don't build RISCV on top of it. Some tablegen changes in common between RISCV and WebAssembly
+will inevitably trigger compilation on the RISCV target, taking a dozen of seconds to compile. Enabling extra targets will also
+enable extra tests for that target.
 
-## LLVM-release compilers
+The flag to include/exclude subprojects is `LLVM_TARGETS_TO_BUILD`
 
-From David Spickett's comment on Discord:
-> At least for Linux x86 and AArch64, LLVM's release archives on GitHub are already BOLT-ed (you can check with objdump -h clang | grep bolt). So if there are potential issues, we're all at risk 🙂
+From LLVM:
+> Semicolon-separated list of targets to build, or all for building all targets. Case-sensitive. Defaults to all. Example: -DLLVM_TARGETS_TO_BUILD="X86;PowerPC".
+
+> The full list, as of March 2023, is: AArch64, AMDGPU, ARM, AVR, BPF, Hexagon, Lanai, LoongArch, Mips, MSP430, NVPTX, PowerPC, RISCV, Sparc, SystemZ, VE, WebAssembly, X86, XCore.
+
+## Use LLVM-release compilers
+
+If you're using a package manager's `clang` or a `clang` that comes with your operating system, chances are you're losing out
+on development time.
+
+With [PGO](https://en.wikipedia.org/wiki/Profile-guided_optimization), [BOLT](https://research.facebook.com/publications/bolt-a-practical-binary-optimizer-for-data-centers-and-beyond/)
+and various tips and tricks turned on,
+LLVM maintainer and volunteers have been hard at work optimizing the LLVM official release version of clang
+to be highly optimized for the LLVM compiler development experiment. How good is it? You can see for yourself with the claim from
+the BOLT paper
+
+> For datacenter applications, BOLT achieves up to 7.0% performance speedups on top of profile-guided function reordering and LTO.
+For the GCC and Clang compilers, our evaluation shows that BOLT speeds up their binaries by up to 20.4% on top of FDO and LTO,
+and up to 52.1% if the binaries are built without FDO and LTO.
+
+Unfortunately, for MacOS users, BOLT only comes with Linux x86 and AArch64. However, I'd still recommend downloading your
+OS's version of the compiler from LLVM's [release page](https://github.com/llvm/llvm-project/releases) as anecdotally, I can
+still feel some extra perform when compiling LLVM.
+
+After you've downloaded the LLVM release compiler to a folder, you can use it in your CMake configuration command as follow
+```
+-DCMAKE_C_COMPILER=$HOME/Developer/igalia/LLVM-20.1.7-macOS-ARM64/bin/clang \
+-DCMAKE_CXX_COMPILER=$HOME/Developer/igalia/LLVM-20.1.7-macOS-ARM64/bin/clang++
+```
+
+provided that you download and extract it to a folder of `$HOME/Developer/igalia/LLVM-20.1.7-macOS-ARM64`
+
+Btw, I learned about this through my conversation with David Spicket:
+> bdbt: i'm new grad and joining a company as a compiler engineer, would compiling a new, seperate compiler that's BOLT-activated specifically for compiling compiler makes sense?
+It will give me a sizable reduction in compile time and allow for faster iteration but i'm not sure if there will be errors when using the special version? any insights would be appreciated
+
+> David Spicket: At least for Linux x86 and AArch64, LLVM's release archives on GitHub are already BOLT-ed (you can check with objdump -h clang | grep bolt). So if there are potential issues, we're all at risk 🙂
 If you want to try BOLT-ing something yourself, https://github.com/llvm/llvm-project/blob/main/bolt/docs/OptimizingClang.md seems like a good place to start (I've not done this myself).
 
-TODO: Show users the link for/on github release
-## ccache
+## ccache, ninja and LLD
 
-You can use the LLVM's flag for ccache
+Haha, you thought we were done huh. Even on top of all this, we can use extra tools to squeeze out
+extra time in our day-to-day work.
 
-TODO: get the LLVM flags
+### ccache
 
-Also, use this option for ccache
+For increment builds, ccache "speeds up recompilation by caching previous compilations and detecting when the same compilation is being done again."
 
+In my use case, when compiling the codebase from different commits (because some branches are opened a few weeks ago and some are opened recently after I have `git pull` from upstream),
+compiling the same `build` folder would often take a lot of time. This is where ccache comes in.
+
+You can use the LLVM's flag for ccache together with other CMake flags `-DLLVM_CCACHE_BUILD=true`
+### Ninja
+
+Ninja's a build system thats focused on speed and is designed `run builds as fast as possible.`
+
+From Ninja's wikipedia:
+>In essence, Ninja is meant to replace Make, which is slow when performing incremental (or no-op) builds. This can considerably slow down developers working on large projects, such as Google Chrome which compiles 40,000 input files into a single executable. In fact, Google Chrome is a main user and motivation for Ninja. It's also used to build Android (via Makefile translation by Kati), and is used by most developers working on LLVM.
+
+You can opt to use Ninja when configuring CMake with `-GNinja` and build your code with another seperate command
+`ninja -C <your_build_folder> <your_build_target>`
+
+For example, to build the codebase and test everything:
+```bash
+ninja -C build check-all
+```
+
+### LLD
+
+From the LLVM's LLD page:
+> LLD is a linker from the LLVM project that is a drop-in replacement for system linkers and runs much faster than them.
+
+In fact, it is so fast that I think it's a necessity to enable this by default when developing LLVM, especially when your
+lld executable comes from the LLVM release page that has PGO and BOLT enabled, providing even faster linking time.
+
+As of Monday, August 11, 2025, here is the comparison from the LLVM LLD page, with the percentage difference when compared to the GNU's ld linker:
+
+| Program       | Output size | GNU ld (time) | GNU gold (time) | lld (time) |
+|---------------|-------------|-------------------------|----------------------------|------------|
+| ffmpeg dbg    | 92 MiB      | 1.72s, (4.91x)            | 1.01s, (2.89x)               | 0.35s  (1.00x)    |
+| mysqld dbg    | 154 MiB     | 8.50s, (12.50x)           | 2.68s, (3.94x)               | 0.68s  (1.00x)    |
+| clang dbg     | 1.67 GiB    | 104.03s, (19.70x)         | 23.49s, (4.45x)               | 5.28s  (1.00x)    |
+| chromium dbg  | 1.14 GiB    | 209.05s, (12.52x)         | 60.82s, (3.64x)               | 16.70s  (1.00x)   |
+
+You can enable the LLD linker with `-DLLVM_USE_LINKER=lld`
 # Grepping
 
-Something something grepping is very helpful
+Well, now all that's out of the way, let's talk about grepping.
+
+Grepping
 
 With such importance, often in the following sections, I will try to provide how grepping integrates with each area.
 # Git, Git blame and pull requests
