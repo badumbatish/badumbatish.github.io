@@ -8,7 +8,7 @@ recap: "Jasmine introduces to readers debugging techniques that would benefit th
 
 Hello everyone, how's everybody doing? I'm still chugging away at solving LLVM issues at Igalia :) Fall and winter's
 coming soon, and by the time this blog's up, I will be turning a year older. Welp, another year a few
-more blogs am i right hahahahhaa.
+more blogs am I right hahahahhaa.
 
 A few weekends ago, I went up to Thousand Oaks and Malibu beach to visit my friend from Berkeley and then took an Amtrak with a date to
 San Diego. Isn't life just beautiful like that? I couldn't have asked for more.
@@ -24,9 +24,7 @@ As tradition, here's a [song](https://www.youtube.com/watch?v=kvqfHcgIagI) for i
 
 # Introduction
 
-Debugging has always been a quintessential tool in a software engineer's toolboxes.
-
-As a piece of software or framework gets more complicated, the flow of a program invariantly gets more complex, which requires software
+Debugging has always been a quintessential tool in a software engineer's toolboxes. As a piece of software or framework gets more complicated, the flow of a program invariantly gets more complex, which requires software
 engineers to careful and methodically investigate an issue/bug instead of blindly following one's instinct.
 
 In this sense, although the article talks about debugging, the article inherently provides a sample of the author's problem-solving toolbox.
@@ -41,37 +39,34 @@ In writing the blog, I utilize these resources, including, but not excluding:
 - [Clear step by step to oneshot debugging any LLVM issue with ChatGPT](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 - [Git manual](https://git-scm.com/doc)
 - [LLVM lang ref](https://llvm.org/docs/LangRef.html)
-
+- [How to contribute to LLVM](https://developers.redhat.com/articles/2022/12/20/how-contribute-llvm)
+- [Building LLVM with CMake](https://llvm.org/docs/CMake.html)
 
 # Compiling and testing time
 
-**Note**: Some parts of the section takes inspiration from Nikita Popov's [How to contribute to LLVM](https://developers.redhat.com/articles/2022/12/20/how-contribute-llvm)
-and LLVM's [Building LLVM with CMake](https://llvm.org/docs/CMake.html). I highly recommend you take a few minutes to read through them!
+![compile_meme](/blogs/hitchhiker_guide_to_llvm_debugging/compile_meme.png)
 
 Compile time on a big codebase has always been a pain point for programmers. A few seconds here, a few minutes there, and you have wasted
-at least half an hour extra waiting to compile the LLVM repository.
-
-Once you hit compile, if you have to wait a while, your mind wanders away to other things and you start to drift away, thinking about other topics.
+at least half an hour extra waiting to compile the LLVM repository. Once you hit compile, if you have to wait a while, your mind wanders away to other things, and you start to drift away, thinking about other topics.
 Point is, the context switching causes you to lose out on your focusing power.
 
-The following subsections then describes how to save time on your compiling and executing. This will reduce your development cycle
-and TODO
+The following subsections then describes how to save time on your compiling and executing. This will reduce your development cycle time
+and hopefully increase your productivity.
 
-![compile_meme](/blogs/hitchhiker_guide_to_llvm_debugging/compile_meme.png)
 ## (Release + Assertion) + (Debug)
 
-A common rule of thumb to have is you build a codebase in Debug mode when you're in development, and then you build it in Release mode
-when shipping it out to users. But this is not always the case...
+A common rule of thumb to have is that a codebase should be built in Debug mode when you're in development, and then in Release mode
+when you're shipping to users. But this is not always the case...
 
-If you're not stepping through the code with the LLDB debugger, chances are the trade-off of being in Debug mode; receiving
-accurate stack trace locations and source layout position is not worth it.
+If you're not stepping through the code with the LLDB debugger, chances are the trade-off of being in Debug mode such as receiving
+accurate stack trace locations and source layout position is not worth it. Without going much into it right now, the LLVM codebase
+provides much diagnostics help so that a majority of the time, stepping through the debugger is not necessary.
+
 Debug mode takes longer to compile and link, test cases with Debug mode are often compiled and ran slower.
+On the other hands, Release mode with assertion turned on compiles and run tests much faster without sacrificing much diagnostics.
 
-Release mode with assertion turned on, on the other hands, compiles and run tests blazingly fast as well as gives good diagnostics.
+Therefore, it's very beneficial to have two build modes when contributing to LLVM. You can set the modes for your build by appending these two options when configuring CMake
 
-Therefore, it's very beneficial to have two build modes when contributing to LLVM:
-
-You can set the modes for your build by appending these two options when configuring CMake
 ```
 Debug            : -DCMAKE_BUILD_TYPE=Debug
 Release + Assert : -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ASSERTIONS=ON
@@ -81,13 +76,13 @@ Release + Assert : -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ASSERTIONS=ON
 
 You can also save on your development time by only building the subproject that are of interests to you.
 
-For example, if you're doing majority webassembly or x86, don't build RISCV on top of it. Some tablegen changes in common between RISCV and WebAssembly
-will inevitably trigger compilation on the RISCV target, taking a dozen of seconds to compile. Enabling extra targets will also
-enable extra tests for that target.
+For example, if you're doing the majority of the work on the Webassembly or X86 target,
+you often don't have to enable the RISCV target and build RISCV source files on top of it.
+Enabling extra targets will also enable extra tests for that target.
 
 The flag to include/exclude subprojects is `LLVM_TARGETS_TO_BUILD`
 
-From LLVM:
+Here's an excerpt from LLVM:
 > Semicolon-separated list of targets to build, or all for building all targets. Case-sensitive. Defaults to all. Example: -DLLVM_TARGETS_TO_BUILD="X86;PowerPC".
 
 > The full list, as of March 2023, is: AArch64, AMDGPU, ARM, AVR, BPF, Hexagon, Lanai, LoongArch, Mips, MSP430, NVPTX, PowerPC, RISCV, Sparc, SystemZ, VE, WebAssembly, X86, XCore.
@@ -107,11 +102,11 @@ the BOLT paper
 For the GCC and Clang compilers, our evaluation shows that BOLT speeds up their binaries by up to 20.4% on top of FDO and LTO,
 and up to 52.1% if the binaries are built without FDO and LTO.
 
-Unfortunately, for MacOS users, BOLT only comes with Linux x86 and AArch64. However, I'd still recommend downloading your
+Unfortunately, for macOS users, BOLT only comes with Linux x86 and AArch64. However, I'd still recommend downloading your
 OS's version of the compiler from LLVM's [release page](https://github.com/llvm/llvm-project/releases) as anecdotally, I can
 still feel some extra perform when compiling LLVM.
 
-After you've downloaded the LLVM release compiler to a folder, you can use it in your CMake configuration command as follow
+After you've downloaded the LLVM release compiler to a folder, you can use it in your CMake configuration command as follows:
 ```
 -DCMAKE_C_COMPILER=$HOME/Developer/igalia/LLVM-20.1.7-macOS-ARM64/bin/clang \
 -DCMAKE_CXX_COMPILER=$HOME/Developer/igalia/LLVM-20.1.7-macOS-ARM64/bin/clang++
@@ -120,8 +115,8 @@ After you've downloaded the LLVM release compiler to a folder, you can use it in
 provided that you download and extract it to a folder of `$HOME/Developer/igalia/LLVM-20.1.7-macOS-ARM64`
 
 Btw, I learned about this through my conversation with David Spicket:
-> bdbt: i'm new grad and joining a company as a compiler engineer, would compiling a new, seperate compiler that's BOLT-activated specifically for compiling compiler makes sense?
-It will give me a sizable reduction in compile time and allow for faster iteration but i'm not sure if there will be errors when using the special version? any insights would be appreciated
+> bdbt: I'm new grad and joining a company as a compiler engineer, would compiling a new, separate compiler that's BOLT-activated specifically for compiling compiler makes sense?
+It will give me a sizable reduction in compile time and allow for faster iteration, but I'm not sure if there will be errors when using the special version? any insights would be appreciated
 
 > David Spicket: At least for Linux x86 and AArch64, LLVM's release archives on GitHub are already BOLT-ed (you can check with objdump -h clang | grep bolt). So if there are potential issues, we're all at risk 🙂
 If you want to try BOLT-ing something yourself, https://github.com/llvm/llvm-project/blob/main/bolt/docs/OptimizingClang.md seems like a good place to start (I've not done this myself).
@@ -164,12 +159,12 @@ I want to thank my colleague Alex Bradbury for introducing me to these options :
 
 ### Ninja
 
-Ninja's a build system thats focused on speed and is designed `run builds as fast as possible.`
+Ninja's a build system that's focused on speed and is designed `run builds as fast as possible.`
 
 From Ninja's wikipedia:
 >In essence, Ninja is meant to replace Make, which is slow when performing incremental (or no-op) builds. This can considerably slow down developers working on large projects, such as Google Chrome which compiles 40,000 input files into a single executable. In fact, Google Chrome is a main user and motivation for Ninja. It's also used to build Android (via Makefile translation by Kati), and is used by most developers working on LLVM.
 
-You can opt to use Ninja when configuring CMake with `-GNinja` and build your code with another seperate command
+You can opt to use Ninja when configuring CMake with `-GNinja` and build your code with another separate command
 `ninja -C <your_build_folder> <your_build_target>`
 
 For example, to build the codebase and test everything:
@@ -187,12 +182,12 @@ lld executable comes from the LLVM release page that has PGO and BOLT enabled, p
 
 As of Monday, August 11, 2025, here is the comparison from the LLVM LLD page, with the percentage difference between ld, gold and lld.
 
-| Program       | Output size | GNU ld (time) | GNU gold w/ threads (time) | lld w/ threads (time) |
-|---------------|-------------|-------------------------|----------------------------|------------|
-| ffmpeg dbg    | 92 MiB      | 1.72s, (4.91x)            | 1.01s, (2.89x)               | 0.35s  (1.00x)    |
-| mysqld dbg    | 154 MiB     | 8.50s, (12.50x)           | 2.68s, (3.94x)               | 0.68s  (1.00x)    |
-| clang dbg     | 1.67 GiB    | 104.03s, (19.70x)         | 23.49s, (4.45x)               | 5.28s  (1.00x)    |
-| chromium dbg  | 1.14 GiB    | 209.05s, (12.52x)         | 60.82s, (3.64x)               | 16.70s  (1.00x)   |
+| Program      | Output size | GNU ld (time)     | GNU gold w/ threads (time) | lld w/ threads (time) |
+|--------------|-------------|-------------------|----------------------------|-----------------------|
+| ffmpeg dbg   | 92 MiB      | 1.72s, (4.91x)    | 1.01s, (2.89x)             | 0.35s  (1.00x)        |
+| mysqld dbg   | 154 MiB     | 8.50s, (12.50x)   | 2.68s, (3.94x)             | 0.68s  (1.00x)        |
+| clang dbg    | 1.67 GiB    | 104.03s, (19.70x) | 23.49s, (4.45x)            | 5.28s  (1.00x)        |
+| chromium dbg | 1.14 GiB    | 209.05s, (12.52x) | 60.82s, (3.64x)            | 16.70s  (1.00x)       |
 
 You can enable the LLD linker with `-DLLVM_USE_LINKER=lld`
 # Grepping
@@ -230,7 +225,7 @@ In other words, exploring code is the first step, after that, commit messages pr
 and the [reviews.llvm.org](reviews.llvm.org) provides opinions and directives.
 
 ## grepping it
-With trying to explore what's happening for a subproject/subsection in LLVM, you can also utilize grepping in git instead of going through the github online gui.
+With trying to explore what's happening for a subproject/subsection in LLVM, you can also utilize grepping in git instead of going through the GitHub online gui.
 
 Belows shows a picture of me applying git grep to the topic of WebAssembly where there's a mention of either "fold" or "DAG" via this command:
 ```
@@ -241,11 +236,11 @@ git log --grep='WebAssembly' --grep='fold\|DAG' --all-match
 
 # godbolt, -debug-only, -print-after-all, -print-changed and all that
 
-If you haven't heard of godbolt, think of it as a way for compiler developer to say no to "but but but it works on my machineeee :('
+If you haven't heard of godbolt, think of it as a way for compiler developer to say no to "but but but it works on my machineeee :("
 
 Formally, godbolt is `an interactive online compiler which shows the assembly output of compiled C++, Rust, Go (and many more) code.`
-Buttt, such a simple description couldn't possibly do the site its justice; this section then highlights helpful toolings
-
+Buttt, such a simple description couldn't possibly do the site its justice;
+besides linking this [entertaining video](https://www.youtube.com/watch?v=bSkpMdDe4g4), this section also highlights some of the helpful tooling of godbolt.
 While the goal in the section is to introduce to newcomers of LLVM to the godbolt tool, it's also helpful to guide
 beginners to how to simulate such behavior locally on their machines via the command line.
 
@@ -254,14 +249,14 @@ Welp, let's get to it.
 ## Mapping
 
 First feature that I have found very useful from godbolt is the ability to point out which line of high level code is
-responsible for which line of low level code (i.e llvm ir or assembly code). This helps developer cuts down on trying to
+responsible for which line of low level code (i.e. llvm ir or assembly code). This helps developer cuts down on trying to
 identify which block of assembly code is responsible for
 
 This is enabled by default and might be overlooked; thus, let's look at example.
 
 In ClangIR's issue [1807](https://github.com/llvm/clangir/issues/1807), I needed to code gen the builtin `setjmp` to Clang IR.
 The only problem is, I didn't know much about `setjmp` and I didn't know how clang does it originally. Godbolt then helped me do this
-by isolating how the `setjmp` builtin is codegen'ed on clang originally.
+by isolating how the `setjmp` builtin is codegen'd on clang originally.
 
 With the feature from godbolt, I quickly identified how to lower `setjmp` in ClangIR.
 
@@ -273,7 +268,7 @@ The above picture shows godbolt each section in C code and in LLVM IR being colo
 - The yellow color maps line 2 in C to line 2-8 in LLVM IR.
 - The purple color maps line 3 in C to line 9 in LLVM IR.
 
-To the best of my knowledge, I'm not sure if there's a way to do this via the CLI command line tool.
+To the best of my knowledge, I'm not sure if there's a way to do this via the CLI command line tool in a few easy steps?!
 
 ## Inspecting IR changes and cutting out the noise
 
@@ -289,7 +284,7 @@ LLVM IR.
 If a pass changes your intermediate representation, it'll light up green on the left column and generate the diff so
 you can more easily realize where a change happens.
 
-Here, the pass `Loop Strength Reduction` is affecting the IR in the function `f`. Next to the colum diplays the LLVM IR of
+Here, the pass `Loop Strength Reduction` is affecting the IR in the function `f`. Next to the colum displays the LLVM IR of
 the current function. If the pass changes the IR, then the area is split into two columns to show the diff line by line,
 before and after applying the pass:
 
@@ -316,7 +311,7 @@ Here, the setup is done on the llvm-project main branch, hash of f9b9e9b7d522198
 My command is like before, through clang:
 
 ```bash
-./build/bin/clang --target=wasm32-unknown-unknown -S scratch/avgr_u.c -O2 \
+./build/bin/clang -S scratch/avgr_u.c -O2 \
         -mllvm -print-after-all -mllvm -debug-only=loop-reduce  &> test.txt
 ```
 The -mllvm flags being put before `-print-after-all` and `-debug-only=loop-reduce` is so that the two actual flags can be passed
@@ -343,15 +338,12 @@ Here, I have chosen to ask the `opt` pipeline to output the compiler's reasoning
 
 With the following C file and the following command line (remember to build the compiler with assertion if you
 want to try this yourself), the compiler generates the following relevant piece of information.
-```bash
-./build/bin/clang  -S scratch/avgr_u.c -o - -O2 -mllvm -print-after-all -mllvm -debug-only=loop-reduce &> test.txt
-```
 
-```C
+```c
 // avgr_u.c file
 void f(unsigned char *x, unsigned char *y, int n) {
-for (int i = 0; i < n; i++)
-x[i] = (x[i] + y[i] + 1) / 2;
+    for (int i = 0; i < n; i++)
+        x[i] = (x[i] + y[i] + 1) / 2;
 }
 ```
 
@@ -422,7 +414,7 @@ the address of the class instead of the actual content, which you're interested 
 `dump()` method when debugging:
 ```diff
 - p foo            // Don't do this
-+ p foo.dump()     // Do this
++ p foo.dump()     // Do this to see a class's content
 ```
 
 Besides the vanilla `dump()`, some classes also implement extra `dump()` methods. To explore more, you can try to perform the
@@ -474,7 +466,7 @@ breakpoint in LLVM, I would rather construct a new `if` as my breakpoints.
 I guess conditional breakpoints are more helpful for binaries that has already been distributed; nonetheless, I still want to introduce
 the option for newcomers.
 
-In neovim, personally, I set up a keymap for this so I don't have to type too much. Here's the lua code for the keymap if it peaks your
+In neovim, personally, I set up a keymap for this, so I don't have to type too much. Here's the lua code for the keymap if it peaks your
 interests.
 
 ```lua
@@ -489,21 +481,50 @@ end
 
 # tablegen
 
-For a short overview on tablegen, the [LLVM tablegen docs](https://llvm.org/docs/TableGen/) cannot be more succint:
+For a short overview on tablegen, the [LLVM tablegen docs](https://llvm.org/docs/TableGen/) cannot be more succinct:
 > TableGen’s purpose is to help a human develop and maintain records of domain-specific information.
 ... [reducing] the amount of duplication, the chance of error, and [making] it easier to structure domain specific information.
 
 .td (tablegen) files are ubiquitous in the LLVM world; if you have contributed to LLVM, chances are you've read a `.td` file.
-If something's wrong with a tablegen, a programmer needs to understand at least the debugging techniques for a tablegen file.
+If something's wrong with a tablegen, a programmer needs to understand at least what a  tablegen file will do.
 
-When a .td file is table-generated, it spits out an .inc (`include`) file in the build folder
+A small tip to note is that when a .td file is table-generated, it spits out an .inc (`include`) file in the build folder. You can then manually
+inspect this file to figure out a function's signature.
 
-Developer's love hate relationship with tablegen, for example, with Jeremy Kun's perspective on mlir's tablegen:
+Developers often have a love hate relationship with tablegen, for example, with Jeremy Kun's perspective on MLIR's tablegen:
 
 > It sounds nice, but I have a love hate relationship with tablegen. I personally find it to be unpleasant to use, primarily because it provides poor diagnostic information when you do things wrong. Today, though, I realize that my part of my frustration came from having the wrong initial mindset around tablegen. I thought, incorrectly, that tablegen was an abstraction layer. That is, I could write my tablegen files, build them, and only think about the parts of the generated code that I needed to implement.
 
 Personally, my experience with tablegen in the backend is akin to this:
 for certain issues/problems, if you don't use tablegen, then you'll end up writing more code and spend more time/effort maintaining said code.
+A problem with the tablegen language is that it is often up to each
+tablegen language consumer to interpret the language. I guess in a way, it feels more like a real, authentic language :)
+
+I actually don't have much resource to provide here besides linking a really helpful thread on Google Groups [here](https://groups.google.com/g/llvm-dev/c/aJCR1mBC0So/m/yZipPTzTCAAJ).
+
+I'll be clipping the important part out for interested readers.
+
+> Thomas Lively: Part of the problem is that ISel patterns are like their own DSL inside the TableGen DSL, so keywords like "ins", "outs", and "ops" aren't keywords at the TableGen level, but rather at the level of the ISel system implemented with TableGen. Copying existing patterns and reading the comments in Target.td and TargetSelectionDAG.td are the best ways I know of learning how this works. I haven't seen a separate guide, although it would be very cool if one existed.
+
+Matt D. Dziubinski also links some third-party resources in the Google group:
+
+- ["Lessons in TableGen" @ FOSDEM 2019 by Nicolai Hähnle](https://fosdem.org/2019/schedule/event/llvm_tablegen/)
+- [The Tablegen series by Nicolai Hähnle](http://nhaehnle.blogspot.com/2018/02/tablegen-1-what-has-tablegen-ever-done.html)
+- Some of the parts of TableGen used in SelectionDAG are in the backend
+docs: [instruction-set](https://llvm.org/docs/WritingAnLLVMBackend.html#instruction-set) & [instruction-selector](https://llvm.org/docs/WritingAnLLVMBackend.html#instruction-selector)
+- [LLVM backend development by example (RISC-V) @ LLVM Dev Meeting 2018  by Alex Bradbury](https://www.youtube.com/watch?v=AFaIP-dF-RA)
+- ["Building an LLVM Backend" @ LLVM Dev Meeting 2014 by Fraser Cormack and Pierre-André Saulais](https://www.youtube.com/watch?v=b53WqCbLEYg)
+- [llvm-leg: LEG Example Backend](https://github.com/frasercrmck/llvm-leg)
+
+## Syntax highlighting
+I'm not quite sure how applicable this is for the general audience (vscode & zed) but in vim/nvim, I did tablegen for
+quite a bit before adding on syntax highlighting for tablegen.
+
+LLVM actually supply syntax highlighting for both vim/nvim and emacs. You can find your corresponding folder in `llvm/utils`.
+For example
+- `llvm/utils/vim/`: For syntax highlighting in vim and neovim.
+- `llvm/utils/emacs/`: For syntax highlighting in emacs.
+- `llvm/utils/vscode/`: For syntax highlighting in vscode.
 
 ## Grepping tablegen
 At the time of writing this article, with version 14.1.1, ripgrep provides a way to filter out the file type so often times, you can use this to exclusively search for ripgrep.
@@ -578,19 +599,14 @@ The other way around also suffices. That is: you solve a bug, and then you want 
 size to ensure that PR reviewers don't have to sweat too much reading the test case and that other future changes in the
 codebase doesn't affect.
 
-At of Aug 18 2025, `llvm-reduce` resides in the `bin` directory of the build folder.
-
-
-Here I give an example of how to minimally use llvm-reduce.
+Here I give a minimal example on how to use llvm-reduce.
 
 llvm-reduce works on the programmer telling it what test case execution is `interesting.` And in a unix fashion, if something returns a non-zero code,
-it is considered `interesting.`
-
-With the same flow as git-bisect (minus the good and bad commit), by giving llvm-reduce a script that reproduces the error,
+it is considered `interesting.` With the same flow as git-bisect (minus the good and bad commit), by giving llvm-reduce a script that reproduces the error,
 llvm-reduce then reduces the code down to a minimal example.
 
 ```llvm
---- BEFORE llvm-reduce
+; BEFORE llvm-reduce
 define i64 @stest_f64i64(double %x) {
 entry:
   %conv = fptosi double %x to i128
@@ -602,7 +618,7 @@ entry:
   ret i64 %conv6
 }
 
---- AFTER llvm-reduce
+; AFTER llvm-reduce
 define <2 x i128> @stest_f64i64() {
 entry:
   %conv = fptosi <2 x double> splat (double 0x7FF8000000000000) to <2 x i128>
@@ -617,21 +633,36 @@ If you're interested in learning more about how to reduce LLVM crashes, nikic ha
 Often times, an issue might be too hard for somebody just because they haven't encountered the issue before, or they haven't
 read up the codebase or research the specific knowledge yet.
 
-Nothing wrong with that, first times are always hard. I think the important mindset is to adopt is that it's ok if
-## Asking people for help
+Nothing wrong with that, first times are always hard. I think the important mindset is to adopt is that it's ok to go back and
+try again, nothing needs to be perfect. Sometimes a technical article is just too hard, so I just give up and try again the next day or the next week hahhhahha.
 
-If even after you've read the article and you're still not sure how to solve an issue, there's no shame in asking other people
+In this section, I'll also share some resources I've consumed throughout my two months at Igalia.
+
+- [2024 LLVM Dev Mtg - A Beginners’ Guide to SelectionDAG](https://www.youtube.com/watch?v=nNQ6AF6i5FI)
+- [LLVM Language Ref](https://llvm.org/docs/LangRef.html)
+- [How to contribute LLVM](https://developers.redhat.com/articles/2022/12/20/how-contribute-llvm)
+- [Legalizations in LLVM Backend](https://myhsu.xyz/llvm-codegen-legalization/)
+- [Tablegen docs](https://llvm.org/docs/TableGen/)
+- [ClangIR](https://llvm.github.io/clangir/)
+- [RISCV Vector Extensions](https://llvm.org/docs/RISCV/RISCVVectorExtension.html)
+- [WebAssembly Specs](https://webassembly.github.io/spec/core/)
+
+# Asking people for help
+
+If even after you've read the article, and you're still not sure how to solve an issue, there's no shame in asking other people
 for direction and for help :)
 
 I think sometimes, seniors have trouble helping juniors out because neither of them have taken a jab at the problem yet.
-Seniors haven't because they're often busy solving problems at a greater scope and juniors haven't because they're not sure
-where and how to take a jab of it.
+Seniors haven't because they're often busy solving problems at a greater scope and juniors haven't because they're often not briefed on
+ where and how to take a jab of it. Hopefully with the tools presented in this article, I can help bridge the gap between the two parties; before going to
+seniors for help, isolating incidental files and providing crucial log files would prove very useful for both sides :)
 
-With the tools presented in this article, I hope to enable both sides bla bla bla bla
+Personally, I'm very thankful for both the open source community and my colleagues at Igalia for guiding me on my path of learning LLVM.
+It would be treacherous and nigh-impossible without them :)
 
-## Epilogue
+# Epilogue
 
-Welp, that's it for this blog :) In writing this blog, I should also [todoMy hope is this]. For newcomers,the article will
+Welp, that's it for this blog :) In writing this blog, I hope that the article will act as follows. For newcomers, the article will
 act as a guiding point to help them get started in their LLVM journey. For seniors, I hope that you can help me
 contribute to this blog by either sending me resources through discord or giving me feedbacks on which part to improve.
 
