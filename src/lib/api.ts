@@ -38,6 +38,7 @@ async function getParserPre() {
     let i = 0;
     // @ts-ignore
     // @ts-ignore
+    // @ts-ignore
     return unified()
         .use(remarkMdx)
         .use(remarkParse)
@@ -66,12 +67,12 @@ async function getParserPre() {
                 }),
             ]
         })
-        .use(rehypeStringify)
         .use(rehypeExternalLinks, {rel: ['nofollow'], target: '_blank'})
         .use(rehypeSlug)
         .use(rehypeAutolinkHeadings)
         .use(rehypePrismDiff)
-        .use(rehypeToc);
+        .use(rehypeToc)
+        .use(rehypeStringify)
 }
 
 function getParser() {
