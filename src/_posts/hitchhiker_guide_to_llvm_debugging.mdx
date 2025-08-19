@@ -1,7 +1,7 @@
 ---
 title: "[ONGOING] The hitchhiker's guide to LLVM debugging tools"
 date: 8888-08-08
-recap: "Jasmine introduces to readers debugging techniques that would benefit their LLVM development."
+recap: "Jasmine introduces to beginners debugging techniques that would benefit their LLVM development."
 ---
 
 # Prologue
@@ -20,7 +20,7 @@ For external reviewers and discussion of this blog and others, you can join the 
 
 For internal reviewers at Igalia, you can also dm me on Matrix, up to your preferences!
 
-As tradition, here's a [song](https://www.youtube.com/watch?v=kvqfHcgIagI) for interested readers :) I hope everyone enjoys :)
+As tradition, here's a [song](https://www.youtube.com/watch?v=cKBRHaPdjbc) for interested readers :) I hope everyone enjoys :)
 
 # Introduction
 
@@ -32,15 +32,6 @@ In this sense, although the article talks about debugging, the article inherentl
 I hope this helps junior LLVM developer or low level developer just starting out in their journey!
 
 Welp, let's dig in!
-# Resources
-
-In writing the blog, I utilize these resources, including, but not excluding:
-- [How to reduce LLVM crashes](https://www.npopov.com/2023/10/22/How-to-reduce-LLVM-crashes.html)
-- [Clear step by step to oneshot debugging any LLVM issue with ChatGPT](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
-- [Git manual](https://git-scm.com/doc)
-- [LLVM lang ref](https://llvm.org/docs/LangRef.html)
-- [How to contribute to LLVM](https://developers.redhat.com/articles/2022/12/20/how-contribute-llvm)
-- [Building LLVM with CMake](https://llvm.org/docs/CMake.html)
 
 # Compiling and testing time
 
@@ -234,7 +225,7 @@ git log --grep='WebAssembly' --grep='fold\|DAG' --all-match
 
 ![showing git grep](/blogs/hitchhiker_guide_to_llvm_debugging/git_grep_wasm_fold_dag.png)
 
-# godbolt, -debug-only, -print-after-all, -print-changed and all that
+# gpngodbolt, -debug-only, -print-after-all, -print-changed and all that
 
 If you haven't heard of godbolt, think of it as a way for compiler developer to say no to "but but but it works on my machineeee :("
 
@@ -646,7 +637,12 @@ In this section, I'll also share some resources I've consumed throughout my two 
 - [ClangIR](https://llvm.github.io/clangir/)
 - [RISCV Vector Extensions](https://llvm.org/docs/RISCV/RISCVVectorExtension.html)
 - [WebAssembly Specs](https://webassembly.github.io/spec/core/)
-
+- [How to reduce LLVM crashes](https://www.npopov.com/2023/10/22/How-to-reduce-LLVM-crashes.html)
+- [Clear step by step to oneshot debugging any LLVM issue with ChatGPT](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+- [Git manual](https://git-scm.com/doc)
+- [LLVM lang ref](https://llvm.org/docs/LangRef.html)
+- [How to contribute to LLVM](https://developers.redhat.com/articles/2022/12/20/how-contribute-llvm)
+- [Building LLVM with CMake](https://llvm.org/docs/CMake.html)
 # Asking people for help
 
 If even after you've read the article, and you're still not sure how to solve an issue, there's no shame in asking other people
@@ -657,12 +653,15 @@ Seniors haven't because they're often busy solving problems at a greater scope a
  where and how to take a jab of it. Hopefully with the tools presented in this article, I can help bridge the gap between the two parties; before going to
 seniors for help, isolating incidental files and providing crucial log files would prove very useful for both sides :)
 
-Personally, I'm very thankful for both the open source community and my colleagues at Igalia for guiding me on my path of learning LLVM.
+Personally, I'm very thankful for both the open source community and my colleagues at Igalia for guiding me on my path of learning LLVM and
+helping me out with issues and  pull requests.
 It would be treacherous and nigh-impossible without them :)
 
+
+![senior_junior_pr](/blogs/hitchhiker_guide_to_llvm_debugging/senior_junior.jpeg)
 # Epilogue
 
-Welp, that's it for this blog :) In writing this blog, I hope that the article will act as follows. For newcomers, the article will
+Welp, that's it for this blog :) In writing this blog, I hope that the article will be as follows. For newcomers, the article will
 act as a guiding point to help them get started in their LLVM journey. For seniors, I hope that you can help me
 contribute to this blog by either sending me resources through discord or giving me feedbacks on which part to improve.
 
