@@ -1,35 +1,32 @@
 // lib/api.ts
 import fs from 'fs'
 import matter from 'gray-matter'
-import { join } from 'path'
-import { unified } from 'unified'
+import {join} from 'path'
+import {unified} from 'unified'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
-import rehypeShiki from '@shikijs/rehype'
 import rehypeToc from '@jsdevtools/rehype-toc'
 import remarkMdx from "remark-mdx";
 import remarkMath from 'remark-math'
-import rehypeMermaid from 'rehype-mermaid'
+import rehypePrettyCode from 'rehype-pretty-code'
 
 // @ts-ignore
 import collapse from "remark-collapse";
-import {
-    transformerNotationHighlight,
-  transformerNotationDiff,
-  // ...
-} from '@shikijs/transformers'
-import rehypeHighlight from "rehype-highlight";
 import rehypePrismDiff from "rehype-prism-diff";
-import rust from 'highlight.js/lib/languages/rust'
-import {common} from "lowlight";
 import rehypeRaw from "rehype-raw";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeKatex from "rehype-katex";
-import remarkMermaid from 'remark-mermaidjs'
+import {transformerCopyButton} from "@rehype-pretty/transformers";
+import {
+    transformerNotationDiff,
+    transformerNotationHighlight,
+    transformerNotationWordHighlight
+} from "@shikijs/transformers";
+import {transformerColorizedBrackets} from "@shikijs/colorized-brackets";
 
 // memoize/cache the creation of the markdown parser, this sped up the
 // building of the blog from ~60s->~10s
@@ -39,7 +36,9 @@ async function getParserPre() {
     // @ts-ignore
     // @ts-ignore
     let i = 0;
-    let result =  unified()
+    // @ts-ignore
+    // @ts-ignore
+    return unified()
         .use(remarkMdx)
         .use(remarkParse)
         .use(collapse, {
@@ -51,31 +50,28 @@ async function getParserPre() {
             // Necessary for support HTML embeds (see next plugin)
             allowDangerousHtml: true,
         })
-        // @ts-ignore
-        .use(rehypeShiki, {
-            theme: 'catppuccin-frappe',
-            //theme :'poimandres',
-            inline: 'tailing-curly-colon', // or other options
-            transformers: [
-    transformerNotationDiff(),
-    transformerNotationHighlight(),
-
-    // ...
-  ],
-        })
         .use(rehypeRaw)
         .use(rehypeKatex)
-        .use(rehypeStringify)
-        .use(rehypeExternalLinks, { rel: ['nofollow'], target: '_blank'})
-        .use(rehypeSlug)
-        .use(rehypeHighlight, {
-            languages : {...common, rust},
+        // @ts-ignore
+        .use(rehypePrettyCode, {
+            defaultLang: "plaintext",
+            transformers: [
+                transformerNotationDiff(),
+                transformerNotationHighlight(),
+                transformerNotationWordHighlight(),
+                transformerColorizedBrackets(),
+                transformerCopyButton({
+                    visibility: 'always',
+                    feedbackDuration: 3_000,
+                }),
+            ]
         })
+        .use(rehypeStringify)
+        .use(rehypeExternalLinks, {rel: ['nofollow'], target: '_blank'})
+        .use(rehypeSlug)
         .use(rehypeAutolinkHeadings)
         .use(rehypePrismDiff)
-        .use(rehypeToc)
-
-    return result;
+        .use(rehypeToc);
 }
 
 function getParser() {

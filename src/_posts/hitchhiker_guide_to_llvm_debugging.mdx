@@ -154,7 +154,7 @@ Below, I'll provide the explanation for each configuration option.
 
 - `file_clone = true`: performs copy-on-write if possible, improving the caching performance.
 - `inode_cache = true`: instruct ccache to cache a file based on its device, inode and timestamps. This cuts down on time spent hashing
-files and therefore improves caching performance since some file in LLVM can contain tens of thousands of lines.
+files and therefore improves caching performance since some files in LLVM can contain tens of thousands of lines.
 - `max_size = 200G`: allocates 200 gigabyte of storage on your computer for ccache to use.
 - `base_dir = /`: allows caching of all directories (any directory's path that starts with /).
 - `absolute_paths_in_stderr`: instruct ccache to rewrite relative paths to absolute paths in a compiler's textual output in lieu of
@@ -221,17 +221,18 @@ to obtain more context for what I'm working with.
 
 The workflow is: `git blame` the file -> get the commit hash for the line I'm interested in -> input the commit hash to `git show`
 
-In investigating an issue through commits, it's also helpful to look up on the internet for the commit's pull requests, either through GitHub or through reviews.llvm.org.
+In investigating an issue through commits, it's also helpful to look up on the internet for the commit's pull requests,
+either through GitHub or through [reviews.llvm.org](reviews.llvm.org).
 For example, in this [pull request](https://reviews.llvm.org/D124685?id=431828#inline-1213666), the author and reviewers have added a TODO, but without reading the PRs,
 the TODO would seem very unclear and hazy, leaving code readers wanting more context.
 
 In other words, exploring code is the first step, after that, commit messages provides greater additional context on the problems being solved and finally, the pull request
-and the `reviews.llvm.org` provides opinions and directives.
+and the [reviews.llvm.org](reviews.llvm.org) provides opinions and directives.
 
 ## grepping it
-With trying to explore what's happening for a subproject/subsection in LLVM, you can also utilize grepping in git without going through the github online gui.
+With trying to explore what's happening for a subproject/subsection in LLVM, you can also utilize grepping in git instead of going through the github online gui.
 
-Belows shows a picture of me applying git grep to the topic of WebAssembly where theres a mention of either "fold" or "DAG" via this command:
+Belows shows a picture of me applying git grep to the topic of WebAssembly where there's a mention of either "fold" or "DAG" via this command:
 ```
 git log --grep='WebAssembly' --grep='fold\|DAG' --all-match
 ```
@@ -243,43 +244,193 @@ git log --grep='WebAssembly' --grep='fold\|DAG' --all-match
 If you haven't heard of godbolt, think of it as a way for compiler developer to say no to "but but but it works on my machineeee :('
 
 Formally, godbolt is `an interactive online compiler which shows the assembly output of compiled C++, Rust, Go (and many more) code.`
+Buttt, such a simple description couldn't possibly do the site its justice; this section then highlights helpful toolings
 
-Buttt, such a simple description couldn't possibly do the site its justice bla bla blah
+While the goal in the section is to introduce to newcomers of LLVM to the godbolt tool, it's also helpful to guide
+beginners to how to simulate such behavior locally on their machines via the command line.
 
-TODO: HEY JASMINE: Ok, the mindset here is while providing users how to use godbolt, I should also provide a way to do this via the command line.
-## Inspecting IR changes
+Welp, let's get to it.
 
-TODO: Explain this in a way that's akin to -print-changed
+## Mapping
+
+First feature that I have found very useful from godbolt is the ability to point out which line of high level code is
+responsible for which line of low level code (i.e llvm ir or assembly code). This helps developer cuts down on trying to
+identify which block of assembly code is responsible for
+
+This is enabled by default and might be overlooked; thus, let's look at example.
+
+In ClangIR's issue [1807](https://github.com/llvm/clangir/issues/1807), I needed to code gen the builtin `setjmp` to Clang IR.
+The only problem is, I didn't know much about `setjmp` and I didn't know how clang does it originally. Godbolt then helped me do this
+by isolating how the `setjmp` builtin is codegen'ed on clang originally.
+
+With the feature from godbolt, I quickly identified how to lower `setjmp` in ClangIR.
+
+![godbolt_show_opt](/blogs/hitchhiker_guide_to_llvm_debugging/godbolt_low_mapping.png)
+
+The above picture shows godbolt each section in C code and in LLVM IR being color-coded. More specifically:
+
+- The light turquoise color maps line 1 in C to line 1 in LLVM IR.
+- The yellow color maps line 2 in C to line 2-8 in LLVM IR.
+- The purple color maps line 3 in C to line 9 in LLVM IR.
+
+To the best of my knowledge, I'm not sure if there's a way to do this via the CLI command line tool.
+
+## Inspecting IR changes and cutting out the noise
+
+With godbolt, you can also see how each optimization passes through `opt` affects your current LLVM IR.
+
+In the following picture, you can see we can access the LLVM IR diff through the plus sign button.
 
 ![godbolt_show_opt](/blogs/hitchhiker_guide_to_llvm_debugging/godbolt_show_opt.png)
-## Cutting out the noise
 
--print-changed
+After clicking on the `Opt Pipeline` option, you can now scroll through and see which optimization passes changes your
+LLVM IR.
 
-## Deep diving into a specific passes
+If a pass changes your intermediate representation, it'll light up green on the left column and generate the diff so
+you can more easily realize where a change happens.
 
-After you've filtered out the specific pass that you think are affecting your
+Here, the pass `Loop Strength Reduction` is affecting the IR in the function `f`. Next to the colum diplays the LLVM IR of
+the current function. If the pass changes the IR, then the area is split into two columns to show the diff line by line,
+before and after applying the pass:
+
+![godbolt_show_opt](/blogs/hitchhiker_guide_to_llvm_debugging/godbolt_opt_diff.png)
+
+
+Inside the parenthesis, you can see the lower scored, dash connecting
+name called `loop-reduce`. This basically acts as an ID for the pass. You can then ripgrep the codebase using this information
+to guide you to a specific file that you can furthermore investigate.
+
+![godbolt_show_opt](/blogs/hitchhiker_guide_to_llvm_debugging/godbolt_pass_id.png).
+
+In the terminal, the aesthetics are not quite up to par. With assertion enabled, and with the option `-print-after-all`
+(if you want to print out every pass) or `-print-changed` (print only the passes that changes the IR), you can technically
+simulate the behavior of godbolt.
+
+## Deep diving into a specific passes (locally)
+
+After you've filtered out the specific pass that you think are affecting your code, you can also query it for more information with
+`-debug-only=<pass-id>`. This works for both the `opt` and `llc` binary.
+
+Here, the setup is done on the llvm-project main branch, hash of f9b9e9b7d52219842fb4386ee802762f83f2fabd.
+
+My command is like before, through clang:
+
+```bash
+./build/bin/clang --target=wasm32-unknown-unknown -S scratch/avgr_u.c -O2 \
+        -mllvm -print-after-all -mllvm -debug-only=loop-reduce  &> test.txt
+```
+The -mllvm flags being put before `-print-after-all` and `-debug-only=loop-reduce` is so that the two actual flags can be passed
+to either `opt` or `llc`. If you're ever curious about the input options to clang, opt or llc or the sort, instead of `--help`,
+you can also pass in `--help-hidden` for all available options.
+
+Here is the print-out for generic options if you ever need it :)
+```
+Generic Options:
+
+  -h                       - Alias for --help
+  --help                   - Display available options (--help-hidden for more)
+  --help-hidden            - Display all available options
+  --help-list              - Display list of available options (--help-list-hidden for more)
+  --help-list-hidden       - Display list of all available options
+  --print-all-options      - Print all option values after command line parsing
+  --print-options          - Print non-default options after command line parsing
+  --version                - Display the version of this program
+```
+
+Anyways, back to the issue at hand.
+
+Here, I have chosen to ask the `opt` pipeline to output the compiler's reasoning for the Loop Strength Reduction pass.
+
+With the following C file and the following command line (remember to build the compiler with assertion if you
+want to try this yourself), the compiler generates the following relevant piece of information.
+```bash
+./build/bin/clang  -S scratch/avgr_u.c -o - -O2 -mllvm -print-after-all -mllvm -debug-only=loop-reduce &> test.txt
+```
+
+```C
+// avgr_u.c file
+void f(unsigned char *x, unsigned char *y, int n) {
+for (int i = 0; i < n; i++)
+x[i] = (x[i] + y[i] + 1) / 2;
+}
+```
+
+
+```
+...
+New best at 7 instructions 4 regs, with addrec cost 2, plus 4 base adds, plus 6 setup cost.
+Regs:
+- {%x,+,2}<nuw><%for.body>
+- {0,+,2}<nuw><nsw><%for.body>
+- %y
+- (2 * (zext i30 (trunc i32 (%n /u 2) to i30) to i32))<nuw><nsw>
+
+New best at 8 instructions 4 regs, with addrec cost 1, plus 6 base adds, plus 6 setup cost.
+Regs:
+- {0,+,2}<nuw><nsw><%for.body>
+- %x
+- %y
+- (2 * (zext i30 (trunc i32 (%n /u 2) to i30) to i32))<nuw><nsw>
+
+
+The chosen solution requires 8 instructions 4 regs, with addrec cost 1, plus 6 base adds, plus 6 setup cost:
+  LSR Use: Kind=Address of i8 in addrspace(0), Offsets={0,0}, widest fixup type: ptr
+    reg(%x) + 1*reg({0,+,2}<nuw><nsw><%for.body>) + imm(1)
+  LSR Use: Kind=Address of i8 in addrspace(0), Offsets={0}, widest fixup type: ptr
+    reg(%y) + 1*reg({0,+,2}<nuw><nsw><%for.body>) + imm(1)
+  LSR Use: Kind=Special, Offsets={0}, all-fixups-outside-loop, widest fixup type: i32
+    reg({0,+,2}<nuw><nsw><%for.body>)
+  LSR Use: Kind=Address of i8 in addrspace(0), Offsets={0}, widest fixup type: ptr
+    reg(%y) + 1*reg({0,+,2}<nuw><nsw><%for.body>)
+  LSR Use: Kind=Address of i8 in addrspace(0), Offsets={0,0}, widest fixup type: ptr
+    reg(%x) + 1*reg({0,+,2}<nuw><nsw><%for.body>)
+  LSR Use: Kind=ICmpZero, Offsets={0}, widest fixup type: i32
+    reg((2 * (zext i30 (trunc i32 (%n /u 2) to i30) to i32))<nuw><nsw>) + -1*reg({0,+,2}<nuw><nsw><%for.body>)
+*** IR Dump After Loop Strength Reduction (loop-reduce) ***
+; Preheader:
+for.body.preheader.new:                           ; preds = %for.body.preheader
+  %unroll_iter = and i32 %n, 2147483646
+  br label %for.body
+...
+```
+
+
 
 
 # lldb and debuggers
 
 A quick google on "gdb versus lldb" would give a similar generic answer to how similar the two tools are and it's often up to personal
-preferences. This article won't try to persuade you to use either gdb or lldb, but perhaps it will introduce you more to the strong integration
-between lldb and the LLVM codebase :)
+preferences. I maintain the same view, but perhaps it is more beneficial to use `lldb` in the llvm codebase :)
 
-## Default
+## Getting started
 
-lldb has auto repeat on when you press sth then you press return
+If you're new to LLDB specifically and LLVM in general, the [lldb](https://lldb.llvm.org) website gives pretty good direction.
+
+It gives two options for newcomers: a [tutorial](https://lldb.llvm.org/use/tutorial.html) and a [cheatsheet](https://lldb.llvm.org/use/map.html)
+of some sort to map GDB commands to LLDB commands.
+
+Something interesting that I found out recently is in lldb, when you press `Enter` on the keyboard, you repeat the last command
+executed. So if you're used to stepping through the code with `n + Enter` line by line, you can just press `Enter` after performing
+`n + Enter` for the first time.
 
 ## dump.*
 
-The `dump()` helper function in llvm is basically a pretty printer for
+The `dump()` helper function in llvm is basically a pretty printer for a class/struct.
 
-A lot of the time, when you perform
-ripgrep `void dump.*\(\) `
-Loop class has dumpVerbose
+Sometimes, if you're printing a variable `foo` through LLDB's `p` command, you'll end up getting back
+the address of the class instead of the actual content, which you're interested in. To circumvent this, you can use the class's
+`dump()` method when debugging:
+```diff
+- p foo            // Don't do this
++ p foo.dump()     // Do this
+```
 
-RegAlloc class has dumpState
+Besides the vanilla `dump()`, some classes also implement extra `dump()` methods. To explore more, you can try to perform the
+following regex in `llvm-project`:
+```bash
+rg "void dump[^(\(\))]+\(\)"
+```
+
 ## llvm/utils/lldbDataFormatters.py
 
 lldbDataFormatters.py (LDF) is a python script to integrate with LLDB. In LLDB, when you print a specific LLVM data structure
@@ -292,7 +443,7 @@ To utilize the script, once you fire up LLDB, you can provide LLDB with `command
 where PathToScript is the directory path to LDF.
 
 For example, if you're debugging in `llvm-project`, which houses the lldbDataFormatters naturally in llvm/utils:
-```
+```bash
 ...
 (lldb) command script import llvm/utils/lldbDataFormatters.py
 ...
@@ -307,14 +458,25 @@ if a programmer were supposed to remember the script import command and then rem
 every time.
 
 Instead, you can add this to `.lldbinit` in your home directory and let the computer perform said steps for you:
-```
+```text
 script
 "llvm-project" in os.getcwd() and lldb.debugger.HandleCommand("command script import llvm/utils/lldbDataFormatters.py")
 ```
 
 ## Conditional breakpoints
 
-Personally, I set up a keymap in my neovim so I don't have to type so much. Here's the lua code for the keymap
+A conditional breakpoint in LLDB is just like a normal breakpoint, except it only stops when some boolean expression you provide evaluates to true.
+So instead of halting every time execution hits that line or function, LLDB evaluates your condition first. If the condition is false, execution just keeps running.
+
+I'm not quite sure how helpful the condition breakpoints are in LLVM. Personally, if I really need to have a condition
+breakpoint in LLVM, I would rather construct a new `if` as my breakpoints.
+
+I guess conditional breakpoints are more helpful for binaries that has already been distributed; nonetheless, I still want to introduce
+the option for newcomers.
+
+In neovim, personally, I set up a keymap for this so I don't have to type too much. Here's the lua code for the keymap if it peaks your
+interests.
+
 ```lua
 local yank_for_conditional_break = function ()
     local path = vim.fn.expand('%:.')
@@ -336,7 +498,7 @@ If something's wrong with a tablegen, a programmer needs to understand at least 
 
 When a .td file is table-generated, it spits out an .inc (`include`) file in the build folder
 
-TODO: Mention a developer's love hate relationship with tablegen, for example, with Jeremy Kun's perspective on mlir's tablegen:
+Developer's love hate relationship with tablegen, for example, with Jeremy Kun's perspective on mlir's tablegen:
 
 > It sounds nice, but I have a love hate relationship with tablegen. I personally find it to be unpleasant to use, primarily because it provides poor diagnostic information when you do things wrong. Today, though, I realize that my part of my frustration came from having the wrong initial mindset around tablegen. I thought, incorrectly, that tablegen was an abstraction layer. That is, I could write my tablegen files, build them, and only think about the parts of the generated code that I needed to implement.
 
@@ -346,9 +508,11 @@ for certain issues/problems, if you don't use tablegen, then you'll end up writi
 ## Grepping tablegen
 At the time of writing this article, with version 14.1.1, ripgrep provides a way to filter out the file type so often times, you can use this to exclusively search for ripgrep.
 
+```bash
+rg --type-add 'td:*.td' \
+   -ttd "<What you want to search here" <where you want to search>
 ```
-rg --type-add 'td:*.td' -ttd "<What you want to search here" <where you want to search>
-```
+
 # gitbisect
 
 It is quite frustrating that on a big repository, after ~100,000 commits from you and a few thousands contributors, you're asked
@@ -361,17 +525,71 @@ should spawn its own shell so git bisect run is not affected
 
 The rest of this gitbisect section focuses on helping you set up a basic script to automate the bug finding process with gitbisect.
 
+First, let's talk about the work flow. Git bisect requires 3 things
+
+- A bad commit hash where the error occurs. Usually, when people file an issue on LLVM, they'll also provide you with this hash.
+- A good commit hash where the error didn't occur back then.
+- A script that returns zero or non-zero when recreating the original error for git-bisect to binary search on which commit the error first happens.
+
+For lack of space, I link here a [comment on an issue](https://github.com/llvm/llvm-project/issues/117200#issuecomment-3109446894) on how to perform git-bisect.
+
+# llvm-extract
+
+Just like how it sounds, this tool extracts a piece of code that is of relevance from a big file to a smaller file.
+
+
+For a demo as of Mon Aug 18 2025, you can build the llvm repository and input this command to the terminal. This will extract
+the function `ustest_f16i64_mm` from a 1765 line of code file.
+```bash
+./build/bin/llvm-extract -func=ustest_f16i64_mm llvm/test/CodeGen/WebAssembly/fpclamptosat.ll -o - -S
+```
+
+The `-S` option prints out the LLVM IR instead of bitcode.
+The `-o -` outputs the LLVM IR to the terminal directly.
+
+```llvm
+; ModuleID = 'llvm/test/CodeGen/WebAssembly/fpclamptosat.ll'
+source_filename = "llvm/test/CodeGen/WebAssembly/fpclamptosat.ll"
+
+define i64 @ustest_f16i64_mm(half %x) {
+entry:
+  %conv = fptosi half %x to i128
+  %spec.store.select = call i128 @llvm.smin.i128(i128 %conv, i128 18446744073709551616)
+  %spec.store.select7 = call i128 @llvm.smax.i128(i128 %spec.store.select, i128 0)
+  %conv6 = trunc i128 %spec.store.select7 to i64
+  ret i64 %conv6
+}
+
+; Function Attrs: nocallback nofree nosync nounwind speculatable willreturn memory(none)
+declare i128 @llvm.smin.i128(i128, i128) #0
+
+; Function Attrs: nocallback nofree nosync nounwind speculatable willreturn memory(none)
+declare i128 @llvm.smax.i128(i128, i128) #0
+
+attributes #0 = { nocallback nofree nosync nounwind speculatable willreturn memory(none) }
+```
 
 # llvm-reduce
 
 Often, when a bug fails on a big test case, it is imperative to `reduce` the test case to a smaller one, so that other people can pinpoint exactly where
 exactly the bug occurs.
 
+The other way around also suffices. That is: you solve a bug, and then you want to reduce the llvm-ir test case to an acceptable
+size to ensure that PR reviewers don't have to sweat too much reading the test case and that other future changes in the
+codebase doesn't affect.
+
+At of Aug 18 2025, `llvm-reduce` resides in the `bin` directory of the build folder.
+
+
+Here I give an example of how to minimally use llvm-reduce.
+
 llvm-reduce works on the programmer telling it what test case execution is `interesting.` And in a unix fashion, if something returns a non-zero code,
-it is considered `interesting.` We can then blah blah blah
+it is considered `interesting.`
 
+With the same flow as git-bisect (minus the good and bad commit), by giving llvm-reduce a script that reproduces the error,
+llvm-reduce then reduces the code down to a minimal example.
 
-```
+```llvm
 --- BEFORE llvm-reduce
 define i64 @stest_f64i64(double %x) {
 entry:
@@ -392,19 +610,21 @@ entry:
 }
 ```
 
-# rsp_bisect.py
+If you're interested in learning more about how to reduce LLVM crashes, nikic has a [great article](https://www.npopov.com/2023/10/22/How-to-reduce-LLVM-crashes.html) on this.
 
-rsp file is response file? not sure how relevant this will be or if newcomers will ever use it
+# Reading skills and experience
 
-# llvm-extract
+Often times, an issue might be too hard for somebody just because they haven't encountered the issue before, or they haven't
+read up the codebase or research the specific knowledge yet.
 
-# Reading skills, experience, (or think harder)
+Nothing wrong with that, first times are always hard. I think the important mindset is to adopt is that it's ok if
 
-Yep yep, you read it right
 
-debugging also comes from lang ref:
-for example, if you're creating a new instruction from another instruction, for example: llvm.reduce.and i32 to i1
-i
-# Asking people
+# Asking people for help
+
+I know sometimes things can get too hard or take too long for one person to deal with, especially for a newcomer.
+
+Maybe
+
 
 # Acknowledgments

@@ -1,5 +1,6 @@
 import { getPostById, getAllPosts } from "@/lib/api";
 import 'katex/dist/katex.min.css'
+import "highlight.js/styles/atom-one-dark.css";
 import Link from "next/link"; // for styling math
 
 
