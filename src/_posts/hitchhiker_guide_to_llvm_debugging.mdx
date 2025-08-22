@@ -23,7 +23,7 @@ engineers to careful and methodically investigate an issue/bug instead of blindl
 With how much time LLVM's been in development for, it evidently provides a wide range of tools to help a developer with problem-solving
 when encountering a bug at run time or when an issue is filed.
 
-In this sense, although the article title is about "debugging", the article inherently and inadvertently talks about problem-solving instead.
+In this sense, although the article title is about "debugging", the article inherently and inadvertently talks about problem-solving instead. I guess I lied hahahahahhaha.
 
 I hope this helps junior LLVM developer or low level developer just starting out in their journey!
 
@@ -33,9 +33,12 @@ Welp, let's dig in!
 
 ![compile_meme](/blogs/hitchhiker_guide_to_llvm_debugging/compile_meme.png)
 
+
 Compile time on a big codebase has always been a pain point for programmers. A few seconds here, a few minutes there, and you have wasted
 at least half an hour extra waiting to compile the LLVM repository. Once you hit compile, if you have to wait a while, your mind wanders away to other things, and you start to drift away, thinking about other topics.
 Point is, the context switching causes you to lose out on your focusing power.
+
+> Compiling takes more time -> You have to wait longer -> Less time to run the code to experiment and debug -> cannot problem solve.
 
 The following subsections then describes how to save time on your compiling and executing. This will reduce your development cycle time
 and hopefully increase your productivity.
@@ -532,7 +535,7 @@ For example
 
 ## Language server protocols: the ultimate weapon
 
-After reading to this section, some reader from the crowd frustratedly yells out: "Gah damn Jas what the hell is this? This not the stone age, why all we got is
+After reading to this section, some reader from the crowd frustratedly yells out: "Gah damn Jas what the hell is this? This not the stone age, why all we got from this article is
 grepping and syntax highlighting." And I agree, for a painstakingly long time, I'm also not aware that tablegen (and mlir) has already gotten an [LSP](https://en.wikipedia.org/wiki/Language_Server_Protocol) server.
 
 > One thing that I want to note here for readers is that LLVM not only have the traditional clangd language server,
