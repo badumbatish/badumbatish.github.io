@@ -20,7 +20,10 @@ As tradition, here's a [song](https://youtu.be/6eefUmtgcp8?si=-_1GVJCO1lbz0JU3) 
 Debugging has always been a quintessential tool in a software engineer's toolboxes. As a piece of software or framework gets more complicated, the flow of a program invariantly gets more complex, which requires software
 engineers to careful and methodically investigate an issue/bug instead of blindly following one's instinct.
 
-In this sense, although the article talks about debugging, the article inherently provides a sample of the author's problem-solving toolbox.
+With how much time LLVM's been in development for, it evidently provides a wide range of tools to help a developer with problem-solving
+when encountering a bug at run time or when an issue is filed.
+
+In this sense, although the article title is about "debugging", the article inherently and inadvertently talks about problem-solving instead.
 
 I hope this helps junior LLVM developer or low level developer just starting out in their journey!
 
@@ -507,6 +510,16 @@ docs: [instruction-set](https://llvm.org/docs/WritingAnLLVMBackend.html#instruct
 - ["Building an LLVM Backend" @ LLVM Dev Meeting 2014 by Fraser Cormack and Pierre-André Saulais](https://www.youtube.com/watch?v=b53WqCbLEYg)
 - [llvm-leg: LEG Example Backend](https://github.com/frasercrmck/llvm-leg)
 
+## Grepping tablegen
+At the time of writing this article, with version 14.1.1, ripgrep provides a way to filter out the file type so often times, you can use this to exclusively search for tablegen files (.td).
+I want to note that this extends to other file types as well, so if you want to exclusively search for LLVM-IR files (.ll), you can swap ``td:*.td' -ttd` with
+`'ll:*.ll' -tll`.
+
+```bash
+rg --type-add 'td:*.td' \
+   -ttd "<What you want to search here" <where you want to search>
+```
+
 ## Syntax highlighting
 I'm not quite sure how applicable this is for the general audience (vscode & zed) but in vim/nvim, I did tablegen for
 quite a bit before adding on syntax highlighting for tablegen.
@@ -517,13 +530,33 @@ For example
 - `llvm/utils/emacs/`: For syntax highlighting in emacs.
 - `llvm/utils/vscode/`: For syntax highlighting in vscode.
 
-## Grepping tablegen
-At the time of writing this article, with version 14.1.1, ripgrep provides a way to filter out the file type so often times, you can use this to exclusively search for ripgrep.
+## Language server protocols: the ultimate weapon
 
-```bash
-rg --type-add 'td:*.td' \
-   -ttd "<What you want to search here" <where you want to search>
-```
+After reading to this section, some reader from the crowd frustratedly yells out: "Gah damn Jas what the hell is this? This not the stone age, why all we got is
+grepping and syntax highlighting." And I agree, for a painstakingly long time, I'm also not aware that tablegen (and mlir) has already gotten an [LSP](https://en.wikipedia.org/wiki/Language_Server_Protocol) server.
+
+> One thing that I want to note here for readers is that LLVM not only have the traditional clangd language server,
+it also has the tablegen LSP, MLIR LSP, and MLIR PDLL LSP. How cool is this!!!
+
+With the tablegen LSP, I can hover over a definition to see how is a class in tablegen declared. I can also go to the declaration as well as find references to a specific instance/class.
+These tasks, which would mean a ton of grepping and manually looking through each file, would now be done at a click of a button.
+
+The [LSP page](https://mlir.llvm.org/docs/Tools/MLIRLSP/) on the MLIR website details different features of the LSP as well as some demos with vscode.
+
+For an overall look, the features include, but does not exclude:
+- Live edit diagnostics.
+- Go to definition.
+- Find references.
+- Code completion.
+- Hover.
+- Navigation.
+
+At the time of speaking, vscode support and documentation are well documented on the website. I'm opening a pull request
+to add more documentation on how to set up these LSP on neovim [here](https://github.com/llvm/llvm-project/pull/154896).
+As for zed and emacs, there is no current documentation on the page.
+
+For my neovim readers,
+I'm linking how I set up the LSP in my [dotfiles](https://github.com/badumbatish/dotfiles).
 
 # gitbisect
 
@@ -559,6 +592,7 @@ the function `ustest_f16i64_mm` from a 1765 line of code file.
 The `-S` option prints out the LLVM IR instead of bitcode.
 The `-o -` outputs the LLVM IR to the terminal directly.
 
+Here is the new LLVM IR file after running the original file through the extraction tool:
 ```llvm
 ; ModuleID = 'llvm/test/CodeGen/WebAssembly/fpclamptosat.ll'
 source_filename = "llvm/test/CodeGen/WebAssembly/fpclamptosat.ll"
@@ -648,10 +682,10 @@ In this section, I'll also share some resources I've consumed throughout my two 
 If even after you've read the article, and you're still not sure how to solve an issue, there's no shame in asking other people
 for direction and for help :)
 
-I think sometimes, seniors have trouble helping juniors out because neither of them have taken a jab at the problem yet.
+I think sometimes, seniors have trouble helping juniors out with a problem because neither of them have taken a jab at the problem yet.
 Seniors haven't because they're often busy solving problems at a greater scope and juniors haven't because they're often not briefed on
  where and how to take a jab of it. Hopefully with the tools presented in this article, I can help bridge the gap between the two parties; before going to
-seniors for help, isolating incidental files and providing crucial log files would prove very useful for both sides :)
+seniors for help, isolating incidental functions and/or files and providing crucial log files would prove very useful for both sides :)
 
 Personally, I'm very thankful for both the open source community and my colleagues at Igalia for guiding me on my path of learning LLVM and
 helping me out with issues and  pull requests.
@@ -661,8 +695,8 @@ It would be treacherous and nigh-impossible without them :)
 ![senior_junior_pr](/blogs/hitchhiker_guide_to_llvm_debugging/senior_junior.jpeg)
 # Epilogue
 
-Welp, that's it for this blog :) In writing this blog, I hope that the article will be as follows. For newcomers, the article will
-act as a guiding point to help them get started in their LLVM journey. For seniors, I hope that you can help me
+Welp, that's it for this one :) In writing this blog, here's what I hope to achieve with the blog. For newcomers, the article will
+act as a guiding point to help them get started with problem-solving in their LLVM journey. For seniors, I hope that you can help me
 contribute to this blog by either sending me resources through discord or giving me feedbacks on which part to improve.
 
 I want to thank Igalia for allowing me to write this blog on company time :) I really enjoy writing the blog and would love
