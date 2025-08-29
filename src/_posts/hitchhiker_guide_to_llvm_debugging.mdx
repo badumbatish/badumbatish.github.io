@@ -296,7 +296,8 @@ to guide you to a specific file that you can furthermore investigate.
 
 In the terminal, the aesthetics are not quite up to par. With assertion enabled, and with the option `-print-after-all`
 (if you want to print out every pass) or `-print-changed` (print only the passes that changes the IR), you can technically
-simulate the behavior of godbolt.
+simulate the behavior of godbolt. There is also the option to print out the IR before and after a pass, with `-print-before`
+and `-print-after`
 
 ## Deep diving into a specific passes (locally)
 
@@ -382,8 +383,6 @@ for.body.preheader.new:                           ; preds = %for.body.preheader
   br label %for.body
 ...
 ```
-
-
 
 
 # lldb and debuggers
@@ -515,7 +514,7 @@ docs: [instruction-set](https://llvm.org/docs/WritingAnLLVMBackend.html#instruct
 
 ## Grepping tablegen
 At the time of writing this article, with version 14.1.1, ripgrep provides a way to filter out the file type so often times, you can use this to exclusively search for tablegen files (.td).
-I want to note that this extends to other file types as well, so if you want to exclusively search for LLVM-IR files (.ll), you can swap ``td:*.td' -ttd` with
+I want to note that this extends to other file types as well, so if you want to exclusively search for LLVM-IR files (.ll), you can swap `td:*.td' -ttd` with
 `'ll:*.ll' -tll`.
 
 ```bash

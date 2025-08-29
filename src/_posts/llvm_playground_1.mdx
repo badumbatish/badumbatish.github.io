@@ -115,7 +115,7 @@ cmake -S . -B build && cmake --build build
 to use cmake to build using the CMakelists.txt script we have create in the current folder and store build artifacts in the `build` folder
 before adding these two lines that will help us build our `main.cpp`
 
-```
+```cmake
 add_llvm_executable(main main.cpp) # This is from AddLLVM
 target_include_directories(main ${LLVM_INCLUDE_DIRS})
 ```
@@ -266,14 +266,14 @@ M->print(outs(), nullptr);
 ## Running and Reading LLVM IR
 
 With our CMake and our main.cpp ready, we can start cooking.
-```
+```cmake
 cmake -S . -B build # Use the CMakeLists.txt in current folder to build and store in build/
 cmake --build build # Build the executable from material in build/
 ./build/main # Run the main executable
 ```
 
 When you run this, the LLVM IR will be outputted since we asked the Module to print out the IR in `main.cpp`
-```
+```llvm
 ; ModuleID = 'top'
 source_filename = "top"
 
@@ -342,7 +342,7 @@ The rest of the blog post details the code listing for copy-and-paste-and-hackin
 ## Source code
 
 ### CMake
-```
+```cmake
 cmake_minimum_required(VERSION 3.22)
 project(llvm_playground) 
 find_package(LLVM REQUIRED CONFIG)

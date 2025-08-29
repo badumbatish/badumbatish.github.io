@@ -27,6 +27,11 @@ import {
     transformerNotationWordHighlight
 } from "@shikijs/transformers";
 import {transformerColorizedBrackets} from "@shikijs/colorized-brackets";
+import { createHighlighter } from 'shiki'
+
+const mlirGrammar = JSON.parse(fs.readFileSync( 'mlir.json', 'utf8'));
+const tdGrammar = JSON.parse(fs.readFileSync( 'tablegen.json', 'utf8'));
+
 
 // memoize/cache the creation of the markdown parser, this sped up the
 // building of the blog from ~60s->~10s
@@ -35,7 +40,6 @@ let p: ReturnType<typeof getParserPre> | undefined
 async function getParserPre() {
     // @ts-ignore
     // @ts-ignore
-    let i = 0;
     // @ts-ignore
     // @ts-ignore
     // @ts-ignore
@@ -55,6 +59,28 @@ async function getParserPre() {
         .use(rehypeKatex)
         // @ts-ignore
         .use(rehypePrettyCode, {
+            getHighlighter(options) {
+                return createHighlighter({
+                    ...options,
+                    langs: [
+                        "cmake",
+                        {
+                            name: "td",
+                            scopeName: "source.td",
+                            displayName: "td",
+                            ...tdGrammar,
+                            aliases: ["td"],
+                        },
+                        {
+                            name: "mlir",
+                            scopeName: "source.mlir",
+                            displayName: "mlir",
+                            ...mlirGrammar,
+                            aliases: ["mlir"],
+                        },
+                    ],
+                })
+            },
             defaultLang: "plaintext",
             transformers: [
                 transformerNotationDiff(),
@@ -65,7 +91,8 @@ async function getParserPre() {
                     visibility: 'always',
                     feedbackDuration: 3_000,
                 }),
-            ]
+            ],
+            keepBackground: false,
         })
         .use(rehypeExternalLinks, {rel: ['nofollow'], target: '_blank'})
         .use(rehypeSlug)

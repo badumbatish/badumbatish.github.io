@@ -30,7 +30,7 @@ tensor or vector would use.
 Since we're producing an integer, the third affine_map goes from `(i)` to `()`, thus the `reduction` type of iterator_types
 
 Note that since we have 8 elements in first input, and 8 elements in second input (same dimension), we can use the same (i).
-```
+```mlir
 %init  = arith.constant 0.0 : f32
 // Neutral element of multiplication.
 %ones = arith.constant dense<1.0> : vector<8xf32>
@@ -43,13 +43,13 @@ Note that since we have 8 elements in first input, and 8 elements in second inpu
 } %0, %ones, %init : vector<8xf32>, vector<8xf32> into f32
 ```
 The pseudo code for the loop is
-```
-for i in 0 to 8:
+```python
+for i in range(8):
   init += p0[i] * ones[i]
 ```
 Alright, seems like you quite got that? Let's do another round:
 
-```
+```mlir
 %result = vector.contract {
   indexing_maps = [affine_map<(i, j, k) -> (i, k)>,
                    affine_map<(i, j, k) -> (k, j)>,
@@ -63,10 +63,10 @@ The first vector uses i and k to index its two dimension. The second vector uses
 output vector uses the i and j index. we have 8, 10, 16,so we need to do (i, j, k) instead of just `i, j`.
 
 Here's the pseudo code in for-loops
-```
-for i in 0 to 8:
-  for j in 0 to 16:
-    for k in 0 to 10:
+```python
+for i in range(8):
+  for j in range(16):
+    for k in range(10):
       init[i, j] += lhs[i, k] * rhs[k, j]
 ```
 
@@ -74,7 +74,7 @@ for i in 0 to 8:
 
 linalg.generic can be used to implement other operation. Let's do this
 
-```
+```mlir
 linalg.generic {
   indexing_maps [affine_map<(i) -> (i)>, affine_map<(i) -> (i)>],
   iterator_types = ["parallel"]
@@ -103,7 +103,7 @@ Seems easy enough? hahhahahaha
 Let's talk about tiling first. I first learned about tiling through the PMPP book's example on matrix multiplcation. The transform tutorial couldn't have put it any better:
 > Tiling, in general, can be seen as partitioning the iteration space into smaller parts, or tiles, so that the data required by each part fits into a level of cache for example. The order in which tiles are executed must preserve the original data dependencies.
 
-```
+```mlir
 %0 = scf.forall (%i, %j) in (4, 2)
      shared_outs(%shared = %init) -> (tensor<8x16xf32>) {
 
