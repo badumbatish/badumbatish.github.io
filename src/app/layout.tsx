@@ -2,12 +2,11 @@
 import './globals.css'
 import type { Metadata } from 'next'
 
-import rounded_pfp from '/public/pfp5.jpeg';
+import rounded_pfp from '/public/pfp6.png';
 import Name from "@/components/Name";
 import Header from "@/components/Header";
-import UpToTopButton from "@/components/UpToTopButton";
+import UpAndDownButton from "@/components/UpToTopButton";
 import localFont from 'next/font/local'
-import { Analytics } from "@vercel/analytics/react"
 const inter = localFont({src : './Inter-VariableFont_slnt,wght.ttf'})
 
 export const metadata: Metadata = {
@@ -32,7 +31,7 @@ export default function RootLayout({
         <Name></Name>
     </Header>
     <div className={"flex-1"}>{children}</div>
-    <UpToTopButton></UpToTopButton>
+    <UpAndDownButton></UpAndDownButton>
 
     <footer className="footer self-center justify-center gap-2 pt-4 items-center italic ">
         {/*<p>I&#39;m looking for new grad compiler work, please email at jjasmine@berkeley.edu</p>*/}

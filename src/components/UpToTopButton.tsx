@@ -1,19 +1,60 @@
 'use client'
 
+import React, { useEffect, useState } from "react";
 
-import Image from "next/image";
-import React from "react";
+const ScrollButton: React.FC = () => {
+    const [atTop, setAtTop] = useState(true);
+    const [atBottom, setAtBottom] = useState(false);
 
-const a =             <Image src={"Arrow_top.png"} alt={"arrow to top"} height={30} width={30}></Image>
+    useEffect(() => {
+        const handleScroll = () => {
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
-const UpToTopButton: React.FC = () => {
+            setAtTop(scrollTop <= 1);
+            setAtBottom(scrollTop + clientHeight >= scrollHeight - 1);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        handleScroll();
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    const scrollToTop = () =>
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
+    const scrollToBottom = () =>
+        window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: "smooth",
+        });
+
+    // Hide if page is too short to scroll
+    if (atTop && atBottom) return null;
+
     return (
-        <button className={"bottom-4 right-4 fixed"} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div  className={"inline text-2xl font-bold border-black border-2 rounded  p-0 m-0 h-100 w-100"}>&#x21e1;&#x21e1;</div>
-
-        </button>
+        <div className="bottom-4 right-4 fixed flex flex-col gap-2">
+            {!atTop && (
+                <button
+                    className="shadow-md"
+                    onClick={scrollToTop}
+                >
+                    <div className="inline text-xl font-bold border-black border-2 rounded p-2 bg-white">
+                        ⇡⇡
+                    </div>
+                </button>
+            )}
+            {!atBottom && (
+                <button
+                    className="shadow-md"
+                    onClick={scrollToBottom}
+                >
+                    <div className="inline text-xl font-bold border-black border-2 rounded p-2 bg-white">
+                        ⇣⇣
+                    </div>
+                </button>
+            )}
+        </div>
     );
 };
 
-export default UpToTopButton;
-
+export default ScrollButton;

@@ -7,7 +7,7 @@ const feed = new Feed({
     id: "https://badumbatish.github.io/blog",
     link: "https://badumbatish.github.io/blog/rss.xml",
     language: "en",
-    image: "https://badumbatish.github.io/pfp5.jpeg",
+    image: "https://badumbatish.github.io/pfp6.png",
     copyright: "All rights for public use and education, Jasmine Tang",
     author: {
         name: "Jasmine Tang",

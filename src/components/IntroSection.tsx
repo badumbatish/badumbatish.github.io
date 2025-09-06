@@ -17,7 +17,7 @@ const RandomProfilePicture = () => {
         <div className="basis-1/5">
             <Image
                 className="mx-auto rounded-3xl overflow-hidden"
-                src={'pfp5.jpeg'}
+                src={'pfp6.png'}
                 alt="profile picture"
                 width={250}
                 height={300}
@@ -147,9 +147,9 @@ const RightMainCard = () => {
             <ul className="flex flex-col gap-8">
                 <li>
                     <AboutMeElement title="About Me"
-                                    lst={["Hi everyone, it's Jasmine here :)  I like compilers, gcc, llvm and occasional scripting.",
+                                    lst={["Hi everyone, it's Jasmine here! I like compilers, gcc, llvm and occasional scripting.",
                                         `I enjoy technical writings and have some blogs, give them a try!`,
-                                        `In my free time, I like going on walks, watching speed runs of Souls, RE games, listening to music, reading manga and learning about new languages :)`,
+                                        `I like going on walks, watching speed runs of Souls, RE games, listening to music, reading manga and learning about new languages :)`,
                                         `For music, I like rap, pop, pop-rock and electronics pop :)`,
                                         `For manga, I like shonen as well as melancholic slice-of-life manga`]}
                     ></AboutMeElement>
@@ -162,7 +162,6 @@ const RightMainCard = () => {
                 </li>
                 <li>
                     <AboutMeElement title="Studied EECS @ Berkeley." lst={[
-                        `Transferred from Santiago Canyon College in Aug 2023. Graduated in May 2025`,
                         `Technical Coursework: Intro to Compilers (CS164), Compiler Optimizations (CS265), Operating Systems (CS162), Intro & Advanced Algorithms (CS70 & CS170)`]}
                     ></AboutMeElement>
                 </li>
