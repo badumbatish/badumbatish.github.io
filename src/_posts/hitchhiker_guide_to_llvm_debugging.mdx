@@ -609,6 +609,8 @@ docs: [instruction-set](https://llvm.org/docs/WritingAnLLVMBackend.html#instruct
 - ["Building an LLVM Backend" @ LLVM Dev Meeting 2014 by Fraser Cormack and Pierre-André Saulais](https://www.youtube.com/watch?v=b53WqCbLEYg)
 - [llvm-leg: LEG Example Backend](https://github.com/frasercrmck/llvm-leg)
 
+Edit: An [official blogpost](https://blog.llvm.org/posts/2023-12-07-tools-for-learning-llvm-tablegen/) from LLVM raises
+a lot of the same points in this section.
 ## Grepping tablegen
 At the time of writing this article, with version 14.1.1, ripgrep provides a way to filter out the file type so often times, you can use this to exclusively search for tablegen files (.td).
 I want to note that this extends to other file types as well, so if you want to exclusively search for LLVM-IR files (.ll), you can swap `td:*.td' -ttd` with

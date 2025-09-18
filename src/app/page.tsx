@@ -24,7 +24,7 @@ export default function Home() {
             <ExperienceSection className={sectionClassName}>
                 <TimeLine>
                     <TimePiece date={"June 2025 -> Present"} title={"LLVM Compiler Engineer @ Igalia"} experience={[
-                        `Doing open source contributions to LLVM. Area: Compiler backend in WebAssembly/RISC-V (and potentially MLIR).`
+                        `Doing open source contributions to LLVM. Area: Compiler backend in WebAssembly/RISC-V/MLIR.`
                     ]}/>
                     <TimePiece date={"May -> Aug 2024"} title={"Google Summer Of Code Participant with GCC"} experience={[
                          `Work work work! Jasmine's going to work on gccrs (the GNU Compiler for Rust) :), providing inline assembly support

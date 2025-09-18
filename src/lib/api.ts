@@ -112,7 +112,20 @@ function getParser() {
     return p
 }
 
-export async function getPostById(id: string) {
+export type Post = {
+    title: string
+    id: string
+    recap?: string
+    tag?: string | string[]
+    hidden?: boolean
+    date: string
+    dateIso: string
+    html: string
+    // include all other frontmatter keys if needed
+    [key: string]: unknown
+}
+
+export async function getPostById(id: string) :Promise<Post>  {
     const realId = id.replace(/\.mdx$/, '')
     const fullPath = join('src/_posts', `${realId}.mdx`)
     const { data, content } = matter(await fs.promises.readFile(fullPath, 'utf8'))
@@ -139,5 +152,5 @@ export async function getAllPosts() {
     const posts = await Promise.all(
         fs.readdirSync('src/_posts').map(id => getPostById(id)),
     )
-    return posts.sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+    return posts.sort((post1: Post, post2:Post) => (post1.date > post2.date ? -1 : 1))
 }
