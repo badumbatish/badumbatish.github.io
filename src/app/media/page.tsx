@@ -39,7 +39,7 @@ const typeStyles = new Map([
 
 export async function generateMetadata(
 ) {
-    const title = "Media";
+    const title = "Mediaboxd";
     const description = "Jasmine's media garden, featuring game trailers, mangas and others' essays, etc";
     return {
         title,
@@ -139,7 +139,7 @@ export default async function Page() {
     
     return (
         <div className="py-12 flex flex-col items-center  justify-items-start mx-auto ">
-            <h1 className="text-4xl">Media</h1>
+            <h1 className="text-4xl">Mediaboxd</h1>
             <p className="pt-2">Hi everyone, welcome to the manga/books/media corner; this is where I document and give
                 recommendations/reviews on
                 whatever note-worthy manga or books ive been reading.
@@ -149,21 +149,21 @@ export default async function Page() {
             <div className={"p-4 rounded-lg flex flex-col"}>
                 <div className={"mx-auto text-2xl font-bold"}>Media</div>
                 {posts.map((post) => (
-                    <div key={post.slug} className={`rounded-lg p-4 border-2 border-blue-300 gap-2 my-2 ${hover_border}`}>
+                    <div key={post.slug} className={`rounded-lg p-4 border-2 border-blue-300 my-2 w-auto ${hover_border}`}>
                         <div className={"flex flex-col space-x-4 sm:flex-row"}>
                             <QuickReadButton content={post.text}>
-                                <Image src={post.imageUrl} alt={post.slug} width={85} height={80}
+                                <Image src={post.imageUrl} alt={post.slug} width={80} height={80}
                                        className={"z-20 mx-auto border-blue-400 border-2 hover:border-4 bg-blue-50 shadow-md " +
                                            "rounded-md mb-2 sm:mb-0  hover:border-blue"}
                                          >
                                 </Image>
                             </QuickReadButton>
                             <div
-                                className={"pl-4 border-l-slate-800 border-double border-r-0 border-y-0 py-2 border-4 flex flex-col justify-center"}>
+                                className={"pl-4 border-l-slate-800 border-double border-r-0 border-y-0 border-4 flex flex-col"}>
                                 <QuickReadButton content={post.text}>
-                                    <h2 className={"font-bold text-lg pb-2 hover:underline"}>{post.title}</h2>
+                                    <h2 className={"font-bold text-lg pb-1 hover:underline"}>{post.title}</h2>
                                 </QuickReadButton>
-                                <div className={"flex flex-row text-md  rounded-md pl-4 pb-2"}>
+                                <div className={"flex flex-row text-sm rounded-md pl-4 pb-1"}>
                                     <div className={"uppercase underline"}>
                                         Type
                                     </div>
@@ -172,7 +172,7 @@ export default async function Page() {
                                         {post.type}
                                     </div>
                                 </div>
-                                <div className={"flex flex-row text-md uppercase rounded-md pl-4 pb-2"}>
+                                <div className={"flex flex-row text-sm uppercase rounded-md pl-4 pb-1"}>
                                     <div className={"uppercase underline"}>
                                         Tags
                                     </div>

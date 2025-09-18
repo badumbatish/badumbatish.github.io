@@ -29,13 +29,24 @@ import {
 import {transformerColorizedBrackets} from "@shikijs/colorized-brackets";
 import { createHighlighter } from 'shiki'
 
-const mlirGrammar = JSON.parse(fs.readFileSync( 'mlir.json', 'utf8'));
-const tdGrammar = JSON.parse(fs.readFileSync( 'tablegen.json', 'utf8'));
-
-
+export const mlirGrammar = JSON.parse(fs.readFileSync( 'mlir.json', 'utf8'));
+export const tdGrammar = JSON.parse(fs.readFileSync( 'tablegen.json', 'utf8'));
 // memoize/cache the creation of the markdown parser, this sped up the
 // building of the blog from ~60s->~10s
 let p: ReturnType<typeof getParserPre> | undefined
+
+export type Post = {
+    title: string
+    id: string
+    recap?: string
+    tag?: string | string[]
+    hidden?: boolean
+    date: string
+    dateIso: string
+    html: string
+    // include all other frontmatter keys if needed
+    [key: string]: unknown
+}
 
 async function getParserPre() {
     // @ts-ignore
@@ -112,18 +123,6 @@ function getParser() {
     return p
 }
 
-export type Post = {
-    title: string
-    id: string
-    recap?: string
-    tag?: string | string[]
-    hidden?: boolean
-    date: string
-    dateIso: string
-    html: string
-    // include all other frontmatter keys if needed
-    [key: string]: unknown
-}
 
 export async function getPostById(id: string) :Promise<Post>  {
     const realId = id.replace(/\.mdx$/, '')

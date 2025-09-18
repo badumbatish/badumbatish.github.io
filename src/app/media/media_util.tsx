@@ -47,7 +47,7 @@ export function QuickReadButton({ content, children }: {content: string,  childr
     }, [isVisible]);
 
     return (
-        <div className="relative flex items-center justify-center">
+        <div className="relative flex items-center">
             <button
                 onClick={() => setIsVisible(true)}
                 className=""

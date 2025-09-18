@@ -1,5 +1,5 @@
 import { Feed } from "feed";
-import { getAllPosts } from "@/lib/api"
+import {getAllPosts, Post} from "@/lib/api"
 
 const feed = new Feed({
     title: "Jasmine Tang RSS Feed",
@@ -18,7 +18,7 @@ const feed = new Feed({
 export const dynamic = 'force-static';
 
 export async function GET() {
-    const posts = await getAllPosts();
+    const posts : Post[] = await getAllPosts();
 
     posts.forEach((post) => {
         if (post.hidden != true && !post.title.includes("[ONGOING]")) {
