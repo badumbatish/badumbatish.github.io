@@ -7,5 +7,105 @@ recap: "Jasmine walks through the MLIR dataflow analysis landscape in 2025"
 Hi everyone, how's everybody doing? Wow, it's almost the end of 2025 isn't it?
 I started doing the blog in 2024 as a way to bla bla bla bla a lot of memories bla bla bla bla.
 
-## Pre-req
+With each blog coming out every 2 or 3 months, I guess this is the end for 2025? Hahahhaha.
 
+Music rec: something christmas.
+
+# Introduction
+
+Dataflow analysis is an important technique in compilers. Even with tons of resources on dataflow analysis, it is not always
+easy to operate such technique in a concrete implementation(?! todo: redo this bruv, doesn't sound good).
+
+Even though there has been a tutorial for it, as well a pull request to update it, I still want to add this article as another
+source to help out readers to the MLIR dataflow framework.
+
+With LLVM featuring a more time-tested approach to tutorials, I also want to give this article a closer look and a more intrapersonal
+read to it.
+
+Happy reading everyone.
+
+# Pre-req
+
+A lot of my reading and understanding is drawn from Engineering a Compiler, chapter 9 specifically. So when a text is
+put between double quotes, or is quoted somehow, you can assume it is from said book.
+
+You can find the book readily available for free on the internet.
+
+
+# Overall framework
+
+All the framework code lives in `mlir/lib/Analysis` and `mlir/lib/Analysis`. First, let's go over the classes
+that represents lattices, then the drivers for the dataflow analysis.
+
+## Lattices
+
+### LatticeAnchor
+The LatticeAnchor class is actually a pointer union between three different classes:
+- ProgramPoint: a specific location in the program. From its constructor `  ProgramPoint(Block *parentBlock, Block::iterator pp)
+` and `  ProgramPoint(Operation *op) : op(op) {}`, you can technically
+- Value: an SSA value.
+- GenericLatticeAnchor: Other cases that is not covered by ProgramPoint or Value, like a CFGEdge cases that is not covered
+by ProgramPoint or Value, like a CFGEdge in  the case of dead code analysis. (TODO: also give a clearer why, not just say CFGEdge).
+from the comments in the codebase: "In classical data-flow analysis,
+lattice anchor represent positions in a program to which lattice elements
+are attached."
+
+IMO, the LatticeAnchor class models something that can carry the lattice value. This is not to be confused with
+the next class that we'll talk about, the AnalysisState class.
+
+### AnalysisState
+Base class for generic analysis states. Analysis states contain data-flow
+ information that are attached to lattice anchors and which evolve as the
+analysis iterates.
+
+If LatticeAnchor talks about the class that can carry the lattice value, then the AnalysisState class represents the lattice value itself.
+
+Since this is a base class, it doesn't inherently have a value that can represent a lattice. Rather, the class provides utilities
+to
+- which points in the program to notify the dataflow solver to further analyze if my state change (addDependency())
+- which point in the program am I representing? (getAnchor())
+
+
+### AbstractSparseLattice : public AnalysisState
+
+AbstractSparseLattice specializes in representing lattice state for SSA values.
+Here, we start seeing more distinct shape of a lattice state, with functions like join() and meet().
+
+A fun fact is both SparseForwardAnalysis and SparseBackwardAnalysis requires the lattice class to subclass AbstractSparseLattice.
+
+to subclass AbstractSparseLattice, users just have to implement the printing method and depending on if the lattice will
+be use in a forward or backward style, implement join() or meet()
+
+### Executable : public AnalysisState and DeadcodeAnalysis
+The Executable class is a very important class in the dataflow framework in MLIR. The class represents if a code is dead or not.
+Normally, it is not helpful to talk about every single class that subclasses AnalysisState; this blog would be too long then.
+But since both SparseForwardAnalysis and SparseBackwardAnalysis requires the Executable lattice state and by default, the
+Executable lattice state is false, if you fail to load the deadcode analysis before loading your own analysis when basing your
+analysis off of SparseForwardAnalysis or SparseBackwardAnalysis, no analysis will be done.
+
+The loading of deadcode analysis can be done as follows:
+
+```cpp
+// TODO: jasmine do this from your rpeo
+```
+
+## Forward and backward analysis
+
+TODO: talk about which method to implement and why it's important.
+- SetToEntryState: when an IR change, that might make the fact no longer true anymore, redo it.
+### DataflowSolver
+
+
+
+### SparseForwardAnalysis and SparseBackwardAnalysis
+
+
+
+## Generic iterative analysis
+
+DeadCodeAnalysis is an example of this.
+
+
+## Demo
+
+Metadata analysis
