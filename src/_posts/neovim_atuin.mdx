@@ -1,0 +1,68 @@
+---
+title: '[ONGOING] Building an atuin clone for my workflow'
+date: 8888-08-08
+recap: "Jasmine builds an atuin in neovim for her work"
+---
+# Introduction
+
+Hello everyone, it's been one blog away since my last blog that's not about compilers. In this post, I want to talk about
+a neovim plugin that I've made that have significantly improved my workflow productivity: BRT.nvim. Let's dive in :)
+
+As always, here's this blog's music.
+[Bay trong chiều mưa by Nah](https://youtu.be/Ap3HoPGq3B4?si=1DtFRVXmKHIpQVwi)
+# BRT
+BRT stands for build, run and test and the plugin's description on github is "Build, run, and test your projects with 3 keystrokes."
+The motivation for building this is that when I'm programming, I'm invoking the build, run and test commands quite often;
+I often alternate between the file in neovim that I'm coding and the terminal for invoking the commands
+and reading command stdout and stderr, leading to quite inefficient processes.
+
+The vision I have for BRT is that I would want to shorten the development cycle: "run the usual command as effortless as possible"
+and to reduce the mental cognitive load from switching between the development file I'm in and the terminal.
+
+Overtime, I've also identified that when the command spits out an error including the location of a file,
+it would take a few of my brain power to find the line dictating the file, and then i also have to
+remember which line number the error is on, and then I copy the faulty file name to my clipboard, and then
+go back to neovim to find and open the file and then jump to the line number to see what the code on that line is, and then go back
+to the terminal to read the error message for that line.
+Now, imagine if the command spits out 4 or 5 such error locations, you can start to see why it's getting really messy really fast.
+
+Fortunately, some amazing people has already done the hard part, and some quick glue, we can have ourselves a tool to handle
+all the shortcomings of the current development cycle.
+
+# Components
+Now, building an atuin from pure scratch is going to be quite a task; what we'll be doing is offload some of that capabilities to
+
+## fzf-lua
+## sqlite lua
+
+https://sqlite.org/index.html
+https://sqlite.org/quickstart.html
+
+# Features
+## BRTLog
+
+When the user input a file, we would like to append `2>&1 | tee` at the end of the command to allow us to store the output as well for future revisions (which would be
+made clear soon).
+## Last command based on type
+Of course, we can't always accommodate the request that every command that the user want to execute in 3 keystrokes. What the description
+really meant is that when the user has already typed in and ran the command to succession, we would like the re-invocation of said command to take only 3 keystrokes.
+With `<leader>b` being 2 keystrokes3 already, we would want (most of the time) the last
+
+## Fuzzy finding
+
+
+## Customizability
+## Quickfix file
+
+It's hard to describe the amazing utilities the quickfix list can do, but for a taste, here is an excerpt from vim docs:
+> Vim has a special mode to speedup the edit-compile-edit cycle.  This is
+inspired by the quickfix option of the Manx's Aztec C compiler on the Amiga.
+The idea is to save the error messages from the compiler in a file and use Vim
+to jump to the errors one by one.  You can examine each problem and fix it,
+without having to remember all the error messages.
+
+
+# Shortcomings
+
+There are some shortcomings to be addressed.
+

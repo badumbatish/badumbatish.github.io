@@ -16,8 +16,8 @@ Music rec: something christmas.
 Dataflow analysis is an important technique in compilers. Even with tons of resources on dataflow analysis, it is not always
 easy to operate such technique in a concrete implementation(?! todo: redo this bruv, doesn't sound good).
 
-Even though there has been a tutorial for it, as well a pull request to update it, I still want to add this article as another
-source to help out readers to the MLIR dataflow framework.
+Even though there has been a tutorial for it, as well a pull request to update it, I still want to add this article as a
+report on what I've found out reading around in the dataflow codebase.
 
 With LLVM featuring a more time-tested approach to tutorials, I also want to give this article a closer look and a more intrapersonal
 read to it.
@@ -29,7 +29,8 @@ Happy reading everyone.
 A lot of my reading and understanding is drawn from Engineering a Compiler, chapter 9 specifically. So when a text is
 put between double quotes, or is quoted somehow, you can assume it is from said book.
 
-You can find the book readily available for free on the internet.
+You can find the book readily available for free on the internet. Here, I'll quote a few necessary snippets to remind readers.
+
 
 
 # Overall framework
@@ -71,7 +72,7 @@ to
 AbstractSparseLattice specializes in representing lattice state for SSA values.
 Here, we start seeing more distinct shape of a lattice state, with functions like join() and meet().
 
-A fun fact is both SparseForwardAnalysis and SparseBackwardAnalysis requires the lattice class to subclass AbstractSparseLattice.
+A fun fact is both SparseForwardAnalysis (SFA) and SparseBackwardAnalysis (SBA) requires the lattice class to subclass AbstractSparseLattice .
 
 to subclass AbstractSparseLattice, users just have to implement the printing method and depending on if the lattice will
 be use in a forward or backward style, implement join() or meet()
@@ -79,19 +80,64 @@ be use in a forward or backward style, implement join() or meet()
 ### Executable : public AnalysisState and DeadcodeAnalysis
 The Executable class is a very important class in the dataflow framework in MLIR. The class represents if a code is dead or not.
 Normally, it is not helpful to talk about every single class that subclasses AnalysisState; this blog would be too long then.
-But since both SparseForwardAnalysis and SparseBackwardAnalysis requires the Executable lattice state and by default, the
+But since both SFA and SBA requires the Executable lattice state and by default, the
 Executable lattice state is false, if you fail to load the deadcode analysis before loading your own analysis when basing your
-analysis off of SparseForwardAnalysis or SparseBackwardAnalysis, no analysis will be done.
+analysis off of SFA or SBA, no analysis will be done.
 
 The loading of deadcode analysis can be done as follows:
 
 ```cpp
-// TODO: jasmine do this from your rpeo
+#include <mlir/Analysis/DataFlow/DeadCodeAnalysis.h>
+// initializing the solver
+... {
+    solver.load<mlir::dataflow::DeadCodeAnalysis>();
+}
+```
+
+An example of SparseForwardAnalysis relying on
+
+### ConstantValue and ConstantPropagationAnalysis
+
+If the opening paragraph of the Executable class discusses how SFA and SBA relies on DeadCodeAnalysis, the following section talks about how
+DeadCodeAnalysis itself relies on ConstantPropagationAnalysis to function in the context of control flow.
+
+If we havne't load the solver with the ConstantPropagationAnalysis pass, in the function visitBranchOperation, when we encounter
+getOperandValues, operands will always be nullopt, leading to the edges uninitialized, which is automatically assumed as false.
+
+```
+void DeadCodeAnalysis::visitBranchOperation(BranchOpInterface branch) {
+// Try to deduce a single successor for the branch.
+    std::optional<SmallVector<Attribute>> operands = getOperandValues(branch);
+    if (!operands)
+        return;
+
+    if (Block *successor = branch.getSuccessorForOperands(*operands)) {
+        markEdgeLive(branch->getBlock(), successor);
+    } else {
+        // Otherwise, mark all successors as executable and outgoing edges.
+        for (Block *successor : branch->getSuccessors())
+            markEdgeLive(branch->getBlock(), successor);
+    }
+}
+
+
+```cpp
+#include <mlir/Analysis/DataFlow/ConstantPropagationAnalysis.h>
+// initializing the solver
+... {
+    solver.load<mlir::dataflow::SparseConstantPropagation>();
+}
 ```
 
 ## Forward and backward analysis
 
+
 TODO: talk about which method to implement and why it's important.
+
+- `virtual void print(raw_ostream &os) const override`:
+
+- `virtual ChangeResult join(const AbstractSparseLattice &other) override`:
+
 - SetToEntryState: when an IR change, that might make the fact no longer true anymore, redo it.
 ### DataflowSolver
 
@@ -99,6 +145,13 @@ TODO: talk about which method to implement and why it's important.
 
 ### SparseForwardAnalysis and SparseBackwardAnalysis
 
+With the large number of dialects that MLIR has, a person should better stay within the framework of the dataflow analysis to
+ensure the minimal time to set up and less debugging headache :)
+
+The dataflow framework introduces two kind of dataflow analysis that users can inherit from, forward and backward,
+each inheriting from SparseForwardAnalysis and SparseBackwardAnalysis. One
+thing interesting to note is that DeadCodeAnalysis itself inherit directly from DataFlowAnalysis. While this is possible,
+I want to note that it's not advisable and should only be done if you're looking for some kind of specialized flavor of dataflow analysis.
 
 
 ## Generic iterative analysis
@@ -109,3 +162,7 @@ DeadCodeAnalysis is an example of this.
 ## Demo
 
 Metadata analysis
+
+
+# Case study: IntRangeAnalysis
+
