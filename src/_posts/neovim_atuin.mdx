@@ -8,10 +8,11 @@ recap: "Jasmine builds an atuin in neovim for her work"
 Hello everyone, it's been one blog away since my last blog that's not about compilers. In this post, I want to talk about
 a neovim plugin that I've made that have significantly improved my workflow productivity: BRT.nvim. Let's dive in :)
 
-As always, here's this blog's music.
+As always, here's this blog's music recommendation:
 [Bay trong chiều mưa by Nah](https://youtu.be/Ap3HoPGq3B4?si=1DtFRVXmKHIpQVwi)
-# BRT
-BRT stands for build, run and test and the plugin's description on github is "Build, run, and test your projects with 3 keystrokes."
+
+# BRT.nvim
+[BRT](https://github.com/badumbatish/brt.nvim) stands for Build, Run and Test and the plugin's description on GitHub is "Build, run, and test your projects with 3 keystrokes."
 The motivation for building this is that when I'm programming, I'm invoking the build, run and test commands quite often;
 I often alternate between the file in neovim that I'm coding and the terminal for invoking the commands
 and reading command stdout and stderr, leading to quite inefficient processes.
@@ -20,49 +21,175 @@ The vision I have for BRT is that I would want to shorten the development cycle:
 and to reduce the mental cognitive load from switching between the development file I'm in and the terminal.
 
 Overtime, I've also identified that when the command spits out an error including the location of a file,
-it would take a few of my brain power to find the line dictating the file, and then i also have to
+it would take a few of my brain power to find the line dictating the file, and then I also have to
 remember which line number the error is on, and then I copy the faulty file name to my clipboard, and then
 go back to neovim to find and open the file and then jump to the line number to see what the code on that line is, and then go back
-to the terminal to read the error message for that line.
+to the terminal to read the error message for that line. Wewww, even reading all this makes my head a bit dizzy.
 Now, imagine if the command spits out 4 or 5 such error locations, you can start to see why it's getting really messy really fast.
 
-Fortunately, some amazing people has already done the hard part, and some quick glue, we can have ourselves a tool to handle
-all the shortcomings of the current development cycle.
+Let's dive in to see how I solve the aforementioned problems in BRT.nvim
 
 # Components
-Now, building an atuin from pure scratch is going to be quite a task; what we'll be doing is offload some of that capabilities to
+Now, building an atuin from pure scratch is going to be quite a task: self implementing fuzzy finding, and writing a database from scratch
+and handling stdout/stderr ourselves will be quite hefty work. Instead, we'll be offloading some of that capabilities to fzf-lua, sqlite
+and tee.
 
 ## fzf-lua
+[fzf-lua](https://github.com/ibhagwan/fzf-lua), in a few words, is "Improved fzf.vim written in lua."
+
+If you haven't heard of fzf, it is a searcher that updates your search result interactively as you type.
+For up to tens of thousands of commands to fuzzy find over, you can easily
+use [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) as well. For this project, I simply picked fzf-lua because I
+prefer the performance of fzf-lua over telescope for large repository.
+
+Overall, the details docs and its ability to offload arguments to fzf itself means I can easily configure new keymaps as well as
+search behaviors.
+
+For example, all this readable code resides in lua itself:
+```lua
+    fzf_opts = {
+      -- Start with no selection
+      ["--no-select-1"] = "",
+      ["--nth"] = brt_util.pick_order,
+      ["--delimiter"] = "|",
+      ["--ghost"] = "...",
+      ["--header"] = "EXIT CODE| TYPE|DURATION|COUNT|COMMAND",
+      ["--wrap"] = "",
+      ["--highlight-line"] = "",
+      ["--ansi"] = "",
+      ["--border-label"] = "HI",
+      ["--border"] = "top"
+    },
+    no_filter = false,
+    keymap = {
+      fzf = {
+        ["ctrl-u"] = "clear-query",
+        ["ctrl-n"] = "down",
+        ["ctrl-p"] = "up",
+      },
+    },
+    input = true,
+```
 ## sqlite lua
 
-https://sqlite.org/index.html
-https://sqlite.org/quickstart.html
+Hahhaa, I'm not sure if there's anything else to be said about sqlite. In lieu of implementing the data as a big table and risk some run time errors over some minor details,
+I let sqlite take care of the job of storing my commands.
+
+For each command, I store the command itself, the command type (build, run, or test), duration (how long it run for), times inputted, last inputted, as well as the exit code.
+
+Regarding the portability of (aka the ability to remember) these commands when a user move to a new machine (which is a thing that atuin offers),
+I opted to create the sqlite database file as `vim.fn.stdpath("config") .. "/brt_commands.db"`.
+Basically, I assumed that everybody that uses neovim will also be using some sort of dotfiles, and when they move to a new machine,
+they will often use some tools like [stow](https://www.gnu.org/software/stow/stow.html) or [chezmoi](https://www.chezmoi.io/), thus bringing the sqlite database file storing their
+commands with them.
+
+There is always the fear that hackers will exploit said commands, but since the project only focuses on commonly run commands such as `ninja` or `npm` or `cmake` and
+I often only work on open source projects, I'm not quite sure if there is anything to be exploited hahahah.
+
+## tee
+When we're launching a user-selected command, naturally, we would want to record the output for future inspection.
+
+With such commands, we launch it via jobstart(), which gives us finer control over how stdout and stderr is handled. We can, of course,
+handle the ouput of stdout and stderr ourselves: combine them together and write to the log. However, doing so is quite laggy; when we're
+using tee instead, some commands are able to recognize that the output is not to the terminal directly
+(due to [isatty()](http://man7.org/linux/man-pages/man3/isatty.3.html)), thus reducing their printing
+and fall back to a more static progress report. By piping the output through tee itself, we'll be able to save a lot of processing power this way.
 
 # Features
 ## BRTLog
+As mentioned in the section above, when the user input a file, we would like to append `2>&1 | tee` at the end of the command to allow us to store the output as well for future revisions.
 
-When the user input a file, we would like to append `2>&1 | tee` at the end of the command to allow us to store the output as well for future revisions (which would be
-made clear soon).
-## Last command based on type
-Of course, we can't always accommodate the request that every command that the user want to execute in 3 keystrokes. What the description
-really meant is that when the user has already typed in and ran the command to succession, we would like the re-invocation of said command to take only 3 keystrokes.
-With `<leader>b` being 2 keystrokes3 already, we would want (most of the time) the last
+Besides logging the output of the command, BRT also logs the following:
+- The system shell.
+- Git commit, branch and repo: To help developers with which version of the project they're building.
+- The command itself: So we can see which command outputs the log.
+- Exit code: To check if the command has any errors
+- Duration: To see how long the command runs for.
 
-## Fuzzy finding
+Below shows an example of a brtlog file, invoked via `:BRTLog`
 
+![brtlog](/blogs/atuin/brtlog.png)
 
-## Customizability
+Besides supporting revisiting a log, I added the logging feature so that users can easily copy and paste the log to either a
+team or a chatbot like ChatGPT or Claude.
+
+I recommend you set up a command like `<leader>ya` for yank all so save yourself a few keystrokes if you're doing this a lot:
+```lua
+utils.yank_all_in_buffer = function ()
+    local cur = vim.api.nvim_win_get_cursor(0) -- Save current cursor position
+    vim.cmd('normal! ggVGy') -- Yank the whole file
+    vim.api.nvim_win_set_cursor(0, cur) -- Restore cursor position
+    print('Yanked whole file to system clipboard')
+end
+vim.keymap.set('n', '<leader>ya', utils.yank_all_in_buffer, { desc = 'Yank whole file and restore cursor position' })
+```
+
 ## Quickfix file
 
-It's hard to describe the amazing utilities the quickfix list can do, but for a taste, here is an excerpt from vim docs:
-> Vim has a special mode to speedup the edit-compile-edit cycle.  This is
-inspired by the quickfix option of the Manx's Aztec C compiler on the Amiga.
-The idea is to save the error messages from the compiler in a file and use Vim
-to jump to the errors one by one.  You can examine each problem and fix it,
-without having to remember all the error messages.
+The quickfix list in vim and nvim is a global list of file locations, usually errors, warnings, or search results—that you can jump through using commands like :cnext and :cprev.
 
+For vim/nvim users, the usual development workflow would be `:make`, `:copen` and then `:cnext` and/or `:cprev`. Some pain points would be:
+- how fast to change which underlying command `:make` will be using
+- how to access the log itself.
 
-# Shortcomings
+In BRT.nvim, for this, when a command fails, besides the already-spawn terminal buffer, I also populate and spawn the quickfix list with all the command errors.
+In this way, the quickfix list functionality acts as a personal reviewer for me, filtering out all the nonsense output and allowing me to focus my
+mental capacity on fixing build errors instead of locating the build errors and opening the files pertaining to them.
 
-There are some shortcomings to be addressed.
+In my config, I map going to the next location in the quickfix list to `n` and previous location to `m`, so after quickfix list is populated, I can
+just press `n` and `m` and neovim jumps straight to the error for me.
 
+Here is a screenshot showing brt.nvim gathering all the error into the quickfix list for me, allowing me to be "lazy" and just press `n` and `m` to
+go between errors.
+![err_loc](/blogs/atuin/err_loc.png)
+## Sensible behaviors
+
+Sensible behaviors from a plugin is quite hard to achieve, after all, how can you expect to write a plugin that acts
+just like your second skin: effortless and fun. Below lists a few sane and sensible behaviors that I've added to smoothen out the
+brt.nvim workflow :)
+
+### Priming last command based on type
+About the motto of the project, of course, we can't always accommodate the request that every command that the user want to execute in 3 keystrokes. What the description
+really meant is that when the user has already typed in and ran the command to succession, we would like the re-invocation of said command to take only 3 keystrokes.
+With `<leader>b` (in my config, this translates to `<space>b`) being 2 keystrokes already, we would want (most of the time) the last command that was run, being inserted into the search bar for users, so they can just press `<Enter>`.
+
+### Returning cursor
+After spawning the terminal so that users can inspect the command output, I often notice that I would have to navigate
+the cursor from the terminal back to the text file that I'm editing,
+missing out a few keystrokes of efficiency. Thus, I've made it so that after we'd run a command,
+the cursor automatically returns to the last location of the text file.
+
+### Auto-close on success
+
+When a command is successful, I noticed that I don't really care about its output anymore, I made it so that BRT.nvim automatically
+closes the terminal buffer and displays a successful message; seeing the green checkmark message saves me a few mental capacity
+to type `:q` to close the terminal buffer as well as reading the terminal output to see if a command is successful or not.
+
+Below is a screenshot showing what the green checkmark looks like
+![autoclose_success](/blogs/atuin/success.png)
+### Auto-close on rerunning
+
+If a user reinvokes BRT via `<space>b`, I found out that there is no reason to display the current terminal and/or the quickfix list anymore.
+Instead of having to navigate to the two buffers and rerunning `:q` twice (that's a lotta keystrokes), I made it so that BRT automatically closes the two buffers,
+allowing for some efficiency.
+
+## Atuin-like behaviors
+
+Just like atuin, with fzf-lua, we're able to offer fuzzy finding. On top of that, the UI is more focused on the development feedback loop itself.
+Since we don't care about how long since then we've run a command, BRT omits the "ago" feature and adds a column to display the exit code of the command; one thing
+interesting to note is that when a command ran successfully, the exit code and the command duration is displayed in green, and red when its exit code is non-zero.
+It also adds the command type as another column, either build, run or test.
+
+The following screenshot shows a demo of brt.nvim opening when I press `<space>b`, priming my search box with the last command I ran
+with "build" type, along with the necessary results. I also added a column to show how many times I've run certain commands,
+just for funsies and bookkeeping.
+
+![brt_srcs](/blogs/atuin/brt_srcs.png)
+
+For roughly 2 days, I've run all `ninja -C build`-related commands about 100 times or more. With how tight my development cycle has become, I would say the plugin has already paid
+dividends on itself :)
+
+# Ending
+
+I hope you've enjoyed reading through how a clone tool of atuin came to be inside neovim itself :) I know I've really enjoyed
+developing the plugins as well as writing this article :) Please feel free to give them a try at https://github.com/badumbatish/brt.nvim
