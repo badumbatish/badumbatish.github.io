@@ -1,7 +1,7 @@
 ---
-title: '[ONGOING] Building an atuin clone for my workflow'
+title: '[ONGOING] Building BRT.nvim - an atuin clone for my neovim workflow'
 date: 8888-08-08
-recap: "Jasmine builds an atuin in neovim for her work"
+recap: "Jasmine builds a tool to speed up her development cycle"
 ---
 # Introduction
 
@@ -21,8 +21,8 @@ The vision I have for BRT is that I would want to shorten the development cycle:
 and to reduce the mental cognitive load from switching between the development file I'm in and the terminal.
 
 Overtime, I've also identified that when the command spits out an error including the location of a file,
-it would take a few of my brain power to find the line dictating the file, and then I also have to
-remember which line number the error is on, and then I copy the faulty file name to my clipboard, and then
+it would take me some brain cells to find the line dictating the file, and then I also have to
+remember which line number the error is on, and then I have to copy the faulty file name to my clipboard, and then
 go back to neovim to find and open the file and then jump to the line number to see what the code on that line is, and then go back
 to the terminal to read the error message for that line. Wewww, even reading all this makes my head a bit dizzy.
 Now, imagine if the command spits out 4 or 5 such error locations, you can start to see why it's getting really messy really fast.
@@ -30,7 +30,7 @@ Now, imagine if the command spits out 4 or 5 such error locations, you can start
 Let's dive in to see how I solve the aforementioned problems in BRT.nvim
 
 # Components
-Now, building an atuin from pure scratch is going to be quite a task: self implementing fuzzy finding, and writing a database from scratch
+Now, building an [atuin](https://atuin.sh/) from pure scratch is going to be quite a task: self implementing fuzzy finding, and writing a database from scratch
 and handling stdout/stderr ourselves will be quite hefty work. Instead, we'll be offloading some of that capabilities to fzf-lua, sqlite
 and tee.
 
@@ -70,6 +70,9 @@ For example, all this readable code resides in lua itself:
     },
     input = true,
 ```
+
+To initiate a fzf search inside neovim with fzf-lua, one can call `fzf_lua.exec_fzf(...)` and pass in the list of commands; imo, this is pretty straightforward.
+
 ## sqlite lua
 
 Hahhaa, I'm not sure if there's anything else to be said about sqlite. In lieu of implementing the data as a big table and risk some run time errors over some minor details,
@@ -147,6 +150,12 @@ go between errors.
 Sensible behaviors from a plugin is quite hard to achieve, after all, how can you expect to write a plugin that acts
 just like your second skin: effortless and fun. Below lists a few sane and sensible behaviors that I've added to smoothen out the
 brt.nvim workflow :)
+
+### Pre-populating commands
+
+For new users, instead of having them type out some common commands such as `cargo run` or `cargo build` or `cmake --build build -j4`, BRT.nvim
+populates these commands inside the sqlite database file by default so that users can just grab whatever they needed. A small but pretty
+handy quality of life addition :)
 
 ### Priming last command based on type
 About the motto of the project, of course, we can't always accommodate the request that every command that the user want to execute in 3 keystrokes. What the description
