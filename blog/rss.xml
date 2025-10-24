@@ -4,7 +4,7 @@
         <title>Jasmine Tang RSS Feed</title>
         <link>https://badumbatish.github.io/blog/rss.xml</link>
         <description>Jasmine's blog</description>
-        <lastBuildDate>Thu, 23 Oct 2025 13:23:45 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 24 Oct 2025 06:45:20 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -14,6 +14,13 @@
             <link>https://badumbatish.github.io/blog/rss.xml</link>
         </image>
         <copyright>All rights for public use and education, Jasmine Tang</copyright>
+        <item>
+            <title><![CDATA[Building BRT.nvim - an atuin clone for my neovim workflow]]></title>
+            <link>https://badumbatish.github.io/posts/neovim_atuin</link>
+            <guid isPermaLink="false">neovim_atuin</guid>
+            <pubDate>Thu, 23 Oct 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jasmine builds a tool to shorten her development feedback cycle?!]]></description>
+        </item>
         <item>
             <title><![CDATA[The hitchhiker's guide to LLVM debugging tools]]></title>
             <link>https://badumbatish.github.io/posts/hitchhiker_guide_to_llvm_debugging</link>
