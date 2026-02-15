@@ -1,0 +1,93 @@
+---
+title: 'Rewriting analysis based warnings fall through'
+date: 2026-01-05
+recap: "Uhhh hey :)"
+---
+
+Hey everyone :) This is a short write-up on my progress of reimplementing
+`clang/include/clang/Sema/AnalysisBasedWarnings.h/cpp`.
+
+The blog highlights my short survey on ClangIR and attempts to show readers the vision that maybe one day ClangIR will replace the OG Clang system in terms
+of analysis :) The work of surveying, implementing and writing up the blog is about 4 weeks.
+At the time of writing, I was implementing fall-through only.
+
+As promise, here is a song for everyone: [Blackbox](https://youtu.be/Fq_8g1uotgA?si=_4z_WckmJVo1pC8M) by COIN.
+## Old fall through algorithm
+
+To understand the old fallthrough algorithm we should talk a bit about the CFG. The ClangCFG is a pretty primitive CFG where we have statements in a raw basic block and each block connects with each other via a branch or jump. A basic block in ClangCFG is raw in the sense that it can only contain other statements (operations) and no statements (operations) or blocks can contain it. This means that upon
+visiting a statement that we care about, we fail to intrinsically have any context over where the statement is in. For example, if we encounter a return statement, we'd like to know if the return is within a switch statement or is it a top level return of a function so as to determine if there is any control flow escaping the switch or not.
+
+In the old algorithm, we take a function as input and get all the reachable blocks of said function, and then the algorithm iterates over each statement in each reachable blocks and check off global variables that determine fall through. This presents a few drawbacks: the algorithm is hard to debug since the majority of decisions are made with a few global variables.
+
+More precisely, all the heavy lifting are done in
+`static ControlFlowKind CheckFallThrough(AnalysisDeclContext &AC)`
+
+with the following boolean controlling the outcome
+```cpp
+  bool HasLiveReturn = false;
+  bool HasFakeEdge = false;
+  bool HasPlainEdge = false;
+  bool HasAbnormalEdge = false;
+```
+
+At the end of `CheckFallThrough`, the algorithm relies on said boolean to determine the fall through kind
+```cpp
+ if (!HasPlainEdge) {
+    if (HasLiveReturn)
+      return NeverFallThrough;
+    return NeverFallThroughOrReturn;
+  }
+  if (HasAbnormalEdge || HasFakeEdge || HasLiveReturn)
+    return MaybeFallThrough;
+  // This says AlwaysFallThrough for calls to functions that are not marked
+  // noreturn, that don't return.  If people would like this warning to be more
+  // accurate, such functions should be marked as noreturn.
+  return AlwaysFallThrough;
+```
+
+
+## New algorithm
+
+The new algorithm relies on the ClangIR instead of the traditional CFG. In ClangIR, a block is usually associated with an operation. Moreover, block are usually nested together to form the ClangIR CFG instead of the OG ClangCFG's block-by-block linking style.
+
+The change in the structure means that the new algorithm will be more effective at detecting fall through as well as easier to maintain. The effective comes from being able to deduce context where an operation resides and the ease of maintain came from the modularity and the recursive nature that the new algorithm offers.
+
+In the new algorithm, a function (CIR_FuncOp) is fallthrough-able if one of its block (mlir::Block) is fallthrough-able.
+
+A block is fallthrough-able if one of its operations inside it is fallthrough-able.
+
+An operation (CIR operations that inherit from mlir::Operation) is fallthrough-able if
+- through special handling, it is fallthrough-able.
+- if it is block-like, then some of its operations inside it should be fallthrough-able.
+
+Below are some special handling for some operations:
+
+**ReturnOp**:
+- If this is an implicit return, then it’s considered fallthrough-able if either (1) a fallthrough has already occurred earlier in the same container where the return op resides, or (2) this is the first operation encountered by the fallthrough analysis.
+
+**SwitchOp**:
+- If the switch op is handling an enum and the switch handles all case of the enum or if the switch has a default case, and all of the cases (CaseOp) is fallthrough-able, then it not fallthrough-able. Otherwise, it is fallthrough-able
+
+**CaseOp**:
+- If one of the blocks in the operation is fallthrough-able, then it is fallthrough-able.
+
+
+**ScopeOp** (this operation wraps around operation like switch)
+- Same as CaseOp
+
+Simple op such as `cir.const`, `cir.store`, `cir.load`
+- It is fallthrough-able
+
+## Discussion
+The new algorithm has some advantages and disadvantages over the old OG algorithm:
+
+- Advantages
+  - More precise due to the extra context coming from the operation-nesting and block-nesting property.
+  - Recursive, together with op and block-nesting nature allows for code reuse between different op handling (for example: CaseOp, ScopeOp and FuncOp uses the same logic)
+
+- Disadvantages:
+  - Detection of reachable blocks (the equivalent is dead code elimination and then iterating over the remaining block) is not mature yet (see https://github.com/llvm/llvm-project/issues/174502).
+  - Some attributes are not readily available (InferredNoReturnAttr, NoReturnAttr), requiring CIR to patch back into the AST to access those.
+
+Although the progress was really positive, I regret not diving deeper into the reimplementation more. Now that I'm on a project
+and going through learning new tooling, not much is left in pushing the implementation towards the finish line. Maybe one day :)
