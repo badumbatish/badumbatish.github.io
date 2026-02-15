@@ -72,7 +72,7 @@ interface MangaPost {
 }
 
 async function getMangaPosts() {
-    const postsDirectory = path.join(process.cwd(), "src/_media");
+    const postsDirectory = path.join(process.cwd(), "public/media");
     const postFolders = fs.readdirSync(postsDirectory);
 
     const posts = postFolders.map(async (folder) => {
