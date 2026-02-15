@@ -120,8 +120,10 @@ const LeftMainCard = () => {
 
                         <LinkButton link={"https://github.com/badumbatish/"}
                                     linkName={"GitHub"}></LinkButton>
-                        <LinkButton link={"https://badumbatish.github.io/about_me/Jasmine_Resume_Badumbatish.pdf"}
-                                    linkName={"resume.pdf"}></LinkButton>
+                        {/*<LinkButton link={"https://badumbatish.github.io/about_me/Jasmine_Resume_Badumbatish.pdf"}
+                                    linkName={"resume.pdf"}></LinkButton>*/}
+                        <LinkButton link={"https://codeberg.org/badumbatish"}
+                                    linkName={"Codeberg"}></LinkButton>
 
                         <LinkButton link={"https://discord.gg/mvdVEqDQxn"} linkName={"Discord"}></LinkButton>
                         <LinkButton link={"https://ko-fi.com/badumbatish"} linkName={"My Kofi"}></LinkButton>

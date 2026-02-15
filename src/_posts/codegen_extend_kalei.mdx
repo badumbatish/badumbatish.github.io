@@ -49,11 +49,6 @@ The below picture demonstrates sammine's ability to generate code for fibonacci,
 Aggregated datatype's also generated with sammine:
 [TODO: show that sammine can indeed code record]
 
-## On the side of coding
-### A few brief words on building tools and ast-ir inspection
-
-
-
 ## Codegening
 ### Alloca(tion of the stack) and mem2reg
 
@@ -62,6 +57,7 @@ todo talk about allocation of the stack, first draws out an example of the globa
 
 ### Variables
 
+Variable codegen (i32, i64, double)
 discuss three modes:
 - creation: in var def and the map that keeps it, this done using alloca
 - modification: in binary op =, this stores to address of alloca
@@ -116,37 +112,14 @@ We know that in libc, the signature for printf() is bla bla bla hahaha
 - println(2.4)
 
 What we'll do is, depending on the type via the AST, we'll access the
-
-### Garbage collection
-#### Let's talk a bit about records (or structs)
-
-#### Shadow stack GC + Reference counting definition
-
-Alright, let me provide some definition about shadow stack scheme as well as the mark and sweep algorithm.
-
-Shadow stack scheme: the reason the shadow stack scheme got its name is because the stack in this scheme is
-invisible to the machine :) Each function, when we lower them from AST to LLVM-IR, will add onto itself a so-called
-"stack_entry" struct. This struct will maintain records of how many objects are allocated in the current function as
-well as where the caller of the current function's stack entry is. It got its name due to the fact that it doesn't
-have to mess with the stack model of any specific platform. Indeed, according to the llvm docs: " has a significant
-portability advantage because it requires no special support from the target code generator,
-and does not require tricky platform-specific code to crawl the machine stack." Unfortunately, having to create each
-"stack_entry" for each function and perform bookkeeping on a non-native level, it's slower than other schemes.
+### Arrays and bounds checking :)
 
 
-Ref counting:
-#### Shadow stack
-When a function `y`  is called from a function `x`. The function y needs to know that x is its caller. Unfortunately, at the llvm IR, everything is abstracted away with the call() syntax.
+### Closures and 2 different ways to get them working
 
+TODO: Talk about the general structure
 
--> This means `y` doesn't actually know who its caller is.
-
-We'll solve this by maintaining a list of stack entries:
-- Each time a calle is called, the caller needs to construct and push a new stack entry onto the global linked list of stack entries.
-- When the callee wakes up, it know exactly who its caller is, just by querying the global linked list.
-- One problem remains: should the callee pops the stack entry when its done? or should the caller? (maybe something to do with main)
-#### Case study: malloc
-
+### Turning on optimizations
 # Epilogue
 
 The article, as you can tell, is directed towards new grads and/or beginners in LLVM. If you've benefited from the article
