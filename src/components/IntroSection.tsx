@@ -35,13 +35,13 @@ const IntroSection: React.FC<{children: ReactNode, className? : string}> = ({ ch
 
 const NickNameButton = () => {
     const NickNameArray: [string, string][] = [
-        ["Jasmine",              ""],
+        ["Jasmine",              "duhhh its my name"],
         ["badumbatish",          "my coding handle"],
         ["Thảo",                 "my vietnamese chosen name"],
         ["jjasmine",             "my usual social and email handle"],
-        ["fried chicken little", "chicken little movie but its fried you know hahha"],
-        ["bagel adventurer",     "this one stems from back when i have a blog on bagels"],
-        ["whyareuscared",        "my steam acct"],
+        ["fried chicken little", "chicken little movie but its fried hahha"],
+        ["bagel adventurer",     "i used to have a blog on bagels"],
+        ["whyareuscared",        "my gaming handle"],
     ];
     const [NickName, setNickName] = useState("Jasmine");
     const [isOpen, setIsOpen] = useState(false);
