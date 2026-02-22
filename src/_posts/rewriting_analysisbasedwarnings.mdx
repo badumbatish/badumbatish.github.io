@@ -2,6 +2,10 @@
 title: 'Rewriting analysis based warnings fall through'
 date: 2026-01-05
 recap: "Uhhh hey :)"
+music:
+  - title: "Blackbox"
+    artist: "COIN"
+    youtubeId: "Fq_8g1uotgA"
 ---
 
 Hey everyone :) This is a short write-up on my progress of reimplementing
@@ -12,6 +16,8 @@ of analysis :) The work of surveying, implementing and writing up the blog is ab
 At the time of writing, I was implementing fall-through only.
 
 As promise, here is a song for everyone: [Blackbox](https://youtu.be/Fq_8g1uotgA?si=_4z_WckmJVo1pC8M) by COIN.
+
+This work is joined by and is proofread by Julius Alexandre.
 ## Old fall through algorithm
 
 To understand the old fallthrough algorithm we should talk a bit about the CFG. The ClangCFG is a pretty primitive CFG where we have statements in a raw basic block and each block connects with each other via a branch or jump. A basic block in ClangCFG is raw in the sense that it can only contain other statements (operations) and no statements (operations) or blocks can contain it. This means that upon

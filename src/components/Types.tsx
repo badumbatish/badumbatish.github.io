@@ -1,4 +1,5 @@
 import Image from "next/image";
+import {ReactNode} from "react";
 
 export interface ExperienceInfo {
     title: string;
@@ -10,6 +11,6 @@ export interface ExperienceInfo {
 
 export interface JazzReadInfo {
     blog_title: string;
-    introduction: string;
+    introduction: ReactNode;
     link : string;
 }

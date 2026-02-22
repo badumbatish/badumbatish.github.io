@@ -5,6 +5,7 @@ import ExperienceSection from "@/components/ExperienceSection";
 import {ProjectSection, ProjectCard} from "@/components/ProjectSection";
 import {TimePiece, TimeLine} from "@/components/TimeLineRelated";
 import {BlogArticleCard, BlogArticleSection} from "@/components/BlogArticleCard";
+import Link from "next/link";
 
 export default function Home() {
     let sectionClassName = "h-full w-full flex flex-col font-mono gap-10";
@@ -17,7 +18,7 @@ export default function Home() {
             </IntroSection>
 
             <BlogArticleSection>
-               <BlogArticleCard blog_title={"(Tech) Blog"} introduction={"Technical blogs (with music recs)."} link={"/blog/"}></BlogArticleCard>
+               <BlogArticleCard blog_title={"(Tech) Blog"} introduction={<span>Technical blogs (with <Link href="/music/" className="inline underline text-indigo-400 hover:text-indigo-300">music recs</Link>).</span>} link={"/blog/"}></BlogArticleCard>
                 <BlogArticleCard blog_title={"Mediaboxd"} introduction={"Reviews/Recommendations for manga, books, videos and films"} link={"/media/"}></BlogArticleCard>
             </BlogArticleSection>
 

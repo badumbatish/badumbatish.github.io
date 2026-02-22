@@ -1,7 +1,18 @@
 ---
 title: "[ONGOING] Extending LLVM's Kaleidoscope: Code-gen edition"
 date: 8888-08-08
-recap: "Jasmine extends her language with string, tuple, if-else codegen together with a garbage collector"
+recap: "Jasmine extends her language with string, tuple, if-else codegen, closures and generics"
+music:
+  - title: "Papercut"
+    artist: "Zedd"
+    youtubeId: "HwtljkGZJnI"
+    commentary: "All three songs showcase extremely well the emotional depth of a person in and out of love."
+  - title: "Addicted To A Memory"
+    artist: "Zedd"
+    youtubeId: "ZqJiXLJs_Pg"
+  - title: "Done With Love"
+    artist: "Zedd"
+    youtubeId: "BjsjIkSb0cM"
 ---
 
 
@@ -118,6 +129,21 @@ What we'll do is, depending on the type via the AST, we'll access the
 ### Closures and 2 different ways to get them working
 
 TODO: Talk about the general structure
+
+### Generics
+
+Initially I was unsure on where to put this part but I guess I can mention generics in both sections.
+
+In shortness, when we generate code in the codegen phase, there won't be any generics anymore; the generics would've been dissolve
+away by the type checker. For a generic of type T in function f, as in the following code, the typechecker sets the boolean of is_generic() to true
+. Then when the type checker sees a call expr of f with a concrete type like i32, it literally creates another AST clone
+of the function f, called f.i32 (this is called monomorphization).
+
+When the codegen stage comes in, for a function ast, if its generic (via the boolean is_generic), then it won't generate code
+for it. But if it's monomorphized (non-generic), then it goes ahead and generate the code for it normally :)
+
+I'll have to reserve talking about the type checking aspect of generics here since the topic of the article is about
+codegen :) But if you'd like to support me in pumping out articles faster, maybe you can [buy me a redbull](https://ko-fi.com/badumbatish)? :)
 
 ### Turning on optimizations
 # Epilogue

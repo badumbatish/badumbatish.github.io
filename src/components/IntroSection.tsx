@@ -1,4 +1,4 @@
-import React, {ReactNode, useEffect, useState} from "react";
+import React, {ReactNode, useEffect, useRef, useState} from "react";
 import Image from "next/image";
 // import pictureProfile from "";
 import LinkButton from "@/components/LinkButton";
@@ -34,58 +34,100 @@ const IntroSection: React.FC<{children: ReactNode, className? : string}> = ({ ch
 };
 
 const NickNameButton = () => {
-    let NickNameArray : String[]= [ "Jasmine", "badumbatish", "jsmn", "Lễ", "Jazz", "Thảo", "jjasmine",
-                                     "jjsm", "fried chicken little", "bagel adventurer", "whyareuscared" ];
-    let clickMe = <Image className={"inline"} src={"clickme.png"} alt={"click me button"} width={8} height={8}></Image>
-    const [NickName, setNickName] = useState<String>("Jasmine");
-    const [Counter, setCounter] = useState(0);
-    const [TextSize, setTextSize] = useState("text-xl");
-    const myClick = () => {
+    const NickNameArray: [string, string][] = [
+        ["Jasmine",              ""],
+        ["badumbatish",          "my coding handle"],
+        ["Thảo",                 "my vietnamese chosen name"],
+        ["jjasmine",             "my usual social and email handle"],
+        ["fried chicken little", "chicken little movie but its fried you know hahha"],
+        ["bagel adventurer",     "this one stems from back when i have a blog on bagels"],
+        ["whyareuscared",        "my steam acct"],
+    ];
+    const [NickName, setNickName] = useState("Jasmine");
+    const [isOpen, setIsOpen] = useState(false);
+    const [tooltip, setTooltip] = useState<string | null>(null);
+    const hoverTimerRef = useRef<NodeJS.Timeout | null>(null);
+    const dropdownRef = useRef<HTMLSpanElement>(null);
 
-        setNickName(NickNameArray[(Counter + 1) % NickNameArray.length]);
-        setCounter((Counter + 1) % NickNameArray.length);
+    const getReason = (name: string) => NickNameArray.find(([n]) => n === name)?.[1] || "";
 
-        setTextSize("text-2xl");
-        setTimeout(() => {
-            setTextSize("text-xl");
-        }, 100);
+    const handleHoverStart = (name: string) => {
+        hoverTimerRef.current = setTimeout(() => {
+            const reason = getReason(name);
+            if (reason) setTooltip(reason);
+        }, 1000);
+    };
 
+    const handleHoverEnd = () => {
+        if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
+        setTooltip(null);
+    };
 
-    }
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
-    function hoverOnBtn() {
-        setTextSize("text-2xl");
-    }
-    function hoverOffBtn() {
-        setTextSize("text-xl");
-    }
+    const selectName = (name: string) => {
+        setNickName(name);
+        setIsOpen(false);
+        handleHoverEnd();
+    };
 
-    return <span>
-        <span
-        >
-            <button className={`inline content-start items-start justify-start flex-row hover:underline underline-offset-1`}
-                    onClick={myClick}
-                    onMouseEnter={hoverOnBtn}
-                    onMouseLeave={hoverOffBtn}>
-
-                <h2 className="text-xl font-bold h-3">Hi there, it&rsquo;s
-                    <span className={`text-blue-400 `}> {NickName}
-                        <span
-                            className={"justify-self-start"}>{clickMe}
+    return (
+        <span>
+            <h2 className="text-xl font-bold h-3">Hi there, it&rsquo;s{" "}
+                <span ref={dropdownRef} className="relative inline-block">
+                    <button
+                        className="text-blue-400 hover:underline underline-offset-1"
+                        onClick={() => setIsOpen(!isOpen)}
+                        onMouseEnter={() => handleHoverStart(NickName)}
+                        onMouseLeave={handleHoverEnd}
+                    >
+                        {NickName}
+                        <span className="text-sm ml-1 animate-bounce inline-block">▼</span>
+                    </button>
+                    {tooltip && !isOpen && (
+                        <span className="absolute left-0 top-full z-20 mt-1 px-3 py-1.5 text-xs bg-white text-black border-2 border-blue-300 rounded-lg shadow-lg font-mono whitespace-nowrap">
+                            {tooltip}
                         </span>
-                    </span>
-                    :)
-                </h2>
-                </button>
+                    )}
+                    {isOpen && (
+                        <ul className={`absolute left-0 top-full z-10 mt-1 border-2 border-blue-300 rounded-lg shadow-lg max-h-60 overflow-auto py-1 min-w-max bg-white font-mono ${hover_border}`}>
+                            {NickNameArray.map(([name, reason]) => (
+                                <li key={name}>
+                                    <button
+                                        className={`block w-full text-left px-4 py-1.5 text-sm hover:bg-indigo-300/20 ${
+                                            name === NickName ? "text-blue-600 font-bold" : "text-black"
+                                        }`}
+                                        onClick={() => selectName(name)}
+                                        onMouseEnter={() => handleHoverStart(name)}
+                                        onMouseLeave={handleHoverEnd}
+                                        title={reason}
+                                    >
+                                        {name}
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </span>
+                {" "}:)
+            </h2>
         </span>
-    </span>
+    );
 }
 
 
 const LeftMainCard = () => {
     return (
         <div className={`font-mono flex flex-col items-center basis-2/6
-                                rounded-lg overflow-hidden p-4 
+                                rounded-lg overflow-visible p-4
                                 border-2 border-blue-300 gap-2 hover:border-indigo-400 ${hover_border}`}>
             {/* <div className="basis-1/5`}">
                <Image className="mx-auto rounded-3xl overflow-hidden" src={"pfp3.png"}
