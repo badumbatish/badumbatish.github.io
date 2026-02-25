@@ -182,7 +182,7 @@ When the importing module encounters import math as m;, the compiler:
 
 Alias Resolution at Parse Time
 
-The parser maintains an alias_to_module map. When it sees import math as m;, it records {"m" → "math"}. Later, when it encounters a qualified call like m::add(3, 4):
+The parser maintains an alias_to_module map. When it sees import math as m;, it records \{"m" → "math"\}. Later, when it encounters a qualified call like m::add(3, 4):
 
   1. Looks up m in alias_to_module → finds "math".
   2. Rewrites the identifier to math$add — the mangled name.

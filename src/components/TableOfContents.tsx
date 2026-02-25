@@ -16,7 +16,7 @@ export default function TableOfContents({
   const [headings, setHeadings] = useState<TocEntry[]>([]);
   const [activeId, setActiveId] = useState<string>("");
   const isScrollingRef = useRef(false);
-  const scrollTimerRef = useRef<ReturnType<typeof setTimeout>>();
+  const scrollTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
     const article = document.querySelector(articleSelector);
