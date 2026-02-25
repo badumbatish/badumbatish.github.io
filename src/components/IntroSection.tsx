@@ -173,7 +173,8 @@ const LeftMainCard = () => {
                         <LinkButton link={"https://leetcode.com/badumbatish/"}
                                     linkName={"Leetcode"}></LinkButton>
                         <LinkButton link={"/blog"} linkName={"My blog"}></LinkButton>
-                        {/*<LinkButton link={"https://bsky.app/profile/badumbatish.bsky.social"} linkName={"bluesky"}></LinkButton>*/}
+                        <LinkButton link={"https://bsky.app/profile/badumbatish.bsky.social"} linkName={"Bluesky"}></LinkButton>
+                        <LinkButton link={"/blog/rss.xml"} linkName={"RSS"}></LinkButton>
 
                     </div>
                 </div>

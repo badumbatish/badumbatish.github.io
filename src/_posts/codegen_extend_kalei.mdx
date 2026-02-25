@@ -129,6 +129,103 @@ What we'll do is, depending on the type via the AST, we'll access the
 ### Closures and 2 different ways to get them working
 
 TODO: Talk about the general structure
+---
+sammine-lang Module Interface Files (.mni) and Name Mangling
+
+The Problem
+
+When compiling modules separately, the importing module needs to know what symbols a library exports — their names, parameter types, and return types. At link time, the linker needs a way to avoid
+symbol collisions between modules that define functions with the same name.
+
+The Mangling Scheme
+
+sammine-lang uses a simple module$function mangling convention. A function add in module math becomes math$add at the LLVM IR / object file level.
+
+The $ separator was chosen because it's valid in LLVM symbol names but not a legal character in sammine identifiers, so collisions are impossible.
+
+Interface Files (.mni)
+
+When you compile a library module (any .mn file without a main), the compiler emits a .mni file alongside the .o. The .mni file is plain sammine source — a list of extern declarations using the
+mangled names.
+
+For example, given math.mn:
+
+let add(a: i32, b: i32) -> i32 {
+a + b
+}
+
+let multiply(a: i32, b: i32) -> i32 {
+a * b
+}
+
+The compiler produces math.mni:
+
+extern math$add(a : i32, b : i32) -> i32;
+extern math$multiply(a : i32, b : i32) -> i32;
+
+Two kinds of definitions appear in .mni files:
+
+  1. let functions — always emitted with the mangled name module$func.
+  2. Exposed C externs (extern C) — also emitted with the mangled name. At the LLVM level, an IFunc (indirect function) maps the mangled name back to the real C symbol, so the linker resolves it at
+load time.
+
+main is never mangled — it keeps its name regardless of module.
+
+How Imports Consume .mni Files
+
+When the importing module encounters import math as m;, the compiler:
+
+  1. Locates math.mni — searches CWD, the source file's directory, then the stdlib directory.
+  2. Parses it as normal sammine source — the .mni is valid sammine (extern declarations), so it runs through the same Lexer → Parser pipeline.
+  3. Injects the extern declarations into the front of the importing module's AST, so they're visible during type checking and codegen.
+  4. Tracks math.o for linking — the corresponding object file is added to the link step.
+
+Alias Resolution at Parse Time
+
+The parser maintains an alias_to_module map. When it sees import math as m;, it records {"m" → "math"}. Later, when it encounters a qualified call like m::add(3, 4):
+
+  1. Looks up m in alias_to_module → finds "math".
+  2. Rewrites the identifier to math$add — the mangled name.
+  3. From this point on, the rest of the pipeline (type checker, codegen) sees math$add, which matches the extern math$add(...) injected from the .mni file.
+
+If you write import math; (no alias), the module name itself becomes the alias, so math::add works the same way.
+
+Codegen: Where Mangling Actually Happens
+
+In FunctionCodegen.cpp, preorder_walk(PrototypeAST*) computes the LLVM symbol name:
+
+std::string llvm_name = ast->functionName;
+if (!module_name.empty() && ast->functionName != "main" && !in_extern)
+llvm_name = module_name + "$" + ast->functionName;
+
+The module_name is the file stem, passed to CgVisitor only when the file has no main (i.e., it's a library module). Executable modules get an empty module_name, so their functions aren't mangled.
+
+For exposed C externs, the real C name is kept in the object file, and an LLVM IFunc redirects the mangled name to it:
+
+@math$printf = ifunc ..., ptr @resolve_math$printf
+define internal ptr @resolve_math$printf() { ret ptr @printf }
+
+End-to-End Example
+
+# Compile the library → produces math.o and math.mni
+sammine -f math.mn
+
+# Compile the executable → reads math.mni, links math.o
+sammine -f main.mn
+
+main.mn:
+import math as m;
+import std;
+
+let main() -> i32 {
+std::printf("%d\n", m::add(3, 4));
+return 0;
+}
+
+The flow: m::add(3, 4) → parser rewrites to math$add(3, 4) → matches extern math$add(...) from .mni → codegen emits a call to @math$add → linker resolves it from math.o.
+
+  ---
+
 
 ### Generics
 

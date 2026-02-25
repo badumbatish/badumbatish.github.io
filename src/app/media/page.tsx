@@ -138,7 +138,7 @@ export default async function Page() {
     const posts = await getMangaPosts();
     
     return (
-        <div className="py-12 flex flex-col items-center  justify-items-start mx-auto ">
+        <div className="py-12 flex flex-col items-center justify-items-start mx-auto max-w-4xl px-4">
             <h1 className="text-4xl">Mediaboxd</h1>
             <p className="pt-2">Hi everyone, welcome to the manga/books/media corner; this is where I document and give
                 recommendations/reviews on
@@ -150,16 +150,16 @@ export default async function Page() {
                 <div className={"mx-auto text-2xl font-bold"}>Media</div>
                 {posts.map((post) => (
                     <div key={post.slug} className={`rounded-lg p-4 border-2 border-blue-300 my-2 w-auto ${hover_border}`}>
-                        <div className={"flex flex-col space-x-4 sm:flex-row"}>
+                        <div className={"flex flex-row gap-4"}>
                             <QuickReadButton content={post.text}>
                                 <Image src={post.imageUrl} alt={post.slug} width={80} height={80}
                                        className={"z-20 mx-auto border-blue-400 border-2 hover:border-4 bg-blue-50 shadow-md " +
-                                           "rounded-md mb-2 sm:mb-0  hover:border-blue"}
+                                           "rounded-md hover:border-blue"}
                                          >
                                 </Image>
                             </QuickReadButton>
                             <div
-                                className={"pl-4 border-l-slate-800 border-double border-r-0 border-y-0 border-4 flex flex-col"}>
+                                className={"flex flex-col"}>
                                 <QuickReadButton content={post.text}>
                                     <h2 className={"font-bold text-lg pb-1 hover:underline"}>{post.title}</h2>
                                 </QuickReadButton>

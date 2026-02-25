@@ -1,27 +1,28 @@
 import { Feed } from "feed";
 import {getAllPosts, Post} from "@/lib/api"
 
-const feed = new Feed({
-    title: "Jasmine Tang RSS Feed",
-    description: "Jasmine's blog",
-    id: "https://badumbatish.github.io/blog",
-    link: "https://badumbatish.github.io/blog/rss.xml",
-    language: "en",
-    image: "https://badumbatish.github.io/pfp6.png",
-    copyright: "All rights for public use and education, Jasmine Tang",
-    author: {
-        name: "Jasmine Tang",
-        email: "thisisjjasmine@gmail.com",
-        link: "https://badumbatish.github.io/"
-    }
-});
 export const dynamic = 'force-static';
 
 export async function GET() {
+    const feed = new Feed({
+        title: "Jasmine Tang RSS Feed",
+        description: "Jasmine's blog",
+        id: "https://badumbatish.github.io/blog",
+        link: "https://badumbatish.github.io/blog/rss.xml",
+        language: "en",
+        image: "https://badumbatish.github.io/pfp6.png",
+        copyright: "All rights for public use and education, Jasmine Tang",
+        author: {
+            name: "Jasmine Tang",
+            email: "thisisjjasmine@gmail.com",
+            link: "https://badumbatish.github.io/"
+        }
+    });
+
     const posts : Post[] = await getAllPosts();
 
     posts.forEach((post) => {
-        if (post.hidden != true && !post.title.includes("[ONGOING]")) {
+        if (post.hidden != true && !post.title.includes("[ONGOING]") && post.rss !== false) {
             feed.addItem({
                 title: `${post.title}`,
                 id : `${post.id}`,

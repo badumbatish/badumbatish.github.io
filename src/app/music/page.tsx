@@ -19,35 +19,34 @@ interface SongRec {
     commentary?: string;
 }
 
-interface SongWithPost extends SongRec {
+interface PostWithSongs {
     blogSlug: string;
     blogTitle: string;
     blogDate: string;
+    songs: SongRec[];
 }
 
-async function getMusicRecs(): Promise<SongWithPost[]> {
+async function getMusicRecs(): Promise<PostWithSongs[]> {
     const posts = await getAllPosts();
-    const songs: SongWithPost[] = [];
+    const grouped: PostWithSongs[] = [];
 
     for (const post of posts) {
         const music = post.music as SongRec[] | undefined;
-        if (!music) continue;
+        if (!music || music.length === 0) continue;
 
-        for (const song of music) {
-            songs.push({
-                ...song,
-                blogSlug: post.id.replace(/\.mdx?$/, ""),
-                blogTitle: post.title,
-                blogDate: post.date,
-            });
-        }
+        grouped.push({
+            blogSlug: post.id.replace(/\.mdx?$/, ""),
+            blogTitle: post.title,
+            blogDate: post.date,
+            songs: music,
+        });
     }
 
-    return songs;
+    return grouped;
 }
 
 export default async function Page() {
-    const songs = await getMusicRecs();
+    const posts = await getMusicRecs();
 
     return (
         <div className="py-12 flex flex-col items-center justify-items-start mx-auto max-w-4xl px-4">
@@ -58,52 +57,62 @@ export default async function Page() {
             </p>
 
             <div className="pt-8 w-full flex flex-col gap-6">
-                {songs.map((song, i) => (
+                {posts.map((post) => (
                     <div
-                        key={`${song.youtubeId ?? song.url}-${i}`}
-                        className={`rounded-lg p-4 border-2 border-blue-300 ${hover_border}`}
+                        key={post.blogSlug}
+                        className={`rounded-lg border-2 border-blue-300 ${hover_border}`}
                     >
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <div className="sm:w-80 shrink-0">
-                                {song.youtubeId ? (
-                                    <iframe
-                                        width="100%"
-                                        height="180"
-                                        src={`https://www.youtube.com/embed/${song.youtubeId}`}
-                                        title={`${song.title} by ${song.artist}`}
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                        className="rounded-md"
-                                    />
-                                ) : (
-                                    <a
-                                        href={song.url}
-                                        target="_blank"
-                                        rel="nofollow noopener"
-                                        className="flex items-center justify-center h-[180px] rounded-md bg-sky-100 hover:bg-sky-200"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-16 h-16 opacity-60 hover:opacity-100">
-                                            <path d="M8 5v14l11-7z"/>
-                                        </svg>
-                                    </a>
-                                )}
-                            </div>
-                            <div className="flex flex-col justify-center">
-                                <h2 className="font-bold text-lg">{song.title}</h2>
-                                <p className="text-sm">by {song.artist}</p>
-                                {song.commentary && (
-                                    <p className="text-sm italic pt-2">&ldquo;{song.commentary}&rdquo;</p>
-                                )}
-                                <p className="text-xs pt-2">
-                                    From:{" "}
-                                    <Link
-                                        href={`/posts/${song.blogSlug}`}
-                                        className="underline hover:text-indigo-400"
-                                    >
-                                        {song.blogTitle}
-                                    </Link>
-                                </p>
-                            </div>
+                        <div className="flex items-baseline justify-between px-4 pt-4 pb-2 border-b border-blue-200">
+                            <Link
+                                href={`/posts/${post.blogSlug}`}
+                                className="font-bold text-lg underline hover:text-indigo-400"
+                            >
+                                {post.blogTitle}
+                            </Link>
+                            <span className="text-xs text-gray-500 shrink-0 ml-4">{post.blogDate}</span>
+                        </div>
+
+                        <div className="p-4 flex flex-col">
+                            {post.songs.map((song, i) => (
+                                <div key={`${song.youtubeId ?? song.url}-${i}`}>
+                                    {i > 0 && (
+                                        <hr className="my-4 border-dashed border-blue-200" />
+                                    )}
+                                    <div className="flex flex-col sm:flex-row gap-4">
+                                        <div className="sm:w-80 shrink-0">
+                                            {song.youtubeId ? (
+                                                <iframe
+                                                    width="100%"
+                                                    height="180"
+                                                    src={`https://www.youtube.com/embed/${song.youtubeId}`}
+                                                    title={`${song.title} by ${song.artist}`}
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowFullScreen
+                                                    className="rounded-md"
+                                                />
+                                            ) : (
+                                                <a
+                                                    href={song.url}
+                                                    target="_blank"
+                                                    rel="nofollow noopener"
+                                                    className="flex items-center justify-center h-[180px] rounded-md bg-sky-100 hover:bg-sky-200"
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-16 h-16 opacity-60 hover:opacity-100">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                </a>
+                                            )}
+                                        </div>
+                                        <div className="flex flex-col justify-center">
+                                            <h2 className="font-bold text-lg">{song.title}</h2>
+                                            <p className="text-sm">by {song.artist}</p>
+                                            {song.commentary && (
+                                                <p className="text-sm italic pt-2">&ldquo;{song.commentary}&rdquo;</p>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 ))}

@@ -2,6 +2,7 @@ import { getPostById, getAllPosts } from "@/lib/api";
 import 'katex/dist/katex.min.css'
 import "highlight.js/styles/atom-one-dark.css";
 import Link from "next/link"; // for styling math
+import TableOfContents from "@/components/TableOfContents";
 
 
 // Set the title of the page to be the post title, note that we no longer use
@@ -38,6 +39,7 @@ export default async function Post(
 
     const { html, title, date } = await getPostById(id);
     return (
+        <div className="relative">
         <div className="py-12 flex flex-col items-center  justify-items-start mx-auto ">
         <Link href={"/blog"} className={"flex justify-center text-4xl"}>
             <h2>My blog</h2>
@@ -63,6 +65,8 @@ export default async function Post(
 */}
                 <div dangerouslySetInnerHTML={{__html: html}}/>
             </article>
+        </div>
+        <TableOfContents articleSelector="article" />
         </div>
     );
 }
