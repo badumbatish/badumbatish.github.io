@@ -150,6 +150,7 @@ mangled names.
 
 For example, given math.mn:
 
+```
 let add(a: i32, b: i32) -> i32 {
 a + b
 }
@@ -157,11 +158,14 @@ a + b
 let multiply(a: i32, b: i32) -> i32 {
 a * b
 }
+```
 
 The compiler produces math.mni:
 
+```
 extern math$add(a : i32, b : i32) -> i32;
 extern math$multiply(a : i32, b : i32) -> i32;
+```
 
 Two kinds of definitions appear in .mni files:
 
@@ -194,26 +198,33 @@ Codegen: Where Mangling Actually Happens
 
 In FunctionCodegen.cpp, preorder_walk(PrototypeAST*) computes the LLVM symbol name:
 
+```cpp
 std::string llvm_name = ast->functionName;
 if (!module_name.empty() && ast->functionName != "main" && !in_extern)
 llvm_name = module_name + "$" + ast->functionName;
+```
 
 The module_name is the file stem, passed to CgVisitor only when the file has no main (i.e., it's a library module). Executable modules get an empty module_name, so their functions aren't mangled.
 
 For exposed C externs, the real C name is kept in the object file, and an LLVM IFunc redirects the mangled name to it:
 
+```llvm
 @math$printf = ifunc ..., ptr @resolve_math$printf
 define internal ptr @resolve_math$printf() { ret ptr @printf }
+```
 
 End-to-End Example
 
+```bash
 # Compile the library → produces math.o and math.mni
 sammine -f math.mn
 
 # Compile the executable → reads math.mni, links math.o
 sammine -f main.mn
+```
 
 main.mn:
+```
 import math as m;
 import std;
 
@@ -221,6 +232,7 @@ let main() -> i32 {
 std::printf("%d\n", m::add(3, 4));
 return 0;
 }
+```
 
 The flow: m::add(3, 4) → parser rewrites to math$add(3, 4) → matches extern math$add(...) from .mni → codegen emits a call to @math$add → linker resolves it from math.o.
 
