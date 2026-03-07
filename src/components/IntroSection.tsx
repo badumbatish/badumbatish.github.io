@@ -178,7 +178,6 @@ const LeftMainCard = () => {
 
                     </div>
                 </div>
-
             </div>
         </div>
     )
