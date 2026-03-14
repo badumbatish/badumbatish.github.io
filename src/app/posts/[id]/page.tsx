@@ -45,7 +45,7 @@ export default async function Post(
             <h2>My blog</h2>
         </Link>
 
-            <article className="p-8 prose pt-0.5 max-w-none w-full lg:w-1/2 md:w-4/6 sm:w-5/6 prose-sky mx-auto">
+            <article className="px-1 py-4 sm:p-8 prose pt-0.5 max-w-none w-full lg:w-1/2 md:w-5/6 prose-sky mx-auto">
                 <div className="flex justify-center text-2xl font-bold ">
                     <h2>{title}</h2>
                 </div>

@@ -54,7 +54,7 @@ export function BlogEntries({posts}: { posts: Post[] }) {
                     I hope everyone enjoys :)
                 </h1>
                 {BlogType(blogType, setBlogType)}
-                <ul className="flex flex-col gap-6 w-3/5">
+                <ul className="flex flex-col gap-6 w-full px-4 md:w-3/5 md:px-0">
                     {posts.map(post => {
                         const {id, date, title, hidden, recap, html} = post
                         if (hidden == true ) {

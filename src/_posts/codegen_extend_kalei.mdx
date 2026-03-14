@@ -25,13 +25,11 @@ I'm still doing good hahhaa :)
 
 I always thought getting back to OC after being far far away in Berkeley wonderland means that everything's gonna
 change for me: I won't have to do homework anymore :) I'll go to bed early blabla bla; But here I am writing this
-blog at 2 AM hahhaha. I realized that changing the environment doesn't necessarily change me personally; I'd need
-to change myself on my own :) Being next to my family makes me really grateful, but now I'm starting to miss my
-high school teacher as well as my nanny in Viet Nam. I really wanna go back soon :)
+blog at 2 AM hahhaha.
 
 Anyways, let's talk business hahah :)
-This article documents what I've learned about the basics of LLVM's code generation process, self-contained in
-lowering from AST to LLVM-IR. This includes basic stack variables, addition, subtraction, etc etc to strings, structs
+This article documents what I've learned about codegen in LLVM through my compiler. Originally the codegen was produced in
+llvm-ir but i've since retrofitted it in MLIR. This includes basic stack variables, addition, subtraction, etc etc to strings, structs
 as well as garbage collection.
 
 As is tradition, here are three songs for you by Zedd: [Papercut](https://youtu.be/HwtljkGZJnI?si=6kS1eXfN3DS7TokP),
@@ -51,7 +49,7 @@ can abstract away SSA form; the **alloca** process together with mem2reg allows 
 extremely fast assembly generation even for primitive stack allocations.
 
 In this article, I'll report on the codegen process of sammine-lang, an extension on the kaleidoscope tutorial.
-Besides code generation for scalar values, funcitons and control flow, the article also touches on code gen for
+Besides code generation for scalar values, functions and control flow, the article also touches on code gen for
 aggregated data types such as structs :) I hope everyone enjoys :)
 
 The below picture demonstrates sammine's ability to generate code for fibonacci, a classic mathematical problem :)
@@ -63,182 +61,95 @@ Aggregated datatype's also generated with sammine:
 ## Codegening
 ### Alloca(tion of the stack) and mem2reg
 
-todo talk about allocation of the stack, first draws out an example of the global var in llvm ir
+`alloca` is one of llvm's instruction that allocates memory on the stack. The users can use `load()` and `store()` to store
+values into said memory location on the stack. A problem with this approach is that since it's on the stack and not
+the registers, operations will be slower than usual. But, LLVM does offer mem2reg that promotes memory references to register
+references.
+
+LLVM tutorial uses mem2reg as one of its main component in the chapter for mutable variables and the LLVM performance also
+mentions said pass in more details:
+```
+An alloca instruction can be used to represent a function scoped stack slot, but can also represent dynamic frame expansion.
+When representing function scoped variables or locations, placing alloca instructions at the beginning of the entry block should be preferred.
+In particular, place them before any call instructions. Call instructions might get inlined and replaced with multiple basic blocks.
+The end result is that a following alloca instruction would no longer be in the entry basic block afterward.
+
+The SROA (Scalar Replacement Of Aggregates) and Mem2Reg passes only attempt to eliminate alloca instructions that are in the entry basic block. Given SSA is the canonical form expected by much of the optimizer; if allocas can not be eliminated by Mem2Reg or SROA, the optimizer is likely to be less effective than it could be.
+```
+
 
 
 ### Variables
 
-Variable codegen (i32, i64, double)
-discuss three modes:
+Simple variable codegen (think i64, f64 etc) happens with three operations:
 - creation: in var def and the map that keeps it, this done using alloca
 - modification: in binary op =, this stores to address of alloca
 - read: this loads from address of alloca.
 
-todo: talks about in relation to the walk and visitor pattern
+In MLIR, when we emit a variable definition, we emit the alloca for said variable in the beginning block of
+the current function that the variable is in. Then we'd set `allocas[var_name] = var_alloca`.
+
+Suppose we have `let a = 5.5` where 5.5 is the floating point expression, after we have codegen'd the ConstantFloatOp(5.5),
+we would use `mlir::StoreOp` to store the mlir::Value of the float op to the alloca.
+
+The modification is described in the case of `let a = 5.5` as well; we're just storing a new value into the alloca of a variable
+, obtained via the mapping of `allocas`.
+
+For the read case, it's a bit more interesting :) in sammine, since everything's a value,  we'd just read the value at said
+alloca, and then return that value.
+
+I hope this makes sense :)
 ### Control flow
 
 discuss how alloca makes this easier.
 
-### Functions and Extern (via PrototypeAST)
+Control flow is a bit fun. We'd still follow the llvm kaleidoscope structure here. Perhaps pseudo code can help illuminate
+the structure better. One thing to add is since mlir::Block doesn't use phi, the addArgument here is essentially replacing the
+phi :)
 
-todo: talk about a caveat that we need to allocate "alloca" addresses at the start of the function.
-todo: relate to how strong the visitor pattern is
+In this setting, we're assuming the type checker has already run to see if the if expr's type is
+unit() or not.
+```
+emitIfExpr(ast):
+    cond = emitExpr(ast.bool_expr)
+    hasResult = true if inferred type of if_expr is unit()
+    thenBlock, elseBlock = two new blocks in current region
+    mergeBlock = new detached block
+    if hasResult: mergeBlock.addArgument(convertType(ast.type))
 
-#### Case study: printf
+    emit condBranch(cond -> thenBlock, else -> elseBlock)
 
-Back in Berk, I sometimes would play [Factorio](https://www.factorio.com/) in my free time. The game is intuitive
-and interesting. But for some
-reasons, the game really stresses me out. "Wait a minute, I love problem-solving, don't I? But I feel so stressed
-trying to build the factory with these new science packs and these new different energy types." Now, in this summer
-of 2025, when I'm writing my own compiler, I suddenly realize the reason. I love problem sovling, but I was solving
-the wrong problems. I wasn't interested in trying to build and maintain factories. Rather, compiler always seems to have
-a softer spot in my heart. That and blog writing, hence I'm writing this :)
+    for each (block, body) in [(thenBlock, ast.then), (elseBlock, ast.else)]:
+      set insertion to block
+      val = emitBlock(body)
+      if block not already terminated:
+        branch to mergeBlock (passing val if hasResult)
 
-Ah, I still don't know what I'm rambling
-about. I guess what I'm trying to say is in that in my experience, while I enjoy problem-solving in general, it also
-matters what type of problems I'm solving. Factorio, leaning hard into resource management and logistics, just isn't
-my forte, which is creative expression (writing), coding and abstraction (compiler engineer). Maybe front-end
-and/or back-end
-development
-isn't what you love,
-then you
-should consider switching to compiler engineering, ahhahahha :P
+    if either branch is non-terminated:
+      attach mergeBlock to region
+      return mergeBlock.arg[0] if hasResult, else null
+    else:  // both branches terminated (e.g. return)
+      delete mergeBlock
+      return null
+```
+### Functions
 
+Function, i think is pretty simple. We'll do two passes over each function definitions.
 
-Anyways, let's now talk about the
+In the first pass, we declare them by creating an mlir::FuncOp in
+
+### Extern (or reuse)
+Let's now talk about the
 lowering of printing..
 
-Right now, in sammine, I'm adopting a python-esque way of printing:
-```
-print(x);  # x and y are variables in this case
-println(y);
-println(2.4 + 5.3); # printing should also support expressions
-```
-
-With int and double powered by alloca, how should we go around lowering this?
-
-We know that in libc, the signature for printf() is bla bla bla hahaha
-- print(2)
-- print("x")
-- println(2.4)
-
-What we'll do is, depending on the type via the AST, we'll access the
 ### Arrays and bounds checking :)
 
 
 ### Closures and 2 different ways to get them working
 
 TODO: Talk about the general structure
----
-sammine-lang Module Interface Files (.mni) and Name Mangling
-
-The Problem
-
-When compiling modules separately, the importing module needs to know what symbols a library exports — their names, parameter types, and return types. At link time, the linker needs a way to avoid
-symbol collisions between modules that define functions with the same name.
-
-The Mangling Scheme
-
-sammine-lang uses a simple module$function mangling convention. A function add in module math becomes math$add at the LLVM IR / object file level.
-
-The $ separator was chosen because it's valid in LLVM symbol names but not a legal character in sammine identifiers, so collisions are impossible.
-
-Interface Files (.mni)
-
-When you compile a library module (any .mn file without a main), the compiler emits a .mni file alongside the .o. The .mni file is plain sammine source — a list of extern declarations using the
-mangled names.
-
-For example, given math.mn:
-
-```
-let add(a: i32, b: i32) -> i32 {
-a + b
-}
-
-let multiply(a: i32, b: i32) -> i32 {
-a * b
-}
-```
-
-The compiler produces math.mni:
-
-```
-extern math$add(a : i32, b : i32) -> i32;
-extern math$multiply(a : i32, b : i32) -> i32;
-```
-
-Two kinds of definitions appear in .mni files:
-
-  1. let functions — always emitted with the mangled name module$func.
-  2. Exposed C externs (extern C) — also emitted with the mangled name. At the LLVM level, an IFunc (indirect function) maps the mangled name back to the real C symbol, so the linker resolves it at
-load time.
-
-main is never mangled — it keeps its name regardless of module.
-
-How Imports Consume .mni Files
-
-When the importing module encounters import math as m;, the compiler:
-
-  1. Locates math.mni — searches CWD, the source file's directory, then the stdlib directory.
-  2. Parses it as normal sammine source — the .mni is valid sammine (extern declarations), so it runs through the same Lexer → Parser pipeline.
-  3. Injects the extern declarations into the front of the importing module's AST, so they're visible during type checking and codegen.
-  4. Tracks math.o for linking — the corresponding object file is added to the link step.
-
-Alias Resolution at Parse Time
-
-The parser maintains an alias_to_module map. When it sees import math as m;, it records \{"m" → "math"\}. Later, when it encounters a qualified call like m::add(3, 4):
-
-  1. Looks up m in alias_to_module → finds "math".
-  2. Rewrites the identifier to math$add — the mangled name.
-  3. From this point on, the rest of the pipeline (type checker, codegen) sees math$add, which matches the extern math$add(...) injected from the .mni file.
-
-If you write import math; (no alias), the module name itself becomes the alias, so math::add works the same way.
-
-Codegen: Where Mangling Actually Happens
-
-In FunctionCodegen.cpp, preorder_walk(PrototypeAST*) computes the LLVM symbol name:
-
-```cpp
-std::string llvm_name = ast->functionName;
-if (!module_name.empty() && ast->functionName != "main" && !in_extern)
-llvm_name = module_name + "$" + ast->functionName;
-```
-
-The module_name is the file stem, passed to CgVisitor only when the file has no main (i.e., it's a library module). Executable modules get an empty module_name, so their functions aren't mangled.
-
-For exposed C externs, the real C name is kept in the object file, and an LLVM IFunc redirects the mangled name to it:
-
-```llvm
-@math$printf = ifunc ..., ptr @resolve_math$printf
-define internal ptr @resolve_math$printf() { ret ptr @printf }
-```
 
 End-to-End Example
-
-```bash
-# Compile the library → produces math.o and math.mni
-sammine -f math.mn
-
-# Compile the executable → reads math.mni, links math.o
-sammine -f main.mn
-```
-
-main.mn:
-```
-import math as m;
-import std;
-
-let main() -> i32 {
-std::printf("%d\n", m::add(3, 4));
-return 0;
-}
-```
-
-The flow: m::add(3, 4) → parser rewrites to math$add(3, 4) → matches extern math$add(...) from .mni → codegen emits a call to @math$add → linker resolves it from math.o.
-
-  ---
-
-
 ### Generics
 
 Initially I was unsure on where to put this part but I guess I can mention generics in both sections.
