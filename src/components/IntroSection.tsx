@@ -150,10 +150,12 @@ const LeftMainCard = () => {
                     <div className="grid sm:grid-cols-1 md:grid-cols-1 gap-1 text-sm lg:text-base">
                         <LinkButton link={"mailto:jjasmine@igalia.com"}
                                     linkName={"jjasmine@igalia.com"}></LinkButton>
-                        <LinkButton link={"mailto:jjasmine@berkeley.edu"}
-                                    linkName={"jjasmine@berkeley.edu"}></LinkButton>
+                        {/*<LinkButton link={"mailto:jjasmine@berkeley.edu"}
+                                    linkName={"jjasmine@berkeley.edu"}></LinkButton>*/}
                         <LinkButton link={"https://www.linkedin.com/in/jjasmine-t/"}
                                     linkName={"LinkedIn"}></LinkButton>
+                        <LinkButton link={"about_me/Jasmine_Resume_03_21_2026.pdf"}
+                                    linkName={"resume.pdf"}></LinkButton>
                     </div>
                 </div>
                 <div>
@@ -162,8 +164,7 @@ const LeftMainCard = () => {
 
                         <LinkButton link={"https://github.com/badumbatish/"}
                                     linkName={"GitHub"}></LinkButton>
-                        {/*<LinkButton link={"https://badumbatish.github.io/about_me/Jasmine_Resume_Badumbatish.pdf"}
-                                    linkName={"resume.pdf"}></LinkButton>*/}
+
                         <LinkButton link={"https://codeberg.org/badumbatish"}
                                     linkName={"Codeberg"}></LinkButton>
 
