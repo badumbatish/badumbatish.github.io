@@ -1,0 +1,131 @@
+---
+title: 'My first time with Nix'
+date: 2026-4-18
+recap: "Jasmine tries out Nix"
+music:
+  - title: "Ngô Kinh (Wu Jing) - Phim tổng hợp (Movie collection)"
+    artist: "Unknown"
+    youtubeId: "_NUuzIYjuR4"
+    commentary: "It's been a while"
+  - title: "Người ấy remix"
+    artist: "Trịnh Thăng Bình"
+    youtubeId: "KUvYtay5h9Y"
+    commentary: "Selected songs from the mixtape"
+  - title: "Dù có cách xa remix—Thái Tuyết Trâm"
+    artist: "Thái Tuyết Trâm"
+    youtubeId: "YIR3mw0keSM"
+    commentary: "Selected songs from the mixtape"
+  - title: "Dù có cách xa remix—Thái Tuyết Trâm"
+    artist: "SHARTNUSS FT TR.D & PHANKEO"
+    youtubeId: "TzjUVP9uZcE"
+    commentary: "2025 song for comparison"
+
+
+---
+
+Hi everyone, hope everyone’s doing well! It's been too long since I've published any new blogs ~~
+I've been stacking my ONGOINGs for so long its a bit hard to ignore hhahahah.
+
+It turns out when you start professional work for a while there’s this sense of imposter syndrome that you don't really
+know much, so then you start to post less :)
+
+A few weeks ago someone at work asked me if id had any experience with nix before.
+We were discussing build systems, toolchains and such, and when I confessed I hadn't had any experience with Nix,
+I felt a bit embarrassed. Surely a trans girl should have touched Nix before? Hahaha. Welp, last week I finally got
+down and started messing around with it. This article will talk about my experience and what pain points Nix solves for me :)
+
+But as per tradition, here's this article's music recommendation: https://www.youtube.com/watch?v=_NUuzIYjuR4. The
+video originally is from 2012, on "Thiên sứ tình yêu"'s Youtube. This mixtape is one of the very good mixtape of
+vinahouse, especially within the first 16 minutes of the video. I first listened to this around, gosh i want to say, around
+2015-2016, and would periodically go back to it. To me, it's really a classic in vinahouse. If you feel like 50 minutes is
+a lot, here are two songs from the video for you to watch:  [Dù có cách xa remix—Thái Tuyết Trâm](https://www.youtube.com/watch?v=YIR3mw0keSM)
+and [Người ấy remix](https://www.youtube.com/watch?v=KUvYtay5h9Y). You can also see how those two (from the early 2010s) compare
+to a newer version (2025) of vinahouse: [NẮNG CÓ MANG EM VỀ REMIX](https://www.youtube.com/watch?v=TzjUVP9uZcE).
+
+Alrighty then, let's get to article itself.
+
+## Problem to solve / Pain points
+
+### Packages/Tools to install
+Right now, all of my dotfiles are handled via [chezmoi](https://www.chezmoi.io/). In this way, I think of chezmoi as handling my data
+that is eventually going to be fed into my tools. For example: ~/.kitty.conf to feed into kitty, bash scripts to be consumed by
+zsh, neovim's lsp and plugins and its
+config to be used by neovim and the tooling around it (rg for faster text search, fd for faster file search).
+
+The problem is, occasionally, when I move to a new machine, some bash scripts or some plugins in neovim would break because I configured them
+with the assumption that I'll have tools like rg, fd, and sd around it but on this new machine. In reality, there's usually none and
+this would require me to install them 1 by 1, forcing me to play a whack-a-mole game with my config: checking the error of
+my config and scripts and installing all the needed tools until it works.
+
+I was also sick of moving from one machine (my Mac) to another machine (Arch) and having to keep up the packages on
+both sides. In the past i try to remediate this with ansible but even between runs of ansible to the same vm,
+things would break; it's not quite functional and idempotent in the ansible world.
+
+### Reproducibility of codebases
+Another problem I usually have is reproducibility: some codebase that I was building on one machine would usually
+fail on another due to some missing dependencies or mismatched dependencies. Ignoring the mismatch between MacOS and Arch aside,
+this issue will still persist even between machines of Linux, even on the same distribution, which usually costs me a few hours of my time to get everything right
+again.
+
+## What Nix's offering me
+
+I think it's pretty clear by now that by using Nix, it'll solve the two aforementioned issues for me :)
+
+For clarity, I'm using [home-manager](https://nixos.wiki/wiki/Home_Manager) and [flakes](https://wiki.nixos.org/wiki/Flakes)
+as a way to solve these issues.
+
+After messing around with nix on my MacOS for a day or two, i was pretty satisfied with my nix config.
+Yesterday I tested it out by moving from Mac to Arch using nix's home manager and flakes,
+it takes like 2 minutes for it to download then everything just works. I have the same zsh prompt that I have on Arch as
+on Mac. My bash scripts that I wrote work the same on Arch as on Mac. Things are pretty amazing :)
+
+
+About reproducibility, Nix offers [flakes](https://wiki.nixos.org/wiki/Flakes) to help with this.
+
+I tested this out by git cloning gccrs from my own fork and have these
+[three files](https://gist.github.com/badumbatish/49d13a7c72c2f7f615899a3a21d62f6b)
+:flake.nix (to use the flake), flake.lock (to pin versions of dependencies) and justfile in the codebase. The justfile
+comes as a stylistic choice which helps me homogenize the codebases I've worked on to three similar commands: configure, build, test.
+In the case of gccrs, I can always cycle these three commands and I'll always be able to configure, build and test gccrs:
+```
+just configure
+just build
+just test check-rust
+```
+
+After `rm -rf`-ing the codebase, and redownloading the codebase, I re-run these 3 commands again, each once, and things just
+build beautifully.
+
+I should also stress that reproducibility here, in the age of AI, also extends to AI agents: the scripts that you've
+created, when run with your flake, will also produce the same results when run by AI agents. This is helpful since
+I'm not really interested in having AI recreate the same scripts for me, and then I see different results every time
+it recreates and runs it. This reproducibility automatically boosts the debugging and tool-using capabilities of your agents
+since every script will always run correctly for the first time, and every tool that you asked the agents to use should
+also be readily available by the usage of nix and its flake;
+Without a flake, an agent might pick a slightly different toolchain version,
+and silently produce a different result compared to a few weeks ago when you hadn't updated your system.
+
+## Things to watch out for
+
+Timesink: Oh my god this is such a huge time sink. Reaping the benefits of Nix requires a large amount of frontloaded effort
+and commitments that you might not have. The benefits might not even show up until you have 2+ systems and/or are looking
+to move to a new system. I should also preface this by saying that I don't think it's trivial to study nix and set up all this on my own within 1 to 2 days.
+I'm currently using Claude to help me wire up home-manager and flakes. Without it, I think it'd take me at least two or more weeks and
+to get everything just right. I'm pretty saddened about the direction the industry's heading with AI as well as how AI's used in
+other aspects in our daily lives, but I'd be remiss not to admit it's improved my productivity in learning Nix.
+
+About reproducibility, with flake, you'll have the confidence to say "this works on my machine." However, adoption of
+Nix is not widely met yet, so when another programmer comes in and says "hey it's not working" on their machine, it's often
+not feasible to just give them a flake.nix and flake.lock and ask them to run `nix develop` to fix the build error if the codebase
+hasn't already adopted Nix as one of it's development pipeline; they simply might not be interested in installing some arcane
+packages just to get the build working. In this way, I see Nix as a "nice-to-have" bonus since it's
+not applicable everywhere except in the repos that I've personally worked on that I've cared enough to develop a flake for.
+
+## What's next?
+
+What's next, you ask? My end goal is to finally move from Arch to NixOS and daily drive it as my end goal operating systems.
+Being this early into my career, I'm sure it'll pay dividends soon enough over the course of my career. But I'm still
+hesitant to make the move, I think I'd need to learn Nix for another 6 to 9 months, make my own packages and get something
+done with Nix first to see if I can own my errors in NixOS if something went wrong.
+
+Well, I hope you enjoy the article :) I'll see you around next time :)
