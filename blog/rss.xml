@@ -4,7 +4,7 @@
         <title>Jasmine Tang RSS Feed</title>
         <link>https://badumbatish.github.io/blog/rss.xml</link>
         <description>Jasmine's blog</description>
-        <lastBuildDate>Sat, 21 Mar 2026 18:05:51 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 19 Apr 2026 03:13:12 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -14,6 +14,13 @@
             <link>https://badumbatish.github.io/blog/rss.xml</link>
         </image>
         <copyright>All rights for public use and education, Jasmine Tang</copyright>
+        <item>
+            <title><![CDATA[My first time with Nix]]></title>
+            <link>https://badumbatish.github.io/posts/first_time_with_nix</link>
+            <guid isPermaLink="false">first_time_with_nix</guid>
+            <pubDate>Sat, 18 Apr 2026 07:00:00 GMT</pubDate>
+            <description><![CDATA[Jasmine tries out Nix]]></description>
+        </item>
         <item>
             <title><![CDATA[Rewriting analysis based warnings fall through]]></title>
             <link>https://badumbatish.github.io/posts/rewriting_analysisbasedwarnings</link>
