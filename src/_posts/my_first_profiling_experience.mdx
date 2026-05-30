@@ -38,8 +38,19 @@ This is counting rfcc's configure_make's configure's about 15 seconds, so its mo
 
 ## Context
 
-We should talk a bit about bazel and rfcc. Bazel's model for caching (action-based cache) and then rules foreign
-cc's opaque mode of consideration.
+We should talk a bit about bazel and rules_foreign_cc (rfcc). You might ask, why add
+sccache to Bazel already natively supports its action-based caching?
+
+While the statement is true, if your favorite library is not available natively as a bazel
+dependency,
+you'd find
+that the
+action-based caching offers no real advantages. This is because to interact with libraries from other build systems
+such as make, configure, cmake and meson, we'd
+need to use rules_foreign_cc to form a pathway between them and bazel. By doing this, dependencies built with rfcc
+only have one big opaque action instead of having its action split finer. This means that if we are to
+speed up
+these rfcc-built libraries, we'd need to reach out to sccache (or cache) for help.
 
 
 The following two sections are divided into two categories: first one is Misc optimization: stuff that can be found via
@@ -94,9 +105,11 @@ sccache would sometimes refuse to translate the ".." in a path to refer to paren
 just omit the "..". This means a path such as "build/../src/" would be incorrectly normalized as "build/src" instead
 of "src"
 
-In upstream sccache issue board, somebody else mentioned encountering the exact same issue with
-I've opened the pull request at https://github.com/mozilla/sccache/pull/2719 and am awaiting the maintainers'
-response.
+After I had implemented the fix and upstreamed it, I also found out that somebody else had mentioned encountering the
+exact same issue. Fortunately (or not), there wasn't any PR opend for this.
+
+I've opened the pull request at https://github.com/mozilla/sccache/pull/2719 and am currently awaiting the
+maintainers' response.
 
 ### Skipping sccache in configure
 
@@ -123,15 +136,29 @@ TODO: add data
 
 ### Non direct mode vs direct mode
 
-For context here, when we talk about non-direct mode versus direct mode, we mean direct as "can sccache
-skip the preprocessing step, by directly hash the related ingredients that will influence a compiler command.
-Internally, it keeps a hashmap of hash code ->
+When profiling a sample build with sccache in nondirect, I observed that, the majority of the time is taken up by
+page faults. I'm not sure what to make of this, but it seemed to me this might occur because in nondirect mode
+of sccache, sccache needs to use clang to perform preprocessing. Forking and
+exec-ing a new
+compiler instance for preprocessing requires loading the new clang executable (150mb) into userspace, leading to a
+lot of unavoidable page faults.
+
+The next endeavor to optimize sccache would be: direct mode.
+
+For context here, when we talk about non-direct mode versus direct mode, we mean direct as: "Can sccache
+skip the preprocessing step, by directly hashing the related ingredients that will influence a compiler command?"
+
+Here comes the problem with bazel: on every dependency, bazel copies the necessary tools and libraries and source
+files to build the dependency into a separate folder before copying back the output back. After this, the sandbox is
+either stashed away (moved to another path) or teared down.
+
+This means that for direct mode, since the same dependency being built will be spawned in different paths each time,
+sccache cannot cache the preprocessor output so
 
 generate_hash_key is actually generating the preprocessing output as the hashkey (in the non direct mode case), dont
 get mistaken
 
 Let's take X as an example.
-
 
 https://github.com/GrapheneOS/hardened_malloc
 
@@ -145,6 +172,16 @@ A perf profiling of building X (and potentially its dependencies) reveals that a
 locking was perform by musl's malloc. This happens, (i think) because mimalloc pre-allocates (TODO: Source the
 readme.md and the code as well)
 
+mi_process_init_once at /Users/jjasmine/Developer/igalia/mimalloc/src/init.c:629 ???
+
+maybe check arena
+
+unix/prim.c ->
+
+TODO can you check if this is because of THP? like will THP cause fork/exec degradation
+
+The gist is the per project fix would be: no thp. but the best fix that applies to all the projects would be do
+posix spawn on servers
 
 ## Trivias
 
@@ -221,7 +258,7 @@ answer here would be: not much, but kinda, the LLM cannot produce meaningful dir
 the profiling :)
 
 Here's an example. After I'd switched from musl malloc to mimalloc and observed degrading performance, if I hadn't
-performed  the perf myself, read the mimalloc paper and its README.md, and asked the LLM to redo the jobserver, I
+performed the perf myself, read the mimalloc paper and its README.md, and asked the LLM to redo the jobserver, I
 wouldn't have discovered the gains coming from posix_spawn
 
 ## Epilogue
