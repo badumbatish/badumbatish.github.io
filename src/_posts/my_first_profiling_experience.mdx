@@ -38,8 +38,8 @@ This is counting rfcc's configure_make's configure's about 15 seconds, so its mo
 
 ## Context
 
-We should talk a bit about bazel and rules_foreign_cc (rfcc). You might ask, why add
-sccache to Bazel already natively supports its action-based caching?
+We should talk a bit about bazel and rules_foreign_cc (rfcc). An experienced Bazel user might ask: "why add
+sccache to Bazel already natively supports its [action-based caching](https://bazel.build/remote/caching#overview)?"
 
 While the statement is true, if your favorite library is not available natively as a bazel
 dependency,
@@ -164,12 +164,37 @@ https://github.com/GrapheneOS/hardened_malloc
 
 ### musl-malloc versus mimalloc
 
-For the sake of privacy, let's assume the library X here is a big library (LLVM-level codesize). X itself also
-depends on another 10-15 libraries, make the total build time (from scratch) to be extremely high. However, keep in
-mind that the purpose of caching is to speed up the incremental compilation speed.
+This case study was first performed when sccache was built with musl malloc. When compiling a LLVM-sized library
+with multiple dependencies from scratch, with sccache turned on, musl malloc suffers some performance hits from the
+singular global malloc lock (15% of at least in userspace perf)
 
-A perf profiling of building X (and potentially its dependencies) reveals that a substantial amount of
-locking was perform by musl's malloc. This happens, (i think) because mimalloc pre-allocates (TODO: Source the
+My decision was to either switch to some other industry malloc libraries, such as glibc, jemalloc or mimalloc. I
+ultimately picked mimalloc due to it being a shinier new toy and its portability.
+
+Surprisingly, the warm-cache codebase compilation time increases from around 267 seconds (musl) to 300 seconds
+(mimalloc), with the
+malloc global lock overhead gone, overshadowed by a 7% occupation of fork syscall in sudo perf.
+
+I was really perplexed. "Shouldn't the shinier, newer toy beat the old musl?". It turns out that this is
+accompanied by two causes.
+
+1. sccache's jobserver uses the passed in binary via its fork-exec pattern. Although modern OSs use the copy-on-write
+(COW) technique to reduce page table copying between parent and child processes, there might potentially be some
+small writes to some pages in the window between the fork syscall and the exec syscall, causing copying of the pages
+to happen.
+
+2. mimalloc, with its configuration option, turns on its Transparent Huge Page by default. Compared to musl's 4KB
+page size, mimalloc has certain pages with size of 2MB. This with fork/exec might, together the first point, cause more
+memory congestion than versus say the pages with size of 4KB.
+
+To fix this, we can either perform one of two things:
+
+- We can first, disable transparent huge page. This will make it so fork exec doesn't have to deal with 2MB pages
+anymore.
+- We can modify the sccache codebase so we don't have to use fork exec anymore
+
+```
+ This happens, (i think) because mimalloc pre-allocates (TODO: Source the
 readme.md and the code as well)
 
 mi_process_init_once at /Users/jjasmine/Developer/igalia/mimalloc/src/init.c:629 ???
@@ -182,6 +207,9 @@ TODO can you check if this is because of THP? like will THP cause fork/exec degr
 
 The gist is the per project fix would be: no thp. but the best fix that applies to all the projects would be do
 posix spawn on servers
+```
+
+
 
 ## Trivias
 
@@ -204,7 +232,7 @@ regret a few things that I had wished I did sooner or differently.
 
 ### Lack of experience and habit (lol)
 To start with the regret section, I wish I had done some profiling before. I think some serious exposure in profiling
-would have prevented some of the following mistakes. For example: i should have reach for perf
+would have prevented some of the following mistakes.
 Nevertheless, valuable lessons were learned.
 
 I also think trying to cultivate a habit of reading new code repos would have done me good. A few light
@@ -238,27 +266,38 @@ commits. The `_app_newjobser_muslmalloc_nobacktrace` part was supposed to detail
 previous version would have been made redundant by copy pasting of downstream-dedicated
 commits.
 
-I wish I had prefixed all my commit titled with "[downstream-sccache]" and then automate the context-collection by
+I wish I had prefixed all my commits with "[downstream-sccache]" and then automated the context-collection by
 - automatically git grep all the commit prefixed with "[downstream-sccache]" so I can automatically have all the
-objective context that I (or any engineers) need while profiling.
-- automatically neofetch/fastfetch, so other people can understand what system i'm on, together with the current
-snapshot of `htop/btop` so I know what my system baseline is prior to running the perf.
+objective context that I (or any engineers) need while profiling. I call this the intrinsic context (happening
+inside the sccache codebase).
+- automatically neofetch/fastfetch, so other people can understand what system I'm on, together with the current
+snapshot of `htop/btop` so I know what my system baseline is before running the perf (extrinsic context).
 - automatically record the sccache config used, or other extrinsically influencing factors besides the commit itself,
-as well as the perf command itself (if i were running perf instead of just timing and comparing the workloads)
+as well as the perf command itself (if I were running perf instead of just timing and comparing the workloads)
 
-Failure to realize a standardized path to profiling sccache from me has caused a great deal of unintentional
-obstruction of
+Failure to self-realize a standardized path to profiling sccache from me has caused a great number of unintentional
+obstructions of profiling context and information to the team, which I greatly regret.
 
-### Profile it, don't time it
+### Profile it rather than time it
+
+
+I also noticed during this period, a lot of the time was wasted timing the bazel build. I would modify something in
+sccache, compile the sccache binary and then run the workload again by hand just to see what is the delta on build
+time between sccache change is. Not only does this make
+In retrospect, I should have reach for perf when I first learned that
+this was an optimization problem. Instead, I clutched to bazel profile for a while, hoping that the proxy effects of
+modification of sccache will show up in the total time measured.
+
+https://sigops.org/s/conferences/hotos/2025/papers/hotos25-414.pdf
 
 ## AI Usage in profiling
 
 Ultimately, there comes a question of some sort like "can the LLM do this?" or "how much can the LLM help here". My
 answer here would be: not much, but kinda, the LLM cannot produce meaningful directions and cannot take charge of
-the profiling :)
+the profiling, but it can help iterate
 
 Here's an example. After I'd switched from musl malloc to mimalloc and observed degrading performance, if I hadn't
 performed the perf myself, read the mimalloc paper and its README.md, and asked the LLM to redo the jobserver, I
-wouldn't have discovered the gains coming from posix_spawn
+wouldn't have discovered the gains coming from posix_spawn.
 
 ## Epilogue
