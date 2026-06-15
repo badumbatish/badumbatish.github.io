@@ -1,0 +1,141 @@
+---
+title: "A funny linker bug"
+date: 2026-06-15
+recap: "Linker funny oh no, not funny haha"
+music:
+  - title: "Cơn Bão Nghiêng Đêm"
+    artist: "Lê Cát Trọng Lý"
+    youtubeId: "2YqmFD_TnTs"
+---
+
+
+Hey everyone, this is a short blog, so I guess just a single music video should suffice :)
+
+[Lê Cát Trọng Lý - Cơn Bão Nghiêng Đêm (Album Lê Cát Trọng Lý 2011)](https://youtu.be/2YqmFD_TnTs?si=IlwmT1BcxQ5GNgwG)
+
+This blog is about a mismatch of flags between a library and a compiler toolchain.
+
+The situation was, in a library's binary, after changing the current toolchain to a different toolchain (both using
+lld),
+suddenly the
+size of the binary jumps from 20kb to 2.1gb.
+
+After replicating both the binary building in the old toolchain and new toolchain, I noticed there's a difference in
+the linker flags between the two processes:
+- The old binary building process has -Ttext=0x7a600000
+- The new binary building process, beside the original -Ttext, also has --no-rosegment
+
+If things are not yet clear, I think it's best to look at --no-rosegment's flag in, for example, arch linux:
+https://man.archlinux.org/man/extra/lld/ld.lld.1.en
+- Do not put read-only non-executable sections in their own segment.
+
+From https://refspecs.linuxbase.org/elf/gabi4+/ch5.pheader.html, figure 5-4,
+- typical text segments have read and execute - but not write - permissions.
+
+What this really means is by having a merge between the lower end of the section to the top end of the section,
+the file size grew from 20kb to 2gb. This is because --no-rosegment forces read-only segments that are initially
+separated and in their own segment be merged together. Since the read-only text segment's address is set up
+extremely high, this merging causes a merge between the lower address segment with this high-address text segment,
+exploding the file size in the end.
+
+In the end, what I did was remove the `-no-rosegment` from the toolchain. One can also argue for the usage of
+`image-base` but depending on the binary's being used, this can be undesirable.
+
+## Artifacts
+
+Original toolchain:
+
+```
+abcd/build_dir/ups🔒 on  main on ☁️
+➜ objdump -p abcd-1234
+[2026-06-07 09:43:14]
+
+abcd-1234:     file format elf64-little
+
+Program Header:
+    PHDR off    0x0000000000000040 vaddr 0x0000000000200040 paddr 0x0000000000200040 align 2**3
+         filesz 0x0000000000000188 memsz 0x0000000000000188 flags r--
+    LOAD off    0x0000000000000000 vaddr 0x0000000000200000 paddr 0x0000000000200000 align 2**12
+         filesz 0x00000000000001c8 memsz 0x00000000000001c8 flags r--
+    LOAD off    0x0000000000001000 vaddr 0x000000007a600000 paddr 0x000000007a600000 align 2**12
+         filesz 0x0000000000002da0 memsz 0x0000000000002da0 flags r-x
+    LOAD off    0x0000000000003da0 vaddr 0x000000007a603da0 paddr 0x000000007a603da0 align 2**12
+         filesz 0x0000000000000814 memsz 0x0000000000000814 flags r--
+    LOAD off    0x00000000000045b8 vaddr 0x000000007a6055b8 paddr 0x000000007a6055b8 align 2**12
+         filesz 0x0000000000000060 memsz 0x0000000000000888 flags rw-
+EH_FRAME off    0x00000000000040b8 vaddr 0x000000007a6040b8 paddr 0x000000007a6040b8 align 2**2
+         filesz 0x0000000000000124 memsz 0x0000000000000124 flags r--
+   STACK off    0x0000000000000000 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**0
+         filesz 0x0000000000000000 memsz 0x0000000000000000 flags rw-
+
+abcd/build_dir/ups🔒 on  main on ☁️
+➜ ls abcd-1234 -l
+[2026-06-07 10:20:43]
+Permissions Size User Date Modified Name
+.rwxr-xr-x   21k root  2 Jun 12:36  󰡯 abcd-1234
+```
+
+Before the fix, new toolchain:
+
+```
+lib/abcd/🔒 via 🐍 v3.14.4 (your_mom) on ☁️
+➜ ls abcd-1234 -l
+[2026-06-07 09:34:50]
+Permissions Size User     Date Modified Name
+.r-xr-xr-x  2.1G bdbt  7 Jun 09:29  󰡯 abcd-1234
+----------------------------------------------------------
+lib/abcd/🔒 via 🐍 v3.14.4 (your_mom) on ☁️
+➜ objdump -p abcd-1234
+[2026-06-07 09:43:57]
+
+abcd-1234:     file format elf64-little
+
+Program Header:
+    PHDR off    0x0000000000000040 vaddr 0x0000000000200040 paddr 0x0000000000200040 align 2**3
+         filesz 0x0000000000000150 memsz 0x0000000000000150 flags r--
+    LOAD off    0x0000000000000000 vaddr 0x0000000000200000 paddr 0x0000000000200000 align 2**12
+         filesz 0x000000007d20327c memsz 0x000000007d20327c flags r-x
+    LOAD off    0x000000007d204000 vaddr 0x000000007a604000 paddr 0x000000007a604000 align 2**12
+         filesz 0x0000000000000060 memsz 0x0000000000000880 flags rw-
+EH_FRAME off    0x000000007d202dbc vaddr 0x000000007a602dbc paddr 0x000000007a602dbc align 2**2
+         filesz 0x0000000000000114 memsz 0x0000000000000114 flags r--
+   STACK off    0x0000000000000000 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**0
+         filesz 0x0000000000000000 memsz 0x0000000000000000 flags rw-
+    NOTE off    0x000000007d202a9c vaddr 0x000000007a602a9c paddr 0x000000007a602a9c align 2**2
+         filesz 0x0000000000000020 memsz 0x0000000000000020 flags r--
+```
+
+
+After the fix, new toolchain:
+
+```
+lib/abcd/🔒 via 🐍 v3.14.4 (your_mom) on ☁️
+➜ ls abcd-1234 -l
+[2026-06-07 10:21:20]
+Permissions Size User     Date Modified Name
+.r-xr-xr-x   39k bdbt  7 Jun 10:20  󰡯 abcd-1234
+lib/abcd/🔒 via 🐍 v3.14.4 (your_mom) on ☁️
+➜ objdump -p abcd-1234
+[2026-06-07 10:21:31]
+
+abcd-1234:     file format elf64-little
+
+Program Header:
+    PHDR off    0x0000000000000040 vaddr 0x0000000000200040 paddr 0x0000000000200040 align 2**3
+         filesz 0x00000000000001c0 memsz 0x00000000000001c0 flags r--
+    LOAD off    0x0000000000000000 vaddr 0x0000000000200000 paddr 0x0000000000200000 align 2**14
+         filesz 0x0000000000000200 memsz 0x0000000000000200 flags r--
+    LOAD off    0x0000000000004000 vaddr 0x000000007a600000 paddr 0x000000007a600000 align 2**14
+         filesz 0x0000000000002a9c memsz 0x0000000000002a9c flags r-x
+    LOAD off    0x0000000000008000 vaddr 0x000000007a604000 paddr 0x000000007a604000 align 2**14
+         filesz 0x00000000000007dc memsz 0x00000000000007dc flags r--
+    LOAD off    0x00000000000087e0 vaddr 0x000000007a6087e0 paddr 0x000000007a6087e0 align 2**14
+         filesz 0x0000000000000060 memsz 0x0000000000000880 flags rw-
+EH_FRAME off    0x000000000000831c vaddr 0x000000007a60431c paddr 0x000000007a60431c align 2**2
+         filesz 0x0000000000000114 memsz 0x0000000000000114 flags r--
+   STACK off    0x0000000000000000 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**0
+         filesz 0x0000000000000000 memsz 0x0000000000000000 flags rw-
+    NOTE off    0x0000000000008000 vaddr 0x000000007a604000 paddr 0x000000007a604000 align 2**2
+         filesz 0x0000000000000020 memsz 0x0000000000000020 flags r--
+```
+
