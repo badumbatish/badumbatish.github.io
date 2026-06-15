@@ -1,0 +1,212 @@
+1:"$Sreact.fragment"
+2:I[6874,["874","static/chunks/874-437a265a67d6cfee.js","880","static/chunks/app/posts/%5Bid%5D/page-2636d484d393f91f.js"],""]
+3:I[7555,[],""]
+4:I[1295,[],""]
+5:I[7921,["874","static/chunks/874-437a265a67d6cfee.js","177","static/chunks/app/layout-a6dd2ef100af7da1.js"],"default"]
+7:I[9665,[],"OutletBoundary"]
+9:I[4911,[],"AsyncMetadataOutlet"]
+b:I[9665,[],"ViewportBoundary"]
+d:I[9665,[],"MetadataBoundary"]
+e:"$Sreact.suspense"
+10:I[8393,[],""]
+:HL["/_next/static/media/7385e8d9d3c5518f-s.p.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/_next/static/css/fe5448abfdd2f9ce.css","style"]
+:HL["/_next/static/css/8a287c41de7a8698.css","style"]
+0:{"P":null,"b":"pnJ61dCSEp8h2enFL9-A3","p":"","c":["","posts","linker_bug_2gb"],"i":false,"f":[[["",{"children":["posts",{"children":[["id","linker_bug_2gb","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/fe5448abfdd2f9ce.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"px-0 sm:px-4 py-4","children":["$","body",null,{"className":"__className_d4e0c8 flex flex-col min-h-screen","children":[["$","$L2",null,{"href":"/","children":["$","div",null,{"className":"flex justify-center items-center py-4 ","children":["$","h1",null,{"className":"text-4xl font-bold","children":"Jasmine Tang"}]}]}],["$","div",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L5",null,{}],["$","footer",null,{"className":"footer self-center justify-center gap-2 pt-4 items-center italic ","children":["$","p",null,{"children":"Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)"}]}]]}]}]]}],{"children":["posts",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","linker_bug_2gb","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/8a287c41de7a8698.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L7",null,{"children":["$L8",["$","$L9",null,{"promise":"$@a"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$Ld",null,{"children":["$","div",null,{"hidden":true,"children":["$","$e",null,{"fallback":null,"children":"$Lf"}]}]}]]}],false]],"m":"$undefined","G":["$10",[]],"s":false,"S":true}
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+13:I[8175,[],"IconMark"]
+11:T6224,<nav class="toc"><ol class="toc-level toc-level-1"><li class="toc-item toc-item-h2"><a class="toc-link toc-link-h2" href="#artifacts">Artifacts</a></li></ol></nav><p>Hey everyone, this is a short blog, so I guess just a single music video should suffice :)</p>
+<p><a href="https://youtu.be/2YqmFD_TnTs?si=IlwmT1BcxQ5GNgwG" rel="nofollow" target="_blank">Lê Cát Trọng Lý - Cơn Bão Nghiêng Đêm (Album Lê Cát Trọng Lý 2011)</a></p>
+<p>This blog is about a mismatch of flags between a library and a compiler toolchain.</p>
+<p>The situation was, in a library's binary, after changing the current toolchain to a different toolchain (both using
+lld),
+suddenly the
+size of the binary jumps from 20kb to 2.1gb.</p>
+<p>After replicating both the binary building in the old toolchain and new toolchain, I noticed there's a difference in
+the linker flags between the two processes:</p>
+<ul>
+<li>The old binary building process has -Ttext=0x7a600000</li>
+<li>The new binary building process, beside the original -Ttext, also has --no-rosegment</li>
+</ul>
+<p>If things are not yet clear, I think it's best to look at --no-rosegment's flag in, for example, arch linux:
+<a href="https://man.archlinux.org/man/extra/lld/ld.lld.1.en" rel="nofollow" target="_blank">https://man.archlinux.org/man/extra/lld/ld.lld.1.en</a></p>
+<ul>
+<li>Do not put read-only non-executable sections in their own segment.</li>
+</ul>
+<p>From <a href="https://refspecs.linuxbase.org/elf/gabi4+/ch5.pheader.html" rel="nofollow" target="_blank">https://refspecs.linuxbase.org/elf/gabi4+/ch5.pheader.html</a>, figure 5-4,</p>
+<ul>
+<li>typical text segments have read and execute - but not write - permissions.</li>
+</ul>
+<p>What this really means is by having a merge between the lower end of the section to the top end of the section,
+the file size grew from 20kb to 2gb. This is because --no-rosegment forces read-only segments that are initially
+separated and in their own segment be merged together. Since the read-only text segment's address is set up
+extremely high, this merging causes a merge between the lower address segment with this high-address text segment,
+exploding the file size in the end.</p>
+<p>In the end, what I did was remove the <span data-rehype-pretty-code-figure=""><code data-language="plaintext" data-theme="github-dark-dimmed"><span data-line=""><span>-no-rosegment</span></span><button type="button" title="Copy code" aria-label="Copy code" data="-no-rosegment" class="rehype-pretty-copy" onclick="navigator.clipboard.writeText(this.attributes.data.value);this.classList.add(&#x27;rehype-pretty-copied&#x27;);window.setTimeout(() => this.classList.remove(&#x27;rehype-pretty-copied&#x27;), 3000);"><span class="ready"></span><span class="success"></span></button><style>:root {--copy-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23adadad' d='M16.187 9.5H12.25a1.75 1.75 0 0 0-1.75 1.75v28.5c0 .967.784 1.75 1.75 1.75h23.5a1.75 1.75 0 0 0 1.75-1.75v-28.5a1.75 1.75 0 0 0-1.75-1.75h-3.937a4.25 4.25 0 0 1-4.063 3h-7.5a4.25 4.25 0 0 1-4.063-3M31.813 7h3.937A4.25 4.25 0 0 1 40 11.25v28.5A4.25 4.25 0 0 1 35.75 44h-23.5A4.25 4.25 0 0 1 8 39.75v-28.5A4.25 4.25 0 0 1 12.25 7h3.937a4.25 4.25 0 0 1 4.063-3h7.5a4.25 4.25 0 0 1 4.063 3M18.5 8.25c0 .966.784 1.75 1.75 1.75h7.5a1.75 1.75 0 1 0 0-3.5h-7.5a1.75 1.75 0 0 0-1.75 1.75'/%3E%3C/svg%3E");--success-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2366ff85' d='M9 16.17L5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z'/%3E%3C/svg%3E");}pre:has(code) {position: relative;}pre button.rehype-pretty-copy {right: 1px;padding: 0;width: 24px;height: 24px;display: flex;margin-top: 2px;margin-right: 8px;position: absolute;border-radius: 25%;backdrop-filter: blur(3px);& span {width: 100%;aspect-ratio: 1 / 1;}& .ready {background-image: var(--copy-icon);}& .success {display: none; background-image: var(--success-icon);}}&.rehype-pretty-copied {& .success {display: block;} & .ready {display: none;}}pre button.rehype-pretty-copy.rehype-pretty-copied {opacity: 1;& .ready { display: none; }& .success { display: block; }}</style></code></span> from the toolchain. One can also argue for the usage of
+<span data-rehype-pretty-code-figure=""><code data-language="plaintext" data-theme="github-dark-dimmed"><span data-line=""><span>image-base</span></span><button type="button" title="Copy code" aria-label="Copy code" data="image-base" class="rehype-pretty-copy" onclick="navigator.clipboard.writeText(this.attributes.data.value);this.classList.add(&#x27;rehype-pretty-copied&#x27;);window.setTimeout(() => this.classList.remove(&#x27;rehype-pretty-copied&#x27;), 3000);"><span class="ready"></span><span class="success"></span></button><style>:root {--copy-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23adadad' d='M16.187 9.5H12.25a1.75 1.75 0 0 0-1.75 1.75v28.5c0 .967.784 1.75 1.75 1.75h23.5a1.75 1.75 0 0 0 1.75-1.75v-28.5a1.75 1.75 0 0 0-1.75-1.75h-3.937a4.25 4.25 0 0 1-4.063 3h-7.5a4.25 4.25 0 0 1-4.063-3M31.813 7h3.937A4.25 4.25 0 0 1 40 11.25v28.5A4.25 4.25 0 0 1 35.75 44h-23.5A4.25 4.25 0 0 1 8 39.75v-28.5A4.25 4.25 0 0 1 12.25 7h3.937a4.25 4.25 0 0 1 4.063-3h7.5a4.25 4.25 0 0 1 4.063 3M18.5 8.25c0 .966.784 1.75 1.75 1.75h7.5a1.75 1.75 0 1 0 0-3.5h-7.5a1.75 1.75 0 0 0-1.75 1.75'/%3E%3C/svg%3E");--success-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2366ff85' d='M9 16.17L5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z'/%3E%3C/svg%3E");}pre:has(code) {position: relative;}pre button.rehype-pretty-copy {right: 1px;padding: 0;width: 24px;height: 24px;display: flex;margin-top: 2px;margin-right: 8px;position: absolute;border-radius: 25%;backdrop-filter: blur(3px);& span {width: 100%;aspect-ratio: 1 / 1;}& .ready {background-image: var(--copy-icon);}& .success {display: none; background-image: var(--success-icon);}}&.rehype-pretty-copied {& .success {display: block;} & .ready {display: none;}}pre button.rehype-pretty-copy.rehype-pretty-copied {opacity: 1;& .ready { display: none; }& .success { display: block; }}</style></code></span> but depending on the binary's being used, this can be undesirable.</p>
+<h2 id="artifacts"><a aria-hidden="true" tabindex="-1" href="#artifacts"><span class="icon icon-link"></span></a>Artifacts</h2>
+<p>Original toolchain:</p>
+<figure data-rehype-pretty-code-figure=""><pre tabindex="0" data-language="plaintext" data-theme="github-dark-dimmed"><code data-language="plaintext" data-theme="github-dark-dimmed" style="display: grid;"><span data-line=""><span>abcd/build_dir/ups🔒 on  main on ☁️</span></span>
+<span data-line=""><span>➜ objdump -p abcd-1234</span></span>
+<span data-line=""><span>[2026-06-07 09:43:14]</span></span>
+<span data-line=""> </span>
+<span data-line=""><span>abcd-1234:     file format elf64-little</span></span>
+<span data-line=""> </span>
+<span data-line=""><span>Program Header:</span></span>
+<span data-line=""><span>    PHDR off    0x0000000000000040 vaddr 0x0000000000200040 paddr 0x0000000000200040 align 2**3</span></span>
+<span data-line=""><span>         filesz 0x0000000000000188 memsz 0x0000000000000188 flags r--</span></span>
+<span data-line=""><span>    LOAD off    0x0000000000000000 vaddr 0x0000000000200000 paddr 0x0000000000200000 align 2**12</span></span>
+<span data-line=""><span>         filesz 0x00000000000001c8 memsz 0x00000000000001c8 flags r--</span></span>
+<span data-line=""><span>    LOAD off    0x0000000000001000 vaddr 0x000000007a600000 paddr 0x000000007a600000 align 2**12</span></span>
+<span data-line=""><span>         filesz 0x0000000000002da0 memsz 0x0000000000002da0 flags r-x</span></span>
+<span data-line=""><span>    LOAD off    0x0000000000003da0 vaddr 0x000000007a603da0 paddr 0x000000007a603da0 align 2**12</span></span>
+<span data-line=""><span>         filesz 0x0000000000000814 memsz 0x0000000000000814 flags r--</span></span>
+<span data-line=""><span>    LOAD off    0x00000000000045b8 vaddr 0x000000007a6055b8 paddr 0x000000007a6055b8 align 2**12</span></span>
+<span data-line=""><span>         filesz 0x0000000000000060 memsz 0x0000000000000888 flags rw-</span></span>
+<span data-line=""><span>EH_FRAME off    0x00000000000040b8 vaddr 0x000000007a6040b8 paddr 0x000000007a6040b8 align 2**2</span></span>
+<span data-line=""><span>         filesz 0x0000000000000124 memsz 0x0000000000000124 flags r--</span></span>
+<span data-line=""><span>   STACK off    0x0000000000000000 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**0</span></span>
+<span data-line=""><span>         filesz 0x0000000000000000 memsz 0x0000000000000000 flags rw-</span></span>
+<span data-line=""> </span>
+<span data-line=""><span>abcd/build_dir/ups🔒 on  main on ☁️</span></span>
+<span data-line=""><span>➜ ls abcd-1234 -l</span></span>
+<span data-line=""><span>[2026-06-07 10:20:43]</span></span>
+<span data-line=""><span>Permissions Size User Date Modified Name</span></span>
+<span data-line=""><span>.rwxr-xr-x   21k root  2 Jun 12:36  󰡯 abcd-1234</span></span><button type="button" title="Copy code" aria-label="Copy code" data="abcd/build_dir/ups🔒 on  main on ☁️
+➜ objdump -p abcd-1234
+[2026-06-07 09:43:14]
+
+abcd-1234:     file format elf64-little
+
+Program Header:
+    PHDR off    0x0000000000000040 vaddr 0x0000000000200040 paddr 0x0000000000200040 align 2**3
+         filesz 0x0000000000000188 memsz 0x0000000000000188 flags r--
+    LOAD off    0x0000000000000000 vaddr 0x0000000000200000 paddr 0x0000000000200000 align 2**12
+         filesz 0x00000000000001c8 memsz 0x00000000000001c8 flags r--
+    LOAD off    0x0000000000001000 vaddr 0x000000007a600000 paddr 0x000000007a600000 align 2**12
+         filesz 0x0000000000002da0 memsz 0x0000000000002da0 flags r-x
+    LOAD off    0x0000000000003da0 vaddr 0x000000007a603da0 paddr 0x000000007a603da0 align 2**12
+         filesz 0x0000000000000814 memsz 0x0000000000000814 flags r--
+    LOAD off    0x00000000000045b8 vaddr 0x000000007a6055b8 paddr 0x000000007a6055b8 align 2**12
+         filesz 0x0000000000000060 memsz 0x0000000000000888 flags rw-
+EH_FRAME off    0x00000000000040b8 vaddr 0x000000007a6040b8 paddr 0x000000007a6040b8 align 2**2
+         filesz 0x0000000000000124 memsz 0x0000000000000124 flags r--
+   STACK off    0x0000000000000000 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**0
+         filesz 0x0000000000000000 memsz 0x0000000000000000 flags rw-
+
+abcd/build_dir/ups🔒 on  main on ☁️
+➜ ls abcd-1234 -l
+[2026-06-07 10:20:43]
+Permissions Size User Date Modified Name
+.rwxr-xr-x   21k root  2 Jun 12:36  󰡯 abcd-1234" class="rehype-pretty-copy" onclick="navigator.clipboard.writeText(this.attributes.data.value);this.classList.add(&#x27;rehype-pretty-copied&#x27;);window.setTimeout(() => this.classList.remove(&#x27;rehype-pretty-copied&#x27;), 3000);"><span class="ready"></span><span class="success"></span></button><style>:root {--copy-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23adadad' d='M16.187 9.5H12.25a1.75 1.75 0 0 0-1.75 1.75v28.5c0 .967.784 1.75 1.75 1.75h23.5a1.75 1.75 0 0 0 1.75-1.75v-28.5a1.75 1.75 0 0 0-1.75-1.75h-3.937a4.25 4.25 0 0 1-4.063 3h-7.5a4.25 4.25 0 0 1-4.063-3M31.813 7h3.937A4.25 4.25 0 0 1 40 11.25v28.5A4.25 4.25 0 0 1 35.75 44h-23.5A4.25 4.25 0 0 1 8 39.75v-28.5A4.25 4.25 0 0 1 12.25 7h3.937a4.25 4.25 0 0 1 4.063-3h7.5a4.25 4.25 0 0 1 4.063 3M18.5 8.25c0 .966.784 1.75 1.75 1.75h7.5a1.75 1.75 0 1 0 0-3.5h-7.5a1.75 1.75 0 0 0-1.75 1.75'/%3E%3C/svg%3E");--success-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2366ff85' d='M9 16.17L5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z'/%3E%3C/svg%3E");}pre:has(code) {position: relative;}pre button.rehype-pretty-copy {right: 1px;padding: 0;width: 24px;height: 24px;display: flex;margin-top: 2px;margin-right: 8px;position: absolute;border-radius: 25%;backdrop-filter: blur(3px);& span {width: 100%;aspect-ratio: 1 / 1;}& .ready {background-image: var(--copy-icon);}& .success {display: none; background-image: var(--success-icon);}}&.rehype-pretty-copied {& .success {display: block;} & .ready {display: none;}}pre button.rehype-pretty-copy.rehype-pretty-copied {opacity: 1;& .ready { display: none; }& .success { display: block; }}</style></code></pre></figure>
+<p>Before the fix, new toolchain:</p>
+<figure data-rehype-pretty-code-figure=""><pre tabindex="0" data-language="plaintext" data-theme="github-dark-dimmed"><code data-language="plaintext" data-theme="github-dark-dimmed" style="display: grid;"><span data-line=""><span>lib/abcd/🔒 via 🐍 v3.14.4 (your_mom) on ☁️</span></span>
+<span data-line=""><span>➜ ls abcd-1234 -l</span></span>
+<span data-line=""><span>[2026-06-07 09:34:50]</span></span>
+<span data-line=""><span>Permissions Size User     Date Modified Name</span></span>
+<span data-line=""><span>.r-xr-xr-x  2.1G bdbt  7 Jun 09:29  󰡯 abcd-1234</span></span>
+<span data-line=""><span>----------------------------------------------------------</span></span>
+<span data-line=""><span>lib/abcd/🔒 via 🐍 v3.14.4 (your_mom) on ☁️</span></span>
+<span data-line=""><span>➜ objdump -p abcd-1234</span></span>
+<span data-line=""><span>[2026-06-07 09:43:57]</span></span>
+<span data-line=""> </span>
+<span data-line=""><span>abcd-1234:     file format elf64-little</span></span>
+<span data-line=""> </span>
+<span data-line=""><span>Program Header:</span></span>
+<span data-line=""><span>    PHDR off    0x0000000000000040 vaddr 0x0000000000200040 paddr 0x0000000000200040 align 2**3</span></span>
+<span data-line=""><span>         filesz 0x0000000000000150 memsz 0x0000000000000150 flags r--</span></span>
+<span data-line=""><span>    LOAD off    0x0000000000000000 vaddr 0x0000000000200000 paddr 0x0000000000200000 align 2**12</span></span>
+<span data-line=""><span>         filesz 0x000000007d20327c memsz 0x000000007d20327c flags r-x</span></span>
+<span data-line=""><span>    LOAD off    0x000000007d204000 vaddr 0x000000007a604000 paddr 0x000000007a604000 align 2**12</span></span>
+<span data-line=""><span>         filesz 0x0000000000000060 memsz 0x0000000000000880 flags rw-</span></span>
+<span data-line=""><span>EH_FRAME off    0x000000007d202dbc vaddr 0x000000007a602dbc paddr 0x000000007a602dbc align 2**2</span></span>
+<span data-line=""><span>         filesz 0x0000000000000114 memsz 0x0000000000000114 flags r--</span></span>
+<span data-line=""><span>   STACK off    0x0000000000000000 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**0</span></span>
+<span data-line=""><span>         filesz 0x0000000000000000 memsz 0x0000000000000000 flags rw-</span></span>
+<span data-line=""><span>    NOTE off    0x000000007d202a9c vaddr 0x000000007a602a9c paddr 0x000000007a602a9c align 2**2</span></span>
+<span data-line=""><span>         filesz 0x0000000000000020 memsz 0x0000000000000020 flags r--</span></span><button type="button" title="Copy code" aria-label="Copy code" data="lib/abcd/🔒 via 🐍 v3.14.4 (your_mom) on ☁️
+➜ ls abcd-1234 -l
+[2026-06-07 09:34:50]
+Permissions Size User     Date Modified Name
+.r-xr-xr-x  2.1G bdbt  7 Jun 09:29  󰡯 abcd-1234
+----------------------------------------------------------
+lib/abcd/🔒 via 🐍 v3.14.4 (your_mom) on ☁️
+➜ objdump -p abcd-1234
+[2026-06-07 09:43:57]
+
+abcd-1234:     file format elf64-little
+
+Program Header:
+    PHDR off    0x0000000000000040 vaddr 0x0000000000200040 paddr 0x0000000000200040 align 2**3
+         filesz 0x0000000000000150 memsz 0x0000000000000150 flags r--
+    LOAD off    0x0000000000000000 vaddr 0x0000000000200000 paddr 0x0000000000200000 align 2**12
+         filesz 0x000000007d20327c memsz 0x000000007d20327c flags r-x
+    LOAD off    0x000000007d204000 vaddr 0x000000007a604000 paddr 0x000000007a604000 align 2**12
+         filesz 0x0000000000000060 memsz 0x0000000000000880 flags rw-
+EH_FRAME off    0x000000007d202dbc vaddr 0x000000007a602dbc paddr 0x000000007a602dbc align 2**2
+         filesz 0x0000000000000114 memsz 0x0000000000000114 flags r--
+   STACK off    0x0000000000000000 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**0
+         filesz 0x0000000000000000 memsz 0x0000000000000000 flags rw-
+    NOTE off    0x000000007d202a9c vaddr 0x000000007a602a9c paddr 0x000000007a602a9c align 2**2
+         filesz 0x0000000000000020 memsz 0x0000000000000020 flags r--" class="rehype-pretty-copy" onclick="navigator.clipboard.writeText(this.attributes.data.value);this.classList.add(&#x27;rehype-pretty-copied&#x27;);window.setTimeout(() => this.classList.remove(&#x27;rehype-pretty-copied&#x27;), 3000);"><span class="ready"></span><span class="success"></span></button><style>:root {--copy-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23adadad' d='M16.187 9.5H12.25a1.75 1.75 0 0 0-1.75 1.75v28.5c0 .967.784 1.75 1.75 1.75h23.5a1.75 1.75 0 0 0 1.75-1.75v-28.5a1.75 1.75 0 0 0-1.75-1.75h-3.937a4.25 4.25 0 0 1-4.063 3h-7.5a4.25 4.25 0 0 1-4.063-3M31.813 7h3.937A4.25 4.25 0 0 1 40 11.25v28.5A4.25 4.25 0 0 1 35.75 44h-23.5A4.25 4.25 0 0 1 8 39.75v-28.5A4.25 4.25 0 0 1 12.25 7h3.937a4.25 4.25 0 0 1 4.063-3h7.5a4.25 4.25 0 0 1 4.063 3M18.5 8.25c0 .966.784 1.75 1.75 1.75h7.5a1.75 1.75 0 1 0 0-3.5h-7.5a1.75 1.75 0 0 0-1.75 1.75'/%3E%3C/svg%3E");--success-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2366ff85' d='M9 16.17L5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z'/%3E%3C/svg%3E");}pre:has(code) {position: relative;}pre button.rehype-pretty-copy {right: 1px;padding: 0;width: 24px;height: 24px;display: flex;margin-top: 2px;margin-right: 8px;position: absolute;border-radius: 25%;backdrop-filter: blur(3px);& span {width: 100%;aspect-ratio: 1 / 1;}& .ready {background-image: var(--copy-icon);}& .success {display: none; background-image: var(--success-icon);}}&.rehype-pretty-copied {& .success {display: block;} & .ready {display: none;}}pre button.rehype-pretty-copy.rehype-pretty-copied {opacity: 1;& .ready { display: none; }& .success { display: block; }}</style></code></pre></figure>
+<p>After the fix, new toolchain:</p>
+<figure data-rehype-pretty-code-figure=""><pre tabindex="0" data-language="plaintext" data-theme="github-dark-dimmed"><code data-language="plaintext" data-theme="github-dark-dimmed" style="display: grid;"><span data-line=""><span>lib/abcd/🔒 via 🐍 v3.14.4 (your_mom) on ☁️</span></span>
+<span data-line=""><span>➜ ls abcd-1234 -l</span></span>
+<span data-line=""><span>[2026-06-07 10:21:20]</span></span>
+<span data-line=""><span>Permissions Size User     Date Modified Name</span></span>
+<span data-line=""><span>.r-xr-xr-x   39k bdbt  7 Jun 10:20  󰡯 abcd-1234</span></span>
+<span data-line=""><span>lib/abcd/🔒 via 🐍 v3.14.4 (your_mom) on ☁️</span></span>
+<span data-line=""><span>➜ objdump -p abcd-1234</span></span>
+<span data-line=""><span>[2026-06-07 10:21:31]</span></span>
+<span data-line=""> </span>
+<span data-line=""><span>abcd-1234:     file format elf64-little</span></span>
+<span data-line=""> </span>
+<span data-line=""><span>Program Header:</span></span>
+<span data-line=""><span>    PHDR off    0x0000000000000040 vaddr 0x0000000000200040 paddr 0x0000000000200040 align 2**3</span></span>
+<span data-line=""><span>         filesz 0x00000000000001c0 memsz 0x00000000000001c0 flags r--</span></span>
+<span data-line=""><span>    LOAD off    0x0000000000000000 vaddr 0x0000000000200000 paddr 0x0000000000200000 align 2**14</span></span>
+<span data-line=""><span>         filesz 0x0000000000000200 memsz 0x0000000000000200 flags r--</span></span>
+<span data-line=""><span>    LOAD off    0x0000000000004000 vaddr 0x000000007a600000 paddr 0x000000007a600000 align 2**14</span></span>
+<span data-line=""><span>         filesz 0x0000000000002a9c memsz 0x0000000000002a9c flags r-x</span></span>
+<span data-line=""><span>    LOAD off    0x0000000000008000 vaddr 0x000000007a604000 paddr 0x000000007a604000 align 2**14</span></span>
+<span data-line=""><span>         filesz 0x00000000000007dc memsz 0x00000000000007dc flags r--</span></span>
+<span data-line=""><span>    LOAD off    0x00000000000087e0 vaddr 0x000000007a6087e0 paddr 0x000000007a6087e0 align 2**14</span></span>
+<span data-line=""><span>         filesz 0x0000000000000060 memsz 0x0000000000000880 flags rw-</span></span>
+<span data-line=""><span>EH_FRAME off    0x000000000000831c vaddr 0x000000007a60431c paddr 0x000000007a60431c align 2**2</span></span>
+<span data-line=""><span>         filesz 0x0000000000000114 memsz 0x0000000000000114 flags r--</span></span>
+<span data-line=""><span>   STACK off    0x0000000000000000 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**0</span></span>
+<span data-line=""><span>         filesz 0x0000000000000000 memsz 0x0000000000000000 flags rw-</span></span>
+<span data-line=""><span>    NOTE off    0x0000000000008000 vaddr 0x000000007a604000 paddr 0x000000007a604000 align 2**2</span></span>
+<span data-line=""><span>         filesz 0x0000000000000020 memsz 0x0000000000000020 flags r--</span></span><button type="button" title="Copy code" aria-label="Copy code" data="lib/abcd/🔒 via 🐍 v3.14.4 (your_mom) on ☁️
+➜ ls abcd-1234 -l
+[2026-06-07 10:21:20]
+Permissions Size User     Date Modified Name
+.r-xr-xr-x   39k bdbt  7 Jun 10:20  󰡯 abcd-1234
+lib/abcd/🔒 via 🐍 v3.14.4 (your_mom) on ☁️
+➜ objdump -p abcd-1234
+[2026-06-07 10:21:31]
+
+abcd-1234:     file format elf64-little
+
+Program Header:
+    PHDR off    0x0000000000000040 vaddr 0x0000000000200040 paddr 0x0000000000200040 align 2**3
+         filesz 0x00000000000001c0 memsz 0x00000000000001c0 flags r--
+    LOAD off    0x0000000000000000 vaddr 0x0000000000200000 paddr 0x0000000000200000 align 2**14
+         filesz 0x0000000000000200 memsz 0x0000000000000200 flags r--
+    LOAD off    0x0000000000004000 vaddr 0x000000007a600000 paddr 0x000000007a600000 align 2**14
+         filesz 0x0000000000002a9c memsz 0x0000000000002a9c flags r-x
+    LOAD off    0x0000000000008000 vaddr 0x000000007a604000 paddr 0x000000007a604000 align 2**14
+         filesz 0x00000000000007dc memsz 0x00000000000007dc flags r--
+    LOAD off    0x00000000000087e0 vaddr 0x000000007a6087e0 paddr 0x000000007a6087e0 align 2**14
+         filesz 0x0000000000000060 memsz 0x0000000000000880 flags rw-
+EH_FRAME off    0x000000000000831c vaddr 0x000000007a60431c paddr 0x000000007a60431c align 2**2
+         filesz 0x0000000000000114 memsz 0x0000000000000114 flags r--
+   STACK off    0x0000000000000000 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**0
+         filesz 0x0000000000000000 memsz 0x0000000000000000 flags rw-
+    NOTE off    0x0000000000008000 vaddr 0x000000007a604000 paddr 0x000000007a604000 align 2**2
+         filesz 0x0000000000000020 memsz 0x0000000000000020 flags r--" class="rehype-pretty-copy" onclick="navigator.clipboard.writeText(this.attributes.data.value);this.classList.add(&#x27;rehype-pretty-copied&#x27;);window.setTimeout(() => this.classList.remove(&#x27;rehype-pretty-copied&#x27;), 3000);"><span class="ready"></span><span class="success"></span></button><style>:root {--copy-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23adadad' d='M16.187 9.5H12.25a1.75 1.75 0 0 0-1.75 1.75v28.5c0 .967.784 1.75 1.75 1.75h23.5a1.75 1.75 0 0 0 1.75-1.75v-28.5a1.75 1.75 0 0 0-1.75-1.75h-3.937a4.25 4.25 0 0 1-4.063 3h-7.5a4.25 4.25 0 0 1-4.063-3M31.813 7h3.937A4.25 4.25 0 0 1 40 11.25v28.5A4.25 4.25 0 0 1 35.75 44h-23.5A4.25 4.25 0 0 1 8 39.75v-28.5A4.25 4.25 0 0 1 12.25 7h3.937a4.25 4.25 0 0 1 4.063-3h7.5a4.25 4.25 0 0 1 4.063 3M18.5 8.25c0 .966.784 1.75 1.75 1.75h7.5a1.75 1.75 0 1 0 0-3.5h-7.5a1.75 1.75 0 0 0-1.75 1.75'/%3E%3C/svg%3E");--success-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2366ff85' d='M9 16.17L5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z'/%3E%3C/svg%3E");}pre:has(code) {position: relative;}pre button.rehype-pretty-copy {right: 1px;padding: 0;width: 24px;height: 24px;display: flex;margin-top: 2px;margin-right: 8px;position: absolute;border-radius: 25%;backdrop-filter: blur(3px);& span {width: 100%;aspect-ratio: 1 / 1;}& .ready {background-image: var(--copy-icon);}& .success {display: none; background-image: var(--success-icon);}}&.rehype-pretty-copied {& .success {display: block;} & .ready {display: none;}}pre button.rehype-pretty-copy.rehype-pretty-copied {opacity: 1;& .ready { display: none; }& .success { display: block; }}</style></code></pre></figure>6:["$","div",null,{"className":"relative","children":[["$","div",null,{"className":"py-12 flex flex-col items-center  justify-items-start mx-auto ","children":[["$","$L2",null,{"href":"/blog","className":"flex justify-center text-4xl","children":["$","h2",null,{"children":"My blog"}]}],["$","article",null,{"className":"px-1 py-4 sm:p-8 prose pt-0.5 max-w-none w-full lg:w-1/2 md:w-5/6 prose-sky mx-auto","children":[["$","div",null,{"className":"flex justify-center text-2xl font-bold ","children":["$","h2",null,{"children":"A funny linker bug"}]}],["$","div",null,{"className":"flex justify-start text-xl font-bold underline","children":["$","h4",null,{"children":"2026-06-15"}]}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$11"}}]]}]]}],"$L12"]}]
+a:{"metadata":[["$","title","0",{"children":"A funny linker bug"}],["$","meta","1",{"name":"description","content":"Linker funny oh no, not funny haha"}],["$","link","2",{"rel":"icon","href":"/_next/static/media/pfp6.723cdd8c.png"}],["$","$L13","3",{}]],"error":null,"digest":"$undefined"}
+f:"$a:metadata"
+14:I[6249,["874","static/chunks/874-437a265a67d6cfee.js","880","static/chunks/app/posts/%5Bid%5D/page-2636d484d393f91f.js"],"default"]
+12:["$","$L14",null,{"articleSelector":"article"}]

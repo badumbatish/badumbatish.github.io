@@ -4,7 +4,7 @@
         <title>Jasmine Tang RSS Feed</title>
         <link>https://badumbatish.github.io/blog/rss.xml</link>
         <description>Jasmine's blog</description>
-        <lastBuildDate>Wed, 03 Jun 2026 20:01:57 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 15 Jun 2026 10:22:39 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -14,6 +14,13 @@
             <link>https://badumbatish.github.io/blog/rss.xml</link>
         </image>
         <copyright>All rights for public use and education, Jasmine Tang</copyright>
+        <item>
+            <title><![CDATA[A funny linker bug]]></title>
+            <link>https://badumbatish.github.io/posts/linker_bug_2gb</link>
+            <guid isPermaLink="false">linker_bug_2gb</guid>
+            <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Linker funny oh no, not funny haha]]></description>
+        </item>
         <item>
             <title><![CDATA[My first time with Nix]]></title>
             <link>https://badumbatish.github.io/posts/first_time_with_nix</link>
