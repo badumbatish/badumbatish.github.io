@@ -1,0 +1,36 @@
+---
+title: "[ONGOING] Transitioning with bazel"
+date: 2026-08-08
+recap: "Hello :)"
+---
+
+
+Now, I realize the title might be a bit `heat-from-fire, fire-from-heat` baiting :) I hope my mis-interested readers
+can still accept the bait and keep on reading :)
+
+Bazel's transition, to me, is one of the most confusing docs in the world. This article is then an attepmt to try and
+demystify the operation in bazel.
+
+Let's talk about configuration first. When a target's being built by an invocation on the command line, it's in the "target"
+configuration. In addition, the tools that's run on the platform that's building said target are in the "exec" configuration.
+Now, these are bazel-defined configurations, and to influence these configurations, you can use `cfg = exec`  or `cfg = target` to **transition**
+from one configuration to another.
+
+Hence, the act of transitioning, or, to transition, is to accept the input configuration and output some other build configuration.
+
+Now, it is bar none helpful if all we did all day is talk about transitioning between "exec" and "target". We can actually rely on `user-defined`
+transitions.
+
+## User-defined transitions
+
+Users can define their transition by defining a transition function
+
+```
+your_transition = transition(
+    implementation = transition_impl,
+
+
+
+)
+
+```
