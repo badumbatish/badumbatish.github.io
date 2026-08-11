@@ -42,17 +42,13 @@ export function analyzeTable(
             const colTotal = total(runs);
             if (colTotal === 0 || baseTotal === 0) continue;
 
-            // When run counts differ, compare per-run so extra configurations
-            // don't masquerade as slowness.
-            const sameCount = runs.length === baseRuns.length;
-            const colPer = colTotal / runs.length;
-            const basePer = baseTotal / baseRuns.length;
-            const rel = sameCount
-                ? (colTotal - baseTotal) / baseTotal
-                : colPer / basePer - 1;
-            const absDiff = sameCount
-                ? Math.abs(colTotal - baseTotal)
-                : Math.abs(colPer - basePer);
+            // Differing run counts mean the runs are different configuration
+            // sets — apples to oranges, so no outlier judgement there. The ×n
+            // markers in the table already surface those rows.
+            if (runs.length !== baseRuns.length) continue;
+
+            const rel = (colTotal - baseTotal) / baseTotal;
+            const absDiff = Math.abs(colTotal - baseTotal);
             if (absDiff < MIN_ABS_US || Math.abs(rel) < MIN_REL) continue;
 
             const colLoad = runsLoad(p, runs);
@@ -69,11 +65,6 @@ export function analyzeTable(
             const bits = [
                 `${pctOf(rel)} in ${label(p.name)} (${fmt(baseTotal)} → ${fmt(colTotal)})`,
             ];
-            if (!sameCount) {
-                bits.push(
-                    `ran ×${runs.length} vs ×${baseRuns.length} - comparing per-run`,
-                );
-            }
             if (slowerOnQuieterMachine) {
                 bits.push(
                     `slower despite lower machine load (${loadStr})`,
