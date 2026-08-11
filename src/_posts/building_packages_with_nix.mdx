@@ -1,0 +1,34 @@
+---
+title: "[ONGOING] Building packages with nix"
+date: 8888-08-08
+recap: "Jasmine modifies the compiler for type checking purposes"
+---
+
+## Setting up a reproducible system
+
+```
+> nix flake init
+wrote: "/Users/jjasmine/Developer/igalia/nix_buildsys/flake.nix"
+```
+
+we would have sth like
+```
+{
+  description = "A very basic flake";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+  };
+
+  outputs = inputs: {
+    packages = builtins.mapAttrs (system: pkgs: {
+      hello = pkgs.hello;
+
+      default = inputs.self.packages.${system}.hello;
+    }) inputs.nixpkgs.legacyPackages;
+  };
+}
+```
+
+Now, if you have a hello.nix via `nvim hello.nix`, even if its empty, when you run `nix build`, nix will look into
+your `flake.nix` and automatically build the empty `hello.nix` for you.

@@ -87,21 +87,19 @@ Simple variable codegen (think i64, f64 etc) happens with three operations:
 - read: this loads from address of alloca.
 
 In MLIR, when we emit a variable definition, we emit the alloca for said variable in the beginning block of
-the current function that the variable is in. Then we'd set `allocas[var_name] = var_alloca`.
+the current function that the variable is in. Then we'd set `allocas[var_name] = var_alloca` in our symbol table.
 
 Suppose we have `let a = 5.5` where 5.5 is the floating point expression, after we have codegen'd the ConstantFloatOp(5.5),
 we would use `mlir::StoreOp` to store the mlir::Value of the float op to the alloca.
 
 The modification is described in the case of `let a = 5.5` as well; we're just storing a new value into the alloca of a variable
-, obtained via the mapping of `allocas`.
+, obtained via the symbol table mapping of `allocas`.
 
-For the read case, it's a bit more interesting :) in sammine, since everything's a value,  we'd just read the value at said
+For the read case, in sammine, since everything's a value,  we'd just read the value at said
 alloca, and then return that value.
 
 I hope this makes sense :)
 ### Control flow
-
-discuss how alloca makes this easier.
 
 Control flow is a bit fun. We'd still follow the llvm kaleidoscope structure here. Perhaps pseudo code can help illuminate
 the structure better. One thing to add is since mlir::Block doesn't use phi, the addArgument here is essentially replacing the
@@ -132,6 +130,8 @@ emitIfExpr(ast):
       delete mergeBlock
       return null
 ```
+
+
 ### Functions
 
 Function, i think is pretty simple. We'll do two passes over each function definitions.
@@ -169,10 +169,3 @@ codegen :) But if you'd like to support me in pumping out articles faster, maybe
 # Epilogue
 
 ## Remarks
-The article, as you can tell, is directed towards new grads and/or beginners in LLVM. If you've benefited from the article
-or if you'd like to support my writing these blogs, please consider [getting me a red bull]() :)
-
-I also want to extend my thanks to all the developers that helped contributed to the
-Kaleidoscope. Without them, the journey to generate code, as well as the creation of this article, would be
-ten-fold harder. I realize that we all stands on the shoulder of the previous generations and of giants and I would like to pay my tribute to them.
-
