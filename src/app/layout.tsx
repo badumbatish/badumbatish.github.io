@@ -11,7 +11,7 @@ const inter = localFont({src : './Inter-VariableFont_slnt,wght.ttf'})
 
 export const metadata: Metadata = {
     title: 'jjasmine',
-    description: 'Built with NextJS, TailwindCSS, and a tonnn of loveee :)',
+    description: 'Built with love by Jasmine. Support me on https://ko-fi.com/badumbatish :)',
     icons: [{ rel: 'icon', url: rounded_pfp.src  }],
 
 }
@@ -35,7 +35,7 @@ export default function RootLayout({
 
     <footer className="footer self-center justify-center gap-2 pt-4 items-center italic ">
         {/*<p>I&#39;m looking for new grad compiler work, please email at jjasmine@berkeley.edu</p>*/}
-        <p>Built by Jasmine with NextJS, TailwindCSS, and a tonnn of loveee :)</p>
+        <p>Built with love by Jasmine. Support me on <a href="https://ko-fi.com/badumbatish" className="underline" target="_blank" rel="noopener noreferrer">ko-fi.com/badumbatish</a> :)</p>
     </footer>
 
     </body>

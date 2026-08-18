@@ -1,0 +1,347 @@
+---
+title: "[ONGOING] Nix as a glue build system"
+date: 8888-08-08
+recap: "Jasmine applies her newly learned nix knowledge to engineer a glue build system"
+---
+
+Suppose your repository contains a large set of codebases being pulled in as submodules (100+ submodules). Suppose
+also that these
+submodules require frequent modification for such use cases and that the build systems used by such submodules range
+from cmake, make, to meson, ninja, bazel, etc etc. Let's also suppose: there will be 10, 20+ developers using this
+monolith
+repository at the same time.
+
+The questions here lie:
+- Can there be a build system designed to handle the diverse and large-scale ecosystem that such a codebase demands?
+And is such a build system fast?
+- How can these developers that are using different machines and operating systems build the same piece of code
+reliably without relying on their package manager, avoiding having to introduce OS and package manager reliant
+behaviors?
+
+The definition of such a build system is called a glue build system. In this article, I then discuss how we
+can use nix to construct such a glue build system :)
+
+This article has a note section to help ease readers into Nix concepts and other miscellaneous items.
+
+## Notes
+In nix, an attribute set is a collection of name-value pairs, enclosed in curly brackets {}. If it helps, you can think
+of it like a dict in python.
+
+Nixpkgs is a collection of over 140000 software packages that can be installed with the Nix package manager.
+
+Derivation is a built-in nix function that takes in `name`,  `system`, `builder` as required arguments and some
+optional arguments. Its output is an attribute set and a unique path where the final results of the compiled
+artifacts will live.
+
+## Alternatives
+First, let's talk alternatives. Of course, the fact is that, everything can be used as a build system, even from
+a bash script to a large scale build system such as bazel.
+
+### Simple system
+If we're using bash, make, cmake, things can start out very simple: after registering our submodules, we can just write
+some build script to traverse into each repository and build them subsequently. The tricky part is the cost of
+maintenance and reproducibility. I really would prefer not to maintain a big build system being written by bash,
+make or cmake.
+
+
+### Large scale system
+
+If we're using bazel, things improve dramatically: we can use rules_foreign_cc (rfcc) as an interface/gateway to our
+other
+build systems. It has build rules of `make()`, `cmake()`, `meson()` and such.
+
+The problems with bazel here are, the caching system of bazel works on `action` and how rfcc works internally.
+In
+calling such function `make()`, which represents building a single submodule, bazel count this as an action. What
+this means is when the dependencies of a submodule `A` changes, bazel cannot reuse its cache action for such call
+`make()` to submodule `A`, resulting into it having to rebuild the same submodule again for no reason, despite no
+code change in `A`.
+
+
+rfcc also cannot reuse its `configure()` stage of its `make()`, `cmake()` and `meson()`. The input to building a
+submodule `A` depends on its dependencies. If its dependencies change, bazel would have to forsake its previous
+build and have to build everything again, including its `configure()` stage.
+
+Finally, external caching is a big problem in bazel. Its sandboxing is way too strict for ccache and sccache to
+function optimally. ccache and sccache can only use their nondirect mode instead of the ultra-fast direct mode.
+
+Additionally, even though bazel strives to achieve hermeticity as a build system, the reality is that this is often
+hard to achieve, requiring build system engineers to set up compilation of m4, autotools and etc from scratch,
+tackling a large amount of build time on first time build via explosion of build graph via its [difference in
+configuration](https://bazel.build/versions/6.5.0/extending/config#badly-behaved-builds).
+
+## Nix
+### Setting up a reproducible system
+
+We'll be using nix flake to pin our essential dependencies in nixpkgs
+
+```
+> nix flake init
+wrote: "flake.nix"
+```
+
+we would have sth like
+```
+{
+  description = "A very basic flake";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+  };
+
+  outputs = inputs: {
+    packages = builtins.mapAttrs (system: pkgs: {
+      hello = pkgs.hello;
+
+      default = inputs.self.packages.${system}.hello;
+    }) inputs.nixpkgs.legacyPackages;
+  };
+}
+```
+
+Running nix build next, you'll have
+```
+ nix build
+warning: creating lock file "/Users/jjasmine/Developer/igalia/nix_buildsys/flake.lock":
+• Added input 'nixpkgs':
+    'github:nixos/nixpkgs/279b4a8275f032c566576b3f181fa0f27197f588?narHash=sha256-8S3Kcxs7D4UtxJxSJZz0m14CGhuW0MxfrIwJxeGWGnQ%3D' (2026-08-09)
+```
+
+Now, despite using nix flake to pin our nixpkgs, we will not being using the new `nix build` command, we'll be using
+the old `nix-build` command.
+
+Nixpkgs is a collection of over 140,000 software packages that can be installed with the Nix package manager.
+
+Before continuing, let me introduce you to our build call convention and our directory shape:
+
+Call convention
+```
+nix-build -A deps.fmt  # build the submodule fmt on the default configuration
+nix-build -A deps.fmt  --arg config 'import ./custom_config.nix' # build the submodule under some custom
+configuration defined in custom_config.nix
+
+nix-build -A ci        # build the default, under all platforms
+```
+
+Directory
+```
+flake.nix
+flale.lock
+default.nix
+config.nix
+build_rules/
+  - cmake.nix
+  - make.nix
+  - meson.nix
+  - ...
+third_party/
+  - ffmpeg/package.nix
+  - mesa/package.nix
+  - blablabla/package.nix
+  - ...
+
+```
+### Setting up call shapes
+
+deps is what we call our buildables.
+
+We can set up deps by using `pkgs.lib`'s `packagesFromDirectoryRecursive` combined with `pkgs`'s callPackage:
+```
+  deps = pkgs.lib.packagesFromDirectoryRecursive {
+    inherit (pkgs) callPackage;
+    directory = ./third_party;
+  };
+```
+[packagesFromDirectoryRecursive](https://noogle.dev/f/lib/filesystem/packagesFromDirectoryRecursive/)
+traverses the directory and collects the matching package.nix files into an attribute set of derivation.
+It then applies callPackage, which is a ubiquitous helper function used to set up nix files.
+
+See [https://nix.dev/tutorials/callpackage.html](https://nix.dev/tutorials/callpackage.html) for more information on
+why we would to use this.
+
+
+deps
+
+mention passthru here
+### Build rules
+We'll set up our build rules for cmake, make, ninja and meson by utilizing mkDerivation.
+
+Here are the skeleton for `cmake`:
+
+```
+{ pkgs ? import <nixpkgs> { } }:
+
+{ nativeBuildInputs ? [ ]
+, ...
+}@args:
+
+pkgs.stdenv.mkDerivation (
+  # overridable defaults
+  {
+    # back off when system load exceeds the core count
+    preBuild = ''
+      makeFlagsArray+=("-l$NIX_BUILD_CORES")
+    '';
+    # record the compilation database and ship it in the output
+    preConfigure = ''
+      cmakeFlagsArray+=(-DCMAKE_EXPORT_COMPILE_COMMANDS=ON)
+    '';
+    # rewrite sandbox paths to the permanent store source copy; the
+    # embedded $src path also makes nix keep the sources alive
+    postInstall = ''
+      [ -f compile_commands.json ] && \
+        sed "s|$NIX_BUILD_TOP/$sourceRoot|$src|g" compile_commands.json \
+          > $out/compile_commands.json
+    '';
+  }
+  // args
+  // {
+    nativeBuildInputs = [ pkgs.cmake ] ++ nativeBuildInputs;
+  }
+)
+```
+
+There are few interesting points being performed here.
+
+First is, we add `makeFlagsArray+=("-l$NIX_BUILD_CORES")` to the prebuild phase. By doing this, we guarantee that
+all our submodules, when built in parallel together, never uses more than `NIX_BUILD_CORES`. Barring the difference
+of implementation on different unix systems, this creates a pseudo job scheduler that's better than the
+serialization of simple bash/make script and better than the
+[lack of a dedicated jobserver](https://github.com/bazel-contrib/rules_foreign_cc/issues/329) in rfcc.
+
+The second thing is, we don't need to set up any -j script, cmake's setup hook automatically enables parallel
+building for us and set up the `-j$NIXBUILD_CORES` automatically.
+
+Thirdly, there are no invocation of `cmake()`, this is because when we add `pkgs.cmake` to nativeBuildInputs, its
+setup hook run and cmake is called automatically with all the right arguments. See
+https://discourse.nixos.org/t/how-does-mkderivation-decide-what-build-system-to-use/32940 for more details.
+
+We also set up a postinstall phase where we copy the existing compile_commands.json and merge them again in `default.
+nix`:
+
+```
+    # merge our compilation database with every dependency's
+    installPhase = ''
+        mkdir -p $out/bin
+        cp main $out/bin/
+
+        sed "s|$NIX_BUILD_TOP/$sourceRoot|$src|g" compile_commands.json > own.json
+        dbs=(own.json)
+        for d in $buildInputs; do
+            [ -f "$d/compile_commands.json" ] && dbs+=("$d/compile_commands.json")
+        done
+        # keep only entries whose paths live in the permanent store
+        jq -s 'add | map(select(.directory | startswith("/nix/store")))' \
+            "''${dbs[@]}" > $out/compile_commands.json
+    '';
+```
+
+By doing this, nix improves the developer experience that were previously lacking or hard to setup in previous build
+systems.
+
+These points that are mentioned here will all be applied to all of `make()`, `cmake()`, `meson()` and `ninja()`.
+
+### config.nix
+
+We can use a nix file containing the attribute set as our configuration file, similar to `Cargo.toml` or `.bazelrc`.
+For example, here could be the content of
+
+```
+{
+    ccache = true,
+    build_mode = opt,
+}
+```
+
+To allow users to have their own configuration to apply on top of the default configuration via `--arg config =
+import user_config.nix`, we can make it so that `config` is initialized via `config.nix` first, then graft the
+attribute set via the user custom config:
+```
+{
+    pkgs ? import <nixpkgs> { },
+    config ? { }
+}:
+let
+  cfg =
+    (if builtins.pathExists ./config.nix then import ./config.nix else { })
+    // config;
+...
+```
+
+
+### ccache
+
+ccache is important when you have to build large codebase incrementally.
+
+NixOS's [ccache section](https://nixos.wiki/wiki/CCache) has already described how to set up ccache for simple
+packages. In this section, I'll set up ccache via the default.nix route to fit in with our `nix-build -A deps.xyz`
+build command.
+
+In `build_rules/ccache.nix`, besides the usual `pkgs` that a derivation accepts, we introduce a boolean `enable` and
+conditionally return the right stdenv. We know that in the [ccache_section](https://nixos.wiki/wiki/CCache), to have
+a package built with ccache, we replace the stdenv with ccacheStdenv. Here we're doing the same thing:
+```
+if enable then
+  pkgs.ccacheStdenv.override {
+    # without this the wrapper would cache into $HOME/.ccache, which is
+    # the unwritable /homeless-shelter inside builds
+    extraConfig = ''
+      export CCACHE_COMPRESS=1
+      export CCACHE_DIR=/nix/var/cache/ccache
+      export CCACHE_UMASK=007
+      # stdenv passes -frandom-seed=<per-drv hash>, which would defeat
+      # every cache lookup; ignoring it trades a little reproducibility
+      # for actually getting hits (see the wiki's Sloppiness section)
+      export CCACHE_SLOPPINESS=random_seed
+      if [ ! -d "$CCACHE_DIR" ]; then
+        echo "====="
+        echo "$CCACHE_DIR does not exist; one-time root setup:"
+        echo "  sudo mkdir -m 0770 -p $CCACHE_DIR"
+        echo "  sudo chown root:nixbld $CCACHE_DIR"
+        echo "====="
+        exit 1
+      fi
+    '';
+  }
+else
+  pkgs.stdenv
+```
+
+In `default.nix`, we then set up our pkgs.stdenv by passing in config.ccache as `enable`:
+```
+      stdenv = import ./build_rules/ccache.nix {
+        pkgs = base;
+        enable = cfg.ccache or false;
+      };
+```
+
+By enabling sccache implicitly this way through `default.nix`, I don't have to modify any of our other build rules as
+well as any of our packages, reducing code churning.
+
+### Caching of configure()
+
+
+### Speeding up the evaluation phases
+
+
+### Building on multiple platforms
+
+Building on multiple platforms is quite simple (or hard). First we'll introduce a new key in the attribute set of
+`config.nix`:
+
+```
+{
+    ccache = true;
+
+    # platforms — every name here becomes a flake output
+    # packages.<system>.build-<name>, and `nix build .#ci` builds them all.
+    # list them with
+    #   nix-instantiate --eval -E 'builtins.attrNames (import <nixpkgs> { }).pkgsCross'
+    # Uncomment entries (or override via --arg on nix-build) as needed.
+    platforms = {
+        android = "aarch64-android";
+        # native = null;
+        # x86_64-linux = "gnu64";
+    };
+
+```
